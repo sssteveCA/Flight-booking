@@ -99,6 +99,7 @@ return [
 
         'stdout' => [
             'driver' => 'monolog',
+            'name' => 'FlightBooking1',
             'level' => env('LOG_LEVEL','debug'),
             'handler' => StreamHandler::class,
             'formatter' => env('LOG_STDERR_FORMATTER'),
