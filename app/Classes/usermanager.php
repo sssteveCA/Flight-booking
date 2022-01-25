@@ -16,6 +16,19 @@ class UserManager{
     }
 
     public function editUsername(Request $request){
+        $message = array();
+        $userA = $this->getUser();
+        if($request->filled('username')){
+            //If username input field exists and it's not empty
+            if($userA != null){
+                //If an authenticad user was found
+            }//if($userA != null){
+            else
+                $message['msg'] = "Impossibile ottenere informazione sull'utente loggato";
+        }//if($request->filled('username')){
+        else
+            $message['msg'] = "Devi inserire uno username valido prima di continuare";
+        return $message;
     }
 
     //Get Authenticated user info
