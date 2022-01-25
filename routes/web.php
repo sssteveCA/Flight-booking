@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 //Private profile routes
-Route::group(['prefix' => 'profile', 'middleware' => 'verified'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => ['auth','verified']], function(){
     Route::get('/info', [InfoController::class, 'getData'])->name('infocontroller.info'); 
     Route::get('/myFlights',function(){
     });  
