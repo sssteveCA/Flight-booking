@@ -23,10 +23,11 @@ Route::get('/', function () {
 
 //Private profile routes
 Route::group(['prefix' => 'profile', 'middleware' => 'verified'], function(){
-    Route::get('/info', [InfoController::class, 'getData']); 
+    Route::get('/info', [InfoController::class, 'getData'])->name('infocontroller.info'); 
     Route::get('/myFlights',function(){
-
     });  
+    Route::patch('/editUsername',[InfoController::class,'editUsername'])->name('infocontroller.editusername');
+    Route::patch('/editPassword',[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
 });
 
 Auth::routes(['verify' => true]);
