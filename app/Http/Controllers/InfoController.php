@@ -6,22 +6,25 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use UserManager;
 
 class InfoController extends Controller
 {
+    use UserManager;
+
+    private $usermanager;
     protected $connection = 'mysql';
     protected $primaryKey = 'id';
     public $incrementing = true;
 
     public function __construct()
     {
-        
+        $this->usermanager =  new UserManager;   
     }
 
     //get user info
     public function getData(){
-        $id = Auth::id();
-        $userAuth = User::find($id);
+        $userAuth = $this->usermanager->getUser();
         if($userAuth != null)
             return response()->view('profile/info',['user' => $userAuth],200);
         else
