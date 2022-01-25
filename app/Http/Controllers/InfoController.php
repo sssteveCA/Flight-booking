@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class InfoController extends Controller
 {
@@ -30,11 +31,14 @@ class InfoController extends Controller
 
     //edit username
     public function editUsername(Request $request){
-
+        $auth = new Auth;
+        Log::channel('stdout')->debug("InfoChannel Auth => ".var_export($auth,true));
+        $id = Auth::id();
+        $user = User::find($id);
     }
 
     //edit password
     public function editPassword(Request $request){
-        
+        return 'editPassword';
     }
 }
