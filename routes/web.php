@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +23,8 @@ Route::get('/', function () {
 
 //Private profile routes
 Route::group(['prefix' => 'profile', 'middleware' => 'verified'], function(){
-    Route::get('/info', function(){
-        return view('profile/info');
-    }); 
-    Route::get('myFlights',function(){
+    Route::get('/info', [InfoController::class, 'getData']); 
+    Route::get('/myFlights',function(){
 
     });  
 });
