@@ -16,10 +16,10 @@ class UserManager{
         Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);*/
     }
 
-    public function editUsername(EditUsernameRequest $request,$auth_name){
+    public function editUsername(Request $request,$auth_id){
         $message = array();
         $message['edited'] = false;
-        $userA = $this->getUser($auth_name);
+        $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
             $username = $request->input('username');
@@ -36,10 +36,10 @@ class UserManager{
     }
 
     //Get Authenticated user info
-    public function getUser($auth_name){
+    public function getUser($auth_id){
         $user = null;
-        if(isset($auth_name)){
-            $user = User::where('name',$auth_name)->first();
+        if(isset($auth_id)){
+            $user = User::find($auth_id);
         }
         return $user;
     }

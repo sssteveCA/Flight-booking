@@ -12,22 +12,22 @@ use UserManager;
 class InfoController extends Controller
 {
     private $usermanager;
-    private $auth_name;
+    private $auth_id;
     protected $connection = 'mysql';
     protected $primaryKey = 'id';
     public $incrementing = true;
 
     public function __construct()
     {
-        $this->auth_name = Auth::user()->name;
-        Log::channel('stdout')->info("InfoController auth_name => ".var_export($this->auth_name,true));
+        $this->auth_id = Auth::id();
+        //Log::channel('stdout')->info("InfoController auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
     //get user info
     public function getData(){
-        $userAuth = $this->usermanager->getUser($this->auth_name);
-        Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
+        $userAuth = $this->usermanager->getUser($this->auth_id);
+        //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
         if($userAuth != null){
             return response()->view('profile/info',['user' => $userAuth],200);
         }
@@ -37,12 +37,13 @@ class InfoController extends Controller
     }
 
     //edit username
-    public function editUsername(EditUsernameRequest $request){
-        $auth = new Auth;
-        Log::channel('stdout')->debug("InfoChannel Auth => ".var_export($auth,true));
+    public function editUsername(Request $request){
+        Log::channel('stdout')->info("editUsername");
+        //Log::channel('stdout')->info("editUsername request => ".var_export($request,true));
         //Check if username input is correct
-        $request->validate();
-        $edit = $this->usermanager->editUsername($request,$this->auth_name);
+        /*$validator = $request->validate();
+        Log::channel('stdout')->info("editUsername validator => ".var_export($validator,true));*/
+        $edit = $this->usermanager->editUsername($request,$this->auth_id);
         if($edit['edited']){
             //Username was updated
             return response($edit['msg'],204);

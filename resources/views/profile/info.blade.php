@@ -8,7 +8,7 @@
         @method("PATCH")
         <div class="form-group mb-3">
             <label for="username">Username </label>
-            <input type="text" class="form-control" id="username" value="{{isset($user->name)? $user->name : ''}}">
+            <input type="text" class="form-control" id="username" name="username" value="{{isset($user->name)? $user->name : ''}}">
         </div>
         <div class="form-group mb-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">MODIFICA</button>
