@@ -17,15 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    Log::debug("Messaggio di debug");
     return view('welcome');
 });
 
 //Private profile routes
 Route::group(['prefix' => 'profile', 'middleware' => 'verified'], function(){
     Route::get('/info', function(){
-        return '';
-    });   
+        return view('profile/info');
+    }); 
+    Route::get('myFlights',function(){
+
+    });  
 });
 
 Auth::routes(['verify' => true]);
