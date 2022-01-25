@@ -51,6 +51,7 @@ return [
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
+            'name' => 'FlightBooking1',
             'ignore_exceptions' => false,
         ],
 
