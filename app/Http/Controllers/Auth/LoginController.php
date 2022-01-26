@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
@@ -38,7 +40,17 @@ class LoginController extends Controller
         /*throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
         ]);*/
-        return view('error/errors')->withErrors(['message' => trans('auth.failed')]);
+        if(!User::where('email',$request->email)->first()){
+            //No account found with email entered
+            return view('error/errors')->withErrors(['message' => trans('auth.email')]);
+        }//if(!User::where('email',$request->email)->first()){
+        if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
+            //Incorrect password
+            return view('error/errors')->withErrors(['message' => trans('auth.password')]);
+        }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
+            //Other errors
+            return view('error/errors')->withErrors(['message' => trans('auth.failed')]);
+        
     }
 
     /**
@@ -55,6 +67,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         Log::info("LoginController login");
+        Log::info("LoginController login request => ".var_export($request->all(),true));
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
