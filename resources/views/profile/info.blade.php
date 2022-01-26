@@ -22,15 +22,15 @@
         @method("PATCH")
         <div class="form-group mb-3">
             <label for="password">Vecchia password </label>
-            <input type="text" class="form-control" id="oldpwd">
+            <input type="text" class="form-control" id="oldpwd" name="oldpwd">
         </div>
         <div class="form-group mb-3">
             <label for="password">Nuova password </label>
-            <input type="text" class="form-control" id="newpwd">
+            <input type="text" class="form-control" id="newpwd" name="newpwd">
         </div>
         <div class="form-group mb-3">
             <label for="password">Conferma nuova password </label>
-            <input type="text" class="form-control" id="confnewpwd">
+            <input type="text" class="form-control" id="confnewpwd" name="confnewpwd">
         </div>
         <div class="form-group mb-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">AGGIORNA</button>

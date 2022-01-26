@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class InfoController extends Controller
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         if($edit['edited']){
             //Username was updated
-            return response($edit['msg'],204);
+            Log::info("edit => ".var_export($edit,true));
+            return response()->view('profile/edit',$edit,200);
         }
         else{
             //Username was not updated
@@ -55,7 +57,6 @@ class InfoController extends Controller
     }
 
     //edit password
-    public function editPassword(Request $request){
-        return 'editPassword';
+    public function editPassword(EditPasswordRequest $request){
     }
 }

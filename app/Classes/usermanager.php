@@ -19,6 +19,7 @@ class UserManager{
     public function editUsername(EditUsernameRequest $request,$auth_id){
         $message = array();
         $message['edited'] = false;
+        $message['title'] = 'Modifica username';
         $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
