@@ -2,11 +2,15 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class EditPasswordRequest extends FormRequest
 {
+
+    public $validator = null;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -14,7 +18,12 @@ class EditPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        Auth::check();
+        return Auth::check();
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $this->validator = $validator;
     }
 
     public function messages()

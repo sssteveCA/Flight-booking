@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 class EditUsernameRequest extends FormRequest
 {
+
+    public $validator = null;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,6 +28,11 @@ class EditUsernameRequest extends FormRequest
             'username.min' => 'Lo username deve avere almeno 5 caratteri',
             'username.max' => 'Lo username non può avere più di 20 caratteri'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $this->validator = $validator;
     }
 
     /**

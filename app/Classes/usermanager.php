@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,6 +35,10 @@ class UserManager{
         else
             $message['msg'] = "Impossibile ottenere informazione sull'utente loggato";
         return $message;
+    }
+
+    public function editPassword(EditPasswordRequest $request){
+        
     }
 
     //Get Authenticated user info

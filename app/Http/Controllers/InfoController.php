@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use UserManager;
 
 class InfoController extends Controller
@@ -40,10 +41,11 @@ class InfoController extends Controller
     //edit username
     public function editUsername(EditUsernameRequest $request){
         Log::channel('stdout')->info("editUsername");
-        //Log::channel('stdout')->info("editUsername request => ".var_export($request,true));
-        //Check if username input is correct
-        /*$validator = $request->validate();
-        Log::channel('stdout')->info("editUsername validator => ".var_export($validator,true));*/
+        if(isset($request->validator) && $request->validator->fails()){
+            //If username form fails validation
+            $messages = $request->validator->messages();
+            return view('error/validation')->withErrors($messages);
+        } 
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         if($edit['edited']){
             //Username was updated
@@ -58,5 +60,11 @@ class InfoController extends Controller
 
     //edit password
     public function editPassword(EditPasswordRequest $request){
+        Log::channel('stdout')->info("editPassword request "); 
+        if(isset($request->validator) && $request->validator->fails()){
+            //If change password form fails validation
+            $messages = $request->validator->messages();
+            return view('error/validation')->withErrors($messages);
+        }    
     }
 }
