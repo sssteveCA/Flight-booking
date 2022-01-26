@@ -32,9 +32,35 @@
             <label for="password">Conferma nuova password </label>
             <input type="text" class="form-control" id="confnewpwd" name="confnewpwd">
         </div>
+        <div class="col-md-6 offset-md-4" style="margin-left: 0;">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="showPassword" id="showPassword">
+
+                <label class="form-check-label" for="showPassword">
+                    {{ __('Mostra password') }}
+                </label>
+            </div>
+        </div>
         <div class="form-group mb-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">AGGIORNA</button>
         </div>
     </form>
 </fieldset>
+<script>
+    //detect showPassword checkbox changes
+    $('#showPassword').on('change',function(){
+        //console.log("ShowPassword change");
+        var checked = $(this).is(":checked");
+        if(checked){
+            $('#oldpwd').attr('type','text');
+            $('#newpwd').attr('type','text');
+            $('#confnewpwd').attr('type','text');
+        }
+        else{
+            $('#oldpwd').attr('type','password');
+            $('#newpwd').attr('type','password');
+            $('#confnewpwd').attr('type','password');
+        }
+    });
+</script>
 @endsection

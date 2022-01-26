@@ -42,10 +42,19 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Rimani collegato') }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="showPassword" id="showPassword">
+
+                                    <label class="form-check-label" for="showPassword">
+                                        {{ __('Mostra password') }}
                                     </label>
                                 </div>
                             </div>
@@ -70,4 +79,17 @@
         </div>
     </div>
 </div>
+<script>
+    //detect showPassword checkbox changes
+    $('#showPassword').on('change',function(){
+        console.log("ShowPassword change");
+        var checked = $(this).is(":checked");
+        if(checked){
+            $('#password').attr('type','text');
+        }
+        else{
+            $('#password').attr('type','password');
+        }
+    });
+</script>
 @endsection
