@@ -1,6 +1,5 @@
 <?php
 
-
 //This class contains only constants messages
 interface Constants{
     //errors

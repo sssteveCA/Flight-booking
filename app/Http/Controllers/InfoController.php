@@ -54,7 +54,7 @@ class InfoController extends Controller
         }
         else{
             //Username was not updated
-            return response()->view('error/404',$edit['msg'],404);
+            return response()->view('error/errors',$edit['msg'],404);
         }
     }
 
@@ -65,6 +65,15 @@ class InfoController extends Controller
             //If change password form fails validation
             $messages = $request->validator->messages();
             return view('error/errors')->withErrors($messages);
-        }    
+        }   
+        $edit = $this->usermanager->editPassword($request,$this->auth_id);
+        if($edit['edited']){
+            //Password was edited
+            return response()->view('profile/edit',$edit,200);
+        } 
+        else{
+            //Password was not updated
+            return response()->view('error/errors',$edit['msg'],404);
+        }
     }
 }
