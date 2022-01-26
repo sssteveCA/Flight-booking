@@ -37,7 +37,7 @@ class InfoController extends Controller
     }
 
     //edit username
-    public function editUsername(Request $request){
+    public function editUsername(EditUsernameRequest $request){
         Log::channel('stdout')->info("editUsername");
         //Log::channel('stdout')->info("editUsername request => ".var_export($request,true));
         //Check if username input is correct

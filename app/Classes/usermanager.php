@@ -16,7 +16,7 @@ class UserManager{
         Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);*/
     }
 
-    public function editUsername(Request $request,$auth_id){
+    public function editUsername(EditUsernameRequest $request,$auth_id){
         $message = array();
         $message['edited'] = false;
         $userA = $this->getUser($auth_id);
