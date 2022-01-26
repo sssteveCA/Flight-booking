@@ -47,6 +47,7 @@ class InfoController extends Controller
             return view('error/errors')->withErrors($messages);
         } 
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
+        Log::debug("InfoController editpassword message ".var_export($edit,true));
         if($edit['edited']){
             //Username was updated
             Log::info("edit => ".var_export($edit,true));
@@ -54,7 +55,7 @@ class InfoController extends Controller
         }
         else{
             //Username was not updated
-            return response()->view('error/errors',$edit['msg'],404);
+            return view('error/errors')->withErrors(['message' => $edit['msg']]);
         }
     }
 
@@ -73,7 +74,8 @@ class InfoController extends Controller
         } 
         else{
             //Password was not updated
-            return response()->view('error/errors',$edit['msg'],404);
+            //return response()->view('error/errors',['errors' => $edit],404);
+            return view('error/errors')->withErrors(['message' => $edit['msg']]);
         }
     }
 }

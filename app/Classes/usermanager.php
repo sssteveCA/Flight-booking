@@ -45,19 +45,27 @@ class UserManager{
         $message['title'] = Constants::TITLE_EDITPASSWORD;
         $userA = $this->getUser($auth_id);
         if($userA != null){
-            $password = $request->input('password');
+            Log::debug("userA != null");
+            Log::debug("request => ".var_export($request->all(),true));
+            $password = $request->input('oldpwd');
             if(Hash::check($password,$userA->password)){
-                $userA->password = Hash::make($password);
+                $newPassword = $request->input('newpwd');
+                $userA->password = Hash::make($newPassword);
                 $userA->save();
                 $message['edited'] = true;
                 $message['msg'] = Constants::OK_PASSWORDUPDATED;
                 //Actual password is correct
             }//if(Hash::check($password,$userA->password)){
-            else
-                $risposta['msg'] = Constants::ERR_PASSWORDINCORRECT;
+            else{
+                Log::debug("hash password error");
+                $message['msg'] = Constants::ERR_PASSWORDINCORRECT;
+            }     
         }//if($userA != null){
-        else
-        $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+        else{
+            Log::debug("userA = null");
+            $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+        }
+        return $message;
     }
 
     //Get Authenticated user info
