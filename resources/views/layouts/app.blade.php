@@ -80,13 +80,5 @@
         <main class="py-4">
             @yield('content')
         </main>
-@if($errors->any())
-            <div class="alert alert-danger" role="alert">
-    @foreach($errors->all() as $error)
-            <p>{{$error}}</p>
-    @endforeach
-            </div>
-@endif
-    </div>
 </body>
 </html>

@@ -5,9 +5,10 @@ use App\Http\Requests\EditUsernameRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class UserManager{
+class UserManager implements Constants{
 
     private $auth_id;
 
@@ -20,7 +21,7 @@ class UserManager{
     public function editUsername(EditUsernameRequest $request,$auth_id){
         $message = array();
         $message['edited'] = false;
-        $message['title'] = 'Modifica username';
+        $message['title'] = Constants::TITLE_EDITUSERNAME;
         $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
@@ -29,16 +30,34 @@ class UserManager{
             $save = $userA->save();
             Log::channel('stdout')->info("editUsername save => ".$save);
             $message['edited'] = true;
-            $message['msg'] = 'Lo username è stato modificato';
+            $message['msg'] = Constants::OK_USERNAMEUPDATED;
             //If an authenticad user was found
         }//if($userA != null){
         else
-            $message['msg'] = "Impossibile ottenere informazione sull'utente loggato";
+            $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
         return $message;
     }
 
-    public function editPassword(EditPasswordRequest $request){
-        
+    public function editPassword(EditPasswordRequest $request,$auth_id){
+        Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
+        $message = array();
+        $message['edited'] = false;
+        $message['title'] = Constants::TITLE_EDITPASSWORD;
+        $userA = $this->getUser($auth_id);
+        if($userA != null){
+            $password = $request->input('password');
+            if(Hash::check($password,$userA->password)){
+                $userA->password = Hash::make($password);
+                $userA->save();
+                $message['edited'] = true;
+                $message['msg'] = Constants::OK_PASSWORDUPDATED;
+                //Actual password is correct
+            }//if(Hash::check($password,$userA->password)){
+            else
+                $risposta['msg'] = Constants::ERR_PASSWORDINCORRECT;
+        }//if($userA != null){
+        else
+        $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
     }
 
     //Get Authenticated user info

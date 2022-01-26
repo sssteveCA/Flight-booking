@@ -28,7 +28,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files" : [
-            "app/Classes/usermanager.php"
+            "app/Classes/usermanager.php",
+            "app/Classes/constants.php"
         ]
     },
     "autoload-dev": {

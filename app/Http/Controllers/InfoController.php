@@ -44,7 +44,7 @@ class InfoController extends Controller
         if(isset($request->validator) && $request->validator->fails()){
             //If username form fails validation
             $messages = $request->validator->messages();
-            return view('error/validation')->withErrors($messages);
+            return view('error/errors')->withErrors($messages);
         } 
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         if($edit['edited']){
@@ -64,7 +64,7 @@ class InfoController extends Controller
         if(isset($request->validator) && $request->validator->fails()){
             //If change password form fails validation
             $messages = $request->validator->messages();
-            return view('error/validation')->withErrors($messages);
+            return view('error/errors')->withErrors($messages);
         }    
     }
 }
