@@ -31,7 +31,7 @@ class LoginController extends Controller
         // the IP address of the client making these requests into this application.
         if (method_exists($this, 'hasTooManyLoginAttempts') &&
             $this->hasTooManyLoginAttempts($request)) {
-                Log::info("LoginController login method_exists");
+                Log::channel('stdout')->info("LoginController login method_exists");
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
@@ -40,7 +40,7 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             Log::info("LoginController attemptLogin");
             if ($request->hasSession()) {
-                Log::info("LoginController session");
+                Log::channel('stdout')->info("LoginController session");
                 $request->session()->put('auth.password_confirmed_at', time());
             }
 
@@ -51,10 +51,10 @@ class LoginController extends Controller
             // to login and redirect the user back to the login form. Of course, when this
             // user surpasses their maximum number of attempts they will get locked out.
             $this->incrementLoginAttempts($request);
-            Log::info("LoginController increment");
+            Log::channel('stdout')->info("LoginController increment");
             $response = $this->sendFailedLoginResponse($request);
         }
-        Log::info("LoginController login ".var_export($response,true));
+        Log::channel('stdout')->info("LoginController login ".var_export($response,true));
         return $response;
     }
 
