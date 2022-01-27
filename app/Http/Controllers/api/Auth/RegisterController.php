@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Constants;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,11 +54,12 @@ class RegisterController extends Controller
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
         $response = array();
+        $response['registered'] = false;
         Log::info("RegisterController register");
         Log::info("RegisterController register request ".var_export($request->all(),true));
         try{
@@ -67,14 +69,15 @@ class RegisterController extends Controller
 
             $this->guard()->login($user);
 
-            if ($response = $this->registered($request, $user)) {
+            if ($this->registered($request, $user)) {
                 Log::info("RegisterController register response ".var_export($response,true));
-                return $response;
             }
 
-            $response = $request->wantsJson()
+            /*$response = $request->wantsJson()
                         ? new JsonResponse([], 201)
-                        : redirect($this->redirectPath());
+                        : redirect($this->redirectPath());*/
+            $response['registered'] = true;
+            $response['message'] = Constants::OK_REGISTRATION;
             Log::info("RegisterController register wantsJson response ".var_export($response,true));
         }
         catch(ValidationException $ve){
