@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
-
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -20,6 +20,8 @@ class LoginController extends Controller
     //overriding method
     public function login(Request $request)
     {
+        $response = array();
+        $response['logged'] = false;
         Log::info("LoginController login");
         Log::info("LoginController login request => ".var_export($request->all(),true));
         $this->validateLogin($request);
@@ -42,15 +44,18 @@ class LoginController extends Controller
                 $request->session()->put('auth.password_confirmed_at', time());
             }
 
-            return $this->sendLoginResponse($request);
+            $response = $this->sendLoginResponse($request);
+        }//if ($this->attemptLogin($request)) {
+        else{
+            // If the login attempt was unsuccessful we will increment the number of attempts
+            // to login and redirect the user back to the login form. Of course, when this
+            // user surpasses their maximum number of attempts they will get locked out.
+            $this->incrementLoginAttempts($request);
+            Log::info("LoginController increment");
+            $response = $this->sendFailedLoginResponse($request);
         }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-        Log::info("LoginController increment");
-        return $this->sendFailedLoginResponse($request);
+        Log::info("LoginController login ".var_export($response,true));
+        return $response;
     }
 
     //Overriding method
@@ -58,6 +63,7 @@ class LoginController extends Controller
     {
         Log::debug("LoginController sendFailedLoginResponse");
         $response = array();
+        $response['logged'] = false;
         if(!User::where('email',$request->email)->first()){
             //No account found with email entered
             $response['errors'] = Constants::ERR_EMAILNOTFOUND;
@@ -77,22 +83,50 @@ class LoginController extends Controller
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function sendLoginResponse(Request $request)
     {
+        DB::enableQueryLog();
+        $response = array();
+        $response['logged'] = false;
         Log::debug("LoginController sendLoginResponse");
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
+            Log::debug("LoginController sendLoginResponse authenticated");
             return $response;
         }
 
-        return $request->wantsJson()
+        Log::debug("LoginController sendLoginResponse wantsJson");
+        //email input value
+        $email = $request->email;
+        //password input value
+        $password = $request->password;
+        //password as of $password
+        $passwordHash = Hash::make($password);
+        Log::info("LoginController sendLoginResponse email ".$email);
+        Log::info("LoginController sendLoginResponse email ".$password);
+        Log::info("LoginController sendLoginResponse email ".$passwordHash);
+        //Check if user account is verified
+        $userVerified = User::where('email',$email)->where('password',$passwordHash)->whereNotNull('email_verified_at')->first();
+        if($userVerified != null){
+            Log::debug("LoginController sendLoginResponse userverified != null");
+            //If user account is verified
+            $response['logged'] = true;
+        }
+        else{
+            Log::debug("LoginController sendLoginResponse userverified = null");
+            $response['errors'] = Constants::ERR_VERIFYYOURACCOUNT;
+        }
+        //Log::info("LoginController sendLoginResponse userverified ".var_export($userVerified,true));
+        /*return $request->wantsJson()
                     ? new JsonResponse([], 204)
-                    : redirect()->intended($this->redirectPath());
+                    : redirect()->intended($this->redirectPath());*/
+        $response['query'] = DB::getQueryLog();
+        return $response;
     }
 
     /**

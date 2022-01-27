@@ -9,6 +9,7 @@ interface Constants{
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
     const ERR_PASSWORDINCORRECTLOGIN = "La password inserita è errata";
     const ERR_URLNOTFOUND = "La pagina che hai richiesto non esiste";
+    const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //success
     const OK_PASSWORDUPDATED = "La password è stata modificata";
