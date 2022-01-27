@@ -87,45 +87,45 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        DB::enableQueryLog();
+        //DB::enableQueryLog();
         $response = array();
         $response['logged'] = false;
-        Log::debug("LoginController sendLoginResponse");
+        Log::channel('stdout')->debug("LoginController sendLoginResponse");
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
-            Log::debug("LoginController sendLoginResponse authenticated");
+            Log::channel('stdout')->debug("LoginController sendLoginResponse authenticated");
             return $response;
         }
-
-        Log::debug("LoginController sendLoginResponse wantsJson");
         //email input value
         $email = $request->email;
         //password input value
         $password = $request->password;
         //password as of $password
-        $passwordHash = Hash::make($password);
-        Log::info("LoginController sendLoginResponse email ".$email);
-        Log::info("LoginController sendLoginResponse email ".$password);
-        Log::info("LoginController sendLoginResponse email ".$passwordHash);
         //Check if user account is verified
-        $userVerified = User::where('email',$email)->where('password',$passwordHash)->whereNotNull('email_verified_at')->first();
-        if($userVerified != null){
-            Log::debug("LoginController sendLoginResponse userverified != null");
-            //If user account is verified
-            $response['logged'] = true;
-        }
+        $userCheck = User::where('email',$email)->first();
+        if($userCheck != null){
+            $hashCkeck = Hash::check($password,$userCheck->password);
+            if($hashCkeck){
+                if($userCheck->email_verified_at != null){
+                    //Account was verified
+                    $response['logged'] = true;
+                }
+                else{
+                    //Account not verified yet
+                    $response['errors'] = Constants::ERR_VERIFYYOURACCOUNT;
+                }
+            }//if($hashCkeck){
+            else{
+                $response['errors'] = Constants::ERR_PASSWORDINCORRECTLOGIN;
+            }
+        }//if($userCheck != null){
         else{
-            Log::debug("LoginController sendLoginResponse userverified = null");
-            $response['errors'] = Constants::ERR_VERIFYYOURACCOUNT;
+            $response['errors'] = Constants::ERR_EMAILNOTFOUND;
         }
-        //Log::info("LoginController sendLoginResponse userverified ".var_export($userVerified,true));
-        /*return $request->wantsJson()
-                    ? new JsonResponse([], 204)
-                    : redirect()->intended($this->redirectPath());*/
-        $response['query'] = DB::getQueryLog();
+        //$response['query'] = DB::getQueryLog();
         return $response;
     }
 
