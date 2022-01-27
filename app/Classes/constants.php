@@ -5,6 +5,7 @@ interface Constants{
     //errors
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
+    const ERR_URLNOTFOUND = "La pagina che hai richiesto non esiste";
 
     //success
     const OK_PASSWORDUPDATED = "La password è stata modificata";

@@ -33,3 +33,8 @@ Route::group(['prefix' => 'profile', 'middleware' => ['auth','verified']], funct
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//URL that not exists
+Route::fallback(function(){
+    return view('error/errors')->withErrors(['message' => Constants::ERR_URLNOTFOUND]);
+});

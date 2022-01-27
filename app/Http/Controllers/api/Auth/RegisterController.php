@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers\api\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+class RegisterController extends Controller
+{
+    //
+    use RegistersUsers;
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        Log::info("RegisterController register");
+        Log::info("RegisterController register request ".var_export($request->all(),true));
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        Log::info("RegisterController register new Registered");
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            Log::info("RegisterController register response ".var_export($response,true));
+            return $response;
+        }
+
+        $response = $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
+        Log::info("RegisterController register wantsJson response ".var_export($response,true));
+        return $response;
+    }
+}
