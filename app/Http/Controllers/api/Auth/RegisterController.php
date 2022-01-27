@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -56,24 +57,30 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        $response = array();
         Log::info("RegisterController register");
         Log::info("RegisterController register request ".var_export($request->all(),true));
-        $this->validator($request->all())->validate();
+        try{
+            $validator = $this->validator($request->all())->validate();
+            event(new Registered($user = $this->create($request->all())));
+            Log::info("RegisterController register new Registered");
 
-        event(new Registered($user = $this->create($request->all())));
-        Log::info("RegisterController register new Registered");
+            $this->guard()->login($user);
 
-        $this->guard()->login($user);
+            if ($response = $this->registered($request, $user)) {
+                Log::info("RegisterController register response ".var_export($response,true));
+                return $response;
+            }
 
-        if ($response = $this->registered($request, $user)) {
-            Log::info("RegisterController register response ".var_export($response,true));
-            return $response;
+            $response = $request->wantsJson()
+                        ? new JsonResponse([], 201)
+                        : redirect($this->redirectPath());
+            Log::info("RegisterController register wantsJson response ".var_export($response,true));
         }
-
-        $response = $request->wantsJson()
-                    ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
-        Log::info("RegisterController register wantsJson response ".var_export($response,true));
+        catch(ValidationException $ve){
+            $response['errors'] = $ve->validator->errors()->all();
+            Log::error("Validation Exception ".var_export($response['errors'],true));
+        }
         return $response;
     }
 }
