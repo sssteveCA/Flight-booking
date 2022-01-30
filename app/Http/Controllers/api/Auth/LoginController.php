@@ -18,20 +18,33 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     //overriding method
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
         $response = array();
         $response['logged'] = false;
         Log::info("LoginController login");
         Log::info("LoginController login request => ".var_export($request->all(),true));
-        $this->validateLogin($request);
+        try{
+            $this->validateLogin($request);
+        }
+        catch(ValidationException $ve){
+            Log::info("LoginController ValidationException");
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
         if (method_exists($this, 'hasTooManyLoginAttempts') &&
             $this->hasTooManyLoginAttempts($request)) {
-                Log::channel('stdout')->info("LoginController login method_exists");
+                Log::info("LoginController login method_exists");
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
@@ -40,7 +53,7 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             Log::info("LoginController attemptLogin");
             if ($request->hasSession()) {
-                Log::channel('stdout')->info("LoginController session");
+                Log::info("LoginController session");
                 $request->session()->put('auth.password_confirmed_at', time());
             }
 
@@ -51,10 +64,10 @@ class LoginController extends Controller
             // to login and redirect the user back to the login form. Of course, when this
             // user surpasses their maximum number of attempts they will get locked out.
             $this->incrementLoginAttempts($request);
-            Log::channel('stdout')->info("LoginController increment");
+            Log::info("LoginController increment");
             $response = $this->sendFailedLoginResponse($request);
         }
-        Log::channel('stdout')->info("LoginController login ".var_export($response,true));
+        Log::info("LoginController login ".var_export($response,true));
         return $response;
     }
 
@@ -90,13 +103,13 @@ class LoginController extends Controller
         //DB::enableQueryLog();
         $response = array();
         $response['logged'] = false;
-        Log::channel('stdout')->debug("LoginController sendLoginResponse");
+        Log::debug("LoginController sendLoginResponse");
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
-            Log::channel('stdout')->debug("LoginController sendLoginResponse authenticated");
+            Log::debug("LoginController sendLoginResponse authenticated");
             return $response;
         }
         //email input value
