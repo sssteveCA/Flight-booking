@@ -34,39 +34,37 @@ class LoginController extends Controller
         Log::info("LoginController login request => ".var_export($request->all(),true));
         try{
             $this->validateLogin($request);
+            // If the class is using the ThrottlesLogins trait, we can automatically throttle
+            // the login attempts for this application. We'll key this by the username and
+            // the IP address of the client making these requests into this application.
+            if (method_exists($this, 'hasTooManyLoginAttempts') &&
+                $this->hasTooManyLoginAttempts($request)) {
+                    Log::info("LoginController login method_exists");
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+            if ($this->attemptLogin($request)) {
+                Log::info("LoginController attemptLogin");
+                if ($request->hasSession()) {
+                    Log::info("LoginController session");
+                    $request->session()->put('auth.password_confirmed_at', time());
+                }
+                $response = $this->sendLoginResponse($request);
+            }//if ($this->attemptLogin($request)) {
+            else{
+                // If the login attempt was unsuccessful we will increment the number of attempts
+                // to login and redirect the user back to the login form. Of course, when this
+                // user surpasses their maximum number of attempts they will get locked out.
+                $this->incrementLoginAttempts($request);
+                Log::info("LoginController increment");
+                $response = $this->sendFailedLoginResponse($request);
+            }
         }
         catch(ValidationException $ve){
             Log::info("LoginController ValidationException");
-        }
-
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
-                Log::info("LoginController login method_exists");
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            Log::info("LoginController attemptLogin");
-            if ($request->hasSession()) {
-                Log::info("LoginController session");
-                $request->session()->put('auth.password_confirmed_at', time());
-            }
-
-            $response = $this->sendLoginResponse($request);
-        }//if ($this->attemptLogin($request)) {
-        else{
-            // If the login attempt was unsuccessful we will increment the number of attempts
-            // to login and redirect the user back to the login form. Of course, when this
-            // user surpasses their maximum number of attempts they will get locked out.
-            $this->incrementLoginAttempts($request);
-            Log::info("LoginController increment");
-            $response = $this->sendFailedLoginResponse($request);
-        }
+            $response['errors'] = $ve->validator->errors()->first();
+        } 
         Log::info("LoginController login ".var_export($response,true));
         return $response;
     }
