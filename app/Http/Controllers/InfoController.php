@@ -45,7 +45,7 @@ class InfoController extends Controller
             //If username form fails validation
             $messages = $request->validator->messages();
             return view('error/errors')->withErrors($messages);
-        } 
+        }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         Log::debug("InfoController editpassword message ".var_export($edit,true));
         if($edit['edited']){
@@ -66,7 +66,7 @@ class InfoController extends Controller
             //If change password form fails validation
             $messages = $request->validator->messages();
             return view('error/errors')->withErrors($messages);
-        }   
+        }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editPassword($request,$this->auth_id);
         if($edit['edited']){
             //Password was edited
@@ -77,3 +77,5 @@ class InfoController extends Controller
             //return response()->view('error/errors',['errors' => $edit],404);
             return view('error/errors')->withErrors(['message' => $edit['msg']]);
         }
+    }
+}
