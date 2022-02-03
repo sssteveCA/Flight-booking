@@ -81,7 +81,7 @@ class RegisterController extends Controller
             Log::info("RegisterController register wantsJson response ".var_export($response,true));
         }
         catch(ValidationException $ve){
-            $response['errors'] = $ve->validator->errors()->all();
+            $response['errors'] = $ve->validator->errors()->first();
             Log::error("Validation Exception ".var_export($response['errors'],true));
         }
         return $response;

@@ -15,9 +15,9 @@ class InfoController extends Controller
 {
     private $usermanager;
     private $auth_id;
-    protected $connection = 'mysql';
+    /*protected $connection = 'mysql';
     protected $primaryKey = 'id';
-    public $incrementing = true;
+    public $incrementing = true;*/
 
     public function __construct()
     {
