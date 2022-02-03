@@ -77,5 +77,3 @@ class InfoController extends Controller
             //return response()->view('error/errors',['errors' => $edit],404);
             return view('error/errors')->withErrors(['message' => $edit['msg']]);
         }
-    }
-}
