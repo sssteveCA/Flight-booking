@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\api;
 
 use Constants;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
-class EditUsernameRequest extends FormRequest
+class ApiEditUsernameRequest extends FormRequest
 {
-
     public $validator = null;
     /**
      * Determine if the user is authorized to make this request.
@@ -19,23 +16,21 @@ class EditUsernameRequest extends FormRequest
      */
     public function authorize()
     {
-        Log::channel('stdout')->info('EditUsername request auth check '.Auth::check());
-        return Auth::check();
+        return true;
     }
 
-    public function messages()
+    protected function failedValidation(Validator $validator)
     {
+        $this->validator = $validator;
+    }
+
+    public function messages(){
         //Validation error messages
         return[
             'username.required' => Constants::VERR_USERNAME1_REQUIRED,
             'username.min' => Constants::VERR_USERNAME1_MIN,
             'username.max' => Constants::VERR_USERNAME1_MAX
         ];
-    }
-
-    protected function failedValidation(Validator $validator)
-    {
-        $this->validator = $validator;
     }
 
     /**

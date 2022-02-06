@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\ApiInfoController;
 use App\Http\Controllers\api\Auth\ApiLoginController;
 use App\Http\Controllers\api\Auth\LoginController;
 use App\Http\Controllers\api\Auth\RegisterController;
@@ -31,7 +32,7 @@ Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::get('/user',[ApiLoginController::class, 'getCurrentUser'])->name('apilogincontroller.user');
-        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name('infocontroller.editusername');
+        Route::patch('/editUsername',[ApiInfoController::class,'editUsername'])->name('apiinfocontroller.editusername');
         Route::patch('/editPassword',[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
     });
 });

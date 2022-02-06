@@ -19,5 +19,10 @@ interface Constants{
     //titles
     const TITLE_EDITUSERNAME = "Modifica username";
     const TITLE_EDITPASSWORD = "Modifica password";
+
+    //validation errors
+    const VERR_USERNAME1_REQUIRED = "Lo username è obbligatorio";
+    const VERR_USERNAME1_MIN = "Lo username deve avere almeno 5 caratteri";
+    const VERR_USERNAME1_MAX = "Lo username non può avere più di 20 caratteri";
 }
 ?>
