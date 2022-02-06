@@ -26,7 +26,7 @@ Route::name('api.')->group(function(){
     Route::post('/register',[RegisterController::class,'register'])->name('register');
 });
 
-Route::group(['prefix' => '/profile','middleware' => ['auth','verified']], function(){
+Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::patch('/editUsername',[InfoController::class,'editUsername'])->name('infocontroller.editusername');

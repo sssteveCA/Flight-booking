@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class EditUsernameRequest extends FormRequest
 {
@@ -17,6 +18,7 @@ class EditUsernameRequest extends FormRequest
      */
     public function authorize()
     {
+        Log::channel('stdout')->info('EditUsername request auth check '.Auth::check());
         return Auth::check();
     }
 

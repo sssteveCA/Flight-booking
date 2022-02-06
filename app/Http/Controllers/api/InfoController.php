@@ -18,6 +18,7 @@ class InfoController extends Controller
     public function __construct()
     {
         Log::channel('stdout')->info("API InfoController construct");
+        Log::channel('stdout')->info("API InfoController construct Auth => ".var_export(Auth::user(),true));
         $this->auth_id = Auth::id();
         $this->usermanager = new UserManager();
     }
