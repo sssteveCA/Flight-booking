@@ -21,6 +21,13 @@ interface Constants{
     const TITLE_EDITPASSWORD = "Modifica password";
 
     //validation errors
+    const VERR_CONFNEWPWD1_MIN = "La password di conferma deve contenere almeno 8 caratteri";
+    const VERR_CONFNEWPWD1_REQUIRED = "La password di conferma è obbligatoria";
+    const VERR_CONFNEWPWD1_SAME = "La password di conferma Deve essere uguale al campo nuova password";
+    const VERR_NEWPWD1_MIN = "La nuova password deve contenere almeno 8 caratteri";
+    const VERR_NEWPWD1_REQUIRED = "La nuova password è obbligatoria";
+    const VERR_OLDPWD1_PASSWORD = "Password attuale errata";
+    const VERR_OLDPWD1_REQUIRED = "La password attuale è obbligatoria";
     const VERR_USERNAME1_REQUIRED = "Lo username è obbligatorio";
     const VERR_USERNAME1_MIN = "Lo username deve avere almeno 5 caratteri";
     const VERR_USERNAME1_MAX = "Lo username non può avere più di 20 caratteri";

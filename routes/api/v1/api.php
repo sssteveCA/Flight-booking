@@ -33,6 +33,6 @@ Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     Route::name('api.')->group(function(){
         Route::get('/user',[ApiLoginController::class, 'getCurrentUser'])->name('apilogincontroller.user');
         Route::patch('/editUsername',[ApiInfoController::class,'editUsername'])->name('apiinfocontroller.editusername');
-        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
+        Route::patch('/editPassword',[ApiInfoController::class,'editPassword'])->name('apiinfocontroller.editpassword');
     });
 });
