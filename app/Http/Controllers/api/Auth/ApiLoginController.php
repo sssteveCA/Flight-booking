@@ -8,9 +8,17 @@ use Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Laravel\Passport\Exceptions\OAuthServerException;
 
 class ApiLoginController extends Controller
 {
+
+    //return current logged user
+    public function getCurrentUser(){
+        Log::channel('stdout')->info("ApiLoginController getCurrentUser");
+        return response()->json(['user' => Auth::user()]);
+    }
+        
     //
     public function login(Request $request){
         Log::channel('stdout')->info("ApiLoginController login");
