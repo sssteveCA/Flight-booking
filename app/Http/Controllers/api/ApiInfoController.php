@@ -21,7 +21,8 @@ class ApiInfoController extends Controller
 
     //edit user logged username from API route
     public function editUsername(ApiEditUsernameRequest $request){
-        Log::channel('stdout')->info("ApiInfoController editUsername");
+        //Log::channel('stdout')->info("ApiInfoController editUsername headers => ".var_export($request->headers,true));
+        Log::channel('stdout')->info("ApiInfoController editUsername request => ".var_export($request->all(),true));
         if(isset($request->validator) && $request->validator->fails()){
             //Input username validation fail
             $this->response = array('error',$request->validator->errors()->first());

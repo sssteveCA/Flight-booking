@@ -31,9 +31,9 @@ class ApiLoginController extends Controller
         if(!Auth::attempt($login)){
             return response()->json([
                 'status' => '401',
-                'message' => Constants::ERR_INVALIDCREDENTIALS,
+                'error' => Constants::ERR_INVALIDCREDENTIALS,
                 'logged' => false
-            ]);
+            ],401,array(),JSON_UNESCAPED_UNICODE);
         }
 
         //Credenziali valide
@@ -41,7 +41,8 @@ class ApiLoginController extends Controller
         return response()->json([
             'status' => '200',
             'logged' => true,
-            'token' => $token
-        ]);
+            'token' => $token,
+            'user' => Auth::user()
+        ],200,array(),JSON_UNESCAPED_UNICODE);
     }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\api\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Constants;
+use Dotenv\Util\Str;
+use Illuminate\Support\Str as SupportStr;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -45,7 +48,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
         ]);
     }
 
