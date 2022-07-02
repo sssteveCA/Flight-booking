@@ -31,7 +31,8 @@
         "files" : [
             "app/Classes/usermanager.php",
             "app/Classes/constants.php",
-            "app/Classes/apiusermanager.php"
+            "app/Classes/apiusermanager.php",
+            "app/Interfaces/constants.php"
         ]
     },
     "autoload-dev": {

@@ -42,7 +42,7 @@ class ApiUserManager{
             $message['msg'] = Constants::OK_USERNAMEUPDATED;
         }//if($userA != null){
         else
-        $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+        $message['error'] = Constants::ERR_NOTABLEGETUSERINFO;
         return $message;  
     }
 
@@ -62,7 +62,7 @@ class ApiUserManager{
             $message['msg'] = Constants::OK_PASSWORDUPDATED;
         }//if($userA != null){
         else{
-            $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+            $message['error'] = Constants::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
     }
