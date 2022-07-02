@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -19,22 +20,69 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <script src="{{asset('js/app.js')}}"></script>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">FlightBooking</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main_menu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Prenota volo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Autonoleggio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hotel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Eventi</a>
+                        </li>
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item">
+                                    <a href="{{ url('/home') }}" class="nav-link">Profilo</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a href="{{ route('register') }}" class="nav-link">Registrati</a>
+                                </li>
+                                
+                                @endif
+                            @endauth
                         @endif
-                    @endauth
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-            @endif
+            </div>
+        </nav>
+        @if (Route::has('login'))
+            <!-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                @auth
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                @else
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                    @endif
+                @endauth
+            </div> -->
+        @endif
+        <div class="content">
+            
         </div>
     </body>
 </html>
