@@ -15,21 +15,21 @@
                 <div class="collapse navbar-collapse" id="main_menu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Prenota volo</a>
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Autonoleggio</a>
+                            <a class="nav-link" href="/chi-siamo">Chi siamo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Hotel</a>
+                            <a class="nav-link" href="/news">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Eventi</a>
+                            <a class="nav-link" href="/contatti">Contatti</a>
                         </li>
                         @if (Route::has('login'))
                             @auth
                                 <li class="nav-item">
-                                    <a href="{{ url('/home') }}" class="nav-link">Profilo</a>
+                                    <a href="{{ url('/profile') }}" class="nav-link">Profilo</a>
                                 </li>
                             @else
                                 <li class="nav-item">
