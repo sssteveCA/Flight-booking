@@ -18,21 +18,24 @@
                 <div class="collapse navbar-collapse" id="main_menu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{P::URL_ROOT}}">Home</a>
+                            <a class="nav-link" href="{{ P::URL_ROOT }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{P::URL_WHOWEARE}}">Chi siamo</a>
+                            <a class="nav-link" href="{{ P::URL_WHOWEARE }}">Chi siamo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{P::URL_NEWS}}">News</a>
+                            <a class="nav-link" href="{{ P::URL_NEWS }}">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{P::URL_CONTACTS}}">Contatti</a>
+                            <a class="nav-link" href="{{ P::URL_CONTACTS }}">Contatti</a>
                         </li>
                         @if (Route::has('login'))
                             @auth
                                 <li class="nav-item">
-                                    <a href="{{ url('/profile') }}" class="nav-link">Profilo</a>
+                                    <a href="{{ P::URL_PROFILE }}" class="nav-link">Profilo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ P::URL_LOGOUT }}" class="nav-link">Logout</a> 
                                 </li>
                             @else
                                 <li class="nav-item">
@@ -42,7 +45,6 @@
                                 <li class="nav-item">
                                     <a href="{{ route('register') }}" class="nav-link">Registrati</a>
                                 </li>
-                                
                                 @endif
                             @endauth
                         @endif

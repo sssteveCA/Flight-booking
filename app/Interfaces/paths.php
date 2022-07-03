@@ -6,7 +6,9 @@ interface Paths{
     //URLs
     const URL_CONTACTS = '/contacts';
     const URL_HOME = '/home';
+    const URL_LOGOUT = '/logout';
     const URL_NEWS = '/news';
+    const URL_PROFILE = '/profile';
     const URL_ROOT = '/';
     const URL_SEARCH = '/search';
     const URL_WHOWEARE = '/chi-siamo';
