@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse" id="main_menu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{P::URL_HOME}}">Home</a>
+                            <a class="nav-link" href="{{P::URL_ROOT}}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{P::URL_WHOWEARE}}">Chi siamo</a>

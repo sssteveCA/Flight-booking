@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-
+use App\Interfaces\Paths as P;
+use App\Interfaces\Constants as C;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,15 @@ Route::group(['prefix' => 'profile', 'middleware' => ['auth','verified']], funct
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
+
+Route::view(P::URL_HOME,P::URL_HOME);
+Route::view(P::URL_NEWS,P::VIEW_NEWS);
+Route::view(P::URL_ROOT,P::VIEW_WELCOME);
+Route::view(P::URL_WHOWEARE,P::VIEW_WHOWEARE);
+
 
 //URL that not exists
 Route::fallback(function(){
-    return view('error/errors')->withErrors(['message' => Constants::ERR_URLNOTFOUND]);
+    return view('error/errors')->withErrors(['message' => C::ERR_URLNOTFOUND]);
 });
