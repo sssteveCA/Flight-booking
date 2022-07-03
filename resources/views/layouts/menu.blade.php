@@ -1,3 +1,6 @@
+@php
+    use App\Interfaces\Paths as P; 
+@endphp
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,16 +18,16 @@
                 <div class="collapse navbar-collapse" id="main_menu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                            <a class="nav-link" href="{{P::URL_HOME}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/chi-siamo">Chi siamo</a>
+                            <a class="nav-link" href="{{P::URL_WHOWEARE}}">Chi siamo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news">News</a>
+                            <a class="nav-link" href="{{P::URL_NEWS}}">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contatti">Contatti</a>
+                            <a class="nav-link" href="{{P::URL_CONTACTS}}">Contatti</a>
                         </li>
                         @if (Route::has('login'))
                             @auth
