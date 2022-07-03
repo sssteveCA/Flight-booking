@@ -8,6 +8,7 @@ interface Paths{
     const URL_HOME = '/home';
     const URL_NEWS = '/news';
     const URL_ROOT = '/';
+    const URL_SEARCH = '/search';
     const URL_WHOWEARE = '/chi-siamo';
 
     //Views
