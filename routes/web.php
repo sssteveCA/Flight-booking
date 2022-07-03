@@ -36,6 +36,7 @@ Auth::routes(['verify' => true]);
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 
+Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_HOME,P::URL_HOME);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);
 Route::view(P::URL_ROOT,P::VIEW_WELCOME);

@@ -4,13 +4,14 @@ namespace App\Interfaces;
 
 interface Paths{
     //URLs
-    const URL_CONTACTS = '/contact';
+    const URL_CONTACTS = '/contacts';
     const URL_HOME = '/home';
     const URL_NEWS = '/news';
     const URL_ROOT = '/';
     const URL_WHOWEARE = '/chi-siamo';
 
     //Views
+    const VIEW_CONTACTS = 'contacts';
     const VIEW_HOME = 'home';
     const VIEW_NEWS = 'news';
     const VIEW_WELCOME = 'welcome';
