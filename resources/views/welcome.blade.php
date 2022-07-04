@@ -2,6 +2,10 @@
 
 @section('title','Home FlightBooking')
 
+@section('links')
+
+@endsection
+
 @section('content')
 <div id="fb-content">
     <div class="fb-tab">

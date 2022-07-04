@@ -6,7 +6,9 @@
     <head>
         <title>@yield('title')</title>
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        @yield('links')
         <script src="{{asset('js/app.js')}}"></script>
+        @yield('scripts')
     </head>
     <body>
          <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
