@@ -17,5 +17,28 @@ $navs-buttons-padding:10px 50px;
     }
 }
 
+@mixin flights(){
+    @for $i from 1 through 2{
+        form#flightSearch>div:nth-child(#{$i}){
+            padding: 20px auto;
+            display: flex;
+            @if $i == 1{
+                justify-content: flex-start;
+                div * {
+                    margin-right: 5px;
+                }
+            }
+            @else{
+                justify-content: space-evenly;
+                * {
+                    margin-right: 20px;
+                }
+                
+            }
+        }
+    }
+}
+
 //Exec
 @include tab-style();
+@include flights();

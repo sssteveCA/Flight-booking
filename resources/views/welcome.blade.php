@@ -19,7 +19,7 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
-            <form>
+            <form id="flightSearch" method="get" action="#">
                 <div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="roundtrip" id="fb-roundtrip">
