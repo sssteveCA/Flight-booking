@@ -3,56 +3,56 @@
         {
             "name": "Slide & Splash Water Park",
             "location": "Faro",
-            "state": "Portogallo",
+            "country": "Portogallo",
             "price": 30.00,
             "image": ""
         },
         {
             "name": "Castello di Dublino",
             "location": "Dublino",
-            "state": "Irlanda",
+            "country": "Irlanda",
             "price": 59.00,
             "image": ""
         },
         {
             "name": "Sagrada Familia",
             "location": "Barcellona",
-            "state": "Spagna",
+            "country": "Spagna",
             "price": 50.00,
             "image": ""
         },
         {
             "name": "Disneyland Paris",
             "location": "Parigi",
-            "state": "Francia",
+            "country": "Francia",
             "price": 146.00,
             "image": ""
         },
         {
             "name": "Paris pass",
             "location": "Parigi",
-            "state": "Francia",
+            "country": "Francia",
             "price": 124.00,
             "image": ""
         },
         {
             "name": "Tour della Torre Eiffel",
             "location": "Parigi",
-            "state": "Francia",
+            "country": "Francia",
             "price": 84.00,
             "image": ""
         },
         {
             "name": "Tour per piccoli gruppi del Colosseo",
             "location": "Roma",
-            "state": "Italia",
+            "country": "Italia",
             "price": 49.00,
             "image": ""
         },
         {
             "name": "Murano,Burano & Torcello",
             "location": "Venezia",
-            "state": "Italia",
+            "country": "Italia",
             "price": 25.00,
             "image": ""
         }

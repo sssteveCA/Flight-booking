@@ -1,4 +1,5 @@
 import FlightEvent from "./flightevent";
+import {Constants} from "../values/constants";
 
 export default class FlightEventsList{
     _flight_events: Array<FlightEvent> = new Array();
@@ -11,7 +12,7 @@ export default class FlightEventsList{
     //Messages
     private static ERR_SCRIPT_EXCEPTION_MSG:string = 'Errore durante l\' esecuzione dello script';
 
-    private static SCRIPT_URL: string = '';
+    private static SCRIPT_URL: string = Constants.HOSTNAME+':'+Constants.PORT+Constants.FOLDER_JSON+'/popular_events.json';
 
 
     constructor(){
@@ -36,7 +37,7 @@ export default class FlightEventsList{
         this._errno = 0;
         let fe_list = this.flight_event_request_promise();
         fe_list.then(res => {
-
+            console.log(res);
         }).catch(err => {
             console.warn(err);
             this._errno = FlightEventsList.ERR_SCRIPT_EXCEPTION;
