@@ -1,3 +1,4 @@
+import FlightEventsList from "./classes/flighteventslist";
 
 $(()=>{
     let buttons = $('button.nav-link');
@@ -8,6 +9,5 @@ $(()=>{
          console.log(cb_dbt);
          $(''+cb_dbt).css('display','block');
          $('div[role=tabpanel]:not('+cb_dbt+')').css('display','none');
-
     });
 });
