@@ -1,25 +1,51 @@
+div.row > div {
+  margin: 10px 0px;
+}
+
 div.fb-tab nav {
   display: flex;
   justify-content: center;
 }
+div.fb-tab nav div.nav-tabs {
+  width: 90%;
+  margin: 30px auto;
+}
 div.fb-tab nav div.nav-tabs button {
+  width: 25%;
   padding: 10px 50px;
 }
 
-form#flightSearch > div:nth-child(1) {
-  padding: 20px auto;
-  display: flex;
-  justify-content: flex-start;
+div.tab-pane {
+  width: 90%;
+  margin: 30px auto;
 }
-form#flightSearch > div:nth-child(1) div * {
+
+#fb-fs1 {
+  padding: 20px auto;
+}
+#fb-fs1 div * {
   margin-right: 5px;
 }
 
-form#flightSearch > div:nth-child(2) {
+#fb-fs2 {
   padding: 20px auto;
-  display: flex;
-  justify-content: space-evenly;
 }
-form#flightSearch > div:nth-child(2) * {
+#fb-fs2 * {
   margin-right: 20px;
+}
+
+#fb-rc1 > div {
+  margin: 15px auto;
+}
+
+#fb-rc2 > div {
+  margin: 15px auto;
+}
+
+#fb-rc3 > div {
+  margin: 15px auto;
+}
+
+#fb-rc4 > div {
+  margin: 15px auto;
 }

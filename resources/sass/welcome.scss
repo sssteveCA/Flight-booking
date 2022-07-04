@@ -1,7 +1,20 @@
+@use "sass:math";
+
 //Variables
+$buttons-tab-number: 4;
+$divs-col-margin-y: 10px;
 $navs-buttons-padding:10px 50px;
+$navs-tab-margin-y: 30px;
+$tab-pane-width: 90%;
+
 
 //Mixins
+
+@mixin col-style(){ 
+    div.row>div{
+        margin: $divs-col-margin-y 0px;
+    }
+}
 
 @mixin tab-style(){
     div.fb-tab{
@@ -9,27 +22,32 @@ $navs-buttons-padding:10px 50px;
             display: flex;
             justify-content: center;
             div.nav-tabs{
+                width: $tab-pane-width;
+                margin: $navs-tab-margin-y auto;
                 button{
-                    padding:$navs-buttons-padding;
+                    width: math.div(100%,$buttons-tab-number);
+                    padding: $navs-buttons-padding;
                 }
             }
         }
     }
+    div.tab-pane{
+        width: $tab-pane-width;
+        margin: $navs-tab-margin-y auto;
+    }
 }
 
 @mixin flights(){
-    @for $i from 1 through 2{
-        form#flightSearch>div:nth-child(#{$i}){
+    $elems: 2;
+    @for $i from 1 through $elems{
+        #fb-fs#{$i}{
             padding: 20px auto;
-            display: flex;
             @if $i == 1{
-                justify-content: flex-start;
                 div * {
                     margin-right: 5px;
                 }
             }
             @else{
-                justify-content: space-evenly;
                 * {
                     margin-right: 20px;
                 }
@@ -39,6 +57,18 @@ $navs-buttons-padding:10px 50px;
     }
 }
 
+@mixin rent-car(){
+    $margin-y: 15px;
+    $elems: 4;
+    @for $i from 1 through $elems{
+        #fb-rc#{$i}>div{
+            margin: $margin-y auto;
+        }
+    }
+}
+
 //Exec
+@include col-style();
 @include tab-style();
 @include flights();
+@include rent-car();
