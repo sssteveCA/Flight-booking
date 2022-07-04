@@ -7,7 +7,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/welcome.js') }}"></script>
+<script lang="ts" src="{{ asset('js/welcome.js') }}"></script>
 @endsection
 
 @section('content')
