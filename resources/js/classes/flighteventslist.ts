@@ -38,6 +38,9 @@ export default class FlightEventsList{
         let fe_list = this.flight_event_request_promise();
         fe_list.then(res => {
             console.log(res);
+            let json = JSON.parse(res);
+            this._flight_events = json;
+            console.log(this._flight_events);
         }).catch(err => {
             console.warn(err);
             this._errno = FlightEventsList.ERR_SCRIPT_EXCEPTION;
