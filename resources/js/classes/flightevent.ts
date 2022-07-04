@@ -1,12 +1,12 @@
-import EventInterface from "../interfaces/event.interface";
+import FlightEventInterface from "../interfaces/flightevent.interface";
 
-export default class Event{
+export default class FlightEvent{
     _name: string;
     _location: string;
     _price: number;
     _image: string;
 
-    constructor(data: EventInterface){
+    constructor(data: FlightEventInterface){
         this._name = data.name;
         this._location = data.location;
         this._price = data.price;

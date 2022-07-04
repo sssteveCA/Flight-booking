@@ -1,4 +1,4 @@
-export default interface EventInterface{
+export default interface FlightEventInterface{
     name: string;
     location: string;
     price: number;
