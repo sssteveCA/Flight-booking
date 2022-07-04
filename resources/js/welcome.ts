@@ -13,6 +13,15 @@ $(()=>{
          if(cb_id == 'events-tab'){
             //User want see flight events list
             let fel:FlightEventsList = new FlightEventsList();
+            fel.flight_events_request().then(response => {
+                console.log(fel.html);
+                if(fel.errno == 0){
+                    //No errors Happened
+                    $('#events').html(fel.html);
+                }
+            }).catch(err => {
+
+            });
          }//if(cb_id == 'events_tab'){
     });
 });

@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">Eventi</div>
+        <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>
 </div>
 
