@@ -15,6 +15,10 @@ class CreateFlighteventsTable extends Migration
     {
         Schema::create('flightevents', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('location');
+            $table->string('country');
+            $table->float('price');
             $table->timestamps();
         });
     }
