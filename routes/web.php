@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\welcome\FlightEventsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'profile', 'middleware' => ['auth','verified']], funct
 Auth::routes(['verify' => true]);
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
+Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll'])->name('flightevents');
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_HOME,P::URL_HOME);

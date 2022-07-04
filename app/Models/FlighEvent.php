@@ -14,6 +14,8 @@ class FlighEvent extends Model
         'name' => 'Unknown',
         'location' => 'Unknown',
         'country' => 'unknown',
-        'price' => 0
+        'price' => 0,
+        'image' => ''
     ];
+    protected $hidden = ['id'];
 }
