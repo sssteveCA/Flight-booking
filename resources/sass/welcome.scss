@@ -65,6 +65,15 @@ $tab-pane-width: 90%;
             margin: $margin-y auto;
         }
     }
+    #fb-rentcarloc{
+        width: 100%;
+    }
+}
+
+@mixin rooms(){
+    #fb-hotelloc{
+        width: 100%;
+    }
 }
 
 //Exec
@@ -72,3 +81,4 @@ $tab-pane-width: 90%;
 @include tab-style();
 @include flights();
 @include rent-car();
+@include rooms();

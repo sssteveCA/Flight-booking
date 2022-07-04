@@ -35,13 +35,13 @@
                         </div>
                     </div>
                     <div id="fb-fs2" class="row">
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-5">
                             <input type="text" class="form-control" id="fb-from" name="from" placeholder="Partenza">
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-5">
                             <input type="text" class="form-control" id="fb-to" name="to" placeholder="Destinazione">
                         </div>
-                        <div class="col-12 col-md-6 col-lg-3">
+                        <div class="col-12 col-md-6 col-lg-1">
                             <button type="submit" class="btn btn-danger">Cerca</button>
                         </div>
                     </div>
@@ -49,30 +49,57 @@
             </form>
         </div>
         <div class="tab-pane fade" id="car-rental" role="tabpanel" aria-labelledby="car-rental-tab">
+            <form id="fCarRental" method="post" action="#">
+                <div class="container">
+                    <div class="row">
+                        <div id="fb-rc1" class="col-12">
+                            <input type="text" id="fb-rentcarloc" class="form-control-lg" name="rentcarloc" placeholder="Città o aereoporto per afitare l'auto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="fb-rc2" class="form-floating col-12 col-md-6 col-lg-5">
+                            <input type="datetime-local" id="fb-rentstart" class="form-control" name="rentstart" >
+                            <label for="fb-rentstart">Data di ritiro</label>
+                        </div>
+                        <div id="fb-rc3" class="form-floating col-12 col-md-6 col-lg-5">
+                            <input type="datetime-local" id="fb-rentend" class="form-control" name="rentend">
+                            <label for="fb-rentend">Data di consegna</label>
+                        </div>
+                        <div id="fb-rc4" class="col-12 col-lg-2">
+                            <button type="submit" class="btn btn-danger">Andiamo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
             <div class="container">
                 <div class="row">
-                    <div id="fb-rc1" class="col-12">
-                        <input type="text" id="fb-rentcarloc" class="form-control-lg" name="rentcarloc" placeholder="Città o aereoporto per afitare l'auto">
+                    <div id="fb-h1" class="col-12">
+                        <input type="text" id="fb-hotelloc" class="form-control-lg" name="hotelloc" placeholder="Scegli la città in cui vuoi avere l'albergo">
                     </div>
                 </div>
                 <div class="row">
-                    <div id="fb-rc2" class="form-floating col-12 col-md-6 col-lg-5">
-                        <input type="datetime-local" id="fb-rentstart" class="form-control" name="rentstart" >
-                        <label for="fb-rentstart">Data di ritiro</label>
+                    <div id="fb-h2" class="form-floating col-12 col-md-6 col-lg-3">
+                        <input type="date" id="fb-checkin" class="form-control" name="checkin" >
+                        <label for="fb-checkin">Check-in</label>
                     </div>
-                    <div id="fb-rc3" class="form-floating col-12 col-md-6 col-lg-5">
-                        <input type="datetime-local" id="fb-rentend" class="form-control" name="rentend">
-                        <label for="fb-rentend">Data di consegna</label>
+                    <div id="fb-h3" class="form-floating col-12 col-md-6 col-lg-3">
+                        <input type="date" id="fb-checkout" class="form-control" name="checkout">
+                        <label for="fb-checkout">Check-out</label>
                     </div>
-                    <div id="fb-rc4" class="col-12 col-lg-2">
-                        <button type="button" class="btn btn-danger">Andiamo</button>
+                    <div id="fb-h4" class="form-floating col-12 col-md-6 col-lg-3">
+                        <input type="text" id="fb-rooms" class="form-control" name="rooms">
+                        <label for="fb-rooms">Ospiti e camere</label>
+                    </div>
+                    <div id="fb-h5" class="col-12 col-md-6 col-lg-2">
+                        <button type="submit" class="btn btn-danger">Cerca</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">Hotel</div>
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">Eventi</div>
-        </div>
     </div>
 </div>
 
