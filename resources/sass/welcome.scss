@@ -1,3 +1,21 @@
 //Variables
+$navs-buttons-padding:10px 50px;
 
 //Mixins
+
+@mixin tab-style(){
+    div.fb-tab{
+        nav{
+            display: flex;
+            justify-content: center;
+            div.nav-tabs{
+                button{
+                    padding:$navs-buttons-padding;
+                }
+            }
+        }
+    }
+}
+
+//Exec
+@include tab-style();

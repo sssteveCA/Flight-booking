@@ -1,1 +1,7 @@
-
+div.fb-tab nav {
+  display: flex;
+  justify-content: center;
+}
+div.fb-tab nav div.nav-tabs button {
+  padding: 10px 50px;
+}

@@ -3,7 +3,7 @@
 @section('title','Home FlightBooking')
 
 @section('links')
-
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 @endsection
 
 @section('content')
@@ -18,7 +18,26 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">Voli</div>
+        <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
+            <form>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="roundtrip" id="fb-roundtrip">
+                        <label class="form-check-label" for="fb-roundtrip">Andata e ritorno</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="oneway" id="fb-oneway">
+                        <label class="form-check-label" for="fb-oneway">Solo andata</label>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" class="form-control" id="fb-from" name="from" placeholder="Partenza">
+                    <input type="text" class="form-control" id="fb-to" name="to" placeholder="Destinazione">
+                    <button type="submit" class="btn btn-danger">Cerca</button>
+                </div>
+            </form>
+            
+        </div>
         <div class="tab-pane fade" id="car-rental" role="tabpanel" aria-labelledby="car-rental-tab">Autonoleggio</div>
         <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">Hotel</div>
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">Eventi</div>
