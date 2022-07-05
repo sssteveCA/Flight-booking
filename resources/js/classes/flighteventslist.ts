@@ -69,7 +69,7 @@ export default class FlightEventsList{
         //Add cards elements to result
         this._flight_events.forEach((val,index)=>{
             let fel_elem: HtmlCardInterface= {
-                image: val['image'],
+                image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
                 name: val['name'],
                 location: val['location'],
                 country: val['country'],
