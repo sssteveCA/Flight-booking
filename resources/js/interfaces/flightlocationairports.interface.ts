@@ -1,4 +1,5 @@
 export default interface FlightLocationAirportsInterface{
-    fired: JQuery<HTMLElement>,
     country: string,
+    id_from_select?: string,
+    id_to_select?: string
 }

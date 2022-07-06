@@ -8,6 +8,7 @@ $(()=>{
         'nav_buttons' : $('button.nav-link'),
         'flight_tab' : {
             'flight-loc' : {
+                'elem' : $('.flight-loc'),
                 'id':{
                     0: 'fb-from',
                     1: 'fb-to'
@@ -23,17 +24,46 @@ $(()=>{
     }
     let fll: FlightLocationList = new FlightLocationList();
     fll.get_countries(dataC).then(res => {
+        let fired = $('#'+fll.id_from_select);
         let dataA: FlightLocationAirportsInterface = {
-            fired: $('#'+fll.id_from_select),
-            country: $('#'+fll.id_from_select).val() as string
+            country: fired.val() as string
         };
         console.log(dataA);
         fll.get_country_airports(dataA);
+        fired = $('#'+fll.id_to_select);
         dataA = {
-            fired: $('#'+fll.id_to_select),
-            country: $('#'+fll.id_to_select).val() as string
+            country: fired.val() as string
         }
         fll.get_country_airports(dataA);
+        elements['flight_tab']['flight-loc']['elem'].on('change',(event)=>{
+            let fired = $(event.currentTarget);
+            let fired_id = fired.attr('id');
+            console.log("Fired_id => "+fired_id);
+            if(fired_id == elements['flight_tab']['flight-loc']['id'][0]){
+                //Country select from
+                let dataA: FlightLocationAirportsInterface = {
+                    country: fired.val() as string,
+                    id_from_select: fired_id
+                };
+                console.log("select on change");
+                console.log(dataA);
+                let fll: FlightLocationList = new FlightLocationList();
+                fll.get_country_airports(dataA);
+            }
+            else if(fired_id == elements['flight_tab']['flight-loc']['id'][1]){
+                //Country select to
+                let dataA: FlightLocationAirportsInterface = {
+                    country: fired.val() as string,
+                    id_to_select: fired_id
+                };
+                console.log("select on change");
+                console.log(dataA);
+                let fll: FlightLocationList = new FlightLocationList();
+                fll.get_country_airports(dataA);
+            }
+            
+            
+        });
     }).catch(err => {
 
     });

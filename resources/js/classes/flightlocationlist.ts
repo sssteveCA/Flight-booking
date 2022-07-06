@@ -43,18 +43,19 @@ export default class FlightLocationList{
     public get_country_airports(data: FlightLocationAirportsInterface): boolean{
         let ok = false;
         this._errno = 0;
-        this._fired = data.fired;
         this._country = data.country;
-
+        if(data.id_from_select !== undefined)this._id_from_select = data.id_from_select;
+        if(data.id_to_select !== undefined)this._id_to_select = data.id_to_select;
+        //If these properties are setted
         this.get_country_airports_promise().then(res => {
             console.log(res);
-            this.set_airports(this._id_from_select,res);
-            this.set_airports(this._id_to_select,res);
+            if(this._id_from_select)this.set_airports(this._id_from_select,res);
+            if(this._id_to_select)this.set_airports(this._id_to_select,res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH;
             console.warn(err);
-        })
+        });
         return ok;
     }
 
@@ -117,6 +118,7 @@ export default class FlightLocationList{
 
     private set_airports(id: string,list: Array<string>): void{
        let select = $('#'+id+'-airports');
+       select.html('');
        for(const airport in list){
             let option = $('<option>');
             option.text(airport);
