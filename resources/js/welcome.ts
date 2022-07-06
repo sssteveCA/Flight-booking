@@ -1,6 +1,6 @@
 import FlightEventsList from "./classes/flighteventslist";
 import FlightLocationList from "./classes/flightlocationlist";
-import FlightLocationListInterface from "./interfaces/flightlocationlist.interface";
+import FlightLocationCountriesInterface from "./interfaces/flightlocationcountries.interface";
 
 $(()=>{
     let elements = {
@@ -36,10 +36,15 @@ $(()=>{
         //console.log(event);
         let fired = $(event.currentTarget);
         let query = fired.val() as string;
-        let data : FlightLocationListInterface = {
+        let data : FlightLocationCountriesInterface = {
             fired: fired,
-            query: query
+            query: query,
         };
-        let fll: FlightLocationList = new FlightLocationList(data);
+        let fll: FlightLocationList = new FlightLocationList();
+        fll.get_countries_suggestions(data);
+    });//elements['flight_tab']['flight-loc'].on('input',(event)=>{
+    elements['flight_tab']['flight-loc'].on('focus',(event)=>{
+        let fired = $(event.currentTarget);
+        let input_val = fired.val();
     });
 });

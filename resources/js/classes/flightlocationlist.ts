@@ -1,6 +1,6 @@
 //This class provides suggestion for flight locations in welcome blade flights tab
 
-import FlightLocationListInterface from "../interfaces/flightlocationlist.interface";
+import FlightLocationCountriesInterface from "../interfaces/flightlocationcountries.interface";
 import { Constants } from "../values/constants";
 
 export default class FlightLocationList{
@@ -14,15 +14,7 @@ export default class FlightLocationList{
 
     public static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
-    constructor(data: FlightLocationListInterface){
-        this._fired = data.fired;
-        this._query = data.query;
-        this.get_suggestions().then(res => {
-            //console.log(res);
-            this.set_datalist(res);
-        }).catch(err => {
-            console.warn(err);
-        });
+    constructor(){  
     }
 
     get fired(){return this._fired;}
@@ -41,7 +33,7 @@ export default class FlightLocationList{
         return this._error;
     }
 
-    public async get_suggestions(): Promise<any>{
+    private async get_countries_suggestions_promise(): Promise<any>{
         this._errno = 0;
         let fetch_url = Constants.URL_FLIGHTSEARCH+'/?query='+this._query;
         let promise = await new Promise<any>((resolve,reject)=>{
@@ -64,6 +56,21 @@ export default class FlightLocationList{
             option.attr('value',key);
             this._datalist.append(option);
         }//for(const key in list){
+    }
+
+    public get_countries_suggestions(data: FlightLocationCountriesInterface): boolean{
+        let ok = false;
+        this._errno = 0;
+        this._fired = data.fired;
+        this._query = data.query;
+        this.get_countries_suggestions_promise().then(res => {
+            this.set_datalist(res);
+            ok = true;
+        }).catch(err => {
+            this._errno = FlightLocationList.ERR_FETCH;
+            console.warn(err);
+        });
+        return ok;
     }
 
 }
