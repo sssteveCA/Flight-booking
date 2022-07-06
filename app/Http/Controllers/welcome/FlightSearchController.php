@@ -4,14 +4,29 @@ namespace App\Http\Controllers\welcome;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Interfaces\Airports;
 
 class FlightSearchController extends Controller
 {
     //
     public function getSuggestions(Request $request){
-        $inputs = $request->all();
+        $query = $request->input('query');
+        $list = $this->getList($query);
         return response()->json(
-            $inputs,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE
+            $list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE
         );
+    }
+
+    private function getList(string $query): array{
+        $list = [];
+        $airports = Airports::AIRPORT_LIST;
+        $regex = '/^'.$query.'/i';
+        foreach($airports as $k => $country){
+            if(preg_match($regex,$k)){
+                //Key of airports array start with query
+                $list[$k] = $country;
+            }//if(preg_match($regex,$k)){
+        }
+        return $list;
     }
 }

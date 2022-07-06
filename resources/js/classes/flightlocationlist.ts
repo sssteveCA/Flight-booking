@@ -35,12 +35,12 @@ export default class FlightLocationList{
         return this._error;
     }
 
-    public async get_suggestions(): Promise<string>{
+    public async get_suggestions(): Promise<any>{
         this._errno = 0;
         let fetch_url = Constants.URL_FLIGHTSEARCH+'/?query='+this._query;
-        let promise = await new Promise<string>((resolve,reject)=>{
+        let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
-                resolve(res.text());
+                resolve(res.json());
             }).catch(err => {
                 this._errno = FlightLocationList.ERR_FETCH;
                 reject(err);
