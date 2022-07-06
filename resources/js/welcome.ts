@@ -1,8 +1,14 @@
 import FlightEventsList from "./classes/flighteventslist";
 
 $(()=>{
-    let buttons = $('button.nav-link');
-    buttons.on('click',(event)=>{
+    let elements = {
+        'nav_buttons' : $('button.nav-link'),
+        'flight_tab' : {
+            'flight-loc' : $('.flight-loc')
+        }
+    };
+    console.log(elements);
+    elements['nav_buttons'].on('click',(event)=>{
          let clickbutton = event.currentTarget;
          console.log(clickbutton);
          let cb_dbt = clickbutton.getAttribute('data-bs-target');
@@ -23,5 +29,11 @@ $(()=>{
 
             });
          }//if(cb_id == 'events_tab'){
+    });//elements['nav_buttons'].on('click',(event)=>{
+    elements['flight_tab']['flight-loc'].on('input',(event)=>{
+        console.log(event);
+        let fired = $(event.currentTarget);
+        let query = fired.val();
+        
     });
 });
