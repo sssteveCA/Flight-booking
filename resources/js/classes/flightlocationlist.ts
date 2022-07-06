@@ -8,7 +8,7 @@ export default class FlightLocationList{
     private _fired: JQuery<HTMLElement>;
     private _query: string;
     private _country: string;
-    private _datalist: JQuery<HTMLDataElement>;
+    private _selects: JQuery;
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -22,7 +22,7 @@ export default class FlightLocationList{
     get fired(){return this._fired;}
     get query(){return this._query;}
     get country(){return this._country;}
-    get datalist(){return this._datalist;}
+    get selects(){return this._selects;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -66,10 +66,10 @@ export default class FlightLocationList{
     public get_countries_suggestions(data: FlightLocationCountriesInterface): boolean{
         let ok = false;
         this._errno = 0;
-        this._fired = data.fired;
-        this._query = data.query;
+        this._selects = data.selects;
         this.get_countries_suggestions_promise().then(res => {
-            this.set_datalist(res);
+            //console.log(res);
+            this.set_countries_select(res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH;
@@ -79,7 +79,7 @@ export default class FlightLocationList{
     }
 
     private async get_countries_suggestions_promise(): Promise<any>{
-        let fetch_url = Constants.URL_FLIGHTSEARCH+'/?query='+this._query;
+        let fetch_url = Constants.URL_FLIGHTSEARCH;
         let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
                 resolve(res.json());
@@ -90,15 +90,23 @@ export default class FlightLocationList{
         return promise;
     }
 
-    public set_datalist(list: object): void{
-        let input_id = this._fired.attr('id');
-        this._datalist = $('#'+input_id+'-list');
-        this._datalist.html('');
-        for(const key in list){
-            let option = $('<option>');
-            option.attr('value',key);
-            this._datalist.append(option);
-        }//for(const key in list){
+    public set_countries_select(list: Array<string>): void{
+        //console.log(list);
+        this._selects.each((index,select)=>{
+           /*  console.log("selects each");
+            console.log($(this));
+            console.log(select); */
+            $(this).html('');
+            list.forEach((country,ci)=>{
+                /* console.log("country");
+                console.log(country); */
+                let option = $('<option>');
+                option.text(country);
+                option.attr('value',country);
+                $(select).append(option);
+            });
+        });
+        console.log(this._selects);
     }
 
 

@@ -25,22 +25,15 @@ class FlightSearchController extends Controller
         return $list;
     }
 
-    public function getCountiresSuggestions(Request $request){
-        $query = $request->input('query');
-        $list = $this->getCountriesList($query);
+    public function getCountires(){
+        $list = $this->getCountriesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
-    private function getCountriesList(string $query): array{
+    private function getCountriesList(): array{
         $list = [];
         $airports = Airports::AIRPORT_LIST;
-        $regex = '/^'.$query.'/i';
-        foreach($airports as $k => $country){
-            if(preg_match($regex,$k)){
-                //Key of airports array start with query
-                $list[$k] = $country;
-            }//if(preg_match($regex,$k)){
-        }
+        $list = array_keys($airports);
         return $list;
     }
 }

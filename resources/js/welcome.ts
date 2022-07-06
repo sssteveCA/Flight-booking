@@ -6,10 +6,18 @@ $(()=>{
     let elements = {
         'nav_buttons' : $('button.nav-link'),
         'flight_tab' : {
-            'flight-loc' : $('.flight-loc')
+            'flight-loc' : $('.flight-loc'),
+            'fb-fs-datalist': $('.fb-fs-datalist')
         }
     };
     console.log(elements);
+
+    let data: FlightLocationCountriesInterface = {
+        selects: elements['flight_tab']['flight-loc']
+    }
+    let fll: FlightLocationList = new FlightLocationList();
+    fll.get_countries_suggestions(data);
+
     elements['nav_buttons'].on('click',(event)=>{
          let clickbutton = event.currentTarget;
          console.log(clickbutton);
@@ -32,22 +40,4 @@ $(()=>{
             });
          }//if(cb_id == 'events_tab'){
     });//elements['nav_buttons'].on('click',(event)=>{
-    elements['flight_tab']['flight-loc'].on('input',(event)=>{
-        //console.log(event);
-        let fired = $(event.currentTarget);
-        let query = fired.val() as string;
-        let data : FlightLocationCountriesInterface = {
-            fired: fired,
-            query: query,
-        };
-        let fll: FlightLocationList = new FlightLocationList();
-        fll.get_countries_suggestions(data);
-    });//elements['flight_tab']['flight-loc'].on('input',(event)=>{
-    elements['flight_tab']['flight-loc'].on('focus',(event)=>{
-        let fired = $(event.currentTarget);
-        let input_val: string = fired.val() as string;
-        if(input_val != '' && !input_val.includes(',')){
-            //If the input field as a not void value and has not already a comma check airports list
-        }
-    });
 });

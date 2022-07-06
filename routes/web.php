@@ -39,7 +39,7 @@ Auth::routes(['verify' => true]);
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::get(P::URL_AIRPORTSEARCH,[FlightEventsController::class,'getCountryAirports']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
-Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountiresSuggestions']);
+Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_HOME,P::URL_HOME);
