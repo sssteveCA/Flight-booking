@@ -4,6 +4,7 @@ namespace App\Interfaces;
 
 interface Paths{
     //URLs
+    const URL_AIRPORTSEARCH = '/welcome/airportsearch';
     const URL_CONTACTS = '/contacts';
     const URL_FLIGHTEVENTS = '/welcome/flightevents';
     const URL_FLIGHTSEARCH = '/welcome/flightsearch';

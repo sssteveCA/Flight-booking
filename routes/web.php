@@ -38,7 +38,7 @@ Auth::routes(['verify' => true]);
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll'])->name('flightevents');
-Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getSuggestions'])->name('flightsuggestions');
+Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountiresSuggestions'])->name('flightsuggestions');
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_HOME,P::URL_HOME);

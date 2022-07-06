@@ -45,6 +45,9 @@ $(()=>{
     });//elements['flight_tab']['flight-loc'].on('input',(event)=>{
     elements['flight_tab']['flight-loc'].on('focus',(event)=>{
         let fired = $(event.currentTarget);
-        let input_val = fired.val();
+        let input_val: string = fired.val() as string;
+        if(input_val != '' && !input_val.includes(',')){
+            //If the input field as a not void value and has not already a comma check airports list
+        }
     });
 });

@@ -9,15 +9,15 @@ use App\Interfaces\Airports;
 class FlightSearchController extends Controller
 {
     //
-    public function getSuggestions(Request $request){
+    public function getCountiresSuggestions(Request $request){
         $query = $request->input('query');
-        $list = $this->getList($query);
+        $list = $this->getCountriesList($query);
         return response()->json(
             $list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE
         );
     }
 
-    private function getList(string $query): array{
+    private function getCountriesList(string $query): array{
         $list = [];
         $airports = Airports::AIRPORT_LIST;
         $regex = '/^'.$query.'/i';
