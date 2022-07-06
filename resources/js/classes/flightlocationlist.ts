@@ -17,6 +17,12 @@ export default class FlightLocationList{
     constructor(data: FlightLocationListInterface){
         this._fired = data.fired;
         this._query = data.query;
+        this.get_suggestions().then(res => {
+            //console.log(res);
+            this.set_datalist(res);
+        }).catch(err => {
+            console.warn(err);
+        });
     }
 
     get fired(){return this._fired;}
@@ -47,6 +53,17 @@ export default class FlightLocationList{
             });
         });
         return promise;
+    }
+
+    public set_datalist(list: object): void{
+        let input_id = this._fired.attr('id');
+        this._datalist = $('#'+input_id+'-list');
+        this._datalist.html('');
+        for(const key in list){
+            let option = $('<option>');
+            option.attr('value',key);
+            this._datalist.append(option);
+        }//for(const key in list){
     }
 
 }

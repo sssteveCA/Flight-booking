@@ -22,7 +22,7 @@ $(()=>{
             //User want see flight events list
             let fel:FlightEventsList = new FlightEventsList();
             fel.flight_events_request().then(response => {
-                console.log(fel.html);
+                //console.log(fel.html);
                 if(fel.errno == 0){
                     //No errors Happened
                     $('#events').html(fel.html);
@@ -41,11 +41,5 @@ $(()=>{
             query: query
         };
         let fll: FlightLocationList = new FlightLocationList(data);
-        fll.get_suggestions().then(res => {
-            console.log(res);
-        }).catch(err => {
-            console.warn(err);
-        });
-        
     });
 });
