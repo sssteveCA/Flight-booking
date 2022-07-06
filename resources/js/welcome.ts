@@ -1,4 +1,6 @@
 import FlightEventsList from "./classes/flighteventslist";
+import FlightLocationList from "./classes/flightlocationlist";
+import FlightLocationListInterface from "./interfaces/flightlocationlist.interface";
 
 $(()=>{
     let elements = {
@@ -31,9 +33,14 @@ $(()=>{
          }//if(cb_id == 'events_tab'){
     });//elements['nav_buttons'].on('click',(event)=>{
     elements['flight_tab']['flight-loc'].on('input',(event)=>{
-        console.log(event);
+        //console.log(event);
         let fired = $(event.currentTarget);
-        let query = fired.val();
+        let query = fired.val() as string;
+        let data : FlightLocationListInterface = {
+            fired: fired,
+            query: query
+        };
+        let fll: FlightLocationList = new FlightLocationList(data);
         
     });
 });

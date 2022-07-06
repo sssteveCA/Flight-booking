@@ -36,10 +36,12 @@
                     </div>
                     <div id="fb-fs2" class="row">
                         <div class="col-12 col-md-6 col-lg-5">
-                            <input type="text" class="form-control flight-loc" id="fb-from" name="from" placeholder="Partenza">
+                            <input type="text" class="form-control flight-loc" id="fb-from" name="from" list="fb-from-list" placeholder="Partenza">
+                            <datalist id="fb-from-list"></datalist>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5">
-                            <input type="text" class="form-control flight-loc" id="fb-to" name="to" placeholder="Destinazione">
+                            <input type="text" class="form-control flight-loc" id="fb-to" name="to" list="fb-to-list" placeholder="Destinazione">
+                            <datalist id="fb-to-list"></datalist>
                         </div>
                         <div class="col-12 col-md-6 col-lg-1">
                             <button type="submit" class="btn btn-danger">Cerca</button>
