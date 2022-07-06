@@ -9,5 +9,5 @@ export namespace Constants{
     export const PORT = 8000;
 
     export const URL_HOME = HOSTNAME+':'+PORT;
-    export const URL_FLIGHTSEARCH = URL_HOME+'/flightsearch'
+    export const URL_FLIGHTSEARCH = URL_HOME+'/welcome/flightsearch'
 }
