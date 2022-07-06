@@ -36,12 +36,12 @@ export default class FlightLocationList{
         return this._error;
     }
 
-    public get_airports(data: FlightLocationAirportsInterface): boolean{
+    public get_country_airports(data: FlightLocationAirportsInterface): boolean{
         let ok = false;
         this._errno = 0;
         this._fired = data.fired;
         this._country = data.country;
-        this.get_airports_promise().then(res => {
+        this.get_country_airports_promise().then(res => {
             console.log(res);
             ok = true;
         }).catch(err => {
@@ -51,7 +51,7 @@ export default class FlightLocationList{
         return ok;
     }
 
-    private async get_airports_promise(): Promise<any>{
+    private async get_country_airports_promise(): Promise<any>{
         let fetch_url = Constants.URL_AIRPORTSSEARCH+'/?country='+this._country;
         let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
