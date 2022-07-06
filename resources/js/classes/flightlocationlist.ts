@@ -9,6 +9,8 @@ export default class FlightLocationList{
     private _query: string;
     private _country: string;
     private _selects: JQuery;
+    private _id_from_select: string;
+    private _id_to_select: string;
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -22,6 +24,8 @@ export default class FlightLocationList{
     get fired(){return this._fired;}
     get query(){return this._query;}
     get country(){return this._country;}
+    get id_from_select(){return this._id_from_select;}
+    get id_to_select(){return this._id_to_select;}
     get selects(){return this._selects;}
     get errno(){return this._errno;}
     get error(){
@@ -41,8 +45,11 @@ export default class FlightLocationList{
         this._errno = 0;
         this._fired = data.fired;
         this._country = data.country;
+
         this.get_country_airports_promise().then(res => {
             console.log(res);
+            this.set_airports(this._id_from_select,res);
+            this.set_airports(this._id_to_select,res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH;
@@ -66,10 +73,12 @@ export default class FlightLocationList{
     public get_countries_suggestions(data: FlightLocationCountriesInterface): boolean{
         let ok = false;
         this._errno = 0;
-        this._selects = data.selects;
+        this._id_from_select = data.id_from_select;
+        this._id_to_select = data.id_to_select;
         this.get_countries_suggestions_promise().then(res => {
             //console.log(res);
-            this.set_countries_select(res);
+            this.set_countries_select(this._id_from_select,res);
+            this.set_countries_select(this._id_to_select,res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH;
@@ -90,23 +99,29 @@ export default class FlightLocationList{
         return promise;
     }
 
-    public set_countries_select(list: Array<string>): void{
+    private set_countries_select(id: string,list: Array<string>): void{
         //console.log(list);
-        this._selects.each((index,select)=>{
-           /*  console.log("selects each");
-            console.log($(this));
-            console.log(select); */
-            $(this).html('');
-            list.forEach((country,ci)=>{
-                /* console.log("country");
-                console.log(country); */
-                let option = $('<option>');
-                option.text(country);
-                option.attr('value',country);
-                $(select).append(option);
-            });
+        let select = $('#'+id);
+        select.html('');
+        list.forEach((country,ci)=>{
+            /* console.log("country");
+            console.log(country); */
+            let option = $('<option>');
+            option.text(country);
+            option.attr('value',country);
+            $(select).append(option);
         });
-        console.log(this._selects);
+        $('#'+id+'-airports')
+    }
+
+    private set_airports(id: string,list: Array<string>): void{
+       let select = $('#'+id+'-airports');
+       for(const airport in list){
+            let option = $('<option>');
+            option.text(airport);
+            option.attr('value',airport);
+            $(select).append(option);
+       }
     }
 
 

@@ -34,6 +34,13 @@ div.tab-pane {
   margin-right: 20px;
 }
 
+#fb-fs3 {
+  padding: 20px auto;
+}
+#fb-fs3 * {
+  margin-right: 20px;
+}
+
 #fb-rc1 > div {
   margin: 15px auto;
 }

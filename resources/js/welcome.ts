@@ -1,22 +1,40 @@
 import FlightEventsList from "./classes/flighteventslist";
 import FlightLocationList from "./classes/flightlocationlist";
+import FlightLocationAirportsInterface from "./interfaces/flightlocationairports.interface";
 import FlightLocationCountriesInterface from "./interfaces/flightlocationcountries.interface";
 
 $(()=>{
     let elements = {
         'nav_buttons' : $('button.nav-link'),
         'flight_tab' : {
-            'flight-loc' : $('.flight-loc'),
-            'fb-fs-datalist': $('.fb-fs-datalist')
+            'flight-loc' : {
+                'id':{
+                    0: 'fb-from',
+                    1: 'fb-to'
+                }      
+            },
         }
     };
     console.log(elements);
 
-    let data: FlightLocationCountriesInterface = {
-        selects: elements['flight_tab']['flight-loc']
+    let dataC: FlightLocationCountriesInterface = {
+        id_from_select: elements['flight_tab']['flight-loc']['id'][0],
+        id_to_select: elements['flight_tab']['flight-loc']['id'][1]
     }
     let fll: FlightLocationList = new FlightLocationList();
-    fll.get_countries_suggestions(data);
+    fll.get_countries_suggestions(dataC);
+    let dataA: FlightLocationAirportsInterface = {
+        fired: $('#'+fll.id_from_select),
+        country: 'Austria'
+    }
+    
+    console.log(dataA);
+    fll.get_country_airports(dataA);
+    dataA = {
+        fired: $('#'+fll.id_to_select),
+        country: 'Austria'
+    }
+    fll.get_country_airports(dataA);
 
     elements['nav_buttons'].on('click',(event)=>{
          let clickbutton = event.currentTarget;
