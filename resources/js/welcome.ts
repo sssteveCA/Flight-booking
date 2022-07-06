@@ -41,6 +41,11 @@ $(()=>{
             query: query
         };
         let fll: FlightLocationList = new FlightLocationList(data);
+        fll.get_suggestions().then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.warn(err);
+        });
         
     });
 });

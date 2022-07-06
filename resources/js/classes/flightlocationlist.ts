@@ -37,7 +37,7 @@ export default class FlightLocationList{
 
     public async get_suggestions(): Promise<string>{
         this._errno = 0;
-        let fetch_url = Constants.URL_FLIGHTSEARCH+'/'+this._query;
+        let fetch_url = Constants.URL_FLIGHTSEARCH+'/?query='+this._query;
         let promise = await new Promise<string>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
                 resolve(res.text());
