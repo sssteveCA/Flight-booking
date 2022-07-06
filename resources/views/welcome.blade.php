@@ -35,21 +35,19 @@
                         </div>
                     </div>
                     <div id="fb-fs2" class="row">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-lg-1">
                             <select class="form-select flight-loc" id="fb-from" name="from"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5">
-                            <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
-                        </div>
-                    </div>
-                    <div id="fb-fs3" class="row">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-lg-3">
                             <select class="form-select flight-loc-airports" id="fb-from-airports" name="from"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-lg-2">
+                            <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 order-lg-4">
                             <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-1">
+                        <div class="col-12 col-md-6 col-lg-1 order-lg-5">
                             <button type="submit" class="btn btn-danger">Cerca</button>
                         </div>
                     </div>
