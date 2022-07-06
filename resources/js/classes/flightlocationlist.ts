@@ -70,13 +70,14 @@ export default class FlightLocationList{
         return promise;
     }
 
-    public get_countries_suggestions(data: FlightLocationCountriesInterface): boolean{
+    public async get_countries(data: FlightLocationCountriesInterface): Promise<boolean>{
         let ok = false;
         this._errno = 0;
         this._id_from_select = data.id_from_select;
         this._id_to_select = data.id_to_select;
-        this.get_countries_suggestions_promise().then(res => {
-            //console.log(res);
+        await this.get_countries_promise().then(res => {
+            console.log("Countries promise");
+            console.log(res);
             this.set_countries_select(this._id_from_select,res);
             this.set_countries_select(this._id_to_select,res);
             ok = true;
@@ -87,7 +88,7 @@ export default class FlightLocationList{
         return ok;
     }
 
-    private async get_countries_suggestions_promise(): Promise<any>{
+    private async get_countries_promise(): Promise<any>{
         let fetch_url = Constants.URL_FLIGHTSEARCH;
         let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {

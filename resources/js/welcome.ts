@@ -22,20 +22,22 @@ $(()=>{
         id_to_select: elements['flight_tab']['flight-loc']['id'][1]
     }
     let fll: FlightLocationList = new FlightLocationList();
-    fll.get_countries_suggestions(dataC);
-    let dataA: FlightLocationAirportsInterface = {
-        fired: $('#'+fll.id_from_select),
-        country: 'Austria'
-    }
-    
-    console.log(dataA);
-    fll.get_country_airports(dataA);
-    dataA = {
-        fired: $('#'+fll.id_to_select),
-        country: 'Austria'
-    }
-    fll.get_country_airports(dataA);
+    fll.get_countries(dataC).then(res => {
+        let dataA: FlightLocationAirportsInterface = {
+            fired: $('#'+fll.id_from_select),
+            country: $('#'+fll.id_from_select).val() as string
+        };
+        console.log(dataA);
+        fll.get_country_airports(dataA);
+        dataA = {
+            fired: $('#'+fll.id_to_select),
+            country: $('#'+fll.id_to_select).val() as string
+        }
+        fll.get_country_airports(dataA);
+    }).catch(err => {
 
+    });
+    
     elements['nav_buttons'].on('click',(event)=>{
          let clickbutton = event.currentTarget;
          console.log(clickbutton);
