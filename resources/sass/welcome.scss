@@ -39,7 +39,7 @@ $rows-2-flights-elem: 3;
 }
 
 @mixin flights(){
-    $elems: 2;
+    $elems: 5;
     @for $i from 1 through $elems{
         #fb-fs#{$i}{
             padding: 20px auto;

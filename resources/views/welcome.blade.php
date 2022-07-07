@@ -47,7 +47,30 @@
                         <div class="col-12 col-md-6 col-lg-5 order-lg-4">
                             <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-1 order-lg-5">
+                        
+                    </div>
+                    <div id="fb-fs3" class="row fb-oneway-div">
+                        <div class="form-floating col-12 col-md-6 col-lg-5">
+                            <input type="datetime-local" id="fb-oneway-date" class="form-control" name="oneway-date" >
+                            <label for="fb-oneway-date">Partenza</label>
+                        </div>
+                    </div>
+                    <div id="fb-fs4" class="row fb-roundtrip-div">
+                        <div class="form-floating col-12 col-md-6 col-lg-5">
+                            <input type="datetime-local" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
+                            <label for="fb-roundtrip-start-date">Partenza</label>
+                        </div>
+                        <div class="form-floating col-12 col-md-6 col-lg-5">
+                            <input type="datetime-local" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
+                            <label for="fb-roundtrip-start-date">Partenza</label>
+                        </div>
+                    </div>
+                    <div id="fb-fs5" class="row">
+                        <div class="form-floating col-12 col-md-6 offset-md-2">
+                            <input type="text" id="fb-passengers" class="form-control" name="passengers" >
+                            <label for="fb-passengers">Passeggeri</label>
+                        </div>
+                        <div class="col-6 col-md-3">
                             <button type="submit" class="btn btn-danger">Cerca</button>
                         </div>
                     </div>
