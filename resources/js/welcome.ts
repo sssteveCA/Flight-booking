@@ -7,25 +7,47 @@ $(()=>{
     let elements = {
         'nav_buttons' : $('button.nav-link'),
         'flight_tab' : {
-            'flight-loc' : {
-                'elem' : $('.flight-loc'),
-                'id':{
-                    0: 'fb-from',
-                    1: 'fb-to'
-                }      
+            'elem' : {
+                'fb-oneway-div': $('.fb-oneway-div'),
+                'fb-roundtrip-div': $('.fb-roundtrip-div'),
+                'flight-loc': $('.flight-loc'),
+                'flight-type-radio': $('input[name=flight-type]')        
             },
+            'id':{
+                0: 'fb-from',
+                1: 'fb-to'
+            }      
         }
     };
     console.log(elements);
-    loadData(elements);
+    loadCountries(elements);
     tabClickEvents(elements);
+    setInputDate(elements);
 });
 
+//Set input dates checking radio button status
+function setInputDate(elements: any): void{
+    elements['flight_tab']['elem']['flight-type-radio'].on('change',() => {
+        let value = elements['flight_tab']['elem']['flight-type-radio'].filter(':checked').val();
+        console.log(value);
+        if(value == 'oneway'){
+            elements['flight_tab']['elem']['fb-roundtrip-div'].css('display','none');
+            elements['flight_tab']['elem']['fb-oneway-div'].css('display','flex');
+        }//if(value == 'oneway'){
+        else if(value == 'roundtrip'){
+            elements['flight_tab']['elem']['fb-oneway-div'].css('display','none');
+            elements['flight_tab']['elem']['fb-roundtrip-div'].css('display','flex');
+            
+        }
+    });//elements['flight_tab']['elem']['flight-type-radio'].on('change',() => {
+    
+}
+
 //Load countries list from server
-function loadData(elements: any): void{
+function loadCountries(elements: any): void{
     let dataC: FlightLocationCountriesInterface = {
-        id_from_select: elements['flight_tab']['flight-loc']['id'][0],
-        id_to_select: elements['flight_tab']['flight-loc']['id'][1]
+        id_from_select: elements['flight_tab']['id'][0],
+        id_to_select: elements['flight_tab']['id'][1]
     }
     let fll: FlightLocationList = new FlightLocationList();
     fll.get_countries(dataC).then(res => {
@@ -47,10 +69,10 @@ function loadData(elements: any): void{
 
 //When select option change
 function onChangeSelect(elements: any): void{
-    elements['flight_tab']['flight-loc']['elem'].on('change',(event)=>{
+    elements['flight_tab']['elem']['flight-loc'].on('change',(event)=>{
         let fired = $(event.currentTarget);
         let fired_id = fired.attr('id');
-        if(fired_id == elements['flight_tab']['flight-loc']['id'][0]){
+        if(fired_id == elements['flight_tab']['id'][0]){
             //Country select from
             let dataA: FlightLocationAirportsInterface = {
                 country: fired.val() as string,
@@ -58,8 +80,8 @@ function onChangeSelect(elements: any): void{
             };
             let fll: FlightLocationList = new FlightLocationList();
             fll.get_country_airports(dataA);
-        }//if(fired_id == elements['flight_tab']['flight-loc']['id'][0]){
-        else if(fired_id == elements['flight_tab']['flight-loc']['id'][1]){
+        }//if(fired_id == elements['flight_tab']['id'][0]){
+        else if(fired_id == elements['flight_tab']['id'][1]){
             //Country select to
             let dataA: FlightLocationAirportsInterface = {
                 country: fired.val() as string,
@@ -67,7 +89,7 @@ function onChangeSelect(elements: any): void{
             };
             let fll: FlightLocationList = new FlightLocationList();
             fll.get_country_airports(dataA);
-        }//else if(fired_id == elements['flight_tab']['flight-loc']['id'][1]){
+        }//else if(fired_id == elements['flight_tab']['id'][1]){
     });
 }
 

@@ -54,6 +54,9 @@ $rows-2-flights-elem: 3;
                 }
                 
             }
+            @if $i == 4{
+                display: none;
+            }
         }
     }
 }

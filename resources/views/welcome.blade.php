@@ -26,51 +26,51 @@
                 <div class="container">
                     <div id="fb-fs1" class="row">
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="roundtrip" id="fb-roundtrip">
+                            <input class="form-check-input" type="radio" name="flight-type" id="fb-roundtrip" value="oneway" checked>
                             <label class="form-check-label" for="fb-roundtrip">Andata e ritorno</label>
                         </div>
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="oneway" id="fb-oneway">
+                            <input class="form-check-input" type="radio" name="flight-type" id="fb-oneway" value="roundtrip">
                             <label class="form-check-label" for="fb-oneway">Solo andata</label>
                         </div>
                     </div>
                     <div id="fb-fs2" class="row">
-                        <div class="col-12 col-md-6 col-lg-5 order-lg-1">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-1">
                             <select class="form-select flight-loc" id="fb-from" name="from"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 order-lg-3">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-3">
                             <select class="form-select flight-loc-airports" id="fb-from-airports" name="from"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 order-lg-2">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-2">
                             <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 order-lg-4">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-4">
                             <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to"></select>
                         </div>
                         
                     </div>
                     <div id="fb-fs3" class="row fb-oneway-div">
-                        <div class="form-floating col-12 col-md-6 col-lg-5">
-                            <input type="datetime-local" id="fb-oneway-date" class="form-control" name="oneway-date" >
+                        <div class="form-floating col-12 col-sm-5 col-lg-5">
+                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date" >
                             <label for="fb-oneway-date">Partenza</label>
                         </div>
                     </div>
                     <div id="fb-fs4" class="row fb-roundtrip-div">
-                        <div class="form-floating col-12 col-md-6 col-lg-5">
-                            <input type="datetime-local" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
+                        <div class="form-floating col-12 col-sm-5 col-lg-5">
+                            <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
                             <label for="fb-roundtrip-start-date">Partenza</label>
                         </div>
-                        <div class="form-floating col-12 col-md-6 col-lg-5">
-                            <input type="datetime-local" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
-                            <label for="fb-roundtrip-start-date">Partenza</label>
+                        <div class="form-floating col-12 col-sm-5 col-lg-5">
+                            <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip-end-date" >
+                            <label for="fb-roundtrip-end-date">Ritorno</label>
                         </div>
                     </div>
-                    <div id="fb-fs5" class="row">
-                        <div class="form-floating col-12 col-md-6 offset-md-2">
+                    <div id="fb-fs5" class="row align-items-center">
+                        <div class="form-floating col-12 col-sm-5 offset-md-6">
                             <input type="text" id="fb-passengers" class="form-control" name="passengers" >
                             <label for="fb-passengers">Passeggeri</label>
                         </div>
-                        <div class="col-6 col-md-3">
+                        <div class="col-12 col-sm-3">
                             <button type="submit" class="btn btn-danger">Cerca</button>
                         </div>
                     </div>
