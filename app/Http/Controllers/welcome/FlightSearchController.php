@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\welcome;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\welcome\FlightPriceRequest;
 use Illuminate\Http\Request;
 use App\Interfaces\Airports;
 
@@ -37,5 +38,11 @@ class FlightSearchController extends Controller
         $airports = Airports::AIRPORT_LIST;
         $list = array_keys($airports);
         return $list;
+    }
+
+    //Get the flight based on input data
+    public function getFlightPrice(FlightPriceRequest $request){
+        $inputs = $request->collect();
+        return view('welcome/flightpriceresult',$inputs);
     }
 }

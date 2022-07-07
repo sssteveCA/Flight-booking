@@ -22,8 +22,9 @@
             </div>
         </nav>
         <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
-            <form id="flightSearch" method="post" action="#">
+            <form id="flightSearch" method="post" action="{{ route('flightprice') }}">
                 @csrf
+                @method("POST")
                 <div class="container">
                     <div id="fb-fs1" class="row">
                         <div class="form-check col-6 col-md-2">
@@ -131,6 +132,13 @@
         </div>
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>
+</div>
+<div class="errors">
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+        @endforeach
+    @endif
 </div>
 
 @endsection
