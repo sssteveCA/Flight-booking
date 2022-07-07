@@ -48,7 +48,7 @@ export default class FlightLocationList{
         if(data.id_to_select !== undefined)this._id_to_select = data.id_to_select;
         //If these properties are setted
         this.get_country_airports_promise().then(res => {
-            console.log(res);
+            //console.log(res);
             if(this._id_from_select)this.set_airports(this._id_from_select,res);
             if(this._id_to_select)this.set_airports(this._id_to_select,res);
             ok = true;
@@ -77,8 +77,8 @@ export default class FlightLocationList{
         this._id_from_select = data.id_from_select;
         this._id_to_select = data.id_to_select;
         await this.get_countries_promise().then(res => {
-            console.log("Countries promise");
-            console.log(res);
+            /* console.log("Countries promise");
+            console.log(res); */
             this.set_countries_select(this._id_from_select,res);
             this.set_countries_select(this._id_to_select,res);
             ok = true;
