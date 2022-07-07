@@ -3,7 +3,11 @@
 namespace App\Http\Requests\welcome;
 
 use App\Interfaces\Paths as P;
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class FlightPriceRequest extends FormRequest
 {
@@ -33,12 +37,12 @@ class FlightPriceRequest extends FormRequest
             'from-airport' => 'required',
             'to' => 'required',
             'to-airport' => 'required',
-            'oneway-date' => 'required_without_all:roundtrip-start-date,roundtri-end-date',
+            //'oneway-date' => 'required_without_all:roundtrip-start-date,roundtrip-end-date',
             'roundtrip-start-date' => 'required_with:roundtrip-end-date',
             'roundtrip-end-date' => 'required_with:roundtrip-start-date',
             'passengers' => 'required'
-
         ];
+        
     }
 
     public function messages(){
@@ -54,4 +58,16 @@ class FlightPriceRequest extends FormRequest
             'passengers.required' => 'Seleziona il numero di passeggeri'
         ];
     }
+
+    protected function failedValidation(ValidationValidator $validator)
+    {
+        Log::channel('stdout')->error('ValidationException');
+        $errors = $validator->errors();
+        Log::channel('stdout')->error(var_export($errors,true));
+        throw (new ValidationException($validator,['errors' => $errors]))
+                    ->errorBag($this->errorBag)
+                    ->redirectTo($this->getRedirectUrl());
+    }
+
+
 }

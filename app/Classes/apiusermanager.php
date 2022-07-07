@@ -19,11 +19,13 @@ class ApiUserManager{
         $this->auth_id = Auth::id();
         if(!isset($this->auth_id)){
             $apiUser = auth('api')->user();
-            $this->auth_id = $apiUser->id;
-        }
-        Log::channel('stdout')->info("ApiUserManager Auth id ".$this->auth_id);
+            if(isset($apiUser->id)){
+                $this->auth_id = $apiUser->id;
+                Log::channel('stdout')->info("ApiUserManager Auth id ".$this->auth_id);
+                Log::channel('stdout')->info("ApiUserManager auth(api) id  ".var_export(auth('api')->user()->id,true));
+            }
+        } 
         Log::channel('stdout')->info("ApiUserManager Auth::id ".var_export(Auth::id(),true));
-        Log::channel('stdout')->info("ApiUserManager auth(api) id  ".var_export(auth('api')->user()->id,true));
     }
 
     public function editUsername(ApiEditUsernameRequest $request){

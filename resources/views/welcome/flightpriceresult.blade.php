@@ -6,10 +6,11 @@
 @endsection
 
 @section('scripts')
-@endscripts
+@endsection
 
 @section('content')
     @php
-        var_dump($data);
+        var_dump($inputs);
+        var_dump($errors);
     @endphp
 @endsection

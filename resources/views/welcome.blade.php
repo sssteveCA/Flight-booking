@@ -41,35 +41,35 @@
                             <select class="form-select flight-loc" id="fb-from" name="from"></select>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-3">
-                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from"></select>
+                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from-airport"></select>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-2">
                             <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-4">
-                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to"></select>
+                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to-airport"></select>
                         </div>
                         
                     </div>
                     <div id="fb-fs3" class="row fb-oneway-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date" >
+                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date">
                             <label for="fb-oneway-date">Partenza</label>
                         </div>
                     </div>
                     <div id="fb-fs4" class="row fb-roundtrip-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date" >
+                            <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date">
                             <label for="fb-roundtrip-start-date">Partenza</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip-end-date" >
+                            <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip-end-date">
                             <label for="fb-roundtrip-end-date">Ritorno</label>
                         </div>
                     </div>
                     <div id="fb-fs5" class="row align-items-center">
                         <div class="form-floating col-12 col-sm-5 offset-md-6">
-                            <input type="text" id="fb-passengers" class="form-control" name="passengers" >
+                            <input type="text" id="fb-passengers" class="form-control" name="passengers">
                             <label for="fb-passengers">Passeggeri</label>
                         </div>
                         <div class="col-12 col-sm-3">

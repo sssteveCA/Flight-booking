@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\FlightPriceRequest;
 use Illuminate\Http\Request;
 use App\Interfaces\Airports;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class FlightSearchController extends Controller
 {
@@ -42,7 +44,8 @@ class FlightSearchController extends Controller
 
     //Get the flight based on input data
     public function getFlightPrice(FlightPriceRequest $request){
-        $inputs = $request->collect();
-        return view('welcome/flightpriceresult',$inputs);
+        Log::channel('stdout')->info('getFlightPrice method');
+        $inputs = $request->validated();
+        return view('welcome/flightpriceresult',['inputs' => $inputs]);
     }
 }

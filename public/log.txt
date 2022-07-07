@@ -1,0 +1,5 @@
+FlightPriceRequest constructor
+FlightPriceRequest constructor
+getFlightPrice method
+getFlightPrice method
+getFlightPrice method
