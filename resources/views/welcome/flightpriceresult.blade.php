@@ -10,7 +10,9 @@
 
 @section('content')
     @php
-        var_dump($inputs);
-        var_dump($errors);
+        if(isset($inputs))
+            var_dump($inputs);
+        if(isset($errors))
+            var_dump($errors);
     @endphp
 @endsection

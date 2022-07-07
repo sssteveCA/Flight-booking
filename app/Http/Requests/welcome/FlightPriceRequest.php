@@ -6,6 +6,7 @@ use App\Interfaces\Paths as P;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
@@ -62,11 +63,12 @@ class FlightPriceRequest extends FormRequest
     protected function failedValidation(ValidationValidator $validator)
     {
         Log::channel('stdout')->error('ValidationException');
-        $errors = $validator->errors();
+        $errors = (new ValidationException($validator))->errors();
         Log::channel('stdout')->error(var_export($errors,true));
-        throw (new ValidationException($validator,['errors' => $errors]))
-                    ->errorBag($this->errorBag)
-                    ->redirectTo($this->getRedirectUrl());
+        throw new HttpResponseException(
+            response()->view('welcome/flightpriceresult',['errors' => $errors],422)
+            /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
+        );
     }
 
 
