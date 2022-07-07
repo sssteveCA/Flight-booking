@@ -9,10 +9,12 @@
 @endsection
 
 @section('content')
-    @php
-        if(isset($inputs))
-            var_dump($inputs);
-        if(isset($errors))
-            var_dump($errors);
-    @endphp
+    @isset($errors)
+        @foreach($errors as $k => $input_errors)
+            @foreach($input_errors as $k => $msg)
+                <div class="alert alert-danger" role="alert">{{$msg}}</div>
+            @endforeach
+        @endforeach
+    @endisset
+    
 @endsection

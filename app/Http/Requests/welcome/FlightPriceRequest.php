@@ -66,7 +66,7 @@ class FlightPriceRequest extends FormRequest
         $errors = (new ValidationException($validator))->errors();
         Log::channel('stdout')->error(var_export($errors,true));
         throw new HttpResponseException(
-            response()->view('welcome/flightpriceresult',['errors' => $errors],422)
+            response()->view('welcome/flightpriceresult',['errors' => $errors],400)
             /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
         );
     }
