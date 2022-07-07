@@ -22,7 +22,8 @@
             </div>
         </nav>
         <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
-            <form id="flightSearch" method="get" action="#">
+            <form id="flightSearch" method="post" action="#">
+                @csrf
                 <div class="container">
                     <div id="fb-fs1" class="row">
                         <div class="form-check col-6 col-md-2">

@@ -8,7 +8,8 @@ use App\Interfaces\Airports;
 
 class FlightSearchController extends Controller
 {
-
+ 
+    //Get airports list from specific country
     public function getCountryAirports(Request $request){
         $country = $request->input('country');
         $list = $this->getAirportsList($country);
@@ -25,6 +26,7 @@ class FlightSearchController extends Controller
         return $list;
     }
 
+    //Get countries list from array
     public function getCountires(){
         $list = $this->getCountriesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

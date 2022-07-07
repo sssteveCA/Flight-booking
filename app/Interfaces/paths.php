@@ -7,6 +7,7 @@ interface Paths{
     const URL_AIRPORTSEARCH = '/welcome/airportsearch';
     const URL_CONTACTS = '/contacts';
     const URL_FLIGHTEVENTS = '/welcome/flightevents';
+    const URL_FLIGHTPRICE = '/welcome/flightprice';
     const URL_FLIGHTSEARCH = '/welcome/flightsearch';
     const URL_HOME = '/home';
     const URL_LOGOUT = '/logout';

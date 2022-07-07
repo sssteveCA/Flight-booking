@@ -41,6 +41,8 @@ Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirpor
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
+Route::post(P::URL_FLIGHTPRICE,[])->name('flightprice');
+
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_HOME,P::URL_HOME);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);
