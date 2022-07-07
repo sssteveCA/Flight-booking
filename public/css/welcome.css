@@ -55,6 +55,12 @@ div.tab-pane {
 #fb-fs5 * {
   margin-right: 20px;
 }
+@media only screen and (max-width: 575px) {
+  #fb-fs5 div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+  }
+}
 
 #fb-rc1 > div {
   margin: 15px auto;

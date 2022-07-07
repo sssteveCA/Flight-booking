@@ -7,6 +7,7 @@ $navs-buttons-padding:10px 50px;
 $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
 $rows-2-flights-elem: 3;
+$xs-breakpoint: 575px;
 
 
 //Mixins
@@ -56,6 +57,14 @@ $rows-2-flights-elem: 3;
             }
             @if $i == 4{
                 display: none;
+            }
+            @if $i == 5{
+                @media only screen and (max-width: $xs-breakpoint){
+                    div:nth-child(2){
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
             }
         }
     }
