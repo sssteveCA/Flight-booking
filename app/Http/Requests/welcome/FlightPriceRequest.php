@@ -38,10 +38,13 @@ class FlightPriceRequest extends FormRequest
             'from-airport' => 'required',
             'to' => 'required',
             'to-airport' => 'required',
-            //'oneway-date' => 'required_without_all:roundtrip-start-date,roundtrip-end-date',
+            'oneway-date' => 'required_without_all:roundtrip-start-date,roundtrip-end-date',
             'roundtrip-start-date' => 'required_with:roundtrip-end-date',
             'roundtrip-end-date' => 'required_with:roundtrip-start-date',
-            'passengers' => 'required'
+            'adults' => 'required',
+            'teenagers' => 'required',
+            'children' => 'required',
+            'newborns' => 'required',
         ];
         
     }

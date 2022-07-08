@@ -5,63 +5,63 @@ namespace App\Interfaces;
 interface Airports{
     const AIRPORT_LIST = [
         'Austria' => [
-            'Klaugefurt' => ['lat' => 0,'lon' => 0],
-            'Salisburgo' => ['lat' => 0,'lon' => 0],
-            'Vienna' => ['lat' => 0,'lon' => 0]
+            'Klaugefurt' => ['lat' => 46.649771,'lon' => 14.325294],
+            'Salisburgo' => ['lat' => 47.793988,'lon' => 13.003525],
+            'Vienna' => ['lat' => 48.112072,'lon' => 16.575761]
         ],
         'Belgio' => [
-            'Brussels Zaventem' => ['lat' => 0,'lon' => 0],
-            'Bruxelles (Charleroi)' => ['lat' => 0,'lon' => 0],
+            'Brussels Zaventem' => ['lat' => 50.896354,'lon' => 4.481252],
+            'Bruxelles (Charleroi)' => ['lat' => 50.462277,'lon' => 4.461052],
         ],
         'Bosnia & Herzegovina' => [
-            'Banja Luka' => ['lat' => 0,'lon' => 0],
-            'Tuzia' => ['lat' => 0,'lon' => 0]
+            'Banja Luka' => ['lat' => 44.933891,'lon' => 17.303811],
+            'Tuzla' => ['lat' => 44.463611,'lon' => 18.711868]
         ],
         'Bulgaria' => [
-            'Burgas' => ['lat' => 0,'lon' => 0],
-            'Plovdiv' => ['lat' => 0,'lon' => 0],
-            'Sofia' => ['lat' => 0,'lon' => 0],
-            'Varna' => ['lat' => 0,'lon' => 0]
+            'Burgas' => ['lat' => 42.565366,'lon' => 27.516656],
+            'Plovdiv' => ['lat' => 42.076699,'lon' => 24.843521],
+            'Sofia' => ['lat' => 42.693432,'lon' => 23.408432],
+            'Varna' => ['lat' => 43.237289,'lon' => 27.826177]
         ],
         'Cipro' => [
-            'Larnaca' => ['lat' => 0,'lon' => 0],
-            'Pafos' => ['lat' => 0,'lon' => 0]
+            'Larnaca' => ['lat' => 34.871896,'lon' => 33.619794],
+            'Pafos' => ['lat' => 34.717301,'lon' => 32.485162]
         ],
         'Croazia' => [
-            'Dubrovnik' => ['lat' => 0,'lon' => 0],
-            'Fiume' => ['lat' => 0,'lon' => 0],
-            'Pola' => ['lat' => 0,'lon' => 0],
-            'Split' => ['lat' => 0,'lon' => 0],
-            'Zagreb' => ['lat' => 0,'lon' => 0],
-            'Zara' => ['lat' => 0,'lon' => 0]
+            'Dubrovnik' => ['lat' => 42.560266,'lon' => 18.261672],
+            'Fiume' => ['lat' => 45.218272,'lon' => 14.569997],
+            'Pola' => ['lat' => 44.898932,'lon' => 13.924008],
+            'Split' => ['lat' => 43.536413,'lon' => 16.298896],
+            'Zagreb' => ['lat' => 45.741061,'lon' => 16.068059],
+            'Zara' => ['lat' => 44.096672,'lon' => 15.353313]
         ],
         'Danimarca' => [
-            'Aalborg' => ['lat' => 0,'lon' => 0],
-            'Aarhus' => ['lat' => 0,'lon' => 0],
-            'Billund' => ['lat' => 0,'lon' => 0],
-            'Copenaghen' => ['lat' => 0,'lon' => 0]
+            'Aalborg' => ['lat' => 57.096636,'lon' => 9.856528],
+            'Aarhus' => ['lat' => 56.307515,'lon' => 10.627362],
+            'Billund' => ['lat' => 55.740707,'lon' => 9.153115],
+            'Copenaghen' => ['lat' => 55.612549,'lon' => 12.647290]
         ],
         'Estonia' => [
-            'Tallinn' => ['lat' => 0,'lon' => 0]
+            'Tallinn' => ['lat' => 59.416734,'lon' => 24.800334]
         ],
         'Finlandia' => [
-            'Helsinki' => ['lat' => 0,'lon' => 0],
-            'Lappeenranta' => ['lat' => 0,'lon' => 0],
-            'Rovaniemi-Lapponia' => ['lat' => 0,'lon' => 0],
-            'Tampere' => ['lat' => 0,'lon' => 0]
+            'Helsinki' => ['lat' => 60.318535,'lon' => 24.969305],
+            'Lappeenranta' => ['lat' => 61.044037,'lon' => 28.157188],
+            'Rovaniemi-Lapponia' => ['lat' => 66.562910,'lon' => 25.829917],
+            'Tampere' => ['lat' => 61.415162,'lon' => 23.604597]
         ],
         'Francia' => [
-            'Bergerac' => ['lat' => 0,'lon' => 0],
-            'Beziers' => ['lat' => 0,'lon' => 0],
-            'Biarritz' => ['lat' => 0,'lon' => 0],
-            'Bordeaux' => ['lat' => 0,'lon' => 0],
-            'Brive' => ['lat' => 0,'lon' => 0],
-            'Cercassonne' => ['lat' => 0,'lon' => 0],
-            'Clermont Ferrand' => ['lat' => 0,'lon' => 0],
-            'Dole' => ['lat' => 0,'lon' => 0],
-            'Figari' => ['lat' => 0,'lon' => 0],
-            'Grenoble' => ['lat' => 0,'lon' => 0],
-            'La Rocchelle' => ['lat' => 0,'lon' => 0],
+            'Bergerac' => ['lat' => 44.82355,'lon' => 0.517949],
+            'Beziers' => ['lat' => 43.321155,'lon' => 3.353450],
+            'Biarritz' => ['lat' => 43.471404,'lon' => -1.531492],
+            'Bordeaux' => ['lat' => 44.830593,'lon' => -0.710305],
+            'Brive' => ['lat' => 45.040670,'lon' => 1.489538],
+            'Cercassonne' => ['lat' => 43.214093,'lon' => 2.309582],
+            'Clermont Ferrand' => ['lat' => 45.786413,'lon' => 3.169077],
+            'Dole' => ['lat' => 47.043635,'lon' => 5.425733],
+            'Figari' => ['lat' => 41.499234,'lon' => 9.098541],
+            'Grenoble' => ['lat' => 45.362051,'lon' => 0],
+            'La Rocchelle' => ['lat' => 0,'lon' => 5.331285],
             'Lille' => ['lat' => 0,'lon' => 0],
             'Limoges' => ['lat' => 0,'lon' => 0],
             'Loudres' => ['lat' => 0,'lon' => 0],
@@ -76,52 +76,52 @@ interface Airports{
             'Rodez' => ['lat' => 0,'lon' => 0],
             'Strasbourg' => ['lat' => 0,'lon' => 0],
             'Toulouse' => ['lat' => 0,'lon' => 0],
-            'Tours Valle deòòa Loira' => ['lat' => 0,'lon' => 0]
+            'Tours Valle de Loire' => ['lat' => 0,'lon' => 0]
         ],
         'Germania' => [
-            'Amburgo' => ['lat' => 0,'lon' => 0],
+            'Amburgo' => ['lat' => 53.633339,'lon' => 9.997692],
             'Berlino Brandeburgo' => ['lat' => 0,'lon' => 0],
             'Brema' => ['lat' => 0,'lon' => 0],
             'Colonia' => ['lat' => 0,'lon' => 0],
             'Dortmund' => ['lat' => 0,'lon' => 0],
-            'Dresden' => ['lat' => 0,'lon' => 0],
+            'Dresden' => ['lat' => 51.132399,'lon' => 13.767186],
             'Dusseldorf (Weeze)' => ['lat' => 0,'lon' => 0],
             'Francoforte (Hahn)' => ['lat' => 0,'lon' => 0],
             'Karlsruhe/Baden-Baden' => ['lat' => 0,'lon' => 0],
             'Lipsia' => ['lat' => 0,'lon' => 0],
-            'Memmingen' => ['lat' => 0,'lon' => 0],
+            'Memmingen' => ['lat' => 47.987735,'lon' => 10.232611],
             'Munster' => ['lat' => 0,'lon' => 0],
             'Norimberga' => ['lat' => 0,'lon' => 0]
         ],
         'Giordania' => [
-            'Amman' => ['lat' => 0,'lon' => 0],
-            'Aqaba' => ['lat' => 0,'lon' => 0]
+            'Amman' => ['lat' => 31.722737,'lon' => 35.988496],
+            'Aqaba' => ['lat' => 29.609895,'lon' => 35.020470]
         ],
         'Grecia' => [
-            'Atene' => ['lat' => 0,'lon' => 0],
+            'Atene' => ['lat' => 37.936302,'lon' => 23.948748],
             'Cefalona' => ['lat' => 0,'lon' => 0],
             'Chania (Creta)' => ['lat' => 0,'lon' => 0],
             'Corfù' => ['lat' => 0,'lon' => 0],
             'Heraklion Crete' => ['lat' => 0,'lon' => 0],
-            'Kalamata' => ['lat' => 0,'lon' => 0],
+            'Kalamata' => ['lat' => 37.054501,'lon' => 22.033370],
             'Kos' => ['lat' => 0,'lon' => 0],
             'Mykonos' => ['lat' => 0,'lon' => 0],
             'Preveza - Aktlon' => ['lat' => 0,'lon' => 0],
             'Rodi' => ['lat' => 0,'lon' => 0],
             'Salonicco' => ['lat' => 0,'lon' => 0],
-            'Santorini Nazionale' => ['lat' => 0,'lon' => 0],
+            'Santorini Nazionale' => ['lat' => 36.399856,'lon' => 25.477658],
             'Skiathos' => ['lat' => 0,'lon' => 0],
             'Zacinto' => ['lat' => 0,'lon' => 0]
         ],
         'Irlanda' => [
             'Cork' => ['lat' => 0,'lon' => 0],
-            'Dublino' => ['lat' => 0,'lon' => 0],
+            'Dublino' => ['lat' => 53.426279,'lon' => -6.249888],
             'Kerry' => ['lat' => 0,'lon' => 0],
             'Knock-Irlanda dell\'ovest' => ['lat' => 0,'lon' => 0],
-            'Shannon' => ['lat' => 0,'lon' => 0]
+            'Shannon' => ['lat' => 52.699264,'lon' => -8.914680]
         ],
         'Israele' => [
-            'Tel Aviv' => ['lat' => 0,'lon' => 0]
+            'Tel Aviv' => ['lat' => 32.006015,'lon' => 34.886013]
         ],
         'Italia' => [
             'Alghero' => ['lat' => 0,'lon' => 0],
@@ -129,108 +129,108 @@ interface Airports{
             'Bari' => ['lat' => 0,'lon' => 0],
             'Bologna' => ['lat' => 0,'lon' => 0],
             'Brindisi' => ['lat' => 0,'lon' => 0],
-            'Cagliari' => ['lat' => 0,'lon' => 0],
+            'Cagliari' => ['lat' => 39.253090,'lon' => 9.060028],
             'Catania' => ['lat' => 0,'lon' => 0],
             'Comiso' => ['lat' => 0,'lon' => 0],
             'Crotone' => ['lat' => 0,'lon' => 0],
             'Cuneo' => ['lat' => 0,'lon' => 0],
             'Genova' => ['lat' => 0,'lon' => 0],
-            'Lamezia' => ['lat' => 0,'lon' => 0],
+            'Lamezia' => ['lat' => 38.908947,'lon' => 16.245251],
             'Milano Bergamo' => ['lat' => 0,'lon' => 0],
             'Milano Malpensa' => ['lat' => 0,'lon' => 0],
             'Napoli' => ['lat' => 0,'lon' => 0],
             'Palermo' => ['lat' => 0,'lon' => 0],
             'Parma' => ['lat' => 0,'lon' => 0],
-            'Perugia' => ['lat' => 0,'lon' => 0],
+            'Perugia' => ['lat' => 43.095417,'lon' => 12.503746],
             'Pescara' => ['lat' => 0,'lon' => 0],
             'Pisa' => ['lat' => 0,'lon' => 0],
             'Rimini' => ['lat' => 0,'lon' => 0],
-            'Roma (Ciampino)' => ['lat' => 0,'lon' => 0],
-            'Roma (Fiumicino)' => ['lat' => 0,'lon' => 0],
-            'Trieste' => ['lat' => 0,'lon' => 0],
+            'Roma (Ciampino)' => ['lat' => 41.798571,'lon' => 12.593506],
+            'Roma (Fiumicino)' => ['lat' => 41.803400,'lon' => 12.250740],
+            'Trieste' => ['lat' => 45.822007,'lon' => 13.484241],
             'Venezia (Treviso)' => ['lat' => 0,'lon' => 0],
             'Venezia M.Polo' => ['lat' => 0,'lon' => 0],
             'Verona' => ['lat' => 0,'lon' => 0]
         ],
         'Lettonia' => [
-            'Riga' => ['lat' => 0,'lon' => 0]
+            'Riga' => ['lat' => 56.922377,'lon' => 23.973055]
         ],
         'Lituania' => [
             'Kaunas' => ['lat' => 0,'lon' => 0],
             'Palanga' => ['lat' => 0,'lon' => 0],
-            'Vilnius' => ['lat' => 0,'lon' => 0]
+            'Vilnius' => ['lat' => 54.639621,'lon' => 25.286338]
         ],
         'Lussemburgo' => [
-            'Lussemburgo' => ['lat' => 0,'lon' => 0]
+            'Lussemburgo' => ['lat' => 49.628396,'lon' => 6.214594]
         ],
         'Malta' => [
-            'Malta' => ['lat' => 0,'lon' => 0]
+            'Malta' => ['lat' => 35.852031,'lon' => 14.487055]
         ],
         'Marocco' => [
             'Agadir' => ['lat' => 0,'lon' => 0], 
             'Essaouira' => ['lat' => 0,'lon' => 0], 
             'Fez' => ['lat' => 0,'lon' => 0], 
-            'Marrakech' => ['lat' => 0,'lon' => 0], 
+            'Marrakech' => ['lat' => 31.601087,'lon' => -8.024445], 
             'Nador' => ['lat' => 0,'lon' => 0], 
-            'Ouarzazate' => ['lat' => 0,'lon' => 0], 
+            'Ouarzazate' => ['lat' => 30.936022,'lon' => -6.906885], 
             'Oujda' => ['lat' => 0,'lon' => 0], 
-            'Rabat' => ['lat' => 0,'lon' => 0], 
+            'Rabat' => ['lat' => 34.049670,'lon' => -6.749853], 
             'Tangeri' => ['lat' => 0,'lon' => 0],
             'Tetouan' => ['lat' => 0,'lon' => 0],
         ],
         'Montenegro' => [
-            'Podgorica' => ['lat' => 0,'lon' => 0]
+            'Podgorica' => ['lat' => 42.367756,'lon' => 19.247419]
         ],
         'Norvegia' => [
             'Haugesund' => ['lat' => 0,'lon' => 0],
-            'Oslo' => ['lat' => 0,'lon' => 0],
+            'Oslo' => ['lat' => 60.197433,'lon' => 11.098918],
             'Oslo (Torp)' => ['lat' => 0,'lon' => 0]
         ],
         'Olanda' => [
-            'Amsterdam' => ['lat' => 0,'lon' => 0],
+            'Amsterdam' => ['lat' => 52.310463,'lon' => 4.769219],
             'Eindhoven' => ['lat' => 0,'lon' => 0],
             'Maastricht' => ['lat' => 0,'lon' => 0]
         ],
         'Polonia' => [
             'Breslavia' => ['lat' => 0,'lon' => 0],
             'Bydgoszcz' => ['lat' => 0,'lon' => 0],
-            'Cracovia' => ['lat' => 0,'lon' => 0],
-            'Danzica' => ['lat' => 0,'lon' => 0],
+            'Cracovia' => ['lat' => 50.076472,'lon' => 19.788730],
+            'Danzica' => ['lat' => 54.379227,'lon' => 18.469688],
             'Katowice' => ['lat' => 0,'lon' => 0],
             'Lodz' => ['lat' => 0,'lon' => 0],
-            'Lublin' => ['lat' => 0,'lon' => 0],
+            'Lublin' => ['lat' => 51.235444,'lon' => 22.714541],
             'Olsztyn - Mazury' => ['lat' => 0,'lon' => 0],
             'Poznan' => ['lat' => 0,'lon' => 0],
             'Rzeszow' => ['lat' => 0,'lon' => 0],
             'Stetting' => ['lat' => 0,'lon' => 0],
-            'Varsavia (Modlin)' => ['lat' => 0,'lon' => 0]
+            'Varsavia (Modlin)' => ['lat' => 52.448784,'lon' => 20.650755]
         ],
         'Portogallo' => [
-            'Faro' => ['lat' => 0,'lon' => 0],
-            'Lisbon' => ['lat' => 0,'lon' => 0],
+            'Faro' => ['lat' => 37.016843,'lon' => -7.971447],
+            'Lisbon' => ['lat' => 38.774979,'lon' => -9.135195],
             'Madeira Funchal' => ['lat' => 0,'lon' => 0],
             'Ponta Delgada' => ['lat' => 0,'lon' => 0],
-            'Porto' => ['lat' => 0,'lon' => 0],
+            'Porto' => ['lat' => 41.241542,'lon' => -8.678337],
             'Terceira Lajes' => ['lat' => 0,'lon' => 0]
         ],
         'Regno Unito' => [
             'Aberdeen' => ['lat' => 0,'lon' => 0],
-            'Birmingham' => ['lat' => 0,'lon' => 0],
+            'Birmingham' => ['lat' => 52.452183,'lon' => -1.744762],
             'Bourdermouth' => ['lat' => 0,'lon' => 0],
             'Bristol' => ['lat' => 0,'lon' => 0],
-            'Cardiff' => ['lat' => 0,'lon' => 0],
+            'Cardiff' => ['lat' => 51.398202,'lon' => -3.339740],
             'Derry' => ['lat' => 0,'lon' => 0],
             'East Midlands' => ['lat' => 0,'lon' => 0],
-            'Edimburgo' => ['lat' => 0,'lon' => 0],
+            'Edimburgo' => ['lat' => 55.950662,'lon' => -3.360498],
             'Exter' => ['lat' => 0,'lon' => 0],
-            'Glasgow' => ['lat' => 0,'lon' => 0],
+            'Glasgow' => ['lat' => 55.868807,'lon' => -4.434280],
             'Glasgow (Prestwick)' => ['lat' => 0,'lon' => 0],
             'Leeds Bradford' => ['lat' => 0,'lon' => 0],
-            'Liverpool' => ['lat' => 0,'lon' => 0],
-            'Londra (Gatwick)' => ['lat' => 0,'lon' => 0],
+            'Liverpool' => ['lat' => 53.334716,'lon' => -2.852153],
+            'Londra (Gatwick)' => ['lat' => 51.153380,'lon' => -0.182653],
             'Londra (Luton)' => ['lat' => 0,'lon' => 0],
             'Londra (Stansted)' => ['lat' => 0,'lon' => 0],
-            'Manchester' => ['lat' => 0,'lon' => 0],
+            'Manchester' => ['lat' => 53.355219,'lon' => -2.279024],
             'Newcastle' => ['lat' => 0,'lon' => 0],
             'Newquay Cornovaglia' => ['lat' => 0,'lon' => 0],
             'Teesside' => ['lat' => 0,'lon' => 0]
@@ -239,21 +239,21 @@ interface Airports{
             'Brno' => ['lat' => 0,'lon' => 0],
             'Ostrava' => ['lat' => 0,'lon' => 0],
             'Pardubice' => ['lat' => 0,'lon' => 0],
-            'Prague' => ['lat' => 0,'lon' => 0]
+            'Prague' => ['lat' => 50.101251,'lon' => 14.263160]
         ],
         'Romania' => [
-            'Bucharest (Otopeni)' => ['lat' => 0,'lon' => 0],
+            'Bucharest (Otopeni)' => ['lat' => 44.570169,'lon' => 26.084380],
             'Cluj' => ['lat' => 0,'lon' => 0],
             'Oradea' => ['lat' => 0,'lon' => 0],
             'Sibiu' => ['lat' => 0,'lon' => 0],
             'Suceava' => ['lat' => 0,'lon' => 0],
-            'Timisoara' => ['lat' => 0,'lon' => 0]
+            'Timisoara' => ['lat' => 45.810290,'lon' => 21.321191]
         ],
         'Serbia' => [
-            'Nis' => ['lat' => 0,'lon' => 0]
+            'Nis' => ['lat' => 43.337687,'lon' => 21.867773]
         ],
         'Slovacchia' => [
-            'Bratislava' => ['lat' => 0,'lon' => 0],
+            'Bratislava' => ['lat' => 48.169916,'lon' => 17.210352],
             'Kosice' => ['lat' => 0,'lon' => 0]
         ],
         'Spagna' => [
