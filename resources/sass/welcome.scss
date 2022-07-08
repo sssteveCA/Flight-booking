@@ -3,6 +3,7 @@
 //Variables
 $buttons-tab-number: 4;
 $divs-col-margin-y: 10px;
+$form-buttons-padding: 10px 30px;
 $navs-buttons-padding:10px 50px;
 $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
@@ -60,10 +61,13 @@ $xs-breakpoint: 575px;
             }
             @if $i == 5{
                 @media only screen and (max-width: $xs-breakpoint){
-                    div:nth-child(2){
+                    div:nth-child(5){
                         display: flex;
                         justify-content: center;
                     }
+                }
+                button{
+                    padding: $form-buttons-padding;
                 }
             }
         }

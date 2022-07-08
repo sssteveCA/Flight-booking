@@ -68,9 +68,21 @@
                         </div>
                     </div>
                     <div id="fb-fs5" class="row align-items-center">
-                        <div class="form-floating col-12 col-sm-5 offset-md-6">
-                            <input type="text" id="fb-passengers" class="form-control" name="passengers">
-                            <label for="fb-passengers">Passeggeri</label>
+                        <div class="form-floating col-12 col-sm-5 col-md-3">
+                            <input type="number" id="fb-passengers" class="form-control" name="adults" value="1">
+                            <label for="fb-passengers">Adulti</label>
+                        </div>
+                        <div class="form-floating col-12 col-sm-5 col-md-3">
+                            <input type="number" id="fb-passengers" class="form-control" name="teenagers" value="0">
+                            <label for="fb-passengers">Adolescenti</label>
+                        </div>
+                        <div class="form-floating col-12 col-sm-5 col-md-3 ">
+                            <input type="number" id="fb-passengers" class="form-control" name="children" value="0">
+                            <label for="fb-passengers">Bambini</label>
+                        </div>
+                        <div class="form-floating col-12 col-sm-5 col-md-3 offset-md-3">
+                            <input type="number" id="fb-passengers" class="form-control" name="newborns" value="0">
+                            <label for="fb-passengers">Neonati</label>
                         </div>
                         <div class="col-12 col-sm-3">
                             <button type="submit" class="btn btn-danger">Cerca</button>
