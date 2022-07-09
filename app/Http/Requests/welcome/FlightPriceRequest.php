@@ -51,22 +51,15 @@ class FlightPriceRequest extends FormRequest
 
     public function messages(){
         return [
-            'flight-type.required' => 'Seleziona il tipo di volo',
-            'from.required' => 'Seleziona il paese di provenienza',
-            'from-airport.required' => "Seleziona l'aereoporto di partenza",
-            'to.required' => 'Seleziona il paese di destinazione',
-            'to-airport.required' => "Seleziona l'aereoporto di destinazione",
+            'integer' => "L'attributo :attribute deve contenere un numero intero valido",
+            'required' => "L'attributo :attribute è obbligatorio",
             'oneway-date.required_without_all' => 'Inserisci la data di partenza',
             'rountrip-start-date.required_with' => 'Inserisci anche la data per il volo di ritorno',
             'rountrip-end-date.required_with' => 'Inserisci anche la data per il volo di partenza',
-            'adults.required' => 'Inserisci il numero di passeggeri adulti',
-            'adults.integer' => 'Inserisci il numero di passeggeri adulti',
-            'teenagers.required' => 'Inserisci il numero di passeggeri adolescenti',
-            'teenagers.integer' => 'Inserisci il numero di passeggeri adolescenti',
-            'children.required' => 'Inserisci il numero di passeggeri bambini',
-            'children.integer' => 'Inserisci il numero di passeggeri bambini',
-            'newborns.required' => 'Inserisci il numero di passeggeri neonati',
-            'newborns.integer' => 'Inserisci il numero di passeggeri neonati',
+            'adults.min' => 'Il numero minimo di adulti deve essere 1',
+            'teenagers.min' => 'Il numero di adolescenti non può essere negativo',
+            'children.min' => 'Il numero di bambini non può essere negativo',
+            'newborns.min' => 'Il numero di neonati non può essere negativo',
         ];
     }
 
