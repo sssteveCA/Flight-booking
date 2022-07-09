@@ -41,10 +41,10 @@ class FlightPriceRequest extends FormRequest
             'oneway-date' => 'required_without_all:roundtrip-start-date,roundtrip-end-date',
             'roundtrip-start-date' => 'required_with:roundtrip-end-date',
             'roundtrip-end-date' => 'required_with:roundtrip-start-date',
-            'adults' => 'required',
-            'teenagers' => 'required',
-            'children' => 'required',
-            'newborns' => 'required',
+            'adults' => 'required|integer|min:1',
+            'teenagers' => 'required|integer|min:0',
+            'children' => 'required|integer|min:0',
+            'newborns' => 'required|integer|min:0',
         ];
         
     }
@@ -59,7 +59,32 @@ class FlightPriceRequest extends FormRequest
             'oneway-date.required_without_all' => 'Inserisci la data di partenza',
             'rountrip-start-date.required_with' => 'Inserisci anche la data per il volo di ritorno',
             'rountrip-end-date.required_with' => 'Inserisci anche la data per il volo di partenza',
-            'passengers.required' => 'Seleziona il numero di passeggeri'
+            'adults.required' => 'Inserisci il numero di passeggeri adulti',
+            'adults.integer' => 'Inserisci il numero di passeggeri adulti',
+            'teenagers.required' => 'Inserisci il numero di passeggeri adolescenti',
+            'teenagers.integer' => 'Inserisci il numero di passeggeri adolescenti',
+            'children.required' => 'Inserisci il numero di passeggeri bambini',
+            'children.integer' => 'Inserisci il numero di passeggeri bambini',
+            'newborns.required' => 'Inserisci il numero di passeggeri neonati',
+            'newborns.integer' => 'Inserisci il numero di passeggeri neonati',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'flight-type' => 'Tipo di volo',
+            'from' => 'Paese di partenza',
+            'from-airport' => 'Aereoporto di partenza',
+            'to' => 'Paese di destinazione',
+            'to-airport' => 'Aereoporto di destinazione',
+            'oneway-date' => 'Data del volo di partenza',
+            'roundtrip-start-date' => 'Data del volo di partenza',
+            'roundtrip-end-date' => 'Data del volo di ritorno',
+            'adults' => 'Numero di adulti',
+            'teenagers' => 'Numero di adolescenti',
+            'children' => 'Numero di bambini',
+            'newborns' => 'Numero di neonati',
         ];
     }
 
