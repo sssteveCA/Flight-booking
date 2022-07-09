@@ -3,10 +3,15 @@
 namespace App\Classes\Welcome;
 
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Welcome\FlightPriceErrors as Fpe;
+use App\Traits\ErrorTrait;
+use App\Traits\MmCommonTrait;
 
 
 //This class calculates the price of selected flight
-class FlightPrice{
+class FlightPrice implements Fpe{
+
+    use ErrorTrait,MmCommonTrait;
 
     public string $departure_country;
     public string $arrival_country;
@@ -31,11 +36,21 @@ class FlightPrice{
     public array $timetable_daily_bands;
     public array $timetable_days;
     public array $timetable_months;
-
     
     public function __construct(array $data)
     {
-        
+        if(!$this->validate($data))
+            throw new \Exception(Fpe::INVALIDDATA_EXC);
+        $this->setValues($data);
+    }
+
+    public function getError(){
+        switch($this->errno){
+            default:
+                $this->error = null;
+                break;
+        }
+        return $this->error;
     }
     
     //Validate input data
@@ -150,21 +165,11 @@ class FlightPrice{
         $this->timetable_months = $data['timetable_months'];
     }
 
-
-    public function __call($name, $arguments)
-    {
-        Log::channel('stdout')->error("Il metodo {$name} non esiste in FlightPrice");
-    }
-
     public function __debugInfo()
     {
 
     }
 
-    public function __get($name)
-    {
-        Log::channel('stdout')->error("La proprietà {$name} non esiste in FlightPrice");
-    }
 
     public function __set_state($properties)
     {
@@ -184,11 +189,6 @@ class FlightPrice{
         $this->newborns = $properties['newborns'];
         $this->price = $properties['price'];
         return $this;
-    }
-
-    public function __toString()
-    {
-        return "Oggetto di tipo FlightPrice";
     }
 
 }
