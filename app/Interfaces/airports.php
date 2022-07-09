@@ -284,25 +284,25 @@ interface Airports{
             'Valladolid' => ['lat' => 41.707024,'lon' => -4.844998]
         ],
         'Svezia' => [
-            'Goteborg Landvetter' => ['lat' => 0,'lon' => 0],
+            'Goteborg Landvetter' => ['lat' => 57.669049,'lon' => 12.292829],
             'Lulea' => ['lat' => 0,'lon' => 0],
-            'Malmo' => ['lat' => 0,'lon' => 0],
+            'Malmo' => ['lat' => 55.535349,'lon' => 13.372398],
             'Orebro' => ['lat' => 0,'lon' => 0],
-            'Skelleftea' => ['lat' => 0,'lon' => 0],
-            'Stoccolma Vasteras' => ['lat' => 0,'lon' => 0],
-            'Stockolm Arianda' => ['lat' => 0,'lon' => 0],
+            'Skelleftea' => ['lat' => 64.624012,'lon' => 21.064522],
+            'Stoccolma Vasteras' => ['lat' => 59.602344,'lon' => 16.630677],
+            'Stockholm Arianda' => ['lat' => 59.650152,'lon' => 17.923845],
             'Vaxjo Smaland' => ['lat' => 0,'lon' => 0],
             'Visby Gotland' => ['lat' => 0,'lon' => 0]
         ],
         'Svizzera' => [
-            'Basel' => ['lat' => 0,'lon' => 0]
+            'Basel' => ['lat' => 47.596030,'lon' => 7.522657]
         ],
         'Turchia' => [
-            'Bodrum' => ['lat' => 0,'lon' => 0],
-            'Dalaman' => ['lat' => 0,'lon' => 0]
+            'Bodrum' => ['lat' => 37.248148,'lon' => 27.664078],
+            'Dalaman' => ['lat' => 36.717653,'lon' => 28.792802]
         ],
         'Ungheria' => [
-            'Budapest' => ['lat' => 0,'lon' => 0]
+            'Budapest' => ['lat' => 47.438499,'lon' => 19.253058]
         ],        
     ];
 }
