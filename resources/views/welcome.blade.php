@@ -69,19 +69,19 @@
                     </div>
                     <div id="fb-fs5" class="row align-items-center">
                         <div class="form-floating col-12 col-sm-5 col-md-3">
-                            <input type="number" id="fb-adults" class="form-control" name="adults" value="1">
+                            <input type="number" id="fb-adults" class="form-control" name="adults" value="1" min="1">
                             <label for="fb-adults">Adulti</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-md-3">
-                            <input type="number" id="fb-teenagers" class="form-control" name="teenagers" value="0">
+                            <input type="number" id="fb-teenagers" class="form-control" name="teenagers" value="0" min="0">
                             <label for="fb-teenagers">Adolescenti</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-md-3 ">
-                            <input type="number" id="fb-children" class="form-control" name="children" value="0">
+                            <input type="number" id="fb-children" class="form-control" name="children" value="0" min="0">
                             <label for="fb-children">Bambini</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-md-3 offset-md-3">
-                            <input type="number" id="fb-newborns" class="form-control" name="newborns" value="0">
+                            <input type="number" id="fb-newborns" class="form-control" name="newborns" value="0" min="0">
                             <label for="fb-newborns">Neonati</label>
                         </div>
                         <div class="col-12 col-sm-3">
