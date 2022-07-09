@@ -13,6 +13,11 @@ class FlightPrice implements Fpe{
 
     use ErrorTrait,MmCommonTrait;
 
+    const MAX_LAT = 90;
+    const MIN_LAT = -90;
+    const MAX_LON = 180;
+    const MIN_LON = -180;
+
     public string $departure_country;
     public string $arrival_country;
     public string $departure_airport;
@@ -51,6 +56,13 @@ class FlightPrice implements Fpe{
                 break;
         }
         return $this->error;
+    }
+
+    //calculate flight price based on provided data
+    private function calcPrice(): bool{
+        $calculated = false;
+        $distance = $this->getDistance();
+        return $calculated;
     }
     
     //Validate input data
@@ -163,6 +175,51 @@ class FlightPrice implements Fpe{
         $this->timetable_daily_bands = $data['timetable_daily_bands'];
         $this->timetable_days = $data['newborns'];
         $this->timetable_months = $data['timetable_months'];
+    }
+
+    //get the distance from departure to arrival airport
+    private function getDistance(): float{
+        $da_lat = $this->departure_airport_lat;
+        $da_lon = $this->departure_airport_lon;
+        $aa_lat = $this->arrival_airport_lat;
+        $aa_lon = $this->arrival_airport_lon;
+        if($da_lat >= 0 && $aa_lat >= 0){
+            $lat_diff = abs($da_lat - $aa_lat);
+        }
+        else if($da_lat >= 0 && $aa_lat < 0){
+            $lat_diff = $da_lat + abs($aa_lat);  
+        }
+        else if($da_lat < 0 && $aa_lat >= 0){
+            $lat_diff = abs($da_lat) + $aa_lat;
+        }
+        else if($da_lat < 0 && $aa_lat < 0){
+            $lat_diff = abs($da_lat - $aa_lat);
+        }
+        if($da_lon >= 0 && $aa_lon >= 0){
+            $lon_diff = abs($da_lon - $aa_lon);
+        }
+        else if($da_lon >= 0 && $aa_lon < 0){
+            $lon_diff_1 = $da_lon + abs($aa_lon);
+            $lon_diff_2 = (FlightPrice::MAX_LON - $da_lon) + abs(FlightPrice::MIN_LON - $aa_lon);
+            if($lon_diff_1 <= $lon_diff_2)
+                $lon_diff = $lon_diff_1;
+            else
+                $lon_diff = $lon_diff_2;
+        }
+        else if($da_lon < 0 && $aa_lon >= 0){
+            $lon_diff_1 = abs($da_lon) + $aa_lon;
+            $lon_diff_2 = abs(FlightPrice::MIN_LON - $da_lon) + (FlightPrice::MAX_LON - $aa_lon);
+            if($lon_diff_1 <= $lon_diff_2)
+                $lon_diff = $lon_diff_1;
+            else
+                $lon_diff = $lon_diff_2;
+
+        }
+        else if($da_lon < 0 && $aa_lon < 0){
+            $lon_diff = abs($da_lon - $aa_lon);
+        }
+        $dinstance = sqrt(pow($lat_diff,2) + (pow($lon_diff,2)));
+        return $dinstance;
     }
 
     public function __debugInfo()
