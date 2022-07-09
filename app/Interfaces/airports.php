@@ -3,6 +3,20 @@
 namespace App\Interfaces;
 
 interface Airports{
+
+    //Price base for every age bands with companies list per 1 coordinate change
+    const AGE_BANDS = [
+        'adult' => [Airports::COMPANIES_LIST[0] => 1.35],
+        'teenager' => [Airports::COMPANIES_LIST[0] => 0.90],
+        'children' => [Airports::COMPANIES_LIST[0] => 0.55],
+        'newborn' => [Airports::COMPANIES_LIST[0] => 0.40],
+    ];
+
+    const COMPANIES_LIST = ['flight_company'];
+
+    //Discount for every day that user books before compared to booking day 
+    const DAYS_BEFORE_DISCOUNT = 0.25;
+
     const AIRPORT_LIST = [
         'Austria' => [
             'Klaugefurt' => ['lat' => 46.649771,'lon' => 14.325294],
@@ -305,32 +319,59 @@ interface Airports{
             'Budapest' => ['lat' => 47.438499,'lon' => 19.253058]
         ],        
     ];
+
     //Price base for every hour with companies list per 1 coordinate change
     const TIMETABLE_DAILY_BANDS = [
-        '00' => ['flight_company' => 2.50],
-        '01' => ['flight_company' => 2.35],
-        '02' => ['flight_company' => 2.25],
-        '03' => ['flight_company' => 2.28],
-        '04' => ['flight_company' => 2.63],
-        '05' => ['flight_company' => 2.58],
-        '06' => ['flight_company' => 2.70],
-        '07' => ['flight_company' => 2.77],
-        '08' => ['flight_company' => 2.76],
-        '09' => ['flight_company' => 2.90],
-        '10' => ['flight_company' => 2.98],
-        '11' => ['flight_company' => 3.25],
-        '12' => ['flight_company' => 3.17],
-        '13' => ['flight_company' => 3.60],
-        '14' => ['flight_company' => 3.55],
-        '15' => ['flight_company' => 3.45],
-        '16' => ['flight_company' => 3.50],
-        '17' => ['flight_company' => 3.30],
-        '18' => ['flight_company' => 3.05],
-        '19' => ['flight_company' => 2.90],
-        '20' => ['flight_company' => 2.92],
-        '21' => ['flight_company' => 2.78],
-        '22' => ['flight_company' => 2.69],
-        '23' => ['flight_company' => 2.60],
+        '00' => [Airports::COMPANIES_LIST[0] => 1.50],
+        '01' => [Airports::COMPANIES_LIST[0] => 1.35],
+        '02' => [Airports::COMPANIES_LIST[0] => 1.25],
+        '03' => [Airports::COMPANIES_LIST[0] => 1.28],
+        '04' => [Airports::COMPANIES_LIST[0] => 1.63],
+        '05' => [Airports::COMPANIES_LIST[0] => 1.58],
+        '06' => [Airports::COMPANIES_LIST[0] => 1.70],
+        '07' => [Airports::COMPANIES_LIST[0] => 1.77],
+        '08' => [Airports::COMPANIES_LIST[0] => 1.76],
+        '09' => [Airports::COMPANIES_LIST[0] => 1.90],
+        '10' => [Airports::COMPANIES_LIST[0] => 1.98],
+        '11' => [Airports::COMPANIES_LIST[0] => 2.25],
+        '12' => [Airports::COMPANIES_LIST[0] => 2.17],
+        '13' => [Airports::COMPANIES_LIST[0] => 2.60],
+        '14' => [Airports::COMPANIES_LIST[0] => 2.55],
+        '15' => [Airports::COMPANIES_LIST[0] => 2.45],
+        '16' => [Airports::COMPANIES_LIST[0] => 2.50],
+        '17' => [Airports::COMPANIES_LIST[0] => 2.30],
+        '18' => [Airports::COMPANIES_LIST[0] => 2.05],
+        '19' => [Airports::COMPANIES_LIST[0] => 1.90],
+        '20' => [Airports::COMPANIES_LIST[0] => 1.92],
+        '21' => [Airports::COMPANIES_LIST[0] => 1.78],
+        '22' => [Airports::COMPANIES_LIST[0] => 1.69],
+        '23' => [Airports::COMPANIES_LIST[0] => 1.60],
+    ];
+
+    //Price base for every day of the week per 1 coordinate change
+    const TIMETABLE_DAYS = [
+        'monday' => [Airports::COMPANIES_LIST[0] => 3.70],
+        'tuesday' => [Airports::COMPANIES_LIST[0] => 2.85],
+        'wednesdayday' => [Airports::COMPANIES_LIST[0] => 2.99],
+        'thursday' => [Airports::COMPANIES_LIST[0] => 3.60],
+        'friday' => [Airports::COMPANIES_LIST[0] => 4.10],
+        'saturday' => [Airports::COMPANIES_LIST[0] => 4.47],
+        'sunday' => [Airports::COMPANIES_LIST[0] => 4.62]
+    ];
+
+    const TIMETABLE_MONTHS = [
+        '01' => [Airports::COMPANIES_LIST[0] => 0],
+        '02' => [Airports::COMPANIES_LIST[0] => 0],
+        '03' => [Airports::COMPANIES_LIST[0] => 0],
+        '04' => [Airports::COMPANIES_LIST[0] => 0],
+        '05' => [Airports::COMPANIES_LIST[0] => 0],
+        '06' => [Airports::COMPANIES_LIST[0] => 0],
+        '07' => [Airports::COMPANIES_LIST[0] => 0],
+        '08' => [Airports::COMPANIES_LIST[0] => 0],
+        '09' => [Airports::COMPANIES_LIST[0] => 0],
+        '10' => [Airports::COMPANIES_LIST[0] => 0],
+        '11' => [Airports::COMPANIES_LIST[0] => 0],
+        '12' => [Airports::COMPANIES_LIST[0] => 0]
     ];
 }
 ?>
