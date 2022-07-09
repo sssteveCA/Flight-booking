@@ -305,5 +305,32 @@ interface Airports{
             'Budapest' => ['lat' => 47.438499,'lon' => 19.253058]
         ],        
     ];
+    //Price base for every hour with companies list per 1 coordinate change
+    const TIMETABLE_DAILY_BANDS = [
+        '00' => ['flight_company' => 2.50],
+        '01' => ['flight_company' => 2.35],
+        '02' => ['flight_company' => 2.25],
+        '03' => ['flight_company' => 2.28],
+        '04' => ['flight_company' => 2.63],
+        '05' => ['flight_company' => 2.58],
+        '06' => ['flight_company' => 2.70],
+        '07' => ['flight_company' => 2.77],
+        '08' => ['flight_company' => 2.76],
+        '09' => ['flight_company' => 2.90],
+        '10' => ['flight_company' => 2.98],
+        '11' => ['flight_company' => 3.25],
+        '12' => ['flight_company' => 3.17],
+        '13' => ['flight_company' => 3.60],
+        '14' => ['flight_company' => 3.55],
+        '15' => ['flight_company' => 3.45],
+        '16' => ['flight_company' => 3.50],
+        '17' => ['flight_company' => 3.30],
+        '18' => ['flight_company' => 3.05],
+        '19' => ['flight_company' => 2.90],
+        '20' => ['flight_company' => 2.92],
+        '21' => ['flight_company' => 2.78],
+        '22' => ['flight_company' => 2.69],
+        '23' => ['flight_company' => 2.60],
+    ];
 }
 ?>
