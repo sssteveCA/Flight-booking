@@ -35,6 +35,7 @@ class FlightPrice implements Fpe{
     public string $company_name;
     public float $days_before_discount; //Percentage of discount for every day earlier the flight was booked
 
+    public string $hours; //Flight hours (H:m)
     public float $distance; //Distance in coordinates between departure and arrival airport
     public float $passengers_price; //Subtotal price for number and type of passengers
     public float $day_band_price; //Subtotal price depending on day band the flight was booked
@@ -154,6 +155,11 @@ class FlightPrice implements Fpe{
         return $this->distance;
     }
 
+    private function setFlightHours($hour){
+        $min = mt_rand(0,59);
+        $this->hours = $hour.':'.$min;
+    }
+
     private function setSubprices(array $data):bool{
         $setted = false;
         $this->errno = 0;
@@ -161,6 +167,7 @@ class FlightPrice implements Fpe{
         $this->passengers_price = $this->distance * (($this->adults * $ab['adult'][$this->company_name]) + ($this->teenagers * $ab['teenager'][$this->company_name]) + ($this->children * $ab['children'][$this->company_name]) + ($this->newborns['newborns'][$this->company_name]));
         $tdb = $data['timetable_daily_bands'];
         $day_band_key = array_rand($tdb);
+        $this->setFlightHours($day_band_key);
         $this->day_band_price = $this->distance * ($tdb[$day_band_key][$this->company_name]);
         $date_params = $this->getDateParams($this->flight_date);
         if(sizeof($date_params) > 0){

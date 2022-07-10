@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Interfaces\Airports as A;
 use App\Interfaces\Airports;
 use App\Interfaces\Constants as C;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
@@ -55,15 +56,56 @@ class FlightSearchController extends Controller
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
                 $fl_outbound = new FlightPrice($data_outbound);
+                Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
                 $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
                 $fl_return = new FlightPrice($data_return);
+                Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
+                $flights = [
+                    'outbound' => [
+                        'company_name' => $fl_outbound->company_name,
+                        'departure_country' => $fl_outbound->departure_country,
+                        'departure_airport' => $fl_outbound->departure_airport,
+                        'flight_date' => $fl_outbound->flight_date,
+                        'hours' => $fl_outbound->hours,
+                        'arrival_country' => $fl_outbound->arrival_country,
+                        'arrival_airport' => $fl_outbound->arrival_airport,
+                        'total_price' => $fl_outbound->total_price
+                    ],
+                    'return' => [
+                        'company_name' => $fl_return->company_name,
+                        'departure_country' => $fl_return->departure_country,
+                        'departure_airport' => $fl_return->departure_airport,
+                        'flight_date' => $fl_return->flight_date,
+                        'hours' => $fl_return->hours,
+                        'arrival_country' => $fl_return->arrival_country,
+                        'arrival_airport' => $fl_return->arrival_airport,
+                        'total_price' => $fl_return->total_price
+                    ]
+                ];
             }
             else if($flight_type = 'oneway'){
                 $data_oneway = $this->setFlightPriceArray($inputs,'oneway');
                 $fl_oneway = new FlightPrice($data_oneway);
+                $flights = [
+                    'oneway' => [
+                        'company_name' => $fl_oneway->company_name,
+                        'departure_country' => $fl_oneway->departure_country,
+                        'departure_airport' => $fl_oneway->departure_airport,
+                        'flight_date' => $fl_oneway->flight_date,
+                        'hours' => $fl_oneway->hours,
+                        'arrival_country' => $fl_oneway->arrival_country,
+                        'arrival_airport' => $fl_oneway->arrival_airport,
+                        'total_price' => $fl_oneway->total_price
+                    ]
+                ];
             }
         }catch(\Exception $e){
-
+            Log::channel('stdout')->error("Flight search controller exception => ".var_export($e,true));
+            $errors_array = [ $e->getMessage()];
+            throw new HttpResponseException(
+                response()->view('welcome/flightpriceresult',['errors_array' => $errors_array],400)
+                /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
+            );
         }
         return view('welcome/flightpriceresult',['inputs' => $inputs, 'flights' => $flights]);
     }
