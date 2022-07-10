@@ -31,9 +31,11 @@
         },
         "files" : [
             "app/Classes/usermanager.php",
-            "app/Classes/constants.php",
             "app/Classes/apiusermanager.php",
-            "app/Interfaces/constants.php"
+            "app/Classes/welcome/flightprice.php",
+            "app/Interfaces/airports.php",
+            "app/Interfaces/constants.php",
+            "app/Interfaces/flightprice_errors.php"
         ]
     },
     "autoload-dev": {

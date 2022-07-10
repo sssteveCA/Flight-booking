@@ -6,6 +6,7 @@ namespace App\Interfaces;
 interface Constants{
     //errors
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
+    const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";

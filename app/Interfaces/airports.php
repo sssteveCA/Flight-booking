@@ -15,9 +15,11 @@ interface Airports{
     const COMPANIES_LIST = ['flight_company'];
 
     //Discount for every day that user books before compared to booking day(Percentage)
-    const DAYS_BEFORE_DISCOUNT = 1;
+    const DAYS_BEFORE_DISCOUNT_LIST = [
+        Airports::COMPANIES_LIST[0] => 0.75
+    ];
 
-    const AIRPORT_LIST = [
+    const AIRPORTS_LIST = [
         'Austria' => [
             'Klaugefurt' => ['lat' => 46.649771,'lon' => 14.325294],
             'Salisburgo' => ['lat' => 47.793988,'lon' => 13.003525],
