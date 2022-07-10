@@ -89,7 +89,8 @@ class FlightPrice implements Fpe{
         $date_obj = DateTimeImmutable::createFromFormat('Y-m-d',$date);
         if($date_obj !== false){
             //Date created successfully
-            $params['day_week_name'] = $date_obj->format('L');
+            $uppercase_dayname = $date_obj->format('l');
+            $params['day_week_name'] = strtolower($uppercase_dayname);
             $params['month_number'] = $date_obj->format('m');
         }
         return $params;
@@ -170,18 +171,19 @@ class FlightPrice implements Fpe{
         $setted = false;
         $this->errno = 0;
         $ab = $data['age_bands'];
-        $this->passengers_price = $this->distance * (($this->adults * $ab['adult']) + ($this->teenagers * $ab['teenager']) + ($this->children * $ab['children']) + ($this->newborns['newborns']));
+        $this->passengers_price = $this->distance * (($this->adults * $ab['adult']) + ($this->teenagers * $ab['teenager']) + ($this->children * $ab['child']) + ($this->newborns * $ab['newborn']));
         $tdb = $data['timetable_daily_bands'];
         $day_band_key = array_rand($tdb);
         $this->setFlightHours($day_band_key);
-        $this->day_band_price = $this->distance * ($tdb[$day_band_key][$this->company_name]);
+        $this->day_band_price = $this->distance * ($tdb[$day_band_key]);
         $date_params = $this->getDateParams($this->flight_date);
+        Log::channel('stdout')->debug('FlightPrice setSubprices date params array => '.var_export($date_params,true));
         if(sizeof($date_params) > 0){
             //Array is not empty
             $td = $data['timetable_days'];
-            $this->day_price = $this->distance * $td[$date_params['day_week_name']][$this->company_name];
+            $this->day_price = $this->distance * $td[$date_params['day_week_name']];
             $tm = $data['timetable_months'];
-            $this->month_price = $this->distance * $tm['month_number'][$this->company_name];
+            $this->month_price = $this->distance * $tm[$date_params['month_number']];
             $setted = true;
         }//if(sizeof($date_params) > 0){
         else

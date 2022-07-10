@@ -9,7 +9,7 @@ interface Airports{
         Airports::COMPANIES_LIST[0] => [
             'adult' =>  1.35,
             'teenager' =>  0.90,
-            'children'  => 0.55,
+            'child'  => 0.55,
             'newborn' =>  0.40,
         ]
     ];
