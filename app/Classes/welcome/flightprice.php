@@ -28,7 +28,6 @@ class FlightPrice implements Fpe{
     public float $arrival_airport_lat;
     public float $arrival_airport_lon;
     public string $flight_date;
-    public string $flight_id;
     public int $adults;
     public int $teenagers;
     public int $children;
@@ -49,6 +48,7 @@ class FlightPrice implements Fpe{
         if(!$this->validate($data))
             throw new \Exception(Fpe::INVALIDDATA_EXC);
         $this->setValues($data);
+        $this->calcPrice($data);
     }
 
     public function getError(){
@@ -70,6 +70,13 @@ class FlightPrice implements Fpe{
         $this->getDistance();
         if($this->setSubprices($data)){
             //Subprices setted successfully
+            if($this->setDaysBefore($data)){
+                //Got days difference from the dates provided
+                $subtotal = $this->passengers_price + $this->day_band_price + $this->day_price + $this->month_price;
+                $subtotal_day_discount = $subtotal * ($this->days_before_discount/100);
+                $this->total_price = $subtotal - ($subtotal_day_discount * $this->days_before);
+                $calculated = true;
+            }
         }//if($this->setSubprices($data)){
         return $calculated;
     }
@@ -161,7 +168,7 @@ class FlightPrice implements Fpe{
             $td = $data['timetable_days'];
             $this->day_price = $this->distance * $td[$date_params['day_week_name']][$this->company_name];
             $tm = $data['timetable_months'];
-            $tm = $this->distance * $tm['month_number'][$this->company_name];
+            $this->month_price = $this->distance * $tm['month_number'][$this->company_name];
             $setted = true;
         }//if(sizeof($date_params) > 0){
         else
@@ -276,7 +283,31 @@ class FlightPrice implements Fpe{
 
     public function __debugInfo()
     {
-
+        return [
+            'departure_country' => $this->departure_country,
+            'arrival_country' => $this->arrival_country,
+            'departure_airport' => $this->departure_airport,
+            'departure_airport_lat' => $this->departure_airport_lat,
+            'departure_airport_lon' => $this->departure_airport_lon,
+            'arrival_airport' => $this->arrival_airport,
+            'arrival_airport_lat' => $this->arrival_airport_lat,
+            'arrival_airport_lon' => $this->arrival_airport_lon,
+            'flight_date' => $this->flight_date,
+            'adults' => $this->adults,
+            'teenagers' => $this->teenagers,
+            'children' => $this->children,
+            'newborns' => $this->newborns,
+            'company_name' => $this->company_name,
+            'days_before_discount' => $this->days_before_discount,
+            'distance' => $this->distance,
+            'passengers_price' => $this->passengers_price,
+            'day_band_price' => $this->day_band_price,
+            'day_price' => $this->day_price,
+            'month_price' => $this->month_price,
+            'days_before' => $this->days_before,
+            'month_price' => $this->month_price,
+            'total_price' => $this->total_price,
+        ];
     }
 
 
@@ -291,12 +322,17 @@ class FlightPrice implements Fpe{
         $this->arrival_airport_lat = $properties['arrival_airport_lat'];
         $this->arrival_airport_lon = $properties['arrival_airport_lon'];
         $this->flight_date = $properties['flight_date'];
-        $this->flight_id = $properties['flight_id'];
         $this->adults = $properties['adults'];
         $this->teenagers = $properties['teenagers'];
         $this->children = $properties['children'];
         $this->newborns = $properties['newborns'];
-        $this->price = $properties['price'];
+        $this->distance = $properties['distance'];
+        $this->passengers_price = $properties['passengers_price'];
+        $this->day_band_price = $properties['day_band_price'];
+        $this->day_price = $properties['day_price'];
+        $this->month_price = $properties['month_price'];
+        $this->days_before = $properties['days_before'];
+        $this->total_price = $properties['total_price'];
         return $this;
     }
 
