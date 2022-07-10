@@ -149,6 +149,8 @@ class FlightSearchController extends Controller
             'newborns' => $inputs['newborns'],
             'company_name' => $cn,
             'days_before_discount' => A::DAYS_BEFORE_DISCOUNT_LIST[$cn],
+            'age_bands' => A::AGE_BANDS[$cn],
+            'timetable_daily_bands' => A::TIMETABLE_DAILY_BANDS[$cn]
         ];
         //Log::channel('stdout')->info('setFlightPrice method data => '.var_export($data,true));
         return $data;

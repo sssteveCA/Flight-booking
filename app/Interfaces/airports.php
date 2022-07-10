@@ -6,10 +6,12 @@ interface Airports{
 
     //Price base for every age bands with companies list per 1 coordinate change
     const AGE_BANDS = [
-        'adult' => [Airports::COMPANIES_LIST[0] => 1.35],
-        'teenager' => [Airports::COMPANIES_LIST[0] => 0.90],
-        'children' => [Airports::COMPANIES_LIST[0] => 0.55],
-        'newborn' => [Airports::COMPANIES_LIST[0] => 0.40],
+        Airports::COMPANIES_LIST[0] => [
+            'adult' =>  1.35,
+            'teenager' =>  0.90,
+            'children'  => 0.55,
+            'newborn' =>  0.40,
+        ]
     ];
 
     const COMPANIES_LIST = ['flight_company'];
@@ -324,56 +326,62 @@ interface Airports{
 
     //Price base for every hour with companies list per 1 coordinate change
     const TIMETABLE_DAILY_BANDS = [
-        '00' => [Airports::COMPANIES_LIST[0] => 1.50],
-        '01' => [Airports::COMPANIES_LIST[0] => 1.35],
-        '02' => [Airports::COMPANIES_LIST[0] => 1.25],
-        '03' => [Airports::COMPANIES_LIST[0] => 1.28],
-        '04' => [Airports::COMPANIES_LIST[0] => 1.63],
-        '05' => [Airports::COMPANIES_LIST[0] => 1.58],
-        '06' => [Airports::COMPANIES_LIST[0] => 1.70],
-        '07' => [Airports::COMPANIES_LIST[0] => 1.77],
-        '08' => [Airports::COMPANIES_LIST[0] => 1.76],
-        '09' => [Airports::COMPANIES_LIST[0] => 1.90],
-        '10' => [Airports::COMPANIES_LIST[0] => 1.98],
-        '11' => [Airports::COMPANIES_LIST[0] => 2.25],
-        '12' => [Airports::COMPANIES_LIST[0] => 2.17],
-        '13' => [Airports::COMPANIES_LIST[0] => 2.60],
-        '14' => [Airports::COMPANIES_LIST[0] => 2.55],
-        '15' => [Airports::COMPANIES_LIST[0] => 2.45],
-        '16' => [Airports::COMPANIES_LIST[0] => 2.50],
-        '17' => [Airports::COMPANIES_LIST[0] => 2.30],
-        '18' => [Airports::COMPANIES_LIST[0] => 2.05],
-        '19' => [Airports::COMPANIES_LIST[0] => 1.90],
-        '20' => [Airports::COMPANIES_LIST[0] => 1.92],
-        '21' => [Airports::COMPANIES_LIST[0] => 1.78],
-        '22' => [Airports::COMPANIES_LIST[0] => 1.69],
-        '23' => [Airports::COMPANIES_LIST[0] => 1.60],
+        Airports::COMPANIES_LIST[0] => [
+            '00' => 1.50,
+            '01' => 1.35,
+            '02' => 1.25,
+            '03' => 1.28,
+            '04' => 1.63,
+            '05' => 1.58,
+            '06' => 1.70,
+            '07' => 1.77,
+            '08' => 1.76,
+            '09' => 1.90,
+            '10' => 1.98,
+            '11' => 2.25,
+            '12' => 2.17,
+            '13' => 2.60,
+            '14' => 2.55,
+            '15' => 2.45,
+            '16' => 2.50,
+            '17' => 2.30,
+            '18' => 2.05,
+            '19' => 1.90,
+            '20' => 1.92,
+            '21' => 1.78,
+            '22' => 1.69,
+            '23' => 1.60
+        ]
     ];
 
     //Price base for every day of the week per 1 coordinate change
     const TIMETABLE_DAYS = [
-        'monday' => [Airports::COMPANIES_LIST[0] => 3.70],
-        'tuesday' => [Airports::COMPANIES_LIST[0] => 2.85],
-        'wednesday' => [Airports::COMPANIES_LIST[0] => 2.99],
-        'thursday' => [Airports::COMPANIES_LIST[0] => 3.60],
-        'friday' => [Airports::COMPANIES_LIST[0] => 4.10],
-        'saturday' => [Airports::COMPANIES_LIST[0] => 4.47],
-        'sunday' => [Airports::COMPANIES_LIST[0] => 4.62]
+        Airports::COMPANIES_LIST[0] => [
+            'monday' =>  3.70,
+            'tuesday' =>  2.85,
+            'wednesday' =>  2.99,
+            'thursday' =>  3.60,
+            'friday' =>  4.10,
+            'saturday' =>  4.47,
+            'sunday' =>  4.62
+        ]
     ];
 
     const TIMETABLE_MONTHS = [
-        '01' => [Airports::COMPANIES_LIST[0] => 0],
-        '02' => [Airports::COMPANIES_LIST[0] => 0],
-        '03' => [Airports::COMPANIES_LIST[0] => 0],
-        '04' => [Airports::COMPANIES_LIST[0] => 0],
-        '05' => [Airports::COMPANIES_LIST[0] => 0],
-        '06' => [Airports::COMPANIES_LIST[0] => 0],
-        '07' => [Airports::COMPANIES_LIST[0] => 0],
-        '08' => [Airports::COMPANIES_LIST[0] => 0],
-        '09' => [Airports::COMPANIES_LIST[0] => 0],
-        '10' => [Airports::COMPANIES_LIST[0] => 0],
-        '11' => [Airports::COMPANIES_LIST[0] => 0],
-        '12' => [Airports::COMPANIES_LIST[0] => 0]
+        Airports::COMPANIES_LIST[0] => [
+            '01' => 0,
+            '02' => 0,
+            '03' => 0,
+            '04' => 0,
+            '05' => 0,
+            '06' => 0,
+            '07' => 0,
+            '08' => 0,
+            '09' => 0,
+            '10' => 0,
+            '11' => 0,
+            '12' => 0
+        ]
     ];
 }
 ?>

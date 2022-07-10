@@ -160,6 +160,7 @@ class FlightPrice implements Fpe{
     }
 
     private function setFlightHours($hour){
+        Log::channel('stdout')->debug('FlightPrice setFlightHours');
         $min = mt_rand(0,59);
         $this->hours = $hour.':'.$min;
     }
@@ -169,7 +170,7 @@ class FlightPrice implements Fpe{
         $setted = false;
         $this->errno = 0;
         $ab = $data['age_bands'];
-        $this->passengers_price = $this->distance * (($this->adults * $ab['adult'][$this->company_name]) + ($this->teenagers * $ab['teenager'][$this->company_name]) + ($this->children * $ab['children'][$this->company_name]) + ($this->newborns['newborns'][$this->company_name]));
+        $this->passengers_price = $this->distance * (($this->adults * $ab['adult']) + ($this->teenagers * $ab['teenager']) + ($this->children * $ab['children']) + ($this->newborns['newborns']));
         $tdb = $data['timetable_daily_bands'];
         $day_band_key = array_rand($tdb);
         $this->setFlightHours($day_band_key);
@@ -259,7 +260,6 @@ class FlightPrice implements Fpe{
         else $valid = false;
         if(isset($data['children'])){
             if(!is_numeric($data['children']))$valid = false;
-
         }
         else $valid = false;
         if(isset($data['newborns'])){
