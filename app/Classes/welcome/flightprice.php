@@ -32,15 +32,15 @@ class FlightPrice implements Fpe{
     public int $teenagers;
     public int $children;
     public int $newborns;
-    public float $price;
+    public string $company_name;
+    public float $days_before_discount; //Percentage of discount for every day earlier the flight was booked
 
-    public array $age_bands;
-    public array $airports_list;
-    public array $companies_list;
-    public float $days_before_discount;
-    public array $timetable_daily_bands;
-    public array $timetable_days;
-    public array $timetable_months;
+    public float $distance; //Distance in coordinates between departure and arrival airport
+    public float $passengers_price; //Subtotal price for number and type of passengers
+    public float $day_band_price; //Subtotal price depending on day band the flight was booked
+    public float $day_price;
+    public float $month_price;
+    public float $total_price;
     
     public function __construct(array $data)
     {
@@ -59,12 +59,86 @@ class FlightPrice implements Fpe{
     }
 
     //calculate flight price based on provided data
-    private function calcPrice(): bool{
+    private function calcPrice(array $data): bool{
         $calculated = false;
-        $distance = $this->getDistance();
+        $this->getDistance();
+        
         return $calculated;
     }
-    
+
+     //get the distance from departure to arrival airport
+     private function getDistance(): float{
+        $da_lat = $this->departure_airport_lat;
+        $da_lon = $this->departure_airport_lon;
+        $aa_lat = $this->arrival_airport_lat;
+        $aa_lon = $this->arrival_airport_lon;
+        if($da_lat >= 0 && $aa_lat >= 0){
+            $lat_diff = abs($da_lat - $aa_lat);
+        }
+        else if($da_lat >= 0 && $aa_lat < 0){
+            $lat_diff = $da_lat + abs($aa_lat);  
+        }
+        else if($da_lat < 0 && $aa_lat >= 0){
+            $lat_diff = abs($da_lat) + $aa_lat;
+        }
+        else if($da_lat < 0 && $aa_lat < 0){
+            $lat_diff = abs($da_lat - $aa_lat);
+        }
+        if($da_lon >= 0 && $aa_lon >= 0){
+            $lon_diff = abs($da_lon - $aa_lon);
+        }
+        else if($da_lon >= 0 && $aa_lon < 0){
+            $lon_diff_1 = $da_lon + abs($aa_lon);
+            $lon_diff_2 = (FlightPrice::MAX_LON - $da_lon) + abs(FlightPrice::MIN_LON - $aa_lon);
+            if($lon_diff_1 <= $lon_diff_2)
+                $lon_diff = $lon_diff_1;
+            else
+                $lon_diff = $lon_diff_2;
+        }
+        else if($da_lon < 0 && $aa_lon >= 0){
+            $lon_diff_1 = abs($da_lon) + $aa_lon;
+            $lon_diff_2 = abs(FlightPrice::MIN_LON - $da_lon) + (FlightPrice::MAX_LON - $aa_lon);
+            if($lon_diff_1 <= $lon_diff_2)
+                $lon_diff = $lon_diff_1;
+            else
+                $lon_diff = $lon_diff_2;
+
+        }
+        else if($da_lon < 0 && $aa_lon < 0){
+            $lon_diff = abs($da_lon - $aa_lon);
+        }
+        $distance = sqrt(pow($lat_diff,2) + (pow($lon_diff,2)));
+        $this->distance = $distance;
+        return $this->distance;
+    }
+
+    private function setSubprices(array $data){
+        $ab = $data['age_bands'];
+        $this->passengers_price = $this->distance * (($this->adults * $ab['adult'][$this->company_name]) + ($this->teenagers * $ab['teenager'][$this->company_name]) + ($this->children * $ab['children'][$this->company_name]) + ($this->newborns['newborns'][$this->company_name]));
+        $tdb = $data['timetable_daily_bands'];
+        $day_band_key = array_rand($tdb);
+        $this->day_band_price = $this->distance * ($tdb[$day_band_key][$this->company_name]);
+    }
+
+    //Assign input data to properties if all values are valid
+    private function setValues(array $data){
+        $this->departure_country = $data['departure_country'];
+        $this->arrival_country = $data['arrival_country'];
+        $this->departure_airport = $data['departure_airport'];
+        $this->departure_airport_lat = $data['departure_airport_lat'];
+        $this->departure_airport_lon = $data['departure_airport_lon'];
+        $this->arrival_airport = $data['arrival_airport'];
+        $this->arrival_airport_lat = $data['arrival_airport_lat'];
+        $this->arrival_airport_lon = $data['arrival_airport_lon'];
+        $this->flight_date = $data['flight_date'];
+        $this->adults = $data['adults'];
+        $this->teenagers = $data['teenagers'];
+        $this->children = $data['children'];
+        $this->newborns = $data['newborns'];
+        $this->company_name = $data['company_name'];
+        $this->days_before_discount = $data['days_before_discount'];
+    }
+
     //Validate input data
     private function validate(array $data):bool{
         $valid = true;
@@ -122,23 +196,18 @@ class FlightPrice implements Fpe{
             if(!is_numeric($data['newborns']))$valid = false;
         }
         else $valid = false;
-        if(isset($data['age_bands'])){
-            if(!is_array($data['age_bands']) || sizeof($data['age_bands']) <= 0)$valid = false;
-        }
-        else $valid = false;
-        if(isset($data['airports_list'])){
-            if(!is_array($data['airports_list']) || sizeof($data['airports_list']) <= 0)$valid = false;
-        }
-        else $valid = false;
-        if(isset($data['companies_list'])){
-            if(!is_array($data['companies_list']) || sizeof($data['companies_list']) <= 0)$valid = false;
+        if(isset($data['company_name'])){
+            if(trim($data['company_name']) == '')$valid = false;
         }
         else $valid = false;
         if(isset($data['days_before_discount'])){
             if(!is_numeric($data['days_before_discount']))$valid = false;
         }
+        if(isset($data['age_bands'])){
+            if(!is_array($data['age_bands']) || sizeof($data['age_bands']) <= 0)$valid = false;
+        }
         else $valid = false;
-        if(isset($data['timetable_daily_bands'])){
+        if(isset($data['timetable_dailty_bands'])){
             if(!is_array($data['timetable_dailty_bands']) || sizeof($data['timetable_dailty_bands']) <= 0)$valid = false;
         }
         else $valid = false;
@@ -153,74 +222,7 @@ class FlightPrice implements Fpe{
         return $valid;
     }
 
-    //Assign input data to properties if all values are valid
-    private function setValues(array $data){
-        $this->departure_country = $data['departure_country'];
-        $this->arrival_country = $data['arrival_country'];
-        $this->departure_airport = $data['departure_airport'];
-        $this->departure_airport_lat = $data['departure_airport_lat'];
-        $this->departure_airport_lon = $data['departure_airport_lon'];
-        $this->arrival_airport = $data['arrival_airport'];
-        $this->arrival_airport_lat = $data['arrival_airport_lat'];
-        $this->arrival_airport_lon = $data['arrival_airport_lon'];
-        $this->flight_date = $data['flight_date'];
-        $this->adults = $data['adults'];
-        $this->teenagers = $data['teenagers'];
-        $this->children = $data['children'];
-        $this->newborns = $data['newborns'];
-        $this->age_bands = $data['age_bands'];
-        $this->airports_list = $data['airports_list'];
-        $this->companies_list = $data['companies_list'];
-        $this->days_before_discount = $data['days_before_discount'];
-        $this->timetable_daily_bands = $data['timetable_daily_bands'];
-        $this->timetable_days = $data['newborns'];
-        $this->timetable_months = $data['timetable_months'];
-    }
-
-    //get the distance from departure to arrival airport
-    private function getDistance(): float{
-        $da_lat = $this->departure_airport_lat;
-        $da_lon = $this->departure_airport_lon;
-        $aa_lat = $this->arrival_airport_lat;
-        $aa_lon = $this->arrival_airport_lon;
-        if($da_lat >= 0 && $aa_lat >= 0){
-            $lat_diff = abs($da_lat - $aa_lat);
-        }
-        else if($da_lat >= 0 && $aa_lat < 0){
-            $lat_diff = $da_lat + abs($aa_lat);  
-        }
-        else if($da_lat < 0 && $aa_lat >= 0){
-            $lat_diff = abs($da_lat) + $aa_lat;
-        }
-        else if($da_lat < 0 && $aa_lat < 0){
-            $lat_diff = abs($da_lat - $aa_lat);
-        }
-        if($da_lon >= 0 && $aa_lon >= 0){
-            $lon_diff = abs($da_lon - $aa_lon);
-        }
-        else if($da_lon >= 0 && $aa_lon < 0){
-            $lon_diff_1 = $da_lon + abs($aa_lon);
-            $lon_diff_2 = (FlightPrice::MAX_LON - $da_lon) + abs(FlightPrice::MIN_LON - $aa_lon);
-            if($lon_diff_1 <= $lon_diff_2)
-                $lon_diff = $lon_diff_1;
-            else
-                $lon_diff = $lon_diff_2;
-        }
-        else if($da_lon < 0 && $aa_lon >= 0){
-            $lon_diff_1 = abs($da_lon) + $aa_lon;
-            $lon_diff_2 = abs(FlightPrice::MIN_LON - $da_lon) + (FlightPrice::MAX_LON - $aa_lon);
-            if($lon_diff_1 <= $lon_diff_2)
-                $lon_diff = $lon_diff_1;
-            else
-                $lon_diff = $lon_diff_2;
-
-        }
-        else if($da_lon < 0 && $aa_lon < 0){
-            $lon_diff = abs($da_lon - $aa_lon);
-        }
-        $dinstance = sqrt(pow($lat_diff,2) + (pow($lon_diff,2)));
-        return $dinstance;
-    }
+   
 
     public function __debugInfo()
     {
