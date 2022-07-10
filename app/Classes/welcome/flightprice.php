@@ -66,6 +66,7 @@ class FlightPrice implements Fpe{
 
     //calculate flight price based on provided data
     private function calcPrice(array $data): bool{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $calculated = false;
         $this->errno = 0;
         $this->getDistance();
@@ -83,6 +84,7 @@ class FlightPrice implements Fpe{
     }
 
     private function getDateParams(string $date): array{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $params = [];
         $date_obj = DateTimeImmutable::createFromFormat('Y-m-d',$date);
         if($date_obj !== false){
@@ -94,6 +96,7 @@ class FlightPrice implements Fpe{
     }
 
     private function setDaysBefore(array $data): bool{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $setted = false;
         $this->errno = 0;
         $date_now = date('Y-m-d'); //Now date
@@ -111,6 +114,7 @@ class FlightPrice implements Fpe{
 
      //get the distance from departure to arrival airport
      private function getDistance(): float{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $da_lat = $this->departure_airport_lat;
         $da_lon = $this->departure_airport_lon;
         $aa_lat = $this->arrival_airport_lat;
@@ -161,6 +165,7 @@ class FlightPrice implements Fpe{
     }
 
     private function setSubprices(array $data):bool{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $setted = false;
         $this->errno = 0;
         $ab = $data['age_bands'];
@@ -186,6 +191,7 @@ class FlightPrice implements Fpe{
 
     //Assign input data to properties if all values are valid
     private function setValues(array $data){
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $this->departure_country = $data['departure_country'];
         $this->arrival_country = $data['arrival_country'];
         $this->departure_airport = $data['departure_airport'];
@@ -205,6 +211,7 @@ class FlightPrice implements Fpe{
 
     //Validate input data
     private function validate(array $data):bool{
+        Log::channel('stdout')->debug('FlightPrice calcPrice');
         $valid = true;
         if(isset($data['departure_country'])){
             if(trim($data['departure_country']) == '')$valid = false;

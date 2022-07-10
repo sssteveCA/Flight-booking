@@ -51,10 +51,12 @@ class FlightSearchController extends Controller
         $flights = [];
         Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
+        Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
         $flight_type = $inputs['flight-type'];
         try{
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
+                Log::channel('stdout')->info("data outbound array => ".$data_outbound);
                 $fl_outbound = new FlightPrice($data_outbound);
                 Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
                 $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
@@ -100,8 +102,9 @@ class FlightSearchController extends Controller
                 ];
             }
         }catch(\Exception $e){
-            Log::channel('stdout')->error("Flight search controller exception => ".var_export($e,true));
-            $errors_array = [ $e->getMessage()];
+            $error = $e->getMessage();
+            Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            $errors_array = [ $error];
             throw new HttpResponseException(
                 response()->view('welcome/flightpriceresult',['errors_array' => $errors_array],400)
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
@@ -111,6 +114,7 @@ class FlightSearchController extends Controller
     }
 
     private function setFlightPriceArray(array $inputs, string $flight_direction): array{
+        Log::channel('stdout')->info('setFlightPrice method');
         $dc = $inputs['from'];
         $ac = $inputs['to'];
         $da = $inputs['from-airport'];
@@ -135,8 +139,8 @@ class FlightSearchController extends Controller
             'departure_airport_lat' => A::AIRPORTS_LIST[$dc][$da]['lat'],
             'departure_airport_lon' => A::AIRPORTS_LIST[$dc][$da]['lon'],
             'arrival_airport' => $aa,
-            'arrival_airport_lat' => A::AIRPORTS_LIST[$da][$aa]['lat'],
-            'arrival_airport_lon' => A::AIRPORTS_LIST[$da][$aa]['lon'],
+            'arrival_airport_lat' => A::AIRPORTS_LIST[$ac][$aa]['lat'],
+            'arrival_airport_lon' => A::AIRPORTS_LIST[$ac][$aa]['lon'],
             'flight_date' => $fd,
             'adults' => $inputs['adults'],
             'teenagers' => $inputs['teenagers'],
