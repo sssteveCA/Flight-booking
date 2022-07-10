@@ -352,7 +352,7 @@ interface Airports{
     const TIMETABLE_DAYS = [
         'monday' => [Airports::COMPANIES_LIST[0] => 3.70],
         'tuesday' => [Airports::COMPANIES_LIST[0] => 2.85],
-        'wednesdayday' => [Airports::COMPANIES_LIST[0] => 2.99],
+        'wednesday' => [Airports::COMPANIES_LIST[0] => 2.99],
         'thursday' => [Airports::COMPANIES_LIST[0] => 3.60],
         'friday' => [Airports::COMPANIES_LIST[0] => 4.10],
         'saturday' => [Airports::COMPANIES_LIST[0] => 4.47],

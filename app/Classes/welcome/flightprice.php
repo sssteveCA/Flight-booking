@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 use App\Interfaces\Welcome\FlightPriceErrors as Fpe;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
-
+use DateTime;
 
 //This class calculates the price of selected flight
 class FlightPrice implements Fpe{
@@ -66,6 +66,17 @@ class FlightPrice implements Fpe{
         return $calculated;
     }
 
+    private function getDateParams(string $date): array{
+        $params = [];
+        $date_obj = DateTime::createFromFormat('Y-m-d',$date);
+        if($date_obj !== false){
+            //Date created successfully
+            $params['day_week_name'] = $date_obj->format('L');
+            $params['month_number'] = $date_obj->format('m');
+        }
+        return $params;
+    }
+
      //get the distance from departure to arrival airport
      private function getDistance(): float{
         $da_lat = $this->departure_airport_lat;
@@ -112,12 +123,27 @@ class FlightPrice implements Fpe{
         return $this->distance;
     }
 
-    private function setSubprices(array $data){
+    private function setSubprices(array $data):bool{
+        $setted = false;
+        $this->errno = 0;
         $ab = $data['age_bands'];
         $this->passengers_price = $this->distance * (($this->adults * $ab['adult'][$this->company_name]) + ($this->teenagers * $ab['teenager'][$this->company_name]) + ($this->children * $ab['children'][$this->company_name]) + ($this->newborns['newborns'][$this->company_name]));
         $tdb = $data['timetable_daily_bands'];
         $day_band_key = array_rand($tdb);
         $this->day_band_price = $this->distance * ($tdb[$day_band_key][$this->company_name]);
+        $date_params = $this->getDateParams($this->flight_date);
+        if(sizeof($date_params) > 0){
+            //Array is not empty
+            $td = $data['timetable_days'];
+            $this->day_price = $this->distance * $td[$date_params['day_week_name']][$this->company_name];
+            $tm = $data['timetable_months'];
+            $tm = $this->distance * $tm['month_number'][$this->company_name];
+        }//if(sizeof($date_params) > 0){
+        else{
+
+        }
+        return $setted;
+         
     }
 
     //Assign input data to properties if all values are valid
