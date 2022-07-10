@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use App\Interfaces\Airports as A;
 use App\Interfaces\Airports;
 use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+
 
 class FlightSearchController extends Controller
 {
@@ -107,11 +109,11 @@ class FlightSearchController extends Controller
             Log::channel('stdout')->error("Flight search controller exception => ".$error);
             $errors_array = [ $error];
             throw new HttpResponseException(
-                response()->view('welcome/flightpriceresult',['errors_array' => $errors_array],400)
+                response()->view(P::VIEW_FLIGHTPRICERESULT,['errors_array' => $errors_array],400)
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
             );
         }
-        return response()->view('welcome/flightpriceresult',[
+        return response()->view(P::VIEW_FLIGHTPRICERESULT,[
             'response' => [
                 'flight_type' => $flight_type,
                 'inputs' => $inputs, 

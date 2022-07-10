@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/js/welcome.js": "/js/welcome.js",
     "/css/app.css": "/css/app.css",
-    "/css/welcome.css": "/css/welcome.css"
+    "/css/welcome.css": "/css/welcome.css",
+    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css"
 }

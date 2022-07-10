@@ -1,0 +1,98 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+
+$column-elem-number: 5;
+$column-elem-widths-lg: 15%,20%,25%,25%,15%;
+$column-elem-colors-1p : rgba(255,0,0,0.15), rgba(0,255,0,0.3),rgba(138,43,226,0.2),rgba(210,105,30,0.25),rgba(255,140,0,0.35);
+$column-elem-colors-2p : rgba(255,255,0,0.4),rgba(0,255,255,0.25),rgba(178,34,34,0.15),rgba(0,128,128,0.3),rgba(0,0,205,0.1);
+$flight-div-bg-color: rgba(128,128,128,0.2);
+$flight-div-border: 2px solid black;
+$flight-div-margin: 20px auto;
+$flight-div-padding: 20px;
+$form-bg-color: rgba(255,255,255,0.8);
+$items-border: 1px solid black;
+$lg-breakpoint: 992px;
+$md-breakpoint: 768px;
+$paragraphs-padding: 10px 15px;
+$sm-breakpoint: 576px;
+
+$single-elements-map: (
+    'classes': (
+        'flight-div',
+        'flight-type',
+        'flight-row'
+    ),
+    'ids': (
+        'fFlight'
+    )
+);
+
+@function map-deep-get($map, $key){
+    @each $k,$v in $map{
+        @if $k == $key{
+            @return $v;
+        }
+        @if type-of($v) == 'map'{
+            $subV: map-deep-get($v, $k);
+            @if $subV != null{
+                @return $subV;
+            }
+        }
+    }
+    @return null;
+}
+
+$map_id: map-deep-get($single-elements-map, 'ids');
+$form_id: list.nth($map_id,1);
+
+$map_class: map-deep-get($single-elements-map,'classes');
+$flight-div-class: list.nth($map_class,1);
+$flight-type-class: list.nth($map_class,2);
+$flight-row-class: list.nth($map_class,3);
+
+@mixin global(){
+    form##{$form_id}{
+        background-color: $form-bg-color;
+        div.#{$flight-div-class}{
+            border: $flight-div-border;
+            background-color: $flight-div-bg-color;
+            padding: $flight-div-padding;
+            margin: $flight-div-margin;
+        }
+    }
+}
+
+@mixin flight-div-large(){
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            text-align: center;
+            border: $items-border;
+            padding: auto 15px;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            @for $i from 1 through $column-elem-number{
+                >div:nth-child(#{$i}){
+                    width: list.nth($column-elem-widths-lg,$i);
+                    p{
+                        border: $items-border;
+                        padding: $paragraphs-padding;
+                        margin: 0;
+                        &:nth-child(1){
+                            background-color: list.nth($column-elem-colors-1p,$i);
+                        }
+                        &:nth-child(2){
+                            background-color: list.nth($column-elem-colors-2p,$i);
+                        }
+                    }
+                }
+            }//@for $i from 1 through $column-elem-number{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
+}
+
+@include global();
+@media only screen and (min-width: $lg-breakpoint){
+    @include flight-div-large();
+}

@@ -19,6 +19,7 @@ interface Paths{
 
     //Views
     const VIEW_CONTACTS = 'contacts';
+    const VIEW_FLIGHTPRICERESULT = 'welcome/flightpriceresult';
     const VIEW_HOME = 'home';
     const VIEW_NEWS = 'news';
     const VIEW_WELCOME = 'welcome';

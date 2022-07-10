@@ -3,6 +3,7 @@
 @section('title','Prezzo volo scelto')
 
 @section('links')
+<link rel="stylesheet" href="{{ asset('css/welcome/flightpriceresult.css') }} ">
 @endsection
 
 @section('scripts')
@@ -14,11 +15,11 @@
             @foreach($response['flights'] as $type => $flight)
             <div class="flight-div">
                 @if($type == 'outbound')
-                    <div class="flight-type">Volo di andata</div>
+                    <div class="flight-type bg-success bg-gradient">Volo di andata</div>
                 @elseif($type == 'return')
-                    <div class="flight-type">Volo di ritorno</div>
+                    <div class="flight-type bg-success bg-gradient">Volo di ritorno</div>
                 @else
-                    <div class="flight-type">Volo di sola andata</div>
+                    <div class="flight-type bg-success bg-gradient">Volo di sola andata</div>
                 @endif
                 <div class="flight-row">
                     <div class="company column-elem">
@@ -44,7 +45,7 @@
                 </div> 
             </div>
             @endforeach
-            <div class="form-button">
+            <div class="form-button my-4 text-center">
                 <button type="submit" class="btn btn-primary btn-lg">PRENOTA</button>
             </div>
         </form>

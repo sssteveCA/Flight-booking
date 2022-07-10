@@ -15,4 +15,5 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/welcome.ts','public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/welcome.scss','public/css')
+    .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')
     .sourceMaps();

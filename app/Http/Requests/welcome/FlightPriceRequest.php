@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\welcome;
 
+use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +88,7 @@ class FlightPriceRequest extends FormRequest
         $errors = (new ValidationException($validator))->errors();
         Log::channel('stdout')->error(var_export($errors,true));
         throw new HttpResponseException(
-            response()->view('welcome/flightpriceresult',['errors' => $errors],400)
+            response()->view(P::VIEW_FLIGHTPRICERESULT,['errors' => $errors],400)
             /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
         );
     }

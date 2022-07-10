@@ -1,0 +1,90 @@
+form#fFlight {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+form#fFlight div.flight-div {
+  border: 2px solid black;
+  background-color: rgba(128, 128, 128, 0.2);
+  padding: 20px;
+  margin: 20px auto;
+}
+
+@media only screen and (min-width: 992px) {
+  div.flight-div div.flight-type {
+    text-align: center;
+    border: 1px solid black;
+    padding: auto 15px;
+  }
+  div.flight-div div.flight-row {
+    display: flex;
+  }
+  div.flight-div div.flight-row > div:nth-child(1) {
+    width: 15%;
+  }
+  div.flight-div div.flight-row > div:nth-child(1) p {
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  div.flight-div div.flight-row > div:nth-child(1) p:nth-child(1) {
+    background-color: rgba(255, 0, 0, 0.15);
+  }
+  div.flight-div div.flight-row > div:nth-child(1) p:nth-child(2) {
+    background-color: rgba(255, 255, 0, 0.4);
+  }
+  div.flight-div div.flight-row > div:nth-child(2) {
+    width: 20%;
+  }
+  div.flight-div div.flight-row > div:nth-child(2) p {
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  div.flight-div div.flight-row > div:nth-child(2) p:nth-child(1) {
+    background-color: rgba(0, 255, 0, 0.3);
+  }
+  div.flight-div div.flight-row > div:nth-child(2) p:nth-child(2) {
+    background-color: rgba(0, 255, 255, 0.25);
+  }
+  div.flight-div div.flight-row > div:nth-child(3) {
+    width: 25%;
+  }
+  div.flight-div div.flight-row > div:nth-child(3) p {
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  div.flight-div div.flight-row > div:nth-child(3) p:nth-child(1) {
+    background-color: rgba(138, 43, 226, 0.2);
+  }
+  div.flight-div div.flight-row > div:nth-child(3) p:nth-child(2) {
+    background-color: rgba(178, 34, 34, 0.15);
+  }
+  div.flight-div div.flight-row > div:nth-child(4) {
+    width: 25%;
+  }
+  div.flight-div div.flight-row > div:nth-child(4) p {
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  div.flight-div div.flight-row > div:nth-child(4) p:nth-child(1) {
+    background-color: rgba(210, 105, 30, 0.25);
+  }
+  div.flight-div div.flight-row > div:nth-child(4) p:nth-child(2) {
+    background-color: rgba(0, 128, 128, 0.3);
+  }
+  div.flight-div div.flight-row > div:nth-child(5) {
+    width: 15%;
+  }
+  div.flight-div div.flight-row > div:nth-child(5) p {
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  div.flight-div div.flight-row > div:nth-child(5) p:nth-child(1) {
+    background-color: rgba(255, 140, 0, 0.35);
+  }
+  div.flight-div div.flight-row > div:nth-child(5) p:nth-child(2) {
+    background-color: rgba(0, 0, 205, 0.1);
+  }
+}
