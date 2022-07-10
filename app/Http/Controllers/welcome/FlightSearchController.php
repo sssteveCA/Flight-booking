@@ -47,28 +47,44 @@ class FlightSearchController extends Controller
 
     //Get the flight based on input data
     public function getFlightPrice(FlightPriceRequest $request){
+        $flights = [];
         Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
-        return view('welcome/flightpriceresult',['inputs' => $inputs]);
+        $flight_type = $inputs['flight-type'];
+        try{
+            if($flight_type == 'roundtrip'){
+                $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
+                $fl_outbound = new FlightPrice($data_outbound);
+                $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
+                $fl_return = new FlightPrice($data_return);
+            }
+            else if($flight_type = 'oneway'){
+                $data_oneway = $this->setFlightPriceArray($inputs,'oneway');
+                $fl_oneway = new FlightPrice($data_oneway);
+            }
+        }catch(\Exception $e){
+
+        }
+        return view('welcome/flightpriceresult',['inputs' => $inputs, 'flights' => $flights]);
     }
 
-    private function setFlightPriceArray(FlightPriceRequest $request, string $flight_direction): array{
-        $dc = $request->from;
-        $ac = $request->to;
-        $da = $request->input('from-airport');
-        $aa = $request->input('to-airport');
+    private function setFlightPriceArray(array $inputs, string $flight_direction): array{
+        $dc = $inputs['from'];
+        $ac = $inputs['to'];
+        $da = $inputs['from-airport'];
+        $aa = $inputs['to-airport'];
         $cn = Airports::COMPANIES_LIST[0];
         if($flight_direction == 'oneway'){
             //Oneway flight
-            $fd = $request->input('oneway-date',C::ERR_VALUENOTOBTAINED);
+            $fd = $inputs['oneway-date'];
         }
         else if($flight_direction == "roundtrip_outbound"){
             //Outbound flight
-            $fd = $request->input('roundtrip-start-date',C::ERR_VALUENOTOBTAINED);
+            $fd = $inputs['roundtrip-start-date'];
         }
         else{ // "roundtrip_return"
             //Return flight
-            $fd = $request->input('roundtrip-end-date',C::ERR_VALUENOTOBTAINED);
+            $fd = $inputs['roundtrip-end-date'];
         }
         $data = [
             'departure_country' => $dc,
@@ -80,10 +96,10 @@ class FlightSearchController extends Controller
             'arrival_airport_lat' => A::AIRPORTS_LIST[$da][$aa]['lat'],
             'arrival_airport_lon' => A::AIRPORTS_LIST[$da][$aa]['lon'],
             'flight_date' => $fd,
-            'adults' => $request->adults,
-            'teenagers' => $request->teenagers,
-            'children' => $request->children,
-            'newborns' => $request->newborns,
+            'adults' => $inputs['adults'],
+            'teenagers' => $inputs['teenagers'],
+            'children' => $inputs['children'],
+            'newborns' => $inputs['newborns'],
             'company_name' => $cn,
             'days_before_discount' => A::DAYS_BEFORE_DISCOUNT_LIST[$cn],
         ];

@@ -28,11 +28,11 @@
                 <div class="container">
                     <div id="fb-fs1" class="row">
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="flight-type" id="fb-roundtrip" value="oneway" checked>
+                            <input class="form-check-input" type="radio" name="flight-type" id="fb-roundtrip" value="roundtrip" checked>
                             <label class="form-check-label" for="fb-roundtrip">Andata e ritorno</label>
                         </div>
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="flight-type" id="fb-oneway" value="roundtrip">
+                            <input class="form-check-input" type="radio" name="flight-type" id="fb-oneway" value="oneway">
                             <label class="form-check-label" for="fb-oneway">Solo andata</label>
                         </div>
                     </div>
