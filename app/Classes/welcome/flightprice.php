@@ -77,6 +77,7 @@ class FlightPrice implements Fpe{
                 $subtotal = $this->passengers_price + $this->day_band_price + $this->day_price + $this->month_price;
                 $subtotal_day_discount = $subtotal * ($this->days_before_discount/100);
                 $this->total_price = $subtotal - ($subtotal_day_discount * $this->days_before);
+                $this->total_price = round($this->total_price,2);
                 $calculated = true;
             }
         }//if($this->setSubprices($data)){

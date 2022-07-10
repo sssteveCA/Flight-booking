@@ -111,15 +111,29 @@ class FlightSearchController extends Controller
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
             );
         }
-        return view('welcome/flightpriceresult',['inputs' => $inputs, 'flights' => $flights]);
+        return response()->view('welcome/flightpriceresult',[
+            'response' => [
+                'flight_type' => $flight_type,
+                'inputs' => $inputs, 
+                'flights' => $flights
+            ]   
+        ],200);
     }
 
     private function setFlightPriceArray(array $inputs, string $flight_direction): array{
         Log::channel('stdout')->info('setFlightPrice method');
-        $dc = $inputs['from'];
-        $ac = $inputs['to'];
-        $da = $inputs['from-airport'];
-        $aa = $inputs['to-airport'];
+        if($flight_direction == 'roundtrip_return'){
+            $dc = $inputs['to'];
+            $ac = $inputs['from'];
+            $da = $inputs['to-airport'];
+            $aa = $inputs['from-airport'];
+        }
+        else{
+            $dc = $inputs['from'];
+            $ac = $inputs['to'];
+            $da = $inputs['from-airport'];
+            $aa = $inputs['to-airport'];
+        }
         $cn = Airports::COMPANIES_LIST[0];
         if($flight_direction == 'oneway'){
             //Oneway flight
