@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Log;
 use App\Interfaces\Welcome\FlightPriceErrors as Fpe;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
-use DateTime;
 use DateTimeImmutable;
 
 //This class calculates the price of selected flight
@@ -46,6 +45,7 @@ class FlightPrice implements Fpe{
     
     public function __construct(array $data)
     {
+        Log::channel('stdout')->debug('FlightPrice constructor');
         if(!$this->validate($data))
             throw new \Exception(Fpe::INVALIDDATA_EXC);
         $this->setValues($data);
@@ -84,7 +84,7 @@ class FlightPrice implements Fpe{
     }
 
     private function getDateParams(string $date): array{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice getDateParams');
         $params = [];
         $date_obj = DateTimeImmutable::createFromFormat('Y-m-d',$date);
         if($date_obj !== false){
@@ -96,7 +96,7 @@ class FlightPrice implements Fpe{
     }
 
     private function setDaysBefore(array $data): bool{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice setDaysBefore');
         $setted = false;
         $this->errno = 0;
         $date_now = date('Y-m-d'); //Now date
@@ -114,7 +114,7 @@ class FlightPrice implements Fpe{
 
      //get the distance from departure to arrival airport
      private function getDistance(): float{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice getDistance');
         $da_lat = $this->departure_airport_lat;
         $da_lon = $this->departure_airport_lon;
         $aa_lat = $this->arrival_airport_lat;
@@ -165,7 +165,7 @@ class FlightPrice implements Fpe{
     }
 
     private function setSubprices(array $data):bool{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice setSubprices');
         $setted = false;
         $this->errno = 0;
         $ab = $data['age_bands'];
@@ -191,7 +191,7 @@ class FlightPrice implements Fpe{
 
     //Assign input data to properties if all values are valid
     private function setValues(array $data){
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice setValues');
         $this->departure_country = $data['departure_country'];
         $this->arrival_country = $data['arrival_country'];
         $this->departure_airport = $data['departure_airport'];
@@ -211,7 +211,7 @@ class FlightPrice implements Fpe{
 
     //Validate input data
     private function validate(array $data):bool{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        Log::channel('stdout')->debug('FlightPrice validate');
         $valid = true;
         if(isset($data['departure_country'])){
             if(trim($data['departure_country']) == '')$valid = false;
@@ -225,16 +225,16 @@ class FlightPrice implements Fpe{
             if(trim($data['departure_airport']) == '')$valid = false;
         }
         else $valid = false;
-        if(isset($data['departure_airport_lat']) == ''){
+        if(isset($data['departure_airport_lat'])){
             if(!is_numeric($data['departure_airport_lat']))$valid = false;
         }
         else $valid = false;
-        if(isset($data['departure_airport_lon']) == ''){
+        if(isset($data['departure_airport_lon'])){
             if(!is_numeric($data['departure_airport_lon']))$valid = false;
         }
         else $valid = false;
-        if(isset($data['arrival_airport']) == ''){
-            if(trim($data['arrival_country']))$valid = false;
+        if(isset($data['arrival_airport'])){
+            if(trim($data['arrival_country']) == '')$valid = false;
         }
         else $valid = false;
         if(isset($data['arrival_airport_lat'])){
@@ -251,7 +251,6 @@ class FlightPrice implements Fpe{
         else $valid = false;
         if(isset($data['adults'])){
             if(!is_numeric($data['adults']))$valid = false;
-
         }
         else $valid = false;
         if(isset($data['teenagers'])){
@@ -274,22 +273,6 @@ class FlightPrice implements Fpe{
         if(isset($data['days_before_discount'])){
             if(!is_numeric($data['days_before_discount']))$valid = false;
         }
-        if(isset($data['age_bands'])){
-            if(!is_array($data['age_bands']) || sizeof($data['age_bands']) <= 0)$valid = false;
-        }
-        else $valid = false;
-        if(isset($data['timetable_dailty_bands'])){
-            if(!is_array($data['timetable_dailty_bands']) || sizeof($data['timetable_dailty_bands']) <= 0)$valid = false;
-        }
-        else $valid = false;
-        if(isset($data['timetable_days'])){
-            if(!is_array($data['timetable_days']) || sizeof($data['timetable_days']) <= 0)$valid = false;
-        }
-        else $valid = false;
-        if(isset($data['timetable_months'])){
-            if(!is_array($data['timetable_months']) || sizeof($data['timetable_months']) <= 0)$valid = false;
-        }
-        else $valid = false;
         return $valid;
     }
 

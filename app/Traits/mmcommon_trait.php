@@ -13,7 +13,7 @@ trait MmCommonTrait{
         Log::channel('stdout')->error("Il metodo {$name} non esiste in {$class_name}");
     }
 
-    public function __callStatic($name, $arguments)
+    public static function __callStatic($name, $arguments)
     {
         $class_name = get_called_class();
         Log::channel('stdout')->error("Il metodo statico {$name} non esiste nella classe {$class_name}");

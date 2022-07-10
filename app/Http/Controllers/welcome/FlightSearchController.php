@@ -56,10 +56,11 @@ class FlightSearchController extends Controller
         try{
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
-                Log::channel('stdout')->info("data outbound array => ".$data_outbound);
+                Log::channel('stdout')->info("data outbound array => ".var_export($data_outbound,true));
                 $fl_outbound = new FlightPrice($data_outbound);
                 Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
                 $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
+                Log::channel('stdout')->info("data return array => ".var_export($data_return,true));
                 $fl_return = new FlightPrice($data_return);
                 Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
                 $flights = [
@@ -149,6 +150,7 @@ class FlightSearchController extends Controller
             'company_name' => $cn,
             'days_before_discount' => A::DAYS_BEFORE_DISCOUNT_LIST[$cn],
         ];
+        //Log::channel('stdout')->info('setFlightPrice method data => '.var_export($data,true));
         return $data;
     }
 }

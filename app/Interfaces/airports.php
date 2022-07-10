@@ -77,7 +77,7 @@ interface Airports{
             'Dole' => ['lat' => 47.043635,'lon' => 5.425733],
             'Figari' => ['lat' => 41.499234,'lon' => 9.098541],
             'Grenoble' => ['lat' => 45.362051,'lon' => 0],
-            'La Rocchelle' => ['lat' => 0,'lon' => 5.331285],
+            'La Rocchelle' => ['lat' => 46.176524,'lon' => -1.193236],
             'Lille' => ['lat' => 0,'lon' => 0],
             'Limoges' => ['lat' => 0,'lon' => 0],
             'Loudres' => ['lat' => 0,'lon' => 0],
