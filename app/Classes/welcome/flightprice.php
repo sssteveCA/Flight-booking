@@ -160,10 +160,14 @@ class FlightPrice implements Fpe{
         return $this->distance;
     }
 
-    private function setFlightHours($hour){
+    private function setFlightHours(array $data){
         Log::channel('stdout')->debug('FlightPrice setFlightHours');
-        $min = mt_rand(0,59);
-        $this->hours = $hour.':'.$min;
+        $tdb = $data['timetable_daily_bands'];
+        $day_band_key = array_rand($tdb);
+        $tdh = $data['timetable_hour_bands'];
+        $hour_band_key = array_rand($tdh);
+        $this->hours = $day_band_key.':'.$tdh[$hour_band_key];
+        $this->day_band_price = $this->distance * ($tdb[$day_band_key]);
     }
 
     private function setSubprices(array $data):bool{
@@ -172,10 +176,7 @@ class FlightPrice implements Fpe{
         $this->errno = 0;
         $ab = $data['age_bands'];
         $this->passengers_price = $this->distance * (($this->adults * $ab['adult']) + ($this->teenagers * $ab['teenager']) + ($this->children * $ab['child']) + ($this->newborns * $ab['newborn']));
-        $tdb = $data['timetable_daily_bands'];
-        $day_band_key = array_rand($tdb);
-        $this->setFlightHours($day_band_key);
-        $this->day_band_price = $this->distance * ($tdb[$day_band_key]);
+        $this->setFlightHours($data);
         $date_params = $this->getDateParams($this->flight_date);
         Log::channel('stdout')->debug('FlightPrice setSubprices date params array => '.var_export($date_params,true));
         if(sizeof($date_params) > 0){

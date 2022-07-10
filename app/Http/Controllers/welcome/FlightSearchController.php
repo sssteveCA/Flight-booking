@@ -151,6 +151,7 @@ class FlightSearchController extends Controller
             'days_before_discount' => A::DAYS_BEFORE_DISCOUNT_LIST[$cn],
             'age_bands' => A::AGE_BANDS[$cn],
             'timetable_daily_bands' => A::TIMETABLE_DAILY_BANDS[$cn],
+            'timetable_hour_bands' => A::TIMETABLE_HOUR_BANDS[$cn],
             'timetable_days' => A::TIMETABLE_DAYS[$cn],
             'timetable_months' => A::TIMETABLE_MONTHS[$cn]
         ];

@@ -367,6 +367,12 @@ interface Airports{
         ]
     ];
 
+    const TIMETABLE_HOUR_BANDS = [
+        Airports::COMPANIES_LIST[0] => [
+            '00','15','30','45'
+        ]
+    ];
+
     const TIMETABLE_MONTHS = [
         Airports::COMPANIES_LIST[0] => [
             '01' => 0,
