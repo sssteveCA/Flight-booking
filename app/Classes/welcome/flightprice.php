@@ -7,6 +7,7 @@ use App\Interfaces\Welcome\FlightPriceErrors as Fpe;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
 use DateTime;
+use DateTimeImmutable;
 
 //This class calculates the price of selected flight
 class FlightPrice implements Fpe{
@@ -40,6 +41,7 @@ class FlightPrice implements Fpe{
     public float $day_band_price; //Subtotal price depending on day band the flight was booked
     public float $day_price;
     public float $month_price;
+    public int $days_before; //Days before the flight was booked compared to the flight date
     public float $total_price;
     
     public function __construct(array $data)
@@ -51,6 +53,9 @@ class FlightPrice implements Fpe{
 
     public function getError(){
         switch($this->errno){
+            case Fpe::DATEFORMAT:
+                $this->error = Fpe::DATEFORMAT_MSG;
+                break;
             default:
                 $this->error = null;
                 break;
@@ -61,20 +66,39 @@ class FlightPrice implements Fpe{
     //calculate flight price based on provided data
     private function calcPrice(array $data): bool{
         $calculated = false;
+        $this->errno = 0;
         $this->getDistance();
-        
+        if($this->setSubprices($data)){
+            //Subprices setted successfully
+        }//if($this->setSubprices($data)){
         return $calculated;
     }
 
     private function getDateParams(string $date): array{
         $params = [];
-        $date_obj = DateTime::createFromFormat('Y-m-d',$date);
+        $date_obj = DateTimeImmutable::createFromFormat('Y-m-d',$date);
         if($date_obj !== false){
             //Date created successfully
             $params['day_week_name'] = $date_obj->format('L');
             $params['month_number'] = $date_obj->format('m');
         }
         return $params;
+    }
+
+    private function setDaysBefore(array $data): bool{
+        $setted = false;
+        $this->errno = 0;
+        $date_now = date('Y-m-d'); //Now date
+        $date_now_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date_now);
+        $date_flight_dt = DateTimeImmutable::createFromFormat('Y-m-d',$this->flight_date);
+        if($date_now_dt !== false && $date_flight_dt !== false){
+            $diff = $date_now_dt->diff($date_flight_dt,true);
+            $this->days_before = $diff->d;
+            $setted = true;
+        }//if($date_now_dt !== false && $date_flight_dt !== false)
+        else
+            $this->errno = Fpe::DATEFORMAT;
+        return $setted;
     }
 
      //get the distance from departure to arrival airport
@@ -138,10 +162,10 @@ class FlightPrice implements Fpe{
             $this->day_price = $this->distance * $td[$date_params['day_week_name']][$this->company_name];
             $tm = $data['timetable_months'];
             $tm = $this->distance * $tm['month_number'][$this->company_name];
+            $setted = true;
         }//if(sizeof($date_params) > 0){
-        else{
-
-        }
+        else
+            $this->errno = Fpe::DATEFORMAT;
         return $setted;
          
     }
