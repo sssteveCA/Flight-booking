@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Paths as P;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -126,7 +129,12 @@ class RegisterController extends Controller
             }
         }catch(Exception $e){
             if($e instanceof ValidationException){
-                return redirect()->back()->withErrors($e->errors());
+                Log::channel('stdout')->info("RegisterController register ValidationException");
+                $errors = $e->errors();
+                Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
+                throw new HttpResponseException(
+                    response()->view(P::VIEW_REGISTER,['rc_errors' => $errors],400)
+                );
             }
         }
 

@@ -74,4 +74,11 @@
         </div>
     </div>
 </div>
+@isset($rc_errors)
+    @php
+        echo '<pre>';
+            var_dump($rc_errors);
+        echo '</pre>';
+    @endphp
+@endisset
 @endsection
