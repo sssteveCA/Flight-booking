@@ -59,8 +59,8 @@ class RegisterController extends Controller
         'required' => 'Il campo :attribute è obbligatorio',
         'string' => 'Il campo :attribute deve essere una stringa',
         'email' => 'Il campo :attribute deve essere un indirizzo email',
-        'max' => 'Il campo :attribute ha superato il numero massimo di caratteri consentiti',
-        'min' => 'Il campo :attribute ha un numero di caratteri inferiore a quello richiesto',
+        'max' => 'Il campo :attribute ha  più catatteri di :max',
+        'min' => 'Il campo :attribute ha meno caratteri di :min',
         'confirmed' => 'La password inserita deve corrispondere al campo di conferma della password'
     ];
 
@@ -123,7 +123,7 @@ class RegisterController extends Controller
             event(new Registered($user = $this->create($request->all())));
             Log::channel('stdout')->info("RegisterController register event");
             //Registered user login with his account
-            $this->guard()->login($user);
+            //$this->guard()->login($user);
             Log::channel('stdout')->info("RegisterController register login guard");
             if($this->registered($request,$user)){
                 Log::channel('stdout')->info("RegisterController register user registered");

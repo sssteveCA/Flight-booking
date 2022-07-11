@@ -43,7 +43,7 @@ Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name('flightprice');
-Route::get(P::URL_SUBSCRIBED, function(array $data = array()){
+/* Route::get(P::URL_SUBSCRIBED, function(array $data = array()){
     if(!empty($data)){
         Log::channel('stdout')->info("url subscribed data => ".var_export($data,true));
         return view(P::VIEW_SUBSCRIBED,$data);
@@ -52,14 +52,14 @@ Route::get(P::URL_SUBSCRIBED, function(array $data = array()){
         return redirect(P::URL_REGISTER);
     }
     
-})->name('auth.register.subscribed');
+})->name('auth.register.subscribed'); */
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
-Route::view(P::URL_HOME,P::URL_HOME);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);
 Route::view(P::URL_ROOT,P::VIEW_WELCOME);
 Route::view(P::URL_WHOWEARE,P::VIEW_WHOWEARE);
 
+Route::permanentRedirect(P::URL_HOME,P::URL_ROOT); 
 
 //URL that not exists
 Route::fallback(function(){
