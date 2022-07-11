@@ -42,6 +42,7 @@ class FlightPrice implements Fpe{
     public float $month_price;
     public int $days_before; //Days before the flight was booked compared to the flight date
     public float $total_price;
+    public string $total_price_format;
     
     public function __construct(array $data)
     {
@@ -78,6 +79,7 @@ class FlightPrice implements Fpe{
                 $subtotal_day_discount = $subtotal * ($this->days_before_discount/100);
                 $this->total_price = $subtotal - ($subtotal_day_discount * $this->days_before);
                 $this->total_price = round($this->total_price,2);
+                $this->total_price_format = number_format($this->total_price,2,'.','');
                 $calculated = true;
             }
         }//if($this->setSubprices($data)){

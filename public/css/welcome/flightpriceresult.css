@@ -7,6 +7,13 @@ form#fFlight div.flight-div {
   padding: 20px;
   margin: 20px auto;
 }
+form#fFlight div.flight-div div.flight-row div.column-elem p {
+  text-align: center;
+}
+form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
 @media only screen and (min-width: 992px) {
   div.flight-div div.flight-type {
@@ -18,18 +25,18 @@ form#fFlight div.flight-div {
     display: flex;
   }
   div.flight-div div.flight-row > div:nth-child(1) {
-    width: 15%;
+    width: 20%;
   }
   div.flight-div div.flight-row > div:nth-child(1) p {
     border: 1px solid black;
     padding: 10px 15px;
     margin: 0;
-  }
-  div.flight-div div.flight-row > div:nth-child(1) p:nth-child(1) {
-    background-color: rgba(255, 0, 0, 0.15);
-  }
-  div.flight-div div.flight-row > div:nth-child(1) p:nth-child(2) {
-    background-color: rgba(255, 255, 0, 0.4);
+    /* &:nth-child(1){
+        background-color: list.nth($column-elem-colors-1p,$i);
+    }
+    &:nth-child(2){
+        background-color: list.nth($column-elem-colors-2p,$i);
+    } */
   }
   div.flight-div div.flight-row > div:nth-child(2) {
     width: 20%;
@@ -38,12 +45,12 @@ form#fFlight div.flight-div {
     border: 1px solid black;
     padding: 10px 15px;
     margin: 0;
-  }
-  div.flight-div div.flight-row > div:nth-child(2) p:nth-child(1) {
-    background-color: rgba(0, 255, 0, 0.3);
-  }
-  div.flight-div div.flight-row > div:nth-child(2) p:nth-child(2) {
-    background-color: rgba(0, 255, 255, 0.25);
+    /* &:nth-child(1){
+        background-color: list.nth($column-elem-colors-1p,$i);
+    }
+    &:nth-child(2){
+        background-color: list.nth($column-elem-colors-2p,$i);
+    } */
   }
   div.flight-div div.flight-row > div:nth-child(3) {
     width: 25%;
@@ -52,12 +59,12 @@ form#fFlight div.flight-div {
     border: 1px solid black;
     padding: 10px 15px;
     margin: 0;
-  }
-  div.flight-div div.flight-row > div:nth-child(3) p:nth-child(1) {
-    background-color: rgba(138, 43, 226, 0.2);
-  }
-  div.flight-div div.flight-row > div:nth-child(3) p:nth-child(2) {
-    background-color: rgba(178, 34, 34, 0.15);
+    /* &:nth-child(1){
+        background-color: list.nth($column-elem-colors-1p,$i);
+    }
+    &:nth-child(2){
+        background-color: list.nth($column-elem-colors-2p,$i);
+    } */
   }
   div.flight-div div.flight-row > div:nth-child(4) {
     width: 25%;
@@ -66,25 +73,25 @@ form#fFlight div.flight-div {
     border: 1px solid black;
     padding: 10px 15px;
     margin: 0;
-  }
-  div.flight-div div.flight-row > div:nth-child(4) p:nth-child(1) {
-    background-color: rgba(210, 105, 30, 0.25);
-  }
-  div.flight-div div.flight-row > div:nth-child(4) p:nth-child(2) {
-    background-color: rgba(0, 128, 128, 0.3);
+    /* &:nth-child(1){
+        background-color: list.nth($column-elem-colors-1p,$i);
+    }
+    &:nth-child(2){
+        background-color: list.nth($column-elem-colors-2p,$i);
+    } */
   }
   div.flight-div div.flight-row > div:nth-child(5) {
-    width: 15%;
+    width: 10%;
   }
   div.flight-div div.flight-row > div:nth-child(5) p {
     border: 1px solid black;
     padding: 10px 15px;
     margin: 0;
-  }
-  div.flight-div div.flight-row > div:nth-child(5) p:nth-child(1) {
-    background-color: rgba(255, 140, 0, 0.35);
-  }
-  div.flight-div div.flight-row > div:nth-child(5) p:nth-child(2) {
-    background-color: rgba(0, 0, 205, 0.1);
+    /* &:nth-child(1){
+        background-color: list.nth($column-elem-colors-1p,$i);
+    }
+    &:nth-child(2){
+        background-color: list.nth($column-elem-colors-2p,$i);
+    } */
   }
 }

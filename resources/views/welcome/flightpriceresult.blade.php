@@ -23,24 +23,24 @@
                 @endif
                 <div class="flight-row">
                     <div class="company column-elem">
-                        <p class="fl-header">Compagnia aerea</p>
-                        <p>{{$flight['company_name']}}</p>
+                        <p class="fl-header bg-warning bg-gradient">Compagnia aerea</p>
+                        <p class="bg-light bg-gradient">{{$flight['company_name']}}</p>
                     </div>
                     <div class="date column-elem">
-                        <p class="fl-header">Data e orario</p>
-                        <p>{{$flight['flight_date'].' '.$flight['hours']}}</p>
+                        <p class="fl-header bg-warning bg-gradient">Data e orario</p>
+                        <p class="bg-light bg-gradient">{{$flight['flight_date'].' '.$flight['hours']}}</p>
                     </div>
                     <div class="departure-loc column-elem">
-                        <p class="fl-header">Luogo di partenza</p>
-                        <p>{{$flight['departure_country'].', '.$flight['departure_airport']}}</p>
+                        <p class="fl-header bg-warning bg-gradient">Luogo di partenza</p>
+                        <p class="bg-light bg-gradient">{{$flight['departure_country'].', '.$flight['departure_airport']}}</p>
                     </div>
                     <div class="arrival-loc column-elem">
-                        <p class="fl-header">Luogo di arrivo</p>
-                        <p>{{$flight['arrival_country'].', '.$flight['arrival_airport']}}</p>
+                        <p class="fl-header bg-warning bg-gradient">Luogo di arrivo</p>
+                        <p class="bg-light bg-gradient">{{$flight['arrival_country'].', '.$flight['arrival_airport']}}</p>
                     </div>
                     <div class="price column-elem">
-                        <p class="fl-header">Prezzo</p>
-                        <p>{{$flight['total_price']}}€</p>
+                        <p class="fl-header bg-warning bg-gradient">Prezzo</p>
+                        <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
                     </div>
                 </div> 
             </div>

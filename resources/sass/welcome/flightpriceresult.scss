@@ -3,7 +3,7 @@
 @use "sass:math";
 
 $column-elem-number: 5;
-$column-elem-widths-lg: 15%,20%,25%,25%,15%;
+$column-elem-widths-lg: 20%,20%,25%,25%,10%;
 $column-elem-colors-1p : rgba(255,0,0,0.15), rgba(0,255,0,0.3),rgba(138,43,226,0.2),rgba(210,105,30,0.25),rgba(255,140,0,0.35);
 $column-elem-colors-2p : rgba(255,255,0,0.4),rgba(0,255,255,0.25),rgba(178,34,34,0.15),rgba(0,128,128,0.3),rgba(0,0,205,0.1);
 $flight-div-bg-color: rgba(128,128,128,0.2);
@@ -21,7 +21,9 @@ $single-elements-map: (
     'classes': (
         'flight-div',
         'flight-type',
-        'flight-row'
+        'flight-row',
+        'column-elem',
+        'fl-header'
     ),
     'ids': (
         'fFlight'
@@ -50,6 +52,8 @@ $map_class: map-deep-get($single-elements-map,'classes');
 $flight-div-class: list.nth($map_class,1);
 $flight-type-class: list.nth($map_class,2);
 $flight-row-class: list.nth($map_class,3);
+$column-elem-class: list.nth($map_class,4);
+$fl-header-class: list.nth($map_class,5);
 
 @mixin global(){
     form##{$form_id}{
@@ -59,8 +63,19 @@ $flight-row-class: list.nth($map_class,3);
             background-color: $flight-div-bg-color;
             padding: $flight-div-padding;
             margin: $flight-div-margin;
-        }
-    }
+            div.#{$flight-row-class}{
+                div.#{$column-elem-class}{
+                    p{
+                        &.#{$fl-header-class}{
+                            text-transform: uppercase;
+                            font-weight: bold;
+                        }
+                        text-align: center;
+                    }//p{            
+                }//div.#{$column-elem-class}{
+            }//div.#{$flight-row-class}{         
+        }//div.#{$flight-div-class}{
+    }//form##{$form_id}{
 }
 
 @mixin flight-div-large(){
@@ -79,12 +94,12 @@ $flight-row-class: list.nth($map_class,3);
                         border: $items-border;
                         padding: $paragraphs-padding;
                         margin: 0;
-                        &:nth-child(1){
+                        /* &:nth-child(1){
                             background-color: list.nth($column-elem-colors-1p,$i);
                         }
                         &:nth-child(2){
                             background-color: list.nth($column-elem-colors-2p,$i);
-                        }
+                        } */
                     }
                 }
             }//@for $i from 1 through $column-elem-number{
@@ -92,7 +107,20 @@ $flight-row-class: list.nth($map_class,3);
     }//div.#{$flight-div-class}{
 }
 
+@mixin flight-div-medium(){
+
+}
+
 @include global();
 @media only screen and (min-width: $lg-breakpoint){
     @include flight-div-large();
+}
+@media only screen and (min-width: $md-breakpoint) and (max-width: #{$lg-breakpoint - 1px}){
+    @include flight-div-medium();
+}
+@media only screen and (min-width: $sm-breakpoint) and (max-width: #{$md-breakpoint - 1px}){
+
+}
+@media only screen and (max-width: #{$sm-breakpoint - 1px}){
+
 }

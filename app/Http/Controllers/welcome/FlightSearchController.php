@@ -55,6 +55,7 @@ class FlightSearchController extends Controller
         $inputs = $request->validated();
         Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
         $flight_type = $inputs['flight-type'];
+        Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
@@ -74,7 +75,7 @@ class FlightSearchController extends Controller
                         'hours' => $fl_outbound->hours,
                         'arrival_country' => $fl_outbound->arrival_country,
                         'arrival_airport' => $fl_outbound->arrival_airport,
-                        'total_price' => $fl_outbound->total_price
+                        'total_price' => $fl_outbound->total_price_format
                     ],
                     'return' => [
                         'company_name' => $fl_return->company_name,
@@ -84,7 +85,7 @@ class FlightSearchController extends Controller
                         'hours' => $fl_return->hours,
                         'arrival_country' => $fl_return->arrival_country,
                         'arrival_airport' => $fl_return->arrival_airport,
-                        'total_price' => $fl_return->total_price
+                        'total_price' => $fl_return->total_price_format
                     ]
                 ];
             }
@@ -100,7 +101,7 @@ class FlightSearchController extends Controller
                         'hours' => $fl_oneway->hours,
                         'arrival_country' => $fl_oneway->arrival_country,
                         'arrival_airport' => $fl_oneway->arrival_airport,
-                        'total_price' => $fl_oneway->total_price
+                        'total_price' => $fl_oneway->total_price_format
                     ]
                 ];
             }
