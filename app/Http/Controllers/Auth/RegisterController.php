@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Exception;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -94,6 +99,37 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        Log::channel('stdout')->info("RegisterController register");
+        $inputs = $request->all();
+        Log::channel('stdout')->info("RegisterController register inputs => ".var_export($inputs,true));
+        try{
+            $validator = $this->validator($inputs)->validate();
+            //Add the new subscriber to DB
+            $user = $this->create($inputs);
+            $registered = new Registered($user);
+            event($registered);
+            //Registered user login with his account
+            if($this->registered($request,$user)){
+                Log::channel('stdout')->info("RegisterController register user registered");
+                //Registration successfully completed
+                $this->guard()->login($user);
+            }
+        }catch(Exception $e){
+            if($e instanceof ValidationException){
+                return redirect()->back()->withErrors($e->errors());
+            }
+        }
+
     }
 
 }
