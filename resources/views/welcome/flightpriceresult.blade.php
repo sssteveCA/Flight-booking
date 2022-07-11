@@ -11,7 +11,9 @@
 
 @section('content')
     @isset($response['flight_type'])
-        <form id="fFlight" method="post" action="#">
+        <form id="fFlightPrice" method="post" action="#">
+            @csrf
+            @method('POST')
             @foreach($response['flights'] as $type => $flight)
             <div class="flight-div">
                 @if($type == 'outbound')
@@ -25,22 +27,30 @@
                     <div class="company column-elem">
                         <p class="fl-header bg-warning bg-gradient">Compagnia aerea</p>
                         <p class="bg-light bg-gradient">{{$flight['company_name']}}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['company_name']" value="{{ $flight['company_name'] }}">
                     </div>
                     <div class="date column-elem">
                         <p class="fl-header bg-warning bg-gradient">Data e orario</p>
                         <p class="bg-light bg-gradient">{{$flight['flight_date'].' '.$flight['hours']}}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['flight_date']" value="{{ $flight['flight_date'] }}">
+                        <input type="hidden" name="flights[{{ $loop->index }}]['hours']" value="{{ $flight['hours'] }}">
                     </div>
                     <div class="departure-loc column-elem">
                         <p class="fl-header bg-warning bg-gradient">Luogo di partenza</p>
                         <p class="bg-light bg-gradient">{{$flight['departure_country'].', '.$flight['departure_airport']}}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['departure_country']" value="{{ $flight['departure_country'] }}">
+                        <input type="hidden" name="flights[{{ $loop->index }}]['departure_airport']" value="{{ $flight['departure_airport'] }}">
                     </div>
                     <div class="arrival-loc column-elem">
                         <p class="fl-header bg-warning bg-gradient">Luogo di arrivo</p>
                         <p class="bg-light bg-gradient">{{$flight['arrival_country'].', '.$flight['arrival_airport']}}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['arrival_country']" value="{{ $flight['arrival_country'] }}">
+                        <input type="hidden" name="flights[{{ $loop->index }}]['arrival_airport']" value="{{ $flight['departure_airport'] }}">
                     </div>
                     <div class="price column-elem">
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['total_price']" value="{{ $flight['total_price'] }}">
                     </div>
                 </div> 
             </div>
