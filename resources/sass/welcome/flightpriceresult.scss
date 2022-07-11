@@ -59,6 +59,12 @@ $fl-header-class: list.nth($map_class,5);
     form##{$form_id}{
         background-color: $form-bg-color;
         div.#{$flight-div-class}{
+            div.#{$flight-type-class}{
+                text-transform: uppercase;
+                font-weight: bold;
+                text-align: center;
+                border: $items-border;
+            }//div.#{$flight-type-class}{
             border: $flight-div-border;
             background-color: $flight-div-bg-color;
             padding: $flight-div-padding;
@@ -70,9 +76,7 @@ $fl-header-class: list.nth($map_class,5);
                             text-transform: uppercase;
                             font-weight: bold;
                         }
-                        text-align: center;
                         margin: 0;
-                        border: $items-border;
                     }//p{            
                 }//div.#{$column-elem-class}{
             }//div.#{$flight-row-class}{         
@@ -83,8 +87,6 @@ $fl-header-class: list.nth($map_class,5);
 @mixin flight-div-large(){
     div.#{$flight-div-class}{
         div.#{$flight-type-class}{
-            text-align: center;
-            border: $items-border;
             padding: auto 15px;
         }
         div.#{$flight-row-class}{
@@ -94,6 +96,8 @@ $fl-header-class: list.nth($map_class,5);
                     width: list.nth($column-elem-widths-lg,$i);
                     p{
                         padding: $paragraphs-padding;
+                        border: $items-border;
+                        text-align: center;
                         /* &:nth-child(1){
                             background-color: list.nth($column-elem-colors-1p,$i);
                         }
@@ -122,6 +126,28 @@ $fl-header-class: list.nth($map_class,5);
                 flex-flow: row nowrap;
                 p{
                     width: 50%;
+                    border: $items-border;
+                    text-align: center;
+                }
+            }//div.#{$column-elem-class}{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
+}
+
+@mixin flight-div-small(){
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            padding: auto 5px;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            flex-direction: column;
+            border: $items-border;
+            div.#{$column-elem-class}{
+                display: flex;
+                flex-direction: column;
+                p{
+                    width: 100%;
                 }
             }//div.#{$column-elem-class}{
         }//div.#{$flight-row-class}{
@@ -135,8 +161,6 @@ $fl-header-class: list.nth($map_class,5);
 @media only screen and (min-width: $md-breakpoint) and (max-width: #{$lg-breakpoint - 1px}){
     @include flight-div-medium();
 }
-@media only screen and (min-width: $sm-breakpoint) and (max-width: #{$md-breakpoint - 1px}){
-}
-@media only screen and (max-width: #{$sm-breakpoint - 1px}){
-
+@media only screen and (max-width: #{$md-breakpoint - 1px}){
+    @include flight-div-small();
 }

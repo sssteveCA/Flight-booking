@@ -7,10 +7,14 @@ form#fFlight div.flight-div {
   padding: 20px;
   margin: 20px auto;
 }
-form#fFlight div.flight-div div.flight-row div.column-elem p {
+form#fFlight div.flight-div div.flight-type {
+  text-transform: uppercase;
+  font-weight: bold;
   text-align: center;
-  margin: 0;
   border: 1px solid black;
+}
+form#fFlight div.flight-div div.flight-row div.column-elem p {
+  margin: 0;
 }
 form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   text-transform: uppercase;
@@ -19,8 +23,6 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
 
 @media only screen and (min-width: 992px) {
   div.flight-div div.flight-type {
-    text-align: center;
-    border: 1px solid black;
     padding: auto 15px;
   }
   div.flight-div div.flight-row {
@@ -31,6 +33,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row > div:nth-child(1) p {
     padding: 10px 15px;
+    border: 1px solid black;
+    text-align: center;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -43,6 +47,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row > div:nth-child(2) p {
     padding: 10px 15px;
+    border: 1px solid black;
+    text-align: center;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -55,6 +61,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row > div:nth-child(3) p {
     padding: 10px 15px;
+    border: 1px solid black;
+    text-align: center;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -67,6 +75,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row > div:nth-child(4) p {
     padding: 10px 15px;
+    border: 1px solid black;
+    text-align: center;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -79,6 +89,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row > div:nth-child(5) p {
     padding: 10px 15px;
+    border: 1px solid black;
+    text-align: center;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -103,5 +115,24 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   }
   div.flight-div div.flight-row div.column-elem p {
     width: 50%;
+    border: 1px solid black;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 767px) {
+  div.flight-div div.flight-type {
+    padding: auto 5px;
+  }
+  div.flight-div div.flight-row {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+  }
+  div.flight-div div.flight-row div.column-elem {
+    display: flex;
+    flex-direction: column;
+  }
+  div.flight-div div.flight-row div.column-elem p {
+    width: 100%;
   }
 }
