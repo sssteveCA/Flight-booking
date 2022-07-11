@@ -9,6 +9,8 @@ form#fFlight div.flight-div {
 }
 form#fFlight div.flight-div div.flight-row div.column-elem p {
   text-align: center;
+  margin: 0;
+  border: 1px solid black;
 }
 form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
   text-transform: uppercase;
@@ -28,9 +30,7 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
     width: 20%;
   }
   div.flight-div div.flight-row > div:nth-child(1) p {
-    border: 1px solid black;
     padding: 10px 15px;
-    margin: 0;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -42,9 +42,7 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
     width: 20%;
   }
   div.flight-div div.flight-row > div:nth-child(2) p {
-    border: 1px solid black;
     padding: 10px 15px;
-    margin: 0;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -56,9 +54,7 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
     width: 25%;
   }
   div.flight-div div.flight-row > div:nth-child(3) p {
-    border: 1px solid black;
     padding: 10px 15px;
-    margin: 0;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -70,9 +66,7 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
     width: 25%;
   }
   div.flight-div div.flight-row > div:nth-child(4) p {
-    border: 1px solid black;
     padding: 10px 15px;
-    margin: 0;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
@@ -84,14 +78,30 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
     width: 10%;
   }
   div.flight-div div.flight-row > div:nth-child(5) p {
-    border: 1px solid black;
     padding: 10px 15px;
-    margin: 0;
     /* &:nth-child(1){
         background-color: list.nth($column-elem-colors-1p,$i);
     }
     &:nth-child(2){
         background-color: list.nth($column-elem-colors-2p,$i);
     } */
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  div.flight-div div.flight-type {
+    text-align: center;
+    border: 1px solid black;
+    padding: auto 8px;
+  }
+  div.flight-div div.flight-row {
+    display: flex;
+    flex-direction: column;
+  }
+  div.flight-div div.flight-row div.column-elem {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  div.flight-div div.flight-row div.column-elem p {
+    width: 50%;
   }
 }

@@ -71,6 +71,8 @@ $fl-header-class: list.nth($map_class,5);
                             font-weight: bold;
                         }
                         text-align: center;
+                        margin: 0;
+                        border: $items-border;
                     }//p{            
                 }//div.#{$column-elem-class}{
             }//div.#{$flight-row-class}{         
@@ -91,9 +93,7 @@ $fl-header-class: list.nth($map_class,5);
                 >div:nth-child(#{$i}){
                     width: list.nth($column-elem-widths-lg,$i);
                     p{
-                        border: $items-border;
                         padding: $paragraphs-padding;
-                        margin: 0;
                         /* &:nth-child(1){
                             background-color: list.nth($column-elem-colors-1p,$i);
                         }
@@ -108,7 +108,24 @@ $fl-header-class: list.nth($map_class,5);
 }
 
 @mixin flight-div-medium(){
-
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            text-align: center;
+            border: $items-border;
+            padding: auto 8px;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            flex-direction: column;
+            div.#{$column-elem-class}{
+                display:flex;
+                flex-flow: row nowrap;
+                p{
+                    width: 50%;
+                }
+            }//div.#{$column-elem-class}{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
 }
 
 @include global();
@@ -119,7 +136,6 @@ $fl-header-class: list.nth($map_class,5);
     @include flight-div-medium();
 }
 @media only screen and (min-width: $sm-breakpoint) and (max-width: #{$md-breakpoint - 1px}){
-
 }
 @media only screen and (max-width: #{$sm-breakpoint - 1px}){
 
