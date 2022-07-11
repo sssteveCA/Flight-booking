@@ -17,11 +17,13 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @isset($rc_errors['name'])
+                                    @foreach($rc_errors['name'] as $error)
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>{{ $error }}</strong>
+                                    </div>
+                                    @endforeach
+                                @endisset
                             </div>
                         </div>
 
@@ -31,11 +33,13 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @isset($rc_errors['email'])
+                                    @foreach($rc_errors['email'] as $error)
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>{{ $error }}</strong>
+                                    </div>
+                                    @endforeach
+                                @endisset
                             </div>
                         </div>
 
@@ -45,11 +49,13 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @isset($rc_errors['password'])
+                                    @foreach($rc_errors['password'] as $error)
+                                    <div class="alert alert-danger my-2" role="alert">
+                                        {{ $error }}
+                                    </div>
+                                    @endforeach
+                                @endisset
                             </div>
                         </div>
 
@@ -74,11 +80,4 @@
         </div>
     </div>
 </div>
-@isset($rc_errors)
-    @php
-        echo '<pre>';
-            var_dump($rc_errors);
-        echo '</pre>';
-    @endphp
-@endisset
 @endsection
