@@ -3,9 +3,15 @@
 namespace App\Interfaces;
 
 interface Paths{
+
+    //Prefixes
+    const PREFIX_PROFILE = 'profile';
+
     //URLs
     const URL_AIRPORTSEARCH = '/welcome/airportsearch';
     const URL_CONTACTS = '/contacts';
+    const URL_EDITPASSWORD = '/editPassword';
+    const URL_EDITUSERNAME = '/editUsername';
     const URL_FLIGHTEVENTS = '/welcome/flightevents';
     const URL_FLIGHTPRICE = '/welcome/flightprice';
     const URL_FLIGHTSEARCH = '/welcome/flightsearch';

@@ -26,12 +26,12 @@ Route::get('/', function () {
 });
 
 //Private profile routes
-Route::group(['prefix' => 'profile', 'middleware' => ['auth','verified']], function(){
+Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']], function(){
     Route::get('/info', [InfoController::class, 'getData'])->name('infocontroller.info'); 
     Route::get('/myFlights',function(){
     });  
-    Route::patch('/editUsername',[InfoController::class,'editUsername'])->name('infocontroller.editusername');
-    Route::patch('/editPassword',[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
+    Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name('infocontroller.editusername');
+    Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
 });
 
 Auth::routes(['verify' => true]);
