@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -118,15 +119,26 @@ class RegisterController extends Controller
         try{
             $validator = $this->validator($inputs)->validate();
             //Add the new subscriber to DB
-            $user = $this->create($inputs);
-            $registered = new Registered($user);
-            event($registered);
+            Log::channel('stdout')->info("RegisterController register validated");
+            event(new Registered($user = $this->create($request->all())));
+            Log::channel('stdout')->info("RegisterController register event");
             //Registered user login with his account
+            $this->guard()->login($user);
+            Log::channel('stdout')->info("RegisterController register login guard");
             if($this->registered($request,$user)){
                 Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed
-                $this->guard()->login($user);
+                //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
+                return redirect()->route(P::VIEW_SUBSCRIBED,[
+                    'status' => 'OK',
+                    'message' => C::OK_REGISTRATION
+                ]);
             }
+            throw new HttpResponseException(
+                response()->view(P::VIEW_REGISTER,['status' => 'ERROR',
+                'message' => C::ERR_REGISTRATION],500)
+            );
+            
         }catch(Exception $e){
             if($e instanceof ValidationException){
                 Log::channel('stdout')->info("RegisterController register ValidationException");

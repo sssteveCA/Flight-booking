@@ -4,13 +4,16 @@ namespace App\Interfaces;
 
 //This class contains only constants messages
 interface Constants{
+
     //errors
+    const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
     const ERR_PASSWORDINCORRECTLOGIN = "La password inserita è errata";
+    const ERR_REGISTRATION = 'Errore durante la registrazione. '.Constants::ADMIN_CONTACT;
     const ERR_URLNOTFOUND = "La pagina che hai richiesto non esiste";
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
