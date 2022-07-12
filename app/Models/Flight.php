@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 }
