@@ -7,14 +7,19 @@ interface Paths{
     //Prefixes
     const PREFIX_PROFILE = 'profile';
 
+    //Routes
+    const ROUTE_BOOKFLIGHT = 'bookflight';
+    const ROUTE_FLIGHTPRICE = 'flightprice';
+
     //URLs
-    const URL_AIRPORTSEARCH = '/welcome/airportsearch';
+    const URL_AIRPORTSEARCH = '/airportsearch';
+    const URL_BOOKFLIGHT = '/bookflight';
     const URL_CONTACTS = '/contacts';
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';
-    const URL_FLIGHTEVENTS = '/welcome/flightevents';
-    const URL_FLIGHTPRICE = '/welcome/flightprice';
-    const URL_FLIGHTSEARCH = '/welcome/flightsearch';
+    const URL_FLIGHTEVENTS = '/flightevents';
+    const URL_FLIGHTPRICE = '/flightprice';
+    const URL_FLIGHTSEARCH = '/flightsearch';
     const URL_HOME = '/home';
     const URL_LOGOUT = '/logout';
     const URL_NEWS = '/news';

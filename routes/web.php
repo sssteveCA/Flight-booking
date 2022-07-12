@@ -42,17 +42,8 @@ Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirpor
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
-Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name('flightprice');
-/* Route::get(P::URL_SUBSCRIBED, function(array $data = array()){
-    if(!empty($data)){
-        Log::channel('stdout')->info("url subscribed data => ".var_export($data,true));
-        return view(P::VIEW_SUBSCRIBED,$data);
-    }
-    else{
-        return redirect(P::URL_REGISTER);
-    }
-    
-})->name('auth.register.subscribed'); */
+Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+Route::post(P::URL_BOOKFLIGHT,[])->name(P::ROUTE_BOOKFLIGHT);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);

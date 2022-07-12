@@ -1,3 +1,6 @@
+@php
+    use App\Interfaces\Paths as P; 
+@endphp
 @extends('layouts.menu')
 
 @section('title','Home FlightBooking')
@@ -22,7 +25,7 @@
             </div>
         </nav>
         <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
-            <form id="flightSearch" method="post" action="{{ route('flightprice') }}">
+            <form id="flightSearch" method="post" action="{{ route(P::ROUTE_FLIGHTPRICE) }}">
                 @csrf
                 @method("POST")
                 <div class="container">

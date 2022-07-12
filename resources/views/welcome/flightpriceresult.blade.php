@@ -1,4 +1,7 @@
-@extends('../layouts.menu')
+@php
+    use App\Interfaces\Paths as P; 
+@endphp
+@extends('layouts.menu')
 
 @section('title','Prezzo volo scelto')
 
@@ -11,7 +14,7 @@
 
 @section('content')
     @isset($response['flight_type'])
-        <form id="fFlightPrice" method="post" action="#">
+        <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
             @method('POST')
             @foreach($response['flights'] as $type => $flight)
