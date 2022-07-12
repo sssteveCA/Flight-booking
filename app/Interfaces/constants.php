@@ -8,6 +8,8 @@ interface Constants{
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
+    const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
+    const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
@@ -18,6 +20,8 @@ interface Constants{
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //success
+    const OK_FLIGHTBOOK_SINGLE = "Il volo selezionati sono stati prenotati con successo";
+    const OK_FLIGHTBOOK_MULTIPLE = "I voli selezionati sono stati prenotati con successo";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
     const OK_USERNAMEUPDATED = "Lo username è stato modificato";

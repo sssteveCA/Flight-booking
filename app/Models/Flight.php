@@ -9,5 +9,6 @@ class Flight extends Model
 {
     use HasFactory;
 
+    protected $table = 'flights';
     public $timestamps = false;
 }

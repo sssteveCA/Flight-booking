@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FlightController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\welcome\FlightEventsController;
@@ -31,7 +32,7 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
     Route::get(P::URL_INFO, [InfoController::class, 'getData'])->name(P::ROUTE_INFO); 
     Route::get(P::URL_MYFLIGHTS,function(){
     });  
-    Route::post(P::URL_BOOKFLIGHT,[])->name(P::ROUTE_BOOKFLIGHT);
+    Route::post(P::URL_BOOKFLIGHT,[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT);
     Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
     Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
 });
