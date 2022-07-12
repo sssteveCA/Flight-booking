@@ -36,6 +36,7 @@ interface Paths{
     const URL_WHOWEARE = '/chi-siamo';
 
     //Views
+    const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';

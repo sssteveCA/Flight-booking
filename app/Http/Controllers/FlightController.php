@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 
 class FlightController extends Controller
 {
@@ -36,9 +37,10 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
+        //$inputs = $request->all();
         $models = [];
         $inserted = true;
+        $flights_number = sizeof($request->flights);
         foreach($request->flights as $n => $flight){
             $models[$n] = new Flight;
             $models[$n]->user_id = auth()->user()->id;
@@ -65,12 +67,27 @@ class FlightController extends Controller
             }//if(!$created){
         }
         if($inserted){
+            $done = true;
+            $code = 201; //Created
             //Creation operations done successfully
+            if($flights_number > 1)
+                $message = C::OK_FLIGHTBOOK_MULTIPLE;
+            else
+                $message = C::OK_FLIGHTBOOK_SINGLE;       
         }
         else{
             //Error while inserting record in DB
+            $code = 500; //Internal server error
+            $done = false;
+            if($flights_number > 1)
+                $message = C::ERR_FLIGHTBOOK_MULTIPLE;
+            else
+                $message = C::ERR_FLIGHTBOOK_SINGLE;
         }
-        return response()->json($inputs,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        return response()->view(P::VIEW_BOOKFLIGHT,[
+            'done' => $done,
+            'message' => $message
+        ],$code);  
     }
 
     /**
