@@ -28,11 +28,12 @@ Route::get('/', function () {
 
 //Private profile routes
 Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']], function(){
-    Route::get('/info', [InfoController::class, 'getData'])->name('infocontroller.info'); 
-    Route::get('/myFlights',function(){
+    Route::get(P::URL_INFO, [InfoController::class, 'getData'])->name(P::ROUTE_INFO); 
+    Route::get(P::URL_MYFLIGHTS,function(){
     });  
-    Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name('infocontroller.editusername');
-    Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
+    Route::post(P::URL_BOOKFLIGHT,[])->name(P::ROUTE_BOOKFLIGHT);
+    Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+    Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
 });
 
 Auth::routes(['verify' => true]);
@@ -43,7 +44,6 @@ Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
-Route::post(P::URL_BOOKFLIGHT,[])->name(P::ROUTE_BOOKFLIGHT);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);

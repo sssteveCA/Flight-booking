@@ -10,6 +10,9 @@ interface Paths{
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_FLIGHTPRICE = 'flightprice';
+    const ROUTE_INFO = 'infocontroller.info';
+    const ROUTE_EDITUSERNAME = 'infocontroller.editusername';
+    const ROUTE_EDITPASSWORD = 'infocontroller.editpassword';
 
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
@@ -21,7 +24,9 @@ interface Paths{
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTSEARCH = '/flightsearch';
     const URL_HOME = '/home';
+    const URL_INFO = '/info';
     const URL_LOGOUT = '/logout';
+    const URL_MYFLIGHTS = '/myFlights';
     const URL_NEWS = '/news';
     const URL_PROFILE = '/profile';
     const URL_REGISTER = '/register';
