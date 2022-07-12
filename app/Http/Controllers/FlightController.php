@@ -110,7 +110,8 @@ class FlightController extends Controller
             Log::channel('stdout')->info("Flights unquote 1st foreach {$key}");
             $flights_unquoted[$key] = [];
             foreach($val as $sub_key => $sub_val){
-                $sub_key_unq = stripslashes($sub_key);
+                $sub_key_unq = str_replace("'","",$sub_key);
+                Log::channel('stdout')->info("Flights unquote 2nd foreach before slashes remove {$sub_key} => {$sub_val}");
                 Log::channel('stdout')->info("Flights unquote 2nd foreach {$sub_key_unq} => {$sub_val}");
                 $flights_unquoted[$key][$sub_key_unq] = $sub_val;
             }
