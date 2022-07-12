@@ -34,9 +34,10 @@
                     </div>
                     <div class="date column-elem">
                         <p class="fl-header bg-warning bg-gradient">Data e orario</p>
-                        <p class="bg-light bg-gradient">{{$flight['flight_date'].' '.$flight['hours']}}</p>
+                        <p class="bg-light bg-gradient">{{$flight['flight_date'].' '.$flight['flight_time']}}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['booking_date']" value="{{ $flight['booking_date'] }}">
                         <input type="hidden" name="flights[{{ $loop->index }}]['flight_date']" value="{{ $flight['flight_date'] }}">
-                        <input type="hidden" name="flights[{{ $loop->index }}]['hours']" value="{{ $flight['hours'] }}">
+                        <input type="hidden" name="flights[{{ $loop->index }}]['flight_time']" value="{{ $flight['flight_time'] }}">
                     </div>
                     <div class="departure-loc column-elem">
                         <p class="fl-header bg-warning bg-gradient">Luogo di partenza</p>

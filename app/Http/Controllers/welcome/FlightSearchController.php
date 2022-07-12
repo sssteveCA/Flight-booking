@@ -71,8 +71,9 @@ class FlightSearchController extends Controller
                         'company_name' => $fl_outbound->company_name,
                         'departure_country' => $fl_outbound->departure_country,
                         'departure_airport' => $fl_outbound->departure_airport,
+                        'booking_date' => date('Y-m-d'),
                         'flight_date' => $fl_outbound->flight_date,
-                        'hours' => $fl_outbound->hours,
+                        'flight_time' => $fl_outbound->hours,
                         'arrival_country' => $fl_outbound->arrival_country,
                         'arrival_airport' => $fl_outbound->arrival_airport,
                         'total_price' => $fl_outbound->total_price_format
@@ -81,8 +82,9 @@ class FlightSearchController extends Controller
                         'company_name' => $fl_return->company_name,
                         'departure_country' => $fl_return->departure_country,
                         'departure_airport' => $fl_return->departure_airport,
+                        'booking_date' => date('Y-m-d'),
                         'flight_date' => $fl_return->flight_date,
-                        'hours' => $fl_return->hours,
+                        'flight_time' => $fl_return->hours,
                         'arrival_country' => $fl_return->arrival_country,
                         'arrival_airport' => $fl_return->arrival_airport,
                         'total_price' => $fl_return->total_price_format
@@ -97,8 +99,9 @@ class FlightSearchController extends Controller
                         'company_name' => $fl_oneway->company_name,
                         'departure_country' => $fl_oneway->departure_country,
                         'departure_airport' => $fl_oneway->departure_airport,
+                        'booking_date' => date('Y-m-d'),
                         'flight_date' => $fl_oneway->flight_date,
-                        'hours' => $fl_oneway->hours,
+                        'flight_time' => $fl_oneway->hours,
                         'arrival_country' => $fl_oneway->arrival_country,
                         'arrival_airport' => $fl_oneway->arrival_airport,
                         'total_price' => $fl_oneway->total_price_format
