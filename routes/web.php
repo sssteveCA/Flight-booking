@@ -13,6 +13,10 @@ use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
 use Illuminate\Http\Request;
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Request-Method: GET, POST, PUT, DELETE, OPTIONS');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +45,7 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
 
 Route::post(P::URL_BOOKFLIGHT,[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT)->middleware(['auth','verified']);
 
-Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth,verified']], function(){
+Route::prefix(P::PREFIX_BOOKFLIGHT)->group(function(){
     Route::post(P::URL_BOOKFLIGHT_PAYPAL_RETURN,[PaypalController::class,'return'])->name(P::ROUTE_PAYPAL_RETURN);
     Route::get(P::URL_BOOKFLIGHT_PAYPAL_CANCEL,[PaypalController::class,'cancel'])->name(P::ROUTE_PAYPAL_CANCEL);
 });
