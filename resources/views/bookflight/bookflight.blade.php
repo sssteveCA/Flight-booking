@@ -12,6 +12,7 @@
             <h2 class="mt-5 text-center">Prenotazione volo</h2>
             <p class="lead text-center">{{$message}}</p>
         </div>
+        @if($done == true)
         <div class="form-div">
             <form id="fFlightPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
                 <div class="my-3">
@@ -30,15 +31,17 @@
                     <input type="hidden" name="cancel_return" value="{{ P::URL_BOOKFLIGHT_PAYPAL_CANCEL }}">
                 </div>
                 <div class="my-3">
-                    @foreach($flights as $flight)
+                    @forelse($flights as $flight)
                         <input type="hidden" name="item_name_{{ $loop->iteration }}" value="{{ $flight['name'] }}">
                         <input type="hidden" name="amount_{{ $loop->iteration}}" value="{{ $flight['total_price'] }}">
-                    @endforeach
+                    @empty
+                    @endforelse
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>
                 </div>
             </form>
         </div>
+        @endif
     @endisset
 @endsection

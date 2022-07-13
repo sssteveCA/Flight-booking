@@ -45,9 +45,11 @@ class FlightController extends Controller
         Log::channel('stdout')->info(var_export($flights_unquoted,true));
         $flights_info = $this->create_flights($flights_unquoted);
         $response_data = $this->setResponseData($flights_info);
+        Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
         return response()->view(P::VIEW_BOOKFLIGHT,[
             'done' => $response_data['done'],
-            'message' => $response_data['message']
+            'message' => $response_data['message'],
+            'flights' => $response_data['flights']
         ],$response_data['code']);  
     }
 
@@ -164,8 +166,8 @@ class FlightController extends Controller
     //Set the data to send to the view
     private function setResponseData(array $params): array{
         $response_data = [];
+        $response_data['flights'] = $params['flights'];
         if($params['inserted']){
-            $response_data['flights'] = $params['flights'];
             $response_data['done'] = true;
             $response_data['code'] = 201; //Created
             //Creation operations done successfully
