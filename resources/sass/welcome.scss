@@ -59,7 +59,7 @@ $xs-breakpoint: 575px;
             @if $i == 4{
                 display: none;
             }
-            @if $i == 5{
+            @if $i == 6{
                 @media only screen and (max-width: $xs-breakpoint){
                     div:nth-child(5){
                         display: flex;

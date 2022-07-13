@@ -67,6 +67,11 @@ function loadCountries(elements: any): void{
     });
 }
 
+//Get and set the companies name list in the proper select element
+function loadCompanies(elements: any): void{
+    
+}
+
 //When select option change
 function onChangeSelect(elements: any): void{
     elements['flight_tab']['elem']['flight-loc'].on('change',(event)=>{

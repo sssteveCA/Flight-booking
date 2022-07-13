@@ -40,6 +40,11 @@
                         </div>
                     </div>
                     <div id="fb-fs2" class="row">
+                        <div class="col-12 col-sm-5 col-lg-5">
+                            <select class="form-select company-names" id="fb-company_name" name="company_name"></select>
+                        </div>
+                    </div>
+                    <div id="fb-fs3" class="row">
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-1">
                             <select class="form-select flight-loc" id="fb-from" name="from"></select>
                         </div>
@@ -54,13 +59,13 @@
                         </div>
                         
                     </div>
-                    <div id="fb-fs3" class="row fb-oneway-div">
+                    <div id="fb-fs4" class="row fb-oneway-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
                             <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date">
                             <label for="fb-oneway-date">Partenza</label>
                         </div>
                     </div>
-                    <div id="fb-fs4" class="row fb-roundtrip-div">
+                    <div id="fb-fs5" class="row fb-roundtrip-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
                             <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date">
                             <label for="fb-roundtrip-start-date">Partenza</label>
@@ -70,7 +75,7 @@
                             <label for="fb-roundtrip-end-date">Ritorno</label>
                         </div>
                     </div>
-                    <div id="fb-fs5" class="row align-items-center">
+                    <div id="fb-fs6" class="row align-items-center">
                         <div class="form-floating col-12 col-sm-5 col-md-3">
                             <input type="number" id="fb-adults" class="form-control" name="adults" value="1" min="1">
                             <label for="fb-adults">Adulti</label>

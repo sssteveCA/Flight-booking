@@ -137,7 +137,7 @@ class FlightController extends Controller
             $models[$n]->booking_date = $flight['booking_date'];
             $models[$n]->flight_date = $flight['flight_date'];
             $models[$n]->flight_time = $flight['flight_time'];
-            $models[$n]->price = $flight['price'];
+            $models[$n]->price = $flight['total_price'];
             $created = $models[$n]->save();
             if(!$created){
                 //If there was a problem inserting record in DB

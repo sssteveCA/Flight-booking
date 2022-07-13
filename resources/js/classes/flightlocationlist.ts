@@ -7,7 +7,8 @@ import { Constants } from "../values/constants";
 export default class FlightLocationList{
     private _fired: JQuery<HTMLElement>;
     private _query: string;
-    private _country: string;
+    private _country: string; //Country which the airport is
+    private _company: string; //Flight company chosen
     private _selects: JQuery;
     private _id_from_select: string;
     private _id_to_select: string;
@@ -24,6 +25,7 @@ export default class FlightLocationList{
     get fired(){return this._fired;}
     get query(){return this._query;}
     get country(){return this._country;}
+    get company(){return this._company;}
     get id_from_select(){return this._id_from_select;}
     get id_to_select(){return this._id_to_select;}
     get selects(){return this._selects;}
@@ -40,6 +42,7 @@ export default class FlightLocationList{
         return this._error;
     }
 
+    //Get airports located in selected country
     public get_country_airports(data: FlightLocationAirportsInterface): boolean{
         let ok = false;
         this._errno = 0;
@@ -71,6 +74,7 @@ export default class FlightLocationList{
         return promise;
     }
 
+    //Get available countries list 
     public async get_countries(data: FlightLocationCountriesInterface): Promise<boolean>{
         let ok = false;
         this._errno = 0;
