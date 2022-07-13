@@ -42,8 +42,8 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
 Route::post(P::URL_BOOKFLIGHT,[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT)->middleware(['auth','verified']);
 
 Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth,verified']], function(){
-    Route::post(P::URL_BOOKFLIGHT_PAYPAL_RETURN,[PaypalController::class,'return']);
-    Route::get(P::URL_BOOKFLIGHT_PAYPAL_CANCEL,[PaypalController::class,'cancel']);
+    Route::post(P::URL_BOOKFLIGHT_PAYPAL_RETURN,[PaypalController::class,'return'])->name(P::ROUTE_PAYPAL_RETURN);
+    Route::get(P::URL_BOOKFLIGHT_PAYPAL_CANCEL,[PaypalController::class,'cancel'])->name(P::ROUTE_PAYPAL_CANCEL);
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');

@@ -19,6 +19,11 @@ class PaypalController extends Controller
 
     //Return URL after user has made the payment
     public function return(Request $request){
-
+        $post_data = $request->all();
+        return response()->view(P::VIEW_PAYPAL_RETURN,[
+            'payment' => 'completed',
+            'message' => C::OK_FLIGHTPAYMENT,
+            'post_data' => $post_data
+        ],200);
     }
 }

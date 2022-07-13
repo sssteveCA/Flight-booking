@@ -15,6 +15,8 @@ interface Paths{
     const ROUTE_INFO = 'infocontroller.info';
     const ROUTE_EDITUSERNAME = 'infocontroller.editusername';
     const ROUTE_EDITPASSWORD = 'infocontroller.editpassword';
+    const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
+    const ROUTE_PAYPAL_RETURN = 'paypal.return';
 
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
