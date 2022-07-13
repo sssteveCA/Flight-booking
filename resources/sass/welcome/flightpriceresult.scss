@@ -88,6 +88,8 @@ $fl-header-class: list.nth($map_class,5);
     div.#{$flight-div-class}{
         div.#{$flight-type-class}{
             padding: auto 15px;
+            text-align: center;
+            border: $items-border;
         }
         div.#{$flight-row-class}{
             display: flex;

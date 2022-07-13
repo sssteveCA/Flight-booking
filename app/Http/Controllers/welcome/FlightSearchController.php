@@ -151,7 +151,7 @@ class FlightSearchController extends Controller
             $da = $inputs['from-airport'];
             $aa = $inputs['to-airport'];
         }
-        $cn = Airports::COMPANIES_LIST[0];
+        $cn = $inputs['company_name'];
         if($flight_direction == 'oneway'){
             //Oneway flight
             $fd = $inputs['oneway-date'];

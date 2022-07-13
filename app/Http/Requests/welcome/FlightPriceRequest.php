@@ -35,6 +35,7 @@ class FlightPriceRequest extends FormRequest
     {
         return [
             'flight-type' => 'required',
+            'company_name' => 'required',
             'from' => 'required',
             'from-airport' => 'required',
             'to' => 'required',
@@ -68,6 +69,7 @@ class FlightPriceRequest extends FormRequest
     {
         return [
             'flight-type' => 'Tipo di volo',
+            'company_name' => 'Compagnia aerea',
             'from' => 'Paese di partenza',
             'from-airport' => 'Aereoporto di partenza',
             'to' => 'Paese di destinazione',

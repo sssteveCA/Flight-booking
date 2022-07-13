@@ -24,6 +24,8 @@ form#fFlight div.flight-div div.flight-row div.column-elem p.fl-header {
 @media only screen and (min-width: 992px) {
   div.flight-div div.flight-type {
     padding: auto 15px;
+    text-align: center;
+    border: 1px solid black;
   }
   div.flight-div div.flight-row {
     display: flex;
