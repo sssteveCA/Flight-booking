@@ -1,6 +1,7 @@
 import FlightEventsList from "./classes/flighteventslist";
 import FlightLocationList from "./classes/flightlocationlist";
 import FlightLocationAirportsInterface from "./interfaces/flightlocationairports.interface";
+import FlightLocationCompaniesInterface from "./interfaces/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flightlocationcountries.interface";
 
 $(()=>{
@@ -15,12 +16,14 @@ $(()=>{
             },
             'id':{
                 0: 'fb-from',
-                1: 'fb-to'
+                1: 'fb-to',
+                2: 'fb-company_name'
             }      
         }
     };
-    console.log(elements);
+    //console.log(elements);
     loadCountries(elements);
+    loadCompanies(elements);
     tabClickEvents(elements);
     setInputDate(elements);
 });
@@ -45,11 +48,11 @@ function setInputDate(elements: any): void{
 
 //Load countries list from server
 function loadCountries(elements: any): void{
+    let fll: FlightLocationList = new FlightLocationList();
     let dataC: FlightLocationCountriesInterface = {
         id_from_select: elements['flight_tab']['id'][0],
         id_to_select: elements['flight_tab']['id'][1]
     }
-    let fll: FlightLocationList = new FlightLocationList();
     fll.get_countries(dataC).then(res => {
         let fired = $('#'+fll.id_from_select);
         let dataA: FlightLocationAirportsInterface = {
@@ -65,11 +68,20 @@ function loadCountries(elements: any): void{
     }).catch(err => {
 
     });
+    
 }
 
 //Get and set the companies name list in the proper select element
 function loadCompanies(elements: any): void{
-    
+    let fll: FlightLocationList = new FlightLocationList();
+    let dataCn: FlightLocationCompaniesInterface = {
+        id_companies_select : elements['flight_tab']['id'][2]
+    };
+    fll.get_flight_companies(dataCn).then(res => {
+
+    }).catch(err => {
+
+    })
 }
 
 //When select option change

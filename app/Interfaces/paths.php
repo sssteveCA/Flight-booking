@@ -17,6 +17,7 @@ interface Paths{
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
+    const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';

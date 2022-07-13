@@ -63,8 +63,8 @@ export default class FlightLocationList{
         //If these properties are setted
         this.get_country_airports_promise().then(res => {
             //console.log(res);
-            if(this._id_from_select)this.set_airports(this._id_from_select,res);
-            if(this._id_to_select)this.set_airports(this._id_to_select,res);
+            if(this._id_from_select)this.set_airports_select(this._id_from_select,res);
+            if(this._id_to_select)this.set_airports_select(this._id_to_select,res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH_AIRPORTS;
@@ -90,7 +90,8 @@ export default class FlightLocationList{
         this._errno = 0;
         this._id_companies_select = data.id_companies_select;
         await this.get_flight_companies_promise().then(res => {
-            this.set_company_name(res);
+            //console.log(res);
+            this.set_companies_select(res);
             ok = true;
         }).catch(err => {
             this._errno = FlightLocationList.ERR_FETCH_COMPANIES;
@@ -103,7 +104,7 @@ export default class FlightLocationList{
         let fetch_url = Constants.URL_COMPANIESSEARCH;
         let promise = await new Promise((resolve,reject) =>{
             fetch(fetch_url).then(res =>{
-                resolve(res);
+                resolve(res.json());
             }).catch(err =>{
                 reject(err);
             });
@@ -142,7 +143,7 @@ export default class FlightLocationList{
         return promise;
     }
 
-    private set_airports(id: string,list: Array<string>): void{
+    private set_airports_select(id: string,list: Array<string>): void{
         let select = $('#'+id+'-airports');
         select.html('');
         for(const airport in list){
@@ -153,7 +154,7 @@ export default class FlightLocationList{
         }
      }
 
-     private set_company_name(list: Array<string>): void{
+     private set_companies_select(list: Array<string>): void{
         let select = $('#'+this._id_companies_select);
         select.html('');
         list.forEach((company) =>{
