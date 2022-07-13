@@ -46,12 +46,8 @@ class FlightController extends Controller
         $flights_unquoted = $this->flights_unquote($flights);
         Log::channel('stdout')->info("FlightController store flights unquoted => ");
         Log::channel('stdout')->info(var_export($flights_unquoted,true));
-        $inserted = $this->create_flights($flights_unquoted);
-        $params = [
-            'inserted' => $inserted,
-            'flights_number' => $flights_number,
-        ];
-        $response_data = $this->setResponseData($params);
+        $flights_info = $this->create_flights($flights_unquoted);
+        $response_data = $this->setResponseData($flights_info);
         return response()->view(P::VIEW_BOOKFLIGHT,[
             'done' => $response_data['done'],
             'message' => $response_data['message']
@@ -128,7 +124,6 @@ class FlightController extends Controller
             'flights_number' => 0,
             'flights' => []
         ];
-        $inserted = true;
         foreach($flights_data as $n => $flight){
             Log::channel('stdout')->info("FlightController store flight => ");
             Log::channel('stdout')->info(var_export($flight,true));
@@ -146,7 +141,6 @@ class FlightController extends Controller
             $created = $models[$n]->save();
             if(!$created){
                 //If there was a problem inserting record in DB
-                $inserted = false;
                 $array_return = [
                     'inserted' => false,
                     'flight_number' => 0,
@@ -174,6 +168,7 @@ class FlightController extends Controller
     private function setResponseData(array $params): array{
         $response_data = [];
         if($params['inserted']){
+            $response_data['flights'] = $params['flights'];
             $response_data['done'] = true;
             $response_data['code'] = 201; //Created
             //Creation operations done successfully
