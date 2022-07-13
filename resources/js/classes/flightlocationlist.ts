@@ -10,8 +10,9 @@ export default class FlightLocationList{
     private _country: string; //Country which the airport is
     private _company: string; //Flight company chosen
     private _selects: JQuery;
-    private _id_from_select: string;
-    private _id_to_select: string;
+    private _id_companies_select: string; //select item id for company names list
+    private _id_from_select: string; //select item id for departure countries list
+    private _id_to_select: string; //select item id for arrival countries list
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -25,7 +26,7 @@ export default class FlightLocationList{
     get fired(){return this._fired;}
     get query(){return this._query;}
     get country(){return this._country;}
-    get company(){return this._company;}
+    get id_companies_select(){return this._id_companies_select;}
     get id_from_select(){return this._id_from_select;}
     get id_to_select(){return this._id_to_select;}
     get selects(){return this._selects;}
