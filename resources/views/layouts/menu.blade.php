@@ -1,6 +1,7 @@
 @php
     use App\Interfaces\Paths as P; 
 @endphp
+@yield('namespaces')
 <!DOCTYPE html>
 <html>
     <head>

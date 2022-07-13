@@ -1,7 +1,10 @@
-@php
-    use App\Interfaces\Paths as P; 
-@endphp
 @extends('layouts.menu')
+
+@section('namespaces')
+    @php
+        use App\Interfaces\Paths as P; 
+    @endphp
+@endsection
 
 @section('title','Home FlightBooking')
 
