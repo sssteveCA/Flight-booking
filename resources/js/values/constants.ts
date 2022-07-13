@@ -10,6 +10,7 @@ export namespace Constants{
 
     export const URL_HOME = HOSTNAME+':'+PORT;
     export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
+    export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';
     export const URL_FLIGHTEVENTS = URL_HOME+'/flightevents';
     export const URL_FLIGHTSEARCH = URL_HOME+'/flightsearch'
 }

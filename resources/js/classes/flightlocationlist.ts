@@ -88,7 +88,27 @@ export default class FlightLocationList{
     public async get_flight_companies(data: FlightLocationCompaniesInterface): Promise<boolean>{
         let ok = false;
         this._errno = 0;
+        this._id_companies_select = data.id_companies_select;
+        await this.get_flight_companies_promise().then(res => {
+            this.set_company_name(res);
+            ok = true;
+        }).catch(err => {
+            this._errno = FlightLocationList.ERR_FETCH_COMPANIES;
+            console.warn(err);
+        });
         return ok;
+    }
+
+    private async get_flight_companies_promise(): Promise<any>{
+        let fetch_url = Constants.URL_COMPANIESSEARCH;
+        let promise = await new Promise((resolve,reject) =>{
+            fetch(fetch_url).then(res =>{
+                resolve(res);
+            }).catch(err =>{
+                reject(err);
+            });
+        });
+        return promise;
     }
 
     //Get available countries list 
@@ -122,11 +142,33 @@ export default class FlightLocationList{
         return promise;
     }
 
+    private set_airports(id: string,list: Array<string>): void{
+        let select = $('#'+id+'-airports');
+        select.html('');
+        for(const airport in list){
+             let option = $('<option>');
+             option.text(airport);
+             option.attr('value',airport);
+             $(select).append(option);
+        }
+     }
+
+     private set_company_name(list: Array<string>): void{
+        let select = $('#'+this._id_companies_select);
+        select.html('');
+        list.forEach((company) =>{
+            let option = $('<option>');
+            option.text(company);
+            option.attr('value',company);
+            $(select).append(option);
+        });
+     }
+
     private set_countries_select(id: string,list: Array<string>): void{
         //console.log(list);
         let select = $('#'+id);
         select.html('');
-        list.forEach((country,ci)=>{
+        list.forEach((country)=>{
             /* console.log("country");
             console.log(country); */
             let option = $('<option>');
@@ -134,19 +176,9 @@ export default class FlightLocationList{
             option.attr('value',country);
             $(select).append(option);
         });
-        $('#'+id+'-airports')
     }
 
-    private set_airports(id: string,list: Array<string>): void{
-       let select = $('#'+id+'-airports');
-       select.html('');
-       for(const airport in list){
-            let option = $('<option>');
-            option.text(airport);
-            option.attr('value',airport);
-            $(select).append(option);
-       }
-    }
+    
 
 
 }

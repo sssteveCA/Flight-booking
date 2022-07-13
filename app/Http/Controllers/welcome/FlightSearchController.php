@@ -35,6 +35,17 @@ class FlightSearchController extends Controller
         return $list;
     }
 
+    //Get flight companies list
+    public function getFlightCompanies(){
+        $list = $this->getFlightCompaniesList();
+        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    }
+
+    private function getFlightCompaniesList(): array{
+        $list = A::COMPANIES_LIST;
+        return $list;
+    }
+
     //Get countries list from array
     public function getCountires(){
         $list = $this->getCountriesList();
