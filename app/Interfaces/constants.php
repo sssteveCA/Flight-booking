@@ -20,8 +20,8 @@ interface Constants{
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //success
-    const OK_FLIGHTBOOK_SINGLE = "Il volo selezionati sono stati prenotati con successo";
-    const OK_FLIGHTBOOK_MULTIPLE = "I voli selezionati sono stati prenotati con successo";
+    const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
+    const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
     const OK_USERNAMEUPDATED = "Lo username è stato modificato";

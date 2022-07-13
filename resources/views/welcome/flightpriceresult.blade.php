@@ -30,9 +30,9 @@
             <input type="hidden" name="handling_cart" value="0">
             <input type="hidden" name="currency_code" value="EUR">
             <input type="hidden" name="lc" value="IT">
-            <input type="hidden" name="return" value="">
-            <input type="hidden" name="cbt" value="">
-            <input type="hidden" name="cancel_return" value="">
+            <input type="hidden" name="return" value="{{ P::URL_BOOKFLIGHT_PAYPAL_RETURN }}">
+            <input type="hidden" name="cbt" value="Torna al sito">
+            <input type="hidden" name="cancel_return" value="{{ P::URL_BOOKFLIGHT_PAYPAL_CANCEL }}">
             @foreach($response['flights'] as $type => $flight)
             <div class="flight-div">
                 @if($type == 'outbound')
@@ -65,12 +65,16 @@
                         <p class="fl-header bg-warning bg-gradient">Luogo di arrivo</p>
                         <p class="bg-light bg-gradient">{{$flight['arrival_country'].', '.$flight['arrival_airport']}}</p>
                         <input type="hidden" name="flights[{{ $loop->index }}]['arrival_country']" value="{{ $flight['arrival_country'] }}">
-                        <input type="hidden" name="flights[{{ $loop->index }}]['arrival_airport']" value="{{ $flight['departure_airport'] }}">
+                        <input type="hidden" name="flights[{{ $loop->index }}]['arrival_airport']" value="{{ $flight['arrival_airport'] }}">
                     </div>
                     <div class="price column-elem">
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
                         <input type="hidden" name="flights[{{ $loop->index }}]['total_price']" value="{{ $flight['total_price'] }}">
+                    </div>
+                    <div class="paypal column-elem d-none">
+                        <input type="hidden" name="item_name_{{ $loop->iteration }}" value="Da {{$flight['departure_airport'] }} a {{ $flight['arrival_airport'] }}">
+                        <input type="hidden" name="amount_{{ $loop->iteration }}" value="{{ $flight['total_price'] }}">
                     </div>
                 </div> 
             </div>

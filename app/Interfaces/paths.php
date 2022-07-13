@@ -17,6 +17,8 @@ interface Paths{
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
+    const URL_BOOKFLIGHT_PAYPAL_CANCEL = Paths::URL_BOOKFLIGHT.'/cancel';
+    const URL_BOOKFLIGHT_PAYPAL_RETURN = Paths::URL_BOOKFLIGHT.'/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_EDITPASSWORD = '/editPassword';

@@ -120,9 +120,14 @@ class FlightController extends Controller
     }
 
     //Insert new flight records in database
-    private function create_flights(array $flights_data):bool
+    private function create_flights(array $flights_data):array
     {
         $models = [];
+        $array_return = [
+            'inserted' => true,
+            'flights_number' => 0,
+            'flights' => []
+        ];
         $inserted = true;
         foreach($flights_data as $n => $flight){
             Log::channel('stdout')->info("FlightController store flight => ");
@@ -142,6 +147,11 @@ class FlightController extends Controller
             if(!$created){
                 //If there was a problem inserting record in DB
                 $inserted = false;
+                $array_return = [
+                    'inserted' => false,
+                    'flight_number' => 0,
+                    'flights' => []
+                ];
                 if($n > 0){
                     //If is not the first model inserted delete previous
                     for($i = $n; $n >= 0; $n--){
@@ -150,8 +160,14 @@ class FlightController extends Controller
                 }//if($n > 0){
                 break;
             }//if(!$created){
+            $array_return['flights_number']++;
+            //These info are for Paypal item description
+            $array_return['flights'][] = [
+                'name' => "Da {$flight['departure_airport']} a {$flight['arrival_airport']}",
+                'total_price' => $flight['total_price']
+            ];
         }//foreach($flights_data as $n => $flight){
-        return $inserted;
+        return $array_return;
     }
 
     //Set the data to send to the view
