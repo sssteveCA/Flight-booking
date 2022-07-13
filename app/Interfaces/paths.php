@@ -5,7 +5,9 @@ namespace App\Interfaces;
 interface Paths{
 
     //Prefixes
+    const PREFIX_BOOKFLIGHT = 'bookflight';
     const PREFIX_PROFILE = 'profile';
+
 
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
@@ -17,8 +19,8 @@ interface Paths{
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
-    const URL_BOOKFLIGHT_PAYPAL_CANCEL = Paths::URL_BOOKFLIGHT.'/cancel';
-    const URL_BOOKFLIGHT_PAYPAL_RETURN = Paths::URL_BOOKFLIGHT.'/return';
+    const URL_BOOKFLIGHT_PAYPAL_CANCEL = '/cancel';
+    const URL_BOOKFLIGHT_PAYPAL_RETURN = '/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_EDITPASSWORD = '/editPassword';
@@ -44,6 +46,8 @@ interface Paths{
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
     const VIEW_NEWS = 'news';
+    const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
+    const VIEW_PAYPAL_RETURN = 'paypal.return';
     const VIEW_REGISTER = 'auth.registration';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
     const VIEW_WELCOME = 'welcome';

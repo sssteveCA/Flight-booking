@@ -22,6 +22,7 @@ interface Constants{
     //success
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
+    const OK_FLIGHTPAYMENT = "Il pagamento è stato completato. I voli richiesti sono stati prenotati";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
     const OK_USERNAMEUPDATED = "Lo username è stato modificato";
@@ -41,5 +42,8 @@ interface Constants{
     const VERR_USERNAME1_REQUIRED = "Lo username è obbligatorio";
     const VERR_USERNAME1_MIN = "Lo username deve avere almeno 5 caratteri";
     const VERR_USERNAME1_MAX = "Lo username non può avere più di 20 caratteri";
+
+    //Other messages
+    const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
 }
 ?>

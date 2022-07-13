@@ -22,7 +22,7 @@
                     <input type="hidden" name="bn" value="RB_BuyNow_WPS_IT">
                     <input type="hidden" name="tax_cart" value="0.00">
                     <input type="hidden" name="rm" value="2">
-                    <input type="hidden" name="business" value="">
+                    <input type="hidden" name="business" value="{{ env('PAYPAL_BUSINNESS_EMAIL') }}">
                     <input type="hidden" name="handling_cart" value="0">
                     <input type="hidden" name="currency_code" value="EUR">
                     <input type="hidden" name="lc" value="IT">

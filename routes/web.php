@@ -3,6 +3,7 @@
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,7 +41,10 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
 
 Route::post(P::URL_BOOKFLIGHT,[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT)->middleware(['auth','verified']);
 
-Auth::routes(['verify' => true]);
+Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth,verified']], function(){
+    Route::post(P::URL_BOOKFLIGHT_PAYPAL_RETURN,[PaypalController::class,'return']);
+    Route::get(P::URL_BOOKFLIGHT_PAYPAL_CANCEL,[PaypalController::class,'cancel']);
+});
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirports']);

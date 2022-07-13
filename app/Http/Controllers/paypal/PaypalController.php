@@ -4,12 +4,17 @@ namespace App\Http\Controllers\paypal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 
 class PaypalController extends Controller
 {
     //URL if the user cancel the payment
     public function cancel(){
-
+        return response()->view(P::VIEW_PAYPAL_CANCEL,[
+            'payment' => 'canceled',
+            'message' => C::MESS_FLIGHT_PAYMENT_CANCELED
+        ],200);
     }
 
     //Return URL after user has made the payment
