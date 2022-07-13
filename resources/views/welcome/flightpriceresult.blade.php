@@ -17,7 +17,7 @@
 
 @section('content')
     @isset($response['flight_type'])
-        <form id="fFlightPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
+        <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
             @method('POST')
             <input type="hidden" name="cmd" value="_cart">
@@ -71,10 +71,6 @@
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
                         <input type="hidden" name="flights[{{ $loop->index }}]['total_price']" value="{{ $flight['total_price'] }}">
-                    </div>
-                    <div class="paypal column-elem d-none">
-                        <input type="hidden" name="item_name_{{ $loop->iteration }}" value="Da {{$flight['departure_airport'] }} a {{ $flight['arrival_airport'] }}">
-                        <input type="hidden" name="amount_{{ $loop->iteration }}" value="{{ $flight['total_price'] }}">
                     </div>
                 </div> 
             </div>

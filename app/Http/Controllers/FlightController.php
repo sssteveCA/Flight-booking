@@ -39,9 +39,6 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         //$inputs = $request->all();
-        $models = [];
-        $inserted = true;
-        $flights_number = sizeof($request->flights);
         $flights = $request->flights;
         $flights_unquoted = $this->flights_unquote($flights);
         Log::channel('stdout')->info("FlightController store flights unquoted => ");
