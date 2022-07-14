@@ -17,7 +17,10 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->id();
+        $flights = Flight::where('user_id',$user_id)->get();
+        Log::channel('stdout')->debug("User flights => ".var_export($flights,true));
+        return response()->json(['flights' => $flights],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     /**
