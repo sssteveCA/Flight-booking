@@ -13,10 +13,6 @@ use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
 use Illuminate\Http\Request;
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Request-Method: GET, POST, PUT, DELETE, OPTIONS');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +34,10 @@ Route::get('/', function () {
 Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']], function(){
     Route::get(P::URL_INFO, [InfoController::class, 'getData'])->name(P::ROUTE_INFO); 
     Route::get(P::URL_MYFLIGHTS,function(){
-    });  
+    }); 
+    Route::resource(P::PREFIX_MYFLIGHTS, FlightController::class)->except([
+        'edit','update'
+    ]);
     Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
     Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
 });
