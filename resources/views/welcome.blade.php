@@ -6,7 +6,7 @@
     @endphp
 @endsection
 
-@section('title','Home FlightBooking')
+@section('title','FlightBooking')
 
 @section('links')
 <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">

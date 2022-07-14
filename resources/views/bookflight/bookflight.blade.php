@@ -6,6 +6,8 @@
     @endphp
 @endsection
 
+@section('title', 'Paga i voli prenotati')
+
 @section('content')
     @isset($message)
         <div class="container mt-5">
