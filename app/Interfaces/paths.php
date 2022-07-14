@@ -48,6 +48,7 @@ interface Paths{
     const VIEW_CONTACTS = 'contacts';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
+    const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
     const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
     const VIEW_PAYPAL_RETURN = 'paypal.return';

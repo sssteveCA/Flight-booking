@@ -18,9 +18,26 @@ class FlightController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        $flights = Flight::where('user_id',$user_id)->get();
-        Log::channel('stdout')->debug("User flights => ".var_export($flights,true));
-        return response()->json(['flights' => $flights],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        //$flights_number = Flight::where('user_id',$user_id)->count();
+        $flights_collection = Flight::where('user_id',$user_id)->get();
+        $flights = $flights_collection->toArray();
+        //Log::channel('stdout')->debug("User flights => ".var_export($flights,true));
+        $flights_number = count($flights);
+        if($flights_number > 0){
+            //User has booked at least one flight
+            return response()->view(P::VIEW_MYFLIGHTS,[
+                'flights' => $flights,
+                'flights_number' => $flights_number
+            ]);
+        }//if($flights_number > 0){
+        else{
+            //User has not booked any flight already
+            $message = C::MESS_BOOKED_FLIGHT_LIST_EMPTY;
+            return response()->view(P::VIEW_MYFLIGHTS,[
+                'message' => $message,
+                'flights_number' => $flights_number
+            ]);           
+        }       
     }
 
     /**

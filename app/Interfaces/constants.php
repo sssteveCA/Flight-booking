@@ -44,6 +44,7 @@ interface Constants{
     const VERR_USERNAME1_MAX = "Lo username non può avere più di 20 caratteri";
 
     //Other messages
+    const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Non hai ancora prenotato nessun volo";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
 }
 ?>
