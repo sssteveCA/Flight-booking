@@ -8,6 +8,10 @@
 
 @section('title','I miei voli')
 
+@section('links')
+<link rel="stylesheet" href="{{ asset('css/profile/myFlights.css') }}">
+@endsection
+
 @section('content')
     @if($flights_number > 0)
         <div class="container-fluid">

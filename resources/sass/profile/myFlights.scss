@@ -1,0 +1,80 @@
+@use "sass:map";
+
+$bs-breakpoints: (
+    'xs' : 0px,
+    'lg': 992px,  
+);
+
+$single-selectors-rules: (
+    'xs': (
+        'classes': (
+            '.row': (
+                'margin': 10px auto
+            )
+        ),
+        'ids': (),
+        'tags': ()
+    ),
+    'lg': (
+        'classes': (
+            '.row': (
+                'margin': 20px auto
+            )
+        ),
+        'ids': (),
+        'tags': ()
+    ),
+);
+
+$compound-selectors-rules: (
+    'xs': (
+        '.flight-show, .flight-delete, .flight-book': (
+            'margin-top': 10px
+        )
+    ),
+    'lg': (
+        '.flight-show, .flight-delete, .flight-book': (
+            'margin-top': 0px
+        )
+    )
+);
+
+@mixin single-selectors-loop($breakpoints-map,$selectors-map){
+    @each $breakpoint, $val in $breakpoints-map{
+        @if map.has-key($selectors-map, $breakpoint){
+            @media only screen and (min-width: #{$val}){
+                $sub-map: map.get($selectors-map, $breakpoint);
+                @each $selectors-type, $selectors-type-list in $sub-map{
+                    @each $selector, $properties-list in $selectors-type-list{
+                        #{$selector}{
+                            @each $property, $val in $properties-list{
+                                #{$property}: #{$val};
+                            }// @each $property, $val in $properties-list{
+                        }//#{$selector}{
+                    }//@each $selector, $properties-list in $selectors-type-list{
+                }//@each $selectors-type, $list in $sub-map{
+            }//@media only screen and (min-width:#{$val}){
+        }//@if map.has-key($selectors-map, $breakpoint){
+        
+    }//@each $breakpoint,$val in $breakpoints-map{
+}
+
+@mixin compound-selectors-loop($breakpoints-map, $selectors-map){
+    @each $breakpoint, $val in $breakpoints-map{
+        @if map.has-key($selectors-map,$breakpoint){
+            @media only screen and (min-width: #{$val}){
+                $sub-map: map.get($selectors-map,$breakpoint);
+                @each $compound-selector, $properties-list in $sub-map{
+                    #{$compound-selector}{
+                        @each $property, $val in $properties-list{
+                            #{$property}: #{$val};
+                        }//@each $property,$val in $properties-list{
+                    }//#{$compound-selector}{
+                }//@each $compound-selector, $properties-list in $sub-map{
+            }//@media only screen and (min-width: #{$val}){
+        }//@if map.has-key($selectors-map,$breakpoint){
+    }//@each $breakpoint,$val in $breakpoints-map{
+}
+
+@include single-selectors-loop($bs-breakpoints, $single-selectors-rules);
+@include compound-selectors-loop($bs-breakpoints, $compound-selectors-rules);

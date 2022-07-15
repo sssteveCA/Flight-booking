@@ -1,0 +1,20 @@
+@media only screen and (min-width: 0px) {
+  .row {
+    margin: 10px auto;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .row {
+    margin: 20px auto;
+  }
+}
+@media only screen and (min-width: 0px) {
+  .flight-show, .flight-delete, .flight-book {
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .flight-show, .flight-delete, .flight-book {
+    margin-top: 0px;
+  }
+}
