@@ -8,8 +8,17 @@ $bs-breakpoints: (
 $single-selectors-rules: (
     'xs': (
         'classes': (
+            '.container-fluid': (
+                'min-width': 280px
+            ),
+            '.flight-title-style': (
+                'font-weight': bold
+            ),
             '.row': (
-                'margin': 10px auto
+                'padding': 20px 0px,
+                'border-right': 1px solid black,
+                'border-bottom': 1px solid black,
+                'border-left': 1px solid black,
             )
         ),
         'ids': (),
@@ -18,7 +27,7 @@ $single-selectors-rules: (
     'lg': (
         'classes': (
             '.row': (
-                'margin': 20px auto
+                'padding': 10px 0px
             )
         ),
         'ids': (),
@@ -30,6 +39,9 @@ $compound-selectors-rules: (
     'xs': (
         '.flight-show, .flight-delete, .flight-book': (
             'margin-top': 10px
+        ),
+        '.row:first-child': (
+            'border-top': 1px solid black
         )
     ),
     'lg': (
@@ -45,10 +57,12 @@ $compound-selectors-rules: (
             @media only screen and (min-width: #{$val}){
                 $sub-map: map.get($selectors-map, $breakpoint);
                 @each $selectors-type, $selectors-type-list in $sub-map{
+                    //loop inside sub map of selectors breakpoint map
                     @each $selector, $properties-list in $selectors-type-list{
+                        //loop inside selectors type list map
                         #{$selector}{
                             @each $property, $val in $properties-list{
-                                #{$property}: #{$val};
+                                #{$property}: #{$val};      
                             }// @each $property, $val in $properties-list{
                         }//#{$selector}{
                     }//@each $selector, $properties-list in $selectors-type-list{
