@@ -79,9 +79,19 @@ class FlightController extends Controller
      * @param  \App\Models\Flight  $flight
      * @return \Illuminate\Http\Response
      */
-    public function show(Flight $flight)
+    public function show(Flight $flight,$myFlight)
     {
-        //
+        $flight = Flight::find($myFlight);
+        if($flight != null){
+            //Requested flight found
+            $user_id = auth()->id();
+            if($user_id == $flight->user_id){
+                return response()->view(P::VIEW_FLIGHT,[
+                    'flight' => $flight
+                ],200);
+            }//if($user_id == $flight->user_id){
+        }//if($flight != null){
+        return redirect()->route(P::ROUTE_FALLBACK);
     }
 
     /**
@@ -156,7 +166,7 @@ class FlightController extends Controller
             $models[$n]->booking_date = $flight['booking_date'];
             $models[$n]->flight_date = $flight['flight_date'];
             $models[$n]->flight_time = $flight['flight_time'];
-            $models[$n]->price = $flight['total_price'];
+            $models[$n]->total_price = $flight['total_price'];
             $created = $models[$n]->save();
             if(!$created){
                 //If there was a problem inserting record in DB

@@ -12,6 +12,7 @@ interface Paths{
 
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
+    const ROUTE_FALLBACK = 'fallback';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_INFO = 'infocontroller.info';
     const ROUTE_EDITUSERNAME = 'infocontroller.editusername';
@@ -46,6 +47,7 @@ interface Paths{
     //Views
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_CONTACTS = 'contacts';
+    const VIEW_FLIGHT = 'profile.myFlights.flight';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
     const VIEW_MYFLIGHTS = 'profile.myFlights';

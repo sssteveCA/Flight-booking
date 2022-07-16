@@ -67,4 +67,4 @@ Route::permanentRedirect(P::URL_HOME,P::URL_ROOT);
 //URL that not exists or the user is unauthorized to access
 Route::fallback(function(){
     return view('error/errors')->withErrors(['message' => C::ERR_URLNOTFOUND_NOTALLOWED]);
-});
+})->name(P::ROUTE_FALLBACK);
