@@ -21,7 +21,7 @@
                         <span class="flight-title-style">ID:</span> {{ $flight['id'] }}
                     </div>
                     <div class="col-10 col-lg-5 flight-name">
-                        <span class="flight-title-style">NOME</span> Da {{$flight['departure_airport']}} a {{$flight['arrival_airport']}}
+                        <span class="flight-title-style">NOME:</span> Da {{$flight['departure_airport']}} a {{$flight['arrival_airport']}}
                     </div>   
                     <div class="col-4 col-lg-2 flight-show">
                         <form class="fFlightGet" method="get" action="{{ route('myFlights.show',['myFlight' => $flight['id']]) }}">
@@ -29,7 +29,7 @@
                         </form>
                     </div>
                     <div class="col-4 col-lg-2 flight-delete">
-                        <form class="fFlightDelete" method="post" action="#">
+                        <form class="fFlightDelete" method="post" action="{{ route('myFlights.destroy',['myFlight' => $flight['id']]) }}">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
