@@ -91,7 +91,7 @@ class FlightController extends Controller
                 ],200);
             }//if($user_id == $flight->user_id){
         }//if($flight != null){
-        return view(P::VIEW_FALLBACK)->withErrors(['message' => 'C::ERR_URLNOTFOUND_NOTALLOWED']);
+        return view(P::VIEW_FALLBACK)->withErrors(['message' => C::ERR_URLNOTFOUND_NOTALLOWED]);
     }
 
     /**

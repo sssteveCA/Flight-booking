@@ -4,6 +4,10 @@
     font-weight: bold;
 }
 
+%container{
+    min-width: 290px;
+}
+
 %header{
     text-align: center;
     padding-bottom: 15px;
@@ -29,13 +33,7 @@ $single-selectors-rules: (
         'tags': ()
     ),
     'md': (
-        'classes': (
-            '.row': (
-                'border-top': 1px solid black,
-                'border-right': 1px solid black,
-                'border-left': 1px solid black
-            )
-        ),
+        'classes': (),
         'ids': (),
         'tags': ()
     )
@@ -43,13 +41,24 @@ $single-selectors-rules: (
 
 $compound-selectors-rules: (
     'xs': (
+        '.row>div': (
+            'text-align': center
+        ),
         '.row>div:last-child': (
             'padding-bottom': 20px
         )
     ),
     'md': (
-        '.row:last-child': (
+        '.row:not(:last-child)': (
+                'border-top': 1px solid black,
+                'border-right': 1px solid black,
+                'border-left': 1px solid black
+        ),
+        '.row:nth-last-child(2)': (
             'border-bottom': 1px solid black
+        ),
+        '.row>div': (
+            'text-align': left
         ),
         '.row>div:last-child': (
             'padding-bottom': 0px
@@ -88,15 +97,18 @@ $compound-selectors-rules: (
 }
 
 @mixin extensions(){
+    .container{
+        @extend %container;
+    }
     .fb-header{
         @extend %header;
     }
     .fb-property{
         @extend %bold;
     }
-    .row > div{
+    /* .row > div{
         @extend %cols;
-    }
+    } */
 }
 
 @mixin style-small($breakpoints,$small-key,$ss-map,$cs-map){

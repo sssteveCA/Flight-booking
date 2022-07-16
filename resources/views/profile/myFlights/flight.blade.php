@@ -39,9 +39,17 @@
                 <div class="col-12 col-md-5 flight-date">{{ $flight['flight_date'].' '.$flight['flight_time'] }}</div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-md-6 fb-property">PREZZO TOTALE</div>
-                <div class="col-12 col-md-6 total-price">{{ $flight['total_price'] }}</div>
+                <div class="col-12 col-md-5 fb-property">PREZZO TOTALE</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['total_price'] }}€</div>
             </div>   
+            <div class="row justify-content-evenly">
+                <div class="col-3 col-md-1 fb-book-button">
+                    <button type="button" class="btn btn-primary">PRENOTA</button>
+                </div>
+                <div class="col-3 col-md-1 fb-delete-button">
+                    <button type="button" class="btn btn-danger">ELIMINA</button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

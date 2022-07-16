@@ -2,33 +2,42 @@
   font-weight: bold;
 }
 
+.container {
+  min-width: 290px;
+}
+
 .fb-header {
   text-align: center;
   padding-bottom: 15px;
-}
-
-.row > div {
-  text-align: center;
 }
 
 @media only screen and (min-width: 0px) {
   .row {
     padding: 10px;
   }
+  .row > div {
+    text-align: center;
+  }
   .row > div:last-child {
     padding-bottom: 20px;
   }
 }
 @media only screen and (min-width: 768px) {
-  .row {
+  .row:not(:last-child) {
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-left: 1px solid black;
   }
-  .row:last-child {
+  .row:nth-last-child(2) {
     border-bottom: 1px solid black;
+  }
+  .row > div {
+    text-align: left;
   }
   .row > div:last-child {
     padding-bottom: 0px;
   }
 }
+/* .row > div{
+    @extend %cols;
+} */
