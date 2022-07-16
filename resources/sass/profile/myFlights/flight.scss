@@ -1,0 +1,125 @@
+@use "sass:map";
+
+%bold{
+    font-weight: bold;
+}
+
+%header{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+%cols{
+    text-align: center;
+}
+
+$bs-breakpoints: (
+    'xs': 0px,
+    'md': 768px
+);
+
+$single-selectors-rules: (
+    'xs': (
+        'classes': (
+            '.row': (
+                'padding': 10px
+            )
+        ),
+        'ids': (),
+        'tags': ()
+    ),
+    'md': (
+        'classes': (
+            '.row': (
+                'border-top': 1px solid black,
+                'border-right': 1px solid black,
+                'border-left': 1px solid black
+            )
+        ),
+        'ids': (),
+        'tags': ()
+    )
+);
+
+$compound-selectors-rules: (
+    'xs': (
+        '.row>div:last-child': (
+            'padding-bottom': 20px
+        )
+    ),
+    'md': (
+        '.row:last-child': (
+            'border-bottom': 1px solid black
+        ),
+        '.row>div:last-child': (
+            'padding-bottom': 0px
+        )
+    )
+);
+
+@mixin map-single-rules($single-map,$key){
+    @if(map.has-key($single-map,$key)){
+        $single-map-breakpoint: map.get($single-map,$key);
+        //Loop for create the CSS rule for every selector
+        @each $selector-type, $selectors in $single-map-breakpoint{
+            @each $selector, $properties-list in $selectors{
+                #{$selector}{
+                    @each $prop, $val in $properties-list{
+                        #{$prop}: #{$val};
+                    }//@each $prop, $val in $properties-list{
+                }//#{$selector}{
+            }//@each $selector, $properties-list in $selectors{
+        }//@each $selector-type, $selectors in $single-map-breakpoint{
+    }//@if(map.has-key($single-map,$key)){
+}
+
+@mixin map-compound-rules($compound-map,$key){
+    @if(map.has-key($compound-map,$key)){
+        $compound-map-breakpoint: map.get($compound-map,$key);
+        //Loop the map with compound selectors
+        @each $compound-selector,$properties-list in $compound-map-breakpoint{
+            #{$compound-selector}{
+                @each $prop,$val in $properties-list{
+                    #{$prop}: #{$val};
+                }//@each $prop,$val in $properties-list{
+            }//#{$compound-selector}{
+        }//@each $compound-selector,$properties-list in $compound-map-breakpoint{
+    }//@if(map.has-key($compound-map,$key)){
+}
+
+@mixin extensions(){
+    .fb-header{
+        @extend %header;
+    }
+    .fb-property{
+        @extend %bold;
+    }
+    .row > div{
+        @extend %cols;
+    }
+}
+
+@mixin style-small($breakpoints,$small-key,$ss-map,$cs-map){
+    @if(map.has-key($breakpoints,$small-key)){
+        //Get the value of 'xs' key
+        $small-value: map.get($breakpoints,$small-key);
+        @media only screen and (min-width: #{$small-value}){
+            @include map-single-rules($ss-map,$small-key);
+            @include map-compound-rules($cs-map,$small-key);
+        }//@media only screen and (min-width: #{$small-value}){
+    }// @if(map.has-key($breakpoints,$small-key)){
+}
+
+@mixin style-large($breakpoints,$large-key,$ss-map,$cs-map){
+    @if(map.has-key($breakpoints,$large-key)){
+        $large-value: map.get($breakpoints,$large-key);
+        @media only screen and (min-width: #{$large-value}){
+            @include map-single-rules($ss-map,$large-key);
+            @include map-compound-rules($cs-map,$large-key);
+        }//@media only screen and (min-width: #{$large-value}){
+    }//@if(map.has-key($breakpoints,$large-key)){
+}
+
+@include style-small($bs-breakpoints,'xs',$single-selectors-rules,$compound-selectors-rules);
+@include style-large($bs-breakpoints,'md',$single-selectors-rules,$compound-selectors-rules);
+@include extensions();

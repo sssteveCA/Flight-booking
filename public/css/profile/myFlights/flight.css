@@ -1,0 +1,34 @@
+.fb-property {
+  font-weight: bold;
+}
+
+.fb-header {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.row > div {
+  text-align: center;
+}
+
+@media only screen and (min-width: 0px) {
+  .row {
+    padding: 10px;
+  }
+  .row > div:last-child {
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .row {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+  }
+  .row:last-child {
+    border-bottom: 1px solid black;
+  }
+  .row > div:last-child {
+    padding-bottom: 0px;
+  }
+}

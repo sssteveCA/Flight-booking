@@ -19,4 +19,5 @@ const mix = require('laravel-mix');
     .sass('resources/sass/welcome.scss','public/css')
     .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')
     .sass('resources/sass/profile/myFlights.scss','public/css/profile')
+    .sass('resources/sass/profile/myFlights/flight.scss','public/css/profile/myFlights')
     .sourceMaps();
