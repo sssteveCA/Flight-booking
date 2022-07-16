@@ -1,3 +1,4 @@
 export default interface FlightDeleteInterface{
-    id: number;
+    id: number,
+    token: string
 }

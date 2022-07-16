@@ -3,22 +3,25 @@ import FlightDeleteInterface from "../interfaces/flightdelete.interface";
 
 
 $(function(){
-    console.log("jQuery");
     $('.fFlightDelete').on('submit', (e)=>{
         //User wants delete a flight
         e.preventDefault();
         let form = $(e.currentTarget);
-        console.log(form);
+        //console.log(form);
         let id = form.find('input[name=flight_id]');
         let id_val = $(id).val();
+        let token = form.find('input[name=_token]');
+        let token_str = $(token).val();
         let dataFd: FlightDeleteInterface = {
-            id: id_val as number
+            id: id_val as number,
+            token: token_str as string
         };
+        console.log(dataFd);
         let flightDelete = new FlightDelete(dataFd);
         flightDelete.deleteFlight().then(msg => {
 
         }).catch(err => {
-            
+
         });
     });//$('.fFlightDelete').on('submit', ()=>{
 });
