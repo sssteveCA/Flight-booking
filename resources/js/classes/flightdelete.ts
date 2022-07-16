@@ -3,6 +3,7 @@ import { Constants } from "../values/constants";
 
 export default class FlightDelete{
     _id: number;
+    _msg: string;
     _errno: number = 0;
     _error: string|null = null;
 
@@ -19,6 +20,7 @@ export default class FlightDelete{
     }
 
     get id(){return this._id;}
+    get msg(){return this._msg;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -42,17 +44,19 @@ export default class FlightDelete{
             console.warn(err);
             this._errno = FlightDelete.ERR_FETCH;
         });
-        return msg;
+        this._msg = msg;
+        return this._msg;
     }
 
     private async deleteFlightPromise(): Promise<string>{
         let promise = await new Promise((resolve,reject) => {
             let url = FlightDelete.URL_SCRIPT+'/'+this._id;
             fetch(url,{method: 'DELETE'}).then(res => {
+                console.log(res);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);
-            })
+            });
         });
         return promise as string;
     }

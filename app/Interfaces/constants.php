@@ -22,6 +22,7 @@ interface Constants{
     //success
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
+    const OK_FLIGHTDELETE = "Il volo selezionato è stato rimosso";
     const OK_FLIGHTPAYMENT = "Il pagamento è stato completato. I voli richiesti sono stati prenotati";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";

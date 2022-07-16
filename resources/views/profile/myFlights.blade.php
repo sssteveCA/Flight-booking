@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="{{ asset('css/profile/myFlights.css') }}">
 @endsection
 
+@section('scripts')
+<script src="{{ asset('js/profile/myFlights.js') }}"></script>
+@endsection
+
 @section('content')
     @if($flights_number > 0)
         <div class="container-fluid">
@@ -29,7 +33,7 @@
                         </form>
                     </div>
                     <div class="col-4 col-lg-2 flight-delete">
-                        <form class="fFlightDelete" method="post" action="{{ route('myFlights.destroy',['myFlight' => $flight['id']]) }}">
+                        <form class="fFlightDelete" method="post" action="{{ route('myFlights.destroy', ['myFlight' => $flight['id']]) }}">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">

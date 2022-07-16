@@ -123,9 +123,22 @@ class FlightController extends Controller
      * @param  \App\Models\Flight  $flight
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Flight $flight)
+    public function destroy(Flight $flight, $myFlight)
     {
-        //
+        $flight = Flight::find($myFlight);
+        if($flight != null){
+            //Requested resource exists
+            $user_id = auth()->id();
+            if($flight->user_id == $user_id){
+                //The resource is owned by the logged user
+                $del = $flight->forceDelete();
+                Log::channel('stdout')->info("FlightController destroy del => ".var_export($del,true));
+                return response()->json([
+                    'msg' => C::OK_FLIGHTDELETE
+                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }//if($flight->user_id == $user_id){
+        }//if($flight != null){
+        return view(P::VIEW_FALLBACK)->withErrors(['message' => C::ERR_URLNOTFOUND_NOTALLOWED]);
     }
 
     //Remove backslashes from flights array keys
