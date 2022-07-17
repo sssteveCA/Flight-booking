@@ -9,7 +9,6 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
         @yield('links')
         <script src="{{asset('js/app.js')}}"></script>
-        <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
         @yield('scripts')
     </head>
     <body>

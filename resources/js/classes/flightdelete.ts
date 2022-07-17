@@ -42,6 +42,7 @@ export default class FlightDelete{
         this._errno = 0;
         await this.deleteFlightPromise().then(res => {
             let json = JSON.parse(res);
+            console.log(json);
             msg = json['msg'];
         }).catch(err => {
             console.warn(err);
@@ -60,10 +61,6 @@ export default class FlightDelete{
                 headers: {
                     'X-CSRF-TOKEN': this._token
                 },
-                body: JSON.stringify({
-                    _method: 'DELETE',
-                    _token: this._token
-                })
             }).then(res => {
                 console.log(res);
                 resolve(res.text());
