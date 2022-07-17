@@ -68,11 +68,7 @@ class FlightController extends Controller
         $flights_info = $this->create_flights($flights_unquoted);
         $response_data = $this->setResponseData($flights_info);
         Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
-        return response()->view(P::VIEW_BOOKFLIGHT,[
-            'done' => $response_data['done'],
-            'message' => $response_data['message'],
-            'flights' => $response_data['flights']
-        ],$response_data['code']);  
+        return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
     }
 
     /**
@@ -202,6 +198,7 @@ class FlightController extends Controller
             $array_return['flights_number']++;
             //These info are for Paypal item description
             $array_return['flights'][] = [
+                'id' => $flight['id'],
                 'name' => "Da {$flight['departure_airport']} a {$flight['arrival_airport']}",
                 'total_price' => $flight['total_price']
             ];
