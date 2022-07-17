@@ -45,6 +45,16 @@
                             @csrf
                             @method('POST')
                             <!-- Informazioni sul volo da prenotare -->
+                            <input type="hidden" name="flights[0]['id']" value="{{ $flight['id'] }}">
+                            <input type="hidden" name="flights[0]['company_name']" value="{{ $flight['company_name'] }}">
+                            <input type="hidden" name="flights[0]['booking_date']" value="{{ $flight['booking_date'] }}">
+                            <input type="hidden" name="flights[0]['flight_date']" value="{{ $flight['flight_date'] }}">
+                            <input type="hidden" name="flights[0]['flight_time']" value="{{ $flight['flight_time'] }}">
+                            <input type="hidden" name="flights[0]['departure_country']" value="{{ $flight['departure_country'] }}">
+                            <input type="hidden" name="flights[0]['departure_airport']" value="{{ $flight['departure_airport'] }}">
+                            <input type="hidden" name="flights[0]['arrival_country']" value="{{ $flight['arrival_country'] }}">
+                            <input type="hidden" name="flights[0]['arrival_airport']" value="{{ $flight['arrival_airport'] }}">
+                            <input type="hidden" name="flights[0]['total_price']" value="{{ $flight['total_price'] }}">
                             <button type="submit" class="btn btn-success">PRENOTA</button>
                         </form>  
                     </div>        

@@ -58,7 +58,9 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //$inputs = $request->all();
+        $inputs = $request->all();
+        Log::channel('stdout')->debug("FlightController store request all => ");
+        Log::channel('stdout')->debug(var_export($inputs,true));
         $flights = $request->flights;
         $flights_unquoted = $this->flights_unquote($flights);
         Log::channel('stdout')->info("FlightController store flights unquoted => ");
