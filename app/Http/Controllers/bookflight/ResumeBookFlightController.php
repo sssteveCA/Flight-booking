@@ -39,6 +39,7 @@ class ResumeBookFlightController extends Controller
                         'name' => "Da {$flight->departure_airport} a {$flight->arrival_airport}",
                         'total_price' => $flight->total_price
                     ];
+                    $response_data['message'] = C::OK_FLIGHTBOOK_SINGLE;
                     $response_data['code'] = 200; //OK
                     $response_data['done'] = true;
                 }//if($user_id == $flight->user_id){
