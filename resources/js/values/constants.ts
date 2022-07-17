@@ -9,6 +9,10 @@ export namespace Constants{
     //export const HOSTNAME = 'http://192.168.0.24';
     export const PORT = 8000;
 
+    //Messages
+    export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
+
+    //Urls
     export const URL_HOME = HOSTNAME+':'+PORT;
     export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
     export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';

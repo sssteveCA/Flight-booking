@@ -12,6 +12,7 @@
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "@types/jquery": "^3.5.14",
+        "@types/jqueryui": "^1.12.16",
         "axios": "^0.21",
         "jquery-ui": "^1.13.2",
         "laravel-mix": "^6.0.6",
