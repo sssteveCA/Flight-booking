@@ -39,8 +39,6 @@ $(function(){
                     message: msg
                 };
                 let messageDialog: MessageDialog = new MessageDialog(dataMd);
-                console.log("btOk");
-                console.log(messageDialog.btOk);
                 $(messageDialog.btOk).on('click',()=>{
                     messageDialog.dialog.dialog('destroy');
                     messageDialog.dialog.remove();
@@ -55,16 +53,25 @@ $(function(){
                     title: 'Elimina volo',
                     message: flightDelete.error as string
                 };
-                let messageDialog: MessageDialog = new MessageDialog(dataMd);
-                $(messageDialog.btOk).on('click',()=>{
-                    messageDialog.dialog.dialog('destroy');
-                    messageDialog.dialog.remove();
-                });
+                dialogRemoveMd(dataMd);
+                
             }); 
         });//$(confirmDialog.btYes).on('click',()=>{
-        $(confirmDialog.btNo).on('click',()=>{
-            confirmDialog.dialog.dialog('destroy');
-            confirmDialog.dialog.remove();
-        });//$(cd.btNo).on('click',()=>{}  
+        dialogRemoveCd(confirmDialog);  
     });//$('.fFlightDelete').on('submit', ()=>{
 });
+
+function dialogRemoveMd(dataMd: MessageDialogInterface): void{
+    let messageDialog: MessageDialog = new MessageDialog(dataMd);
+    $(messageDialog.btOk).on('click',()=>{
+        messageDialog.dialog.dialog('destroy');
+        messageDialog.dialog.remove();
+    });
+}
+
+function dialogRemoveCd(confirmDialog: ConfirmDialog): void{
+    $(confirmDialog.btNo).on('click',()=>{
+        confirmDialog.dialog.dialog('destroy');
+        confirmDialog.dialog.remove();
+    });//$(cd.btNo).on('click',()=>{}  
+}
