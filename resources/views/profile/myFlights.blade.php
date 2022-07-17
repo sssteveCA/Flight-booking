@@ -41,7 +41,7 @@
                         </form>
                     </div>
                     <div class="col-4 col-lg-2 flight-book">
-                        <form class="fFlightBook" method="post" action="{{ route(P::ROUTE_FLIGHTPRICE) }}">
+                        <form class="fFlightBook" method="post" action="{{ route(P::ROUTE_RESUMEFLIGHT) }}">
                             @csrf
                             @method('POST')
                             <!-- Informazioni sul volo da prenotare -->
