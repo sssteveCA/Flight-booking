@@ -134,6 +134,7 @@ class FlightController extends Controller
                 $del = $flight->forceDelete();
                 Log::channel('stdout')->info("FlightController destroy del => ".var_export($del,true));
                 return response()->json([
+                    'deleted' => $del,
                     'msg' => C::OK_FLIGHTDELETE
                 ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }//if($flight->user_id == $user_id){

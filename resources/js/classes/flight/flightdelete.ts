@@ -5,6 +5,7 @@ export default class FlightDelete{
     private _id: number;
     private _token: string;
     private _msg: string;
+    private _deleted: boolean = false; //Check if flight was deleted 
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -14,7 +15,7 @@ export default class FlightDelete{
 
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
-    private static URL_SCRIPT:string = Constants.URL_FLIGHTDELETE;
+    private static URL_SCRIPT:string = Constants.URL_FLIGHTSLIST;
 
     constructor(data: FlightDeleteInterface){
         this._id = data.id;
@@ -24,6 +25,7 @@ export default class FlightDelete{
     get id(){return this._id;}
     get token(){return this._token;}
     get msg(){return this._msg;}
+    get deleted(){return this._deleted;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -37,19 +39,27 @@ export default class FlightDelete{
         return this._error;
     }
 
-    public async deleteFlight(): Promise<string>{
+    public async deleteFlight(): Promise<object>{
         let msg = '';
+        let deleted = false;
         this._errno = 0;
         await this.deleteFlightPromise().then(res => {
             let json = JSON.parse(res);
             //console.log(json);
             msg = json['msg'];
+            deleted = json['deleted'];
         }).catch(err => {
             console.warn(err);
             this._errno = FlightDelete.ERR_FETCH;
+            msg = this.error as string;
         });
+        this._deleted = deleted;
         this._msg = msg;
-        return this._msg;
+        let obj = {
+            'msg': this._msg,
+            'deleted': this._deleted
+        };
+        return obj;
     }
 
     private async deleteFlightPromise(): Promise<string>{

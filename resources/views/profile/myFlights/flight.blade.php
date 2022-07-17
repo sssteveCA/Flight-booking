@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{{ asset('css/profile/myFlights/flight.css') }}">
 @endsection
 
+@section('scripts')
+<script src="{{ asset('js/profile/myFlights/flight.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="content">
         <h2 class="fb-header">Informazioni volo</h2>
@@ -47,7 +51,13 @@
                     <button type="button" class="btn btn-primary">PRENOTA</button>
                 </div>
                 <div class="col-3 col-md-1 fb-delete-button">
-                    <button type="button" class="btn btn-danger">ELIMINA</button>
+                    <form id="fDelete" method="post" action="{{ route('myFlights.destroy', ['myFlight' => $flight['id']]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
+                        <button type="submit" class="btn btn-danger">ELIMINA</button>
+                    </form>
+                    
                 </div>
             </div>
         </div>

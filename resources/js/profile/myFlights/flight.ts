@@ -1,17 +1,16 @@
-import ConfirmDialog from "../classes/dialog/confirmdialog";
-import MessageDialog from "../classes/dialog/messagedialog";
-import FlightDelete from "../classes/flight/flightdelete";
-import ConfirmDialogInterface from "../interfaces/dialog/confirmdialoginterface";
-import MessageDialogInterface from "../interfaces/dialog/messagedialoginterface";
-import FlightDeleteInterface from "../interfaces/flight/flightdelete.interface";
-import { Constants } from "../values/constants";
-
-
+import ConfirmDialog from "../../classes/dialog/confirmdialog";
+import MessageDialog from "../../classes/dialog/messagedialog";
+import FlightDelete from "../../classes/flight/flightdelete";
+import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialoginterface";
+import MessageDialogInterface from "../../interfaces/dialog/messagedialoginterface";
+import { Constants } from "../../values/constants";
+import FlightDeleteInterface from "../../interfaces/flight/flightdelete.interface";
 
 $(function(){
-    $('.fFlightDelete').on('submit', (e)=>{
+    $('#fDelete').on('submit', (e)=>{
         //User wants delete a flight
         e.preventDefault();
+        console.log("submit");
         let form = $(e.currentTarget);
         //console.log(form);
         let dataCd: ConfirmDialogInterface = {
@@ -31,8 +30,8 @@ $(function(){
             console.log(dataFd);
             let flightDelete = new FlightDelete(dataFd);
             flightDelete.deleteFlight().then(obj => {
-                /* console.log("obj");
-                console.log(obj); */
+                console.log("obj");
+                console.log(obj);
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',
@@ -42,13 +41,10 @@ $(function(){
                 $(messageDialog.btOk).on('click',()=>{
                     messageDialog.dialog.dialog('destroy');
                     messageDialog.dialog.remove();
-                    //remove the row if the delete operation was done successfully
+                    //check if the delete operation was done successfully
                     if(obj['deleted'] == true){
-                        //Get the parent elements of the form submitted
-                        let divParents = form.parents();
-                        //Get the row to delete
-                        let row = divParents.eq(1);
-                        $(row).remove();
+                        //Redirect to flights list page 
+                        window.location.href = Constants.URL_FLIGHTSLIST;
                     }//if(obj['deleted'] == true){   
                 });
             }).catch(err => {
@@ -56,7 +52,7 @@ $(function(){
                     title: 'Elimina volo',
                     message: flightDelete.error as string
                 };
-                dialogRemoveMd(dataMd);
+                dialogRemoveMd(dataMd); 
             }); 
         });//$(confirmDialog.btYes).on('click',()=>{
         dialogRemoveCd(confirmDialog);  
