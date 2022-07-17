@@ -2,11 +2,11 @@ import FlightDeleteInterface from "../../interfaces/flight/flightdelete.interfac
 import { Constants } from "../../values/constants";
 
 export default class FlightDelete{
-    _id: number;
-    _token: string;
-    _msg: string;
-    _errno: number = 0;
-    _error: string|null = null;
+    private _id: number;
+    private _token: string;
+    private _msg: string;
+    private _errno: number = 0;
+    private _error: string|null = null;
 
     public static ERR_FETCH:number = 1;
     public static ERR_NOTFOUND:number = 2;
@@ -42,7 +42,7 @@ export default class FlightDelete{
         this._errno = 0;
         await this.deleteFlightPromise().then(res => {
             let json = JSON.parse(res);
-            console.log(json);
+            //console.log(json);
             msg = json['msg'];
         }).catch(err => {
             console.warn(err);
@@ -55,14 +55,14 @@ export default class FlightDelete{
     private async deleteFlightPromise(): Promise<string>{
         let promise = await new Promise((resolve,reject) => {
             let url = FlightDelete.URL_SCRIPT+'/'+this._id;
-            console.log("url => "+url);
+            //console.log("url => "+url);
             fetch(url,{
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': this._token
                 },
             }).then(res => {
-                console.log(res);
+                //console.log(res);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);
