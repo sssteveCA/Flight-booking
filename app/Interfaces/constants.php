@@ -10,6 +10,7 @@ interface Constants{
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
+    const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
