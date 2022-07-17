@@ -18,6 +18,7 @@ interface Paths{
     const ROUTE_EDITPASSWORD = 'infocontroller.editpassword';
     const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
     const ROUTE_PAYPAL_RETURN = 'paypal.return';
+    const ROUTE_RESUMEFLIGHT = 'resumeflight';
 
     //URLs
     const URL_AIRPORTSEARCH = '/airportsearch';
@@ -30,6 +31,7 @@ interface Paths{
     const URL_EDITUSERNAME = '/editUsername';
     const URL_FLIGHTEVENTS = '/flightevents';
     const URL_FLIGHTPRICE = '/flightprice';
+    const URL_FLIGHTRESUME = Paths::URL_BOOKFLIGHT.'/flightresume';
     const URL_FLIGHTSEARCH = '/flightsearch';
     const URL_HOME = '/home';
     const URL_INFO = '/info';

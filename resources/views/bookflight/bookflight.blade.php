@@ -10,11 +10,11 @@
 
 @section('content')
     @isset($message)
+        @if($done == true)
         <div class="container mt-5">
             <h2 class="mt-5 text-center">Prenotazione volo</h2>
             <p class="lead text-center">{{$message}}</p>
         </div>
-        @if($done == true)
         <div class="form-div">
             <form id="fFlightPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
                 <div class="my-3">
@@ -43,6 +43,10 @@
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>
                 </div>
             </form>
+        </div>
+        @else
+        <div class="alert alert-danger" role="alert">
+            {{$message}}
         </div>
         @endif
     @endisset
