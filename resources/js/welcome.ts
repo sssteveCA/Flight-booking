@@ -1,5 +1,5 @@
-import FlightEventsList from "./classes/flighteventslist";
-import FlightLocationList from "./classes/flightlocationlist";
+import FlightEventsList from "./classes/flight/flighteventslist";
+import FlightLocationList from "./classes/flight/flightlocationlist";
 import FlightLocationAirportsInterface from "./interfaces/flightlocationairports.interface";
 import FlightLocationCompaniesInterface from "./interfaces/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flightlocationcountries.interface";

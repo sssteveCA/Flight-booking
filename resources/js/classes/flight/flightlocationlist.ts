@@ -1,9 +1,9 @@
 //This class provides suggestion for flight locations in welcome blade flights tab
 
-import FlightLocationCountriesInterface from "../interfaces/flightlocationcountries.interface";
-import FlightLocationAirportsInterface from "../interfaces/flightlocationairports.interface";
-import FlightLocationCompaniesInterface from "../interfaces/flightlocationcompanies.interface";
-import { Constants } from "../values/constants";
+import FlightLocationCountriesInterface from "../../interfaces/flightlocationcountries.interface";
+import FlightLocationAirportsInterface from "../../interfaces/flightlocationairports.interface";
+import FlightLocationCompaniesInterface from "../../interfaces/flightlocationcompanies.interface";
+import { Constants } from "../../values/constants";
 
 export default class FlightLocationList{
     private _fired: JQuery<HTMLElement>;

@@ -1,4 +1,4 @@
-import FlightEventInterface from "../interfaces/flightevent.interface";
+import FlightEventInterface from "../../interfaces/flightevent.interface";
 
 export default class FlightEvent{
     _name: string;

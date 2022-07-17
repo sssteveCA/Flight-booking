@@ -1,4 +1,4 @@
-import FlightDelete from "../classes/flightdelete";
+import FlightDelete from "../classes/flight/flightdelete";
 import FlightDeleteInterface from "../interfaces/flightdelete.interface";
 
 
