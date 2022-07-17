@@ -1,7 +1,7 @@
 import FlightEvent from "./flightevent";
 import {Constants} from "../../values/constants";
 import HtmlCardInterface from "../../interfaces/htmlcard.interface";
-import FlightEventInterface from "../../interfaces/flightevent.interface";
+import FlightEventInterface from "../../interfaces/flight/flightevent.interface";
 
 export default class FlightEventsList{
     _flight_events: Array<FlightEvent> = new Array();

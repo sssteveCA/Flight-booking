@@ -1,8 +1,8 @@
 //This class provides suggestion for flight locations in welcome blade flights tab
 
-import FlightLocationCountriesInterface from "../../interfaces/flightlocationcountries.interface";
-import FlightLocationAirportsInterface from "../../interfaces/flightlocationairports.interface";
-import FlightLocationCompaniesInterface from "../../interfaces/flightlocationcompanies.interface";
+import FlightLocationCountriesInterface from "../../interfaces/flight/flightlocationcountries.interface";
+import FlightLocationAirportsInterface from "../../interfaces/flight/flightlocationairports.interface";
+import FlightLocationCompaniesInterface from "../../interfaces/flight/flightlocationcompanies.interface";
 import { Constants } from "../../values/constants";
 
 export default class FlightLocationList{

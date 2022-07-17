@@ -1,5 +1,5 @@
 import FlightDelete from "../classes/flight/flightdelete";
-import FlightDeleteInterface from "../interfaces/flightdelete.interface";
+import FlightDeleteInterface from "../interfaces/flight/flightdelete.interface";
 
 
 $(function(){

@@ -1,4 +1,4 @@
-import FlightDeleteInterface from "../../interfaces/flightdelete.interface";
+import FlightDeleteInterface from "../../interfaces/flight/flightdelete.interface";
 import { Constants } from "../../values/constants";
 
 export default class FlightDelete{
