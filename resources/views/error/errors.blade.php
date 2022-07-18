@@ -1,14 +1,14 @@
 @extends('layouts.menu')
 
 @section('content')
-@if($errors->any())
-<h3 class="text-center">Errori</h3>
+@isset($messages)
+<h3 class="text-center">Errore</h3>
 <div class="alert alert-danger" role="alert">
     <ul>
-    @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
+    @foreach($messages as $message)
+        <li>{{$message}}</li>
     @endforeach
     </ul>
 </div>
-@endif
+@endisset
 @endsection

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
+use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use UserManager;
+
 
 class InfoController extends Controller
 {
@@ -34,7 +37,9 @@ class InfoController extends Controller
             return response()->view('profile/info',['user' => $userAuth],200);
         }
         else
-            return response()->view('error/404',['msg' => 'L\' utente specificato non esiste'],404);
+            return response()->view(P::VIEW_FALLBACK,[
+                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
+            ],404);
 
     }
 
@@ -44,7 +49,7 @@ class InfoController extends Controller
         if(isset($request->validator) && $request->validator->fails()){
             //If username form fails validation
             $messages = $request->validator->messages();
-            return view('error/errors')->withErrors($messages);
+            return view(P::VIEW_FALLBACK)->with(['messages' => $messages]);
         }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         Log::debug("InfoController editpassword message ".var_export($edit,true));
@@ -55,7 +60,9 @@ class InfoController extends Controller
         }
         else{
             //Username was not updated
-            return view('error/errors')->withErrors(['message' => $edit['msg']]);
+            return view(P::VIEW_FALLBACK)->with([
+                'messages' => [$edit['msg']]
+            ]);
         }
     }
 
@@ -65,17 +72,19 @@ class InfoController extends Controller
         if(isset($request->validator) && $request->validator->fails()){
             //If change password form fails validation
             $messages = $request->validator->messages();
-            return view('error/errors')->withErrors($messages);
+            return response()->view(P::VIEW_FALLBACK,
+                ['messages' => $messages]
+            ,400);
         }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editPassword($request,$this->auth_id);
         if($edit['edited']){
             //Password was edited
-            return response()->view('profile/edit',$edit,200);
+            return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
         } 
         else{
             //Password was not updated
             //return response()->view('error/errors',['errors' => $edit],404);
-            return view('error/errors')->withErrors(['message' => $edit['msg']]);
+            return view('error/errors')->with(['messages' => [$edit['msg']]]);
         }
     }
 }

@@ -64,7 +64,14 @@ class PostController extends Controller
      */
     public function show(Post $post,$permalink)
     {
-        //
+        $post = Post::find($permalink);
+        if($post != null){
+            return response()->view(P::VIEW_POST,['post' => $post],200);
+        }
+        return response()->view(P::VIEW_FALLBACK,
+            [
+                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
+            ],404);
     }
 
     /**

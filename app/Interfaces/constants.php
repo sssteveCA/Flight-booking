@@ -20,6 +20,9 @@ interface Constants{
     const ERR_URLNOTFOUND_NOTALLOWED = "La pagina che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per visualizzarla";
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
+    //common array keys
+    const KEY_MESSAGES = 'messages';
+
     //success
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
