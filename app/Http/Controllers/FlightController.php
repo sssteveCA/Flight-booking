@@ -123,21 +123,25 @@ class FlightController extends Controller
      */
     public function destroy(Flight $flight, $myFlight)
     {
+        $response_data = [
+            'deleted' => false,
+            'message' => C::ERR_URLNOTFOUND_NOTALLOWED
+        ];
         $flight = Flight::find($myFlight);
         if($flight != null){
             //Requested resource exists
             $user_id = auth()->id();
             if($flight->user_id == $user_id){
                 //The resource is owned by the logged user
-                $del = $flight->forceDelete();
-                Log::channel('stdout')->info("FlightController destroy del => ".var_export($del,true));
-                return response()->json([
-                    'deleted' => $del,
-                    'msg' => C::OK_FLIGHTDELETE
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                $response_data['deleted'] = $flight->forceDelete();
+                Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
+                $response_data['message'] = C::OK_FLIGHTDELETE;
+                $code = 200; //OK
             }//if($flight->user_id == $user_id){
+            else $code = 401; //Unauthorized
         }//if($flight != null){
-        return view(P::VIEW_FALLBACK)->withErrors(['message' => C::ERR_URLNOTFOUND_NOTALLOWED]);
+        else $code = 404; //Not found
+        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     //Remove backslashes from flights array keys
