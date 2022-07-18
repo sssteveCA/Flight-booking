@@ -14,7 +14,7 @@ class UpdateFlightsTable2 extends Migration
     public function up()
     {
         Schema::table('flights',function(Blueprint $table){
-            $table->renameColumn('price','total_price');
+            //$table->renameColumn('price','total_price');
         });
     }
 
