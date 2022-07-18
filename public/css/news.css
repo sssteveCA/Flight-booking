@@ -1,0 +1,12 @@
+.post-link {
+  color: black;
+  text-decoration: none;
+  padding: 20px 10px;
+}
+.post-link .post-div > div {
+  margin: 15px auto;
+}
+
+.post-link:hover .post-div {
+  background-color: rgba(255, 255, 0, 0.7);
+}

@@ -1,0 +1,27 @@
+@use "sass:string";
+
+$post-link-class: '.post-link';
+$post-link-color: black;
+$post-link-decoration: none;
+$post-link-padding: 20px 10px;
+$post-link-text-align: center;
+$post-div-class: '.post-div';
+$post-div-bg-hover-color: rgba(255,255,0,0.7); //Yellow
+$post-div-children-margin: 15px auto;
+
+@mixin link-style($link-class,$div-class){
+    #{$link-class}{
+        color: $post-link-color;
+        text-decoration: $post-link-decoration;
+        padding: $post-link-padding;
+        #{$div-class} > div{
+            margin: $post-div-children-margin;
+        }
+    }
+    $post-div-hover-selector: string.unquote(#{$link-class+":hover" $div-class});
+    #{$post-div-hover-selector}{
+        background-color: $post-div-bg-hover-color;
+    }
+}
+
+@include link-style($post-link-class,$post-div-class);

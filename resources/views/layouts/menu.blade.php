@@ -27,7 +27,7 @@
                             <a class="nav-link" href="{{ P::URL_WHOWEARE }}">Chi siamo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ P::URL_NEWS }}">News</a>
+                            <a class="nav-link" href="{{ route('news.index') }}">News</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ P::URL_CONTACTS }}">Contatti</a>

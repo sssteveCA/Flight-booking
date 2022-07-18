@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->orderBy('updated_at','DESC')->get();
+        $posts = Post::orderBy('updated_at','DESC')->get();
         $n_posts = $posts->count();
         if($n_posts > 0){
             //There is at least one post
