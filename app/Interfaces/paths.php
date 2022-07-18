@@ -6,6 +6,7 @@ interface Paths{
 
     //Prefixes
     const PREFIX_BOOKFLIGHT = 'bookflight';
+    const PREFIX_NEWS = 'news';
     const PREFIX_PROFILE = 'profile';
     const PREFIX_MYFLIGHTS = 'myFlights';
 

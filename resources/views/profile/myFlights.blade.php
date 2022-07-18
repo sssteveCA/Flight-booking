@@ -41,6 +41,7 @@
                         </form>
                     </div>
                     <div class="col-4 col-lg-2 flight-book">
+                        @if($flight['payed'] == '0')
                         <form class="fFlightBook" method="post" action="{{ route(P::ROUTE_RESUMEFLIGHT) }}">
                             @csrf
                             @method('POST')
@@ -48,6 +49,7 @@
                             <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
                             <button type="submit" class="btn btn-success">PRENOTA</button>
                         </form>  
+                        @endif
                     </div>        
                 </div>
             @endforeach

@@ -5,6 +5,7 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\paypal\PaypalController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +57,12 @@ Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+
+Route::resource(P::PREFIX_NEWS,PostController::class)->only([
+    'index','show'
+])->parameters([
+    'news' => 'permalink'
+]);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_NEWS,P::VIEW_NEWS);
