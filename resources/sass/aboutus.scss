@@ -1,0 +1,77 @@
+@use "sass:map";
+
+$bs-breakpoints: (
+    'xs': 0px,
+    'md': 768px,
+    'lg': 992px
+);
+
+%container-rules{
+    min-width: 300px;
+}
+
+%row-rules{
+    padding: 10px 0px;
+}
+
+@mixin global(){
+    .container-fluid{
+        @extend %container-rules;
+    }
+    .row{
+        @extend %row-rules;
+    }
+    .description div{
+        margin: 10px 0;
+        font-size: 1.1em;
+        text-align: left;
+    }
+}
+
+@mixin image-style($breakpoint){
+    img{
+       @if $breakpoint == 'xs' {
+        height: 100%;
+        width: 95%;
+       }
+       @else if $breakpoint == 'md'{
+        height: 100%;
+        width: 90%;
+       }
+       @else{
+        height: 100%;
+        width: 85%
+       } 
+    }   
+}
+
+
+@mixin responsive-style($breakpoints){
+    @if(map.has-key($breakpoints,'xs')){
+        $xs-breakpoint: map.get($breakpoints,'xs');
+        @media only screen and (min-width: #{$xs-breakpoint}){
+            .img-container{
+                height: 200px;
+            }
+            @include image-style('xs');
+        }//@media only screen and (min-width: #{$xs-breakpoint}){
+        $md-breakpoint: map.get($breakpoints,'md');
+        @media only screen and (min-width: #{$md-breakpoint}){
+            .img-container{
+                height: 250px;
+            }
+            @include image-style('md');
+        }//@media only screen and (min-width: #{$md-breakpoint}){
+        $lg-breakpoint: map.get($breakpoints,'lg');
+        @media only screen and (min-width: #{$lg-breakpoint}){
+            .img-container{
+                height: 300px;
+            }
+            @include image-style('lg');
+        }//@media only screen and (min-width: #{$lg-breakpoint}){
+    }//@if(map.has-key($breakpoints,'xs')){  
+}
+
+@include global();
+@include responsive-style($bs-breakpoints);
+

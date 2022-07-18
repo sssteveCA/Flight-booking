@@ -24,7 +24,7 @@
                             <a class="nav-link" href="{{ P::URL_ROOT }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ P::URL_WHOWEARE }}">Chi siamo</a>
+                            <a class="nav-link" href="{{ P::URL_ABOUTUS }}">Chi siamo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('news.index') }}">News</a>

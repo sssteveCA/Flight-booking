@@ -22,6 +22,7 @@ interface Paths{
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
 
     //URLs
+    const URL_ABOUTUS = '/chi-siamo';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
     const URL_BOOKFLIGHT_PAYPAL_CANCEL = '/cancel';
@@ -44,9 +45,10 @@ interface Paths{
     const URL_SUBSCRIBED = '/register/subscribed';
     const URL_ROOT = '/';
     const URL_SEARCH = '/search';
-    const URL_WHOWEARE = '/chi-siamo';
+    
 
     //Views
+    const VIEW_ABOUTUS = 'aboutus';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_FALLBACK = 'error/errors';
@@ -62,6 +64,6 @@ interface Paths{
     const VIEW_REGISTER = 'auth.registration';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
     const VIEW_WELCOME = 'welcome';
-    const VIEW_WHOWEARE = 'whoweare';
+    
 }
 ?>
