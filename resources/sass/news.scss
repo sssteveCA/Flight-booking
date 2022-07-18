@@ -1,8 +1,11 @@
+@use "sass:selector";
 @use "sass:string";
 
 $post-link-class: '.post-link';
+$post-link-display: block;
 $post-link-color: black;
 $post-link-decoration: none;
+$post-link-margins: 0px 12px;
 $post-link-padding: 20px 10px;
 $post-link-text-align: center;
 $post-div-class: '.post-div';
@@ -11,8 +14,10 @@ $post-div-children-margin: 15px auto;
 
 @mixin link-style($link-class,$div-class){
     #{$link-class}{
+        display: $post-link-display;
         color: $post-link-color;
         text-decoration: $post-link-decoration;
+        margin: $post-link-margins;
         padding: $post-link-padding;
         #{$div-class} > div{
             margin: $post-div-children-margin;
@@ -21,6 +26,10 @@ $post-div-children-margin: 15px auto;
     $post-div-hover-selector: string.unquote(#{$link-class+":hover" $div-class});
     #{$post-div-hover-selector}{
         background-color: $post-div-bg-hover-color;
+    }
+    $post-link-except-last: selector.append($link-class,":not(:last-child)");
+    #{$post-link-except-last}{
+        border-bottom: 1px solid black;
     }
 }
 

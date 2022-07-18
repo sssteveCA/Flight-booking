@@ -9,7 +9,7 @@
 @section('content')
     @isset($posts)
         @forelse($posts as $post)
-        <a class="post-link" href="/{{ $post['permalink'] }}">
+        <a class="post-link" href="{{ route('news.show',['permalink' => $post['permalink']]) }}">
             <div class="post-div">
                 <div class="post-header">
                     <h3>{{ $post['title'] }}</h3>

@@ -57,6 +57,7 @@ interface Paths{
     const VIEW_NEWS = 'news';
     const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
     const VIEW_PAYPAL_RETURN = 'paypal.return';
+    const VIEW_POST = 'news.post';
     const VIEW_REGISTER = 'auth.registration';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
     const VIEW_WELCOME = 'welcome';
