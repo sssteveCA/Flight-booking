@@ -43,24 +43,28 @@
                         </div>
                     </div>
                     <div id="fb-fs2" class="row">
-                        <div class="col-12 col-sm-5 col-lg-5">
+                        <div class="col-12 col-sm-5 col-lg-5 form-floating">
                             <select class="form-select company-names" id="fb-company_name" name="company_name"></select>
+                            <label for="fb-company-name">Compagnia aerea</label>
                         </div>
                     </div>
                     <div id="fb-fs3" class="row">
-                        <div class="col-12 col-sm-5 col-lg-5 order-lg-1">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-1 form-floating">
                             <select class="form-select flight-loc" id="fb-from" name="from"></select>
+                            <label for="fb-from">Paese di Partenza</label>
                         </div>
-                        <div class="col-12 col-sm-5 col-lg-5 order-lg-3">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-3 form-floating">
                             <select class="form-select flight-loc-airports" id="fb-from-airports" name="from-airport"></select>
+                            <label for="fb-from-airports">Aereoporto di partenza</label>
                         </div>
-                        <div class="col-12 col-sm-5 col-lg-5 order-lg-2">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-2 form-floating">
                             <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
+                            <label for="fb-to">Paese di destinazione</label>
                         </div>
-                        <div class="col-12 col-sm-5 col-lg-5 order-lg-4">
+                        <div class="col-12 col-sm-5 col-lg-5 order-lg-4 form-floating">
                             <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to-airport"></select>
-                        </div>
-                        
+                            <label for="fb-company-name">Aereoporto di destinazione</label>
+                        </div>         
                     </div>
                     <div id="fb-fs4" class="row fb-oneway-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">

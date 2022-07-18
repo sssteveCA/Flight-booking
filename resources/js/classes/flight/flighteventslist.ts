@@ -15,7 +15,7 @@ export default class FlightEventsList{
     //Messages
     private static ERR_SCRIPT_EXCEPTION_MSG:string = 'Errore durante l\' esecuzione dello script';
 
-    private static SCRIPT_URL: string = Constants.HOSTNAME+':'+Constants.PORT+'/welcome/flightevents';
+    private static SCRIPT_URL: string = Constants.HOSTNAME+':'+Constants.PORT+'/flightevents';
 
 
     constructor(){
@@ -39,7 +39,7 @@ export default class FlightEventsList{
     async flight_events_request(): Promise<boolean>{
         let ok:boolean = false;
         this._errno = 0;
-        console.log("Prima della promise");
+        //console.log("Prima della promise");
         let fe_list = await this.flight_event_request_promise().then(res => {
             //console.log(res);
             let json = JSON.parse(res);
