@@ -49,10 +49,41 @@
                 <div class="col-12 col-md-5 flight-date">{{ $flight['flight_date'].' '.$flight['flight_time'] }}</div>
             </div>
             <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">ADULTI</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['adults'] }}€</div>
+            </div> 
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">ADOLESCENTI</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['teenagers'] }}€</div>
+            </div> 
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">BAMBINI</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['children'] }}€</div>
+            </div> 
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">NEONATI</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['newborns'] }}€</div>
+            </div> 
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">VOLO PAGATO</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['payed'] == '1' ? 'Sì' : 'No' }}</div>
+            </div> 
+            @if($flight['payed'] == '1')
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 fb-property">DATA PAGAMENTO</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['payed_date'] }}</div>
+            </div> 
+            @endif
+            <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">PREZZO TOTALE</div>
                 <div class="col-12 col-md-5 total-price">{{ $flight['total_price'] }}€</div>
             </div>   
-            <div class="row justify-content-evenly">
+            <div @class([
+                    'row',
+                    'justify-content-center' => $flight['payed'] == '1',
+                    'justify-content-evenly' => !$flight['payed'] == '1'
+                ])>
+                @if($flight['payed'] == '0')
                 <div class="col-3 col-md-1 fb-book-button">
                     <form id="fFlightBook" method="post" action="{{ route(P::ROUTE_RESUMEFLIGHT) }}">
                         @csrf
@@ -61,14 +92,14 @@
                         <button type="submit" class="btn btn-primary">PRENOTA</button>
                     </form>
                 </div>
+                @endif
                 <div class="col-3 col-md-1 fb-delete-button">
                     <form id="fDelete" method="post" action="{{ route('myFlights.destroy', ['myFlight' => $flight['id']]) }}">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
                         <button type="submit" class="btn btn-danger">ELIMINA</button>
-                    </form>
-                    
+                    </form>   
                 </div>
             </div>
         </div>
