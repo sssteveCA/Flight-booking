@@ -65,7 +65,7 @@ Route::resource(P::PREFIX_NEWS,PostController::class)->only([
 ]);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
-Route::view(P::URL_NEWS,P::VIEW_NEWS);
+//Route::view(P::URL_NEWS,P::VIEW_NEWS);
 Route::view(P::URL_ROOT,P::VIEW_WELCOME);
 Route::view(P::URL_WHOWEARE,P::VIEW_WHOWEARE);
 
