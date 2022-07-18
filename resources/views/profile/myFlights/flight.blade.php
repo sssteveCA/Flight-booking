@@ -1,5 +1,11 @@
 @extends('layouts.menu')
 
+@section('namespaces')
+    @php
+        use App\Interfaces\Paths as P;
+    @endphp
+@endsection
+
 @section('title','Informazioni volo')
 
 @section('links')
@@ -48,7 +54,12 @@
             </div>   
             <div class="row justify-content-evenly">
                 <div class="col-3 col-md-1 fb-book-button">
-                    <button type="button" class="btn btn-primary">PRENOTA</button>
+                    <form id="fFlightBook" method="post" action="{{ route(P::ROUTE_RESUMEFLIGHT) }}">
+                        @csrf
+                        @method('POST')
+                        <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
+                        <button type="submit" class="btn btn-primary">PRENOTA</button>
+                    </form>
                 </div>
                 <div class="col-3 col-md-1 fb-delete-button">
                     <form id="fDelete" method="post" action="{{ route('myFlights.destroy', ['myFlight' => $flight['id']]) }}">
