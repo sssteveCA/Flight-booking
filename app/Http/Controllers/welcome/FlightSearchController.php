@@ -87,6 +87,10 @@ class FlightSearchController extends Controller
                         'flight_time' => $fl_outbound->flight_time,
                         'arrival_country' => $fl_outbound->arrival_country,
                         'arrival_airport' => $fl_outbound->arrival_airport,
+                        'adults' => $fl_outbound->adults,
+                        'teenagers' => $fl_outbound->teenagers,
+                        'children' => $fl_outbound->children,
+                        'newborns' => $fl_outbound->newborns,
                         'total_price' => $fl_outbound->total_price_format
                     ],
                     'return' => [
@@ -98,6 +102,10 @@ class FlightSearchController extends Controller
                         'flight_time' => $fl_return->flight_time,
                         'arrival_country' => $fl_return->arrival_country,
                         'arrival_airport' => $fl_return->arrival_airport,
+                        'adults' => $fl_return->adults,
+                        'teenagers' => $fl_return->teenagers,
+                        'children' => $fl_return->children,
+                        'newborns' => $fl_return->newborns,
                         'total_price' => $fl_return->total_price_format
                     ]
                 ];
@@ -115,6 +123,10 @@ class FlightSearchController extends Controller
                         'flight_time' => $fl_oneway->flight_time,
                         'arrival_country' => $fl_oneway->arrival_country,
                         'arrival_airport' => $fl_oneway->arrival_airport,
+                        'adults' => $fl_oneway->adults,
+                        'teenagers' => $fl_oneway->teenagers,
+                        'children' => $fl_oneway->children,
+                        'newborns' => $fl_oneway->newborns,
                         'total_price' => $fl_oneway->total_price_format
                     ]
                 ];

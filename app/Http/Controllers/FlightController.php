@@ -181,7 +181,11 @@ class FlightController extends Controller
             $models[$n]->arrival_airport = $flight['arrival_airport'];
             $models[$n]->booking_date = $flight['booking_date'];
             $models[$n]->flight_date = $flight['flight_date'];
-            $models[$n]->flight_time = $flight['flight_time'];
+            $models[$n]->flight_time = $flight['flight_time'];            
+            $models[$n]->adults = $flight['adults'];            
+            $models[$n]->teenagers = $flight['teenagers'];            
+            $models[$n]->children = $flight['children'];            
+            $models[$n]->newborns = $flight['newborns'];           
             $models[$n]->total_price = $flight['total_price'];
             $created = $models[$n]->save();
             if(!$created){

@@ -54,6 +54,26 @@
                         <input type="hidden" name="flights[{{ $loop->index }}]['arrival_country']" value="{{ $flight['arrival_country'] }}">
                         <input type="hidden" name="flights[{{ $loop->index }}]['arrival_airport']" value="{{ $flight['arrival_airport'] }}">
                     </div>
+                    <div class="adults-div column-elem">
+                        <p class="fl-header bg-warning bg-gradient">Adulti</p>
+                        <p class="bg-light bg-gradient">{{ $flight['adults'] }}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['adults']" value="{{ $flight['adults'] }}">
+                    </div>
+                    <div class="teenagers-div column-elem">
+                        <p class="fl-header bg-warning bg-gradient">Adolescenti</p>
+                        <p class="bg-light bg-gradient">{{ $flight['teenagers'] }}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['teenagers']" value="{{ $flight['teenagers'] }}">
+                    </div>
+                    <div class="children-div column-elem">
+                        <p class="fl-header bg-warning bg-gradient">Bambini</p>
+                        <p class="bg-light bg-gradient">{{ $flight['children'] }}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['children']" value="{{ $flight['children'] }}">
+                    </div>
+                    <div class="newborns-div column-elem">
+                        <p class="fl-header bg-warning bg-gradient">Neonati</p>
+                        <p class="bg-light bg-gradient">{{ $flight['newborns'] }}</p>
+                        <input type="hidden" name="flights[{{ $loop->index }}]['newborns']" value="{{ $flight['newborns'] }}">
+                    </div>
                     <div class="price column-elem">
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
