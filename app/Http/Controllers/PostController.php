@@ -66,7 +66,9 @@ class PostController extends Controller
     {
         $post = Post::find($permalink);
         if($post != null){
-            return response()->view(P::VIEW_POST,['post' => $post],200);
+            return response()->view(P::VIEW_POST,[
+                'post' => $post
+            ],200);
         }
         return response()->view(P::VIEW_FALLBACK,
             [
