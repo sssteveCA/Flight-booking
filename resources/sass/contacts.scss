@@ -1,0 +1,84 @@
+@use "sass:map";
+@use "sass:selector";
+
+$form-id: '#fContacts';
+$buttons-form: selector.nest($form-id, 'button');
+    
+$bs-breakpoints: (
+    'xs': 0px,
+    'md': 768px
+);
+
+$single-selectors-map: (
+    'xs': (
+        'classes': (),
+        'ids': (),
+        'tags':(
+            'textarea': (
+                'resize': none,
+                'height': 300px
+            )
+        )
+    ),
+    'md': (
+        'classes': (),
+        'ids': (),
+        'tags': (
+            'textarea': (
+                'height': 200px
+            )
+        )
+    )
+);
+
+$compound-selectors-map: (
+    'xs': (
+        $buttons-form: (
+            'margin-top': 20px
+        )
+    ),
+    'md': (
+        $buttons-form: (
+            'margin-top': 10px
+        )
+    )
+);
+
+@mixin single-selectors-loop($ss-map,$breakpoint){
+    @if (map.has-key($ss-map,$breakpoint)){
+        $ss-map-breakpoint: map.get($ss-map,$breakpoint);
+        @each $sel-type,$selectors in $ss-map-breakpoint{
+            @each $selector, $prop-list in $selectors{
+                #{$selector}{
+                    @each $prop,$val in $prop-list{
+                        #{$prop}: #{$val};
+                    }//@each $prop,$val in $prop-list{
+                }//#{$selector}{
+            }//@each $selector, $prop-list in $selectors{
+        }//@each $sel-type,$selectors in $ss-map-breakpoint{
+    }//@if (map.has-key($ss-map,$breakpoint)){
+}
+
+@mixin compound-selectors-loop($cs-map,$breakpoint){
+    @if (map.has-key($cs-map,$breakpoint)){
+        $cs-map-breakpoint: map.get($cs-map,$breakpoint);
+        @each $comp-selector, $prop-list in $cs-map-breakpoint{
+            #{$comp-selector}{
+                @each $prop,$val in $prop-list{
+                    #{$prop}: #{$val};
+                }//@each $prop,$val in $prop-list{
+            }//#{$comp-selector}{
+        }// @each $comp-selector, $prop-list in $cs-map-breakpoint{
+    }//@if(map.has-key($cs-map,$breakpoint)){
+}
+
+@mixin style-from-maps($breakpoint-map,$ss-map,$cs-map){
+    @each $breakpoint,$val in $breakpoint-map{
+        @media only screen and (min-width: #{$val}){
+            @include single-selectors-loop($ss-map,$breakpoint);
+            @include compound-selectors-loop($cs-map,$breakpoint);
+        }//@media only screen and (min-width: #{$val}){
+    }//@each $breakpoint,$val in $breakpont-map{
+}
+
+@include style-from-maps($bs-breakpoints,$single-selectors-map,$compound-selectors-map);

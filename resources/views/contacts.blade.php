@@ -2,6 +2,10 @@
 
 @section('title','Contatti')
 
+@section('links')
+<link rel="stylesheet" href="{{ asset('css/contacts.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +13,7 @@
             <div class="card">
                 <div class="card-header text-center">{{ __('Contatti') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form id="fContacts" method="POST" action="{{ route('register') }}">
                         @csrf
                         @method('POST')
                         <div class="row mb-3">

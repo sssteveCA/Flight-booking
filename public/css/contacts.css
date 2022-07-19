@@ -1,0 +1,17 @@
+@media only screen and (min-width: 0px) {
+  textarea {
+    resize: none;
+    height: 300px;
+  }
+  #fContacts button {
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  textarea {
+    height: 200px;
+  }
+  #fContacts button {
+    margin-top: 10px;
+  }
+}
