@@ -4,13 +4,14 @@
     "/js/auth/register.js": "/js/auth/register.js",
     "/js/profile/myFlights.js": "/js/profile/myFlights.js",
     "/js/profile/myFlights/flight.js": "/js/profile/myFlights/flight.js",
+    "/js/contacts.js": "/js/contacts.js",
     "/css/app.css": "/css/app.css",
     "/css/welcome.css": "/css/welcome.css",
+    "/css/contacts.css": "/css/contacts.css",
     "/css/aboutus.css": "/css/aboutus.css",
     "/css/news/post.css": "/css/news/post.css",
     "/css/news.css": "/css/news.css",
     "/css/profile/myFlights/flight.css": "/css/profile/myFlights/flight.css",
     "/css/profile/myFlights.css": "/css/profile/myFlights.css",
-    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css",
-    "/css/contacts.css": "/css/contacts.css"
+    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css"
 }

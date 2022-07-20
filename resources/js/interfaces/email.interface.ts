@@ -3,4 +3,5 @@ export default interface EmailInterface{
     email: string;
     subject: string;
     message: string;
+    token: string;
 }

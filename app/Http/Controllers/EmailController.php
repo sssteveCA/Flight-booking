@@ -16,7 +16,7 @@ class EmailController extends Controller
         $request_array = $request->all();
         $response = [
             'done' => false,
-            'msg' => '',
+            'msg' => 'Messaggio di risposta',
             'request' => $request_array
         ];
         return response()->json($response,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

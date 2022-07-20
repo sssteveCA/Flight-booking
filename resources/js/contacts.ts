@@ -10,10 +10,13 @@ $(function(){
             name: $('#name').val() as string,
             email: $('#email').val() as string,
             subject: $('#subject').val() as string,
-            message: $('#message').val() as string
+            message: $('#message').val() as string,
+            token: $('input[name=_token]').eq(0).val() as string
         };
+        console.log(email_data);
         let email: Email = new Email(email_data);
         email.sendEmail().then(message => {
+            console.log(`sendEmail message => ${message}`);
             let md_data: MessageDialogInterface = {
                 title: 'Email',
                 message: message

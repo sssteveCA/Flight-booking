@@ -6,6 +6,8 @@ export default class Email{
     _email: string;
     _subject: string;
     _message: string;
+    _method: string;
+    _token: string;
     _errno: number = 0;
     _error: string|null = null;
 
@@ -27,10 +29,10 @@ export default class Email{
 
      //Regexp
      private static regexs: object = {
-        'name': '[A-Z][a-zA-Z]{2,}\S',
+        'name': '[A-Z][a-zA-Z]{2,}\\S',
         'email': '([a-z0-9A-Z_\.])@([a-zA-Z\.])*([a-zA-Z]){2,6}',
         'subject': '[a-zA-Z0-9?!\.]{5,}',
-        'message': '.{5,}\S'
+        'message': '.{5,}\\S'
      };
 
     constructor(data: EmailInterface){
@@ -38,12 +40,15 @@ export default class Email{
         this._email = data.email;
         this._subject = data.subject;
         this._message = data.message;
+        this._token = data.token;
     }
 
     get name(){return this._name;}
     get email(){return this._email;}
     get subject(){return this._subject;}
     get message(){return this._message;}
+    get method(){return this._method;}
+    get token(){return this._token;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -76,7 +81,10 @@ export default class Email{
             if(!this.validateInput())
                 throw this.error; //One input value has wrong format
             await this.sendEmailPromise().then(res => {
-            message = res;
+                console.log(res);
+                let json = JSON.parse(res);
+                console.log(json);
+                message = json['msg'];
             }).catch(err =>{
                 this._errno = Email.ERR_SCRIPT_EXCEPTION;
                 message = this.error as string;
@@ -88,41 +96,44 @@ export default class Email{
     }
 
     private async sendEmailPromise(): Promise<string>{
-        var values: EmailInterface = {
+        var values = {
             name: this._name,
             email: this._email,
             subject: this._subject,
-            message: this._message
+            message: this._message,
         };
         let promise = await new Promise((resolve,reject)=>{
             fetch(Email.URL_SCRIPT,{
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this._token
                 },
                 body: JSON.stringify(values)                
             }).then(res => {
-                console.log(res);
-                let json = res.json();
-                return json['msg'];
+                resolve(res.text());
             }).catch(err => {
                 console.warn(err);
+                reject(err);
             })
         });
         return promise as string;
     }
 
     private validateInput(): boolean{
+        console.log("Email Validate input");
         let valid = true;
         this._errno = 0;
-        let inputs: EmailInterface = {
+        let inputs = {
             name: this._name,
             email: this._email,
             subject: this._subject,
             message: this._message
         };
         for(let key in Email.regexs){
-            let exp = new RegExp(Email.regexs[key],'i');
+            //console.log(`${key} => ${Email.regexs[key]} `);
+            let exp = new RegExp(Email.regexs[key]);
+            //console.log(exp);
             if(!exp.test(inputs[key])){
                 //Match failed
                 switch(key){

@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="{{ asset('css/contacts.css') }}">
 @endsection
 
+@section('scripts')
+<script src="{{ asset('js/contacts.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
