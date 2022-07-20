@@ -4,6 +4,7 @@ namespace App\Http\Requests\welcome;
 
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use App\Rules\DateDiff1d;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -40,7 +41,7 @@ class FlightPriceRequest extends FormRequest
             'from-airport' => 'required',
             'to' => 'required',
             'to-airport' => 'required',
-            'oneway-date' => 'required_without_all:roundtrip-start-date,roundtrip-end-date',
+            'oneway-date' => ['required_without_all:roundtrip-start-date,roundtrip-end-date', new DateDiff1d],
             'roundtrip-start-date' => 'required_with:roundtrip-end-date',
             'roundtrip-end-date' => 'required_with:roundtrip-start-date',
             'adults' => 'required|integer|min:1',
@@ -94,6 +95,8 @@ class FlightPriceRequest extends FormRequest
             /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
         );
     }
+
+
 
 
 }
