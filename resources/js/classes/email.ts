@@ -69,24 +69,25 @@ export default class Email{
         return this._error;
     }
 
-    private validateInput(): boolean{
-        let valid = false;
-        return valid;
-    }
-
     public async sendEmail(): Promise<string>{
         let message = '';
         this._errno = 0;
-        await this.sendEmailPromise().then(res => {
+        try{
+            if(!this.validateInput())
+                throw this.error; //One input value has wrong format
+            await this.sendEmailPromise().then(res => {
             message = res;
-        }).catch(err =>{
-            this._errno = Email.ERR_SCRIPT_EXCEPTION;
-            message = this.error as string;
-        });
-        return message;
+            }).catch(err =>{
+                this._errno = Email.ERR_SCRIPT_EXCEPTION;
+                message = this.error as string;
+            });
+        }catch(err){
+            message = err as string;
+        }
+        return message; 
     }
 
-    public async sendEmailPromise(): Promise<string>{
+    private async sendEmailPromise(): Promise<string>{
         var values: EmailInterface = {
             name: this._name,
             email: this._email,
@@ -109,6 +110,39 @@ export default class Email{
             })
         });
         return promise as string;
+    }
+
+    private validateInput(): boolean{
+        let valid = true;
+        this._errno = 0;
+        let inputs: EmailInterface = {
+            name: this._name,
+            email: this._email,
+            subject: this._subject,
+            message: this._message
+        };
+        for(let key in Email.regexs){
+            let exp = new RegExp(Email.regexs[key],'i');
+            if(!exp.test(inputs[key])){
+                //Match failed
+                switch(key){
+                    case 'name':
+                        this._errno = Email.ERR_NAME_INVALID;
+                        break;
+                    case 'email':
+                        this._errno = Email.ERR_EMAIL_INVALID;
+                        break;
+                    case 'subject':
+                        this._errno = Email.ERR_SUBJECT_INVALID;
+                        break;
+                    case 'message':
+                        this._errno = Email.ERR_MESSAGE_INVALID;
+                        break;
+                }
+                return false;
+            }
+        }//for(let key in Email.regexs){
+        return valid;
     }
 
 }
