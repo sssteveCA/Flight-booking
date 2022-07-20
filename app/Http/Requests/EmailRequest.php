@@ -48,10 +48,10 @@ class EmailRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Nome utente',
-            'email' => 'Indirizzo email',
-            'subject' => 'Oggetto',
-            'message' => 'Messaggio'
+            'name' => 'nome utente',
+            'email' => 'indirizzo email',
+            'subject' => 'oggetto',
+            'message' => 'messaggio'
         ];
     }
 
