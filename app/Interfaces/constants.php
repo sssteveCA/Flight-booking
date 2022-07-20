@@ -5,8 +5,12 @@ namespace App\Interfaces;
 //This class contains only constants messages
 interface Constants{
 
+    //email
+    const EMAIL_ADMIN = "admin@localhost.lan";
+
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
+    const ERR_EMAILSEND = 'Si è verificato un errore durante l\' invio della richiesta. '.Constants::ADMIN_CONTACT;
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
@@ -24,6 +28,7 @@ interface Constants{
     const KEY_MESSAGES = 'messages';
 
     //success
+    const OK_EMAILSEND = "La tua richiesta è stata inviata. Verrai ricontattato il prima possibile";
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
     const OK_FLIGHTDELETE = "Il volo selezionato è stato rimosso";

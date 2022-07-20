@@ -41,7 +41,7 @@
                         <div class="row mb-3">
                             <label for="subject" class="col-md-4 col-form-label text-md-end">{{ __('Oggetto') }}</label>
                             <div class="col-md-6">
-                                <input id="subject" type="text" class="form-control" name="password_confirmation">
+                                <input id="subject" type="text" class="form-control" name="subject">
                             </div>
                         </div>
                         <div class="row mb-3">
