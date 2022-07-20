@@ -19,27 +19,13 @@
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Il tuo nome') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
-                                @isset($contact_errors['name'])
-                                    @foreach($contact_errors['name'] as $error)
-                                    <div class="alert alert-danger my-2" role="alert">
-                                        <strong>{{ $error }}</strong>
-                                    </div>
-                                    @endforeach
-                                @endisset
+                                <input id="name" type="text" class="form-control" name="name" required autofocus>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Il tuo indirizzo Email') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required>
-                                @isset($contact_errors['email'])
-                                    @foreach($contact_errors['email'] as $error)
-                                    <div class="alert alert-danger my-2" role="alert">
-                                        <strong>{{ $error }}</strong>
-                                    </div>
-                                    @endforeach
-                                @endisset
+                                <input id="email" type="email" class="form-control" name="email" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -51,14 +37,7 @@
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Messaggio') }}</label>
                             <div class="col-md-6">
-                                <textarea id="message" name="message" class="form-control @error('message') is-invalid @enderror"></textarea> 
-                                @isset($contact_errors['password'])
-                                    @foreach($contact_errors['password'] as $error)
-                                    <div class="alert alert-danger my-2" role="alert">
-                                        {{ $error }}
-                                    </div>
-                                    @endforeach
-                                @endisset
+                                <textarea id="message" name="message" class="form-control"></textarea> 
                             </div>
                         </div>         
                         <div class="row mb-0">
