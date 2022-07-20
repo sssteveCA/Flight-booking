@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\bookflight\ResumeBookFlightController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\HomeController;
@@ -57,6 +58,7 @@ Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+Route::post(P::URL_SENDEMAIL,[EmailController::class,'sendEmail']);
 
 Route::resource(P::PREFIX_NEWS,PostController::class)->only([
     'index','show'

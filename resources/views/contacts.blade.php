@@ -1,5 +1,11 @@
 @extends('layouts.menu')
 
+@section('namespaces')
+    @php
+        use App\Interfaces\Paths as P;
+    @endphp
+@endsection
+
 @section('title','Contatti')
 
 @section('links')
@@ -13,7 +19,7 @@
             <div class="card">
                 <div class="card-header text-center">{{ __('Contatti') }}</div>
                 <div class="card-body">
-                    <form id="fContacts" method="POST" action="{{ route('register') }}">
+                    <form id="fContacts" method="POST" action="{{ url(P::URL_SENDEMAIL) }}">
                         @csrf
                         @method('POST')
                         <div class="row mb-3">

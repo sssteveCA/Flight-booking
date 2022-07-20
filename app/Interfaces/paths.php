@@ -45,6 +45,7 @@ interface Paths{
     const URL_SUBSCRIBED = '/register/subscribed';
     const URL_ROOT = '/';
     const URL_SEARCH = '/search';
+    const URL_SENDEMAIL = Paths::URL_CONTACTS.'/sendemail';
     
 
     //Views
