@@ -11,6 +11,28 @@ export default class Email{
 
     private static URL_SCRIPT = Constants.URL_SENDEMAIL;
 
+     //Numbers
+     private static ERR_SCRIPT_EXCEPTION:number = 1;
+     private static ERR_NAME_INVALID: number = 2;
+     private static ERR_EMAIL_INVALID: number = 3;
+     private static ERR_SUBJECT_INVALID: number = 4;
+     private static ERR_MESSAGE_INVALID: number = 5;
+
+     //Messages
+     private static ERR_SCRIPT_EXCEPTION_MSG:string = "Errore durante l'esecuzione dello script";
+     private static ERR_NAME_INVALID_MSG: string = 'Il nome inserito ha un formato non valido';
+     private static ERR_EMAIL_INVALID_MSG: string = "L'email inserita ha un formato non valido";
+     private static ERR_SUBJECT_INVALID_MSG: string = "L'oggetto inserito ha un formato non valido";
+     private static ERR_MESSAGE_INVALID_MSG: string = 'Il messaggio inserito ha un formato non valido';
+
+     //Regexp
+     private static regexs: object = {
+        'name': '[A-Z][a-zA-Z]{2,}\S',
+        'email': '([a-z0-9A-Z_\.])@([a-zA-Z\.])*([a-zA-Z]){2,6}',
+        'subject': '[a-zA-Z0-9?!\.]{5,}',
+        'message': '.{5,}\S'
+     };
+
     constructor(data: EmailInterface){
         this._name = data.name;
         this._email = data.email;
@@ -25,11 +47,68 @@ export default class Email{
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
+            case Email.ERR_SCRIPT_EXCEPTION:
+                this._error = Email.ERR_SCRIPT_EXCEPTION_MSG;
+                break;
+            case Email.ERR_NAME_INVALID:
+                this._error = Email.ERR_NAME_INVALID_MSG;
+                break;
+            case Email.ERR_EMAIL_INVALID:
+                this._error = Email.ERR_EMAIL_INVALID_MSG;
+                break;
+            case Email.ERR_SUBJECT_INVALID:
+                this._error = Email.ERR_SUBJECT_INVALID_MSG;
+                break;
+            case Email.ERR_MESSAGE_INVALID:
+                this._error = Email.ERR_MESSAGE_INVALID_MSG;
+                break;
             default:
                 this._error = null;
                 break;
         }
         return this._error;
+    }
+
+    private validateInput(): boolean{
+        let valid = false;
+        return valid;
+    }
+
+    public async sendEmail(): Promise<string>{
+        let message = '';
+        this._errno = 0;
+        await this.sendEmailPromise().then(res => {
+            message = res;
+        }).catch(err =>{
+            this._errno = Email.ERR_SCRIPT_EXCEPTION;
+            message = this.error as string;
+        });
+        return message;
+    }
+
+    public async sendEmailPromise(): Promise<string>{
+        var values: EmailInterface = {
+            name: this._name,
+            email: this._email,
+            subject: this._subject,
+            message: this._message
+        };
+        let promise = await new Promise((resolve,reject)=>{
+            fetch(Email.URL_SCRIPT,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)                
+            }).then(res => {
+                console.log(res);
+                let json = res.json();
+                return json['msg'];
+            }).catch(err => {
+                console.warn(err);
+            })
+        });
+        return promise as string;
     }
 
 }
