@@ -44,14 +44,14 @@ class LoginController extends Controller
         ]);*/
         if(!User::where('email',$request->email)->first()){
             //No account found with email entered
-            return view('error/errors')->withErrors(['message' => trans('auth.email')]);
+            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.email')]);
         }//if(!User::where('email',$request->email)->first()){
         if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
             //Incorrect password
-            return view('error/errors')->withErrors(['message' => trans('auth.password')]);
+            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.password')]);
         }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
             //Other errors
-            return view('error/errors')->withErrors(['message' => trans('auth.failed')]);
+            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.failed')]);
         
     }
 

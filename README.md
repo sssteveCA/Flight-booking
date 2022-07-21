@@ -31,10 +31,10 @@ I use Laravel framework 8.80.0 version
                     <li><h4>Event booking*</h4></li>
                 </ul>
             </li>
-            <li><h3>Pay with Paypal*</h3></li>
+            <li><h3>Pay with Paypal</h3></li>
         </ul>
     </li>
     <li><h2>Api*</h2></li>
     </ul>
 </div>
-<div>The features with '*' have not been added yet</div>
+<div>The features with '*' have not available yet</div>
