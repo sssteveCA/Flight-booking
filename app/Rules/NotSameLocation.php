@@ -2,10 +2,20 @@
 
 namespace App\Rules;
 
+use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
 
-class NotSameLocation implements Rule
+//This rule check if the departure location is different from the arrival location
+class NotSameLocation implements Rule,DataAwareRule
 {
+
+    /**
+     * All of the data under validation
+     * 
+     * @var array
+     */
+    protected $data = [];
+
     /**
      * Create a new rule instance.
      *
@@ -25,7 +35,14 @@ class NotSameLocation implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+        //True if contries and airports are different
+        $country_diff = ($this->data['from'] != $this->data['to']);
+        $airport_diff = ($this->data['from-airport'] != $this->data['to-airport']);
+        //True if the departure location is different from the arrival location
+        if($country_diff || $airport_diff)
+            return true;
+        else 
+            return false;
     }
 
     /**
@@ -35,6 +52,17 @@ class NotSameLocation implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'Il luogo di destinazione non può essere uguale al luogo di partenza';
+    }
+
+    /**
+     * Set the data under validation
+     * 
+     * @param array $data
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 }
