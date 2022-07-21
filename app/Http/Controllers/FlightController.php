@@ -211,6 +211,7 @@ class FlightController extends Controller
             $array_return['flights_number']++;
             //These info are for Paypal item description
             $array_return['flights'][] = [
+                'id' => $models[$n]->id,
                 'name' => "Da {$flight['departure_airport']} a {$flight['arrival_airport']}",
                 'total_price' => $flight['total_price']
             ];
