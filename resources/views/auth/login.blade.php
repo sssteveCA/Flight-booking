@@ -59,6 +59,16 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="d-none">
+                            @if(isset($_REQUEST['flights']))
+                                @foreach($_REQUEST['flights'] as $flight)
+                                    @foreach($flight as $attr => $value)
+                                        <input type="hidden" name="flights[{{ $loop->parent->index }}][{{ $attr }}] " value="{{ $value }}">
+                                    @endforeach
+                                @endforeach
+                            @endif
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -78,11 +88,11 @@
             </div>
         </div>
     </div>
-    @php
+    {{-- @php
         echo '<pre>';
         var_dump($_REQUEST);
         echo '</pre>';
-    @endphp
+    @endphp --}}
     
 </div>
 <script>
