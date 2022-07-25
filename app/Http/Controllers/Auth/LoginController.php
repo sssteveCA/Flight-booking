@@ -35,7 +35,6 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = P::URL_ROOT;
 
-
     //Overriding method
     protected function sendFailedLoginResponse(Request $request)
     {
@@ -44,14 +43,14 @@ class LoginController extends Controller
         ]);*/
         if(!User::where('email',$request->email)->first()){
             //No account found with email entered
-            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.email')]);
+            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.email')],400);
         }//if(!User::where('email',$request->email)->first()){
         if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
             //Incorrect password
-            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.password')]);
+            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.password')],400);
         }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
             //Other errors
-            return view(P::VIEW_FALLBACK)->withErrors(['message' => trans('auth.failed')]);
+            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.failed')],400);
         
     }
 

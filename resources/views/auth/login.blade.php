@@ -92,4 +92,12 @@
         }
     });
 </script>
+    @php
+        $old = session()->getOldInput();
+        if($old != null){
+            echo '<pre>';
+            var_dump($old);
+            echo '</pre>';
+        }
+    @endphp
 @endsection
