@@ -62,9 +62,9 @@
                         
                         <div class="d-none">
                             @if(isset($_REQUEST['flights']))
-                                @foreach($_REQUEST['flights'] as $flight)
+                                @foreach($_REQUEST['flights'] as $type => $flight)
                                     @foreach($flight as $attr => $value)
-                                        <input type="hidden" name="flights[{{ $loop->parent->index }}][{{ $attr }}] " value="{{ $value }}">
+                                        <input type="hidden" name="flights[{{ $type }}][{{ $attr }}] " value="{{ $value }}">
                                     @endforeach
                                 @endforeach
                             @endif
