@@ -88,13 +88,12 @@
             </div>
         </form>
     @endisset
-    {{-- @isset($response['inputs'])
-        @php
-            echo '<pre>';
-            var_dump($response['inputs']);
-            echo '</pre>';
-        @endphp
-    @endisset
+    {{-- @php
+        $old = session()->getOldInput();
+        echo '<pre>';
+        var_dump($old);
+        echo '</pre>';
+    @endphp
     @isset($response['flights']
         @php
             echo '<pre>';
