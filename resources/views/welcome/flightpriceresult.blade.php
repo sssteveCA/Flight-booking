@@ -93,13 +93,13 @@
             </div>
         </form>
     @endisset
-    @php
+    {{-- @php
         $data = session()->all();
         echo '<pre>';
         var_dump($data);
         echo '</pre>';
     @endphp
-    {{-- @isset($response['flights']
+     @isset($response['flights']
         @php
             echo '<pre>';
             var_dump($response['flights'];

@@ -38,6 +38,7 @@
             "app/Interfaces/welcome/flightprice_errors.php",
             "app/Traits/error_trait.php",
             "app/Traits/mmcommon_trait.php",
+            "app/Traits/flightsearch_trait.php",
             "app/Classes/welcome/flightprice.php"
         ]
     },
