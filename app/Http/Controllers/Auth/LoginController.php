@@ -7,10 +7,12 @@ use App\Interfaces\Paths as P;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+
 
 class LoginController extends Controller
 {
@@ -35,24 +37,7 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = P::URL_ROOT;
 
-    //Overriding method
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        /*throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);*/
-        if(!User::where('email',$request->email)->first()){
-            //No account found with email entered
-            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.email')],400);
-        }//if(!User::where('email',$request->email)->first()){
-        if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
-            //Incorrect password
-            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.password')],400);
-        }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
-            //Other errors
-            return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.failed')],400);
-        
-    }
+   
 
     /**
      * Create a new controller instance.
@@ -62,6 +47,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        Log::channel('stdout')->debug("LoginController.php authenticated");
+        Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($request->all(),true));
     }
 
     //override
@@ -98,6 +90,41 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
         Log::info("LoginController increment");
         return $this->sendFailedLoginResponse($request);
+    }
+
+     //Overriding method
+     protected function sendFailedLoginResponse(Request $request)
+     {
+         /*throw ValidationException::withMessages([
+             $this->username() => [trans('auth.failed')],
+         ]);*/
+         if(!User::where('email',$request->email)->first()){
+             //No account found with email entered
+             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.email')],400);
+         }//if(!User::where('email',$request->email)->first()){
+         if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
+             //Incorrect password
+             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.password')],400);
+         }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
+             //Other errors
+             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.failed')],400);
+         
+     }
+
+     //Overriding method
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 204)
+                    : redirect()->intended($this->redirectPath());
     }
 
 }
