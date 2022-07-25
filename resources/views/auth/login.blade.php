@@ -78,6 +78,12 @@
             </div>
         </div>
     </div>
+    @php
+        echo '<pre>';
+        var_dump($_REQUEST);
+        echo '</pre>';
+    @endphp
+    
 </div>
 <script>
     //detect showPassword checkbox changes
@@ -92,12 +98,4 @@
         }
     });
 </script>
-    @php
-        $old = session()->getOldInput();
-        if($old != null){
-            echo '<pre>';
-            var_dump($old);
-            echo '</pre>';
-        }
-    @endphp
 @endsection
