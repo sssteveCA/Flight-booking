@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use Illuminate\Support\Facades\Log;
+use App\Traits\FlightTrait;
 
 class FlightController extends Controller
 {
+
+    use FlightTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -166,7 +170,7 @@ class FlightController extends Controller
     }
 
     //Insert new flight records in database
-    private function create_flights(array $flights_data):array
+   /*  private function create_flights(array $flights_data):array
     {
         $models = [];
         $array_return = [
@@ -217,10 +221,10 @@ class FlightController extends Controller
             ];
         }//foreach($flights_data as $n => $flight){
         return $array_return;
-    }
+    } */
 
     //Set the data to send to the view
-    private function setResponseData(array $params): array{
+    /* private function setResponseData(array $params): array{
         $response_data = [];
         $response_data['flights'] = $params['flights'];
         if($params['inserted']){
@@ -242,5 +246,5 @@ class FlightController extends Controller
                 $response_data['message'] = C::ERR_FLIGHTBOOK_SINGLE;
         }//else di if($inserted){
         return $response_data;
-    }
+    } */
 }

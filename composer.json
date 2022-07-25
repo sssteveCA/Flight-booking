@@ -33,13 +33,14 @@
         "files" : [
             "app/Interfaces/airports.php",
             "app/Interfaces/constants.php",
-            "app/Classes/usermanager.php",
-            "app/Classes/apiusermanager.php",
             "app/Interfaces/welcome/flightprice_errors.php",
             "app/Traits/error_trait.php",
             "app/Traits/mmcommon_trait.php",
+            "app/Traits/flight_trait.php",
             "app/Traits/flightsearch_trait.php",
-            "app/Classes/welcome/flightprice.php"
+            "app/Classes/usermanager.php",
+            "app/Classes/apiusermanager.php",
+            "app/Classes/welcome/flightprice.php" 
         ]
     },
     "autoload-dev": {

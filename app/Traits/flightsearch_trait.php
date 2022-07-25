@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 //Trait for FlightSearchController
 trait FlightSearchTrait{
+    
     private function setFlightPriceArray(array $inputs, string $flight_direction): array{
         Log::channel('stdout')->info('setFlightPrice method');
         if($flight_direction == 'roundtrip_return'){
