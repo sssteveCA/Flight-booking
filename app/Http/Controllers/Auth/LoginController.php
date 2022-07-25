@@ -52,8 +52,18 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        $data = $request->all();
         Log::channel('stdout')->debug("LoginController.php authenticated");
-        Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($request->all(),true));
+        Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($data,true));
+        if(isset($data['flights'])){
+            return redirect()->route(P::ROUTE_FLIGHTPRICE_GET)->with([
+                'response' => [
+                    'flight_type' => $data['flight_type'],
+                    'inputs' => '',
+                    'flights' => $data['flights']
+                ]
+            ]);
+        }//if(isset($data['flights'])){
     }
 
     //override
