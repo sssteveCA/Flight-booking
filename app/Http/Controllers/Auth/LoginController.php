@@ -56,13 +56,13 @@ class LoginController extends Controller
         Log::channel('stdout')->debug("LoginController.php authenticated");
         Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($data,true));
         if(isset($data['flights'])){
-            return redirect()->route(P::ROUTE_FLIGHTPRICE_GET)->with([
-                'response' => [
+            $response = [
                     'flight_type' => $data['flight_type'],
                     'inputs' => '',
                     'flights' => $data['flights']
-                ]
-            ]);
+            ];
+            session()->put('response',$response);
+            return redirect()->route(P::ROUTE_FLIGHTPRICE_GET);
         }//if(isset($data['flights'])){
     }
 

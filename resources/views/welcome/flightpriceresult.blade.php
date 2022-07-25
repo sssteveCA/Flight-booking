@@ -3,6 +3,7 @@
 @section('namespaces')
     @php
         use App\Interfaces\Paths as P; 
+        use Illuminate\Support\Facades\Log;
     @endphp
 @endsection
 
@@ -17,6 +18,10 @@
 
 @section('content')
     @isset($response['flight_type'])
+        @php
+            Log::channel('stdout')->debug("Flightpriceresult blade");
+            Log::channel('stdout')->debug("Flightpriceresult blade response => ".var_export($response,true));
+        @endphp
         <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
             @method('POST')
@@ -88,13 +93,13 @@
             </div>
         </form>
     @endisset
-    {{-- @php
-        $old = session()->getOldInput();
+    @php
+        $data = session()->all();
         echo '<pre>';
-        var_dump($old);
+        var_dump($data);
         echo '</pre>';
     @endphp
-    @isset($response['flights']
+    {{-- @isset($response['flights']
         @php
             echo '<pre>';
             var_dump($response['flights'];

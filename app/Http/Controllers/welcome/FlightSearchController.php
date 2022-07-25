@@ -152,14 +152,14 @@ class FlightSearchController extends Controller
 
     //when after login redirect to flight price page
     public function getFlightPrice_get(){
-        $data = session()->get('data');
+        $data = session()->all();
         Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get");
         Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get data => ".var_export($data,true));
         return response()->view(P::VIEW_FLIGHTPRICERESULT,[
             'response' => [
                 'flight_type' => '$flight_type',
                 'inputs' => '$inputs', 
-                'flights' => '$flights'
+                'flights' => []
             ]   
         ],200);
     }
