@@ -12,6 +12,7 @@ use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 
@@ -145,6 +146,20 @@ class FlightSearchController extends Controller
                 'flight_type' => $flight_type,
                 'inputs' => $inputs, 
                 'flights' => $flights
+            ]   
+        ],200);
+    }
+
+    //when after login redirect to flight price page
+    public function getFlightPrice_get(){
+        $data = Session::get('data');
+        Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get");
+        Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get data => ".var_export($data,true));
+        return response()->view(P::VIEW_FLIGHTPRICERESULT,[
+            'response' => [
+                'flight_type' => '$flight_type',
+                'inputs' => '$inputs', 
+                'flights' => '$flights'
             ]   
         ],200);
     }

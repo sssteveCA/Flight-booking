@@ -14,6 +14,7 @@ interface Paths{
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_FLIGHTPRICE = 'flightprice';
+    const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_INFO = 'infocontroller.info';
     const ROUTE_EDITUSERNAME = 'infocontroller.editusername';
     const ROUTE_EDITPASSWORD = 'infocontroller.editpassword';

@@ -57,7 +57,8 @@ Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompa
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
 
-Route::match(['get','post'],P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
+Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
 Route::post(P::URL_SENDEMAIL,[EmailController::class,'sendEmail']);
 
 Route::resource(P::PREFIX_NEWS,PostController::class)->only([
