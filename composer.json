@@ -37,6 +37,7 @@
             "app/Traits/error_trait.php",
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flight_trait.php",
+            "app/Traits/flightprice_trait.php",
             "app/Traits/flightsearch_trait.php",
             "app/Classes/usermanager.php",
             "app/Classes/apiusermanager.php",
