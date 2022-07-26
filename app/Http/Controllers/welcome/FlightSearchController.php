@@ -10,6 +10,7 @@ use App\Interfaces\Airports as A;
 use App\Interfaces\Airports;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use App\Traits\Common\FlightSearchCommonTrait;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +21,7 @@ use App\Traits\FlightSearchTrait;
 class FlightSearchController extends Controller
 {
 
-    use FlightSearchTrait;
+    use FlightSearchTrait, FlightSearchCommonTrait;
  
     //Get airports list from specific country
     public function getCountryAirports(Request $request){
