@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 //Trait for FlightSearchController
 trait FlightSearchTrait{
 
-    private function getAirportsList(string $country): array{
+    protected function getAirportsList(string $country): array{
         $list = [];
         $airports = A::AIRPORTS_LIST;
         $key_exists = array_key_exists($country,$airports);
@@ -18,19 +18,19 @@ trait FlightSearchTrait{
         return $list;
     }
 
-    private function getCountriesList(): array{
+    protected function getCountriesList(): array{
         $list = [];
         $airports = A::AIRPORTS_LIST;
         $list = array_keys($airports);
         return $list;
     }
 
-    private function getFlightCompaniesList(): array{
+    protected function getFlightCompaniesList(): array{
         $list = A::COMPANIES_LIST;
         return $list;
     }
     
-    private function setFlightPriceArray(array $inputs, string $flight_direction): array{
+    protected function setFlightPriceArray(array $inputs, string $flight_direction): array{
         //Log::channel('stdout')->info('setFlightPrice method');
         if($flight_direction == 'roundtrip_return'){
             $dc = $inputs['to'];

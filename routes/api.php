@@ -5,7 +5,8 @@ use App\Http\Controllers\api\Auth\RegisterController;
 use App\Http\Controllers\api\InfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Interfaces\Paths as P;
+use App\Http\Controllers\api\welcome\ApiFlightSearchController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,7 +30,10 @@ Route::name('api.')->group(function(){
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
-        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name('infocontroller.editusername');
-        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name('infocontroller.editpassword');
+        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     });
 });
+
+Route::get('/traits',[ApiFlightSearchController::class,'traits_try']);
+

@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\api\ApiInfoController;
-use App\Http\Controllers\api\Auth\ApiLoginController;
 use App\Http\Controllers\api\Auth\LoginController;
 use App\Http\Controllers\api\Auth\RegisterController;
 use App\Http\Controllers\api\InfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Interfaces\Paths as P;
+use App\Http\Controllers\api\welcome\ApiFlightSearchController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,20 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user('api');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
-Route::group(['name' => 'api.'],function(){
-    Route::post('/login',[ApiLoginController::class, 'login'])->name('login');
+Route::name('api.')->group(function(){
+    Route::post('/login',[LoginController::class, 'login'])->name('login');
     Route::post('/register',[RegisterController::class,'register'])->name('register');
 });
 
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
-        Route::get('/user',[ApiLoginController::class, 'getCurrentUser'])->name('apilogincontroller.user');
-        Route::patch('/editUsername',[ApiInfoController::class,'editUsername'])->name('apiinfocontroller.editusername');
-        Route::patch('/editPassword',[ApiInfoController::class,'editPassword'])->name('apiinfocontroller.editpassword');
+        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     });
 });

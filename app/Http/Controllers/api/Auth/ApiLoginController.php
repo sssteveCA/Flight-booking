@@ -36,7 +36,7 @@ class ApiLoginController extends Controller
             ],401,array(),JSON_UNESCAPED_UNICODE);
         }
 
-        //Credenziali valide
+        //Valid credentials
         $token = Auth::user()->createToken('token')->accessToken;
         return response()->json([
             'status' => '200',
