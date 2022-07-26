@@ -5,6 +5,8 @@ namespace App\Traits\Common;
 use App\Rules\DateDiff1d;
 use App\Rules\NotSameLocation;
 
+
+//Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
 class FlightPriceRequestCommonTrait{
 
     /**

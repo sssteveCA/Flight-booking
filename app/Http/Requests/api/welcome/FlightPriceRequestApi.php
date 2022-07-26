@@ -5,29 +5,23 @@ namespace App\Http\Requests\api\welcome;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Interfaces\Paths as P;
 use App\Http\Requests\welcome\FlightPriceRequest;
+use App\Traits\Common\FlightPriceRequestCommonTrait;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class FlightPriceRequestApi extends FormRequest
 {
+    use FlightPriceRequestCommonTrait;
 
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    protected function failedValidation(Validator $validator)
     {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
+        Log::channel('stdout')->error('FlightPriceRequestApi failed validation');
+        $errors = (new ValidationException($validator))->errors();
+        Log::channel('stdout')->error(var_export($errors,true));
+        throw new HttpResponseException(
+            response()->json($errors,400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+        );
     }
 }
