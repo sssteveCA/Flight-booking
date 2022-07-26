@@ -45,7 +45,7 @@
                     <div id="fb-fs2" class="row">
                         <div class="col-12 col-sm-5 col-lg-5 form-floating">
                             <select class="form-select company-names" id="fb-company_name" name="company_name"></select>
-                            <label for="fb-company-name">Compagnia aerea</label>
+                            <label for="fb-company_name">Compagnia aerea</label>
                         </div>
                     </div>
                     <div id="fb-fs3" class="row">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-4 form-floating">
                             <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to-airport"></select>
-                            <label for="fb-company-name">Aereoporto di destinazione</label>
+                            <label for="fb-to-airports">Aereoporto di destinazione</label>
                         </div>         
                     </div>
                     <div id="fb-fs4" class="row fb-oneway-div">

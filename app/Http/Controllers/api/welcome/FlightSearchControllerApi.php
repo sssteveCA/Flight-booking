@@ -16,7 +16,6 @@ class FlightSearchControllerApi extends Controller
     use FlightSearchTrait;
     
     public function getFlightPrice(FlightPriceRequestApi $request){
-        return 'request ok';
         $flights = [];
         //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
