@@ -34,51 +34,51 @@
                     <div class="company column-elem">
                         <p class="fl-header bg-warning bg-gradient">Compagnia aerea</p>
                         <p class="bg-light bg-gradient">{{$flight['company_name']}}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['company_name']" value="{{ $flight['company_name'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][company_name]" value="{{ $flight['company_name'] }}">
                     </div>
                     <div class="date column-elem">
                         <p class="fl-header bg-warning bg-gradient">Data e orario</p>
                         <p class="bg-light bg-gradient">{{$flight['flight_date'].' '.$flight['flight_time']}}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['booking_date']" value="{{ $flight['booking_date'] }}">
-                        <input type="hidden" name="flights['{{ $type }}']['flight_date']" value="{{ $flight['flight_date'] }}">
-                        <input type="hidden" name="flights['{{ $type }}']['flight_time']" value="{{ $flight['flight_time'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][booking_date]" value="{{ $flight['booking_date'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][flight_date]" value="{{ $flight['flight_date'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][flight_time]" value="{{ $flight['flight_time'] }}">
                     </div>
                     <div class="departure-loc column-elem">
                         <p class="fl-header bg-warning bg-gradient">Luogo di partenza</p>
                         <p class="bg-light bg-gradient">{{$flight['departure_country'].', '.$flight['departure_airport']}}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['departure_country']" value="{{ $flight['departure_country'] }}">
-                        <input type="hidden" name="flights['{{ $type }}']['departure_airport']" value="{{ $flight['departure_airport'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][departure_country]" value="{{ $flight['departure_country'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][departure_airport]" value="{{ $flight['departure_airport'] }}">
                     </div>
                     <div class="arrival-loc column-elem">
                         <p class="fl-header bg-warning bg-gradient">Luogo di arrivo</p>
                         <p class="bg-light bg-gradient">{{$flight['arrival_country'].', '.$flight['arrival_airport']}}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['arrival_country']" value="{{ $flight['arrival_country'] }}">
-                        <input type="hidden" name="flights['{{ $type }}']['arrival_airport']" value="{{ $flight['arrival_airport'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][arrival_country]" value="{{ $flight['arrival_country'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][arrival_airport]" value="{{ $flight['arrival_airport'] }}">
                     </div>
                     <div class="adults-div column-elem">
                         <p class="fl-header bg-warning bg-gradient">Adulti</p>
                         <p class="bg-light bg-gradient">{{ $flight['adults'] }}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['adults']" value="{{ $flight['adults'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][adults]" value="{{ $flight['adults'] }}">
                     </div>
                     <div class="teenagers-div column-elem">
                         <p class="fl-header bg-warning bg-gradient">Adolescenti</p>
                         <p class="bg-light bg-gradient">{{ $flight['teenagers'] }}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['teenagers']" value="{{ $flight['teenagers'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][teenagers]" value="{{ $flight['teenagers'] }}">
                     </div>
                     <div class="children-div column-elem">
                         <p class="fl-header bg-warning bg-gradient">Bambini</p>
                         <p class="bg-light bg-gradient">{{ $flight['children'] }}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['children']" value="{{ $flight['children'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][children]" value="{{ $flight['children'] }}">
                     </div>
                     <div class="newborns-div column-elem">
                         <p class="fl-header bg-warning bg-gradient">Neonati</p>
                         <p class="bg-light bg-gradient">{{ $flight['newborns'] }}</p>
-                        <input type="hidden" name="flights['{{ $type }}']['newborns']" value="{{ $flight['newborns'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][newborns]" value="{{ $flight['newborns'] }}">
                     </div>
                     <div class="price column-elem">
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
-                        <input type="hidden" name="flights[{{ $type }}]['total_price']" value="{{ $flight['total_price'] }}">
+                        <input type="hidden" name="flights[{{ $type }}][total_price]" value="{{ $flight['total_price'] }}">
                     </div>
                 </div> 
             </div>

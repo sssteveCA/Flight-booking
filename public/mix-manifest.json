@@ -5,6 +5,7 @@
     "/js/profile/myFlights.js": "/js/profile/myFlights.js",
     "/js/profile/myFlights/flight.js": "/js/profile/myFlights/flight.js",
     "/js/contacts.js": "/js/contacts.js",
+    "/js/login.js": "/js/login.js",
     "/css/app.css": "/css/app.css",
     "/css/welcome.css": "/css/welcome.css",
     "/css/contacts.css": "/css/contacts.css",
