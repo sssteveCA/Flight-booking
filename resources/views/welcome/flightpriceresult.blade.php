@@ -93,19 +93,6 @@
             </div>
         </form>
     @endisset
-    {{-- @php
-        $data = session()->all();
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-    @endphp
-     @isset($response['flights']
-        @php
-            echo '<pre>';
-            var_dump($response['flights'];
-            echo '</pre>';
-        @endphp
-    @endisset --}}
     @isset($errors)
         @foreach($errors as $k => $input_errors)
             @foreach($input_errors as $k => $msg)

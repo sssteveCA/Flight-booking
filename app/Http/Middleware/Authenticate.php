@@ -19,15 +19,14 @@ class Authenticate extends Middleware
      protected function redirectTo($request)
     {
         Log::channel('stdout')->info("Authenticate redirectTo");
-        Log::channel('stdout')->info($request->method());
-        Log::channel('stdout')->info($request->route()->getName());
         $route_params = [];
         if($request->isMethod('POST')){
             //Method of request is POST
             if($request->routeIs(P::ROUTE_BOOKFLIGHT)){
                 //Route name when flight prices are shown
                 $params = $request->input('flights');
-                $route_params = $this->flights_unquote($params);
+                $route_params = $params;
+                //$route_params = $this->flights_unquote($params);
                 Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
                 $route_params = [
                     'flight_type' => $request->input('flight_type'),

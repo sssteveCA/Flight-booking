@@ -29,38 +29,17 @@ class FlightSearchController extends Controller
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
-    private function getAirportsList(string $country): array{
-        $list = [];
-        $airports = A::AIRPORTS_LIST;
-        $key_exists = array_key_exists($country,$airports);
-        if($key_exists){
-            $list = $airports[$country];
-        }
-        return $list;
-    }
-
     //Get flight companies list
     public function getFlightCompanies(){
         $list = $this->getFlightCompaniesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
-    private function getFlightCompaniesList(): array{
-        $list = A::COMPANIES_LIST;
-        return $list;
-    }
 
     //Get countries list from array
     public function getCountires(){
         $list = $this->getCountriesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-    }
-
-    private function getCountriesList(): array{
-        $list = [];
-        $airports = A::AIRPORTS_LIST;
-        $list = array_keys($airports);
-        return $list;
     }
 
     //Get the flight based on input data
