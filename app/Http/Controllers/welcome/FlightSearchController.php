@@ -115,6 +115,13 @@ class FlightSearchController extends Controller
                     ]
                 ];
             }
+            return response()->view(P::VIEW_FLIGHTPRICERESULT,[
+                'response' => [
+                    'flight_type' => $flight_type,
+                    'inputs' => $inputs, 
+                    'flights' => $flights
+                ]   
+            ],200);
         }catch(\Exception $e){
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".$error);
@@ -124,13 +131,6 @@ class FlightSearchController extends Controller
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
             );
         }
-        return response()->view(P::VIEW_FLIGHTPRICERESULT,[
-            'response' => [
-                'flight_type' => $flight_type,
-                'inputs' => $inputs, 
-                'flights' => $flights
-            ]   
-        ],200);
     }
 
     //when after login redirect to flight price page
