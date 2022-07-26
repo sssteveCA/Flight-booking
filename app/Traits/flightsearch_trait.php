@@ -31,7 +31,7 @@ trait FlightSearchTrait{
     }
     
     private function setFlightPriceArray(array $inputs, string $flight_direction): array{
-        Log::channel('stdout')->info('setFlightPrice method');
+        //Log::channel('stdout')->info('setFlightPrice method');
         if($flight_direction == 'roundtrip_return'){
             $dc = $inputs['to'];
             $ac = $inputs['from'];

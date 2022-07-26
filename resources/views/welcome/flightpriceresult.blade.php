@@ -19,8 +19,8 @@
 @section('content')
     @isset($response['flight_type'])
         @php
-            Log::channel('stdout')->debug("Flightpriceresult blade");
-            Log::channel('stdout')->debug("Flightpriceresult blade response => ".var_export($response,true));
+            {{-- Log::channel('stdout')->debug("Flightpriceresult blade");
+            Log::channel('stdout')->debug("Flightpriceresult blade response => ".var_export($response,true)); --}}
         @endphp
         <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf

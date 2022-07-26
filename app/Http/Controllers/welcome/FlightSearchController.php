@@ -45,21 +45,21 @@ class FlightSearchController extends Controller
     //Get the flight based on input data
     public function getFlightPrice(FlightPriceRequest $request){
         $flights = [];
-        Log::channel('stdout')->info('getFlightPrice method');
+        //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
-        Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
+        //Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
         $flight_type = $inputs['flight-type'];
-        Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
+        //Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
-                Log::channel('stdout')->info("data outbound array => ".var_export($data_outbound,true));
+                //Log::channel('stdout')->info("data outbound array => ".var_export($data_outbound,true));
                 $fl_outbound = new FlightPrice($data_outbound);
-                Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
+                //Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
                 $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
-                Log::channel('stdout')->info("data return array => ".var_export($data_return,true));
+                //Log::channel('stdout')->info("data return array => ".var_export($data_return,true));
                 $fl_return = new FlightPrice($data_return);
-                Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
+                //Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
                 $flights = [
                     'outbound' => [
                         'company_name' => $fl_outbound->company_name,
@@ -116,7 +116,7 @@ class FlightSearchController extends Controller
             }
         }catch(\Exception $e){
             $error = $e->getMessage();
-            Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            //Log::channel('stdout')->error("Flight search controller exception => ".$error);
             $errors_array = [ $error];
             throw new HttpResponseException(
                 response()->view(P::VIEW_FLIGHTPRICERESULT,['errors_array' => $errors_array],400)
@@ -135,8 +135,8 @@ class FlightSearchController extends Controller
     //when after login redirect to flight price page
     public function getFlightPrice_get(){
         $response = session()->get('response');
-        Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get");
-        Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get data => ".var_export($response,true));
+        /* Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get");
+        Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get data => ".var_export($response,true)); */
         return response()->view(P::VIEW_FLIGHTPRICERESULT,[
             'response' => [
                 'flight_type' => $response['flight_type'],

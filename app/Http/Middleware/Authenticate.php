@@ -27,11 +27,11 @@ class Authenticate extends Middleware
                 $params = $request->input('flights');
                 $route_params = $params;
                 //$route_params = $this->flights_unquote($params);
-                Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
+                //Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
                 $route_params = [
                     'flight_type' => $request->input('flight_type'),
                     'flights' => $route_params];
-                //$request->flash();
+                $request->flash();
             }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
         }//if($request->isMethod('post')){
         if (! $request->expectsJson()) {

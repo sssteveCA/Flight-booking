@@ -47,7 +47,7 @@ class FlightPrice implements Fpe{
     
     public function __construct(array $data)
     {
-        Log::channel('stdout')->debug('FlightPrice constructor');
+        //Log::channel('stdout')->debug('FlightPrice constructor');
         if(!$this->validate($data))
             throw new \Exception(Fpe::INVALIDDATA_EXC);
         $this->setValues($data);
@@ -68,7 +68,7 @@ class FlightPrice implements Fpe{
 
     //calculate flight price based on provided data
     private function calcPrice(array $data): bool{
-        Log::channel('stdout')->debug('FlightPrice calcPrice');
+        //Log::channel('stdout')->debug('FlightPrice calcPrice');
         $calculated = false;
         $this->errno = 0;
         $this->getDistance();
@@ -90,7 +90,7 @@ class FlightPrice implements Fpe{
 
     //Assign input data to properties if all values are valid
     private function setValues(array $data){
-        Log::channel('stdout')->debug('FlightPrice setValues');
+        //Log::channel('stdout')->debug('FlightPrice setValues');
         $this->departure_country = $data['departure_country'];
         $this->arrival_country = $data['arrival_country'];
         $this->departure_airport = $data['departure_airport'];

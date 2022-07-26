@@ -15,8 +15,8 @@ class ResumeBookFlightController extends Controller
     //
     public function resumeFlight(Request $request){
         $response_data = $this->setResponseData($request);
-        Log::channel('stdout')->debug("ResumeBookFlightController resumeFlight response_data => ");
-        Log::channel('stdout')->debug(var_export($response_data,true));
+        /* Log::channel('stdout')->debug("ResumeBookFlightController resumeFlight response_data => ");
+        Log::channel('stdout')->debug(var_export($response_data,true)); */
         return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
     }
 
