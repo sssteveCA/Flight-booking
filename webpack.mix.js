@@ -17,6 +17,7 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/profile/myFlights.ts','public/js/profile').vue()
 +mix.ts('resources/js/profile/myFlights/flight.ts','public/js/profile/myFlights').vue()
 +mix.ts('resources/js/contacts.ts','public/js').vue()
++mix.ts('resources/js/login.ts','public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/welcome.scss','public/css')
     .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')

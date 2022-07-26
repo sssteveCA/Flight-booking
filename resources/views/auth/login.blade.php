@@ -6,6 +6,10 @@
     @endphp
 @endsection
 
+@section('scripts')
+    <script src="{{ asset('js/login.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -93,17 +97,4 @@
     @endphp --}}
     
 </div>
-<script>
-    //detect showPassword checkbox changes
-    $('#showPassword').on('change',function(){
-        console.log("ShowPassword change");
-        var checked = $(this).is(":checked");
-        if(checked){
-            $('#password').attr('type','text');
-        }
-        else{
-            $('#password').attr('type','password');
-        }
-    });
-</script>
 @endsection
