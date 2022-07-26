@@ -1,5 +1,11 @@
 @extends('layouts.menu')
 
+@section('namespaces')
+    @php
+        use App\Interfaces\Paths as P;
+    @endphp
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -60,18 +66,7 @@
                             </div>
                         </div>
                         
-                        <div class="d-none">
-                            @if(isset($_REQUEST['flight_type']))
-                                <input type="hidden" name="flight_type" value="{{ $_REQUEST['flight_type'] }}">
-                            @endif
-                            @if(isset($_REQUEST['flights']))
-                                @foreach($_REQUEST['flights'] as $type => $flight)
-                                    @foreach($flight as $attr => $value)
-                                        <input type="hidden" name="flights[{{ $type }}][{{ $attr }}] " value="{{ $value }}">
-                                    @endforeach
-                                @endforeach
-                            @endif
-                        </div>
+                        @include(P::VIEW_FLIGHTLOGIN)
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">

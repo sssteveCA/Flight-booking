@@ -53,8 +53,9 @@ interface Paths{
     const VIEW_ABOUTUS = 'aboutus';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_CONTACTS = 'contacts';
-    const VIEW_FALLBACK = 'error/errors';
+    const VIEW_FALLBACK = 'error.errors';
     const VIEW_FLIGHT = 'profile.myFlights.flight';
+    const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
