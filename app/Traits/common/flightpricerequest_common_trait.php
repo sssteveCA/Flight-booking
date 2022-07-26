@@ -7,7 +7,7 @@ use App\Rules\NotSameLocation;
 
 
 //Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
-class FlightPriceRequestCommonTrait{
+trait FlightPriceRequestCommonTrait{
 
     /**
      * Determine if the user is authorized to make this request.

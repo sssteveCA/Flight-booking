@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
 use App\Http\Controllers\api\welcome\ApiFlightSearchController;
+use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::name('api.')->group(function(){
     Route::post('/login',[LoginController::class, 'login'])->name('login');
     Route::post('/register',[RegisterController::class,'register'])->name('register');
+    Route::post(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
 });
 
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){

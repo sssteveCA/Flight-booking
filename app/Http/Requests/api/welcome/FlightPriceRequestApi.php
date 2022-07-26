@@ -15,6 +15,8 @@ class FlightPriceRequestApi extends FormRequest
 {
     use FlightPriceRequestCommonTrait;
 
+    protected $stopOnFirstFailure = true;
+
     protected function failedValidation(Validator $validator)
     {
         Log::channel('stdout')->error('FlightPriceRequestApi failed validation');

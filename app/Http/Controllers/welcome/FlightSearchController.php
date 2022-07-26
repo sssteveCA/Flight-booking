@@ -21,7 +21,7 @@ use App\Traits\FlightSearchTrait;
 class FlightSearchController extends Controller
 {
 
-    use FlightSearchTrait, FlightSearchCommonTrait;
+    use FlightSearchTrait;
  
     //Get airports list from specific country
     public function getCountryAirports(Request $request){
