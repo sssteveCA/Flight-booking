@@ -67,7 +67,7 @@ class RegisterController extends Controller
                 Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
-                return response()->route(P::VIEW_SUBSCRIBED,[
+                return response()->view(P::VIEW_SUBSCRIBED,[
                     'status' => 'OK',
                     'message' => C::OK_REGISTRATION
                 ]);
@@ -76,7 +76,7 @@ class RegisterController extends Controller
                 response()->view(P::VIEW_REGISTER,['status' => 'ERROR',
                 'message' => C::ERR_REGISTRATION],500)
             ); 
-            
+            Log::channel('stdout')->info("Register Controller register after HttpResponseException");
         }catch(Exception $e){
             if($e instanceof ValidationException){
                 Log::channel('stdout')->info("RegisterController register ValidationException");
@@ -90,6 +90,11 @@ class RegisterController extends Controller
             }
         }
 
+    } 
+
+     protected function registered(Request $request, $user)
+    {
+        return true;
     } 
 
 }
