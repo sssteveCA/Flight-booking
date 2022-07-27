@@ -53,7 +53,7 @@ class RegisterController extends Controller
         $inputs = $request->all();
         Log::channel('stdout')->info("RegisterController register inputs => ".var_export($inputs,true));
         try{
-            $validator = $this->validator($inputs)->validate();
+            $this->validator($inputs)->validate();
             //Add the new subscriber to DB
             Log::channel('stdout')->info("RegisterController register validated");
             event(new Registered($user = $this->create($request->all())));
@@ -65,7 +65,7 @@ class RegisterController extends Controller
                 Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
-                return redirect()->route(P::VIEW_SUBSCRIBED,[
+                return response()->route(P::VIEW_SUBSCRIBED,[
                     'status' => 'OK',
                     'message' => C::OK_REGISTRATION
                 ]);
@@ -81,7 +81,9 @@ class RegisterController extends Controller
                 $errors = $e->errors();
                 Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
-                    response()->view(P::VIEW_REGISTER,['rc_errors' => $errors],400)
+                    response()->view(P::VIEW_REGISTER,[
+                        'status' => 'ERROR',
+                        'rc_errors' => $errors],400)
                 );
             }
         }
