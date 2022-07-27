@@ -32,7 +32,7 @@ Route::name('api.')->group(function(){
     Route::post(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
 });
 
-Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
+Route::group(['prefix' => '/profile','middleware' => 'custom_auth_api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::resource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
