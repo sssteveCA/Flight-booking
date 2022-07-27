@@ -30,8 +30,8 @@ class LoginControllerApi extends Controller
         //Invalid Credentials
         if(!Auth::attempt($login)){
             return response()->json([
-                'status' => '401',
-                'error' => C::ERR_INVALIDCREDENTIALS,
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_INVALIDCREDENTIALS,
                 'logged' => false
             ],401,array(),JSON_UNESCAPED_UNICODE);
         }
@@ -39,7 +39,7 @@ class LoginControllerApi extends Controller
         //Valid credentials
         $token = Auth::user()->createToken('token')->accessToken;
         return response()->json([
-            'status' => '200',
+            C::KEY_STATUS => 'OK',
             'logged' => true,
             'token' => $token,
             'user' => Auth::user()

@@ -24,6 +24,7 @@ interface Constants{
     const ERR_PASSWORDINCORRECTLOGIN = "La password inserita è errata";
     const ERR_REGISTRATION = 'Errore durante la registrazione. '.Constants::ADMIN_CONTACT;
     const ERR_URLNOTFOUND_NOTALLOWED = "La pagina che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per visualizzarla";
+    const ERR_URLNOTFOUND_NOTALLOWED_API = "La risorsa che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per visualizzarla";
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //common array keys

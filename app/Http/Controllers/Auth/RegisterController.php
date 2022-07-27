@@ -70,13 +70,15 @@ class RegisterController extends Controller
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
                 return response()->view(P::VIEW_SUBSCRIBED,[
-                    'status' => 'OK',
-                    'message' => C::OK_REGISTRATION
+                    C::KEY_STATUS => 'OK',
+                    C::KEY_MESSAGE => C::OK_REGISTRATION
                 ]);
             }
              throw new HttpResponseException(
-                response()->view(P::VIEW_REGISTER,['status' => 'ERROR',
-                'message' => C::ERR_REGISTRATION],500)
+                response()->view(P::VIEW_REGISTER,[
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => C::ERR_REGISTRATION
+                ],500)
             ); 
             Log::channel('stdout')->info("Register Controller register after HttpResponseException");
         }catch(Exception $e){
@@ -86,7 +88,7 @@ class RegisterController extends Controller
                 Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->view(P::VIEW_REGISTER,[
-                        'status' => 'ERROR',
+                        C::KEY_STATUS => 'ERROR',
                         'rc_errors' => $errors],400)
                 );
             }

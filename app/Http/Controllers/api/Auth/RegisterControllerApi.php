@@ -45,14 +45,14 @@ class RegisterControllerApi extends Controller
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
                 return response()->json([
-                    'status' => 'OK',
-                    'message' => C::OK_REGISTRATION
+                    C::KEY_STATUS => 'OK',
+                    C::KEY_MESSAGE => C::OK_REGISTRATION
                 ],201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }
             throw new HttpResponseException(
                 response()->json([
-                    'status' => 'ERROR',
-                    'message' => C::ERR_REGISTRATION
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => C::ERR_REGISTRATION
                 ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
             );
             
@@ -63,8 +63,8 @@ class RegisterControllerApi extends Controller
                 Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->json([
-                        'status' => 'ERROR',
-                        'message' => $errors
+                        C::KEY_STATUS => 'ERROR',
+                        C::KEY_MESSAGE => $errors
                     ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 );
             }

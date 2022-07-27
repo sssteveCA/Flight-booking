@@ -27,6 +27,7 @@ class FlightControllerApi extends Controller
         if($flights_number > 0){
             //User has booked at least one flight
             return response()->json([
+                C::KEY_STATUS => 'OK',
                 'flights' => $flights,
                 'flights_number' => $flights_number
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -35,7 +36,8 @@ class FlightControllerApi extends Controller
             //User has not booked any flight already
             $message = C::MESS_BOOKED_FLIGHT_LIST_EMPTY;
             return response()->json([
-                'message' => $message,
+                C::KEY_STATUS => 'EMPTY',
+                C::KEY_MESSAGE => $message,
                 'flights_number' => $flights_number
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);           
         }    
@@ -75,7 +77,7 @@ class FlightControllerApi extends Controller
         else $code = 404; //Forbidden
         return response()->json([
                 C::KEY_STATUS => 'ERROR',
-                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
