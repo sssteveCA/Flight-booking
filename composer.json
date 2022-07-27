@@ -41,6 +41,7 @@
             "app/Traits/flightsearch_trait.php",
             "app/Traits/common/flightpricerequest_common_trait.php",
             "app/Traits/common/flightsearch_common_trait.php",
+            "app/Traits/common/registercontroller_common_trait.php",
             "app/Classes/usermanager.php",
             "app/Classes/apiusermanager.php",
             "app/Classes/welcome/flightprice.php" 

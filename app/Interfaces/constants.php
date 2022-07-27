@@ -37,6 +37,7 @@ interface Constants{
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
     const OK_USERNAMEUPDATED = "Lo username è stato modificato";
+    const OK_VERIFICATION_LINK_SENT = "Link di verifica email inviato";
 
     //titles
     const TITLE_EDITUSERNAME = "Modifica username";

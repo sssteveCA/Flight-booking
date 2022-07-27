@@ -21,6 +21,9 @@ interface Paths{
     const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
     const ROUTE_PAYPAL_RETURN = 'paypal.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
+    const ROUTE_VERIFICATIONNOTICE = 'verification.notice';
+    const ROUTE_VERIFICATIONSEND = 'verification.send';
+    const ROUTE_VERIFICATIONVERIFY = 'verification.verify';
 
     //URLs
     const URL_ABOUTUS = '/chi-siamo';
@@ -32,6 +35,7 @@ interface Paths{
     const URL_CONTACTS = '/contacts';
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';
+    const URL_EMAILVERIFY = '/email/verify';
     const URL_FLIGHTEVENTS = '/flightevents';
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTRESUME = Paths::URL_BOOKFLIGHT.'/flightresume';
@@ -47,8 +51,8 @@ interface Paths{
     const URL_ROOT = '/';
     const URL_SEARCH = '/search';
     const URL_SENDEMAIL = Paths::URL_CONTACTS.'/sendemail';
+    const URL_VERIFICATION_NOTIFICATION = '/email/verification-notification';
     
-
     //Views
     const VIEW_ABOUTUS = 'aboutus';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
@@ -64,8 +68,9 @@ interface Paths{
     const VIEW_PAYPAL_RETURN = 'paypal.return';
     const VIEW_POST = 'news.post';
     const VIEW_PROFILE_EDIT = 'profile.edit';
-    const VIEW_REGISTER = 'auth.registration';
+    const VIEW_REGISTER = 'auth.register';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
+    const VIEW_VERIFYEMAIL = 'auth.verify-email';
     const VIEW_WELCOME = 'welcome';
     
 }

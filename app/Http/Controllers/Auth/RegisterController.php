@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Traits\Common\RegisterControllerCommonTrait;
+use Illuminate\Http\JsonResponse;
 
 class RegisterController extends Controller
 {
@@ -47,7 +48,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+     public function register(Request $request)
     {
         Log::channel('stdout')->info("RegisterController register");
         $inputs = $request->all();
@@ -61,6 +62,7 @@ class RegisterController extends Controller
             //Registered user login with his account
             //$this->guard()->login($user);
             Log::channel('stdout')->info("RegisterController register login guard");
+            Log::channel('stdout')->info(var_export($this->registered($request,$user),true));
             if($this->registered($request,$user)){
                 Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed
@@ -70,10 +72,10 @@ class RegisterController extends Controller
                     'message' => C::OK_REGISTRATION
                 ]);
             }
-            throw new HttpResponseException(
+             throw new HttpResponseException(
                 response()->view(P::VIEW_REGISTER,['status' => 'ERROR',
                 'message' => C::ERR_REGISTRATION],500)
-            );
+            ); 
             
         }catch(Exception $e){
             if($e instanceof ValidationException){
@@ -88,6 +90,6 @@ class RegisterController extends Controller
             }
         }
 
-    }
+    } 
 
 }

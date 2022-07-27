@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 /*
@@ -42,6 +43,24 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
     Route::post(P::URL_FLIGHTRESUME,[ResumeBookFlightController::class,'resumeFlight'])->name(P::ROUTE_RESUMEFLIGHT);
     Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
     Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get(P::URL_EMAILVERIFY,function(){
+        return view(P::VIEW_VERIFYEMAIL);
+    })->name(P::ROUTE_VERIFICATIONNOTICE);
+    Route::middleware('signed')->group(function(){
+        Route::get(P::URL_EMAILVERIFY.'/{id}/{hash}', function(EmailVerificationRequest $request){
+            $request->fulfill();
+            return redirect(P::URL_ROOT);
+        })->name(P::ROUTE_VERIFICATIONVERIFY);
+    });
+    Route::middleware(['throttle:6,1'])->group(function(){
+        Route::post(P::URL_VERIFICATION_NOTIFICATION,function(Request $request){
+            $request->user()->sendEmailVerificationNotification();
+            return back()->with('message', C::OK_VERIFICATION_LINK_SENT);
+        })->name(P::ROUTE_VERIFICATIONSEND);   
+    });
 });
 
 Route::post(P::URL_BOOKFLIGHT,[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT)->middleware(['auth','verified']);
