@@ -9,7 +9,7 @@ use App\Interfaces\Paths as P;
 use App\Http\Controllers\api\welcome\ApiFlightSearchController;
 use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
 use App\Http\Controllers\api\Auth\LoginControllerApi;
-
+use App\Http\Controllers\api\FlightControllerApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +35,7 @@ Route::name('api.')->group(function(){
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
+        Route::resource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
         Route::patch('/editUsername',[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch('/editPassword',[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     });
