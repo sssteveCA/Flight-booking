@@ -4,13 +4,13 @@ namespace App\Http\Controllers\api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Laravel\Passport\Exceptions\OAuthServerException;
+use App\Interfaces\Constants as C;
 
-class ApiLoginController extends Controller
+class LoginControllerApi extends Controller
 {
 
     //return current logged user
@@ -31,7 +31,7 @@ class ApiLoginController extends Controller
         if(!Auth::attempt($login)){
             return response()->json([
                 'status' => '401',
-                'error' => Constants::ERR_INVALIDCREDENTIALS,
+                'error' => C::ERR_INVALIDCREDENTIALS,
                 'logged' => false
             ],401,array(),JSON_UNESCAPED_UNICODE);
         }
@@ -43,6 +43,6 @@ class ApiLoginController extends Controller
             'logged' => true,
             'token' => $token,
             'user' => Auth::user()
-        ],200,array(),JSON_UNESCAPED_UNICODE);
+        ],200,array(),JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
     }
 }
