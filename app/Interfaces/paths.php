@@ -70,7 +70,7 @@ interface Paths{
     const VIEW_PROFILE_EDIT = 'profile.edit';
     const VIEW_REGISTER = 'auth.register';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
-    const VIEW_VERIFYEMAIL = 'auth.verify-email';
+    const VIEW_VERIFYEMAIL = 'auth.verify';
     const VIEW_WELCOME = 'welcome';
     
 }

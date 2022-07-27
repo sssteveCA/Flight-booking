@@ -16,7 +16,9 @@ use Illuminate\Validation\ValidationException;
 class RegisterControllerApi extends Controller
 {
     //
-    use RegistersUsers,RegisterControllerCommonTrait;
+    use RegisterControllerCommonTrait,RegistersUsers{
+        RegisterControllerCommonTrait::registered insteadOf RegistersUsers;
+    }
 
     /**
      * Handle a registration request for the application.

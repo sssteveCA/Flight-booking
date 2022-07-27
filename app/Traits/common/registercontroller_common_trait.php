@@ -3,6 +3,7 @@
 namespace App\Traits\Common;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,7 +19,7 @@ trait RegisterControllerCommonTrait{
         'name' => 'nome utente',
         'email' => 'indirizzo email',
         'password' => 'password',
-        'password_confirm' => 'conferma password'
+        'password_confirmation' => 'conferma password'
     ];
 
     /**
@@ -59,6 +60,11 @@ trait RegisterControllerCommonTrait{
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function registered(Request $request, $user)
+    {
+        return true;
+    } 
 
     /**
      * Get a validator for an incoming registration request.

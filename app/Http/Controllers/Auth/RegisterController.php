@@ -33,7 +33,9 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers,RegisterControllerCommonTrait;
+    use RegisterControllerCommonTrait,RegistersUsers{
+        RegisterControllerCommonTrait::registered insteadOf RegistersUsers;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -90,11 +92,6 @@ class RegisterController extends Controller
             }
         }
 
-    } 
-
-     protected function registered(Request $request, $user)
-    {
-        return true;
     } 
 
 }
