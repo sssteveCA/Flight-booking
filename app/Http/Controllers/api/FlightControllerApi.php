@@ -60,7 +60,23 @@ class FlightControllerApi extends Controller
      */
     public function show($id)
     {
-        //
+        $flight = Flight::find($id);
+        if($flight != null){
+            //Requested flight found
+            $user_id = auth()->id();
+            if($user_id == $flight->user_id){
+                return response()->json([
+                    C::KEY_STATUS => 'OK',
+                    'flight' => $flight
+                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }//if($user_id == $flight->user_id){
+            else $code = 401; //Unauthorized
+        }//if($flight != null){
+        else $code = 404; //Forbidden
+        return response()->json([
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+            ],$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     /**

@@ -27,7 +27,9 @@ interface Constants{
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //common array keys
+    const KEY_MESSAGE = 'message';
     const KEY_MESSAGES = 'messages';
+    const KEY_STATUS = 'status';
 
     //success
     const OK_EMAILSEND = "La tua richiesta è stata inviata. Verrai ricontattato il prima possibile";

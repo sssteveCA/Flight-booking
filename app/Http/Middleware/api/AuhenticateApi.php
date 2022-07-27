@@ -22,7 +22,7 @@ class AuhenticateApi
             //Invalid token
             return response()->json([
                 'status' => 'ERROR',
-                C::KEY_MESSAGES => C::ERR_NOTAUTHENTICATED
+                C::KEY_MESSAGE => C::ERR_NOTAUTHENTICATED
             ]);
         }
         return $next($request);
