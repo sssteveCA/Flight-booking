@@ -2,13 +2,20 @@
 
 namespace App\Http\Requests;
 
+use App\Interfaces\Paths as P;
+use App\Traits\Common\EditPasswordRequestCommonTrait;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class EditPasswordRequest extends FormRequest
 {
+    use EditPasswordRequestCommonTrait;
+
+    protected $stopOnFirstFailure = true;
 
     public $validator = null;
     /**
@@ -23,41 +30,14 @@ class EditPasswordRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        $this->validator = $validator;
-    }
-
-    public function attributes()
-    {
-        return [
-            'oldpwd' => 'vecchia password',
-            'newpwd' => 'nuova password',
-            'confnewpwd' => 'conferma nuova password'
-        ];
-    }
-
-    public function messages()
-    {
-        //Validation error messages
-        return [
-            'required' => 'Il campo :attribute è obbligatorio',
-            'min' => 'Il campo :attribute deve avere almeno :min caratteri',
-            'confnewpwd.same' => ':attribute deve essere uguale al campo nuova password',
-            'oldpwd.password' => 'Password attuale errata',                 
-        ];
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            'oldpwd' => ['required','password'],
-            'newpwd' => ['required','min:8'],
-            'confnewpwd' => ['required','min:8','same:newpwd']
-        ];
+        Log::channel('stdout')->error('EditPasswordRequest ValidationException');
+        $ve = new ValidationException($validator);
+        $messages = $ve->errors();
+        throw new HttpResponseException(
+            response()->view(P::VIEW_FALLBACK,
+                ['messages' => $messages]
+            ,400)
+        );
     }
 
 
