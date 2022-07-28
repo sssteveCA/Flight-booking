@@ -6,6 +6,7 @@ use App\Rules\DateDiff1d;
 use App\Rules\NotSameLocation;
 use App\Interfaces\Airports as A;
 use App\Rules\IsInArray;
+use App\Rules\ValidCountry;
 use App\Traits\FlightSearchTrait;
 
 //Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
@@ -33,9 +34,9 @@ trait FlightPriceRequestCommonTrait{
         return [
             'flight-type' => 'required',
             'company_name' => ['required',new IsInArray($this->getFlightCompaniesList())],
-            'from' => ['required', new NotSameLocation],
+            'from' => ['required', new NotSameLocation,new IsInArray($this->getCountriesList())],
             'from-airport' => 'required',
-            'to' => 'required',
+            'to' => ['required',new IsInArray($this->getCountriesList())],
             'to-airport' => 'required',
             'oneway-date' => ['required_without_all:roundtrip-start-date,roundtrip-end-date', new DateDiff1d('oneway-date')],
             'roundtrip-start-date' => ['required_with:roundtrip-end-date', new DateDiff1d('roundtrip-start-date')],
