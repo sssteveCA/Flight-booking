@@ -34,7 +34,7 @@ class InfoController extends Controller
         $userAuth = $this->usermanager->getUser($this->auth_id);
         //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
         if($userAuth != null){
-            return response()->view('profile/info',['user' => $userAuth],200);
+            return response()->view(P::VIEW_PROFILE_INFO,['user' => $userAuth],200);
         }
         else
             return response()->view(P::VIEW_FALLBACK,[
@@ -46,22 +46,17 @@ class InfoController extends Controller
     //edit username
     public function editUsername(EditUsernameRequest $request){
         Log::channel('stdout')->info("editUsername");
-        if(isset($request->validator) && $request->validator->fails()){
-            //If username form fails validation
-            $messages = $request->validator->messages();
-            return view(P::VIEW_FALLBACK)->with(['messages' => $messages]);
-        }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
         Log::debug("InfoController editpassword message ".var_export($edit,true));
         if($edit['edited']){
             //Username was updated
             Log::info("edit => ".var_export($edit,true));
-            return response()->view('profile/edit',$edit,200);
+            return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
         }
         else{
             //Username was not updated
             return view(P::VIEW_FALLBACK)->with([
-                'messages' => [$edit['msg']]
+                C::KEY_MESSAGES => [$edit['msg']]
             ]);
         }
     }
@@ -77,7 +72,7 @@ class InfoController extends Controller
         else{
             //Password was not updated
             //return response()->view('error/errors',['errors' => $edit],404);
-            return view(P::VIEW_FALLBACK)->with(['messages' => [$edit['msg']]]);
+            return view(P::VIEW_FALLBACK)->with([C::KEY_MESSAGES => [$edit['msg']]]);
         }
     }
 }

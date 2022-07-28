@@ -31,11 +31,11 @@ class UserManager{
             $save = $userA->save();
             Log::channel('stdout')->info("editUsername save => ".$save);
             $message['edited'] = true;
-            $message['msg'] = C::OK_USERNAMEUPDATED;
+            $message[C::KEY_MESSAGE] = C::OK_USERNAMEUPDATED;
             //If an authenticad user was found
         }//if($userA != null){
         else
-            $message['msg'] = C::ERR_NOTABLEGETUSERINFO;
+            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
         return $message;
     }
 
@@ -54,17 +54,17 @@ class UserManager{
                 $userA->password = Hash::make($newPassword);
                 $userA->save();
                 $message['edited'] = true;
-                $message['msg'] = C::OK_PASSWORDUPDATED;
+                $message[C::KEY_MESSAGE] = C::OK_PASSWORDUPDATED;
                 //Actual password is correct
             }//if(Hash::check($password,$userA->password)){
             else{
                 Log::debug("hash password error");
-                $message['msg'] = C::ERR_PASSWORDINCORRECT;
+                $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
             }     
         }//if($userA != null){
         else{
             Log::debug("userA = null");
-            $message['msg'] = C::ERR_NOTABLEGETUSERINFO;
+            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
     }
