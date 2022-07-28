@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Constants as C;
 
 class UserManager{
 
@@ -21,7 +22,7 @@ class UserManager{
     public function editUsername(EditUsernameRequest $request,$auth_id){
         $message = array();
         $message['edited'] = false;
-        $message['title'] = Constants::TITLE_EDITUSERNAME;
+        $message['title'] = C::TITLE_EDITUSERNAME;
         $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
@@ -30,11 +31,11 @@ class UserManager{
             $save = $userA->save();
             Log::channel('stdout')->info("editUsername save => ".$save);
             $message['edited'] = true;
-            $message['msg'] = Constants::OK_USERNAMEUPDATED;
+            $message['msg'] = C::OK_USERNAMEUPDATED;
             //If an authenticad user was found
         }//if($userA != null){
         else
-            $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+            $message['msg'] = C::ERR_NOTABLEGETUSERINFO;
         return $message;
     }
 
@@ -42,7 +43,7 @@ class UserManager{
         Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
         $message = array();
         $message['edited'] = false;
-        $message['title'] = Constants::TITLE_EDITPASSWORD;
+        $message['title'] = C::TITLE_EDITPASSWORD;
         $userA = $this->getUser($auth_id);
         if($userA != null){
             Log::debug("userA != null");
@@ -53,17 +54,17 @@ class UserManager{
                 $userA->password = Hash::make($newPassword);
                 $userA->save();
                 $message['edited'] = true;
-                $message['msg'] = Constants::OK_PASSWORDUPDATED;
+                $message['msg'] = C::OK_PASSWORDUPDATED;
                 //Actual password is correct
             }//if(Hash::check($password,$userA->password)){
             else{
                 Log::debug("hash password error");
-                $message['msg'] = Constants::ERR_PASSWORDINCORRECT;
+                $message['msg'] = C::ERR_PASSWORDINCORRECT;
             }     
         }//if($userA != null){
         else{
             Log::debug("userA = null");
-            $message['msg'] = Constants::ERR_NOTABLEGETUSERINFO;
+            $message['msg'] = C::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
     }

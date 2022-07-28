@@ -69,13 +69,6 @@ class InfoController extends Controller
     //edit password
     public function editPassword(EditPasswordRequest $request){
         Log::channel('stdout')->info("editPassword request "); 
-        if(isset($request->validator) && $request->validator->fails()){
-            //If change password form fails validation
-            $messages = $request->validator->messages();
-            return response()->view(P::VIEW_FALLBACK,
-                ['messages' => $messages]
-            ,400);
-        }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editPassword($request,$this->auth_id);
         if($edit['edited']){
             //Password was edited
@@ -84,7 +77,7 @@ class InfoController extends Controller
         else{
             //Password was not updated
             //return response()->view('error/errors',['errors' => $edit],404);
-            return view('error/errors')->with(['messages' => [$edit['msg']]]);
+            return view(P::VIEW_FALLBACK)->with(['messages' => [$edit['msg']]]);
         }
     }
 }
