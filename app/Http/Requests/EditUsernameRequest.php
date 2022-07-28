@@ -2,14 +2,22 @@
 
 namespace App\Http\Requests;
 
+use App\Interfaces\Paths as P;
+use App\Traits\Common\EditUsernameRequestCommonTrait;
 use Constants;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
+
+
 
 class EditUsernameRequest extends FormRequest
 {
+
+    use EditUsernameRequestCommonTrait;
 
     public $validator = null;
     /**
@@ -23,30 +31,16 @@ class EditUsernameRequest extends FormRequest
         return Auth::check();
     }
 
-    public function messages()
-    {
-        //Validation error messages
-        return[
-            'username.required' => Constants::VERR_USERNAME1_REQUIRED,
-            'username.min' => Constants::VERR_USERNAME1_MIN,
-            'username.max' => Constants::VERR_USERNAME1_MAX
-        ];
-    }
-
     protected function failedValidation(Validator $validator)
     {
-        $this->validator = $validator;
+        Log::channel('stdout')->error('EditUsernameRequest ValidationException');
+        $ve = new ValidationException($validator);
+        $messages = $ve->errors();
+        throw new HttpResponseException(
+            response()->view(P::VIEW_FALLBACK,
+                ['messages' => $messages]
+            ,400)
+        );
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            'username' => ['required', 'min:5', 'max:25']
-        ];
-    }
 }
