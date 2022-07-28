@@ -1,5 +1,7 @@
 @extends('layouts.menu')
 
+@section('title','Errore')
+
 @section('content')
 @isset($messages)
 <h3 class="text-center">Errore</h3>

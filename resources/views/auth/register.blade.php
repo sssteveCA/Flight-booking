@@ -1,5 +1,7 @@
 @extends('layouts.menu')
 
+@section('title','Registrazione')
+
 @section('scripts')
 <script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection

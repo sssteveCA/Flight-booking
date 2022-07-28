@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.menu')
+
+@section('title','Verifica account')
 
 @section('content')
 <div class="container">

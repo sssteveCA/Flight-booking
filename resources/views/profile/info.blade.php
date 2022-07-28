@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.menu')
+
+@section('title','Modifica profilo')
+
+@section('scripts')
+<script src="{{ asset('js/profile/info.js') }}"></script>
+@endsection
 
 @section('content')
 <fieldset class="d-flex flex-column justify-content-center align-items-center mb-5 border-bottom border-secondary">
@@ -46,21 +52,4 @@
         </div>
     </form>
 </fieldset>
-<script>
-    //detect showPassword checkbox changes
-    $('#showPassword').on('change',function(){
-        //console.log("ShowPassword change");
-        var checked = $(this).is(":checked");
-        if(checked){
-            $('#oldpwd').attr('type','text');
-            $('#newpwd').attr('type','text');
-            $('#confnewpwd').attr('type','text');
-        }
-        else{
-            $('#oldpwd').attr('type','password');
-            $('#newpwd').attr('type','password');
-            $('#confnewpwd').attr('type','password');
-        }
-    });
-</script>
 @endsection

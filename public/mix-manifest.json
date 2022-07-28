@@ -7,6 +7,7 @@
     "/js/contacts.js": "/js/contacts.js",
     "/js/login.js": "/js/login.js",
     "/js/layouts/menu.js": "/js/layouts/menu.js",
+    "/js/profile/info.js": "/js/profile/info.js",
     "/css/app.css": "/css/app.css",
     "/css/welcome.css": "/css/welcome.css",
     "/css/contacts.css": "/css/contacts.css",

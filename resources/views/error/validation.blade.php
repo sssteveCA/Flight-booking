@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.menu')
+
+@section('title','Validazione')
 
 @section('content')
 {{ logger(var_export($errors->all(),true))}}
