@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use App\Traits\FlightTrait;
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Paths as P;
 
 class FlightControllerApi extends Controller
 {
+
+    use FlightTrait;
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +55,17 @@ class FlightControllerApi extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->all();
+        Log::channel('stdout')->debug("FlightControllerApi store request all => ");
+        Log::channel('stdout')->debug(var_export($inputs,true));
+        $flights = $request->flights;
+        //$flights_unquoted = $this->flights_unquote($flights);
+        Log::channel('stdout')->info("FlightControllerApi store flights => ");
+        Log::channel('stdout')->info(var_export($flights,true));
+        $flights_info = $this->create_flights($flights);
+        $response_data = $this->setResponseData($flights_info);
+        Log::channel('stdout')->info("FlightControllerApi store response_data => ".var_export($response_data,true));
+        return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
     }
 
     /**
@@ -102,8 +116,9 @@ class FlightControllerApi extends Controller
     public function destroy($id)
     {
         $response_data = [
+            C::KEY_STATUS => 'ERROR',
             'deleted' => false,
-            'message' => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
         ];
         $flight = Flight::find($id);
         if($flight != null){
@@ -112,7 +127,9 @@ class FlightControllerApi extends Controller
             if($flight->user_id == $user_id){
                 //The resource is owned by the logged user
                 $response_data['deleted'] = $flight->forceDelete();
-                Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
+                /* Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true)); */
+                if($response_data['deleted'])
+                    $response_data[C::KEY_STATUS] = 'OK';
                 $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTDELETE;
                 $code = 200; //OK
             }//if($flight->user_id == $user_id){

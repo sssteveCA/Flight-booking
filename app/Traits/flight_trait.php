@@ -72,19 +72,21 @@ trait FlightTrait{
             $response_data['done'] = true;
             $response_data['code'] = 201; //Created
             //Creation operations done successfully
+            $response_data[C::KEY_STATUS] = 'OK';
             if($params['flights_number'] > 1)
-                $response_data['message'] = C::OK_FLIGHTBOOK_MULTIPLE;
+                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTBOOK_MULTIPLE;
             else
-                $response_data['message'] = C::OK_FLIGHTBOOK_SINGLE;       
+                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTBOOK_SINGLE;       
         }//if($inserted){
         else{
             //Error while inserting record in DB
             $response_data['code'] = 500; //Internal server error
             $response_data['done'] = false;
+            $response_data[C::KEY_STATUS] = 'ERROR';
             if($response_data['flights_number'] > 1)
-                $response_data['message'] = C::ERR_FLIGHTBOOK_MULTIPLE;
+                $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_MULTIPLE;
             else
-                $response_data['message'] = C::ERR_FLIGHTBOOK_SINGLE;
+                $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_SINGLE;
         }//else di if($inserted){
         return $response_data;
     }
