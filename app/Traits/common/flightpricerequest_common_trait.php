@@ -5,6 +5,7 @@ namespace App\Traits\Common;
 use App\Rules\DateDiff1d;
 use App\Rules\NotSameLocation;
 use App\Interfaces\Airports as A;
+use App\Rules\CheckAirports;
 use App\Rules\IsInArray;
 use App\Rules\ValidCountry;
 use App\Traits\FlightSearchTrait;
@@ -35,9 +36,9 @@ trait FlightPriceRequestCommonTrait{
             'flight-type' => 'required',
             'company_name' => ['required',new IsInArray($this->getFlightCompaniesList())],
             'from' => ['required', new NotSameLocation,new IsInArray($this->getCountriesList())],
-            'from-airport' => 'required',
+            'from-airport' => ['required',new CheckAirports('from')],
             'to' => ['required',new IsInArray($this->getCountriesList())],
-            'to-airport' => 'required',
+            'to-airport' => ['required',new CheckAirports('to')],
             'oneway-date' => ['required_without_all:roundtrip-start-date,roundtrip-end-date', new DateDiff1d('oneway-date')],
             'roundtrip-start-date' => ['required_with:roundtrip-end-date', new DateDiff1d('roundtrip-start-date')],
             'roundtrip-end-date' => ['required_with:roundtrip-start-date', new DateDiff1d('roundtrip-end-date')],
