@@ -26,17 +26,23 @@ class EditPasswordRequest extends FormRequest
         $this->validator = $validator;
     }
 
+    public function attributes()
+    {
+        return [
+            'oldpwd' => 'vecchia password',
+            'newpwd' => 'nuova password',
+            'confnewpwd' => 'conferma nuova password'
+        ];
+    }
+
     public function messages()
     {
         //Validation error messages
         return [
-            'oldpwd.required' => 'Il campo è obbligatorio',
-            'oldpwd.password' => 'Password errata',
-            'newpwd.required' => 'Il campo è obbligatorio',
-            'newpwd.min' => 'Deve contenere almeno 8 caratteri',
-            'confnewpwd.required' => 'Il campo è obbligatorio',
-            'confnewpwd.min' => 'Deve contenere almeno 8 caratteri',
-            'confnewpwd.same' => 'Deve essere uguale al campo nuova password',
+            'required' => 'Il campo :attribute è obbligatorio',
+            'min' => 'Il campo :attribute deve avere almeno :min caratteri',
+            'confnewpwd.same' => ':attribute deve essere uguale al campo nuova password',
+            'oldpwd.password' => 'Password attuale errata',                 
         ];
     }
 
@@ -53,4 +59,6 @@ class EditPasswordRequest extends FormRequest
             'confnewpwd' => ['required','min:8','same:newpwd']
         ];
     }
+
+
 }
