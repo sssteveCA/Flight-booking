@@ -101,6 +101,24 @@ class FlightControllerApi extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response_data = [
+            'deleted' => false,
+            'message' => C::ERR_URLNOTFOUND_NOTALLOWED_API
+        ];
+        $flight = Flight::find($id);
+        if($flight != null){
+            //Requested resource exists
+            $user_id = auth()->id();
+            if($flight->user_id == $user_id){
+                //The resource is owned by the logged user
+                $response_data['deleted'] = $flight->forceDelete();
+                Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
+                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTDELETE;
+                $code = 200; //OK
+            }//if($flight->user_id == $user_id){
+            else $code = 401; //Unauthorized
+        }//if($flight != null){
+        else $code = 404; //Not found
+        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }
