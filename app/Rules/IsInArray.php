@@ -9,6 +9,7 @@ class IsInArray implements Rule
 {
 
     private array $list;
+
     /**
      * Create a new rule instance.
      *

@@ -6,10 +6,12 @@ use App\Rules\DateDiff1d;
 use App\Rules\NotSameLocation;
 use App\Interfaces\Airports as A;
 use App\Rules\IsInArray;
-
+use App\Traits\FlightSearchTrait;
 
 //Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
 trait FlightPriceRequestCommonTrait{
+
+    use FlightSearchTrait;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +32,7 @@ trait FlightPriceRequestCommonTrait{
     {
         return [
             'flight-type' => 'required',
-            'company_name' => ['required',new IsInArray(A::COMPANIES_LIST)],
+            'company_name' => ['required',new IsInArray($this->getFlightCompaniesList())],
             'from' => ['required', new NotSameLocation],
             'from-airport' => 'required',
             'to' => 'required',
