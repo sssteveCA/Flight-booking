@@ -4,6 +4,8 @@ namespace App\Traits\Common;
 
 use App\Rules\DateDiff1d;
 use App\Rules\NotSameLocation;
+use App\Interfaces\Airports as A;
+use App\Rules\IsInArray;
 
 
 //Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
@@ -28,7 +30,7 @@ trait FlightPriceRequestCommonTrait{
     {
         return [
             'flight-type' => 'required',
-            'company_name' => 'required',
+            'company_name' => ['required',new IsInArray(A::COMPANIES_LIST)],
             'from' => ['required', new NotSameLocation],
             'from-airport' => 'required',
             'to' => 'required',
