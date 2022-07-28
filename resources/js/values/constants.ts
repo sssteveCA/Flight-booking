@@ -11,6 +11,7 @@ export namespace Constants{
 
     //Messages
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
+    export const MSG_CONFIRMLOGOUT = 'Sei sicuro di voler chiudere la sessione?';
 
     //Urls
     export const URL_HOME = HOSTNAME+':'+PORT;
