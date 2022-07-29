@@ -51,13 +51,17 @@ class InfoController extends Controller
         if($edit['edited']){
             //Username was updated
             Log::info("edit => ".var_export($edit,true));
-            return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
+            //return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
+            return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
         else{
             //Username was not updated
-            return view(P::VIEW_FALLBACK)->with([
+            /* return view(P::VIEW_FALLBACK)->with([
                 C::KEY_MESSAGES => [$edit['msg']]
-            ]);
+            ]); */
+            return response()->json([
+                C::KEY_MESSAGE => $edit[C::KEY_MESSAGE]
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
     }
 

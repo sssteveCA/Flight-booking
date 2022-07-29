@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Traits\Common\EditUsernameRequestCommonTrait;
-use Constants;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -37,9 +37,12 @@ class EditUsernameRequest extends FormRequest
         $ve = new ValidationException($validator);
         $messages = $ve->errors();
         throw new HttpResponseException(
-            response()->view(P::VIEW_FALLBACK,
+            /* response()->view(P::VIEW_FALLBACK,
                 ['messages' => $messages]
-            ,400)
+            ,400) */
+            response()->json([
+                C::KEY_MESSAGE => $messages
+            ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );
     }
 
