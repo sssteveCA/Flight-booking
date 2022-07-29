@@ -21,6 +21,7 @@ interface Paths{
     const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
     const ROUTE_PAYPAL_RETURN = 'paypal.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
+    const ROUTE_SENDEMAIL = 'sendemail';
     const ROUTE_VERIFICATIONNOTICE = 'verification.notice';
     const ROUTE_VERIFICATIONSEND = 'verification.send';
     const ROUTE_VERIFICATIONVERIFY = 'verification.verify';

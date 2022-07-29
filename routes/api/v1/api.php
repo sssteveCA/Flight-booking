@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
 use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
 use App\Http\Controllers\api\Auth\LoginControllerApi;
+use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
 
@@ -29,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::name('api.')->group(function(){
     Route::post('/login',[LoginControllerApi::class, 'login'])->name('login');
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
+    Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
 });
 
