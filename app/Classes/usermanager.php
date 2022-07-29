@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Models\User;
