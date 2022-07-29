@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
+use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Interfaces\Paths as P;
-use App\Interfaces\Constants as C;
 
-class PostController extends Controller
+class PostControllerApi extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,28 +22,20 @@ class PostController extends Controller
         if($n_posts > 0){
             //There is at least one post
             $posts_array = $posts->toArray();
-            return response()->view(P::VIEW_NEWS,[
+            return response()->json([
+                C::KEY_STATUS => 'OK',
                 'n_posts' => $n_posts,
                 'posts' => $posts_array
-            ],200);
+            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }//if($n_posts > 0){
         else{
             //No post in the database
-            return response()->view(P::VIEW_NEWS,[
+            return response()->json([
+                C::KEY_STATUS => 'EMPTY',
                 'n_posts' => $n_posts,
                 C::KEY_MESSAGE => C::MESS_NOPOSTS
-            ],200);
+            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }//else di if($n_posts > 0){
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -59,30 +52,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post,$permalink)
-    {
-        $post = Post::find($permalink);
-        if($post != null){
-            return response()->view(P::VIEW_POST,[
-                'post' => $post
-            ],200);
-        }
-        return response()->view(P::VIEW_FALLBACK,
-            [
-                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
-            ],404);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
+    public function show($id)
     {
         //
     }
@@ -91,10 +64,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -102,10 +75,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         //
     }
