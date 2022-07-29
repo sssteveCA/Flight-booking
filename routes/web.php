@@ -3,7 +3,7 @@
 use App\Http\Controllers\bookflight\ResumeBookFlightController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FlightController;
-use App\Http\Controllers\InfoController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\PostController;
@@ -36,13 +36,13 @@ Route::get('/', function () {
 
 //Private profile routes
 Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']], function(){
-    Route::get(P::URL_INFO, [InfoController::class, 'getData'])->name(P::ROUTE_INFO); 
+    Route::get(P::URL_INFO, [UserController::class, 'getData'])->name(P::ROUTE_INFO); 
     Route::resource(P::PREFIX_MYFLIGHTS, FlightController::class)->except([
         'edit','update'
     ]);
     Route::post(P::URL_FLIGHTRESUME,[ResumeBookFlightController::class,'resumeFlight'])->name(P::ROUTE_RESUMEFLIGHT);
-    Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
-    Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+    Route::patch(P::URL_EDITUSERNAME,[UserController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+    Route::patch(P::URL_EDITPASSWORD,[UserController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
 });
 
 Route::middleware('auth')->group(function(){

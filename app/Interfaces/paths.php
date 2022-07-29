@@ -15,9 +15,9 @@ interface Paths{
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
-    const ROUTE_INFO = 'infocontroller.info';
-    const ROUTE_EDITUSERNAME = 'infocontroller.editusername';
-    const ROUTE_EDITPASSWORD = 'infocontroller.editpassword';
+    const ROUTE_INFO = 'usercontroller.info';
+    const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
+    const ROUTE_EDITPASSWORD = 'usercontroller.editpassword';
     const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
     const ROUTE_PAYPAL_RETURN = 'paypal.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';

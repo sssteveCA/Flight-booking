@@ -50,8 +50,8 @@ export default class EditPassword{
     public async editPassword(): Promise<string>{
         let message: string = '';
         this._errno = 0;
-        if(this._newpwd != this._confnewpwd){
-            //Confirm password is different from new password
+        if(this._newpwd == this._confnewpwd){
+            //Confirm password is equal to new password
             try{
                 await this.editPasswordPromise().then(res => {
                     console.log(res);

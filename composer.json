@@ -44,7 +44,7 @@
             "app/Traits/common/registercontroller_common_trait.php",
             "app/Traits/common/editpasswordrequest_common_trait.php",
             "app/Traits/common/editusernamerequest_common_trait.php",
-            "app/Traits/common/infocontroller_common_trait.php",
+            "app/Traits/common/usercontroller_common_trait.php",
             "app/Classes/usermanager.php",
             "app/Classes/apiusermanager.php",
             "app/Classes/welcome/flightprice.php" 

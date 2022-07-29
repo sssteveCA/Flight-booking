@@ -1,6 +1,6 @@
 <fieldset class="d-flex flex-column justify-content-center align-items-center mb-5 border-bottom border-secondary">
     <legend class="text-center">Modifica username</legend>
-    <form id="fEditUsername" class="w-50" method="post" action="{{ route('infocontroller.editusername') }}">
+    <form id="fEditUsername" class="w-50" method="post" action="{{ route('usercontroller.editusername') }}">
         @csrf
         @method("PATCH")
         <div class="form-group mb-3">

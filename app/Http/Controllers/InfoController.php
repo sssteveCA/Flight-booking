@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Classes\UserManager;
-use App\Traits\Common\InfoControllerCommonTrait;
+use App\Traits\Common\UserControllerCommonTrait;
 
-class InfoController extends Controller
+class UserController extends Controller
 {
-    use InfoControllerCommonTrait;
+    use UserControllerCommonTrait;
 
     //get user info
     public function getData(){

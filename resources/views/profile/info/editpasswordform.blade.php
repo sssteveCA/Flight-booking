@@ -1,6 +1,6 @@
 <fieldset class="d-flex flex-column justify-content-center align-items-center mb-5">
     <legend class="text-center">Modifica password</legend>
-    <form id="fEditPassword" class="w-50" method="post" action="{{ route('infocontroller.editpassword') }}">
+    <form id="fEditPassword" class="w-50" method="post" action="{{ route('usercontroller.editpassword') }}">
         @csrf
         @method("PATCH")
         <div class="form-group mb-3">
