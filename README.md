@@ -55,7 +55,7 @@ I use Laravel framework 8.80.0 version
                         <li>Delete account*</li>
                     </ul>
                 </li>
-                <li><h3>News reading*</h3></li>
+                <li><h3>News reading</h3></li>
                 <li><h3>Email customer service</h3></li>
                 <li>
                     <h3>Flight booking</h3>
