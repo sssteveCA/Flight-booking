@@ -11,6 +11,8 @@ export namespace Constants{
 
     //Messages
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
+    export const MSG_CONFIRMEDITPASSWORD = 'Sei sicuro di voler modificare la password?';
+    export const MSG_CONFIRMEDITUSERNAME = 'Sei sicuro di voler modificare il nome utente?';
     export const MSG_CONFIRMLOGOUT = 'Sei sicuro di voler chiudere la sessione?';
 
     //Urls
