@@ -71,12 +71,15 @@ class InfoController extends Controller
         $edit = $this->usermanager->editPassword($request,$this->auth_id);
         if($edit['edited']){
             //Password was edited
-            return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
+            //return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
+            return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         } 
         else{
             //Password was not updated
-            //return response()->view('error/errors',['errors' => $edit],404);
-            return view(P::VIEW_FALLBACK)->with([C::KEY_MESSAGES => [$edit['msg']]]);
+            //return view(P::VIEW_FALLBACK)->with([C::KEY_MESSAGES => [$edit['msg']]]);
+            return response()->json([
+                C::KEY_MESSAGE => $edit[C::KEY_MESSAGE]
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
     }
 }
