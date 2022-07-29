@@ -3,6 +3,8 @@ import MessageDialogInterface from "../interfaces/dialog/messagedialoginterface"
 import ConfirmDialog from "../classes/dialog/confirmdialog";
 import MessageDialog from "../classes/dialog/messagedialog";
 import { Constants } from "../values/constants";
+import EditUsername from "../classes/profile/editusername";
+import EditUsernameInterface from "../interfaces/profile/editusername.interface";
 
 $(()=>{
      //detect showPassword checkbox changes
@@ -31,6 +33,16 @@ $(()=>{
         cd.btYes.on('click', ()=>{
             cd.dialog.dialog('destroy');
             cd.dialog.remove();
+            let eu_data: EditUsernameInterface = {
+                username: $('#username').val() as string,
+                token: $('#fEditUsername input[name=_token]').eq(0).val() as string
+            };
+            let editUsername: EditUsername = new EditUsername(eu_data);
+            editUsername.editUsername().then(res => {
+
+            }).catch(err => {
+
+            });
         });
         cd.btNo.on('click',()=>{
             cd.dialog.dialog('destroy');

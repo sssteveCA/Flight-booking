@@ -25,6 +25,9 @@ export default class EditUsername{
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
+            case EditUsername.ERR_SCRIPT_EXCEPTION:
+                this._error = EditUsername.ERR_SCRIPT_EXCEPTION_MSG;
+                break;
             default:
                 this._error = null;
                 break;
@@ -38,9 +41,10 @@ export default class EditUsername{
         try{
             await this.editUsernamePromise().then(res => {
                 console.log(res);
-                let json = JSON.parse(res);
-                message = json['msg'];
+                /* let json = JSON.parse(res);
+                message = json['msg']; */
             }).catch(err => {
+                this._errno = EditUsername.ERR_SCRIPT_EXCEPTION;
                 console.warn(err);
                 throw err;
             });

@@ -36,12 +36,14 @@ class EditUsernameRequest extends FormRequest
         Log::channel('stdout')->error('EditUsernameRequest ValidationException');
         $ve = new ValidationException($validator);
         $messages = $ve->errors();
+        Log::channel('stdout')->error('EditUsernameRequest ValidationException messages => '.var_export($messages,true));
+        $key_first = array_key_first($messages);
         throw new HttpResponseException(
             /* response()->view(P::VIEW_FALLBACK,
                 ['messages' => $messages]
             ,400) */
             response()->json([
-                C::KEY_MESSAGE => $messages
+                C::KEY_MESSAGE => $messages[$key_first][0]
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );
     }
