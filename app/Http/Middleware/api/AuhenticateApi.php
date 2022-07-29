@@ -23,7 +23,7 @@ class AuhenticateApi
             return response()->json([
                 'status' => 'ERROR',
                 C::KEY_MESSAGE => C::ERR_NOTAUTHENTICATED
-            ]);
+            ],401, [],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
         return $next($request);
     }

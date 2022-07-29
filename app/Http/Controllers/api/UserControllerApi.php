@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Classes\UserManager;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use Illuminate\Support\Facades\Log;
 
 class UserControllerApi extends Controller
 {
@@ -15,19 +16,25 @@ class UserControllerApi extends Controller
 
     public function __construct()
     {
-        $this->auth_id = auth('api')->user()->id;
-        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
+        $user = auth('api')->user();
+        if(isset($user))
+            $this->auth_id = auth('api')->user()->getAuthIdentifier();
+        else $this->auth_id = null;
+        Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
     //get user info
     public function getData(){
-        $userAuth = $this->usermanager->getUser($this->auth_id);
-        //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
-        if($userAuth != null){
-            return response()->json(
-                ['user' => $userAuth
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        Log::channel('stdout')->debug('UserControllerApi getData');
+        if(isset($this->auth_id)){
+            $userAuth = $this->usermanager->getUser($this->auth_id);
+            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
+            if($userAuth != null){
+                return response()->json(
+                    ['user' => $userAuth
+                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }
         }
         return response()->json(
             [
