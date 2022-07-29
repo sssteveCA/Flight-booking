@@ -70,6 +70,7 @@ interface Paths{
     const VIEW_POST = 'news.post';
     const VIEW_PROFILE_EDIT = 'profile.edit';
     const VIEW_PROFILE_INFO = 'profile.info';
+    const VIEW_PROFILE_INFO_DA = 'profile.info.deleteaccount';
     const VIEW_PROFILE_INFO_EPF = 'profile.info.editpasswordform';
     const VIEW_PROFILE_INFO_EUF = 'profile.info.editusernameform';
     const VIEW_REGISTER = 'auth.register';

@@ -15,4 +15,5 @@
 @section('content')
     @include(P::VIEW_PROFILE_INFO_EUF)
     @include(P::VIEW_PROFILE_INFO_EPF)
+    @include(P::VIEW_PROFILE_INFO_DA)
 @endsection

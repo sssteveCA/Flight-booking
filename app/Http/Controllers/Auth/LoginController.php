@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -110,14 +111,14 @@ class LoginController extends Controller
          ]);*/
          if(!User::where('email',$request->email)->first()){
              //No account found with email entered
-             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.email')],400);
+             return response()->view(P::VIEW_FALLBACK,[C::KEY_MESSAGE => trans('auth.email')],400);
          }//if(!User::where('email',$request->email)->first()){
          if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
              //Incorrect password
-             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.password')],400);
+             return response()->view(P::VIEW_FALLBACK,[C::KEY_MESSAGE => trans('auth.password')],400);
          }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
              //Other errors
-             return response()->view(P::VIEW_FALLBACK,['message' => trans('auth.failed')],400);
+             return response()->view(P::VIEW_FALLBACK,[C::KEY_MESSAGE => trans('auth.failed')],400);
          
      }
 

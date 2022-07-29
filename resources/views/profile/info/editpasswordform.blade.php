@@ -1,4 +1,4 @@
-<fieldset class="d-flex flex-column justify-content-center align-items-center mb-5">
+<fieldset class="d-flex flex-column justify-content-center align-items-center mb-5 border-bottom border-secondary">
     <legend class="text-center">Modifica password</legend>
     <form id="fEditPassword" class="w-50" method="post" action="{{ route('usercontroller.editpassword') }}">
         @csrf
