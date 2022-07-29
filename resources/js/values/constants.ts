@@ -22,6 +22,7 @@ export namespace Constants{
     export const URL_HOME = HOSTNAME+':'+PORT;
     export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
     export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';
+    export const URL_EDITPASSWORD = URL_HOME+'/profile/editPassword';
     export const URL_EDITUSERNAME = URL_HOME+'/profile/editUsername';
     export const URL_FLIGHTSLIST = URL_HOME+'/profile/myFlights';
     export const URL_FLIGHTEVENTS = URL_HOME+'/flightevents';

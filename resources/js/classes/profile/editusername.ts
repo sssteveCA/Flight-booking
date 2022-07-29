@@ -36,7 +36,7 @@ export default class EditUsername{
     }
 
     public async editUsername(): Promise<string>{
-        let message = '';
+        let message: string = '';
         this._errno = 0;
         try{
             await this.editUsernamePromise().then(res => {
@@ -49,7 +49,7 @@ export default class EditUsername{
                 throw err;
             });
         }catch(err){
-            message = err as string;
+            message = EditUsername.ERR_SCRIPT_EXCEPTION_MSG;
         }
         return message;
     }
