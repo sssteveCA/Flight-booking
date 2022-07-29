@@ -20,7 +20,7 @@ class EmailController extends Controller
         $request_array = $request->validated();
         $response = [
             'done' => false,
-            'msg' => '',
+            C::KEY_MESSAGE => '',
         ];
         $headers = [
             'From' => " \"{$request_array['name']}\" <{$request_array['email']}>",
@@ -34,7 +34,7 @@ class EmailController extends Controller
             //Email successfully sent
             $response = [
                 'done' => true,
-                'msg' => C::OK_EMAILSEND
+                C::KEY_MESSAGE => C::OK_EMAILSEND
             ];
             $code = 200; //OK
         }//if($email){

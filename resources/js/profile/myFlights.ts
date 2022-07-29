@@ -36,7 +36,7 @@ $(function(){
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',
-                    message: obj['msg']
+                    message: obj[Constants.KEY_MESSAGE]
                 };
                 let messageDialog: MessageDialog = new MessageDialog(dataMd);
                 $(messageDialog.btOk).on('click',()=>{

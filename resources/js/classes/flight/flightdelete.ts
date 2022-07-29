@@ -44,9 +44,10 @@ export default class FlightDelete{
         let deleted = false;
         this._errno = 0;
         await this.deleteFlightPromise().then(res => {
+            console.log(res);
             let json = JSON.parse(res);
             //console.log(json);
-            msg = json['msg'];
+            msg = json[Constants.KEY_MESSAGE];
             deleted = json['deleted'];
         }).catch(err => {
             console.warn(err);
@@ -55,10 +56,9 @@ export default class FlightDelete{
         });
         this._deleted = deleted;
         this._msg = msg;
-        let obj = {
-            'msg': this._msg,
-            'deleted': this._deleted
-        };
+        let obj = {};
+        obj[Constants.KEY_MESSAGE] = this._msg;
+        obj['deleted'] = this._deleted;
         return obj;
     }
 

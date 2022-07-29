@@ -84,7 +84,7 @@ export default class Email{
                 console.log(res);
                 let json = JSON.parse(res);
                 console.log(json);
-                message = json['msg'];
+                message = json[Constants.KEY_MESSAGE];
             }).catch(err =>{
                 this._errno = Email.ERR_SCRIPT_EXCEPTION;
                 message = this.error as string;
