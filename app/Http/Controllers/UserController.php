@@ -18,6 +18,13 @@ class UserController extends Controller
 {
     use UserControllerCommonTrait;
 
+    public function __construct()
+    {
+        $this->auth_id = Auth::id();
+        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
+        $this->usermanager =  new UserManager();   
+    }
+
     //get user info
     public function getData(){
         $userAuth = $this->usermanager->getUser($this->auth_id);
@@ -29,6 +36,5 @@ class UserController extends Controller
             return response()->view(P::VIEW_FALLBACK,[
                 C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
             ],404);
-
     }
 }

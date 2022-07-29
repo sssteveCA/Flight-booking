@@ -6,10 +6,10 @@ use App\Http\Controllers\api\InfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
-use App\Http\Controllers\api\welcome\ApiFlightSearchController;
 use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
 use App\Http\Controllers\api\Auth\LoginControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
+use App\Http\Controllers\api\UserControllerApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +36,8 @@ Route::group(['prefix' => '/profile','middleware' => 'custom_auth_api'], functio
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::resource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
-        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
-        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+        Route::get(P::URL_INFO,[UserControllerApi::class,'getData'])->name(P::ROUTE_INFO);
+        Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+        Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     });
 });

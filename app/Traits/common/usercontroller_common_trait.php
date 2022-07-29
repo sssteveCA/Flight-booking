@@ -14,13 +14,6 @@ trait UserControllerCommonTrait{
     private UserManager $usermanager;
     private $auth_id;
 
-    public function __construct()
-    {
-        $this->auth_id = Auth::id();
-        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
-        $this->usermanager =  new UserManager();   
-    }
-
     //edit username
     public function editUsername(EditUsernameRequest $request){
         Log::channel('stdout')->info("editUsername");
