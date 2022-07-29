@@ -55,9 +55,20 @@ class PostControllerApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post,$permalink)
     {
-        //
+        $post = Post::find($permalink);
+        if($post != null){
+            return response()->json([
+                C::KEY_STATUS => 'OK',
+                'post' => $post
+            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
+        return response()->json(
+            [
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     /**
