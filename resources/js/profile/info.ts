@@ -39,7 +39,15 @@ $(()=>{
             };
             let editUsername: EditUsername = new EditUsername(eu_data);
             editUsername.editUsername().then(res => {
-
+                let md_data: MessageDialogInterface = {
+                    title: 'Modifica username',
+                    message: res
+                };
+                let md: MessageDialog = new MessageDialog(md_data);
+                md.btOk.on('click', ()=>{
+                    md.dialog.dialog('destroy');
+                    md.dialog.remove();
+                });
             }).catch(err => {
 
             });

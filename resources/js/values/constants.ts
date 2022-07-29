@@ -9,6 +9,9 @@ export namespace Constants{
     //export const HOSTNAME = 'http://192.168.0.24';
     export const PORT = 8000;
 
+    //Keys
+    export const KEY_MESSAGE = 'message';
+
     //Messages
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
     export const MSG_CONFIRMEDITPASSWORD = 'Sei sicuro di voler modificare la password?';
