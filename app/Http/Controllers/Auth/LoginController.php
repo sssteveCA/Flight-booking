@@ -103,6 +103,24 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    //Overriding method
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect(P::URL_ROOT);
+    }
+
      //Overriding method
      protected function sendFailedLoginResponse(Request $request)
      {
