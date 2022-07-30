@@ -56,8 +56,9 @@ trait UserControllerCommonTrait{
                     C::KEY_MESSAGE => $edit[C::KEY_MESSAGE]
                 ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }
-        }
-        
+        }  
     }
+
+    //user account hard delete
 }
 ?>
