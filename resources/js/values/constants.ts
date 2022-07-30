@@ -13,6 +13,7 @@ export namespace Constants{
     export const KEY_MESSAGE = 'message';
 
     //Messages
+    export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?'
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
     export const MSG_CONFIRMEDITPASSWORD = 'Sei sicuro di voler modificare la password?';
     export const MSG_CONFIRMEDITUSERNAME = 'Sei sicuro di voler modificare il nome utente?';

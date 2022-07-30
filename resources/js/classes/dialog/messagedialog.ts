@@ -6,8 +6,8 @@ export default class MessageDialog{
     private _id: string;
     private _width: number|string;
     private _height: number|string;
-    private _dialog: any;
-    private _btOk: any;
+    private _dialog: JQuery;
+    private _btOk: JQuery;
 
     constructor(data: MessageDialogInterface){
         this._title = data.title;

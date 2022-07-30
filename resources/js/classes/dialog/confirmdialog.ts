@@ -6,9 +6,9 @@ export default class ConfirmDialog{
     private _id: string;
     private _width: number|string;
     private _height: number|string;
-    private _dialog: any;
-    private _btYes: any;
-    private _btNo: any;
+    private _dialog: JQuery;
+    private _btYes: JQuery; 
+    private _btNo: JQuery;
 
     constructor(data: ConfirmDialogInterface){
         this._title = data.title;
@@ -66,7 +66,5 @@ export default class ConfirmDialog{
         });
         this._btYes = $('body > div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:first-child');
         this._btNo = $('body > div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:last-child');
-        console.log(this._btYes);
-        console.log(this._btNo);
     }
 }
