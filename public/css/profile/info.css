@@ -1,0 +1,4 @@
+.ui-dialog, .ui-dialog-title {
+  overflow: visible !important;
+  white-space: normal !important;
+}

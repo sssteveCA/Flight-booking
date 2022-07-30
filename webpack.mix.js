@@ -29,4 +29,5 @@ const mix = require('laravel-mix');
     .sass('resources/sass/news/post.scss','public/css/news')
     .sass('resources/sass/aboutus.scss','public/css')
     .sass('resources/sass/contacts.scss','public/css')
+    .sass('resources/sass/profile/info.scss','public/css/profile')
     .sourceMaps();

@@ -79,11 +79,11 @@ export default class TextFieldsDialog{
             if(typeof input.input_value === "undefined")
                 input.input_value = '';
             this._dialog_body += `
-            <div class="mb-3">
-                <label for="${input.input_id}">
+            <div class="my-3">
+                <label for="${input.input_id}" class="form-label">
                     ${input.label_str}
                 </label>
-                <input type="${input.input_type}" id="${input.input_id}" name="${input.input_name}" value="${input.input_value}">
+                <input type="${input.input_type}" id="#${input.input_id}" class="form-control" name="${input.input_name}" value="${input.input_value}">
             </div>
             `;
         });
