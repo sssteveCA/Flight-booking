@@ -25,6 +25,7 @@ interface Constants{
     const ERR_REGISTRATION = 'Errore durante la registrazione. '.Constants::ADMIN_CONTACT;
     const ERR_URLNOTFOUND_NOTALLOWED = "La pagina che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per effettuare questa operazione";
     const ERR_URLNOTFOUND_NOTALLOWED_API = "La risorsa che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per effettuare questa operazione";
+    const ERR_UNAUTHORIZED_REQUEST = "Non disponi delle autorizzazioni necessarie per effetuare questa richiesta";
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //common array keys
@@ -33,6 +34,7 @@ interface Constants{
     const KEY_STATUS = 'status';
 
     //success
+    const OK_ACCOUNTDELETED = "IL tuo account è stato eliminato definitivamente";
     const OK_EMAILSEND = "La tua richiesta è stata inviata. Verrai ricontattato il prima possibile";
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";

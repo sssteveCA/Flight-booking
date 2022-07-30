@@ -5,6 +5,7 @@ namespace App\Traits\Common;
 use App\Classes\UserManager;
 use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
+use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -58,7 +59,5 @@ trait UserControllerCommonTrait{
             }
         }  
     }
-
-    //user account hard delete
 }
 ?>

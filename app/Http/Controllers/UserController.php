@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EditPasswordRequest;
-use App\Http\Requests\EditUsernameRequest;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Models\User;
@@ -12,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Classes\UserManager;
+use App\Http\Requests\UserDeleteRequest;
 use App\Traits\Common\UserControllerCommonTrait;
 
 class UserController extends Controller
@@ -20,7 +19,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->auth_id = Auth::id();
+        $this->auth_id = auth()->id;
         //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
@@ -36,5 +35,23 @@ class UserController extends Controller
             return response()->view(P::VIEW_FALLBACK,[
                 C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
             ],404);
+    }
+
+    //user account hard delete
+    public function deleteAccountHard(UserDeleteRequest $request){
+        $user_id = auth()->id;
+        $user = $this->usermanager->getUser($user_id);
+        if($user != null){
+            auth()->logout();
+            $del = $user->delete();
+            return response()->json([
+                C::KEY_STATUS => 'OK',
+                C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
+            ],204,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }//if($user != null){
+        return response()->json([
+            C::KEY_STATUS => 'ERROR',
+            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+        ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }

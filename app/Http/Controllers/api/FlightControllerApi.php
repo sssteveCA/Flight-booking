@@ -126,7 +126,7 @@ class FlightControllerApi extends Controller
             $user_id = auth()->id();
             if($flight->user_id == $user_id){
                 //The resource is owned by the logged user
-                $response_data['deleted'] = $flight->forceDelete();
+                $response_data['deleted'] = $flight->delete();
                 /* Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true)); */
                 if($response_data['deleted'])
                     $response_data[C::KEY_STATUS] = 'OK';
