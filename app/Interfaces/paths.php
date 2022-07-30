@@ -16,6 +16,7 @@ interface Paths{
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_INFO = 'usercontroller.info';
+    const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
     const ROUTE_EDITPASSWORD = 'usercontroller.editpassword';
     const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
@@ -34,6 +35,7 @@ interface Paths{
     const URL_BOOKFLIGHT_PAYPAL_RETURN = '/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
+    const URL_DELETEACCOUNT = '/deleteAccount';
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';
     const URL_EMAILVERIFY = '/email/verify';

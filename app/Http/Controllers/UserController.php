@@ -19,8 +19,8 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->auth_id = auth()->id;
-        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
+        $this->auth_id = Auth::id();
+        Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
@@ -39,8 +39,7 @@ class UserController extends Controller
 
     //user account hard delete
     public function deleteAccountHard(UserDeleteRequest $request){
-        $user_id = auth()->id;
-        $user = $this->usermanager->getUser($user_id);
+        $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
             auth()->logout();
             $user->delete();

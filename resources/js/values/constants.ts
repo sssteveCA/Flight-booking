@@ -11,6 +11,7 @@ export namespace Constants{
 
     //Keys
     export const KEY_MESSAGE = 'message';
+    export const KEY_STATUS = 'status';
 
     //Messages
     export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?'
@@ -23,6 +24,7 @@ export namespace Constants{
     export const URL_HOME = HOSTNAME+':'+PORT;
     export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
     export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';
+    export const URL_DELETEACCOUNT = URL_HOME+'/profile/deleteAccount';
     export const URL_EDITPASSWORD = URL_HOME+'/profile/editPassword';
     export const URL_EDITUSERNAME = URL_HOME+'/profile/editUsername';
     export const URL_FLIGHTSLIST = URL_HOME+'/profile/myFlights';

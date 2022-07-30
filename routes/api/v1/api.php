@@ -38,12 +38,13 @@ Route::name('api.')->group(function(){
     ]);
 });
 
-Route::group(['prefix' => '/profile','middleware' => 'custom_auth_api'], function(){
+Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => 'custom_auth_api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
         Route::get(P::URL_INFO,[UserControllerApi::class,'getData'])->name(P::ROUTE_INFO);
         Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+        Route::delete(P::URL_DELETEACCOUNT,[UserControllerApi::class,'deleteAccountHard'])->name(P::ROUTE_DELETEACCOUNT);
     });
 });
