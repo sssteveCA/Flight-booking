@@ -1,6 +1,6 @@
 export interface TextFieldDialogInterface{
     title: string,
-    inputs: InputProp[],
+    inputs_prop: InputProp[],
     id?: string,
     width?: number|string,
     height?: string|number
