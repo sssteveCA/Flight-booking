@@ -33,6 +33,14 @@ export default function deleteAccount(): void{
                 ]   
             };
             let tfd: TextFieldsDialog = new TextFieldsDialog(tfd_data);
+            tfd.btOk.on('click',()=>{
+                tfd.dialog.dialog('destroy');
+                tfd.dialog.remove();
+            });
+            tfd.btCancel.on('click',()=>{
+                tfd.dialog.dialog('destroy');
+                tfd.dialog.remove();
+            });
         });
         cd.btNo.on('click', ()=>{
             cd.dialog.dialog('destroy');
