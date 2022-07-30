@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Traits\Common\UserControllerCommonTrait;
 use Illuminate\Http\Request;
 use App\Classes\UserManager;
+use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class UserControllerApi extends Controller
@@ -40,5 +42,25 @@ class UserControllerApi extends Controller
             [
             C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
         ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    }
+
+    //user account hard delete
+    public function deleteAccountHard(UserDeleteRequest $request){
+        $user_id = auth('api')->id;
+        Log::channel('stdout')->debug("UserControllerApi deleteAccountHard user id =>");
+        Log::channel('stdout')->debug(var_export($user_id,true));
+        $user = $this->usermanager->getUser($user_id);
+        if($user != null){
+            $user->revoke();
+            $user->delete();
+            return response()->json([
+                C::KEY_STATUS => 'OK',
+                C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
+            ],204,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }//if($user != null){
+        return response()->json([
+            C::KEY_STATUS => 'ERROR',
+            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+        ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }

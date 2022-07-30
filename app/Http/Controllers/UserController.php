@@ -43,7 +43,7 @@ class UserController extends Controller
         $user = $this->usermanager->getUser($user_id);
         if($user != null){
             auth()->logout();
-            $del = $user->delete();
+            $user->delete();
             return response()->json([
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
