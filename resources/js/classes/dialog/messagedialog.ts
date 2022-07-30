@@ -1,4 +1,4 @@
-import MessageDialogInterface from "../../interfaces/dialog/messagedialoginterface";
+import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interface";
 
 export default class MessageDialog{
     private _title: string;

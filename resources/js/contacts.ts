@@ -1,5 +1,5 @@
 import MessageDialog from "./classes/dialog/messagedialog";
-import MessageDialogInterface from "./interfaces/dialog/messagedialoginterface";
+import MessageDialogInterface from "./interfaces/dialog/messagedialog.interface";
 import Email from "./classes/email";
 import EmailInterface from "./interfaces/email.interface";
 

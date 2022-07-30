@@ -1,7 +1,7 @@
 import { Constants } from "../../values/constants";
 import MessageDialog from "../../classes/dialog/messagedialog";
-import MessageDialogInterface from "../../interfaces/dialog/messagedialoginterface";
-import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialoginterface";
+import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interface";
+import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialog.interface";
 import ConfirmDialog from "../../classes/dialog/confirmdialog";
 import EditUsername from "../../classes/profile/editusername";
 import EditUsernameInterface from "../../interfaces/profile/editusername.interface";

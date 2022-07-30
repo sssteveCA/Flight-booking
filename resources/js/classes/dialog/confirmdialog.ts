@@ -1,4 +1,4 @@
-import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialoginterface";
+import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialog.interface";
 
 export default class ConfirmDialog{
     private _title: string;

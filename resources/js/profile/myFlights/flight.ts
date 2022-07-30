@@ -1,8 +1,8 @@
 import ConfirmDialog from "../../classes/dialog/confirmdialog";
 import MessageDialog from "../../classes/dialog/messagedialog";
 import FlightDelete from "../../classes/flight/flightdelete";
-import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialoginterface";
-import MessageDialogInterface from "../../interfaces/dialog/messagedialoginterface";
+import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialog.interface";
+import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interface";
 import { Constants } from "../../values/constants";
 import FlightDeleteInterface from "../../interfaces/flight/flightdelete.interface";
 

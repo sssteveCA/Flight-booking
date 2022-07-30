@@ -1,4 +1,4 @@
-import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialoginterface";
+import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialog.interface";
 import ConfirmDialog from "../../classes/dialog/confirmdialog";
 import { Constants } from "../../values/constants";
 
