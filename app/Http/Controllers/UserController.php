@@ -39,14 +39,17 @@ class UserController extends Controller
 
     //user account hard delete
     public function deleteAccountHard(UserDeleteRequest $request){
+        $input = $request->validated();
+        Log::channel('stdout')->info("UserController deleteAccountHard input => ");
+        Log::channel('stdout')->info(var_export($input,true));
         $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
-           /*  auth()->logout();
-            $user->delete(); */
+            auth()->logout();
+            $user->delete();
             return response()->json([
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
-            ],204,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }//if($user != null){
         return response()->json([
             C::KEY_STATUS => 'ERROR',

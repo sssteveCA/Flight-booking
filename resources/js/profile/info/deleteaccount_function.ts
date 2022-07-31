@@ -43,16 +43,14 @@ export default function deleteAccount(): void{
                /*  tfd.dialog.dialog('destroy');
                 tfd.dialog.remove(); */
                 let csrf = $('meta[name="csrf-token"]').attr('content');
-                console.log(csrf);
                 let da_data: DeleteAccountInterface = {
                     token: csrf as string,
                     password: $('#'+tfd.inputs_prop[0].input_id).val() as string,
                     password_conf: $('#'+tfd.inputs_prop[1].input_id).val() as string
                 };
-                console.log(da_data);
                 let da: DeleteAccount = new DeleteAccount(da_data);
                 da.deleteAccount().then(obj_response => {
-                    console.log(obj_response);
+                    //console.log(obj_response);
                     //Delete account request
                     let md_data: MessageDialogInterface = {
                         title: 'Elimina account',
@@ -67,6 +65,7 @@ export default function deleteAccount(): void{
                             //Remove also TextFieldDialog if delete request was done successfully
                             tfd.dialog.dialog('destroy');
                             tfd.dialog.remove();
+                            window.location.href = '/';
                         }
                     });// md.btOk.on('click',()=>{
                 });

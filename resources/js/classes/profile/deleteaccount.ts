@@ -50,7 +50,7 @@ export default class DeleteAccount{
         if(this._password == this._password_conf){
             try{
                 await this.deleteAccountPromise().then(res => {
-                    console.log(res);
+                    //console.log(res);
                     let json = JSON.parse(res);
                     response = {
                         status: json[Constants.KEY_STATUS],
@@ -83,7 +83,7 @@ export default class DeleteAccount{
                 password_conf: this._password_conf
             };
             fetch(DeleteAccount.SCRIPT_URL,{
-                method: 'POST',
+                method: 'DELETE',
                 body: JSON.stringify(values),
                 headers: {
                     'Accept': 'application/json',
@@ -91,7 +91,6 @@ export default class DeleteAccount{
                     'X-CSRF-TOKEN': this._token
                 }
             }).then(res => {
-                console.log(res.body);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);
