@@ -62,9 +62,9 @@ class RegisterController extends Controller
             event(new Registered($user = $this->create($request->all())));
             Log::channel('stdout')->info("RegisterController register event");
             //Registered user login with his account
-            //$this->guard()->login($user);
-            Log::channel('stdout')->info("RegisterController register login guard");
-            Log::channel('stdout')->info(var_export($this->registered($request,$user),true));
+            $this->guard()->login($user);
+            /* Log::channel('stdout')->info("RegisterController register login guard");
+            Log::channel('stdout')->info(var_export($this->registered($request,$user),true)); */
             if($this->registered($request,$user)){
                 Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed

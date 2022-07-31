@@ -45,8 +45,11 @@ class UserController extends Controller
         Log::channel('stdout')->info(var_export($inputs,true));
         $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
+            //Logout before remove user record
             auth()->logout();
+            //Delete all flights associated to this user
             Flight::where('user_id',$this->auth_id)->delete();
+            //Delete user record in MySQL
             $user->delete();
             return response()->json([
                 C::KEY_STATUS => 'OK',

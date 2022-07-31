@@ -38,7 +38,7 @@ Route::name('api.')->group(function(){
     ]);
 });
 
-Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => 'custom_auth_api'], function(){
+Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','verified']], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
         Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
