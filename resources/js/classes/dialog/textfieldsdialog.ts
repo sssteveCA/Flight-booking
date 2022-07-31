@@ -85,7 +85,7 @@ export default class TextFieldsDialog{
                 <label for="${input.input_id}" class="form-label">
                     ${input.label_str}
                 </label>
-                <input type="${input.input_type}" id="#${input.input_id}" class="form-control" name="${input.input_name}" value="${input.input_value}">
+                <input type="${input.input_type}" id="${input.input_id}" class="form-control" name="${input.input_name}" value="${input.input_value}">
             </div>
             `;
         });

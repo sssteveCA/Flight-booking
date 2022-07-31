@@ -6,6 +6,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
+        @yield('meta')
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
         @yield('links')
         <script src="{{asset('js/app.js')}}"></script>

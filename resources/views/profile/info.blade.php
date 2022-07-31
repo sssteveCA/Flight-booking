@@ -8,6 +8,10 @@
 
 @section('title','Modifica profilo')
 
+@section('meta')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('links')
 <link rel="stylesheet" href="{{ asset('css/profile/info.css') }}">
 @endsection

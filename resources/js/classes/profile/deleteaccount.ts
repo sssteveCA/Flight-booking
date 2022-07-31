@@ -83,7 +83,7 @@ export default class DeleteAccount{
                 password_conf: this._password_conf
             };
             fetch(DeleteAccount.SCRIPT_URL,{
-                method: 'DELETE',
+                method: 'POST',
                 body: JSON.stringify(values),
                 headers: {
                     'Accept': 'application/json',
@@ -91,6 +91,7 @@ export default class DeleteAccount{
                     'X-CSRF-TOKEN': this._token
                 }
             }).then(res => {
+                console.log(res.body);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);
