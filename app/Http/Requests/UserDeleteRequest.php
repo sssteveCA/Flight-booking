@@ -29,8 +29,8 @@ class UserDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ['password'],
-            'password_conf' => ['same:password']
+            'password' => ['required','password'],
+            'password_conf' => ['required','same:password']
         ];
     }
 
@@ -43,6 +43,7 @@ class UserDeleteRequest extends FormRequest
 
     public function messages(){
         return [
+            'required' => "L'attributo :attribute è obbligatorio",
             'password' => 'La password inserita è errata',
             'same' => "La :attribute è diversa dalla password inserita"
         ];

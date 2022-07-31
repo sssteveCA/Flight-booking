@@ -31,8 +31,9 @@ Route::name('api.')->group(function(){
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
-        Route::patch('/editUsername',[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
-        Route::patch('/editPassword',[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+        Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
+        Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
+        
     });
 });
 

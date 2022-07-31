@@ -9,6 +9,7 @@ use App\Classes\UserManager;
 use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use App\Models\Flight;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -18,11 +19,11 @@ class UserControllerApi extends Controller
 
     public function __construct()
     {
-        $user = auth('api')->user();
-        if(isset($user))
-            $this->auth_id = auth('api')->user()->getAuthIdentifier();
+        $user_id = Auth::id();
+        if(isset($user_id))
+            $this->auth_id = $user_id;
         else $this->auth_id = null;
-        Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
+        Log::channel('stdout')->info("UserControllerApi  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
@@ -46,17 +47,23 @@ class UserControllerApi extends Controller
 
     //user account hard delete
     public function deleteAccountHard(UserDeleteRequest $request){
-        $user_id = auth('api')->id;
-        Log::channel('stdout')->debug("UserControllerApi deleteAccountHard user id =>");
-        Log::channel('stdout')->debug(var_export($user_id,true));
-        $user = $this->usermanager->getUser($user_id);
+        $inputs = $request->validated();
+        Log::channel('stdout')->debug("UserControllerApi deleteAccountHard input=>");
+        Log::channel('stdout')->debug(var_export($inputs,true));
+        $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
-            $user->revoke();
+            $userTokens = $user->tokens;
+            Log::channel('stdout')->debug("UserControllerApi deleteAccountHard tokens =>");
+            Log::channel('stdout')->debug(var_export($userTokens,true));
+            foreach($userTokens as $token){
+                $token->revoke();
+            }
+            Flight::where('user_id',$this->auth_id)->delete();
             $user->delete();
             return response()->json([
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
-            ],204,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }//if($user != null){
         return response()->json([
             C::KEY_STATUS => 'ERROR',

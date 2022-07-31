@@ -47,20 +47,4 @@ class Authenticate extends Middleware
             }
         }//if(!$api_request){ 
     } 
-
-    //Remove backslashes from flights array keys
-    private function flights_unquote(array $flights_quoted): array{
-        $flights_unquoted = [];
-        foreach($flights_quoted as $key => $val){
-            //Log::channel('stdout')->info("Flights unquote 1st foreach {$key}");
-            $flights_unquoted[$key] = [];
-            foreach($val as $sub_key => $sub_val){
-                $sub_key_unq = str_replace("'","",$sub_key);
-                //Log::channel('stdout')->info("Flights unquote 2nd foreach before slashes remove {$sub_key} => {$sub_val}");
-                //Log::channel('stdout')->info("Flights unquote 2nd foreach {$sub_key_unq} => {$sub_val}");
-                $flights_unquoted[$key][$sub_key_unq] = $sub_val;
-            }
-        }
-        return $flights_unquoted;
-    }
 }

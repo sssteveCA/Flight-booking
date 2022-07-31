@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Classes\UserManager;
 use App\Http\Requests\UserDeleteRequest;
+use App\Models\Flight;
 use App\Traits\Common\UserControllerCommonTrait;
 
 class UserController extends Controller
@@ -39,12 +40,13 @@ class UserController extends Controller
 
     //user account hard delete
     public function deleteAccountHard(UserDeleteRequest $request){
-        $input = $request->validated();
+        $inputs = $request->validated();
         Log::channel('stdout')->info("UserController deleteAccountHard input => ");
-        Log::channel('stdout')->info(var_export($input,true));
+        Log::channel('stdout')->info(var_export($inputs,true));
         $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
             auth()->logout();
+            Flight::where('user_id',$this->auth_id)->delete();
             $user->delete();
             return response()->json([
                 C::KEY_STATUS => 'OK',
