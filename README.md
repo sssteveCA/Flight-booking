@@ -11,7 +11,7 @@ I use Laravel framework 8.80.0 version
             <h2>Web</h2>
             <ul>
                 <li><h3>Account login</h3></li>
-                <li><h3>Registration & email verifying</h3></li>
+                <li><h3>Registration & Email verifying</h3></li>
                 <li>
                     <h3>User account managing</h3>
                     <ul>
@@ -46,13 +46,13 @@ I use Laravel framework 8.80.0 version
             <h2>Api</h2>
             <ul>
                 <li><h3>Account login</h3></li>
-                <li><h3>Registration & email verifying</h3></li>
+                <li><h3>Registration & Email verifying</h3></li>
                 <li>
                     <h3>User account managing</h3>
                     <ul>
                         <li>View</li>
                         <li>Edit</li>
-                        <li>Delete account*</li>
+                        <li>Delete account</li>
                     </ul>
                 </li>
                 <li><h3>News reading</h3></li>
