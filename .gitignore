@@ -1,6 +1,8 @@
 /node_modules
 /public/css
 /public/js
+/public/json
+/public/scripts
 /public/hot
 /public/storage
 /storage/*.key
