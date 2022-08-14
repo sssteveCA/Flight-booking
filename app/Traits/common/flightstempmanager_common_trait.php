@@ -6,9 +6,12 @@ use App\Exceptions\FlightArrayException;
 use App\Classes\Welcome\FlightTempManager;
 use App\Interfaces\Welcome\FlightTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
+use App\Traits\ErrorTrait;
 
 //Common code between flightstempmanager.php & flightstempmanagerapi.php
 trait FlightsTempManagerCommonTrait{
+
+    use ErrorTrait;
 
     private FlightTemp $flight_temp;
     private array $flights_array;
@@ -49,6 +52,7 @@ trait FlightsTempManagerCommonTrait{
     //Add single flight temp record
     private function addFlightTemp(array $data): bool{
         $add = false;
+        $this->errno;
         $this->flight_temp = new FlightTemp;
         $this->flight_temp->session_id = $data['session_id'];
         $this->flight_temp->flight_type = $data['flight_type'];
@@ -66,6 +70,10 @@ trait FlightsTempManagerCommonTrait{
         $this->flight_temp->teenagers = $this->flights_array['teenagers'];
         $this->flight_temp->children = $this->flights_array['children'];
         $this->flight_temp->newborns = $this->flights_array['newborns'];
+        $this->flight_temp->flight_price = $this->flights_array['flight_price'];
+        $insert = $this->flight_temp->save();
+        if($insert)
+            $add = true;
         return $add;
     }
 
