@@ -132,7 +132,7 @@ class FlightSearchController extends Controller
             ],200);
         }catch(\Exception $e){
             $error = $e->getMessage();
-            //Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $errors_array = [ $error];
             throw new HttpResponseException(
                 response()->view(P::VIEW_FLIGHTPRICERESULT,['errors_array' => $errors_array],400)

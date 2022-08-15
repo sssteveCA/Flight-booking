@@ -7,6 +7,7 @@ use App\Exceptions\FlighstArrayException;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\ErrorTrait;
+use Illuminate\Support\Facades\Log;
 
 //Common code between flightstempmanager.php & flightstempmanagerapi.php
 trait FlightsTempManagerCommonTrait{
@@ -30,6 +31,7 @@ trait FlightsTempManagerCommonTrait{
 
     //check if flights array is valid
     private function checkFlightsArray(array $data){
+        Log::channel('stdout')->info("FlightsTempManager trait checkFlightsArray");
         $count = count($data);
         $classname = __CLASS__;
         if($count > 0 && $count <= 2){
@@ -52,27 +54,28 @@ trait FlightsTempManagerCommonTrait{
     }
 
     //Add single flight temp record
-    private function addFlightTemp(array $data): bool{
+    private function addFlightTemp(array $data, string $flight_type): bool{
+        Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp");
         $add = false;
-        $this->errno;
+        $this->errno = 0;
         $this->flight_temp = new FlightTemp;
         $this->flight_temp->session_id = $data['session_id'];
         $this->flight_temp->flight_type = $data['flight_type'];
         $this->flight_temp->flight_direction = $data['flight_direction'];
-        $this->flight_temp->company_name = $this->flights_array['company_name'];
-        $this->flight_temp->departure_country = $this->flights_array['departure_country'];
-        $this->flight_temp->departure_airport = $this->flights_array['departure_airport'];
-        $this->flight_temp->company_name = $this->flights_array['arrival_country'];
-        $this->flight_temp->arrival_country = $this->flights_array['arrival_airport'];
-        $this->flight_temp->arrival_airport = $this->flights_array['company_name'];
-        $this->flight_temp->booking_date = $this->flights_array['booking_date'];
-        $this->flight_temp->flight_date = $this->flights_array['flight_date'];
-        $this->flight_temp->flight_time = $this->flights_array['flight_time'];
-        $this->flight_temp->adults = $this->flights_array['adults'];
-        $this->flight_temp->teenagers = $this->flights_array['teenagers'];
-        $this->flight_temp->children = $this->flights_array['children'];
-        $this->flight_temp->newborns = $this->flights_array['newborns'];
-        $this->flight_temp->flight_price = $this->flights_array['flight_price'];
+        $this->flight_temp->company_name = $this->flights_array[$flight_type]['company_name'];
+        $this->flight_temp->departure_country = $this->flights_array[$flight_type]['departure_country'];
+        $this->flight_temp->departure_airport = $this->flights_array[$flight_type]['departure_airport'];
+        $this->flight_temp->company_name = $this->flights_array[$flight_type]['arrival_country'];
+        $this->flight_temp->arrival_country = $this->flights_array[$flight_type]['arrival_airport'];
+        $this->flight_temp->arrival_airport = $this->flights_array[$flight_type]['company_name'];
+        $this->flight_temp->booking_date = $this->flights_array[$flight_type]['booking_date'];
+        $this->flight_temp->flight_date = $this->flights_array[$flight_type]['flight_date'];
+        $this->flight_temp->flight_time = $this->flights_array[$flight_type]['flight_time'];
+        $this->flight_temp->adults = $this->flights_array[$flight_type]['adults'];
+        $this->flight_temp->teenagers = $this->flights_array[$flight_type]['teenagers'];
+        $this->flight_temp->children = $this->flights_array[$flight_type]['children'];
+        $this->flight_temp->newborns = $this->flights_array[$flight_type]['newborns'];
+        $this->flight_temp->flight_price = $this->flights_array[$flight_type]['total_price'];
         $insert = $this->flight_temp->save();
         if($insert)
             $add = true;
@@ -81,6 +84,7 @@ trait FlightsTempManagerCommonTrait{
 
     //Check if user with session id has shortly before done a flight search
     private function checkFlightSearchRequests(string $session_id): bool{
+        Log::channel('stdout')->info("FlightsTempManager trait checkFlightSearchRequests");
         $exists = false;
         $flights = FlightTemp::where('session_id',$session_id)->get();
         //Get the number of items in the collection
@@ -93,6 +97,7 @@ trait FlightsTempManagerCommonTrait{
 
     //Generate a random session id to identity the user that does the request
     private function setSessionId(){
+        Log::channel('stdout')->info("FlightsTempManager trait setSessionId");
         $session_id = "";
         $classname = __CLASS__;
         $characters = 'aAbBcCdDeEfFGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';

@@ -7,6 +7,7 @@ use App\Traits\MmCommonTrait;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\Common\FlightsTempManagerCommonTrait;
+use Illuminate\Support\Facades\Log;
 
 class FlightsTempManager implements Ftme{
     use MmCommonTrait, FlightsTempManagerCommonTrait;
@@ -14,6 +15,7 @@ class FlightsTempManager implements Ftme{
 
     public function __construct(array $data)
     {
+        Log::channel('stdout')->info("FlightsTempManager construct data => ".var_export($data,true));
         $this->checkFlightsArray($data);
         $this->flights_array = $data;
     }
@@ -35,6 +37,7 @@ class FlightsTempManager implements Ftme{
 
     //Add a new flight temp records
     public function addFlightsTemp(): bool{
+        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp");
         $add = false;
         $this->setSessionId();
         if($this->flights_array_lenght == 1){
@@ -44,7 +47,7 @@ class FlightsTempManager implements Ftme{
                 'flight_type' => 'oneway',
                 'flight_direction' => 'outbound'
             ];
-            $add_outbound = $this->addFlightTemp($addflighttemp_data);
+            $add_outbound = $this->addFlightTemp($addflighttemp_data,'oneway');
             if($add_outbound)
                 $add = true;
             else
@@ -57,10 +60,10 @@ class FlightsTempManager implements Ftme{
                 'flight_type' => 'roundtrip',
                 'flight_direction' => 'outbound'
             ];
-            $add_outbound = $this->addFlightTemp($addflighttemp_data);
+            $add_outbound = $this->addFlightTemp($addflighttemp_data,'outbound');
             if($add_outbound){
                 $addflighttemp_data['flight_direction'] = 'return';
-                $add_return = $this->addFlightTemp($addflighttemp_data);
+                $add_return = $this->addFlightTemp($addflighttemp_data,'return');
                 if($add_return)
                     $add = true;
                 else
