@@ -26,7 +26,13 @@ class FlightsTempManager implements Ftme{
                 $this->error = Ftme::NOTADDED_MSG;
                 break;
             case Ftme::NOTDELETED:
-                $this->errno = Ftme::NOTDELETED_MSG;
+                $this->error = Ftme::NOTDELETED_MSG;
+                break;
+            case Ftme::INVALIDREQUEST:
+                $this->error = Ftme::INVALIDREQUEST_MSG;
+                break;
+            case Ftme::NOTFOUND:
+                $this->error = Ftme::NOTFOUND_MSG;
                 break;
             default:
                 $this->error = null;

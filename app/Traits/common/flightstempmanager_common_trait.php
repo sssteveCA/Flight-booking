@@ -82,6 +82,26 @@ trait FlightsTempManagerCommonTrait{
         return $add;
     }
 
+    //Check if the values from request are equal to table record values
+    private function checkEquality(array $request, array $retrieved): bool{
+        $equal = true;
+        foreach($request as $key => $value){
+            if($request[$key] != $retrieved[$key]){
+                if($key == 'total_price'){
+                    if($request[$key] != $retrieved['flight_price']){
+                        $equal = false;
+                        break;
+                    }
+                }//if($key == 'total_price'){
+                else{
+                    $equal = false;
+                    break;
+                }
+            }//if($request[$key] != $retrieved[$key]){
+        }//foreach($request as $key => $value){
+        return $equal;
+    }
+
     //Check if user with session id has shortly before done a flight search
     private function checkFlightSearchRequests(string $session_id): bool{
         Log::channel('stdout')->info("FlightsTempManager trait checkFlightSearchRequests");
@@ -112,6 +132,26 @@ trait FlightsTempManagerCommonTrait{
         }while($exists);
         
         $this->session_id = $session_id.time();
+    }
+
+    //validate request before insert flight record in flights table
+    private function validateRequest(): bool{
+        $valid = false;
+        $this->errno = 0;
+        if(isset($this->flights_array['session_id'])){
+            $session_id = $this->flights_array['session_id'];
+            $check_flights = FlightTemp::where('session_id',$session_id)->get();
+            if($check_flights->count() > 0){
+                $cf_array = $check_flights->toArray();
+                Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest cf_array => ".var_export($cf_array,true));
+            }//if($check_flights->count() > 0){
+            else
+                $this->errno = Ftme::NOTFOUND;
+        }//if(isset($this->flights_array['session_id'])){
+        else
+            throw new FlighstArrayException(Ftme::SESSION_ID_EXC);
+        
+        return $valid;
     }
 }
 
