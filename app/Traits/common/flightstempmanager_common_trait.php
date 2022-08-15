@@ -153,7 +153,22 @@ trait FlightsTempManagerCommonTrait{
                         $valid = true;
                     else
                         $this->errno = Ftme::INVALIDREQUEST;
-                }
+                }//if($cf_length == 1){
+                else if($cf_length == 2){
+                    //Roundtrip ticket
+                    $equal1 = $this->checkEquality($this->flight_array['flights']['outbound'],$cf_array[0]);
+                    if($equal1){
+                         $equal2 = $this->checkEquality($this->flight_array['flights']['return'],$cf_array[1]);
+                         if($equal2)
+                            $valid = true;
+                            else
+                            $this->errno = Ftme::INVALIDREQUEST;
+                    }//if($equal1){
+                    else
+                        $this->errno = Ftme::INVALIDREQUEST;
+                }//else if($cf_length == 2){
+                else
+                    throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC);
             }//if($cf_length > 0){
             else
                 $this->errno = Ftme::NOTFOUND;
