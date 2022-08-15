@@ -21,6 +21,7 @@
         <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
             @method('POST')
+            <input type="hidden" name="session_id" value="{{ $response['session_id'] }}">
             <input type="hidden" name="flight_type" value="{{ $response['flight_type'] }}">
             @foreach($response['flights'] as $type => $flight)
             <div class="flight-div">

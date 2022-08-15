@@ -106,12 +106,12 @@ trait FlightsTempManagerCommonTrait{
         do{
             for($i = 0; $i < $classname::$random_times; $i++){
                 $c = mt_rand(0, $length-1);
-                $session_id .= $c;
+                $session_id .= $characters[$c];
             }
             $exists = $this->checkFlightSearchRequests($session_id);
         }while($exists);
         
-        $this->session_id = $session_id;
+        $this->session_id = $session_id.time();
     }
 }
 

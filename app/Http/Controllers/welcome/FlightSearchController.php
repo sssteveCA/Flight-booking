@@ -125,6 +125,7 @@ class FlightSearchController extends Controller
             }
             return response()->view(P::VIEW_FLIGHTPRICERESULT,[
                 'response' => [
+                    'session_id' => $this->ftm->getSessionId(),
                     'flight_type' => $flight_type,
                     'inputs' => $inputs, 
                     'flights' => $flights
