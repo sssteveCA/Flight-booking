@@ -18,6 +18,7 @@ trait FlightsTempManagerCommonTrait{
     private int $flights_array_lenght;
     private string $session_id;
 
+    private static const RANDOM_TIMES = 75;
     private static array $flight_directions = ['oneway','outbound','return'];
     private static array $flight_properties = ['company_name','departure_country','departure_airport','booking_date',
     'flight_date','flight_time','arrival_country','arrival_airport','adults','teenagers','children','newborns',
@@ -89,6 +90,25 @@ trait FlightsTempManagerCommonTrait{
         return $exists;
     }
 
+    //Generate a random session id to identity the user that does the request
+    private function setSessionId(){
+        $session_id = "";
+        $characters = 'aAbBcCdDeEfFGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
+        $length = strlen($characters);
+        $session_id_exists = false;
+        do{
+            for($i = 0; $i < __CLASS__::RANDOM_TIMES; $i++){
+                $c = mt_rand(0, $length-1);
+                $session_id .= $c;
+            }
+            $flight_temp = FlightTemp::where('session_id',$session_id)->first();
+            if($flight_temp != null)
+                $session_id_exists = true;
+            else
+                $session_id_exists = false;
+        }while($session_id_exists);
+        $this->session_id = $session_id;
+    }
 }
 
 ?>
