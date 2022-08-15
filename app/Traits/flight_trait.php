@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Classes\Welcome\FlightsTempManager;
 use App\Interfaces\Constants as C;
 use App\Models\Flight;
 use Illuminate\Support\Facades\Log;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 
 //Trait for FlightController
 trait FlightTrait{
+
+    private FlightsTempManager $ftm;
 
     //Insert new flight records in database
     private function create_flights(array $flights_data):array

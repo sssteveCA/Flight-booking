@@ -29,7 +29,13 @@ trait FlightsTempManagerCommonTrait{
     public function getFlightsArrayLength(){return $this->flights_array_lenght;}
     public function getSessionId(){return $this->session_id;}
 
-    //check if flights array is valid
+    /**
+     * Check if flights array is valid
+     * 
+     * @param array $data
+     * 
+     * @return void
+     * */
     private function checkFlightsArray(array $data){
         Log::channel('stdout')->info("FlightsTempManager trait checkFlightsArray");
         $count = count($data);
@@ -53,7 +59,14 @@ trait FlightsTempManagerCommonTrait{
         $this->flights_array_lenght = $count;
     }
 
-    //Add single flight temp record
+    /**
+     * Add single flight temp record
+     * 
+     * @param array $data
+     * @param string $flight_type
+     * 
+     * @return bool
+     * */
     private function addFlightTemp(array $data, string $flight_type): bool{
         Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp");
         $add = false;
@@ -83,7 +96,14 @@ trait FlightsTempManagerCommonTrait{
         return $add;
     }
 
-    //Check if the values from request are equal to table record values
+    /**
+     * Check if the values from request are equal to table record values
+     * 
+     * @param array $request
+     * @param array $retrieved
+     * 
+     * @return bool
+     * */
     private function checkEquality(array $request, array $retrieved): bool{
         $equal = true;
         foreach($request as $key => $value){
@@ -103,7 +123,11 @@ trait FlightsTempManagerCommonTrait{
         return $equal;
     }
 
-    //Check if user with session id has shortly before done a flight search
+    /**
+     * Check if user with session id has shortly before done a flight search
+     * 
+     * @return void
+     * */
     private function checkFlightSearchRequests(string $session_id): bool{
         Log::channel('stdout')->info("FlightsTempManager trait checkFlightSearchRequests");
         $exists = false;
@@ -135,10 +159,15 @@ trait FlightsTempManagerCommonTrait{
         $this->session_id = $session_id.time();
     }
 
-    //validate request before insert flight record in flights table
-    private function validateRequest(): bool{
+    /**
+     * validate request before insert flight record in flights table
+     * 
+     * @return bool
+     * */
+    public function validateRequest(): bool{
         $valid = false;
         $this->errno = 0;
+        Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest this flights array => ".var_export($this->flights_array,true));
         if(isset($this->flights_array['session_id'])){
             $session_id = $this->flights_array['session_id'];
             $check_flights = FlightTemp::where('session_id',$session_id)->get();

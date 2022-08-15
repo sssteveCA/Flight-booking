@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Welcome\FlightsTempManager;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
@@ -63,6 +64,8 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
+        $this->ftm = new FlightsTempManager($inputs);
+        $valid = $this->ftm->validateRequest();
         Log::channel('stdout')->debug("FlightController store request all => ");
         Log::channel('stdout')->debug(var_export($inputs,true));
         $flights = $request->flights;
