@@ -4,6 +4,7 @@ namespace App\Http\Controllers\welcome;
 
 use App\Classes\Welcome\FlightPrice;
 use App\Classes\Welcome\FlightTempManager;
+use App\Exceptions\FlightsTempNotAddedException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\FlightPriceRequest;
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use App\Traits\FlightSearchTrait;
+use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 
 
 class FlightSearchController extends Controller
 {
-
     use FlightSearchTrait;
  
     //Get airports list from specific country
@@ -116,6 +117,12 @@ class FlightSearchController extends Controller
                     ]
                 ];
             }
+            $add_temp = $this->setFlightsTemp($flights);
+            if(!$add_temp){
+                $errno = $this->ftm->getErrno();
+                $error = $this->ftm->getError();
+                throw new FlightsTempNotAddedException($error,$errno);
+            }
             return response()->view(P::VIEW_FLIGHTPRICERESULT,[
                 'response' => [
                     'flight_type' => $flight_type,
@@ -151,8 +158,8 @@ class FlightSearchController extends Controller
     //set flight temp table records
     private function setFlightsTemp(array $flights_data): bool{
         $set = false;
-        $ftm = new FlightTempManager($flights_data);
-        $added = $ftm->addFlightsTemp();
+        $this->ftm = new FlightTempManager($flights_data);
+        $added = $this->ftm->addFlightsTemp();
         if($added)
             $set = true;
         return $set;

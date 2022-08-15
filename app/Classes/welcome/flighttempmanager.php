@@ -31,6 +31,7 @@ class FlightTempManager implements Ftme{
                 $this->error = null;
                 break;
         }
+        return $this->error;
     }
 
     //Add a new flight temp records
