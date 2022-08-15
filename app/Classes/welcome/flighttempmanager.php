@@ -5,7 +5,7 @@ namespace App\Classes\Welcome;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
 use App\Exceptions\FlightArrayException;
-use App\Interfaces\Welcome\FlightTempManagerErrors as Ftme;
+use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\Common\FlightsTempManagerCommonTrait;
 
@@ -36,51 +36,41 @@ class FlightTempManager implements Ftme{
     //Add a new flight temp records
     public function addFlightsTemp(): bool{
         $add = false;
-        $exists = $this->checkFlightSearchRequests();
-        if($exists){
-            $delete = FlightTemp::where('session_id',$this->session_id)->delete();
-            if($delete)
-                $exists = false;
+        $this->setSessionId();
+        if($this->flights_array_lenght == 1){
+            //Oneway ticket
+            $addflighttemp_data = [
+                'session_id' => $this->session_id,
+                'flight_type' => 'oneway',
+                'flight_direction' => 'outbound'
+            ];
+            $add_outbound = $this->addFlightTemp($addflighttemp_data);
+            if($add_outbound)
+                $add = true;
             else
-                $this->errno = Ftme::NOTDELETED;
-        }
-        if(!$exists){
-            if($this->flights_array_lenght == 1){
-                //Oneway ticket
-                $addflighttemp_data = [
-                    'session_id' => $this->session_id,
-                    'flight_type' => 'oneway',
-                    'flight_direction' => 'outbound'
-                ];
-                $add_outbound = $this->addFlightTemp($addflighttemp_data);
-                if($add_outbound)
+                $this->errno = Ftme::NOTADDED;
+        }//if($this->flights_array_lenght == 1){
+        else if($this->flights_array_lenght == 2){
+            //Roundtrip ticket
+            $addflighttemp_data = [
+                'session_id' => $this->session_id,
+                'flight_type' => 'roundtrip',
+                'flight_direction' => 'outbound'
+            ];
+            $add_outbound = $this->addFlightTemp($addflighttemp_data);
+            if($add_outbound){
+                $addflighttemp_data['flight_direction'] = 'return';
+                $add_return = $this->addFlightTemp($addflighttemp_data);
+                if($add_return)
                     $add = true;
                 else
                     $this->errno = Ftme::NOTADDED;
-            }//if($this->flights_array_lenght == 1){
-            else if($this->flights_array_lenght == 2){
-                //Roundtrip ticket
-                $addflighttemp_data = [
-                    'session_id' => $this->session_id,
-                    'flight_type' => 'roundtrip',
-                    'flight_direction' => 'outbound'
-                ];
-                $add_outbound = $this->addFlightTemp($addflighttemp_data);
-                if($add_outbound){
-                    $addflighttemp_data['flight_direction'] = 'return';
-                    $add_return = $this->addFlightTemp($addflighttemp_data);
-                    if($add_return)
-                        $add = true;
-                    else
-                        $this->errno = Ftme::NOTADDED;
-                }//if($add_outbound){
-                else
-                    $this->errno = Ftme::NOTADDED;
-            }//else if($this->flights_array_lenght == 2){
+            }//if($add_outbound){
             else
                 $this->errno = Ftme::NOTADDED;
-        }//if(!$exists){
-        
+        }//else if($this->flights_array_lenght == 2){
+        else
+            $this->errno = Ftme::NOTADDED;
         return $add;
     }
 
