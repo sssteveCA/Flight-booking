@@ -13,7 +13,7 @@ class FlightTempManager implements Ftme{
     use MmCommonTrait, FlightsTempManagerCommonTrait;
 
 
-    public function __construct(array $data,string $session_id)
+    public function __construct(array $data)
     {
         $this->checkFlightsArray($data);
         $this->flights_array = $data;

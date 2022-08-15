@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\welcome;
 
 use App\Classes\Welcome\FlightPrice;
+use App\Classes\Welcome\FlightTempManager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\FlightPriceRequest;
 use Illuminate\Http\Request;
@@ -145,6 +146,16 @@ class FlightSearchController extends Controller
                 'flights' => $response['flights']
             ]   
         ],200);
+    }
+
+    //set flight temp table records
+    private function setFlightsTemp(array $flights_data): bool{
+        $set = false;
+        $ftm = new FlightTempManager($flights_data);
+        $added = $ftm->addFlightsTemp();
+        if($added)
+            $set = true;
+        return $set;
     }
 
 }
