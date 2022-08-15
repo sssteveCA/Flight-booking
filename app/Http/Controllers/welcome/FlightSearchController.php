@@ -117,7 +117,8 @@ class FlightSearchController extends Controller
                     ]
                 ];
             }
-            $add_temp = $this->setFlightsTemp($flights);
+            $ft_flights = ['flights' => $flights];
+            $add_temp = $this->setFlightsTemp($ft_flights);
             if(!$add_temp){
                 $errno = $this->ftm->getErrno();
                 $error = $this->ftm->getError();

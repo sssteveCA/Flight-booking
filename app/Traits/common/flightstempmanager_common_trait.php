@@ -35,7 +35,7 @@ trait FlightsTempManagerCommonTrait{
         $count = count($data);
         $classname = __CLASS__;
         if($count > 0 && $count <= 2){
-            foreach($data as $direction => $flight){
+            foreach($data['flights'] as $direction => $flight){
                 if(in_array($direction,$classname::$flights_direction)){
                     foreach($flight as $key => $value){
                         if(!in_array($key,$classname::$flight_properties)){
@@ -62,20 +62,21 @@ trait FlightsTempManagerCommonTrait{
         $this->flight_temp->session_id = $data['session_id'];
         $this->flight_temp->flight_type = $data['flight_type'];
         $this->flight_temp->flight_direction = $data['flight_direction'];
-        $this->flight_temp->company_name = $this->flights_array[$flight_type]['company_name'];
-        $this->flight_temp->departure_country = $this->flights_array[$flight_type]['departure_country'];
-        $this->flight_temp->departure_airport = $this->flights_array[$flight_type]['departure_airport'];
-        $this->flight_temp->company_name = $this->flights_array[$flight_type]['arrival_country'];
-        $this->flight_temp->arrival_country = $this->flights_array[$flight_type]['arrival_airport'];
-        $this->flight_temp->arrival_airport = $this->flights_array[$flight_type]['company_name'];
-        $this->flight_temp->booking_date = $this->flights_array[$flight_type]['booking_date'];
-        $this->flight_temp->flight_date = $this->flights_array[$flight_type]['flight_date'];
-        $this->flight_temp->flight_time = $this->flights_array[$flight_type]['flight_time'];
-        $this->flight_temp->adults = $this->flights_array[$flight_type]['adults'];
-        $this->flight_temp->teenagers = $this->flights_array[$flight_type]['teenagers'];
-        $this->flight_temp->children = $this->flights_array[$flight_type]['children'];
-        $this->flight_temp->newborns = $this->flights_array[$flight_type]['newborns'];
-        $this->flight_temp->flight_price = $this->flights_array[$flight_type]['total_price'];
+        $flight_array = $this->flights_array['flights'][$flight_type];
+        $this->flight_temp->company_name = $flight_array['company_name'];
+        $this->flight_temp->departure_country = $flight_array['departure_country'];
+        $this->flight_temp->departure_airport = $flight_array['departure_airport'];
+        $this->flight_temp->company_name = $flight_array['arrival_country'];
+        $this->flight_temp->arrival_country = $flight_array['arrival_airport'];
+        $this->flight_temp->arrival_airport = $flight_array['company_name'];
+        $this->flight_temp->booking_date = $flight_array['booking_date'];
+        $this->flight_temp->flight_date = $flight_array['flight_date'];
+        $this->flight_temp->flight_time = $flight_array['flight_time'];
+        $this->flight_temp->adults = $flight_array['adults'];
+        $this->flight_temp->teenagers = $flight_array['teenagers'];
+        $this->flight_temp->children = $flight_array['children'];
+        $this->flight_temp->newborns = $flight_array['newborns'];
+        $this->flight_temp->flight_price = $flight_array['total_price'];
         $insert = $this->flight_temp->save();
         if($insert)
             $add = true;
@@ -141,10 +142,19 @@ trait FlightsTempManagerCommonTrait{
         if(isset($this->flights_array['session_id'])){
             $session_id = $this->flights_array['session_id'];
             $check_flights = FlightTemp::where('session_id',$session_id)->get();
-            if($check_flights->count() > 0){
+            $cf_length = $check_flights->count();
+            if($cf_length > 0){
                 $cf_array = $check_flights->toArray();
                 Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest cf_array => ".var_export($cf_array,true));
-            }//if($check_flights->count() > 0){
+                if($cf_length == 1){
+                    //Oneway ticket
+                    $equal = $this->checkEquality($this->flights_array['flights']['oneway'],$cf_array[0]);
+                    if($equal)
+                        $valid = true;
+                    else
+                        $this->errno = Ftme::INVALIDREQUEST;
+                }
+            }//if($cf_length > 0){
             else
                 $this->errno = Ftme::NOTFOUND;
         }//if(isset($this->flights_array['session_id'])){
