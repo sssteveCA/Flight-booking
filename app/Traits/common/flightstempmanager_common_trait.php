@@ -2,8 +2,8 @@
 
 namespace App\Traits\Common;
 
-use App\Exceptions\FlightArrayException;
-use App\Classes\Welcome\FlightTempManager;
+use App\Classes\Welcome\FlightsTempManager;
+use App\Exceptions\FlighstArrayException;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\ErrorTrait;
@@ -18,9 +18,9 @@ trait FlightsTempManagerCommonTrait{
     private int $flights_array_lenght;
     private string $session_id;
 
-    private static const RANDOM_TIMES = 75;
-    private static const FLIGHT_DIRECTIONS = ['oneway','outbound','return'];
-    private static const FLIGHT_PROPERTIES = ['company_name','departure_country','departure_airport','booking_date',
+    private static int $random_times = 75;
+    private static array $flights_direction = ['oneway','outbound','return'];
+    private static array $flight_properties = ['company_name','departure_country','departure_airport','booking_date',
     'flight_date','flight_time','arrival_country','arrival_airport','adults','teenagers','children','newborns',
     'total_price' ];
 
@@ -31,21 +31,22 @@ trait FlightsTempManagerCommonTrait{
     //check if flights array is valid
     private function checkFlightsArray(array $data){
         $count = count($data);
+        $classname = __CLASS__;
         if($count > 0 && $count <= 2){
             foreach($data as $direction => $flight){
-                if(in_array($direction,__CLASS__::FLIGHT_DIRECTIONS)){
+                if(in_array($direction,$classname::$flights_direction)){
                     foreach($flight as $key => $value){
-                        if(!in_array($key,__CLASS__::FLIGHT_PROPERTIES)){
-                            throw new FlightArrayException(Ftme::FLIGHTARRAY_EXC);
+                        if(!in_array($key,$classname::$flight_properties)){
+                            throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC);
                         }
                     }//foreach($flight as $key => $value){
-                }//if(in_array($direction,FlightTempManager::FLIGHT_DIRECTIONS)){
+                }//if(in_array($direction,FlightTempManager::$flights_direction)){
                 else
-                    throw new FlightArrayException(Ftme::FLIGHTARRAY_EXC,1);
+                    throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC,1);
             }//foreach($data as $direction => $flight){
         }//if($count > 0 && $count <= 2){
         else{
-            throw new FlightArrayException(Ftme::FLIGHTARRAY_EXC,1);
+            throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC,1);
         }
         $this->flights_array_lenght = $count;
     }
@@ -93,11 +94,12 @@ trait FlightsTempManagerCommonTrait{
     //Generate a random session id to identity the user that does the request
     private function setSessionId(){
         $session_id = "";
+        $classname = __CLASS__;
         $characters = 'aAbBcCdDeEfFGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
         $length = strlen($characters);
         $exists = false;
         do{
-            for($i = 0; $i < __CLASS__::RANDOM_TIMES; $i++){
+            for($i = 0; $i < $classname::$random_times; $i++){
                 $c = mt_rand(0, $length-1);
                 $session_id .= $c;
             }

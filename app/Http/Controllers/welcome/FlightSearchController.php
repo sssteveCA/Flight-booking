@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\welcome;
 
 use App\Classes\Welcome\FlightPrice;
-use App\Classes\Welcome\FlightTempManager;
+use App\Classes\Welcome\FlightsTempManager;
 use App\Exceptions\FlightsTempNotAddedException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\FlightPriceRequest;
@@ -158,7 +158,7 @@ class FlightSearchController extends Controller
     //set flight temp table records
     private function setFlightsTemp(array $flights_data): bool{
         $set = false;
-        $this->ftm = new FlightTempManager($flights_data);
+        $this->ftm = new FlightsTempManager($flights_data);
         $added = $this->ftm->addFlightsTemp();
         if($added)
             $set = true;

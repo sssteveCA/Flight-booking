@@ -31,9 +31,12 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files" : [
+            "app/Exceptions/flightsarray_exception.php",
+            "app/Exceptions/flightstemp_notadded_exception.php",
             "app/Interfaces/airports.php",
             "app/Interfaces/constants.php",
             "app/Interfaces/welcome/flightprice_errors.php",
+            "app/Interfaces/welcome/flightstempmanager_errors.php",
             "app/Traits/error_trait.php",
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flight_trait.php",
@@ -46,9 +49,11 @@
             "app/Traits/common/editusernamerequest_common_trait.php",
             "app/Traits/common/usercontroller_common_trait.php",
             "app/Traits/common/emailcontroller_common_trait.php",
+            "app/Traits/common/flightstempmanager_common_trait.php",
             "app/Classes/usermanager.php",
             "app/Classes/apiusermanager.php",
-            "app/Classes/welcome/flightprice.php" 
+            "app/Classes/welcome/flightprice.php",
+            "app/Classes/welcome/flightstempmanager.php"
         ]
     },
     "autoload-dev": {

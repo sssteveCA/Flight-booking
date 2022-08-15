@@ -2,14 +2,14 @@
 
 namespace App\Traits;
 
-use App\Classes\Welcome\FlightTempManager;
+use App\Classes\Welcome\FlightsTempManager;
 use App\Interfaces\Airports as A;
 use Illuminate\Support\Facades\Log;
 
 //Trait for FlightSearchController
 trait FlightSearchTrait{
 
-    private FlightTempManager $ftm;
+    private FlightsTempManager $ftm;
 
     protected function getAirportsList(string $country): array{
         $list = [];

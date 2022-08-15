@@ -4,12 +4,11 @@ namespace App\Classes\Welcome;
 
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
-use App\Exceptions\FlightArrayException;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\Common\FlightsTempManagerCommonTrait;
 
-class FlightTempManager implements Ftme{
+class FlightsTempManager implements Ftme{
     use MmCommonTrait, FlightsTempManagerCommonTrait;
 
 
