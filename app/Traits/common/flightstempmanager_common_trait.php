@@ -79,9 +79,8 @@ trait FlightsTempManagerCommonTrait{
         $this->flight_temp->company_name = $flight_array['company_name'];
         $this->flight_temp->departure_country = $flight_array['departure_country'];
         $this->flight_temp->departure_airport = $flight_array['departure_airport'];
-        $this->flight_temp->company_name = $flight_array['arrival_country'];
-        $this->flight_temp->arrival_country = $flight_array['arrival_airport'];
-        $this->flight_temp->arrival_airport = $flight_array['company_name'];
+        $this->flight_temp->arrival_country = $flight_array['arrival_country'];
+        $this->flight_temp->arrival_airport = $flight_array['arrival_airport'];
         $this->flight_temp->booking_date = $flight_array['booking_date'];
         $this->flight_temp->flight_date = $flight_array['flight_date'];
         $this->flight_temp->flight_time = $flight_array['flight_time'];
