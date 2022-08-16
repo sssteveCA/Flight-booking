@@ -42,10 +42,10 @@ trait FlightPriceRequestCommonTrait{
             'oneway-date' => ['required_without_all:roundtrip-start-date,roundtrip-end-date', new DateDiff1d('oneway-date')],
             'roundtrip-start-date' => ['required_with:roundtrip-end-date', new DateDiff1d('roundtrip-start-date')],
             'roundtrip-end-date' => ['required_with:roundtrip-start-date', new DateDiff1d('roundtrip-end-date')],
-            'adults' => 'required|integer|min:1',
-            'teenagers' => 'required|integer|min:0',
-            'children' => 'required|integer|min:0',
-            'newborns' => 'required|integer|min:0',
+            'adults' => ['required','integer','min:1'],
+            'teenagers' => ['required','integer','min:0'],
+            'children' => ['required','integer','min:0'],
+            'newborns' => ['required','integer','min:0'],
         ];
         
     }

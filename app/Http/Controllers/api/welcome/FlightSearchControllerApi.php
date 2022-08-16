@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\welcome;
 
+use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightPrice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -93,6 +94,7 @@ class FlightSearchControllerApi extends Controller
         }catch(\Exception $e){
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            $error = C::ERR_REQUEST;
             throw new HttpResponseException(
                 response()->json(['error' => $error],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */

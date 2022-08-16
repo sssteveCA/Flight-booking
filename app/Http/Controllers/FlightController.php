@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Welcome\FlightsTempManager;
+use App\Exceptions\FlightsArrayException;
+use App\Exceptions\FlightsTempNotAddedException;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use Illuminate\Support\Facades\Log;
 use App\Traits\FlightTrait;
+use Exception;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FlightController extends Controller
 {
@@ -65,18 +69,32 @@ class FlightController extends Controller
     {
         Log::channel('stdout')->debug("FlightController store");
         $inputs = $request->all();
-        $this->ftm = new FlightsTempManager($inputs);
-        $valid = $this->ftm->validateRequest();
-        /* Log::channel('stdout')->debug("FlightController store request all => ");
-        Log::channel('stdout')->debug(var_export($inputs,true)); */
-        $flights = $request->flights;
-        /* $flights_unquoted = $this->flights_unquote($flights);
-        Log::channel('stdout')->info("FlightController store flights unquoted => ");
-        Log::channel('stdout')->info(var_export($flights,true)); */
-        $flights_info = $this->create_flights($flights);
-        $response_data = $this->setResponseData($flights_info);
-        //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
-        return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
+        try{
+            $this->ftm = new FlightsTempManager($inputs);
+            $valid = $this->ftm->validateRequest();
+            if($valid){
+                //Input data was not modified from orginal values
+                /* Log::channel('stdout')->debug("FlightController store request all => ");
+                Log::channel('stdout')->debug(var_export($inputs,true)); */
+                $flights = $request->flights;
+                /* $flights_unquoted = $this->flights_unquote($flights);
+                Log::channel('stdout')->info("FlightController store flights unquoted => ");
+                Log::channel('stdout')->info(var_export($flights,true)); */
+                $flights_info = $this->create_flights($flights);
+                $response_data = $this->setResponseData($flights_info);
+                //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
+                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
+            }//if($valid){
+        }catch(FlightsArrayException|FlightsTempNotAddedException $e){
+            throw new HttpResponseException(
+                response()->view(P::VIEW_BOOKFLIGHT,[
+                    'done' => false,
+                    C::KEY_MESSAGE => C::ERR_REQUEST,
+                    C::KEY_STATUS => 'ERROR'
+                ],400)
+            );
+        }
+        
     }
 
     /**
