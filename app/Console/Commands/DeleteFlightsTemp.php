@@ -20,7 +20,7 @@ class DeleteFlightsTemp extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Delete all flightstemp table records';
 
     /**
      * Create a new command instance.
