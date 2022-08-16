@@ -76,7 +76,7 @@
             @endif
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">PREZZO TOTALE</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['total_price'] }}€</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['flight_price'] }}€</div>
             </div>   
             <div @class([
                     'row',

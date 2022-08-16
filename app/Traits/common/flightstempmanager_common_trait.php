@@ -23,7 +23,7 @@ trait FlightsTempManagerCommonTrait{
     private static array $flights_direction = ['oneway','outbound','return'];
     private static array $flight_properties = ['company_name','departure_country','departure_airport','booking_date',
     'flight_date','flight_time','arrival_country','arrival_airport','adults','teenagers','children','newborns',
-    'total_price' ];
+    'flight_price' ];
 
     public function getFlightsArray(){return $this->flights_array;}
     public function getFlightsArrayLength(){return $this->flights_array_lenght;}
@@ -88,7 +88,7 @@ trait FlightsTempManagerCommonTrait{
         $this->flight_temp->teenagers = $flight_array['teenagers'];
         $this->flight_temp->children = $flight_array['children'];
         $this->flight_temp->newborns = $flight_array['newborns'];
-        $this->flight_temp->flight_price = $flight_array['total_price'];
+        $this->flight_temp->flight_price = $flight_array['flight_price'];
         $insert = $this->flight_temp->save();
         if($insert)
             $add = true;
@@ -109,19 +109,10 @@ trait FlightsTempManagerCommonTrait{
         foreach($request as $key => $value){
             Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
             Log::channel('stdout')->debug("{$key} => ".var_export($value,true));
-            if($key != 'total_price')
-                Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
+            Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
             if($value != $retrieved[$key]){
-                if($key == 'total_price'){
-                    if($value != $retrieved['flight_price']){
-                        $equal = false;
-                        break;
-                    }
-                }//if($key == 'total_price'){
-                else{
-                    $equal = false;
-                    break;
-                }
+                $equal = false;
+                break;
             }//if($request[$key] != $retrieved[$key]){
         }//foreach($request as $key => $value){
         Log::channel('stdout')->debug("flightstempmanager_common_trait checkEquality equal => ".var_export($equal,true));

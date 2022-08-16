@@ -77,7 +77,7 @@ class FlightSearchController extends Controller
                         'teenagers' => $fl_outbound->teenagers,
                         'children' => $fl_outbound->children,
                         'newborns' => $fl_outbound->newborns,
-                        'total_price' => $fl_outbound->total_price_format
+                        'flight_price' => $fl_outbound->flight_price_format
                     ],
                     'return' => [
                         'company_name' => $fl_return->company_name,
@@ -92,7 +92,7 @@ class FlightSearchController extends Controller
                         'teenagers' => $fl_return->teenagers,
                         'children' => $fl_return->children,
                         'newborns' => $fl_return->newborns,
-                        'total_price' => $fl_return->total_price_format
+                        'flight_price' => $fl_return->flight_price_format
                     ]
                 ];
             }
@@ -113,7 +113,7 @@ class FlightSearchController extends Controller
                         'teenagers' => $fl_oneway->teenagers,
                         'children' => $fl_oneway->children,
                         'newborns' => $fl_oneway->newborns,
-                        'total_price' => $fl_oneway->total_price_format
+                        'flight_price' => $fl_oneway->flight_price_format
                     ]
                 ];
             }

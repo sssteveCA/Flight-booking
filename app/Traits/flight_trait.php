@@ -39,7 +39,7 @@ trait FlightTrait{
             $models[$n]->teenagers = $flight['teenagers'];            
             $models[$n]->children = $flight['children'];            
             $models[$n]->newborns = $flight['newborns'];           
-            $models[$n]->total_price = $flight['total_price'];
+            $models[$n]->flight_price = $flight['flight_price'];
             $created = $models[$n]->save();
             if(!$created){
                 //If there was a problem inserting record in DB
@@ -61,7 +61,7 @@ trait FlightTrait{
             $array_return['flights'][] = [
                 'id' => $models[$n]->id,
                 'name' => "Da {$flight['departure_airport']} a {$flight['arrival_airport']}",
-                'total_price' => $flight['total_price']
+                'flight_price' => $flight['flight_price']
             ];
         }//foreach($flights_data as $n => $flight){
         return $array_return;

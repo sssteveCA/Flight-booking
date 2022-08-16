@@ -36,7 +36,7 @@
                     @forelse($flights as $flight)
                         <input type="hidden" name="item_name_{{ $loop->iteration }}" value="{{ $flight['name'] }}">
                         <input type="hidden" name="item_number_{{ $loop->iteration }}" value="{{ $flight['id'] }}">
-                        <input type="hidden" name="amount_{{ $loop->iteration}}" value="{{ $flight['total_price'] }}">
+                        <input type="hidden" name="amount_{{ $loop->iteration}}" value="{{ $flight['flight_price'] }}">
                     @empty
                     @endforelse
                 </div>

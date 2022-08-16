@@ -42,8 +42,8 @@ class FlightPrice implements Fpe{
     public float $day_price;
     public float $month_price;
     public int $days_before; //Days before the flight was booked compared to the flight date
-    public float $total_price;
-    public string $total_price_format;
+    public float $flight_price;
+    public string $flight_price_format;
     
     public function __construct(array $data)
     {
@@ -78,10 +78,10 @@ class FlightPrice implements Fpe{
                 //Got days difference from the dates provided
                 $subtotal = $this->passengers_price + $this->day_band_price + $this->day_price + $this->month_price;
                 $subtotal_day_discount = $subtotal * ($this->days_before_discount/100);
-                $this->total_price = $subtotal - ($subtotal_day_discount * $this->days_before);
-                $this->total_price = round($this->total_price,2);
-                $this->total_price_format = number_format($this->total_price,2,'.','');
-                Log::channel('stdout')->info("FlightPrice calcPrice total_price_format => ".var_export($this->total_price_format,true));
+                $this->flight_price = $subtotal - ($subtotal_day_discount * $this->days_before);
+                $this->flight_price = round($this->flight_price,2);
+                $this->flight_price_format = number_format($this->flight_price,2,'.','');
+                Log::channel('stdout')->info("FlightPrice calcPrice flight_price_format => ".var_export($this->flight_price_format,true));
                 $calculated = true;
             }
         }//if($this->setSubprices($data)){
@@ -135,7 +135,8 @@ class FlightPrice implements Fpe{
             'month_price' => $this->month_price,
             'days_before' => $this->days_before,
             'month_price' => $this->month_price,
-            'total_price' => $this->total_price,
+            'flight_price' => $this->flight_price,
+            'flight_price_format' => $this->flight_price_format,
         ];
     }
 
@@ -161,7 +162,8 @@ class FlightPrice implements Fpe{
         $this->day_price = $properties['day_price'];
         $this->month_price = $properties['month_price'];
         $this->days_before = $properties['days_before'];
-        $this->total_price = $properties['total_price'];
+        $this->flight_price = $properties['flight_price'];
+        $this->flight_price_format = $properties['flight_price_format'];
         return $this;
     }
 

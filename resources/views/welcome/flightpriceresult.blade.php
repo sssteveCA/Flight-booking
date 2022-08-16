@@ -79,8 +79,8 @@
                     </div>
                     <div class="price column-elem">
                         <p class="fl-header bg-warning bg-gradient">Prezzo</p>
-                        <p class="bg-light bg-gradient">{{$flight['total_price']}}€</p>
-                        <input type="hidden" name="flights[{{ $type }}][total_price]" value="{{ $flight['total_price'] }}">
+                        <p class="bg-light bg-gradient">{{$flight['flight_price']}}€</p>
+                        <input type="hidden" name="flights[{{ $type }}][flight_price]" value="{{ $flight['flight_price'] }}">
                     </div>
                 </div> 
             </div>
