@@ -17,7 +17,7 @@ I use Laravel framework 8.80.0 version
                     <ul>
                         <li>View</li>
                         <li>Edit</li>
-                        <li>Delete account*</li>
+                        <li>Delete account</li>
                     </ul>
                 </li>
                 <li><h3>News reading</h3></li>
