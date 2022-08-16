@@ -38,7 +38,7 @@ trait FlightsTempManagerCommonTrait{
      * */
     private function checkFlightsArray(array $data){
         Log::channel('stdout')->info("FlightsTempManager trait checkFlightsArray");
-        $count = count($data);
+        $count = count($data['flights']);
         $classname = __CLASS__;
         if($count > 0 && $count <= 2){
             foreach($data['flights'] as $direction => $flight){
