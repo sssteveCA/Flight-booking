@@ -2,11 +2,18 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DeleteFlightsTemp;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
+
+    protected $commands = [
+        DeleteFlightsTemp::class
+    ];
+
     /**
      * Define the application's command schedule.
      *
@@ -17,6 +24,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('passport:purge')->daily(); //Delete expires or revoked token from DB once to day
+        $schedule->command('delete:flightstemp')->everyTenMinutes();
     }
 
     /**
