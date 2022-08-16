@@ -11,6 +11,7 @@ use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use App\Models\FlightTemp;
 use Illuminate\Support\Facades\Log;
 use App\Traits\FlightTrait;
 use Exception;
@@ -85,10 +86,12 @@ class FlightController extends Controller
                 $flights_info = $this->create_flights($flights);
                 $response_data = $this->setResponseData($flights_info);
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
+                $del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
+                //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
             }//if($valid){
             throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
-        }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
+        }catch(Exception $e){
             //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[

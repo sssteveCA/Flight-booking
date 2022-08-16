@@ -17,6 +17,7 @@ class FlightsTempManager implements Ftme{
     {
         Log::channel('stdout')->info("FlightsTempManager construct");
         //Log::channel('stdout')->info("FlightsTempManager construct data => ".var_export($data,true));
+        $this->session_id = isset($data['session_id'])? $data['session_id'] : null;
         $this->checkFlightsArray($data);
         $this->flights_array = $data;
     }

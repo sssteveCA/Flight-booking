@@ -17,7 +17,7 @@ trait FlightsTempManagerCommonTrait{
     private FlightTemp $flight_temp;
     private array $flights_array;
     private int $flights_array_lenght;
-    private string $session_id;
+    private ?string $session_id;
 
     private static int $random_times = 75;
     private static array $flights_direction = ['oneway','outbound','return'];
