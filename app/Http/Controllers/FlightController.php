@@ -85,6 +85,7 @@ class FlightController extends Controller
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
             }//if($valid){
+                
         }catch(FlightsArrayException|FlightsTempNotAddedException $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[
