@@ -3,7 +3,7 @@
 namespace App\Traits\Common;
 
 use App\Classes\Welcome\FlightsTempManager;
-use App\Exceptions\FlighstArrayException;
+use App\Exceptions\FlightsArrayException;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\ErrorTrait;
@@ -45,16 +45,16 @@ trait FlightsTempManagerCommonTrait{
                 if(in_array($direction,$classname::$flights_direction)){
                     foreach($flight as $key => $value){
                         if(!in_array($key,$classname::$flight_properties)){
-                            throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC);
+                            throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC);
                         }
                     }//foreach($flight as $key => $value){
                 }//if(in_array($direction,FlightTempManager::$flights_direction)){
                 else
-                    throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC,1);
+                    throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC,1);
             }//foreach($data as $direction => $flight){
         }//if($count > 0 && $count <= 2){
         else{
-            throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC,1);
+            throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC,1);
         }
         $this->flights_array_lenght = $count;
     }
@@ -183,7 +183,7 @@ trait FlightsTempManagerCommonTrait{
                     //Roundtrip ticket
                     $equal1 = $this->checkEquality($this->flights_array['flights']['outbound'],$cf_array[0]);
                     if($equal1){
-                         $equal2 = $this->checkEquality($this->flight_array['flights']['return'],$cf_array[1]);
+                         $equal2 = $this->checkEquality($this->flights_array['flights']['return'],$cf_array[1]);
                          if($equal2)
                             $valid = true;
                             else
@@ -193,13 +193,13 @@ trait FlightsTempManagerCommonTrait{
                         $this->errno = Ftme::INVALIDREQUEST;
                 }//else if($cf_length == 2){
                 else
-                    throw new FlighstArrayException(Ftme::FLIGHTARRAY_EXC);
+                    throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC);
             }//if($cf_length > 0){
             else
                 $this->errno = Ftme::NOTFOUND;
         }//if(isset($this->flights_array['session_id'])){
         else
-            throw new FlighstArrayException(Ftme::SESSION_ID_EXC);
+            throw new FlightsArrayException(Ftme::SESSION_ID_EXC);
         
         return $valid;
     }

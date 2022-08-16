@@ -6,7 +6,7 @@ use Exception;
 use Throwable;
 
 //Flight array property is not formatted correctly
-class FlighstArrayException extends Exception{
+class FlightsArrayException extends Exception{
 
     public function __construct(string $message, int $code = 0, Throwable $previous = null)
     {
