@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Welcome\FlightsTempManager;
+use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Exceptions\FlightsArrayException;
 use App\Exceptions\FlightsTempNotAddedException;
+use App\Exceptions\FlightsDataModifiedException;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
@@ -85,8 +87,9 @@ class FlightController extends Controller
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
             }//if($valid){
-                
-        }catch(FlightsArrayException|FlightsTempNotAddedException $e){
+            throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
+        }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
+            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[
                     'done' => false,
