@@ -63,18 +63,19 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
+        Log::channel('stdout')->debug("FlightController store");
         $inputs = $request->all();
         $this->ftm = new FlightsTempManager($inputs);
         $valid = $this->ftm->validateRequest();
-        Log::channel('stdout')->debug("FlightController store request all => ");
-        Log::channel('stdout')->debug(var_export($inputs,true));
+        /* Log::channel('stdout')->debug("FlightController store request all => ");
+        Log::channel('stdout')->debug(var_export($inputs,true)); */
         $flights = $request->flights;
-        $flights_unquoted = $this->flights_unquote($flights);
+        /* $flights_unquoted = $this->flights_unquote($flights);
         Log::channel('stdout')->info("FlightController store flights unquoted => ");
-        Log::channel('stdout')->info(var_export($flights_unquoted,true));
-        $flights_info = $this->create_flights($flights_unquoted);
+        Log::channel('stdout')->info(var_export($flights,true)); */
+        $flights_info = $this->create_flights($flights);
         $response_data = $this->setResponseData($flights_info);
-        Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
+        //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
         return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
     }
 

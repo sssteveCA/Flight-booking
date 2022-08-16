@@ -47,7 +47,7 @@ class FlightPrice implements Fpe{
     
     public function __construct(array $data)
     {
-        //Log::channel('stdout')->debug('FlightPrice constructor');
+        Log::channel('stdout')->debug('FlightPrice constructor');
         if(!$this->validate($data))
             throw new \Exception(Fpe::INVALIDDATA_EXC);
         $this->setValues($data);
@@ -81,6 +81,7 @@ class FlightPrice implements Fpe{
                 $this->total_price = $subtotal - ($subtotal_day_discount * $this->days_before);
                 $this->total_price = round($this->total_price,2);
                 $this->total_price_format = number_format($this->total_price,2,'.','');
+                Log::channel('stdout')->info("FlightPrice calcPrice total_price_format => ".var_export($this->total_price_format,true));
                 $calculated = true;
             }
         }//if($this->setSubprices($data)){

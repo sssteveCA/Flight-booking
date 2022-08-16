@@ -105,10 +105,15 @@ trait FlightsTempManagerCommonTrait{
      * */
     private function checkEquality(array $request, array $retrieved): bool{
         $equal = true;
+        Log::channel('stdout')->debug("FlightsTempMangerComonTrait checkEquality");
         foreach($request as $key => $value){
-            if($request[$key] != $retrieved[$key]){
+            Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
+            Log::channel('stdout')->debug("{$key} => ".var_export($value,true));
+            if($key != 'total_price')
+                Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
+            if($value != $retrieved[$key]){
                 if($key == 'total_price'){
-                    if($request[$key] != $retrieved['flight_price']){
+                    if($value != $retrieved['flight_price']){
                         $equal = false;
                         break;
                     }
@@ -119,6 +124,7 @@ trait FlightsTempManagerCommonTrait{
                 }
             }//if($request[$key] != $retrieved[$key]){
         }//foreach($request as $key => $value){
+        Log::channel('stdout')->debug("flightstempmanager_common_trait checkEquality equal => ".var_export($equal,true));
         return $equal;
     }
 
@@ -166,14 +172,14 @@ trait FlightsTempManagerCommonTrait{
     public function validateRequest(): bool{
         $valid = false;
         $this->errno = 0;
-        Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest this flights array => ".var_export($this->flights_array,true));
+        //Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest this flights array => ".var_export($this->flights_array,true));
         if(isset($this->flights_array['session_id'])){
             $session_id = $this->flights_array['session_id'];
             $check_flights = FlightTemp::where('session_id',$session_id)->get();
             $cf_length = $check_flights->count();
             if($cf_length > 0){
                 $cf_array = $check_flights->toArray();
-                Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest cf_array => ".var_export($cf_array,true));
+                //Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest cf_array => ".var_export($cf_array,true));
                 if($cf_length == 1){
                     //Oneway ticket
                     $equal = $this->checkEquality($this->flights_array['flights']['oneway'],$cf_array[0]);
@@ -184,7 +190,7 @@ trait FlightsTempManagerCommonTrait{
                 }//if($cf_length == 1){
                 else if($cf_length == 2){
                     //Roundtrip ticket
-                    $equal1 = $this->checkEquality($this->flight_array['flights']['outbound'],$cf_array[0]);
+                    $equal1 = $this->checkEquality($this->flights_array['flights']['outbound'],$cf_array[0]);
                     if($equal1){
                          $equal2 = $this->checkEquality($this->flight_array['flights']['return'],$cf_array[1]);
                          if($equal2)

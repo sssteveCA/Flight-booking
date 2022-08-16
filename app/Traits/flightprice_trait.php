@@ -95,7 +95,7 @@ trait FlightPriceTrait{
         $day_band_key = array_rand($tdb);
         $tdh = $data['timetable_hour_bands'];
         $hour_band_key = array_rand($tdh);
-        $this->flight_time = $day_band_key.':'.$tdh[$hour_band_key];
+        $this->flight_time = $day_band_key.':'.$tdh[$hour_band_key].':00';
         $this->day_band_price = $this->distance * ($tdb[$day_band_key]);
     }
 
