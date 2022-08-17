@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Classes\Welcome\FlightsTempManager;
+use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
+use App\Exceptions\FlightsDataModifiedException;
 use App\Http\Controllers\Controller;
 use App\Models\Flight;
 use Illuminate\Http\Request;
@@ -9,11 +12,15 @@ use App\Interfaces\Constants as C;
 use App\Traits\FlightTrait;
 use Illuminate\Support\Facades\Log;
 use App\Interfaces\Paths as P;
+use App\Models\FlightTemp;
+use App\Traits\Common\FlightControllerCommonTrait;
+use Exception;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FlightControllerApi extends Controller
 {
 
-    use FlightTrait;
+    use FlightControllerCommonTrait;
     /**
      * Display a listing of the resource.
      *
@@ -56,16 +63,35 @@ class FlightControllerApi extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        Log::channel('stdout')->debug("FlightControllerApi store request all => ");
-        Log::channel('stdout')->debug(var_export($inputs,true));
-        $flights = $request->flights;
-        //$flights_unquoted = $this->flights_unquote($flights);
-        Log::channel('stdout')->info("FlightControllerApi store flights => ");
-        Log::channel('stdout')->info(var_export($flights,true));
-        $flights_info = $this->create_flights($flights);
-        $response_data = $this->setResponseData($flights_info);
-        Log::channel('stdout')->info("FlightControllerApi store response_data => ".var_export($response_data,true));
-        return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
+        try{
+            $this->ftm = new FlightsTempManager($inputs);
+            $valid = $this->ftm->validateRequest();
+            if($valid){
+            //Input data was not modified from orginal values
+                /* Log::channel('stdout')->debug("FlightController store request all => ");
+                Log::channel('stdout')->debug(var_export($inputs,true)); */
+                $flights = $request->flights;
+                /* $flights_unquoted = $this->flights_unquote($flights);
+                Log::channel('stdout')->info("FlightController store flights unquoted => ");
+                Log::channel('stdout')->info(var_export($flights,true)); */
+                $flights_info = $this->create_flights($flights);
+                $response_data = $this->setResponseData($flights_info);
+                //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
+                $del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
+                //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
+                return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }//if($valid){
+                throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);
+        }catch(Exception $e){
+            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
+            throw new HttpResponseException(
+                response()->json([
+                    'done' => false,
+                    C::KEY_MESSAGE => C::ERR_REQUEST,
+                    C::KEY_STATUS => 'ERROR'
+                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+            );
+        }
     }
 
     /**

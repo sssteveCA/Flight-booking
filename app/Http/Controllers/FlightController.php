@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Models\FlightTemp;
+use App\Traits\Common\FlightControllerCommonTrait;
 use Illuminate\Support\Facades\Log;
 use App\Traits\FlightTrait;
 use Exception;
@@ -20,7 +21,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class FlightController extends Controller
 {
 
-    use FlightTrait;
+    use FlightControllerCommonTrait;
 
     /**
      * Display a listing of the resource.
