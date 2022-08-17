@@ -6,7 +6,6 @@ use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
-use App\Traits\Common\FlightsTempManagerCommonTrait;
 use App\Traits\FlightsTempManagerTrait;
 use Illuminate\Support\Facades\Log;
 
@@ -47,8 +46,8 @@ class FlightsTempManager implements Ftme{
     //Add a new flight temp records
     public function addFlightsTemp(): bool{
         Log::channel('stdout')->info("FlightsTempManager addFlightsTemp");
-        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array => ".var_export($this->flights_array,true));
-        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array length => ".var_export($this->flights_array_lenght,true));
+        /* Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array => ".var_export($this->flights_array,true));
+        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array length => ".var_export($this->flights_array_lenght,true)); */
         $add = false;
         $this->setSessionId();
         if($this->flights_array_lenght == 1){

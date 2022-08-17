@@ -49,7 +49,7 @@ class UserManager{
         $userA = $this->getUser($auth_id);
         if($userA != null){
             Log::debug("userA != null");
-            Log::debug("request => ".var_export($request->all(),true));
+            //Log::debug("request => ".var_export($request->all(),true));
             $password = $request->input('oldpwd');
             if(Hash::check($password,$userA->password)){
                 $newPassword = $request->input('newpwd');

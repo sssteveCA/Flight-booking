@@ -30,18 +30,18 @@ class RegisterControllerApi extends Controller
     {
         Log::channel('stdout')->info("RegisterControllerApi register");
         $inputs = $request->all();
-        Log::channel('stdout')->info("RegisterControllerApi register inputs => ".var_export($inputs,true));
+        //Log::channel('stdout')->info("RegisterControllerApi register inputs => ".var_export($inputs,true));
         try{
             $this->validator($inputs)->validate();
             //Add the new subscriber to DB
-            Log::channel('stdout')->info("RegisterControllerApi register validated");
+            //Log::channel('stdout')->info("RegisterControllerApi register validated");
             event(new Registered($user = $this->create($request->all())));
-            Log::channel('stdout')->info("RegisterControllerApi register event");
+            //Log::channel('stdout')->info("RegisterControllerApi register event");
             //Registered user login with his account
             //$this->guard()->login($user);
-            Log::channel('stdout')->info("RegisterControllerApi register login guard");
+            //Log::channel('stdout')->info("RegisterControllerApi register login guard");
             if($this->registered($request,$user)){
-                Log::channel('stdout')->info("RegisterControllerApi register user registered");
+                //Log::channel('stdout')->info("RegisterControllerApi register user registered");
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
                 return response()->json([
@@ -60,7 +60,7 @@ class RegisterControllerApi extends Controller
             if($e instanceof ValidationException){
                 Log::channel('stdout')->info("RegisterController register ValidationException");
                 $errors = $e->errors();
-                Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
+                //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->json([
                         C::KEY_STATUS => 'ERROR',

@@ -88,7 +88,7 @@ class RegisterController extends Controller
         $response = array();
         $response['registered'] = false;
         Log::info("RegisterController register");
-        Log::info("RegisterController register request ".var_export($request->all(),true));
+        //Log::info("RegisterController register request ".var_export($request->all(),true));
         try{
             $validator = $this->validator($request->all())->validate();
             event(new Registered($user = $this->create($request->all())));
@@ -97,7 +97,7 @@ class RegisterController extends Controller
             $this->guard()->login($user);
 
             if ($this->registered($request, $user)) {
-                Log::info("RegisterController register response ".var_export($response,true));
+                //Log::info("RegisterController register response ".var_export($response,true));
             }
 
             /*$response = $request->wantsJson()
@@ -105,7 +105,7 @@ class RegisterController extends Controller
                         : redirect($this->redirectPath());*/
             $response['registered'] = true;
             $response['message'] = Constants::OK_REGISTRATION;
-            Log::info("RegisterController register wantsJson response ".var_export($response,true));
+            //Log::info("RegisterController register wantsJson response ".var_export($response,true));
         }
         catch(ValidationException $ve){
             $response['errors'] = $ve->validator->errors()->first();

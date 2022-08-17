@@ -33,7 +33,7 @@ class EditUsernameRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        Log::channel('stdout')->error('EditUsernameRequest ValidationException');
+        //Log::channel('stdout')->error('EditUsernameRequest ValidationException');
         $ve = new ValidationException($validator);
         $messages = $ve->errors();
         Log::channel('stdout')->error('EditUsernameRequest ValidationException messages => '.var_export($messages,true));

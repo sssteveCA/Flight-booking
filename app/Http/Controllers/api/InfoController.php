@@ -18,7 +18,7 @@ class InfoController extends Controller
     public function __construct()
     {
         Log::channel('stdout')->info("API InfoController construct");
-        Log::channel('stdout')->info("API InfoController construct Auth => ".var_export(Auth::user(),true));
+        //Log::channel('stdout')->info("API InfoController construct Auth => ".var_export(Auth::user(),true));
         $this->auth_id = Auth::id();
         $this->usermanager = new UserManager();
     }
@@ -32,7 +32,7 @@ class InfoController extends Controller
             return response()->json(['error' => $error],400,array(),JSON_UNESCAPED_UNICODE);
         }//if(isset($request->validator) && $request->validator->fails()){
         $edit = $this->usermanager->editUsername($request,$this->auth_id);
-        Log::channel('stdout')->info("API InfoController editUsername => ".var_export($edit,true));
+        //Log::channel('stdout')->info("API InfoController editUsername => ".var_export($edit,true));
         if($edit['edited']){
             //Username has been edited
             return response()->json(['msg' => $edit['msg']],200,array(),JSON_UNESCAPED_UNICODE);

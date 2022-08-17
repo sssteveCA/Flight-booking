@@ -35,10 +35,10 @@ class CheckAirports implements Rule,DataAwareRule
      */
     public function passes($attribute, $value)
     {
-        Log::channel('stdout')->info('CheckAirports what_field => '.var_export($this->what_field,true));
-        Log::channel('stdout')->info('CheckAirports field value => '.var_export($this->field_value,true));
+        //Log::channel('stdout')->info('CheckAirports what_field => '.var_export($this->what_field,true));
+        //Log::channel('stdout')->info('CheckAirports field value => '.var_export($this->field_value,true));
         $airports_array = $this->getAirportsList($this->field_value);
-        Log::channel('stdout')->info('CheckAirports airports => '.var_export($airports_array,true));
+        //Log::channel('stdout')->info('CheckAirports airports => '.var_export($airports_array,true));
         return array_key_exists($value,$airports_array);
     }
 

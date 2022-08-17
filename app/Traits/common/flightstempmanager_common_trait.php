@@ -163,14 +163,14 @@ trait FlightsTempManagerCommonTrait{
     public function validateRequest(): bool{
         $valid = false;
         $this->errno = 0;
-        //Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest this flights array => ".var_export($this->flights_array,true));
+        //Log::channel('stdout')->debug("FlightsTempManagerTrait validateRequest this flights array => ".var_export($this->flights_array,true));
         if(isset($this->flights_array['session_id'])){
             $session_id = $this->flights_array['session_id'];
             $check_flights = FlightTemp::where('session_id',$session_id)->get();
             $cf_length = $check_flights->count();
             if($cf_length > 0){
                 $cf_array = $check_flights->toArray();
-                //Log::channel('stdout')->debug("FlightsTempManagerCommonTrait validateRequest cf_array => ".var_export($cf_array,true));
+                //Log::channel('stdout')->debug("FlightsTempManagerTrait validateRequest cf_array => ".var_export($cf_array,true));
                 if($cf_length == 1){
                     //Oneway ticket
                     $equal = $this->checkEquality($this->flights_array['flights']['oneway'],$cf_array[0]);

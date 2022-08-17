@@ -47,7 +47,7 @@ class PaypalController extends Controller
             $message = C::ERR_FLIGHTPAYMENT_REFUSE;
             $payment = 'refused';
         }
-        Log::channel('stdout')->debug("PaypalController return post_data => ".var_export($post_data,true));
+        //Log::channel('stdout')->debug("PaypalController return post_data => ".var_export($post_data,true));
         return response()->view(P::VIEW_PAYPAL_RETURN,[
             'payment' => $payment,
             'message' => $message,

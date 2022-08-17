@@ -54,13 +54,13 @@ class RegisterController extends Controller
     {
         Log::channel('stdout')->info("RegisterController register");
         $inputs = $request->all();
-        Log::channel('stdout')->info("RegisterController register inputs => ".var_export($inputs,true));
+        //Log::channel('stdout')->info("RegisterController register inputs => ".var_export($inputs,true));
         try{
             $this->validator($inputs)->validate();
             //Add the new subscriber to DB
-            Log::channel('stdout')->info("RegisterController register validated");
+            //Log::channel('stdout')->info("RegisterController register validated");
             event(new Registered($user = $this->create($request->all())));
-            Log::channel('stdout')->info("RegisterController register event");
+            //Log::channel('stdout')->info("RegisterController register event");
             //Registered user login with his account
             $this->guard()->login($user);
             /* Log::channel('stdout')->info("RegisterController register login guard");
@@ -80,12 +80,11 @@ class RegisterController extends Controller
                     C::KEY_MESSAGE => C::ERR_REGISTRATION
                 ],500)
             ); 
-            Log::channel('stdout')->info("Register Controller register after HttpResponseException");
         }catch(Exception $e){
             if($e instanceof ValidationException){
                 Log::channel('stdout')->info("RegisterController register ValidationException");
                 $errors = $e->errors();
-                Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
+                //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->view(P::VIEW_REGISTER,[
                         C::KEY_STATUS => 'ERROR',

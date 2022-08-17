@@ -31,7 +31,7 @@ class LoginController extends Controller
         $response = array();
         $response['logged'] = false;
         Log::info("LoginController login");
-        Log::info("LoginController login request => ".var_export($request->all(),true));
+        //Log::info("LoginController login request => ".var_export($request->all(),true));
         try{
             $this->validateLogin($request);
             // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -65,7 +65,7 @@ class LoginController extends Controller
             Log::info("LoginController ValidationException");
             $response['errors'] = $ve->validator->errors()->first();
         } 
-        Log::info("LoginController login ".var_export($response,true));
+        //Log::info("LoginController login ".var_export($response,true));
         return $response;
     }
 

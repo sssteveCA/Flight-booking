@@ -20,10 +20,10 @@ trait UserControllerCommonTrait{
         if(isset($this->auth_id)){
             Log::channel('stdout')->info("editUsername");
             $edit = $this->usermanager->editUsername($request,$this->auth_id);
-            Log::debug("UserController CommonTrait editpassword message ".var_export($edit,true));
+            //Log::debug("UserController CommonTrait editpassword message ".var_export($edit,true));
             if($edit['edited']){
                 //Username was updated
-                Log::info("edit => ".var_export($edit,true));
+                //Log::info("edit => ".var_export($edit,true));
                 //return response()->view(P::VIEW_PROFILE_EDIT,$edit,200);
                 return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }

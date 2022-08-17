@@ -118,7 +118,7 @@ class FlightSearchController extends Controller
                     ]
                 ];
             }
-            Log::channel('stdout')->debug("FlightSearchController flights array => ".var_export($flights,true));
+            //Log::channel('stdout')->debug("FlightSearchController flights array => ".var_export($flights,true));
             $ft_flights = ['flights' => $flights];
             $add_temp = $this->setFlightsTemp($ft_flights);
             if(!$add_temp){

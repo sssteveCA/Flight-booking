@@ -41,8 +41,8 @@ class DateDiff1d implements Rule,DataAwareRule
     {
         $passes = true;
         Log::channel('stdout')->debug("DateDiff1d passes");
-        Log::channel('stdout')->debug("Attribute => {$attribute}");
-        Log::channel('stdout')->debug("Value => ".var_export($value,true));
+        //Log::channel('stdout')->debug("Attribute => {$attribute}");
+        //Log::channel('stdout')->debug("Value => ".var_export($value,true));
         if(isset($value) && $value != ''){
             if($attribute == 'oneway-date' || $attribute == 'roundtrip-start-date'){
                 $date_ok = $this->oneDayDifference($value,date('Y-m-d'));
@@ -83,8 +83,8 @@ class DateDiff1d implements Rule,DataAwareRule
      */
     public function setData($data){
         $this->data = $data;
-        Log::channel('stdout')->debug("DateDiff1d setData => ");
-        Log::channel('stdout')->debug(var_export($this->data,true));
+        //Log::channel('stdout')->debug("DateDiff1d setData => ");
+        //Log::channel('stdout')->debug(var_export($this->data,true));
         return $this;
     }
 
@@ -94,7 +94,7 @@ class DateDiff1d implements Rule,DataAwareRule
         $date1_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date1);
         $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
         $diff = $date1_dt->diff($date2_dt);
-        Log::channel('stdout')->info('diff => '.var_export($diff,true));
+        //Log::channel('stdout')->info('diff => '.var_export($diff,true));
         if($diff->invert == 1 && $diff->d >= 1){
             $oneDayGt = true;
         }

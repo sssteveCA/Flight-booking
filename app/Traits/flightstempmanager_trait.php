@@ -104,9 +104,9 @@ trait FlightsTempManagerTrait{
         $equal = true;
         Log::channel('stdout')->debug("FlightsTempMangerComonTrait checkEquality");
         foreach($request as $key => $value){
-            Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
-            Log::channel('stdout')->debug("{$key} => ".var_export($value,true));
-            Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
+            //Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
+            //Log::channel('stdout')->debug("{$key} => ".var_export($value,true));
+            //Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
             if($value != $retrieved[$key]){
                 $equal = false;
                 break;
@@ -201,7 +201,8 @@ trait FlightsTempManagerTrait{
                     else
                         throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC);
                 }//if(isset($this->flights_array['flights'])){
-                $this->errno = Ftme::INVALIDREQUEST;
+                else
+                    $this->errno = Ftme::INVALIDREQUEST;
             }//if($cf_length > 0){
             else
                 $this->errno = Ftme::NOTFOUND;

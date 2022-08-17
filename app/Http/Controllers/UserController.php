@@ -41,8 +41,8 @@ class UserController extends Controller
     //user account hard delete
     public function deleteAccountHard(UserDeleteRequest $request){
         $inputs = $request->validated();
-        Log::channel('stdout')->info("UserController deleteAccountHard input => ");
-        Log::channel('stdout')->info(var_export($inputs,true));
+        /* Log::channel('stdout')->info("UserController deleteAccountHard input => ");
+        Log::channel('stdout')->info(var_export($inputs,true)); */
         $user = $this->usermanager->getUser($this->auth_id);
         if($user != null){
             //Logout before remove user record

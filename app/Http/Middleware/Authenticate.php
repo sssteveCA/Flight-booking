@@ -20,11 +20,11 @@ class Authenticate extends Middleware
     {
         Log::channel('stdout')->info("Authenticate redirectTo");
         $path = $request->path();
-        Log::channel('stdout')->info("Authenticate redirectTo path => ".var_export($path,true));
+        //Log::channel('stdout')->info("Authenticate redirectTo path => ".var_export($path,true));
         $api_request = str_starts_with($path,'api/');
-        Log::channel('stdout')->info("Authenticate redirectTo str starts with => ".var_export($api_request,true));
+        //Log::channel('stdout')->info("Authenticate redirectTo str starts with => ".var_export($api_request,true));
         if($api_request === false){ 
-            Log::channel('stdout')->info("Authenticate redirectTo api_request");
+            //Log::channel('stdout')->info("Authenticate redirectTo api_request");
             //Log::channel('stdout')->info("Authenticate redirectTo host => ".var_export($request,true));
             $route_params = [];
             if($request->isMethod('POST')){
@@ -38,7 +38,7 @@ class Authenticate extends Middleware
                         'session_id' => $request->input('session_id'),
                         'flight_type' => $request->input('flight_type'),
                         'flights' => $route_params];
-                        Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
+                        //Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
                     $request->flash();
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
             }//if($request->isMethod('post')){
