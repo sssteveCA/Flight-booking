@@ -19,7 +19,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
-use App\Traits\FlightSearchTrait;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 
 

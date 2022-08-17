@@ -8,7 +8,6 @@ use App\Interfaces\Airports as A;
 use App\Rules\CheckAirports;
 use App\Rules\IsInArray;
 use App\Rules\ValidCountry;
-use App\Traits\FlightSearchTrait;
 use App\Traits\Common\FlightSearchCommonTrait;
 
 //Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi

@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Traits\FlightSearchTrait;
+use App\Traits\Common\FlightSearchCommonTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Log;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 //Check if airports value is inside specific array
 class CheckAirports implements Rule,DataAwareRule
 {
-    use FlightSearchTrait;
+    use FlightSearchCommonTrait;
 
     private string $what_field; //Country field when check
     private $field_value; //what_field value

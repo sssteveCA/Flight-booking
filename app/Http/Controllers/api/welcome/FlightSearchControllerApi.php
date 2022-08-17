@@ -13,7 +13,6 @@ use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Requests\api\welcome\FlightPriceRequestApi;
 use App\Interfaces\Paths as P;
 use App\Traits\Common\FlightSearchCommonTrait;
-use App\Traits\FlightSearchTrait;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 

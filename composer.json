@@ -42,7 +42,6 @@
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flight_trait.php",
             "app/Traits/flightprice_trait.php",
-            "app/Traits/flightsearch_trait.php",
             "app/Traits/common/flightsearch_common_trait.php",
             "app/Traits/common/flightpricerequest_common_trait.php",
             "app/Traits/common/registercontroller_common_trait.php",
