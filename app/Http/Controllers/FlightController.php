@@ -14,7 +14,6 @@ use App\Interfaces\Paths as P;
 use App\Models\FlightTemp;
 use App\Traits\Common\FlightControllerCommonTrait;
 use Illuminate\Support\Facades\Log;
-use App\Traits\FlightTrait;
 use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
