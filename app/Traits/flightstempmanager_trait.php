@@ -168,29 +168,40 @@ trait FlightsTempManagerTrait{
             if($cf_length > 0){
                 $cf_array = $check_flights->toArray();
                 //Log::channel('stdout')->debug("FlightsTempManagerTrait validateRequest cf_array => ".var_export($cf_array,true));
-                if($cf_length == 1){
-                    //Oneway ticket
-                    $equal = $this->checkEquality($this->flights_array['flights']['oneway'],$cf_array[0]);
-                    if($equal)
-                        $valid = true;
-                    else
-                        $this->errno = Ftme::INVALIDREQUEST;
-                }//if($cf_length == 1){
-                else if($cf_length == 2){
-                    //Roundtrip ticket
-                    $equal1 = $this->checkEquality($this->flights_array['flights']['outbound'],$cf_array[0]);
-                    if($equal1){
-                         $equal2 = $this->checkEquality($this->flights_array['flights']['return'],$cf_array[1]);
-                         if($equal2)
-                            $valid = true;
+                if(isset($this->flights_array['flights'])){
+                    if($cf_length == 1){
+                        //Oneway ticket
+                        if(isset($this->flights_array['flights']['oneway'])){
+                            $equal = $this->checkEquality($this->flights_array['flights']['oneway'],$cf_array[0]);
+                            if($equal)
+                                $valid = true;
                             else
+                                $this->errno = Ftme::INVALIDREQUEST;
+                        }//if(isset($this->flights_array['flights']['oneway'])){
+                        else
                             $this->errno = Ftme::INVALIDREQUEST;
-                    }//if($equal1){
+                    }//if($cf_length == 1){
+                    else if($cf_length == 2){
+                        //Roundtrip ticket
+                        if(isset($this->flights_array['flights']['outbound'],$this->flights_array['flights']['return'])){
+                            $equal1 = $this->checkEquality($this->flights_array['flights']['outbound'],$cf_array[0]);
+                            if($equal1){
+                                $equal2 = $this->checkEquality($this->flights_array['flights']['return'],$cf_array[1]);
+                                if($equal2)
+                                    $valid = true;
+                                    else
+                                    $this->errno = Ftme::INVALIDREQUEST;
+                            }//if($equal1){
+                            else
+                                $this->errno = Ftme::INVALIDREQUEST;
+                        }//if(isset($this->flights_array['flights']['outbound'],$this->flights_array['flights']['return'])){
+                        else
+                            $this->errno = Ftme::INVALIDREQUEST;
+                    }//else if($cf_length == 2){
                     else
-                        $this->errno = Ftme::INVALIDREQUEST;
-                }//else if($cf_length == 2){
-                else
-                    throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC);
+                        throw new FlightsArrayException(Ftme::FLIGHTARRAY_EXC);
+                }//if(isset($this->flights_array['flights'])){
+                $this->errno = Ftme::INVALIDREQUEST;
             }//if($cf_length > 0){
             else
                 $this->errno = Ftme::NOTFOUND;

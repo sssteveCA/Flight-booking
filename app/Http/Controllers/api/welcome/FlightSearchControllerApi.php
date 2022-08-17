@@ -102,7 +102,7 @@ class FlightSearchControllerApi extends Controller
                 C::KEY_STATUS => 'OK',
                 'session_id' => $this->ftm->getSessionId(),
                 'flight-type' => $flight_type,
-                'inputs' => $inputs,
+                //'inputs' => $inputs,
                 'flights' => $flights
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
