@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
-use App\Traits\FlightTrait;
 use Illuminate\Support\Facades\Log;
 use App\Interfaces\Paths as P;
 use App\Models\FlightTemp;

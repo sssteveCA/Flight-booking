@@ -7,10 +7,11 @@ use App\Traits\MmCommonTrait;
 use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 use App\Models\FlightTemp;
 use App\Traits\Common\FlightsTempManagerCommonTrait;
+use App\Traits\FlightsTempManagerTrait;
 use Illuminate\Support\Facades\Log;
 
 class FlightsTempManager implements Ftme{
-    use MmCommonTrait, FlightsTempManagerCommonTrait;
+    use MmCommonTrait, FlightsTempManagerTrait;
 
 
     public function __construct(array $data)
