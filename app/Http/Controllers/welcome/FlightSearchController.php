@@ -25,7 +25,7 @@ use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 
 class FlightSearchController extends Controller
 {
-    use FlightSearchTrait;
+    use FlightSearchTrait, FlightSearchCommonTrait;
  
     //Get airports list from specific country
     public function getCountryAirports(Request $request){
@@ -167,16 +167,6 @@ class FlightSearchController extends Controller
                 'flights' => $response['flights']
             ]   
         ],200);
-    }
-
-    //set flight temp table records
-    private function setFlightsTemp(array $flights_data): bool{
-        $set = false;
-        $this->ftm = new FlightsTempManager($flights_data);
-        $added = $this->ftm->addFlightsTemp();
-        if($added)
-            $set = true;
-        return $set;
     }
 
 }
