@@ -25,7 +25,7 @@ use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 
 class FlightSearchController extends Controller
 {
-    use FlightSearchTrait, FlightSearchCommonTrait;
+    use FlightSearchCommonTrait;
  
     //Get airports list from specific country
     public function getCountryAirports(Request $request){

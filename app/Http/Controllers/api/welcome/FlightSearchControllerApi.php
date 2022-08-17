@@ -4,17 +4,22 @@ namespace App\Http\Controllers\api\welcome;
 
 use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightPrice;
+use App\Exceptions\FlightsArrayException;
+use App\Exceptions\FlightsDataModifiedException;
+use App\Exceptions\FlightsTempNotAddedException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Requests\api\welcome\FlightPriceRequestApi;
 use App\Interfaces\Paths as P;
+use App\Traits\Common\FlightSearchCommonTrait;
 use App\Traits\FlightSearchTrait;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Log;
 
 class FlightSearchControllerApi extends Controller
 {
-    use FlightSearchTrait;
+    use FlightSearchCommonTrait;
     
     public function getFlightPrice(FlightPriceRequestApi $request){
         $flights = [];
@@ -87,16 +92,38 @@ class FlightSearchControllerApi extends Controller
                     ]
                 ];
             }
+            $ft_flights = ['flights' => $flights];
+            $add_temp = $this->setFlightsTemp($ft_flights);
+            if(!$add_temp){
+                $errno = $this->ftm->getErrno();
+                $error = $this->ftm->getError();
+                throw new FlightsTempNotAddedException($error,$errno);
+            }
             return response()->json([
+                C::KEY_STATUS => 'OK',
+                'session_id' => $this->ftm->getSessionId(),
                 'flight-type' => $flight_type,
+                'inputs' => $inputs,
                 'flights' => $flights
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }catch(\Exception $e){
+        }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
             $error = $e->getMessage();
-            //Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
             throw new HttpResponseException(
-                response()->json(['error' => $error],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+                response()->json([
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => $error
+                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+            );
+        }catch(\Exception $e){
+            $error = $e->getMessage();
+            Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            throw new HttpResponseException(
+                response()->json([
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => $error
+                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
             );
         }
