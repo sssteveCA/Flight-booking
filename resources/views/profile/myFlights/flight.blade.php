@@ -50,19 +50,19 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">ADULTI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['adults'] }}€</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['adults'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">ADOLESCENTI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['teenagers'] }}€</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['teenagers'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">BAMBINI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['children'] }}€</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['children'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">NEONATI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['newborns'] }}€</div>
+                <div class="col-12 col-md-5 total-price">{{ $flight['newborns'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">VOLO PAGATO</div>

@@ -23,7 +23,7 @@ class CreateFlightsTable extends Migration
             $table->string('arrival_airport');
             $table->date('booking_date');
             $table->date('flight_date');
-            $table->decimal('price');
+            $table->decimal('flight_price');
             //$table->timestamps();
 
             $table->index('user_id');

@@ -92,7 +92,7 @@ class FlightController extends Controller
             }//if($valid){
             throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
         }catch(Exception $e){
-            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
+            Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[
                     'done' => false,
