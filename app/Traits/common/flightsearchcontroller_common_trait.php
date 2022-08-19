@@ -4,11 +4,19 @@ namespace App\Traits\Common;
 
 use App\Classes\Welcome\FlightsTempManager;
 use App\Interfaces\Airports as A;
+use Illuminate\Http\Request;
 
 //This trait is used to store common code in FlighSearchController & FlighSearchControllerApi
 trait FlightSearchCommonTrait{
 
     private FlightsTempManager $ftm;
+
+    //Get airports list from specific country
+    public function getCountryAirports(Request $request){
+        $country = $request->input('country');
+        $list = $this->getAirportsList($country);
+        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    }
 
     protected function getAirportsList(string $country): array{
         $list = [];
@@ -20,11 +28,23 @@ trait FlightSearchCommonTrait{
         return $list;
     }
 
+    //Get countries list from array
+    public function getCountires(){
+        $list = $this->getCountriesList();
+        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    }
+
     protected function getCountriesList(): array{
         $list = [];
         $airports = A::AIRPORTS_LIST;
         $list = array_keys($airports);
         return $list;
+    }
+
+    //Get flight companies list
+    public function getFlightCompanies(){
+        $list = $this->getFlightCompaniesList();
+        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     protected function getFlightCompaniesList(): array{

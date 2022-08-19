@@ -25,26 +25,6 @@ use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
 class FlightSearchController extends Controller
 {
     use FlightSearchCommonTrait;
- 
-    //Get airports list from specific country
-    public function getCountryAirports(Request $request){
-        $country = $request->input('country');
-        $list = $this->getAirportsList($country);
-        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-    }
-
-    //Get flight companies list
-    public function getFlightCompanies(){
-        $list = $this->getFlightCompaniesList();
-        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-    }
-
-
-    //Get countries list from array
-    public function getCountires(){
-        $list = $this->getCountriesList();
-        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-    }
 
     //Get the flight based on input data
     public function getFlightPrice(FlightPriceRequest $request){
