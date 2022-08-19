@@ -1,3 +1,5 @@
+import { Config } from "../../../config";
+
 export namespace Constants{
 
     export const FOLDER_IMG = '/img';
@@ -21,7 +23,7 @@ export namespace Constants{
     export const MSG_CONFIRMLOGOUT = 'Sei sicuro di voler chiudere la sessione?';
 
     //Urls
-    export const URL_HOME = HOSTNAME+':'+PORT;
+    export const URL_HOME = Config.HOME_URL;
     export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
     export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';
     export const URL_DELETEACCOUNT = URL_HOME+'/profile/deleteAccount';

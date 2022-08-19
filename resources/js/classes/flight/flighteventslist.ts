@@ -2,6 +2,8 @@ import FlightEvent from "./flightevent";
 import {Constants} from "../../values/constants";
 import HtmlCardInterface from "../../interfaces/htmlcard.interface";
 import FlightEventInterface from "../../interfaces/flight/flightevent.interface";
+import {Config} from "../../../../config";
+
 
 export default class FlightEventsList{
     _flight_events: Array<FlightEvent> = new Array();
@@ -15,7 +17,7 @@ export default class FlightEventsList{
     //Messages
     private static ERR_SCRIPT_EXCEPTION_MSG:string = 'Errore durante l\' esecuzione dello script';
 
-    private static SCRIPT_URL: string = Constants.HOSTNAME+':'+Constants.PORT+'/flightevents';
+    private static SCRIPT_URL: string = Config.HOME_URL+'/flightevents';
 
 
     constructor(){
