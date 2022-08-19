@@ -32,7 +32,7 @@ $(()=>{
 function setInputDate(elements: any): void{
     elements['flight_tab']['elem']['flight-type-radio'].on('change',() => {
         let value = elements['flight_tab']['elem']['flight-type-radio'].filter(':checked').val();
-        console.log(value);
+        //console.log(value);
         if(value == 'oneway'){
             elements['flight_tab']['elem']['fb-roundtrip-div'].css('display','none');
             elements['flight_tab']['elem']['fb-oneway-div'].css('display','flex');

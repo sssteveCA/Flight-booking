@@ -81,9 +81,9 @@ export default class Email{
             if(!this.validateInput())
                 throw this.error; //One input value has wrong format
             await this.sendEmailPromise().then(res => {
-                console.log(res);
+                //console.log(res);
                 let json = JSON.parse(res);
-                console.log(json);
+                //console.log(json);
                 message = json[Constants.KEY_MESSAGE];
             }).catch(err =>{
                 this._errno = Email.ERR_SCRIPT_EXCEPTION;
@@ -121,7 +121,7 @@ export default class Email{
     }
 
     private validateInput(): boolean{
-        console.log("Email Validate input");
+        //console.log("Email Validate input");
         let valid = true;
         this._errno = 0;
         let inputs = {

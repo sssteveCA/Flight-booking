@@ -28,7 +28,7 @@ $(function(){
                 id: $(id).val() as number,
                 token: $(token).val() as string
             };
-            console.log(dataFd);
+            //console.log(dataFd);
             let flightDelete = new FlightDelete(dataFd);
             flightDelete.deleteFlight().then(obj => {
                 /* console.log("obj");
