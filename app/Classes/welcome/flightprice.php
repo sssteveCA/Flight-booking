@@ -140,32 +140,5 @@ class FlightPrice implements Fpe{
         ];
     }
 
-
-    public function __set_state($properties)
-    {
-        $this->departure_country = $properties['departure_country'];
-        $this->arrival_country = $properties['arrival_country'];
-        $this->departure_airport = $properties['departure_airport'];
-        $this->departure_airport_lat = $properties['departure_airport_lat'];
-        $this->departure_airport_lon = $properties['departure_airport_lon'];
-        $this->arrival_airport = $properties['arrival_airport'];
-        $this->arrival_airport_lat = $properties['arrival_airport_lat'];
-        $this->arrival_airport_lon = $properties['arrival_airport_lon'];
-        $this->flight_date = $properties['flight_date'];
-        $this->adults = $properties['adults'];
-        $this->teenagers = $properties['teenagers'];
-        $this->children = $properties['children'];
-        $this->newborns = $properties['newborns'];
-        $this->distance = $properties['distance'];
-        $this->passengers_price = $properties['passengers_price'];
-        $this->day_band_price = $properties['day_band_price'];
-        $this->day_price = $properties['day_price'];
-        $this->month_price = $properties['month_price'];
-        $this->days_before = $properties['days_before'];
-        $this->flight_price = $properties['flight_price'];
-        $this->flight_price_format = $properties['flight_price_format'];
-        return $this;
-    }
-
 }
 ?>
