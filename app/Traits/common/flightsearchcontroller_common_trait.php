@@ -2,8 +2,11 @@
 
 namespace App\Traits\Common;
 
+use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightsTempManager;
 use App\Interfaces\Airports as A;
+use Exception;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
 //This trait is used to store common code in FlighSearchController & FlighSearchControllerApi
@@ -13,9 +16,22 @@ trait FlightSearchCommonTrait{
 
     //Get airports list from specific country
     public function getCountryAirports(Request $request){
-        $country = $request->input('country');
-        $list = $this->getAirportsList($country);
-        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            $country = $request->input('country');
+            if($country != null){
+                $list = $this->getAirportsList($country);
+                return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }
+            throw new Exception(C::ERR_REQUEST);
+        }catch(Exception $e){
+            throw new HttpResponseException(
+                response()->json([
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => C::ERR_REQUEST
+                ],400,[],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)
+            );
+        }
+        
     }
 
     protected function getAirportsList(string $country): array{
@@ -29,7 +45,7 @@ trait FlightSearchCommonTrait{
     }
 
     //Get countries list from array
-    public function getCountires(){
+    public function getCountries(){
         $list = $this->getCountriesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }

@@ -75,7 +75,7 @@ Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirports']);
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
-Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountires']);
+Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountries']);
 
 Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
