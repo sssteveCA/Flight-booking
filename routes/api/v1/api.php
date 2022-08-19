@@ -31,6 +31,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::name('api.')->group(function(){
     Route::post('/login',[LoginControllerApi::class, 'login'])->name('login');
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
+    Route::get(P::URL_AIRPORTSEARCH,[FlightSearchControllerApi::class,'getCountryAirports']);
+    Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
+    Route::get(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getCountries']);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)->only([
