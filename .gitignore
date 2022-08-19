@@ -5,6 +5,7 @@
 /public/scripts
 /public/hot
 /public/storage
+/public/log.txt
 /storage/*.key
 /vendor
 .env
