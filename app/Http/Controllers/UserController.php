@@ -21,7 +21,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->auth_id = Auth::id();
-        Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
+        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 

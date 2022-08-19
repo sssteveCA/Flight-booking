@@ -31,7 +31,7 @@ class UserManager{
             $username = $request->input('username');
             $userA->name = $username;
             $save = $userA->save();
-            Log::channel('stdout')->info("editUsername save => ".$save);
+            //Log::channel('stdout')->info("editUsername save => ".$save);
             $message['edited'] = true;
             $message[C::KEY_MESSAGE] = C::OK_USERNAMEUPDATED;
             //If an authenticad user was found
@@ -42,13 +42,13 @@ class UserManager{
     }
 
     public function editPassword(EditPasswordRequest $request,$auth_id){
-        Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
+        //Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
         $message = array();
         $message['edited'] = false;
         $message['title'] = C::TITLE_EDITPASSWORD;
         $userA = $this->getUser($auth_id);
         if($userA != null){
-            Log::debug("userA != null");
+            //Log::debug("userA != null");
             //Log::debug("request => ".var_export($request->all(),true));
             $password = $request->input('oldpwd');
             if(Hash::check($password,$userA->password)){
@@ -60,12 +60,12 @@ class UserManager{
                 //Actual password is correct
             }//if(Hash::check($password,$userA->password)){
             else{
-                Log::debug("hash password error");
+                //Log::debug("hash password error");
                 $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
             }     
         }//if($userA != null){
         else{
-            Log::debug("userA = null");
+            //Log::debug("userA = null");
             $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
         }
         return $message;

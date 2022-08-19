@@ -17,7 +17,7 @@ class InfoController extends Controller
 
     public function __construct()
     {
-        Log::channel('stdout')->info("API InfoController construct");
+        //Log::channel('stdout')->info("API InfoController construct");
         //Log::channel('stdout')->info("API InfoController construct Auth => ".var_export(Auth::user(),true));
         $this->auth_id = Auth::id();
         $this->usermanager = new UserManager();
@@ -25,7 +25,7 @@ class InfoController extends Controller
 
     //edit username
     public function editUsername(EditUsernameRequest $request){
-        Log::channel('stdout')->info("API InfoController editUsername");
+        //Log::channel('stdout')->info("API InfoController editUsername");
         if(isset($request->validator) && $request->validator->fails()){
             //Input username validation fail
             $error = $request->validator->errors()->first();
@@ -44,7 +44,7 @@ class InfoController extends Controller
 
     //edit password
     public function editPassword(EditPasswordRequest $request){
-        Log::channel('stdout')->info("API InfoController editPassword");
+        //Log::channel('stdout')->info("API InfoController editPassword");
         if(isset($request->validator) && $request->validator->fails()){
             //Input password validation fail
             $error = $request->validator->errors()->first();

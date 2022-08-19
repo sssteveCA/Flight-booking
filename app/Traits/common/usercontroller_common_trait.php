@@ -18,7 +18,7 @@ trait UserControllerCommonTrait{
     //edit username
     public function editUsername(EditUsernameRequest $request){
         if(isset($this->auth_id)){
-            Log::channel('stdout')->info("editUsername");
+            //Log::channel('stdout')->info("editUsername");
             $edit = $this->usermanager->editUsername($request,$this->auth_id);
             //Log::debug("UserController CommonTrait editpassword message ".var_export($edit,true));
             if($edit['edited']){
@@ -43,7 +43,7 @@ trait UserControllerCommonTrait{
     //edit password
     public function editPassword(EditPasswordRequest $request){
         if(isset($this->auth_id)){
-            Log::channel('stdout')->info("UserController CommonTrait editPassword request "); 
+            //Log::channel('stdout')->info("UserController CommonTrait editPassword request "); 
             $edit = $this->usermanager->editPassword($request,$this->auth_id);
             if($edit['edited']){
                 //Password was edited

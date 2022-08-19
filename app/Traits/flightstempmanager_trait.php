@@ -112,7 +112,7 @@ trait FlightsTempManagerTrait{
                 break;
             }//if($request[$key] != $retrieved[$key]){
         }//foreach($request as $key => $value){
-        Log::channel('stdout')->debug("flightstempmanager_common_trait checkEquality equal => ".var_export($equal,true));
+        //Log::channel('stdout')->debug("flightstempmanager_common_trait checkEquality equal => ".var_export($equal,true));
         return $equal;
     }
 
@@ -122,7 +122,7 @@ trait FlightsTempManagerTrait{
      * @return void
      * */
     private function checkFlightSearchRequests(string $session_id): bool{
-        Log::channel('stdout')->info("FlightsTempManager trait checkFlightSearchRequests");
+        //channel('stdout')->info("FlightsTempManager trait checkFlightSearchRequests");
         $exists = false;
         $flights = FlightTemp::where('session_id',$session_id)->get();
         //Get the number of items in the collection
@@ -135,7 +135,7 @@ trait FlightsTempManagerTrait{
 
     //Generate a random session id to identity the user that does the request
     private function setSessionId(){
-        Log::channel('stdout')->info("FlightsTempManager trait setSessionId");
+        //Log::channel('stdout')->info("FlightsTempManager trait setSessionId");
         $session_id = "";
         $classname = __CLASS__;
         $characters = 'aAbBcCdDeEfFGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';

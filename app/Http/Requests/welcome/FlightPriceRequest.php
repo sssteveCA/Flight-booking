@@ -25,9 +25,9 @@ class FlightPriceRequest extends FormRequest
 
     protected function failedValidation(ValidationValidator $validator)
     {
-        Log::channel('stdout')->error('ValidationException');
+        //Log::channel('stdout')->error('ValidationException');
         $errors = (new ValidationException($validator))->errors();
-        Log::channel('stdout')->error(var_export($errors,true));
+        //Log::channel('stdout')->error(var_export($errors,true));
         throw new HttpResponseException(
             response()->view(P::VIEW_FLIGHTPRICERESULT,['errors' => $errors],400)
             /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */

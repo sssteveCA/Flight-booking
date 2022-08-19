@@ -15,13 +15,13 @@ class LoginControllerApi extends Controller
 
     //return current logged user
     public function getCurrentUser(){
-        Log::channel('stdout')->info("ApiLoginController getCurrentUser");
+        //Log::channel('stdout')->info("ApiLoginController getCurrentUser");
         return response()->json(['user' => Auth::user()]);
     }
         
     //
     public function login(Request $request){
-        Log::channel('stdout')->info("ApiLoginController login");
+        //Log::channel('stdout')->info("ApiLoginController login");
         $login = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'

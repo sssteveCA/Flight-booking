@@ -27,7 +27,7 @@ class FlightControllerApi extends Controller
      */
     public function index()
     {
-        Log::channel('stdout')->info("FlightControllerApi index");
+        //Log::channel('stdout')->info("FlightControllerApi index");
         $user_id = auth()->id();
         //$flights_number = Flight::where('user_id',$user_id)->count();
         $flights_collection = Flight::where('user_id',$user_id)->get();
@@ -77,12 +77,12 @@ class FlightControllerApi extends Controller
                 $response_data = $this->setResponseData($flights_info);
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
                 $del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
-                Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
+                //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
                 return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }//if($valid){
                 throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);
         }catch(Exception $e){
-            Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
+            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->json([
                     'done' => false,

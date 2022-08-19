@@ -28,7 +28,7 @@ class RegisterControllerApi extends Controller
      */
     public function register(Request $request)
     {
-        Log::channel('stdout')->info("RegisterControllerApi register");
+        //Log::channel('stdout')->info("RegisterControllerApi register");
         $inputs = $request->all();
         //Log::channel('stdout')->info("RegisterControllerApi register inputs => ".var_export($inputs,true));
         try{
@@ -58,7 +58,7 @@ class RegisterControllerApi extends Controller
             
         }catch(\Exception $e){
             if($e instanceof ValidationException){
-                Log::channel('stdout')->info("RegisterController register ValidationException");
+                //Log::channel('stdout')->info("RegisterController register ValidationException");
                 $errors = $e->errors();
                 //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(

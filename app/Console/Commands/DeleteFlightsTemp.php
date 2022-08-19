@@ -39,7 +39,7 @@ class DeleteFlightsTemp extends Command
      */
     public function handle()
     {
-        Log::info("DeleteFlightTemp command");
+        //Log::info("DeleteFlightTemp command");
         DB::table('flightstemp')->truncate();
         return 0;
     }

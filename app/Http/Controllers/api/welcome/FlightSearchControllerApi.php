@@ -107,7 +107,7 @@ class FlightSearchControllerApi extends Controller
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
             $error = $e->getMessage();
-            Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
+            //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
             throw new HttpResponseException(
                 response()->json([
@@ -117,7 +117,7 @@ class FlightSearchControllerApi extends Controller
             );
         }catch(\Exception $e){
             $error = $e->getMessage();
-            Log::channel('stdout')->error("Flight search controller exception => ".$error);
+            //Log::channel('stdout')->error("Flight search controller exception => ".$error);
             throw new HttpResponseException(
                 response()->json([
                     C::KEY_STATUS => 'ERROR',

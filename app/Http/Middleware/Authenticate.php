@@ -18,7 +18,7 @@ class Authenticate extends Middleware
      */
      protected function redirectTo($request)
     {
-        Log::channel('stdout')->info("Authenticate redirectTo");
+        //Log::channel('stdout')->info("Authenticate redirectTo");
         $path = $request->path();
         //Log::channel('stdout')->info("Authenticate redirectTo path => ".var_export($path,true));
         $api_request = str_starts_with($path,'api/');

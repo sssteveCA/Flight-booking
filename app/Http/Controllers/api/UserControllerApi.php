@@ -23,13 +23,13 @@ class UserControllerApi extends Controller
         if(isset($user_id))
             $this->auth_id = $user_id;
         else $this->auth_id = null;
-        Log::channel('stdout')->info("UserControllerApi  auth_id => ".var_export($this->auth_id,true));
+        //Log::channel('stdout')->info("UserControllerApi  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
     //get user info
     public function getData(){
-        Log::channel('stdout')->debug('UserControllerApi getData');
+        //Log::channel('stdout')->debug('UserControllerApi getData');
         if(isset($this->auth_id)){
             $userAuth = $this->usermanager->getUser($this->auth_id);
             //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));

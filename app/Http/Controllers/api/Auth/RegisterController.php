@@ -87,12 +87,12 @@ class RegisterController extends Controller
     {
         $response = array();
         $response['registered'] = false;
-        Log::info("RegisterController register");
+        //Log::info("RegisterController register");
         //Log::info("RegisterController register request ".var_export($request->all(),true));
         try{
             $validator = $this->validator($request->all())->validate();
             event(new Registered($user = $this->create($request->all())));
-            Log::info("RegisterController register new Registered");
+            //Log::info("RegisterController register new Registered");
 
             $this->guard()->login($user);
 
@@ -109,7 +109,7 @@ class RegisterController extends Controller
         }
         catch(ValidationException $ve){
             $response['errors'] = $ve->validator->errors()->first();
-            Log::error("Validation Exception ".var_export($response['errors'],true));
+            //Log::error("Validation Exception ".var_export($response['errors'],true));
         }
         return $response;
     }

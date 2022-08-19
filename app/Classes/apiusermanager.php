@@ -29,7 +29,7 @@ class ApiUserManager{
     }
 
     public function editUsername(ApiEditUsernameRequest $request){
-        Log::channel('stdout')->info("ApiUserManager editUsername ");
+        //Log::channel('stdout')->info("ApiUserManager editUsername ");
         $message = array();
         $message['edited'] = false;
         $userA = $this->getUser();
@@ -39,7 +39,7 @@ class ApiUserManager{
             $userA->name = $username;
             //update 'name' field of logged user
             $save = $userA->save();
-            Log::channel('stdout')->info("editUsername save");
+            //Log::channel('stdout')->info("editUsername save");
             $message['edited'] = true;
             $message['msg'] = Constants::OK_USERNAMEUPDATED;
         }//if($userA != null){
@@ -49,7 +49,7 @@ class ApiUserManager{
     }
 
     public function editPassword(ApiEditPasswordRequest $request){
-        Log::channel('stdout')->debug('ApiUserManager editPassword');
+        //Log::channel('stdout')->debug('ApiUserManager editPassword');
         $message = array();
         $message['edited'] = false;
         $userA = $this->getUser();

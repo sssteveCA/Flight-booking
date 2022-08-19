@@ -30,7 +30,7 @@ class LoginController extends Controller
     {
         $response = array();
         $response['logged'] = false;
-        Log::info("LoginController login");
+        //Log::info("LoginController login");
         //Log::info("LoginController login request => ".var_export($request->all(),true));
         try{
             $this->validateLogin($request);
@@ -45,9 +45,9 @@ class LoginController extends Controller
                 return $this->sendLockoutResponse($request);
             }
             if ($this->attemptLogin($request)) {
-                Log::info("LoginController attemptLogin");
+                //Log::info("LoginController attemptLogin");
                 if ($request->hasSession()) {
-                    Log::info("LoginController session");
+                    //Log::info("LoginController session");
                     $request->session()->put('auth.password_confirmed_at', time());
                 }
                 $response = $this->sendLoginResponse($request);
@@ -57,12 +57,12 @@ class LoginController extends Controller
                 // to login and redirect the user back to the login form. Of course, when this
                 // user surpasses their maximum number of attempts they will get locked out.
                 $this->incrementLoginAttempts($request);
-                Log::info("LoginController increment");
+                //Log::info("LoginController increment");
                 $response = $this->sendFailedLoginResponse($request);
             }
         }
         catch(ValidationException $ve){
-            Log::info("LoginController ValidationException");
+            //Log::info("LoginController ValidationException");
             $response['errors'] = $ve->validator->errors()->first();
         } 
         //Log::info("LoginController login ".var_export($response,true));
@@ -72,7 +72,7 @@ class LoginController extends Controller
     //Overriding method
     protected function sendFailedLoginResponse(Request $request)
     {
-        Log::debug("LoginController sendFailedLoginResponse");
+        //Log::debug("LoginController sendFailedLoginResponse");
         $response = array();
         $response['logged'] = false;
         if(!User::where('email',$request->email)->first()){
@@ -101,13 +101,13 @@ class LoginController extends Controller
         //DB::enableQueryLog();
         $response = array();
         $response['logged'] = false;
-        Log::debug("LoginController sendLoginResponse");
+        //Log::debug("LoginController sendLoginResponse");
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
-            Log::debug("LoginController sendLoginResponse authenticated");
+            //Log::debug("LoginController sendLoginResponse authenticated");
             return $response;
         }
         //email input value
@@ -150,7 +150,7 @@ class LoginController extends Controller
      */
     protected function validateLogin(Request $request)
     {
-        Log::debug("LoginController validatedLogin");
+        //Log::debug("LoginController validatedLogin");
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',

@@ -19,9 +19,9 @@ class FlightPriceRequestApi extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        Log::channel('stdout')->error('FlightPriceRequestApi failed validation');
+        //Log::channel('stdout')->error('FlightPriceRequestApi failed validation');
         $errors = (new ValidationException($validator))->errors();
-        Log::channel('stdout')->error(var_export($errors,true));
+        //Log::channel('stdout')->error(var_export($errors,true));
         throw new HttpResponseException(
             response()->json($errors,400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );

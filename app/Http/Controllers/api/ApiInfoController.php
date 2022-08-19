@@ -39,7 +39,7 @@ class ApiInfoController extends Controller
 
     //edit password logged user from API route
     public function editPassword(ApiEditPasswordRequest $request){
-        Log::channel('stdout')->info("ApiInfoController editPassword");
+        //Log::channel('stdout')->info("ApiInfoController editPassword");
         if(isset($request->validator) && $request->validator->fails()){
             //Input password validation fail
             $this->response = array('error' => $request->validator->errors()->first());

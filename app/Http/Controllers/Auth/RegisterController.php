@@ -52,7 +52,7 @@ class RegisterController extends Controller
      */
      public function register(Request $request)
     {
-        Log::channel('stdout')->info("RegisterController register");
+        //Log::channel('stdout')->info("RegisterController register");
         $inputs = $request->all();
         //Log::channel('stdout')->info("RegisterController register inputs => ".var_export($inputs,true));
         try{
@@ -66,7 +66,7 @@ class RegisterController extends Controller
             /* Log::channel('stdout')->info("RegisterController register login guard");
             Log::channel('stdout')->info(var_export($this->registered($request,$user),true)); */
             if($this->registered($request,$user)){
-                Log::channel('stdout')->info("RegisterController register user registered");
+                //Log::channel('stdout')->info("RegisterController register user registered");
                 //Registration successfully completed
                 //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
                 return response()->view(P::VIEW_SUBSCRIBED,[

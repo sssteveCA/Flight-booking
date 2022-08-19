@@ -70,7 +70,7 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        Log::channel('stdout')->debug("FlightController store");
+        //Log::channel('stdout')->debug("FlightController store");
         $inputs = $request->all();
         try{
             $this->ftm = new FlightsTempManager($inputs);
@@ -172,7 +172,7 @@ class FlightController extends Controller
             if($flight->user_id == $user_id){
                 //The resource is owned by the logged user
                 $response_data['deleted'] = $flight->delete();
-                Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
+                //Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
                 $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTDELETE;
                 $code = 200; //OK
             }//if($flight->user_id == $user_id){
