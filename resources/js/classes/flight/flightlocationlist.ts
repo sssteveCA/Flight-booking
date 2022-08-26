@@ -16,6 +16,11 @@ export default class FlightLocationList{
     private _errno: number = 0;
     private _error: string|null = null;
 
+    //Urls that this script calls
+    private static AIRPORTS_URL: string = '/airportsearch';
+    private static COUNTRIES_URL: string = '/flightsearch';
+    private static COMPANIES_URL: string = '/companieslist';
+
     public static ERR_FETCH_COUNTRIES:number = 1;
     public static ERR_FETCH_AIRPORTS:number = 2;
     public static ERR_FETCH_COMPANIES:number = 3;
@@ -74,7 +79,8 @@ export default class FlightLocationList{
     }
 
     private async get_country_airports_promise(): Promise<any>{
-        let fetch_url = Constants.URL_AIRPORTSSEARCH+'/?country='+this._country;
+        //let fetch_url = Constants.URL_AIRPORTSSEARCH+'/?country='+this._country;
+        let fetch_url = FlightLocationList.AIRPORTS_URL+'?country='+this._country;
         let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
                 resolve(res.json());
@@ -101,7 +107,7 @@ export default class FlightLocationList{
     }
 
     private async get_flight_companies_promise(): Promise<any>{
-        let fetch_url = Constants.URL_COMPANIESSEARCH;
+        let fetch_url = FlightLocationList.COMPANIES_URL;
         let promise = await new Promise((resolve,reject) =>{
             fetch(fetch_url).then(res =>{
                 resolve(res.json());
@@ -132,7 +138,7 @@ export default class FlightLocationList{
     }
 
     private async get_countries_promise(): Promise<any>{
-        let fetch_url = Constants.URL_FLIGHTSEARCH;
+        let fetch_url = FlightLocationList.COUNTRIES_URL;
         let promise = await new Promise<any>((resolve,reject)=>{
             fetch(fetch_url).then(res => {
                 resolve(res.json());
