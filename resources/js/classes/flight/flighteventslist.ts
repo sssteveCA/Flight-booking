@@ -19,7 +19,6 @@ export default class FlightEventsList{
 
     private static SCRIPT_URL: string = Config.HOME_URL+'/flightevents';
 
-
     constructor(){
     }
 

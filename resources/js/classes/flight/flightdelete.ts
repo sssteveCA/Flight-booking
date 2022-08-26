@@ -15,6 +15,7 @@ export default class FlightDelete{
 
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
+    //Delete flight endpoint
     private static URL_SCRIPT:string = Constants.URL_FLIGHTSLIST;
 
     constructor(data: FlightDeleteInterface){

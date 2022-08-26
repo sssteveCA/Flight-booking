@@ -24,13 +24,13 @@ export namespace Constants{
 
     //Urls
     export const URL_HOME = Config.HOME_URL;
-    export const URL_AIRPORTSSEARCH = URL_HOME+'/airportsearch';
-    export const URL_COMPANIESSEARCH = URL_HOME+'/companieslist';
-    export const URL_DELETEACCOUNT = URL_HOME+'/profile/deleteAccount';
-    export const URL_EDITPASSWORD = URL_HOME+'/profile/editPassword';
-    export const URL_EDITUSERNAME = URL_HOME+'/profile/editUsername';
-    export const URL_FLIGHTSLIST = URL_HOME+'/profile/myFlights';
-    export const URL_FLIGHTEVENTS = URL_HOME+'/flightevents';
-    export const URL_FLIGHTSEARCH = URL_HOME+'/flightsearch'
-    export const URL_SENDEMAIL = URL_HOME+'/contacts/sendemail';
+    export const URL_AIRPORTSSEARCH = '/airportsearch';
+    export const URL_COMPANIESSEARCH = '/companieslist';
+    export const URL_DELETEACCOUNT = '/profile/deleteAccount';
+    export const URL_EDITPASSWORD = '/profile/editPassword';
+    export const URL_EDITUSERNAME = '/profile/editUsername';
+    export const URL_FLIGHTSLIST = '/profile/myFlights';
+    export const URL_FLIGHTEVENTS = '/flightevents';
+    export const URL_FLIGHTSEARCH = '/flightsearch'
+    export const URL_SENDEMAIL = '/contacts/sendemail';
 }
