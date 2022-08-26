@@ -5,15 +5,15 @@
         @method("PATCH")
         <div class="form-group mb-3">
             <label for="password">Vecchia password </label>
-            <input type="text" class="form-control" id="oldpwd" name="oldpwd" required>
+            <input type="password" class="form-control" id="oldpwd" name="oldpwd" required>
         </div>
         <div class="form-group mb-3">
             <label for="password">Nuova password </label>
-            <input type="text" class="form-control" id="newpwd" name="newpwd" required>
+            <input type="password" class="form-control" id="newpwd" name="newpwd" required>
         </div>
         <div class="form-group mb-3">
             <label for="password">Conferma nuova password </label>
-            <input type="text" class="form-control" id="confnewpwd" name="confnewpwd" required>
+            <input type="password" class="form-control" id="confnewpwd" name="confnewpwd" required>
         </div>
         <div class="col-md-6 offset-md-4" style="margin-left: 0;">
             <div class="form-check">
