@@ -75,7 +75,7 @@
                     <div id="fb-fs5" class="row fb-roundtrip-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
                             <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date">
-                            <label for="fb-roundtrip-start-date">Partenza</label>
+                            <label for="fb-roundtrip-start-date">Andata</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
                             <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip-end-date">
