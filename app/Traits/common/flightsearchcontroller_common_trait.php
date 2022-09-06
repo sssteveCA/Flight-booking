@@ -85,7 +85,7 @@ trait FlightSearchCommonTrait{
         $cn = $inputs['company_name'];
         if($flight_direction == 'oneway'){
             //Oneway flight
-            $fd = $inputs['oneway-date'];
+            $fd = $inputs['oneway_date'];
         }
         else if($flight_direction == "roundtrip_outbound"){
             //Outbound flight

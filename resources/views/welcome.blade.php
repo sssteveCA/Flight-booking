@@ -68,7 +68,7 @@
                     </div>
                     <div id="fb-fs4" class="row fb-oneway-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date">
+                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway_date">
                             <label for="fb-oneway-date">Partenza</label>
                         </div>
                     </div>

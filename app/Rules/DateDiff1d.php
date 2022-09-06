@@ -44,11 +44,11 @@ class DateDiff1d implements Rule,DataAwareRule
         //Log::channel('stdout')->debug("Attribute => {$attribute}");
         //Log::channel('stdout')->debug("Value => ".var_export($value,true));
         if(isset($value) && $value != ''){
-            if($attribute == 'oneway-date' || $attribute == 'roundtrip-start-date'){
+            if($attribute == 'oneway_date' || $attribute == 'roundtrip-start-date'){
                 $date_ok = $this->oneDayDifference($value,date('Y-m-d'));
                 if(!$date_ok)
                     $passes = false;
-            }//if($attribute == 'oneway-date' || $attribute == 'roundtrip-start-date'){
+            }//if($attribute == 'oneway_date' || $attribute == 'roundtrip-start-date'){
             else if($attribute == 'roundtrip-end-date'){
                 $date_ok = $this->oneDayDifference($value,$this->data['roundtrip-start-date']);
                 if(!$date_ok)
@@ -67,7 +67,7 @@ class DateDiff1d implements Rule,DataAwareRule
     {
         //Log::channel('stdout')->error("DateDiff1d message");
         //Log::channel('stdout')->error(var_export($this->error_attribute,true));
-        if($this->error_attribute == 'oneway-date' || $this->error_attribute == 'roundtrip-start-date'){
+        if($this->error_attribute == 'oneway_date' || $this->error_attribute == 'roundtrip-start-date'){
             return 'La :attribute deve essere maggiore di almeno 1 giorno rispetto alla data attuale';
         }
         else if($this->error_attribute == 'roundtrip-end-date'){
