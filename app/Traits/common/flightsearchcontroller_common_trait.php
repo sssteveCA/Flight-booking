@@ -73,27 +73,27 @@ trait FlightSearchCommonTrait{
         if($flight_direction == 'roundtrip_return'){
             $dc = $inputs['to'];
             $ac = $inputs['from'];
-            $da = $inputs['to-airport'];
-            $aa = $inputs['from-airport'];
+            $da = $inputs['to_airport'];
+            $aa = $inputs['from_airport'];
         }
         else{
             $dc = $inputs['from'];
             $ac = $inputs['to'];
-            $da = $inputs['from-airport'];
-            $aa = $inputs['to-airport'];
+            $da = $inputs['from_airport'];
+            $aa = $inputs['to_airport'];
         }
         $cn = $inputs['company_name'];
         if($flight_direction == 'oneway'){
             //Oneway flight
-            $fd = $inputs['oneway-date'];
+            $fd = $inputs['oneway_date'];
         }
         else if($flight_direction == "roundtrip_outbound"){
             //Outbound flight
-            $fd = $inputs['roundtrip-start-date'];
+            $fd = $inputs['roundtrip_start_date'];
         }
         else{ // "roundtrip_return"
             //Return flight
-            $fd = $inputs['roundtrip-end-date'];
+            $fd = $inputs['roundtrip_end_date'];
         }
         $data = [
             'departure_country' => $dc,

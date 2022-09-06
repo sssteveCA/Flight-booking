@@ -34,11 +34,11 @@
                 <div class="container">
                     <div id="fb-fs1" class="row">
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="flight-type" id="fb-roundtrip" value="roundtrip" checked>
+                            <input class="form-check-input" type="radio" name="flight_type" id="fb-roundtrip" value="roundtrip" checked>
                             <label class="form-check-label" for="fb-roundtrip">Andata e ritorno</label>
                         </div>
                         <div class="form-check col-6 col-md-2">
-                            <input class="form-check-input" type="radio" name="flight-type" id="fb-oneway" value="oneway">
+                            <input class="form-check-input" type="radio" name="flight_type" id="fb-oneway" value="oneway">
                             <label class="form-check-label" for="fb-oneway">Solo andata</label>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             <label for="fb-from">Paese di Partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-3 form-floating">
-                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from-airport"></select>
+                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from_airport"></select>
                             <label for="fb-from-airports">Aereoporto di partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-2 form-floating">
@@ -62,23 +62,23 @@
                             <label for="fb-to">Paese di destinazione</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-4 form-floating">
-                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to-airport"></select>
+                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to_airport"></select>
                             <label for="fb-to-airports">Aereoporto di destinazione</label>
                         </div>         
                     </div>
                     <div id="fb-fs4" class="row fb-oneway-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway-date">
+                            <input type="date" id="fb-oneway-date" class="form-control" name="oneway_date">
                             <label for="fb-oneway-date">Partenza</label>
                         </div>
                     </div>
                     <div id="fb-fs5" class="row fb-roundtrip-div">
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip-start-date">
+                            <input type="date" id="fb-roundtrip-start-date" class="form-control" name="roundtrip_start_date">
                             <label for="fb-roundtrip-start-date">Andata</label>
                         </div>
                         <div class="form-floating col-12 col-sm-5 col-lg-5">
-                            <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip-end-date">
+                            <input type="date" id="fb-roundtrip-end-date" class="form-control" name="roundtrip_end_date">
                             <label for="fb-roundtrip-end-date">Ritorno</label>
                         </div>
                     </div>
