@@ -32,7 +32,7 @@ class FlightSearchController extends Controller
         //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
         //Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
-        $flight_type = $inputs['flight-type'];
+        $flight_type = $inputs['flight_type'];
         //Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
             if($flight_type == 'roundtrip'){
