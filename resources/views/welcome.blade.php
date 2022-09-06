@@ -62,7 +62,7 @@
                             <label for="fb-to">Paese di destinazione</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-4 form-floating">
-                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to-airport"></select>
+                            <select type="text" class="form-select flight-loc-airports" id="fb-to-airports" name="to_airport"></select>
                             <label for="fb-to-airports">Aereoporto di destinazione</label>
                         </div>         
                     </div>
