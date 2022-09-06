@@ -74,12 +74,12 @@ trait FlightSearchCommonTrait{
             $dc = $inputs['to'];
             $ac = $inputs['from'];
             $da = $inputs['to-airport'];
-            $aa = $inputs['from-airport'];
+            $aa = $inputs['from_airport'];
         }
         else{
             $dc = $inputs['from'];
             $ac = $inputs['to'];
-            $da = $inputs['from-airport'];
+            $da = $inputs['from_airport'];
             $aa = $inputs['to-airport'];
         }
         $cn = $inputs['company_name'];

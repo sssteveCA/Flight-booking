@@ -54,7 +54,7 @@
                             <label for="fb-from">Paese di Partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-3 form-floating">
-                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from-airport"></select>
+                            <select class="form-select flight-loc-airports" id="fb-from-airports" name="from_airport"></select>
                             <label for="fb-from-airports">Aereoporto di partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-2 form-floating">
