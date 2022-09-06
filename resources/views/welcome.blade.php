@@ -50,7 +50,7 @@
                     </div>
                     <div id="fb-fs3" class="row">
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-1 form-floating">
-                            <select class="form-select flight-loc" id="fb-from" name="from"></select>
+                            <select class="form-select flight-loc" id="fb-from" name="from_country"></select>
                             <label for="fb-from">Paese di Partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-3 form-floating">
