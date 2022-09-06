@@ -49,7 +49,7 @@ class DateDiff1d implements Rule,DataAwareRule
                 if(!$date_ok)
                     $passes = false;
             }//if($attribute == 'oneway_date' || $attribute == 'roundtrip_start_date'){
-            else if($attribute == 'roundtrip-end-date'){
+            else if($attribute == 'roundtrip_end_date'){
                 $date_ok = $this->oneDayDifference($value,$this->data['roundtrip_start_date']);
                 if(!$date_ok)
                     $passes = false;  
@@ -70,7 +70,7 @@ class DateDiff1d implements Rule,DataAwareRule
         if($this->error_attribute == 'oneway_date' || $this->error_attribute == 'roundtrip_start_date'){
             return 'La :attribute deve essere maggiore di almeno 1 giorno rispetto alla data attuale';
         }
-        else if($this->error_attribute == 'roundtrip-end-date'){
+        else if($this->error_attribute == 'roundtrip_end_date'){
             return 'La :attribute deve essere maggiore di almeno 1 giorno rispetto alla data del volo di partenza';
         }  
     }

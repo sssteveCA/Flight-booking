@@ -93,7 +93,7 @@ trait FlightSearchCommonTrait{
         }
         else{ // "roundtrip_return"
             //Return flight
-            $fd = $inputs['roundtrip-end-date'];
+            $fd = $inputs['roundtrip_end_date'];
         }
         $data = [
             'departure_country' => $dc,
