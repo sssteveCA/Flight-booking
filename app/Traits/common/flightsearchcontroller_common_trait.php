@@ -89,7 +89,7 @@ trait FlightSearchCommonTrait{
         }
         else if($flight_direction == "roundtrip_outbound"){
             //Outbound flight
-            $fd = $inputs['roundtrip-start-date'];
+            $fd = $inputs['roundtrip_start_date'];
         }
         else{ // "roundtrip_return"
             //Return flight
