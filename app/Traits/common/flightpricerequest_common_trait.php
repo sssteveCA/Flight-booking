@@ -33,7 +33,7 @@ trait FlightPriceRequestCommonTrait{
     public function rules()
     {
         return [
-            'flight-type' => 'required',
+            'flight_type' => 'required',
             'company_name' => ['required',new IsInArray($this->getFlightCompaniesList())],
             'from' => ['required', new NotSameLocation,new IsInArray($this->getCountriesList())],
             'from-airport' => ['required',new CheckAirports('from')],
@@ -67,7 +67,7 @@ trait FlightPriceRequestCommonTrait{
     public function attributes()
     {
         return [
-            'flight-type' => 'tipo di volo',
+            'flight_type' => 'tipo di volo',
             'company_name' => 'compagnia aerea',
             'from' => 'paese di partenza',
             'from-airport' => 'aereoporto di partenza',

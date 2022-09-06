@@ -12,7 +12,7 @@ $(()=>{
                 'fb-oneway-div': $('.fb-oneway-div'),
                 'fb-roundtrip-div': $('.fb-roundtrip-div'),
                 'flight-loc': $('.flight-loc'),
-                'flight-type-radio': $('input[name=flight-type]')        
+                'flight-type-radio': $('input[name=flight_type]')        
             },
             'id':{
                 0: 'fb-from',

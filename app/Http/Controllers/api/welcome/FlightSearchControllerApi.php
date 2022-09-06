@@ -25,7 +25,7 @@ class FlightSearchControllerApi extends Controller
         //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
         //Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
-        $flight_type = $inputs['flight-type'];
+        $flight_type = $inputs['flight_type'];
         //Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
             if($flight_type == 'roundtrip'){
@@ -101,7 +101,7 @@ class FlightSearchControllerApi extends Controller
             return response()->json([
                 C::KEY_STATUS => 'OK',
                 'session_id' => $this->ftm->getSessionId(),
-                'flight-type' => $flight_type,
+                'flight_type' => $flight_type,
                 //'inputs' => $inputs,
                 'flights' => $flights
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
