@@ -36,7 +36,7 @@ class NotSameLocation implements Rule,DataAwareRule
     public function passes($attribute, $value)
     {
         //True if contries and airports are different
-        $country_diff = ($this->data['from_country'] != $this->data['to']);
+        $country_diff = ($this->data['from_country'] != $this->data['to_country']);
         $airport_diff = ($this->data['from_airport'] != $this->data['to_airport']);
         //True if the departure location is different from the arrival location
         if($country_diff || $airport_diff)

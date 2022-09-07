@@ -71,14 +71,14 @@ trait FlightSearchCommonTrait{
     protected function setFlightPriceArray(array $inputs, string $flight_direction): array{
         //Log::channel('stdout')->info('setFlightPrice method');
         if($flight_direction == 'roundtrip_return'){
-            $dc = $inputs['to'];
+            $dc = $inputs['to_country'];
             $ac = $inputs['from_country'];
             $da = $inputs['to_airport'];
             $aa = $inputs['from_airport'];
         }
         else{
             $dc = $inputs['from_country'];
-            $ac = $inputs['to'];
+            $ac = $inputs['to_country'];
             $da = $inputs['from_airport'];
             $aa = $inputs['to_airport'];
         }

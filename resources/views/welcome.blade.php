@@ -58,7 +58,7 @@
                             <label for="fb-from-airports">Aereoporto di partenza</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-2 form-floating">
-                            <select type="text" class="form-select flight-loc" id="fb-to" name="to"></select>
+                            <select type="text" class="form-select flight-loc" id="fb-to" name="to_country"></select>
                             <label for="fb-to">Paese di destinazione</label>
                         </div>
                         <div class="col-12 col-sm-5 col-lg-5 order-lg-4 form-floating">
@@ -111,7 +111,7 @@
                 <div class="container">
                     <div class="row">
                         <div id="fb-rc1" class="col-12">
-                            <input type="text" id="fb-rentcarloc" class="form-control-lg" name="rentcarloc" placeholder="Città o aereoporto per afitare l'auto">
+                            <input type="text" id="fb-rentcarloc" class="form-control-lg" name="rentcarloc" placeholder="Città o aereoporto per affitare l'auto">
                         </div>
                     </div>
                     <div class="row">
