@@ -4,14 +4,14 @@
 //Variables
 
 $animation-appear: appear;
-@debug $animation-appear;
 $buttons-tab-number: 4;
 $divs-col-margin-y: 10px;
 $form-buttons-padding: 10px 30px;
 $map-appear: (
+    "identifier": ".tab-pane.fade.active.show",
     "name": $animation-appear,
-    "delay": 0.5s,
-    "duration": 2s,
+    "delay": 0.1s,
+    "duration": 1s,
     "fill-mode": forwards,
     "count": 1,
     "timing-function": linear
@@ -26,12 +26,14 @@ $xs-breakpoint: 575px;
 //Mixins
 
 @mixin animation-appear-style($map){
+    $animation-name: map.get($map, 'name');
     @keyframes #{$animation-appear} {
         0%{ opacity: 0;}
         100%{ opacity: 1;}
     }
+    $identifier: map.get($map,'identifier');
     #{$identifier}{
-        animation-name: map.get($map,'name');
+        animation-name: $animation-name;
         animation-delay: map.get($map,'delay');
         animation-duration: map.get($map,'duration');
         animation-fill-mode: map.get($map,'fill-mode');
@@ -62,6 +64,7 @@ $xs-breakpoint: 575px;
         }
     }
     div.tab-pane{
+        opacity: 0;
         width: $tab-pane-width;
         margin: $navs-tab-margin-y auto;
     }
