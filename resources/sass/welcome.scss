@@ -4,9 +4,18 @@
 //Variables
 
 $animation-appear: appear;
+@debug $animation-appear;
 $buttons-tab-number: 4;
 $divs-col-margin-y: 10px;
 $form-buttons-padding: 10px 30px;
+$map-appear: (
+    "name": $animation-appear,
+    "delay": 0.5s,
+    "duration": 2s,
+    "fill-mode": forwards,
+    "count": 1,
+    "timing-function": linear
+);
 $navs-buttons-padding:10px 50px;
 $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
@@ -17,7 +26,7 @@ $xs-breakpoint: 575px;
 //Mixins
 
 @mixin animation-appear-style($map){
-    @keyframes #{$name} {
+    @keyframes #{$animation-appear} {
         0%{ opacity: 0;}
         100%{ opacity: 1;}
     }
@@ -112,6 +121,7 @@ $xs-breakpoint: 575px;
 }
 
 //Exec
+@include animation-appear-style($map-appear);
 @include col-style();
 @include tab-style();
 @include flights();
