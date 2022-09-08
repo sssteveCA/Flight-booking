@@ -35,7 +35,7 @@ Route::name('api.')->group(function(){
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
     Route::get(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getCountries']);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
-    Route::post(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+    Route::post(P::URL_FLIGHTPRICE,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)->only([
         'index','show'
     ]);

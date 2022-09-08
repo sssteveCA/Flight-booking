@@ -24,7 +24,7 @@ class FlightSearchControllerApi extends Controller
         $flights = [];
         //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
-        //Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
+        Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
         $flight_type = $inputs['flight_type'];
         //Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
