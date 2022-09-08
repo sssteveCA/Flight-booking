@@ -49,7 +49,7 @@ class FlightSearchControllerApi extends Controller
                         'arrival_airport' => $fl_outbound->arrival_airport,
                         'adults' => $fl_outbound->adults,
                         'teenagers' => $fl_outbound->teenagers,
-                        'children' => $fl_outbound->children,
+                        'teenagers' => $fl_outbound->children,
                         'newborns' => $fl_outbound->newborns,
                         'flight_price' => $fl_outbound->flight_price_format
                     ],
@@ -98,13 +98,16 @@ class FlightSearchControllerApi extends Controller
                 $error = $this->ftm->getError();
                 throw new FlightsTempNotAddedException($error,$errno);
             }
-            return response()->json([
+            $response_array = [
                 C::KEY_STATUS => 'OK',
                 'session_id' => $this->ftm->getSessionId(),
                 'flight_type' => $flight_type,
                 //'inputs' => $inputs,
                 'flights' => $flights
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            ];
+            //$response_json = json_encode($response_array);
+            Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_array,true));
+            return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
