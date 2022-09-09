@@ -8,6 +8,7 @@ use App\Interfaces\Airports as A;
 use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 //This trait is used to store common code in FlighSearchController & FlighSearchControllerApi
 trait FlightSearchCommonTrait{
@@ -123,6 +124,7 @@ trait FlightSearchCommonTrait{
 
     //set flight temp table records
     private function setFlightsTemp(array $flights_data): bool{
+        //Log::debug("FlightSearchControllerCommonTrait setFlightsTemp");
         $set = false;
         $this->ftm = new FlightsTempManager($flights_data);
         $added = $this->ftm->addFlightsTemp();

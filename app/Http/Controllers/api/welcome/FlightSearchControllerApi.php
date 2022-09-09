@@ -49,7 +49,7 @@ class FlightSearchControllerApi extends Controller
                         'arrival_airport' => $fl_outbound->arrival_airport,
                         'adults' => $fl_outbound->adults,
                         'teenagers' => $fl_outbound->teenagers,
-                        'teenagers' => $fl_outbound->children,
+                        'children' => $fl_outbound->children,
                         'newborns' => $fl_outbound->newborns,
                         'flight_price' => $fl_outbound->flight_price_format
                     ],
@@ -105,8 +105,9 @@ class FlightSearchControllerApi extends Controller
                 //'inputs' => $inputs,
                 'flights' => $flights
             ];
-            //$response_json = json_encode($response_array);
+            $response_json = json_encode($response_array,JSON_PRETTY_PRINT);
             Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_array,true));
+            Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_json,true));
             return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
             $error = $e->getMessage();

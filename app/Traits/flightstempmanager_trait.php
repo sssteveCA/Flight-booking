@@ -73,7 +73,9 @@ trait FlightsTempManagerTrait{
         $this->flight_temp->flight_type = $data['flight_type'];
         $this->flight_temp->flight_direction = $data['flight_direction'];
         $flight_array = $this->flights_array['flights'][$flight_type];
+        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp flight_array => ".var_export($flight_array,true));
         $this->flight_temp->company_name = $flight_array['company_name'];
+        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp company_name");
         $this->flight_temp->departure_country = $flight_array['departure_country'];
         $this->flight_temp->departure_airport = $flight_array['departure_airport'];
         $this->flight_temp->arrival_country = $flight_array['arrival_country'];
@@ -86,6 +88,7 @@ trait FlightsTempManagerTrait{
         $this->flight_temp->children = $flight_array['children'];
         $this->flight_temp->newborns = $flight_array['newborns'];
         $this->flight_temp->flight_price = $flight_array['flight_price'];
+        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp flight_temp => ".var_export($this->flight_temp,true));
         $insert = $this->flight_temp->save();
         if($insert)
             $add = true;
