@@ -114,18 +114,10 @@ class FlightSearchController extends Controller
                     'flights' => $flights
                 ]   
             ],200);
-        }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
-            $error = $e->getMessage();
-            //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
-            $errors_array = [ C::ERR_REQUEST];
-            throw new HttpResponseException(
-                response()->view(P::VIEW_FLIGHTPRICERESULT,['errors_array' => $errors_array],400)
-                /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
-            );
         }catch(\Exception $e){
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
-            $errors_array = [ $error];
+            $errors_array = [ C::ERR_REQUEST];
             throw new HttpResponseException(
                 response()->view(P::VIEW_FLIGHTPRICERESULT,['errors_array' => $errors_array],400)
                 /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */

@@ -109,7 +109,7 @@ class FlightSearchControllerApi extends Controller
             Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_array,true));
             Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_json,true));
             return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }catch(FlightsArrayException|FlightsTempNotAddedException|FlightsDataModifiedException $e){
+        }catch(\Exception $e){
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
@@ -118,16 +118,6 @@ class FlightSearchControllerApi extends Controller
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => $error
                 ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
-        }catch(\Exception $e){
-            $error = $e->getMessage();
-            //Log::channel('stdout')->error("Flight search controller exception => ".$error);
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => $error
-                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-                /* response()->json(['errors' => $errors],422,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_SLASHES) */
             );
         }
     }
