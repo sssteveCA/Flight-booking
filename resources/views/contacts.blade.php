@@ -62,6 +62,13 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="row mb-0">
+                            <div class="col-12 col-md-6 d-flex justify-content-center mt-2">
+                                <div id="contacts-spinner" class="spinner-border text-primary d-none" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

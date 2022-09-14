@@ -4,8 +4,10 @@ import Email from "./classes/email";
 import EmailInterface from "./interfaces/email.interface";
 
 $(function(){
+    let contacts_spinner: JQuery = $('#contacts-spinner');
     $('form#fContacts').on('submit',(e)=>{
         e.preventDefault();
+        contacts_spinner.removeClass("d-none");
         let email_data: EmailInterface = {
             name: $('#name').val() as string,
             email: $('#email').val() as string,
@@ -16,6 +18,7 @@ $(function(){
         //console.log(email_data);
         let email: Email = new Email(email_data);
         email.sendEmail().then(message => {
+            contacts_spinner.addClass("d-none");
             //console.log(`sendEmail message => ${message}`);
             let md_data: MessageDialogInterface = {
                 title: 'Email',
