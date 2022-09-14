@@ -7,6 +7,7 @@ import EditUsername from "../../classes/profile/editusername";
 import EditUsernameInterface from "../../interfaces/profile/editusername.interface";
 
 export default function editUsernameForm(): void{
+    let eu_spinner: JQuery = $('#eu-spinner');
     $('#fEditUsername').on('submit',(e: JQuery.Event)=>{
         //Edit username form submitted
         e.preventDefault();
@@ -18,12 +19,14 @@ export default function editUsernameForm(): void{
         cd.btYes.on('click', ()=>{
             cd.dialog.dialog('destroy');
             cd.dialog.remove();
+            eu_spinner.removeClass("d-none");
             let eu_data: EditUsernameInterface = {
                 username: $('#username').val() as string,
                 token: $('#fEditUsername input[name=_token]').eq(0).val() as string
             };
             let editUsername: EditUsername = new EditUsername(eu_data);
             editUsername.editUsername().then(res => {
+                eu_spinner.addClass("d-none");
                 let md_data: MessageDialogInterface = {
                     title: 'Modifica username',
                     message: res

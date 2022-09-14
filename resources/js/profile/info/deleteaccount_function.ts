@@ -9,6 +9,7 @@ import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interf
 import MessageDialog from "../../classes/dialog/messagedialog";
 
 export default function deleteAccount(): void{
+    let da_spinner: JQuery = $('#da-spinner');
     $('#divDeleteAccount button').on('click',()=>{
         //User clicks delete account button
         let cd_data: ConfirmDialogInterface = {
@@ -42,6 +43,7 @@ export default function deleteAccount(): void{
                 //User submit the password inputs dialog
                /*  tfd.dialog.dialog('destroy');
                 tfd.dialog.remove(); */
+                da_spinner.removeClass("d-none");
                 let csrf = $('meta[name="csrf-token"]').attr('content');
                 let da_data: DeleteAccountInterface = {
                     token: csrf as string,
@@ -50,6 +52,7 @@ export default function deleteAccount(): void{
                 };
                 let da: DeleteAccount = new DeleteAccount(da_data);
                 da.deleteAccount().then(obj_response => {
+                    da_spinner.addClass("d-none");
                     //console.log(obj_response);
                     //Delete account request
                     let md_data: MessageDialogInterface = {

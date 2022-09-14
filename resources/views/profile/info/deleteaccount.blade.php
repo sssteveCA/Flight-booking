@@ -7,5 +7,10 @@
         <div class="form-group mb-3 d-flex justify-content-center">
             <button type="button" class="btn btn-danger">ELIMINA</button>
         </div>
+        <div class="text-center mb-3">
+            <div id="da-spinner" class="spinner-border text-primary d-none" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     </form>
 </fieldset>

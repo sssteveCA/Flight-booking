@@ -25,6 +25,7 @@ export function showPassword(): void{
 }
 
 export function editPasswordForm(): void{
+    let ep_spinner: JQuery = $('#ep-spinner');
     $('#fEditPassword').on('submit',(e: JQuery.Event)=> {
         //Edit password form submitted
         e.preventDefault();
@@ -36,6 +37,7 @@ export function editPasswordForm(): void{
         cd.btYes.on('click', ()=>{
             cd.dialog.dialog('destroy');
             cd.dialog.remove();
+            ep_spinner.removeClass("d-none");
             let ep_data: EditPasswordInterface = {
                 oldpwd: $('#oldpwd').val() as string,
                 newpwd: $('#newpwd').val() as string,
@@ -44,6 +46,7 @@ export function editPasswordForm(): void{
             };
             let editPassword: EditPassword = new EditPassword(ep_data);
             editPassword.editPassword().then(res => {
+                ep_spinner.addClass("d-none");
                 let md_data: MessageDialogInterface = {
                     title: 'Modifica password',
                     message: res

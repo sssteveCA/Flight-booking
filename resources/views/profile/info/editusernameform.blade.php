@@ -10,5 +10,10 @@
         <div class="form-group mb-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">MODIFICA</button>
         </div>
+        <div class="text-center mb-3">
+            <div id="eu-spinner" class="spinner-border text-primary d-none" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     </form>
 </fieldset>
