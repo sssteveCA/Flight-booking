@@ -27,20 +27,25 @@
                     <div class="col-10 col-lg-5 flight-name">
                         <span class="flight-title-style">NOME:</span> Da {{$flight['departure_airport']}} a {{$flight['arrival_airport']}}
                     </div>   
-                    <div class="col-4 col-lg-2 flight-show">
+                    <div class="col-12 col-sm-4 col-lg-2 flight-show d-flex justify-content-center justify-content-sm-start">
                         <form class="fFlightGet" method="get" action="{{ route('myFlights.show',['myFlight' => $flight['id']]) }}">
                             <button type="submit" class="btn btn-primary">VEDI</button>
                         </form>
                     </div>
-                    <div class="col-4 col-lg-2 flight-delete">
+                    <div class="col-12 col-sm-4 col-lg-2 flight-delete d-flex justify-content-center justify-content-sm-start">
                         <form class="fFlightDelete" method="post" action="{{ route('myFlights.destroy', ['myFlight' => $flight['id']]) }}">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="flight_id" value="{{ $flight['id'] }}">
-                            <button type="submit" class="btn btn-danger">ELIMINA</button>
+                            <button type="submit" class="btn btn-danger ms-5 ms-sm-0">ELIMINA</button>
                         </form>
+                        <div class="text-center ms-4">
+                            <div class="spinner-border text-primary d-none" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-4 col-lg-2 flight-book">
+                    <div class="col-12 col-sm-4 col-lg-2 flight-book d-flex justify-content-center justify-content-sm-start">
                         @if($flight['payed'] == '0')
                         <form class="fFlightBook" method="post" action="{{ route(P::ROUTE_RESUMEFLIGHT) }}">
                             @csrf
