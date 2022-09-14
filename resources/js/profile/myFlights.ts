@@ -19,7 +19,7 @@ $(function(){
             message: Constants.MSG_CONFIRMDELETEFLIGHT
         }
         let confirmDialog: ConfirmDialog = new ConfirmDialog(dataCd);
-        $(confirmDialog.btYes).on('click',()=>{
+        $(confirmDialog.btYes).on('click',(e)=>{
             confirmDialog.dialog.dialog('destroy');
             confirmDialog.dialog.remove();
             let id = form.find('input[name=flight_id]');
@@ -30,9 +30,14 @@ $(function(){
             };
             //console.log(dataFd);
             let flightDelete = new FlightDelete(dataFd);
+            //Search for the spinner near the button clicked
+            let spinner: JQuery = form.parent('div').children('div').find('div');
+            //console.log(spinner);
+            spinner.removeClass("d-none");
             flightDelete.deleteFlight().then(obj => {
+                spinner.addClass("d-none");
                 /* console.log("obj");
-                console.log(obj); */
+                console.log(obj);  */
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',
