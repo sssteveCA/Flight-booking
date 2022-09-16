@@ -8,6 +8,10 @@
 
 @section('title','Login')
 
+@section('links')
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+@endsection
+
 @section('scripts')
     <script src="{{ asset('js/login.js') }}"></script>
 @endsection

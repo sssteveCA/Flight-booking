@@ -1,0 +1,35 @@
+
+@use "sass:map";
+
+//Variables
+
+$animation-appear: appear;
+$welcome-identifier: ".tab-pane.fade.active.show";
+$container-identifier: ".container";
+
+$map-appear: (
+    "name": $animation-appear,
+    "delay": 0s,
+    "duration": 1.1s,
+    "fill-mode": forwards,
+    "count": 1,
+    "timing-function": linear
+);
+
+//Mixins
+
+@mixin animation-appear-style($identifier, $map){
+    $animation-name: map.get($map, 'name');
+    @keyframes #{$animation-appear} {
+        0%{ opacity: 0;}
+        100%{ opacity: 1;}
+    }
+    #{$identifier}{
+        animation-name: $animation-name;
+        animation-delay: map.get($map,'delay');
+        animation-duration: map.get($map,'duration');
+        animation-fill-mode: map.get($map,'fill-mode');
+        animation-iteration-count: map.get($map,'count');
+        animation-timing-function: map.get($map,'timing-function');
+    }
+}

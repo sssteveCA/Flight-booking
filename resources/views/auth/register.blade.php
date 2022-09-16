@@ -2,6 +2,10 @@
 
 @section('title','Registrazione')
 
+@section('links')
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
 @section('scripts')
 <script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection

@@ -11,6 +11,8 @@
     "/css/app.css": "/css/app.css",
     "/css/welcome.css": "/css/welcome.css",
     "/css/profile/info.css": "/css/profile/info.css",
+    "/css/register.css": "/css/register.css",
+    "/css/login.css": "/css/login.css",
     "/css/contacts.css": "/css/contacts.css",
     "/css/aboutus.css": "/css/aboutus.css",
     "/css/news/post.css": "/css/news/post.css",

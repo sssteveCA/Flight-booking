@@ -1,6 +1,8 @@
 @use "sass:map";
 @use "sass:selector";
 
+@import "partials/animations";
+
 $form-id: '#fContacts';
 $buttons-form: selector.nest($form-id, 'button');
     
@@ -81,4 +83,5 @@ $compound-selectors-map: (
     }//@each $breakpoint,$val in $breakpont-map{
 }
 
+@include animation-appear-style($container-identifier,$map-appear);
 @include style-from-maps($bs-breakpoints,$single-selectors-map,$compound-selectors-map);
