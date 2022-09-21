@@ -1,0 +1,16 @@
+
+$footer-class: ".footer";
+
+@mixin footer-style($selector){
+    #{$selector}{
+        height: 75px;
+        width: 100%;
+        min-width: 300px;
+        background-color: #8BC6EC;
+        background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    }
+}
+
+@include footer-style($footer-class);
+
+
