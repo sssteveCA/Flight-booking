@@ -1,5 +1,7 @@
 @use "sass:map";
 
+@import "partials/animations";
+
 $bs-breakpoints: (
     'xs': 0px,
     'md': 768px,
@@ -74,4 +76,5 @@ $bs-breakpoints: (
 
 @include global();
 @include responsive-style($bs-breakpoints);
+@include animation-appear-style(".container-fluid",$map-appear)
 
