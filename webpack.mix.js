@@ -32,4 +32,5 @@ const mix = require('laravel-mix');
     .sass('resources/sass/login.scss','public/css')
     .sass('resources/sass/register.scss','public/css')
     .sass('resources/sass/profile/info.scss','public/css/profile')
+    .sass('resources/sass/footer.scss','public/css')
     .sourceMaps();

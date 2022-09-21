@@ -61,6 +61,7 @@ interface Paths{
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_FALLBACK = 'error.errors';
+    const VIEW_FOOTER = 'partials.footer';
     const VIEW_FLIGHT = 'profile.myFlights.flight';
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
