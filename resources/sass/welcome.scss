@@ -14,6 +14,8 @@ $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
 $rows-2-flights-elem: 3;
 $xs-breakpoint: 575px;
+$flight-animation-selector: "#flight-animation";
+$flight-animation-img-id: "#airplane";
 
 
 //Mixins
@@ -39,10 +41,23 @@ $xs-breakpoint: 575px;
             }
         }
     }
-    div.tab-pane{
-        opacity: 0;
+    div.tab-pane.show.active{
         width: $tab-pane-width;
         margin: $navs-tab-margin-y auto;
+    }
+    div.tab-pane.fade:not(.show):not(.active){
+        display: none; 
+    }
+}
+
+@mixin flight-animation-div($selector){
+    #{$selector}{
+        height: 148px;
+        overflow-x: hidden;
+        img{
+            position: relative;
+            height: 80px;
+        }
     }
 }
 
@@ -101,8 +116,10 @@ $xs-breakpoint: 575px;
 
 //Exec
 @include animation-appear-style($welcome-identifier,$map-appear);
+@include animation-horizontal-move($flight-animation-img-id,$map-move-x);
 @include col-style();
 @include tab-style();
+@include flight-animation-div($flight-animation-selector);
 @include flights();
 @include rent-car();
 @include rooms();

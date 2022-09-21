@@ -159,6 +159,9 @@
         </div>
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>
+    <div id="flight-animation" class="d-flex align-items-center">
+        <img id="airplane" src="{{ asset('img/airplane.png') }}">
+    </div>
 </div>
 <div class="errors">
     @if($errors->any())
