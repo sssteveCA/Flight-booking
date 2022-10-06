@@ -25,4 +25,31 @@ $(()=>{
             cd.dialog.remove();    
         });
     });
+    let footer: JQuery = $('.footer');
+    if(footer.length){
+        footerPosition(footer);
+    }
+
 });
+
+/**
+ * Put bottom footer corner at bottom of viewport if content isn't high enough
+ * @param footerEl 
+ */
+function footerPosition(footerEl: JQuery): void{
+    let windowHeight: number = $(window).height() as number;
+    let footerPos: JQuery.Coordinates = footerEl.position();
+    let footerHeight: number = footerEl.height() as number;
+    let footerBottomPos = footerPos.top + footerHeight;
+    if(footerBottomPos < windowHeight){
+        footerEl.css({
+            position: 'absolute',
+            bottom: '0px'
+        });
+    }
+    else{
+        footerEl.css({
+            position: 'static'
+        });
+    }
+}
