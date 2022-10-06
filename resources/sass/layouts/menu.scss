@@ -1,0 +1,45 @@
+@use "sass:map";
+@use "sass:selector";
+
+$breakpoints-map: (
+    'md': 768px,
+    'lg': 992px
+);
+
+@mixin nav-menu-style(){
+    nav{
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        div#main_menu{
+            width: 70% !important;
+            ul{
+                display: flex !important;
+                width: 100% !important;
+                li{
+                    flex-grow: 1 !important;
+                    font-family: sans-serif;
+                    font-weight: 700;
+                    $has-md: map.has-key($breakpoints-map,'md');
+                    @if $has-md == true {
+                        $md: map.get($breakpoints-map,'md');
+                        @media only screen and (min-width: 0px){
+                            text-align: left;
+                        }
+                        @media only screen and (min-width: #{$md}){
+                            text-align: center;
+                            padding-bottom: 0.5rem;
+                            padding-top: 0.5rem;
+                        }
+                    }
+                }
+                $li-hover: selector.nest("li","&:hover");
+                #{$li-hover}{
+                    background-color: rgba(255,255,0,0.3);
+                }
+            }
+        }
+    }
+    
+}
+
+@include nav-menu-style();
