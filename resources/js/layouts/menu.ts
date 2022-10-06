@@ -28,6 +28,9 @@ $(()=>{
     let footer: JQuery = $('.footer');
     if(footer.length){
         footerPosition(footer);
+        $(window).on('resize',()=>{
+            footerPosition(footer);
+        });
     }
 
 });
@@ -43,7 +46,7 @@ function footerPosition(footerEl: JQuery): void{
     let footerBottomPos = footerPos.top + footerHeight;
     if(footerBottomPos < windowHeight){
         footerEl.css({
-            position: 'absolute',
+            position: 'fixed',
             bottom: '0px'
         });
     }
