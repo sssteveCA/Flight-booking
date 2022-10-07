@@ -13,7 +13,16 @@ class LoginRequestApi extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute è obbligatiorio',
+            'email' => ':attribute deve essere un indirizzo email',
+            'string' => ':Il valore di :attribute non è in un formato valido'
+        ];
     }
 
     /**
@@ -24,7 +33,8 @@ class LoginRequestApi extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'required|email',
+            'password' => 'required|string'
         ];
     }
 }
