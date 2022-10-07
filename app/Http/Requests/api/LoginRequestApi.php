@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\api;
 
+use App\Interfaces\Constants as C;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class LoginRequestApi extends FormRequest
 {
@@ -19,7 +22,7 @@ class LoginRequestApi extends FormRequest
     public function messages()
     {
         return [
-            'required' => ':attribute è obbligatiorio',
+            'required' => ':attribute è obbligatorio',
             'email' => ':attribute deve essere un indirizzo email',
             'string' => ':Il valore di :attribute non è in un formato valido'
         ];
@@ -36,5 +39,17 @@ class LoginRequestApi extends FormRequest
             'email' => 'required|email',
             'password' => 'required|string'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $error = $validator->errors()->first();
+        throw new HttpResponseException(
+            response()->json([
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => $error,
+                'logged' => false
+            ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+        );
     }
 }

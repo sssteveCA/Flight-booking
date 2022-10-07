@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\api\LoginRequestApi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,13 +21,9 @@ class LoginControllerApi extends Controller
     }
         
     //
-    public function login(Request $request){
+    public function login(LoginRequestApi $request){
         //Log::channel('stdout')->info("ApiLoginController login");
-        $login = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string'
-        ]);
-
+        $login = $request->validated();
         //Invalid Credentials
         if(!Auth::attempt($login)){
             return response()->json([
