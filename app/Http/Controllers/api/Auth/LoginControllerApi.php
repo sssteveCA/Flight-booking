@@ -32,14 +32,22 @@ class LoginControllerApi extends Controller
                 'logged' => false
             ],401,array(),JSON_UNESCAPED_UNICODE);
         }
-
+        //Check if account is verified
+        $user = Auth::user();
+        if($user['email_verified_at'] == null){
+            return response()->json([
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_VERIFYYOURACCOUNT,
+                'logged' => false
+            ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
         //Valid credentials
-        $token = Auth::user()->createToken('token')->accessToken;
+        $token = $user->createToken('token')->accessToken;
         return response()->json([
             C::KEY_STATUS => 'OK',
             'logged' => true,
             'token' => $token,
-            'user' => Auth::user()
+            'user' => $user
         ],200,array(),JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
     }
 }
