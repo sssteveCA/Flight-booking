@@ -71,6 +71,8 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         //Log::channel('stdout')->debug("FlightController store");
+        $session_data = session()->all();
+        Log::channel('stdout')->info("FlightController store session data => ".var_export($session_data,true));
         $inputs = $request->all();
         try{
             $this->ftm = new FlightsTempManager($inputs);

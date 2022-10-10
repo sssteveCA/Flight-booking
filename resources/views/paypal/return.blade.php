@@ -9,14 +9,12 @@
         @endphp
     @endisset
     --}}
-    @isset($payment)
-        <div class="container mt-5">
+    <div class="container mt-5">
             <h2 class="mt-5 text-center">Prenotazione volo</h2>
-            @if($payment == 'completed')
-            <p class="lead text-center">{{ $message }}</p>
-            @else if($payment == 'refused')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @if(isset($payment) and $payment == 'completed')
+                <p class="lead text-center">{{ $message }}</p>
+            @else
+                <div class="alert alert-danger" role="alert">{{ $message }}</div>
             @endif
-        </div>
-    @endisset
+    </div>
 @endsection
