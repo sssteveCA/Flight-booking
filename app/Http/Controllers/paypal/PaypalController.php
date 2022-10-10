@@ -24,6 +24,7 @@ class PaypalController extends Controller
     //Return URL after user has made the payment
     public function return(Request $request){
         $post_data = $request->all();
+        Log::channel('stdout')->debug("PaypalController return post => ".var_export($post_data,true));
         if($post_data['payer_status'] == "VERIFIED"){
             //Payment completed
             //Get number of payed items
@@ -40,18 +41,17 @@ class PaypalController extends Controller
                     $flight->save();
                 }//if($flight != null){
             }
-            $message = C::OK_FLIGHTPAYMENT;
-            $payment = 'completed';
+            return response()->view(P::VIEW_PAYPAL_RETURN,[
+                'payment' => 'completed',
+                'message' => C::OK_FLIGHTPAYMENT,
+                'post_data' => $post_data
+            ],200);
         }//if($post_data['status'] == "VERIFIED"){
-        else{
-            $message = C::ERR_FLIGHTPAYMENT_REFUSE;
-            $payment = 'refused';
-        }
-        //Log::channel('stdout')->debug("PaypalController return post_data => ".var_export($post_data,true));
         return response()->view(P::VIEW_PAYPAL_RETURN,[
-            'payment' => $payment,
-            'message' => $message,
+            'payment' => 'refused',
+            'message' => C::ERR_FLIGHTPAYMENT_REFUSE,
             'post_data' => $post_data
-        ],200);
+        ],400);
+        //Log::channel('stdout')->debug("PaypalController return post_data => ".var_export($post_data,true));
     }
 }
