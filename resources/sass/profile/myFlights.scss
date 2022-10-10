@@ -14,7 +14,7 @@ $single-selectors-rules: (
             '.flight-title-style': (
                 'font-weight': bold
             ),
-            '.row': (
+            '.row:not(.footer .row)': (
                 'padding': 20px 0px,
                 'border-right': 1px solid black,
                 'border-bottom': 1px solid black,
@@ -40,7 +40,7 @@ $compound-selectors-rules: (
         '.flight-show, .flight-delete, .flight-book': (
             'margin-top': 10px
         ),
-        '.row:first-child': (
+        '.row:first-child:not(.footer .row)': (
             'border-top': 1px solid black
         )
     ),
