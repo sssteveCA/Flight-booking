@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'paypal.com/*'
+        "*bookflight/return*"
     ];
 }
