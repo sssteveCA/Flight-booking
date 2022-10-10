@@ -16,6 +16,7 @@ use App\Traits\Common\FlightControllerCommonTrait;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Cookie;
 
 class FlightController extends Controller
 {
@@ -72,7 +73,9 @@ class FlightController extends Controller
     {
         //Log::channel('stdout')->debug("FlightController store");
         $session_data = session()->all();
+        $cookie_data = Cookie::get();
         Log::channel('stdout')->info("FlightController store session data => ".var_export($session_data,true));
+        Log::channel('stdout')->info("FlightController store cookie data => ".var_export($cookie_data,true));
         $inputs = $request->all();
         try{
             $this->ftm = new FlightsTempManager($inputs);
@@ -90,7 +93,7 @@ class FlightController extends Controller
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
                 $del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
                 //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
-                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);  
+                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code'])->withCookie(cookie()->forever('session',$session_data));  
             }//if($valid){
             throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
         }catch(Exception $e){

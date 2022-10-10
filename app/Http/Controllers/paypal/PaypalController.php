@@ -10,6 +10,7 @@ use App\Models\Flight;
 use DateTime;
 use DateTimeImmutable;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 
 class PaypalController extends Controller
@@ -26,7 +27,9 @@ class PaypalController extends Controller
     public function return(Request $request){
         $post_data = $request->all();
         $session_data = session()->all();
+        $cookie_data = Cookie::get();
         Log::channel('stdout')->info("PaypalController return session data => ".var_export($session_data,true));
+        Log::channel('stdout')->info("FlightController store cookie data => ".var_export($cookie_data,true));
         Log::channel('stdout')->debug("PaypalController return post => ".var_export($post_data,true));
         if(isset($post_data['payer_status'])){
             if($post_data['payer_status'] == "VERIFIED"){
