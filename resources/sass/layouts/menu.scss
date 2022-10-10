@@ -32,14 +32,18 @@ $breakpoints-map: (
                         }
                     }
                 }
-                $li-hover: selector.nest("li","&:hover");
-                #{$li-hover}{
-                    background-color: rgba(255,255,0,0.3);
-                }
             }
         }
+    }  
+}
+
+@mixin menu-items-hover(){
+    $li-hover: selector.nest("#main_menu","li","&:hover");
+    $dropdown-a-hover: selector.nest(".dropdown-menu","a","&:hover");
+    #{$li-hover}, #{$dropdown-a-hover}{
+        background-color: rgba(255,255,0,0.3);
     }
-    
 }
 
 @include nav-menu-style();
+@include menu-items-hover();

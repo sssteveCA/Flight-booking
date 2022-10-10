@@ -43,7 +43,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right w-100" aria-labelledby="navbarDropdown">
                                     <a href="{{ route(P::ROUTE_INFO) }}" class="dropdown-item">Il mio profilo</a>
                                     <a href="{{ route('myFlights.index') }}" class="dropdown-item">I miei voli</a>
                                     <a id="logout-item" class="dropdown-item" href="{{ route('logout') }}">
