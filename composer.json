@@ -35,6 +35,7 @@
             "app/Exceptions/flightsdatamodified_exception.php",
             "app/Exceptions/flightstemp_notadded_exception.php",
             "app/Interfaces/airports.php",
+            "app/Interfaces/hotels.php",
             "app/Interfaces/constants.php",
             "app/Interfaces/welcome/flightprice_errors.php",
             "app/Interfaces/welcome/flightstempmanager_errors.php",
