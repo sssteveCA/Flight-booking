@@ -9,6 +9,7 @@ use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
+use App\Http\Controllers\welcome\HotelSearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,9 @@ Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirpor
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountries']);
+Route::get(P::URL_HOTELCOUNTRIES,[HotelSearchController::class, 'getCountries']);
+Route::get(P::URL_HOTELCITIES,[HotelSearchController::class,'getCities']);
+Route::get(P::URL_HOTELSEARCH,[HotelSearchController::class,'getHotels']);
 
 Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);

@@ -43,6 +43,9 @@ interface Paths{
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTRESUME = Paths::URL_BOOKFLIGHT.'/flightresume';
     const URL_FLIGHTSEARCH = '/flightsearch';
+    const URL_HOTELCITIES = '/hotelcities';
+    const URL_HOTELCOUNTRIES = '/hotelcountries';
+    const URL_HOTELSEARCH = '/hotelsearch';
     const URL_HOME = '/home';
     const URL_INFO = '/info';
     const URL_LOGOUT = '/logout';
