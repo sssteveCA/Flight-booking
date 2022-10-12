@@ -2,7 +2,9 @@
 
 namespace App\Traits\Common;
 
-//This trait contains common code between EditUsernameRequest & EditUsernameRequestApi
+/**
+ * This trait contains common code between EditUsernameRequest & EditUsernameRequestApi
+ */
 trait EditUsernameRequestCommonTrait{
 
     public function attributes()

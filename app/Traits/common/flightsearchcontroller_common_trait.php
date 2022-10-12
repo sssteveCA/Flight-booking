@@ -10,7 +10,9 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-//This trait is used to store common code in FlighSearchController & FlighSearchControllerApi
+/**
+ * This trait is used to store common code in FlighSearchController & FlighSearchControllerApi
+ */
 trait FlightSearchCommonTrait{
 
     private FlightsTempManager $ftm;

@@ -5,7 +5,9 @@ namespace App\Traits\Common;
 use App\Http\Requests\EmailRequest;
 use App\Interfaces\Constants as C;
 
-//This trait contains common code of EmailController & EmailControllerApi
+/**
+ * This trait contains common code of EmailController & EmailControllerApi
+ */
 trait EmailControllerCommonTrait{
 
     /**

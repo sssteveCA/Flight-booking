@@ -10,7 +10,9 @@ use App\Interfaces\Constants as C;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-//This trait contains common code between UserController & UserControllerApi
+/**
+ * This trait contains common code between UserController & UserControllerApi
+ */
 trait UserControllerCommonTrait{
     private UserManager $usermanager;
     private $auth_id;

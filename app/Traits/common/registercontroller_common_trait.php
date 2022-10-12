@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-//This trait is used for common code between RegisterController & RegisterControllerApi
+/**
+ * This trait is used for common code between RegisterController & RegisterControllerApi
+ */
 trait RegisterControllerCommonTrait{
 
     /**

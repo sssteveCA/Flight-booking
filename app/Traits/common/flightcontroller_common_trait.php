@@ -6,7 +6,9 @@ use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightsTempManager;
 use App\Models\Flight;
 
-//This trait contains same code for FlightController & FlightControllerApi
+/**
+ * This trait contains same code for FlightController & FlightControllerApi
+ */
 trait FlightControllerCommonTrait{
     private FlightsTempManager $ftm;
 

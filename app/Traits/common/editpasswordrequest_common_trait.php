@@ -2,7 +2,9 @@
 
 namespace App\Traits\Common;
 
-//This trait contains common code for EditPasswordRequest & EditPasswordRequestApi
+/**
+ * This trait contains common code for EditPasswordRequest & EditPasswordRequestApi
+ */
 trait EditPasswordRequestCommonTrait{
     
     public function attributes()

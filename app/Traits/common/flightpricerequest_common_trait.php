@@ -10,7 +10,9 @@ use App\Rules\IsInArray;
 use App\Rules\ValidCountry;
 use App\Traits\Common\FlightSearchCommonTrait;
 
-//Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
+/**
+ * Ths trait is used to put common code for FlightPriceRequest & FlightPriceRequestApi
+ */
 trait FlightPriceRequestCommonTrait{
 
     use FlightSearchCommonTrait;
