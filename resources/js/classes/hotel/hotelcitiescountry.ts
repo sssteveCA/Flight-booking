@@ -5,8 +5,14 @@ export default class HotelCitiesCountry{
     private _country: string;
     private _select_id: string;
     private _select_elem: JQuery;
+    private _errno: number = 0;
+    private _error: string|null = null;
 
     private static FETCH_URL: string = "/hotelcities";
+
+    public static ERR_FETCH: number = 1;
+
+    private static ERR_FETCH_MSG: string = "Errore durante l'esecuzione della richiesta";
 
     constructor(data: HotelCitiesCountryInterface){
         this._country = data.country;
@@ -18,6 +24,16 @@ export default class HotelCitiesCountry{
     get country(){return this._country;}
     get select_id(){return this._select_id;}
     get select_elem(){return this._select_elem;}
+    get error(){
+        switch(this._errno){
+            case HotelCitiesCountry.ERR_FETCH:
+                this._error = HotelCitiesCountry.ERR_FETCH_MSG;
+                break;
+            default:
+                this._error = null;
+        }
+        return this._error;
+    }
 
     /**
      * Get the cities of a particular country that have hotels to book
@@ -25,6 +41,7 @@ export default class HotelCitiesCountry{
      */
     public async get_hotel_cities_country(): Promise<string[]>{
         let cities: string[] = [];
+        this._errno = 0;
         try{
             await this.get_hotel_cities_country_promise().then(res => {
                 cities = res;
@@ -33,6 +50,7 @@ export default class HotelCitiesCountry{
                 throw err;
             });
         }catch(e){
+            this._errno = HotelCitiesCountry.ERR_FETCH;
             console.warn(e);
         }
         return cities;
