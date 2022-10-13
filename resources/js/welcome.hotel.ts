@@ -13,8 +13,8 @@ export function loadHotelData(): void{
     let hcc: HotelCitiesCountry;
     let hcity: HotelsCity;
     hc.get_hotel_countries().then(countries => {
-        console.log("countries");
-        console.log(countries);
+        //console.log("countries");
+        //console.log(countries);
         let hcc_data: HotelCitiesCountryInterface = {
             country: countries[0],
             select_id: 'hotelCities',
@@ -22,8 +22,8 @@ export function loadHotelData(): void{
         hcc = new HotelCitiesCountry(hcc_data);
         return hcc.get_hotel_cities_country();
     }).then(cities => {
-        console.log("cities");
-        console.log(cities);
+        //console.log("cities");
+        //console.log(cities);
         let hcity_data: HotelsCityInterface = {
             city: cities[0],
             country: hc.countries[0],
@@ -32,8 +32,8 @@ export function loadHotelData(): void{
         hcity = new HotelsCity(hcity_data);
         return hcity.get_hotels_city();
     }).then(hotels => {
-        console.log("hotels");
-        console.log(hotels);
+        //console.log("hotels");
+        //console.log(hotels);
     }).catch(err => {
 
     });
