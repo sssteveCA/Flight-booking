@@ -54,11 +54,26 @@ function hotelSelectsEvent(): void{
         //Select dropdown countries change
         let select = $(e.target);
         let country: string = select.val() as string;
+        let hcc_data: HotelCitiesCountryInterface = {
+            country: country,
+            select_id: 'hotelCities',
+        };
+        Globals.hcc = new HotelCitiesCountry(hcc_data);
+        Globals.hcc.get_hotel_cities_country().then(res => {
+            Globals.hcc.select_elem.trigger('change');
+        });
     });
     Globals.hcc.select_elem.on('change',(e)=>{
         //Select dropdown cities change
         let select = $(e.target);
         let country: string = Globals.hc.select_elem.val() as string;
         let city: string = select.val() as string;
+        let hCity_data: HotelsCityInterface = {
+            city: city,
+            country: country,
+            select_id: 'hotelsList'
+        };
+        Globals.hCity = new HotelsCity(hCity_data);
+        Globals.hCity.get_hotels_city();
     });
 }
