@@ -1,7 +1,7 @@
 import HotelCitiesCountryInterface from "../../interfaces/hotel/hotelcitiescountry.interface";
 
 export default class HotelCitiesCountry{
-    private _cities: string[];
+    private _cities: string[] = [];
     private _country: string;
     private _select_id: string;
     private _select_elem: JQuery;

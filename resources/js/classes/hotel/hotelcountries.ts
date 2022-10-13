@@ -9,7 +9,7 @@ export default class HotelCountries{
 
     constructor(data: HotelCountriesInterface){
         this._select_id = data.select_id;
-        //this._select_elem = $('#'+this._select_id);
+        this._select_elem = $('#'+this._select_id);
     }
 
     get select_id(){return this._select_id;}
