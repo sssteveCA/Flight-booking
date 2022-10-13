@@ -3,7 +3,7 @@ import FlightLocationList from "./classes/flight/flightlocationlist";
 import FlightLocationAirportsInterface from "./interfaces/flight/flightlocationairports.interface";
 import FlightLocationCompaniesInterface from "./interfaces/flight/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flight/flightlocationcountries.interface";
-import { loadHotelData } from "./welcome.hotel";
+import {loadHotelData } from "./welcome.hotel";
 
 $(()=>{
     let elements = {

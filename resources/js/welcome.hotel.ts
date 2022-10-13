@@ -1,3 +1,4 @@
+import NoArgumentError from "./classes/errors/noargumenterror";
 import HotelCitiesCountry from "./classes/hotel/hotelcitiescountry";
 import HotelCountries from "./classes/hotel/hotelcountries";
 import HotelsCity from "./classes/hotel/hotelscity";
@@ -5,36 +6,59 @@ import HotelCitiesCountryInterface from "./interfaces/hotel/hotelcitiescountry.i
 import HotelCountriesInterface from "./interfaces/hotel/hotelcountries.interface";
 import HotelsCityInterface from "./interfaces/hotel/hotelscity.interface";
 
+namespace Globals{
+    export let hc: HotelCountries;
+    export let hcc: HotelCitiesCountry;
+    export let hCity: HotelsCity;
+}
+
+
 export function loadHotelData(): void{
     let hc_data: HotelCountriesInterface = {
         select_id: 'hotelCountries'
     };
-    let hc: HotelCountries = new HotelCountries(hc_data);
-    let hcc: HotelCitiesCountry;
+    Globals.hc = new HotelCountries(hc_data);
     let hcity: HotelsCity;
-    hc.get_hotel_countries().then(countries => {
+    Globals.hc.get_hotel_countries().then(countries => {
+        if(countries.length <= 0)throw new NoArgumentError("");
         //console.log("countries");
         //console.log(countries);
         let hcc_data: HotelCitiesCountryInterface = {
             country: countries[0],
             select_id: 'hotelCities',
         };
-        hcc = new HotelCitiesCountry(hcc_data);
-        return hcc.get_hotel_cities_country();
+        Globals.hcc = new HotelCitiesCountry(hcc_data);
+        return Globals.hcc.get_hotel_cities_country();
     }).then(cities => {
+        if(cities.length <= 0)throw new NoArgumentError("");
         //console.log("cities");
         //console.log(cities);
-        let hcity_data: HotelsCityInterface = {
+        let hCity_data: HotelsCityInterface = {
             city: cities[0],
-            country: hc.countries[0],
+            country: Globals.hc.countries[0],
             select_id: 'hotelsList'
         };
-        hcity = new HotelsCity(hcity_data);
-        return hcity.get_hotels_city();
+        Globals.hCity = new HotelsCity(hCity_data);
+        return Globals.hCity.get_hotels_city();
     }).then(hotels => {
         //console.log("hotels");
         //console.log(hotels);
+        hotelSelectsEvent();
     }).catch(err => {
 
+    });
+}
+
+function hotelSelectsEvent(): void{
+    Globals.hc.select_elem.on('change', (e)=>{
+        //Select dropdown countries change
+        let select = $(e.target);
+        let country: string = select.val() as string;
+    });
+    Globals.hcc.select_elem.on('change',(e)=>{
+        //Select dropdown cities change
+        let select = $(e.target);
+        let country: string = Globals.hc.select_elem.val() as string;
+        let city: string = select.val() as string;
     });
 }
