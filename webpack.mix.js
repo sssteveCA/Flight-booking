@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 -mix.js('resources/js/app.js', 'public/js').vue()
 +mix.ts('resources/js/welcome.ts','public/js')
++mix.ts('resources/js/welcome.hotel.ts','public/js')
 +mix.ts('resources/js/auth/register.ts','public/js/auth')
 +mix.ts('resources/js/profile/myFlights.ts','public/js/profile')
 +mix.ts('resources/js/profile/myFlights/flight.ts','public/js/profile/myFlights')

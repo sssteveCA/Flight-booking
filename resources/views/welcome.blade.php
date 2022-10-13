@@ -14,6 +14,7 @@
 
 @section('scripts')
 <script lang="ts" src="{{ asset('js/welcome.js') }}"></script>
+<script lang="ts" src="{{ asset('js/welcome.hotel.js') }}"></script>
 @endsection
 
 @section('content')

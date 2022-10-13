@@ -1,11 +1,7 @@
 import HotelCountries from "./classes/hotel/hotelcountries";
 import HotelCountriesInterface from "./interfaces/hotel/hotelcountries.interface";
 
-$(()=>{
-    loadHotelData();
-});
-
-function loadHotelData(): void{
+export function loadHotelData(): void{
     let hc_data: HotelCountriesInterface = {
         select_id: 'hotelCountries'
     };

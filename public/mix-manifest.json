@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/welcome.js": "/js/welcome.js",
+    "/js/welcome.hotel.js": "/js/welcome.hotel.js",
     "/js/auth/register.js": "/js/auth/register.js",
     "/js/profile/myFlights.js": "/js/profile/myFlights.js",
     "/js/profile/myFlights/flight.js": "/js/profile/myFlights/flight.js",

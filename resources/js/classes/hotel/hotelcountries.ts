@@ -23,7 +23,7 @@ export default class HotelCountries{
     public async get_hotel_countries(): Promise<Array<string>>{
         try{
             await this.get_hotel_countries_promise().then(res => {
-                console.log(res);
+                //console.log(res);
                 this._countries = res;
             }).catch(err => {
                 throw err;
