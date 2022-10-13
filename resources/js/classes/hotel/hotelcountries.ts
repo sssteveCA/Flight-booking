@@ -21,17 +21,19 @@ export default class HotelCountries{
      * @returns the list of countries
      */
     public async get_hotel_countries(): Promise<Array<string>>{
+        let countries: Array<string> = [];
         try{
             await this.get_hotel_countries_promise().then(res => {
                 //console.log(res);
-                this._countries = res;
+                countries = res;
+                this._countries = countries;
             }).catch(err => {
                 throw err;
             });
         }catch(e){
             console.warn(e);
         }
-        return this._countries;
+        return countries;
     }
 
     private async get_hotel_countries_promise(): Promise<Array<string>>{
