@@ -5,6 +5,7 @@ export default class HotelCountries{
     private _select_id: string;
     private _countries: Array<string> = [];
     private _select_elem: JQuery;
+    private _select_html: string;
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -22,6 +23,7 @@ export default class HotelCountries{
     get select_id(){return this._select_id;}
     get countries(){return this._countries;}
     get select_elem(){return this._select_elem;}
+    get select_html(){return this._select_html;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -46,6 +48,7 @@ export default class HotelCountries{
                 //console.log(res);
                 countries = res;
                 this._countries = countries;
+                this.set_select_html();
             }).catch(err => {
                 throw err;
             });
@@ -65,5 +68,13 @@ export default class HotelCountries{
                     reject(err);
                 });
         });
+    }
+
+    private set_select_html(): void{
+        this._select_html = ``;
+        this._countries.forEach(country => {
+            this._select_html += `<option value="${country}">${country}</option>`;
+        });
+        this._select_elem.html(this._select_html);
     }
 }

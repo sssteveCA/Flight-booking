@@ -5,6 +5,7 @@ export default class HotelsCity{
     private _country: string;
     private _select_id: string;
     private _select_elem: JQuery;
+    private _select_html: string;
     private _hotels: string[] = [];
     private _errno: number = 0;
     private _error: string|null = null;
@@ -26,6 +27,7 @@ export default class HotelsCity{
     get country(){return this._country;}
     get select_id(){return this._select_id;}
     get select_elem(){return this._select_elem;}
+    get select_html(){return this._select_html;}
     get hotels(){return this._hotels;}
     get error(){
         switch(this._errno){
@@ -49,6 +51,7 @@ export default class HotelsCity{
             await this.get_hotels_city_promise().then(res => {
                 hotels = res;
                 this._hotels = hotels;
+                this.set_select_html();
             }).catch(err => {
                 throw err;
             });
@@ -69,5 +72,13 @@ export default class HotelsCity{
                 reject(err);
             });
         });
+    }
+
+    private set_select_html(): void{
+        this._select_html = ``;
+        this._hotels.forEach(hotel => {
+            this._select_html += `<option value="${hotel}">${hotel}</option>`;
+        });
+        this._select_elem.html(this._select_html);
     }
 }

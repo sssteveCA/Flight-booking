@@ -5,6 +5,7 @@ export default class HotelCitiesCountry{
     private _country: string;
     private _select_id: string;
     private _select_elem: JQuery;
+    private _select_html: string;
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -24,6 +25,7 @@ export default class HotelCitiesCountry{
     get country(){return this._country;}
     get select_id(){return this._select_id;}
     get select_elem(){return this._select_elem;}
+    get select_html(){return this._select_html;}
     get error(){
         switch(this._errno){
             case HotelCitiesCountry.ERR_FETCH:
@@ -46,6 +48,7 @@ export default class HotelCitiesCountry{
             await this.get_hotel_cities_country_promise().then(res => {
                 cities = res;
                 this._cities = cities;
+                this.set_select_html();
             }).catch(err => {
                 throw err;
             });
@@ -66,5 +69,13 @@ export default class HotelCitiesCountry{
                 reject(err);
             });
         });
+    }
+
+    private set_select_html(): void{
+        this._select_html = ``;
+        this._cities.forEach(city => {
+            this._select_html += `<option value="${city}">${city}</option>`;
+        });
+        this._select_elem.html(this._select_html);
     }
 }
