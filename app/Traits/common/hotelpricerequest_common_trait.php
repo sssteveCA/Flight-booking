@@ -2,7 +2,13 @@
 
 namespace App\Traits\Common;
 
+use App\Rules\CheckHotelCity;
+use App\Rules\IsInArray;
+use App\Interfaces\Hotels as H;
+
 trait HotelPriceRequestCommonTrait{
+
+    use HotelSearchControllerCommonTrait;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +28,8 @@ trait HotelPriceRequestCommonTrait{
     public function rules()
     {
         return [
-            'country' => 'required',
-            'city' => 'required',
+            'country' => ['required', new IsInArray($this->getCountriesList())],
+            'city' => ['required', new CheckHotelCity(H::HOTELS_LIST)],
             'hotel' => 'required',
             'checkin' => ['required', 'date'],
             'checkout' => ['required', 'date'],
