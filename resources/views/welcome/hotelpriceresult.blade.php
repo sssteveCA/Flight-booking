@@ -1,6 +1,9 @@
 @extends('layout.menu')
 
 @section('namespaces')
+    @php
+       use App\Interfaces\Paths as P; 
+    @endphp
 @endsection
 
 @section('title','Prezzo albergo scelto')
@@ -12,4 +15,11 @@
 @endsection
 
 @section('content')
+    @isset($errors)
+        @foreach($errors as $k => $input_errors)
+            @foreach($input_errors as $k => $error)
+                <div class="alert alert-danger" role="alert">{{$error}}</div>
+            @endforeach
+        @endforeach
+    @endisset
 @endsection
