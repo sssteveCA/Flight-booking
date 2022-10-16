@@ -6,14 +6,13 @@ use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
 
 /**
- * Check if a city is present in the selected country
+ * Check if declared hotel exists in a specific city, inside a specific country
  */
-class CheckHotelCity implements Rule, DataAwareRule
+class CheckHotel implements Rule, DataAwareRule
 {
 
     protected $data = [];
     private array $hotels_array;
-
 
     /**
      * Create a new rule instance.
@@ -37,10 +36,12 @@ class CheckHotelCity implements Rule, DataAwareRule
         $country = $this->data['country'];
         $cities = array_keys($this->hotels_array[$country]);
         if(count($cities) > 0){
-            if(in_array($value,$cities)){
-                //Check if the city is in list of declared country
+            $city = $this->data['city'];
+            $hotels = array_keys($this->hotels_array[$country][$city]);
+            if(in_array($value,$hotels)){
+                //Check if delcared hotel exists in a hotel list of a specific city
                 return true;
-            }//if(in_array($value,$cities)){
+            }//if(in_array($value,$hotels)){
         }//if(count($cities) > 0){
         return false;
     }
@@ -52,7 +53,7 @@ class CheckHotelCity implements Rule, DataAwareRule
      */
     public function message()
     {
-        return ':attribute non è presente nel paese indicato';
+        return ':attribute non esiste nella città o nel paese indicato';
     }
 
     public function setData($data)

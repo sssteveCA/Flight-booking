@@ -5,6 +5,7 @@ namespace App\Traits\Common;
 use App\Rules\CheckHotelCity;
 use App\Rules\IsInArray;
 use App\Interfaces\Hotels as H;
+use App\Rules\CheckHotel;
 
 trait HotelPriceRequestCommonTrait{
 
@@ -30,7 +31,7 @@ trait HotelPriceRequestCommonTrait{
         return [
             'country' => ['required', new IsInArray($this->getCountriesList())],
             'city' => ['required', new CheckHotelCity(H::HOTELS_LIST)],
-            'hotel' => 'required',
+            'hotel' => ['required', new CheckHotel(H::HOTELS_LIST)],
             'checkin' => ['required', 'date'],
             'checkout' => ['required', 'date'],
             'rooms' => ['required', 'integer']
