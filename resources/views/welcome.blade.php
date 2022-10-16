@@ -136,15 +136,15 @@
             <div class="container">
                 <div class="row">
                     <div id="fb-h1" class="form-floating col-12 col-md-6 col-lg-4">
-                        <select id="hotelCountries" class="form-select form-select-lg"></select>
+                        <select id="hotelCountries" class="form-select form-select-lg" name="country"></select>
                         <label for="hotelCountries">Paese</label>
                     </div>
                     <div id="fb-h2" class="form-floating col-12 col-md-6 col-lg-4">
-                        <select id="hotelCities" class="form-select form-select-lg"></select>
+                        <select id="hotelCities" class="form-select form-select-lg" name="city"></select>
                         <label for="hotelCities">Città</label>
                     </div>
                     <div id="fb-h3" class="form-floating col-12 col-md-6 col-lg-4">
-                        <select id="hotelsList" class="form-select form-select-lg"></select>
+                        <select id="hotelsList" class="form-select form-select-lg" name="hotel"></select>
                         <label for="hotelsList">Albergo</label>
                     </div>
                 </div>

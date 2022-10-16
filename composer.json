@@ -49,6 +49,7 @@
             "app/Traits/common/registercontroller_common_trait.php",
             "app/Traits/common/editpasswordrequest_common_trait.php",
             "app/Traits/common/editusernamerequest_common_trait.php",
+            "app/Traits/common/hotelpricerequest_common_trait.php",
             "app/Traits/common/usercontroller_common_trait.php",
             "app/Traits/common/emailcontroller_common_trait.php",
             "app/Traits/common/hotelsearchcontroller_common_trait.php",
