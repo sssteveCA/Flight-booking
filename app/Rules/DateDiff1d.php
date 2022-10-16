@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Traits\DateTrait;
 use DateTimeImmutable;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Log;
 
 class DateDiff1d implements Rule,DataAwareRule
 {
+
+    use DateTrait;
 
     private string $error_attribute;
 
@@ -86,18 +89,5 @@ class DateDiff1d implements Rule,DataAwareRule
         //Log::channel('stdout')->debug("DateDiff1d setData => ");
         //Log::channel('stdout')->debug(var_export($this->data,true));
         return $this;
-    }
-
-    //Check if date1 is greater at least 1 day than date2
-    private function oneDayDifference(string $date1, string $date2): bool{
-        $oneDayGt = false;
-        $date1_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date1);
-        $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
-        $diff = $date1_dt->diff($date2_dt);
-        //Log::channel('stdout')->info('diff => '.var_export($diff,true));
-        if($diff->invert == 1 && $diff->d >= 1){
-            $oneDayGt = true;
-        }
-        return $oneDayGt;
     }
 }

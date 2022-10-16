@@ -43,6 +43,7 @@
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flightprice_trait.php",
             "app/Traits/flightstempmanager_trait.php",
+            "app/Traits/date_trait.php",
             "app/Traits/common/flightsearchcontroller_common_trait.php",
             "app/Traits/common/flightcontroller_common_trait.php",
             "app/Traits/common/flightpricerequest_common_trait.php",
