@@ -9,4 +9,8 @@ use Illuminate\Http\Request;
 class HotelSearchController extends Controller
 {
     use HotelSearchControllerCommonTrait;
+
+    public function getHotelPrice(Request $request){
+        
+    }
 }

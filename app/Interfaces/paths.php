@@ -15,6 +15,7 @@ interface Paths{
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
+    const ROUTE_HOTELPRICE = 'hotelprice';
     const ROUTE_INFO = 'usercontroller.info';
     const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
@@ -45,6 +46,7 @@ interface Paths{
     const URL_FLIGHTSEARCH = '/flightsearch';
     const URL_HOTELCITIES = '/hotelcities';
     const URL_HOTELCOUNTRIES = '/hotelcountries';
+    const URL_HOTELPRICE = '/hotelprice';
     const URL_HOTELSEARCH = '/hotelsearch';
     const URL_HOME = '/home';
     const URL_INFO = '/info';
@@ -69,6 +71,7 @@ interface Paths{
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
+    const VIEW_HOTELPRICERESULT = 'welcome.hotelpriceresult';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
     const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
