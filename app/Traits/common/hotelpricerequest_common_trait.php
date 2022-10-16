@@ -6,6 +6,7 @@ use App\Rules\CheckHotelCity;
 use App\Rules\IsInArray;
 use App\Interfaces\Hotels as H;
 use App\Rules\CheckHotel;
+use App\Rules\DateDiff1dHotel;
 
 trait HotelPriceRequestCommonTrait{
 
@@ -32,9 +33,9 @@ trait HotelPriceRequestCommonTrait{
             'country' => ['required', new IsInArray($this->getCountriesList())],
             'city' => ['required', new CheckHotelCity(H::HOTELS_LIST)],
             'hotel' => ['required', new CheckHotel(H::HOTELS_LIST)],
-            'checkin' => ['required', 'date'],
-            'checkout' => ['required', 'date'],
-            'rooms' => ['required', 'integer']
+            'checkin' => ['required', 'date', new DateDiff1dHotel('checkin')],
+            'checkout' => ['required', 'date', new DateDiff1dHotel('checkout')],
+            'rooms' => ['required', 'integer','min:1']
         ];
     }
 
@@ -42,6 +43,7 @@ trait HotelPriceRequestCommonTrait{
         return [
             'date' => "L'attributo :attribute deve essere una data valida",
             'integer' => "L'attributo :attribute deve essere un numero intero valido",
+            "min" => "L'attributo :attribute deve avere un valore pari ad almeno :min",
             'required' => "L'attributo :attribute è obbligatorio"
         ];
     }
