@@ -30,5 +30,24 @@ trait HotelPriceRequestCommonTrait{
             'rooms' => ['required', 'integer']
         ];
     }
+
+    public function messages(){
+        return [
+            'date' => "L'attributo :attribute deve essere una data valida",
+            'integer' => "L'attributo :attribute deve essere un numero intero valido",
+            'required' => "L'attributo :attribute è obbligatorio"
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'country' => 'paese',
+            'city' => 'città',
+            'hotel' => 'albergo',
+            'checkin' => 'data di inizio soggiorno',
+            'checkout' => 'data di fine soggiorno',
+            'rooms' => 'stanze'
+        ];
+    }
 }
 ?>
