@@ -36,7 +36,7 @@ trait HotelPriceRequestCommonTrait{
             'checkin' => ['required', 'date', new DateDiff1dHotel('checkin')],
             'checkout' => ['required', 'date', new DateDiff1dHotel('checkout')],
             'rooms' => ['required', 'integer','min:1'],
-            'people' => []
+            'people' => ['required', 'integer', 'min:1']
         ];
     }
 
@@ -56,7 +56,8 @@ trait HotelPriceRequestCommonTrait{
             'hotel' => 'albergo',
             'checkin' => 'data di inizio soggiorno',
             'checkout' => 'data di fine soggiorno',
-            'rooms' => 'stanze'
+            'rooms' => 'stanze',
+            'people' => 'numero di persone'
         ];
     }
 }
