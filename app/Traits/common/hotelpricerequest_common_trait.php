@@ -35,7 +35,8 @@ trait HotelPriceRequestCommonTrait{
             'hotel' => ['required', new CheckHotel(H::HOTELS_LIST)],
             'checkin' => ['required', 'date', new DateDiff1dHotel('checkin')],
             'checkout' => ['required', 'date', new DateDiff1dHotel('checkout')],
-            'rooms' => ['required', 'integer','min:1']
+            'rooms' => ['required', 'integer','min:1'],
+            'people' => []
         ];
     }
 
