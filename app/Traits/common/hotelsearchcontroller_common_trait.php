@@ -87,7 +87,7 @@ trait HotelSearchControllerCommonTrait{
             if(isset(H::HOTELS_LIST[$country][$city])){
                 if(isset(H::HOTELS_LIST[$country][$city][$hotel])){
                     $hotel_info_list = H::HOTELS_LIST[$country][$city][$hotel];
-                    return array_keys($hotel_info_list);
+                    return $hotel_info_list;
                 }
             }
         }//if(isset(H::HOTELS_LIST[$country])){
