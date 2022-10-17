@@ -159,7 +159,7 @@
                     </div>
                     <div id="fb-h6" class="form-floating col-12 col-md-6 col-lg-3">
                         <input type="text" id="fb-rooms" class="form-control" name="rooms" value="1">
-                        <label for="fb-rooms">Ospiti e camere</label>
+                        <label for="fb-rooms">Camere</label>
                     </div>
                     <div id="fb-h7" class="form-floating col-12 col-md-6 col-lg-3">
                         <input type="text" id="fb-people" class="form-control" name="people" value="1">
