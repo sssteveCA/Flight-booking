@@ -560,13 +560,13 @@ interface Hotels{
             ],
             'Roma' => [
                 'Barceló Aran Mantegna' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
                 ],
                 'Hotel American Palace Eur' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
                 ],
                 'Hotel Cristoforo Colombo' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
                 ]
             ]
         ],
