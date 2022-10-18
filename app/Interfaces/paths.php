@@ -87,6 +87,7 @@ interface Paths{
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
     const VIEW_VERIFYEMAIL = 'auth.verify';
     const VIEW_WELCOME = 'welcome';
+    const VIEW_WELCOME_FLIGHT = 'partials.welcome.flight';
     const VIEW_WELCOME_HOTEL = 'partials.welcome.hotel';
     
 }
