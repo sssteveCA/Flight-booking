@@ -4,6 +4,7 @@ import HotelCountries from "./classes/hotel/hotelcountries";
 import HotelsCity from "./classes/hotel/hotelscity";
 import HotelCitiesCountryInterface from "./interfaces/hotel/hotelcitiescountry.interface";
 import HotelCountriesInterface from "./interfaces/hotel/hotelcountries.interface";
+import HotelInfoInterface from "./interfaces/hotel/hotelinfo.interface";
 import HotelsCityInterface from "./interfaces/hotel/hotelscity.interface";
 
 namespace Globals{
@@ -75,5 +76,19 @@ function hotelSelectsEvent(): void{
         };
         Globals.hCity = new HotelsCity(hCity_data);
         Globals.hCity.get_hotels_city();
+    });
+    Globals.hCity.select_elem.on('change',(e)=>{
+        let select = $(e.target);
+        let country: string = Globals.hc.select_elem.val() as string;
+        let city: string = Globals.hcc.select_elem.val() as string;
+        let hotel: string = select.val() as string;
+        let hi: HotelInfoInterface = {
+            country: country,
+            city: city,
+            hotel: hotel,
+            container_id: ""
+        };
+        console.log("HotelInfo");
+        console.log(hi);
     });
 }
