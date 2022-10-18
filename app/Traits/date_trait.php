@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use DateTimeImmutable;
+use Illuminate\Support\Facades\Log;
 
 /**
  * This trait contains date functions
@@ -25,6 +26,20 @@ trait DateTrait{
             $oneDayGt = true;
         }
         return $oneDayGt;
+    }
+
+    /**
+     * Calculate the days of difference between two dates
+     * @param string $date1
+     * @param string $date2
+     * @return int number of days difference between dates
+     */
+    private function dateDaysDifference(string $date1, string $date2): int{
+        $date1_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date1);
+        $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
+        $diff = $date1_dt->diff($date2_dt);
+        Log::channel('stdout')->debug("DateTrait dateDaysDifference days => {$diff->days}");
+        return $diff->days;
     }
 }
 ?>

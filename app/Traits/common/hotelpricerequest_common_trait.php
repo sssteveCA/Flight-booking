@@ -36,13 +36,16 @@ trait HotelPriceRequestCommonTrait{
             'checkin' => ['required', 'date', new DateDiff1dHotel('checkin')],
             'checkout' => ['required', 'date', new DateDiff1dHotel('checkout')],
             'rooms' => ['required', 'integer','min:1'],
-            'people' => ['required', 'integer', 'min:1']
+            'people' => ['required', 'integer', 'min:1','gte:rooms']
         ];
     }
 
     public function messages(){
         return [
             'date' => "L'attributo :attribute deve essere una data valida",
+            'people' => [
+                'gte' => "Il numero di persone deve essere maggiore o uguale alle stanze prenotate"
+            ],
             'integer' => "L'attributo :attribute deve essere un numero intero valido",
             "min" => "L'attributo :attribute deve avere un valore pari ad almeno :min",
             'required' => "L'attributo :attribute è obbligatorio"
