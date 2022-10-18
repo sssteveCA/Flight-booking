@@ -6,7 +6,7 @@ use App\Rules\CheckHotelCity;
 use App\Rules\IsInArray;
 use App\Interfaces\Hotels as H;
 use App\Rules\CheckHotel;
-use App\Rules\DateDiff1dHotel;
+use App\Rules\DateDiffHotel;
 
 trait HotelPriceRequestCommonTrait{
 
@@ -33,8 +33,8 @@ trait HotelPriceRequestCommonTrait{
             'country' => ['required', new IsInArray($this->getCountriesList())],
             'city' => ['required', new CheckHotelCity(H::HOTELS_LIST)],
             'hotel' => ['required', new CheckHotel(H::HOTELS_LIST)],
-            'checkin' => ['required', 'date', new DateDiff1dHotel('checkin')],
-            'checkout' => ['required', 'date', new DateDiff1dHotel('checkout')],
+            'checkin' => ['required', 'date', new DateDiffHotel('checkin')],
+            'checkout' => ['required', 'date', new DateDiffHotel('checkout')],
             'rooms' => ['required', 'integer','min:1'],
             'people' => ['required', 'integer', 'min:1','gte:rooms']
         ];

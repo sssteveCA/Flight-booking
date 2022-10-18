@@ -6,7 +6,7 @@ use App\Traits\DateTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
 
-class DateDiff1dHotel implements Rule, DataAwareRule
+class DateDiffHotel implements Rule, DataAwareRule
 {
     use DateTrait;
 
@@ -34,12 +34,12 @@ class DateDiff1dHotel implements Rule, DataAwareRule
     {
         //
         if($attribute == 'checkin'){
-            $one_day = $this->oneDayDifference($value,date('Y-m-d'));
-            if($one_day) return true;
+            $days_diff = $this->dateDaysDifference(date('Y-m-d'),$value);
+            if($days_diff >= 1) return true;
         }
         else if($attribute == 'ckeckout'){
-            $one_day = $this->oneDayDifference($value, $this->data['checkin']);
-            if($one_day) return true;
+            $days_diff = $this->oneDayDifference($this->data['checkin'],$value);
+            if($days_diff >= 1)return true;
         }
         return false;
     }
