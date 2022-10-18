@@ -170,6 +170,9 @@
                     </div>
                 </div>
             </div>
+            <div id="hotel_info_result">
+                
+            </div>
         </div>
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>

@@ -1,0 +1,28 @@
+@use "sass:map";
+
+$hotel-container-id: "#hotel";
+$hotel-info-container: "#hotel_info_result";
+$table-th-td-map: (
+    padding: 5px, display: flex, justify-content: center, align-items: center
+);
+
+@mixin hotel-tab-style($hc-id,$hic-id){
+    #{$hc-id}{
+        #{$hic-id}{
+            padding: 20px;
+            table{
+                position: relative;
+                margin: 0 auto;
+                tr{
+                    th,td{
+                        @each $prop,$val in $table-th-td-map{
+                            #{$prop}: #{$val};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include hotel-tab-style($hotel-container-id,$hotel-info-container);

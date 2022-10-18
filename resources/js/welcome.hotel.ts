@@ -86,7 +86,7 @@ function hotelSelectsEvent(): void{
             country: country,
             city: city,
             hotel: hotel,
-            container_id: ""
+            container_id: "hotel_info_result"
         };
         console.log("HotelInfo");
         console.log(hi);
