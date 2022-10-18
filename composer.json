@@ -34,6 +34,7 @@
             "app/Exceptions/flightsarray_exception.php",
             "app/Exceptions/flightsdatamodified_exception.php",
             "app/Exceptions/flightstemp_notadded_exception.php",
+            "app/Exceptions/hotelpricerequestarray_exception.php",
             "app/Interfaces/airports.php",
             "app/Interfaces/hotels.php",
             "app/Interfaces/constants.php",
