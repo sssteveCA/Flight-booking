@@ -32,7 +32,7 @@
                 <label for="fb-people">Numero di persone</label>
             </div>
             <div id="fb-h8" class="col-12 col-md-6 col-lg-2">
-                <button type="submit" class="btn btn-danger">Cerca</button>
+                <button type="submit" class="btn btn-danger">Vedi preventivo</button>
             </div>
         </div>
     </div>

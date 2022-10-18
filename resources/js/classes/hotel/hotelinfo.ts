@@ -105,24 +105,24 @@ export default class HotelInfo{
 <table class="table table-striped">
     <tbody>
         <tr>
-            <td scope="row">Numero massimo di persone per stanza</td>
-            <td>${this._hotel_info['max_people']}</td>
+            <th scope="row">Numero massimo di persone per stanza</td>
+            <td>${this._hotel_info['max_people']} persone</td>
         </tr>
         <tr>
-            <td scope="row">Prezzo per notte</td>
-            <td>${this._hotel_info['price']}</td>
+            <th scope="row">Prezzo per notte</td>
+            <td>${this._hotel_info['price']}€</td>
         </tr>
         <tr>
-            <td scope="row">Stanze disponibili</td>
-            <td>${this._hotel_info['rooms']}</td>
+            <th scope="row">Stanze disponibili</td>
+            <td>${this._hotel_info['rooms']} stanze</td>
         </tr>
         <tr>
-            <td scope="row">Voto medio</td>
-            <td>${this._hotel_info['score']}</td>
+            <th scope="row">Voto medio</td>
+            <td>${this._hotel_info['score']} / 10</td>
         </tr>
         <tr>
-            <td scope="row">Stelle</td>
-            <td>${this._hotel_info['stars']}</td>
+            <th scope="row">Stelle</td>
+            <td>${this._hotel_info['stars']} stelle</td>
         </tr>
     </tbody>
 </table>

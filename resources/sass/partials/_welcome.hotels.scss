@@ -2,9 +2,7 @@
 
 $hotel-container-id: "#hotel";
 $hotel-info-container: "#hotel_info_result";
-$table-th-td-map: (
-    padding: 5px, display: flex, justify-content: center, align-items: center
-);
+$table-th-td-map: ();
 
 @mixin hotel-tab-style($hc-id,$hic-id){
     #{$hc-id}{

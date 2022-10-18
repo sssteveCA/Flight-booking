@@ -538,13 +538,13 @@ interface Hotels{
         'Italia' => [
             'Firenze' => [
                 'Hotel Bodoni' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3
                 ],
                 'Hotel Delle Nazioni' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3
                 ],
                 'Nilhotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3
                 ]
             ],
             'Milano' => [
