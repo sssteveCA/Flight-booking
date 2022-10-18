@@ -2,7 +2,9 @@
 
 namespace App\Interfaces\Welcome;
 
-interface HotelPriceErrors{
-    
+use App\Interfaces\ExceptionsMessages;
+
+interface HotelPriceErrors extends ExceptionsMessages{
+
 }
 ?>

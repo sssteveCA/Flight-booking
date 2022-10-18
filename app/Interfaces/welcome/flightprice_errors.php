@@ -2,9 +2,9 @@
 
 namespace App\Interfaces\Welcome;
 
-interface FlightPriceErrors{
+use App\Interfaces\ExceptionsMessages;
 
-    const INVALIDDATA_EXC = "Uno o più dati passati alla classe FlightPrice non sono validi";
+interface FlightPriceErrors extends ExceptionsMessages{
 
     const DATEFORMAT = 1;
 

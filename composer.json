@@ -37,6 +37,7 @@
             "app/Interfaces/airports.php",
             "app/Interfaces/hotels.php",
             "app/Interfaces/constants.php",
+            "app/Interfaces/exceptions_messages.php",
             "app/Interfaces/welcome/flightprice_errors.php",
             "app/Interfaces/welcome/flightstempmanager_errors.php",
             "app/Interfaces/welcome/hotelprice_errors.php",
