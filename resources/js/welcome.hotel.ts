@@ -95,8 +95,8 @@ function hotelSelectsEvent(): void{
         let hi_data: HotelInfoInterface = {
             country: country, city: city, hotel: hotel, container_id: "hotel_info_result"
         };
-        console.log("HotelInfo");
-        console.log(hi_data);
+        /* console.log("HotelInfo");
+        console.log(hi_data); */
         Globals.hi = new HotelInfo(hi_data);
         Globals.hi.get_hotel_info();
     });

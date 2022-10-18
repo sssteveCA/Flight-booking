@@ -28,9 +28,9 @@
                 <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events" type="button" role="tab" aria-controls="events" aria-selected="false">Eventi</button>
             </div>
         </nav>
-        @include(P::VIEW_WELCOME_FLIGHT,['FlightPriceRoute' => P::ROUTE_FLIGHTPRICE])
+        @include(P::VIEW_WELCOME_FLIGHT,['flightPriceRoute' => P::ROUTE_FLIGHTPRICE])
         @include(P::VIEW_WELCOME_CAR_RENTAL)
-        @include(P::VIEW_WELCOME_HOTEL)
+        @include(P::VIEW_WELCOME_HOTEL,['hotelPriceRoute' => P::ROUTE_HOTELPRICE])
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>
     <div id="flight-animation" class="d-flex align-items-center">

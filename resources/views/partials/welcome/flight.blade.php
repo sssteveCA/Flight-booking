@@ -1,5 +1,5 @@
 <div class="tab-pane fade show active" id="tab-flights" role="tabpanel" aria-labelledby="tab-flights-tab">
-    <form id="flightSearch" method="post" action="{{ route($FlightPriceRoute) }}">
+    <form id="flightSearch" method="post" action="{{ route($flightPriceRoute) }}">
         @csrf
         @method("POST")
         <div class="container">
