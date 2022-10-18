@@ -22,4 +22,7 @@
             @endforeach
         @endforeach
     @endisset
+    @isset($error_message)
+        <div class="alert alert-danger" role="alert">{{$error_message}}</div>
+    @endisset
 @endsection

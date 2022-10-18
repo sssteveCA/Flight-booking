@@ -39,7 +39,7 @@ trait DateTrait{
         $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
         $diff = $date1_dt->diff($date2_dt);
         Log::channel('stdout')->debug("DateTrait dateDaysDifference days => {$diff->days}");
-        return $diff->days;
+        return $diff->d;
     }
 }
 ?>

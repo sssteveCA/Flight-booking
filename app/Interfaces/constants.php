@@ -16,6 +16,7 @@ interface Constants{
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTPAYMENT_REFUSE = "Il tuo pagamento non ha avuto successo, perché è stato rifiutato";
     const ERR_FLIGHTPAYMENT_UNKNOWN = "Errore durante il pagamento del volo. ".Constants::ADMIN_CONTACT;
+    const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
