@@ -19,12 +19,48 @@ $result-div-header-map: (
         text-transform: uppercase, font-weight: bold, text-align: center, border: 1px solid black
     )
 );
+$paragraph-header-map: (
+    'props': (
+        font-weight: bold
+    )
+);
 
-@mixin result-table-global($form-map,$rd-map,$rdh-map){
+@mixin result-table-global($form-map,$rd-map,$rdh-map,$rr-map,$ce-map,$par-h-map){
     $form-id: map.get($form-map,'form-id');
     $rd-class: map.get($rd-map,'rd-class');
     $rdh-class: map.get($rdh-map,'rdh-class');
+    $rr-class: map.get($rr-map,'rr-class');
+    $ce-class: map.get($ce-map,'ce-class');
+    $par-h-class: map.get($par-h-map,'par-h-class');
     form##{$form_id}{
-
-    }
+        $form-props: map.get($form-map,'props');
+        @each $prop,$val in $form-props{
+            #{$prop}: #{$val};
+        }
+        div.#{$rd-class}{
+            $rd-props: map.get($rd-map,'props');
+            @each $prop,$val in $rd-props{
+                #{$prop}: #{$val};
+            }
+            div.#{$rdh-class}{
+                $rdh-props: map.get($rdh-map,'props');
+                @each $prop,$val in $rdh-props{
+                    #{$prop}: #{$val};
+                }
+            }//div.#{$rdh-class}{
+            div.#{$rr-class}{
+                div.#{$ce-class}{
+                    p{
+                        &.#{$par-h-class}{
+                            $par-h-props: map.get($par-h-map,'props');
+                            @each $prop,$val in $par-h-class{
+                                #{$prop}: #{$val};
+                            }
+                        }//&.#{$par-h-class}{
+                        margin: 0;
+                    }//p{
+                }//div.#{$ce-class}{
+            }//div.#{$rr-class}{
+        }//div.#{$rd-class}{
+    }//form##{$form_id}{
 }
