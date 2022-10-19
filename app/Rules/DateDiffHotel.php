@@ -5,6 +5,7 @@ namespace App\Rules;
 use App\Traits\DateTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class DateDiffHotel implements Rule, DataAwareRule
 {
@@ -20,6 +21,7 @@ class DateDiffHotel implements Rule, DataAwareRule
      */
     public function __construct(string $error_attribute)
     {
+        Log::channel('stdout')->info("FateDiffHotel constructor error attribute => ".var_export($error_attribute,true));
         $this->error_attribute = $error_attribute;
     }
 
@@ -32,13 +34,17 @@ class DateDiffHotel implements Rule, DataAwareRule
      */
     public function passes($attribute, $value)
     {
+        Log::channel('stdout')->info("DateDiffHotel passes attribute => ".var_export($attribute,true));
         //
         if($attribute == 'checkin'){
             $days_diff = $this->dateDaysDifference(date('Y-m-d'),$value);
+            Log::channel('stdout')->info("DateDiffHotel passes checkin days diff => ".var_export($days_diff,true));
             if($days_diff >= 1) return true;
         }
-        else if($attribute == 'ckeckout'){
-            $days_diff = $this->oneDayDifference($this->data['checkin'],$value);
+        else if($attribute == 'checkout'){
+            $days_diff = $this->dateDaysDifference($this->data['checkin'],$value);
+            Log::channel('stdout')->info("DateDiffHotel passes checkout data checkin => ".var_export($this->data['checkin'],true));
+            Log::channel('stdout')->info("DateDiffHotel passes checkout days diff => ".var_export($days_diff,true));
             if($days_diff >= 1)return true;
         }
         return false;
@@ -62,6 +68,7 @@ class DateDiffHotel implements Rule, DataAwareRule
     public function setData($data)
     {
         $this->data = $data;
+        Log::channel('stdout')->debug("DateDiffHotel setData => ".var_export($this->data,true));
         return $this;
     }
 }
