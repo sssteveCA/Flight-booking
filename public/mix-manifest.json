@@ -22,5 +22,6 @@
     "/css/news.css": "/css/news.css",
     "/css/profile/myFlights/flight.css": "/css/profile/myFlights/flight.css",
     "/css/profile/myFlights.css": "/css/profile/myFlights.css",
-    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css"
+    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css",
+    "/css/welcome/hotelpriceresult.css": "/css/welcome/hotelpriceresult.css"
 }
