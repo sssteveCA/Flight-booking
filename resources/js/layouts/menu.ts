@@ -44,7 +44,7 @@ function footerPosition(footerEl: JQuery): void{
     let footerPos: JQuery.Coordinates = footerEl.position();
     let footerHeight: number = footerEl.height() as number;
     let footerBottomPos = footerPos.top + footerHeight;
-    if(footerBottomPos < windowHeight){
+    if(footerBottomPos < windowHeight - 20){
         footerEl.css({
             position: 'fixed',
             bottom: '0px'

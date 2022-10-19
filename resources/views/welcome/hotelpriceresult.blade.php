@@ -9,6 +9,7 @@
 @section('title','Prezzo albergo scelto')
 
 @section('links')
+<link rel="stylesheet" href="{{ asset('css/welcome/hotelpriceresult.css') }}">
 @endsection
 
 @section('scripts')
@@ -16,53 +17,51 @@
 
 @section('content')
     @if($done == true)
-        @php
-            <form id="fHotelPrice" method="post" action="#">
-                @csrf
-                @method('POST')
-                <input type="hidden" name="session_id" value="">
-                <div class="hotel-div">
-                    <div class="hotel-header">Preventivo prenotazione</div>
-                    <div class="hotel-row">
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Paese</p>
-                            <p>{{ $data['country'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Città</p>
-                            <p>{{ $data['city'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Albergo</p>
-                            <p>{{ $data['hotel'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Data check-in</p>
-                            <p>{{ $data['checkin'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Data check-in</p>
-                            <p>{{ $data['checkout'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Persone</p>
-                            <p>{{ $data['people'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Stanze</p>
-                            <p>{{ $data['rooms'] }}</p>
-                        </div>
-                        <div class="column-elem">
-                            <p class="hp-ce-header">Prezzo</p>
-                            <p>{{ $data['price'] }}€</p>
-                        </div>
+        <form id="fHotelPrice" method="post" action="#">
+            @csrf
+            @method('POST')
+            <input type="hidden" name="session_id" value="">
+            <div class="hotel-div">
+                <div class="hotel-header bg-success bg-gradient">Preventivo prenotazione</div>
+                <div class="hotel-row">
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Paese</p>
+                        <p class="bg-light bg-gradient">{{ $data['country'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Città</p>
+                        <p class="bg-light bg-gradient">{{ $data['city'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Albergo</p>
+                        <p class="bg-light bg-gradient">{{ $data['hotel'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Data check-in</p>
+                        <p class="bg-light bg-gradient">{{ $data['checkin'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Data check-in</p>
+                        <p class="bg-light bg-gradient">{{ $data['checkout'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Persone</p>
+                        <p class="bg-light bg-gradient">{{ $data['people'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Stanze</p>
+                        <p class="bg-light bg-gradient">{{ $data['rooms'] }}</p>
+                    </div>
+                    <div class="column-elem">
+                        <p class="hp-ce-header bg-warning bg-gradient">Prezzo</p>
+                        <p class="bg-light bg-gradient">{{ $data['price'] }}€</p>
                     </div>
                 </div>
-                <div class="form-button my-4 text-center">
-                    <button type="submit">PRENOTA</button>
-                </div>
-            </form>
-        @endphp
+            </div>
+            <div class="form-button my-4 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">PRENOTA</button>
+            </div>
+        </form>
     @elseif($done == false)
         @isset($error_message)
             <div class="alert alert-danger" role="alert">{{$error_message}}</div>

@@ -5,12 +5,12 @@
 $paragraphs-padding: 10px 0px;
 $form-map:(
     'props': (
-        background-color: rgba(255,255,255,0.8)
+        background-color: rgba(255,255,255,0.8), padding-bottom: 100px
     )  
 );
 $result-div-map: (
     'props': (
-        border: 2px solid black, margin: 20px auto,padding: 20px
+        border: 2px solid black, margin: 20px auto
     )
 );
 $result-div-header-map: (
@@ -74,18 +74,24 @@ $paragraph-header-map: (
         div.#{$rdh-class}{
             padding: auto 15px;
             text-align: center;
-            border: 1px solid black;
+            //border: 1px solid black;
         }
         div.#{$rr-class}{
             display: flex;
+            flex-flow: row nowrap;
             $wl-length: list.length($widths-list);
             @for $i from 1 through $wl-length{
                 >div:nth-child(#{$i}){
+                    display: flex;
+                    flex-flow: column wrap;
                     width: list.nth($widths-list,$i);
                     p{
                         padding: $paragraphs-padding;
                         border: 1px solid black;
-                        text-align: center;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }//>div:nth-child(#{$i}){
             }//@for $i from 1 through $wl-length{
@@ -101,7 +107,7 @@ $paragraph-header-map: (
     div.#{$rd-class}{
         div.#{$rdh-class}{
             text-align: center;
-            border: 1px solid black;
+            //border: 1px solid black;
             padding: auto 8px;
         }
         div.#{$rr-class}{
@@ -114,6 +120,10 @@ $paragraph-header-map: (
                     width: 50%;
                     border: 1px solid black;
                     text-align: center;
+                    padding: $paragraphs-padding;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }//div.#{$ce-class}{
         }//div.#{$rr-class}{
@@ -132,12 +142,17 @@ $paragraph-header-map: (
         div.#{$rr-class}{
             display: flex;
             flex-flow: column wrap;
-            border: 1px solid black;
+            //border: 1px solid black;
             div.#{$ce-class}{
                 display: flex;
                 flex-flow: column wrap;
                 p{
                     width: 100%;
+                    padding: $paragraphs-padding;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }//div.#{$ce-class}{
         }//div.#{$rr-class}{

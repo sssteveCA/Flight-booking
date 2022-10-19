@@ -23,13 +23,13 @@ $footer-class: ".footer";
         background-color: #8BC6EC;
         background-image: linear-gradient(135deg, rgba(139,198,236,0.7), rgba(149,153,226,0.35));
         .container .row div:not(.not-custom-font){
-            font-family: f25BankPrinter, Times, serif;
+            //font-family: f25BankPrinter, Times, serif;
             font-weight: $font-weight;
         }
     }
 }
 
-@include footer-font();
+//@include footer-font();
 @include footer-style($footer-class, bold);
 
 
