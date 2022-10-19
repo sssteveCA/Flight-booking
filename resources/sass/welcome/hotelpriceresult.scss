@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "../modules/result_table.scss";
+
+$hotel-form-map: ('form-id': 'fHotelPrice');
+$hotel-form-map: map.merge($hotel-form-map,result_table.$form-map);
+@debug $hotel-form-map;
+
+$hotel-div-map: ('rd-class': 'hotel-div');
+$hotel-div-map: map.merge($hotel-div-map,result_table.$result-div-map);
+@debug $hotel-div-map;
+
+$hotel-div-header-map: ('rdh-class': 'hotel-header');
+$hotel-div-header-map: map.merge($hotel-div-header-map,result_table.$result-div-header-map);
+@debug $hotel-div-header-map;
+
+$hotel-row-map: ('rr-class': 'hotel-row');
+$hotel-row-map: map.merge($hotel-row-map,result_table.$result-div-row-map);
+@debug $hotel-row-map;
+
+$hotel-column-elem-map: ('ce-class': 'column-elem');
+$hotel-column-elem-map: map.merge($hotel-column-elem-map,result_table.$result-div-column-elem-map);
+
+$hotel-par-header-map: ('par-h-class': 'hp-ce-header');
+$hotel-par-header-map: map.merge($hotel-par-header-map,result_table.$paragraph-header-map);
+@debug $hotel-par-header-map;

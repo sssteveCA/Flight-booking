@@ -22,37 +22,38 @@
                 @method('POST')
                 <input type="hidden" name="session_id" value="">
                 <div class="hotel-div">
-                    <div class="flight-row">
+                    <div class="hotel-header">Preventivo prenotazione</div>
+                    <div class="hotel-row">
                         <div class="column-elem">
-                            <p class="hp-header">Paese</p>
+                            <p class="hp-ce-header">Paese</p>
                             <p>{{ $data['country'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Città</p>
+                            <p class="hp-ce-header">Città</p>
                             <p>{{ $data['city'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Albergo</p>
+                            <p class="hp-ce-header">Albergo</p>
                             <p>{{ $data['hotel'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Data check-in</p>
+                            <p class="hp-ce-header">Data check-in</p>
                             <p>{{ $data['checkin'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Data check-in</p>
+                            <p class="hp-ce-header">Data check-in</p>
                             <p>{{ $data['checkout'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Persone</p>
+                            <p class="hp-ce-header">Persone</p>
                             <p>{{ $data['people'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Stanze</p>
+                            <p class="hp-ce-header">Stanze</p>
                             <p>{{ $data['rooms'] }}</p>
                         </div>
                         <div class="column-elem">
-                            <p class="hp-header">Prezzo</p>
+                            <p class="hp-ce-header">Prezzo</p>
                             <p>{{ $data['price'] }}€</p>
                         </div>
                     </div>

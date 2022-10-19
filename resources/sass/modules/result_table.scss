@@ -19,6 +19,8 @@ $result-div-header-map: (
         text-transform: uppercase, font-weight: bold, text-align: center, border: 1px solid black
     )
 );
+$result-div-row-map: ();
+$result-div-column-elem-map: ();
 $paragraph-header-map: (
     'props': (
         font-weight: bold
