@@ -20,7 +20,9 @@ class HotelPriceRequest extends FormRequest
     {
         $errors = (new ValidationException($validator))->errors();
         throw new HttpResponseException(
-            response()->view(P::VIEW_HOTELPRICERESULT,['errors' => $errors], 400)
+            response()->view(P::VIEW_HOTELPRICERESULT,[
+               'done' => false, 'errors' => $errors
+            ], 400)
         );
     }
 

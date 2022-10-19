@@ -9,6 +9,7 @@ use App\Interfaces\Hotels as H;
 use App\Interfaces\Welcome\HotelPriceErrors as Hpe;
 use App\Traits\DateTrait;
 use App\Traits\HotelPriceTrait;
+use Illuminate\Support\Facades\Log;
 
 class HotelPrice implements Hpe{
     use DateTrait, ErrorTrait, MmCommonTrait,HotelPriceTrait;
@@ -46,6 +47,7 @@ class HotelPrice implements Hpe{
 
     public function __construct(array $data)
     {
+        Log::channel('stdout')->debug("HotelPrice constructor data => ".var_export($data,true));
         $this->assignValues($data);
         $this->calcPreventive();
     }
@@ -53,8 +55,8 @@ class HotelPrice implements Hpe{
     public function getCountry(){return $this->country;}
     public function getCity(){return $this->city;}
     public function getHotel(){return $this->hotel;}
-    public function getCheckinDate(){return $this->checkin;}
-    public function getCheckoutDate(){return $this->checkout;}
+    public function getCheckin(){return $this->checkin;}
+    public function getCheckout(){return $this->checkout;}
     public function getPeople(){return $this->people;}
     public function getRooms(){return $this->rooms;}
     public function getFullPrice(){return $this->fullPrice;}
@@ -91,6 +93,7 @@ class HotelPrice implements Hpe{
     private function calcPreventive(){
         $this->errno = 0;
         $hotel_info = H::HOTELS_LIST[$this->country][$this->city][$this->hotel];
+        Log::channel('stdout')->debug("HotelPrice calcPreventive hotel_info => ".var_export($hotel_info,true));
         if(isset($hotel_info)){
             $max_people = $hotel_info['max_people'];
             if($this->people > ($this->rooms * $max_people)){

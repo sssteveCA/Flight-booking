@@ -15,14 +15,20 @@
 @endsection
 
 @section('content')
+    @if($done == true)
+        @php
+            var_dump($data);
+        @endphp
+    @elseif($done == false)
+        @isset($error_message)
+            <div class="alert alert-danger" role="alert">{{$error_message}}</div>
+        @endisset
+    @endif
     @isset($errors)
         @foreach($errors as $k => $input_errors)
             @foreach($input_errors as $k => $error)
                 <div class="alert alert-danger" role="alert">{{$error}}</div>
             @endforeach
         @endforeach
-    @endisset
-    @isset($error_message)
-        <div class="alert alert-danger" role="alert">{{$error_message}}</div>
     @endisset
 @endsection
