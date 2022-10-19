@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "globals";
+
+$column-elem-number: 8;
+$column-elem-widths: 14%,14%,26%,10%,10%,9%,9%,8%;
+$paragraphs-padding: 10px 0px;
+$form-map:(
+    'props': (
+        background-color: rgba(255,255,255,0.8)
+    )  
+);
+$result-div-map: (
+    'props': (
+        border: 2px solid black, margin: 20px auto,padding: 20px
+    )
+);
+$result-div-header-map: (
+    'props' : (
+        text-transform: uppercase, font-weight: bold, text-align: center, border: 1px solid black
+    )
+);
+
+@mixin result-table-global($form-map,$rd-map,$rdh-map){
+    $form-id: map.get($form-map,'form-id');
+    $rd-class: map.get($rd-map,'rd-class');
+    $rdh-class: map.get($rdh-map,'rdh-class');
+    form##{$form_id}{
+
+    }
+}
