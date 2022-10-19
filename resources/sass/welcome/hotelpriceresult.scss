@@ -31,6 +31,10 @@ $hotel-par-header-map: map.merge($hotel-par-header-map,result_table.$paragraph-h
 
 @include result_table.result-table($hotel-form-map,$hotel-div-map,$hotel-div-header-map,$hotel-row-map,$hotel-column-elem-map,$hotel-par-header-map);
 
+@media only screen and (min-width: 0px){
+    @include result_table.result-div-small($hotel-div-map,$hotel-div-header-map,$hotel-row-map,$hotel-column-elem-map);
+}
+
 @if map.has-key(globals.$bs-breakpoints,'md'){
    $md: map.get(globals.$bs-breakpoints,'md'); 
    @media only screen and (min-width: #{$md}){

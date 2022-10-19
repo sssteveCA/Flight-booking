@@ -119,3 +119,27 @@ $paragraph-header-map: (
         }//div.#{$rr-class}{
     }//div.#{$rd-class}{
 }
+
+@mixin result-div-small($rd-map,$rdh-map,$rr-map,$ce-map){
+    $rd-class: map.get($rd-map,'rd-class');
+    $rdh-class: map.get($rdh-map,'rdh-class');
+    $rr-class: map.get($rr-map,'rr-class');
+    $ce-class: map.get($ce-map,'ce-class');
+    div.#{$rd-class}{
+        div.#{$rdh-class}{
+            padding: auto 5px;
+        }
+        div.#{$rr-class}{
+            display: flex;
+            flex-flow: column wrap;
+            border: 1px solid black;
+            div.#{$ce-class}{
+                display: flex;
+                flex-flow: column wrap;
+                p{
+                    width: 100%;
+                }
+            }//div.#{$ce-class}{
+        }//div.#{$rr-class}{
+    }//div.#{$rd-class}{
+}
