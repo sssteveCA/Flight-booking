@@ -41,10 +41,13 @@ $(()=>{
  */
 function footerPosition(footerEl: JQuery): void{
     let windowHeight: number = $(window).height() as number;
+    let bodyHeight: number = $('body').height() as number;
     let footerPos: JQuery.Coordinates = footerEl.position();
     let footerHeight: number = footerEl.height() as number;
-    let footerBottomPos = footerPos.top + footerHeight;
-    if(footerBottomPos < windowHeight - 20){
+    /* console.log("footerHeight => "+footerHeight);
+    console.log("bodyHeight => "+bodyHeight);
+    console.log("windowHeight => "+windowHeight); */
+    if(bodyHeight < windowHeight){
         footerEl.css({
             position: 'fixed',
             bottom: '0px'
@@ -55,4 +58,5 @@ function footerPosition(footerEl: JQuery): void{
             position: 'static'
         });
     }
+    
 }
