@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "sass:map";
 @use "globals";
 
@@ -65,16 +66,15 @@ $paragraph-header-map: (
     }//form##{$form_id}{
 }
 
-%rdh-class-large{
-    padding: auto 15px;
-    text-align: center;
-    border: 1px solid black;
-}
-
-@mixin result-table-large($widths-list,$rd-class,$rdh-class,$rr-class){
+@mixin result-table-large($widths-list,$rd-map,$rdh-map,$rr-map){
+    $rd-class: map.get($rd-map,'rd-class');
+    $rdh-class: map.get($rdh-map,'rdh-class');
+    $rr-class: map.get($rr-map,'rr-class');
     div.#{$rd-class}{
         div.#{$rdh-class}{
-            @extend %rdh-class-large;
+            padding: auto 15px;
+            text-align: center;
+            border: 1px solid black;
         }
         div.#{$rr-class}{
             display: flex;
@@ -87,8 +87,8 @@ $paragraph-header-map: (
                         border: 1px solid black;
                         text-align: center;
                     }
-                }
-            }
-        }
+                }//>div:nth-child(#{$i}){
+            }//@for $i from 1 through $wl-length{
+        }//div.#{$rr-class}{
     }
 }
