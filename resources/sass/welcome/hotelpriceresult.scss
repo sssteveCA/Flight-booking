@@ -31,7 +31,19 @@ $hotel-par-header-map: map.merge($hotel-par-header-map,result_table.$paragraph-h
 
 @include result_table.result-table($hotel-form-map,$hotel-div-map,$hotel-div-header-map,$hotel-row-map,$hotel-column-elem-map,$hotel-par-header-map);
 
-$lg: map.get(globals.$bs-breakpoints,'lg');
-@media only screen and (min-width: #{$lg}){
-    @include result_table.result-table-large($column-elem-widths,$hotel-div-map,$hotel-div-header-map,$hotel-row-map);
+@if map.has-key(globals.$bs-breakpoints,'md'){
+   $md: map.get(globals.$bs-breakpoints,'md'); 
+   @media only screen and (min-width: #{$md}){
+    @include result_table.result-div-medium($hotel-div-map,$hotel-div-header-map,$hotel-row-map,$hotel-column-elem-map);
+   }
 }
+
+@if map.has-key(globals.$bs-breakpoints,'lg'){
+    $lg: map.get(globals.$bs-breakpoints,'lg');
+    @media only screen and (min-width: #{$lg}){
+        @include result_table.result-table-large($column-elem-widths,$hotel-div-map,$hotel-div-header-map,$hotel-row-map);
+    }
+}
+
+
+
