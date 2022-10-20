@@ -42,8 +42,10 @@
             "app/Interfaces/welcome/flightprice_errors.php",
             "app/Interfaces/welcome/flightstempmanager_errors.php",
             "app/Interfaces/welcome/hotelprice_errors.php",
+            "app/Interfaces/welcome/hotelpricetempmanager_error.php",
             "app/Traits/date_trait.php",
             "app/Traits/error_trait.php",
+            "app/Traits/hotelpricetempmanager.php",
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flightprice_trait.php",
             "app/Traits/flightstempmanager_trait.php",
@@ -63,7 +65,8 @@
             "app/Classes/apiusermanager.php",
             "app/Classes/welcome/flightprice.php",
             "app/Classes/welcome/flightstempmanager.php",
-            "app/Classes/welcome/hotelprice.php"
+            "app/Classes/welcome/hotelprice.php",
+            "app/Classes/welcome/hotelpricetempmanager.php"
         ]
     },
     "autoload-dev": {
