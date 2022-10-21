@@ -29,13 +29,13 @@ interface Hotels{
             ],
             'Vienna' => [
                 'Hotel IMLAUER Wien' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 163.51, 'rooms' => 91, 'score' => 8.6, 'stars' => 5
                 ],
                 'Ibis budget Wien Sankt Marx' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 46.80, 'rooms' => 68, 'score' => 7.5, 'stars' => 2
                 ],
                 'MEININGER Hotel Wien Downtown Franz' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 15.95, 'rooms' => 59, 'score' => 8.2, 'stars' => 3
                 ],
             ]
         ],
@@ -64,13 +64,13 @@ interface Hotels{
             ],
             'Bruxelles' => [
                 'Bedford Hotel & Congress Centre' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 78.17, 'rooms' => 84, 'score' => 7.9, 'stars' => 3
                 ],
                 'Marivaux Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
                 ],
                 'Motel One Brussels' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 103.24, 'rooms' => 70, 'score' => 8.7, 'stars' => 3
                 ]
             ]
         ],
@@ -99,13 +99,13 @@ interface Hotels{
             ],
             'Sarajevo' => [
                 'Heritage Hotel Gate of Sarajevo' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 56.82, 'rooms' => 78, 'score' => 8.7, 'stars' => 4
                 ],
                 'Hotel Boutique Libris' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 62, 'score' => 8, 'stars' => 4
                 ],
                 'İsa Begov Hamam Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 54.00, 'rooms' => 55, 'score' => 8.9, 'stars' => 4
                 ]
             ]
         ],
@@ -169,13 +169,13 @@ interface Hotels{
             ],
             'Paphos' => [
                 'Amphora Hotel & Suites' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 70.00, 'rooms' => 89, 'score' => 8.5, 'stars' => 4
                 ],
                 'Capital Coast Resort And Spa' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 76, 'score' => 7.8, 'stars' => 4
                 ],
                 'Roman Boutique Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 94, 'score' => 8.2, 'stars' => 3
                 ]
             ]
         ],
@@ -204,13 +204,13 @@ interface Hotels{
             ],
             'Zagabria' => [
                 'Art Hotel Like' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 63.60, 'rooms' => 52, 'score' => 7.9, 'stars' => 3
                 ],
                 'Best Western Premier Hotel Astoria' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 96.60, 'rooms' => 69, 'score' => 8.8, 'stars' => 4
                 ],
                 'Timeout Heritage Hotel Zagreb' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 52.10, 'rooms' => 72, 'score' => 7.7, 'stars' => 4
                 ]
             ]
         ],
@@ -228,13 +228,13 @@ interface Hotels{
             ],
             'Copenaghen' => [
                 'Cabinn Copenhagen' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 78, 'rooms' => 93, 'score' => 6.8, 'stars' => 2
                 ],
                 'Wakeup Copenhagen - Bernstorffsgade' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 66.00, 'rooms' => 96, 'score' => 7.8, 'stars' => 2
                 ],
                 'Wakeup Copenhagen - Borgergade' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 71.00, 'rooms' => 83, 'score' => 8, 'stars' => 2
                 ]
             ],
             'Odense' => [
@@ -252,13 +252,13 @@ interface Hotels{
         'Estonia' => [
             'Käsmu' => [
                 'Käsmu Holiday House' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 70.00, 'rooms' => 54, 'score' => 9.3, 'stars' => 3
                 ],
                 'Lainela Holiday Park' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 84.00, 'rooms' => 47, 'score' => 8.5, 'stars' => 2
                 ],
                 'Merekalda Apartments - Adults only' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 75.00, 'rooms' => 73, 'score' => 7.6, 'stars' => 3
                 ]
             ],
             'Sagadi' => [
@@ -287,13 +287,13 @@ interface Hotels{
         'Finlandia' => [
             'Helsinki' => [
                 'Hotel Arthur' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 80.00, 'rooms' => 88, 'score' => 7.6, 'stars' => 3
                 ],
                 'Hotel Finn' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 76.00, 'rooms' => 79, 'score' => 8.2, 'stars' => 3
                 ],
                 'Omena Hotel Helsinki Lönnrotinkatu' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 61.56, 'rooms' => 70, 'score' => 7.5, 'stars' => 3
                 ]
             ],
             'Rovaniemi' => [
@@ -344,26 +344,26 @@ interface Hotels{
             ],
             'Parigi' => [
                 'B&B HOTEL Paris 17 Batignolles' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 107.71, 'rooms' => 81, 'score' => 7.9, 'stars' => 3
                 ],
                 'hotelF1 Paris Porte de Châtillon' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 39.58, 'rooms' => 49, 'score' => 7.1, 'stars' => 2
                 ],
                 'HotelF1 Paris Saint Ouen Marché Aux Puces Rénové' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 42.97, 'rooms' => 54, 'score' => 6.2, 'stars' => 2
                 ]
             ]
         ],
         'Germania' => [
             'Berlino' => [
                 'H2 Hotel Berlin-Alexanderplatz' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 96.25, 'rooms' => 75, 'score' => 8.3, 'stars' => 3
                 ],
                 'MEININGER Hotel Berlin Hauptbahnhof' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 14.85, 'rooms' => 45, 'score' => 7.4, 'stars' => 3
                 ],
                 'Schulz Hotel Berlin Wall at the East Side Gallery' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 60.17, 'rooms' => 64, 'score' => 8.5, 'stars' => 3
                 ]
             ],
             'Francoforte' => [
@@ -395,15 +395,15 @@ interface Hotels{
         'Giordania' => [
             'Amman' => [
                 'Layaali Amman Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 75, 'score' => 8.3, 'stars' => 1
                     
                 ],
                 'New MerryLand Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 62.00, 'rooms' => 56, 'score' => 8.7, 'stars' => 3
                     
                 ],
                 'Zaman Ya Zaman Boutique Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 20.00, 'rooms' => 58, 'score' => 8.2, 'stars' => 2
                     
                 ]
             ],
@@ -455,13 +455,13 @@ interface Hotels{
             ],
             'Mykonos Città' => [
                 'Matogianni Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 50.50, 'rooms' => 65, 'score' => 8.6, 'stars' => 2
                 ],
                 'Mykonos Bay Resort & Villas' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 90.00, 'rooms' => 93, 'score' => 9.4, 'stars' => 4
                 ],
                 'Sofia Village' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 60.90, 'rooms' => 87, 'score' => 8.2, 'stars' => 3
                 ]
             ]
         ],
@@ -479,13 +479,13 @@ interface Hotels{
             ],
             'Dublino' => [
                 'Academy Plaza Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 118.15, 'rooms' => 104, 'score' => 8.1, 'stars' => 3
                 ],
                 'Beresford Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 116.10, 'rooms' => 92, 'score' => 7.3, 'stars' => 3
                 ],
                 'Riu Plaza The Gresham Dublin' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 105.00, 'rooms' => 99, 'score' => 7.7, 'stars' => 3
                 ]
             ],
             'Galway' => [
@@ -525,13 +525,13 @@ interface Hotels{
             ],
             'Tel Aviv' => [
                 'BY14 TLV Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 7, 'price' => 208.00, 'rooms' => 63, 'score' => 8.5, 'stars' => 5
                 ],
                 'Idelson Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 82.00, 'rooms' => 46, 'score' => 6.7, 'stars' => 3
                 ],
                 'Old Jaffa House - Boutique Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 97.00, 'rooms' => 71, 'score' => 7.8, 'stars' => 3
                 ]
             ]
         ],
@@ -560,26 +560,26 @@ interface Hotels{
             ],
             'Roma' => [
                 'Barceló Aran Mantegna' => [
-                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
+                    'max_people' => 6, 'price' => 82.30, 'rooms' => 101, 'score' => 7.9, 'stars' => 4
                 ],
                 'Hotel American Palace Eur' => [
-                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
+                    'max_people' => 5, 'price' => 76.00, 'rooms' => 76, 'score' => 8.4, 'stars' => 4
                 ],
                 'Hotel Cristoforo Colombo' => [
-                    'max_people' => 5, 'price' => 80.00, 'rooms' => 90, 'score' => 9, 'stars' => 5
+                    'max_people' => 4, 'price' => 79.00, 'rooms' => 80, 'score' => 8.2, 'stars' => 4
                 ]
             ]
         ],
         'Lettonia' => [
             'Kārļi' => [
                 'Guest House Kalniņi' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 100.00, 'rooms' => 53, 'score' => 9.8, 'stars' => 4
                 ],
                 'Hotel Melturi' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 45.00, 'rooms' => 50, 'score' => 9.1, 'stars' => 2
                 ],
                 'Karlamuiza Country Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 63.28, 'rooms' => 47, 'score' => 9.2, 'stars' => 3
                 ]
             ],
             'Kolka' => [
@@ -630,26 +630,26 @@ interface Hotels{
             ],
             'Vilnius' => [
                 'CALVARY Hotel & Restaurant Vilnius' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 71.90, 'rooms' => 75, 'score' => 9.2, 'stars' => 4
                 ],
                 'Hilton Garden Inn Vilnius City Centre' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 69.00, 'rooms' => 86, 'score' => 8.1, 'stars' => 3
                 ],
                 'Park Inn by Radisson Vilnius Airport Hotel & Business Centre' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 72.10, 'rooms' => 77, 'score' => 9.2, 'stars' => 4
                 ]
             ]
         ],
         'Lussemburgo' => [
             'Lussemburgo' => [
                 'ibis Luxembourg Aeroport' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 72.00, 'rooms' => 66, 'score' => 7.8, 'stars' => 3
                 ],
                 'Mandarina Hotel Luxembourg Airport' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 79.00, 'rooms' => 74, 'score' => 7.4, 'stars' => 3
                 ],
                 'Novotel Luxembourg Centre' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 179.00, 'rooms' => 90, 'score' => 8.3, 'stars' => 4
                 ]
             ]
         ],
@@ -678,26 +678,26 @@ interface Hotels{
             ],
             'St Julian\' s' => [
                 'Alexandra Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 41.00, 'rooms' => 83, 'score' => 7.1, 'stars' => 3
                 ],
                 'be.HOTEL' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 46.00, 'rooms' => 94, 'score' => 8.7, 'stars' => 4
                 ],
                 'Golden Tulip Vivaldi Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 40.50, 'rooms' => 65, 'score' => 8, 'stars' => 4
                 ]
             ]
         ],
         'Marocco' => [
             'Casablanca' => [
                 'Hotel Majestic' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 42.50, 'rooms' => 55, 'score' => 7.3, 'stars' => 4
                 ],
                 'ODYSSEE Boutique Hotel Casablanca' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 83.00, 'rooms' => 82, 'score' => 8.1, 'stars' => 4
                 ],
                 'ONOMO Airport Casablanca' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 71.00, 'rooms' => 48, 'score' => 7.8, 'stars' => 3
                 ]
             ],
             'Fes' => [
@@ -748,13 +748,13 @@ interface Hotels{
             ],
             'Podgorica' => [
                 'Boscovich Boutique Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 81.00, 'rooms' => 94, 'score' => 9.5, 'stars' => 4
                 ],
                 'Hotel Crnogorska Kuća' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 30.65, 'rooms' => 60, 'score' => 8.7, 'stars' => 4
                 ],
                 'Hotel Kerber' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 39.74, 'rooms' => 70, 'score' => 8.1, 'stars' => 3
                 ]
             ]
         ],
@@ -772,13 +772,13 @@ interface Hotels{
             ],
             'Oslo' => [
                 'Anker Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 105.00, 'rooms' => 89, 'score' => 7.8, 'stars' => 3
                 ],
                 'Citybox Oslo' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 77.00, 'rooms' => 44, 'score' => 8.2, 'stars' => 3
                 ],
                 'Smarthotel Oslo' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 89.00, 'rooms' => 80, 'score' => 7.7, 'stars' => 3
                 ]
             ],
             'Tromsø' => [
@@ -807,13 +807,13 @@ interface Hotels{
             ],
             'Amsterdam' => [
                 'Hotel Ben Centre' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 91.14, 'rooms' => 73, 'score' => 6.2, 'stars' => 1
                 ],
                 'XO Hotels Blue Tower' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 89.43, 'rooms' => 51, 'score' => 7.9, 'stars' => 4
                 ],
                 'XO Hotels Park West' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 91.07, 'rooms' => 58, 'score' => 8.5, 'stars' => 4
                 ]
             ],
             'Badhoevedorp' => [
@@ -842,13 +842,13 @@ interface Hotels{
             ],
             'Cracovia' => [
                 'Hilton Garden Inn Krakow Airport' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 126.00, 'rooms' => 93, 'score' => 8.9, 'stars' => 4
                 ],
                 'Hotel Alexander' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 42.00, 'rooms' => 68, 'score' => 8.3, 'stars' => 3
                 ],
                 'ibis budget Krakow Stare Miasto' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 38.00, 'rooms' => 62, 'score' => 7.9, 'stars' => 1
                 ]
             ],
             'Varsavia' => [
@@ -877,13 +877,13 @@ interface Hotels{
             ],
             'Lisbona' => [
                 'America Diamonds Hotel & Sushi Bar' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 113.00, 'rooms' => 96, 'score' => 8.5, 'stars' => 3
                 ],
                 'Empire Lisbon Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 112.00, 'rooms' => 88, 'score' => 8.6, 'stars' => 3
                 ],
                 'Star inn Lisbon Airport' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 109.10, 'rooms' => 102, 'score' => 8.6, 'stars' => 3
                 ]
             ],
             'Porto' => [
@@ -912,13 +912,13 @@ interface Hotels{
             ],
             'Londra' => [
                 'Britannia International Hotel Canary Wharf' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 79.00, 'rooms' => 95, 'score' => 5.9, 'stars' => 4
                 ],
                 'Central Park Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 110.00, 'rooms' => 91, 'score' => 6.6, 'stars' => 3
                 ],
                 'Zedwell Piccadilly Circus' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 114.00, 'rooms' => 64, 'score' => 7.6, 'stars' => 2
                 ]
             ],
             'Manchester' => [
@@ -958,13 +958,13 @@ interface Hotels{
             ],
             'Praga' => [
                 'Don Giovanni Hotel Prague - Great Hotels of The World' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 47.00, 'rooms' => 87, 'score' => 9, 'stars' => 4
                 ],
                 'Grandior Hotel Prague' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 7, 'price' => 77.10, 'rooms' => 105, 'score' => 8.8, 'stars' => 5
                 ],
                 'Grandium Hotel Prague' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 82.10, 'rooms' => 108, 'score' => 8, 'stars' => 5
                 ]
             ]
         ],
@@ -993,26 +993,26 @@ interface Hotels{
             ],
             'Timişoara' => [
                 'Hotel Central' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 77.00, 'rooms' => 84, 'score' => 8, 'stars' => 4
                 ],
                 'Hotel Continental' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 61.00, 'rooms' => 92, 'score' => 8.1, 'stars' => 4
                 ],
                 'Hotel Imperial Premium' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 39.00, 'rooms' => 72, 'score' => 8, 'stars' => 4
                 ]
             ]
         ],
         'Serbia' => [
             'Belgrado' => [
                 'Airport Hotel Garni' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 49.36, 'rooms' => 55, 'score' => 8.6, 'stars' => 3
                 ],
                 'Belgrade Inn Garni Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 64.35, 'rooms' => 87, 'score' => 8.8, 'stars' => 4
                 ],
                 'Hotel Moskva' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 105.40, 'rooms' => 92, 'score' => 9, 'stars' => 4
                 ]
             ],
             'Niš' => [
@@ -1041,13 +1041,13 @@ interface Hotels{
         'Slovacchia' => [
             'Bratislava' => [
                 'Apollo Hotel Bratislava' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 78.71, 'rooms' => 97, 'score' => 8.4, 'stars' => 4
                 ],
                 'Elisabeth Old Town' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 53.00, 'rooms' => 42, 'score' => 8.2, 'stars' => 3
                 ],
                 'Pension Petit' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 47.70, 'rooms' => 80, 'score' => 7.9, 'stars' => 3
                 ]
             ],
             'Košice' => [
@@ -1076,13 +1076,13 @@ interface Hotels{
         'Spagna' => [
             'Barcellona' => [
                 'Catalonia Sagrada Familia' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 86.06, 'rooms' => 83, 'score' => 8.2, 'stars' => 3
                 ],
                 'Hotel Lloret Ramblas' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 63.03, 'rooms' => 68, 'score' => 8.1, 'stars' => 1
                 ],
                 'Travelodge Barcelona Poblenou' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 58.05, 'rooms' => 89, 'score' => 7.5, 'stars' => 1
                 ]
             ],
             'Madrid' => [
@@ -1133,26 +1133,26 @@ interface Hotels{
             ],
             'Stoccolma' => [
                 'Comfort Hotel Xpress Stockholm Central' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 71.00, 'rooms' => 61, 'score' => 7.3, 'stars' => 3
                 ],
                 'Radisson Blu Royal Viking Hotel, Stockholm' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 127.00, 'rooms' => 100, 'score' => 8.1, 'stars' => 4
                 ],
                 'Thon Partner Hotel Kungsbron' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 71.00, 'rooms' => 79, 'score' => 7.6, 'stars' => 3
                 ]
             ]
         ],
         'Svizzera' => [
             'Ginevra' => [
                 'ibis budget Genève Aéroport' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 7, 'price' => 86.00, 'rooms' => 84, 'score' => 7.9, 'stars' => 1
                 ],
                 'ibis Genève Centre Nations' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 122.00, 'rooms' => 77, 'score' => 8, 'stars' => 3
                 ],
                 'Nash Airport Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 4, 'price' => 104.00, 'rooms' => 88, 'score' => 8.1, 'stars' => 4
                 ]
             ],
             'Lugano' => [
@@ -1192,13 +1192,13 @@ interface Hotels{
             ],
             'Istanbul' => [
                 'Florenta Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 72.67, 'rooms' => 75, 'score' => 8.2, 'stars' => 5
                 ],
                 'ISG Sabiha Gökçen Airport Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 5, 'price' => 81.00, 'rooms' => 85, 'score' => 8.6, 'stars' => 4
                 ],
                 'Miss Istanbul Hotel & Spa' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 6, 'price' => 107.10, 'rooms' => 74, 'score' => 8.1, 'stars' => 4
                 ]
             ],
             'Smirne' => [
@@ -1216,13 +1216,13 @@ interface Hotels{
         'Ungheria' => [
             'Budapest' => [
                 'Danubius Hotel Erzsébet City Center' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 2, 'price' => 72.00, 'rooms' => 103, 'score' => 8.1, 'stars' => 3
                 ],
                 'Medos Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 3, 'price' => 62.29, 'rooms' => 49, 'score' => 8.3, 'stars' => 3
                 ],
                 'Silver Hotel Budapest City Center' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4
+                    'max_people' => 7, 'price' => 50.45, 'rooms' => 72, 'score' => 7.4, 'stars' => 3
                 ]
             ],
             'Siófok' => [
