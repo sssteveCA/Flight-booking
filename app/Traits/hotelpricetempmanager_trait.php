@@ -8,12 +8,6 @@ trait HotelPriceTempManagerTrait{
 
     use ErrorTrait;
 
-    private array $hotelpricetemp_array;
-    private static int $random_times = 75;
-    private ?string $session_id;
-
-    public function getHotelPriceTempArray(){return $this->hotelpricetemp_array;}
-    public function getSessionId(){return $this->session_id;}
 
     /**
      * Check if user with session id has shortly before done a hotel price preventive search
