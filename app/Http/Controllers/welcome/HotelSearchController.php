@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\welcome;
 
 use App\Classes\Welcome\HotelPrice;
+use app\Classes\Welcome\HotelPriceTempManager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\HotelPriceRequest;
 use App\Traits\Common\HotelSearchControllerCommonTrait;
@@ -33,6 +34,9 @@ class HotelSearchController extends Controller
                             'checkin' => $hotelPrice->getCheckin(), 'checkout' => $hotelPrice->getCheckout(), 'people' => $hotelPrice->getPeople(),
                             'rooms' => $hotelPrice->getRooms(), 'price' => $hotelPrice->getFullPrice()]
                     ];
+                    $hptm_params = $response_array["data"];
+                    $hptm = new HotelPriceTempManager($hptm_params);
+                    $hptm->addHotelPriceTemp();
                     $response_code = 200;
                     break;
                 case Hpe::TOOMANYPEOPLE_FOR_ROOMS:

@@ -31,6 +31,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files" : [
+            "app/Exceptions/databaseinsertion_exception.php",
             "app/Exceptions/flightsarray_exception.php",
             "app/Exceptions/flightsdatamodified_exception.php",
             "app/Exceptions/flightstemp_notadded_exception.php",
@@ -45,12 +46,12 @@
             "app/Interfaces/welcome/hotelpricetempmanager_error.php",
             "app/Traits/date_trait.php",
             "app/Traits/error_trait.php",
-            "app/Traits/hotelpricetempmanager.php",
             "app/Traits/mmcommon_trait.php",
             "app/Traits/flightprice_trait.php",
             "app/Traits/flightstempmanager_trait.php",
             "app/Traits/date_trait.php",
             "app/Traits/hotelprice_trait.php",
+            "app/Traits/hotelpricetempmanager_trait.php",
             "app/Traits/common/flightsearchcontroller_common_trait.php",
             "app/Traits/common/flightcontroller_common_trait.php",
             "app/Traits/common/flightpricerequest_common_trait.php",

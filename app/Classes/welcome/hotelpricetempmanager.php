@@ -35,8 +35,9 @@ class HotelPriceTempManager implements Hptme{
      * Add a new record in hotelpricetemp table
      */
     public function addHotelPriceTemp(){
+        $this->setSessionId();
         $hpt = new HotelPriceTemp;
-        $hpt->session_id = $this->hotelpricetemp_array["session_id"];
+        $hpt->session_id = $this->session_id;
         $hpt->country = $this->hotelpricetemp_array["country"];
         $hpt->city = $this->hotelpricetemp_array["city"];
         $hpt->hotel = $this->hotelpricetemp_array["hotel"];
