@@ -93,7 +93,7 @@ class HotelPrice implements Hpe{
     private function calcPreventive(){
         $this->errno = 0;
         $hotel_info = H::HOTELS_LIST[$this->country][$this->city][$this->hotel];
-        Log::channel('stdout')->debug("HotelPrice calcPreventive hotel_info => ".var_export($hotel_info,true));
+        //Log::channel('stdout')->debug("HotelPrice calcPreventive hotel_info => ".var_export($hotel_info,true));
         if(isset($hotel_info)){
             $max_people = $hotel_info['max_people'];
             if($this->people > ($this->rooms * $max_people)){

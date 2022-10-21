@@ -41,7 +41,7 @@ class HotelPriceTempManager implements Hptme{
         $hpt->country = $this->hotelpricetemp_array["country"];
         $hpt->city = $this->hotelpricetemp_array["city"];
         $hpt->hotel = $this->hotelpricetemp_array["hotel"];
-        $hpt->ckeckin = $this->hotelpricetemp_array["ckeckin"];
+        $hpt->checkin = $this->hotelpricetemp_array["checkin"];
         $hpt->checkout = $this->hotelpricetemp_array["checkout"];
         $hpt->rooms = $this->hotelpricetemp_array["rooms"];
         $hpt->people = $this->hotelpricetemp_array["people"];
