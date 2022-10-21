@@ -99,34 +99,58 @@ export default class HotelInfo{
      * Create the table with the obtained data
      */
     private setTable(): void{
+        console.log(this._hotel_info);
         this._container_elem = $('#'+this._container_id);
         if(this._container_elem.length){
             let html = `
 <table class="table table-striped">
-    <tbody>
-        <tr>
-            <th scope="row">Numero massimo di persone per stanza</td>
-            <td>${this._hotel_info['max_people']} persone</td>
-        </tr>
-        <tr>
-            <th scope="row">Prezzo per notte</td>
-            <td>${this._hotel_info['price']}€</td>
-        </tr>
-        <tr>
-            <th scope="row">Stanze disponibili</td>
-            <td>${this._hotel_info['rooms']} stanze</td>
-        </tr>
-        <tr>
-            <th scope="row">Voto medio</td>
-            <td>${this._hotel_info['score']} / 10</td>
-        </tr>
-        <tr>
-            <th scope="row">Stelle</td>
-            <td>${this._hotel_info['stars']} stelle</td>
-        </tr>
+<tbody>
+            `;
+            if('max_people' in this._hotel_info){
+                html += `
+<tr>
+    <th scope="row">Numero massimo di persone per stanza</th>
+    <td>${this._hotel_info['max_people']} persone</td>
+</tr>
+                `;
+            }
+            if('price' in this._hotel_info){
+                html += `
+<tr>
+    <th scope="row">Prezzo per notte</th>
+    <td>${this._hotel_info['price']}€</td>
+</tr>               
+                `;
+            }
+            if('rooms' in this._hotel_info){
+                html += `
+<tr>
+    <th scope="row">Stanze disponibili</th>
+    <td>${this._hotel_info['rooms']} stanze</td>
+</tr>
+                `; 
+            }
+            if('score' in this._hotel_info){
+                html += `
+<tr>
+    <th scope="row">Voto medio</th>
+    <td>${this._hotel_info['score']} / 10</td>
+</tr>              
+`;
+            }
+            if('stars' in this._hotel_info){
+                html += `
+<tr>
+    <th scope="row">Stelle</th>
+    <td>${this._hotel_info['stars']} stelle</td>
+</tr>                
+                `;
+            }
+            html += `
     </tbody>
 </table>
 `;
+            console.log(html);
             this._container_elem.html(html);
         }//if(this._container_elem.length){
     }
