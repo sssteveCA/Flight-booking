@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
 use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
 use App\Http\Controllers\api\Auth\LoginControllerApi;
+use App\Http\Controllers\api\Auth\LogoutControllerApi;
 use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
 use App\Http\Controllers\api\PostControllerApi;
@@ -49,5 +50,11 @@ Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','
         Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
         Route::delete(P::URL_DELETEACCOUNT,[UserControllerApi::class,'deleteAccountHard'])->name(P::ROUTE_DELETEACCOUNT);
+    });
+});
+
+Route::middleware(['custom_auth_api','verified'])->group(function(){
+    Route::name('api.')->group(function(){
+        Route::post(P::URL_LOGOUT,[LogoutControllerApi::class,'logout'])->name('logout');
     });
 });

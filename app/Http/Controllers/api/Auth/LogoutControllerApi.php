@@ -19,6 +19,9 @@ class LogoutControllerApi extends Controller
         $tokens = $user->tokens->pluck('id');
         Token::whereIn('id',$tokens)->update(['revoked' => true]);
         RefreshToken::whereIn('access_token_id', $tokens)->update(['revoked' => true]);
-        return 'logged out';
+        return response()->json([
+            'done' => true,
+            'msg' => 'Non sei più autenticato'
+        ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }
