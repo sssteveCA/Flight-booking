@@ -21,7 +21,8 @@ class AuhenticateApi
         if(!Auth::guard('api')->check()){
             //Invalid token
             return response()->json([
-                'status' => 'ERROR',
+                'done' => false,
+                C::KEY_STATUS => 'ERROR',
                 C::KEY_MESSAGE => C::ERR_NOTAUTHENTICATED
             ],401, [],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
