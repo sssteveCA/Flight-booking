@@ -35,6 +35,7 @@ trait EmailControllerCommonTrait{
             //Email successfully sent
             $response = [
                 'done' => true,
+                C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_EMAILSEND
             ];
             $code = 200; //OK
