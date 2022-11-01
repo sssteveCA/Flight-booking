@@ -9,5 +9,5 @@ use Illuminate\Http\Request;
 class HotelSearchControllerApi extends Controller
 {
     use HotelSearchControllerCommonTrait;
-    
+
 }
