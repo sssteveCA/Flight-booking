@@ -63,7 +63,7 @@ class EmailRequest extends FormRequest
         //Log::channel('stdout')->error(var_export($error,true));
         throw new HttpResponseException(
             response()->json([
-                'done' => false,
+                C::KEY_DONE => false,
                 C::KEY_STATUS => 'ERROR',
                 C::KEY_MESSAGE => $error
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)

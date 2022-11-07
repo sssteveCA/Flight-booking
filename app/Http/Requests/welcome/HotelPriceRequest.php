@@ -8,6 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use App\Interfaces\Paths as P;
+use App\Interfaces\Constants as C;
 
 class HotelPriceRequest extends FormRequest
 {
@@ -21,7 +22,7 @@ class HotelPriceRequest extends FormRequest
         $errors = (new ValidationException($validator))->errors();
         throw new HttpResponseException(
             response()->view(P::VIEW_HOTELPRICERESULT,[
-               'done' => false, 'errors' => $errors
+               C::KEY_DONE => false, 'errors' => $errors
             ], 400)
         );
     }

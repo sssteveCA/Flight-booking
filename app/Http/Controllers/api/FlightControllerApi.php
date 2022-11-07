@@ -85,7 +85,7 @@ class FlightControllerApi extends Controller
             //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->json([
-                    'done' => false,
+                    C::KEY_DONE => false,
                     C::KEY_MESSAGE => C::ERR_REQUEST,
                     C::KEY_STATUS => 'ERROR'
                 ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)

@@ -71,7 +71,7 @@ trait FlightControllerCommonTrait{
         $response_data = [];
         $response_data['flights'] = $params['flights'];
         if($params['inserted']){
-            $response_data['done'] = true;
+            $response_data[C::KEY_DONE] = true;
             $response_data['code'] = 201; //Created
             //Creation operations done successfully
             $response_data[C::KEY_STATUS] = 'OK';
@@ -83,7 +83,7 @@ trait FlightControllerCommonTrait{
         else{
             //Error while inserting record in DB
             $response_data['code'] = 500; //Internal server error
-            $response_data['done'] = false;
+            $response_data[C::KEY_DONE] = false;
             $response_data[C::KEY_STATUS] = 'ERROR';
             if($response_data['flights_number'] > 1)
                 $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_MULTIPLE;

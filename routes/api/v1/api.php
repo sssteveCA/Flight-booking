@@ -42,6 +42,7 @@ Route::name('api.')->group(function(){
     Route::get(P::URL_HOTELCITIES,[HotelSearchControllerApi::class,'getCities']);
     Route::get(P::URL_HOTELSEARCH,[HotelSearchControllerApi::class,'getHotels']);
     Route::get(P::URL_HOTELINFO,[HotelSearchControllerApi::class,'getHotelInfo']);
+    Route::post(P::URL_HOTELPRICE,[HotelSearchControllerApi::class,'getHotelPrice'])->name(P::ROUTE_HOTELPRICE);
     Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)->only([
         'index','show'
     ]);

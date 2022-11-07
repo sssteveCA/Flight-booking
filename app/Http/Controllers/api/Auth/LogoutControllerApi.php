@@ -24,14 +24,14 @@ class LogoutControllerApi extends Controller
                 $token->delete();
             });
             return response()->json([
-                'done' => true,
+                C::KEY_DONE => true,
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => 'Non sei più autenticato'
             ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
-                    'done' => false,
+                    C::KEY_DONE => false,
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => ''
                 ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)

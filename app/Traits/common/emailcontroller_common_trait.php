@@ -20,7 +20,7 @@ trait EmailControllerCommonTrait{
         //Check if form data are valid
         $request_array = $request->validated();
         $response = [
-            'done' => false,
+            C::KEY_DONE => false,
             C::KEY_MESSAGE => '',
         ];
         $headers = [
@@ -34,7 +34,7 @@ trait EmailControllerCommonTrait{
         if($email){
             //Email successfully sent
             $response = [
-                'done' => true,
+                C::KEY_DONE => true,
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_EMAILSEND
             ];

@@ -37,7 +37,7 @@ class HotelSearchController extends Controller
                     $hptm_params = $response_array["data"];
                     $hptm = new HotelPriceTempManager($hptm_params);
                     $hptm->addHotelPriceTemp();
-                    $response_code = 200;
+                    $response_code = 201;
                     break;
                 case Hpe::TOOMANYPEOPLE_FOR_ROOMS:
                     $response_array = [

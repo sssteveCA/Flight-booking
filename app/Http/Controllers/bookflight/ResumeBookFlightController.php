@@ -22,7 +22,7 @@ class ResumeBookFlightController extends Controller
 
     private function setResponseData(Request $request): array{
         $response_data = [
-            'done' => false,
+            C::KEY_DONE => false,
             'message' => '',
             'flights' => [],
             'code' => 400
@@ -41,14 +41,14 @@ class ResumeBookFlightController extends Controller
                     ];
                     $response_data['message'] = C::OK_FLIGHTBOOK_SINGLE;
                     $response_data['code'] = 200; //OK
-                    $response_data['done'] = true;
+                    $response_data[C::KEY_DONE] = true;
                 }//if($user_id == $flight->user_id){
                 else
                     $response_data['code'] = 401; //Unauthorized
             }//if($flight != null){
             else 
                 $response_data['code'] = 404; //Not found
-            if($response_data['done'] === false)
+            if($response_data[C::KEY_DONE] === false)
                 $response_data['message'] = C::ERR_URLNOTFOUND_NOTALLOWED;
         }//if($request->filled('flight_id')){
         else
