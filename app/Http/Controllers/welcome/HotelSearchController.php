@@ -28,7 +28,7 @@ class HotelSearchController extends Controller
             switch($errnoHp){
                 case 0:
                     $response_array = [
-                        'done' => true,
+                        C::KEY_DONE => true,
                         'data' => [
                             'country' => $hotelPrice->getCountry(), 'city' => $hotelPrice->getCity(), 'hotel' => $hotelPrice->getHotel(),
                             'checkin' => $hotelPrice->getCheckin(), 'checkout' => $hotelPrice->getCheckout(), 'people' => $hotelPrice->getPeople(),
@@ -41,12 +41,12 @@ class HotelSearchController extends Controller
                     break;
                 case Hpe::TOOMANYPEOPLE_FOR_ROOMS:
                     $response_array = [
-                        'done' => false, 'error_message' => $hotelPrice->getError()];
+                        C::KEY_DONE => false, 'error_message' => $hotelPrice->getError()];
                     $response_code = 400;
                     break;
                 default:
                     $response_array = [
-                        'done' => false, 'error_message' => C::ERR_HOTEL_PREVENTIVE];
+                        C::KEY_DONE => false, 'error_message' => C::ERR_HOTEL_PREVENTIVE];
                     $response_code = 500;
                     break;
             }
@@ -55,7 +55,7 @@ class HotelSearchController extends Controller
             //Log::channel('stdout')->info("HotelSearchController getHotelPrice exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_HOTELPRICERESULT,[
-                    'done' => false,
+                    C::KEY_DONE => false,
                     'error_message' => C::ERR_HOTEL_PREVENTIVE
                 ],500)
             );
