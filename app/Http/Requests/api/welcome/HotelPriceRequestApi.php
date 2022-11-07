@@ -2,31 +2,28 @@
 
 namespace App\Http\Requests\api\welcome;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Interfaces\Paths as P;
-use App\Http\Requests\welcome\FlightPriceRequest;
-use App\Traits\Common\FlightPriceRequestCommonTrait;
+use App\Traits\Common\HotelPriceRequestCommonTrait;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use App\Interfaces\Constants as C;
 
-class FlightPriceRequestApi extends FormRequest
+class HotelPriceRequestApi extends FormRequest
 {
-    use FlightPriceRequestCommonTrait;
+
+    use HotelPriceRequestCommonTrait;
 
     protected $stopOnFirstFailure = true;
 
     protected function failedValidation(Validator $validator)
     {
-        //Log::channel('stdout')->error('FlightPriceRequestApi failed validation');
         $errors = (new ValidationException($validator))->errors();
-        //Log::channel('stdout')->error(var_export($errors,true));
         throw new HttpResponseException(
             response()->json([
-                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', 'errors' => $errors
+               C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_ERRORS => $errors
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );
     }
+
 }
