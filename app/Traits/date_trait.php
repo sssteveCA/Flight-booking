@@ -35,12 +35,12 @@ trait DateTrait{
      * @return int number of days difference between dates
      */
     private function dateDaysDifference(string $date1, string $date2): int{
-        Log::channel('stdout')->debug("DateTrait dateDaysDifference date1 => {$date1}");
-        Log::channel('stdout')->debug("DateTrait dateDaysDifference date2 => {$date2}");
+        /* Log::channel('stdout')->debug("DateTrait dateDaysDifference date1 => {$date1}");
+        Log::channel('stdout')->debug("DateTrait dateDaysDifference date2 => {$date2}"); */
         $date1_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date1);
         $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
         $diff = $date1_dt->diff($date2_dt);
-        Log::channel('stdout')->debug("DateTrait dateDaysDifference days => {$diff->d}");
+        //Log::channel('stdout')->debug("DateTrait dateDaysDifference days => {$diff->d}");
         return $diff->d;
     }
 }

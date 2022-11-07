@@ -47,7 +47,7 @@ class HotelPrice implements Hpe{
 
     public function __construct(array $data)
     {
-        Log::channel('stdout')->debug("HotelPrice constructor data => ".var_export($data,true));
+        //Log::channel('stdout')->debug("HotelPrice constructor data => ".var_export($data,true));
         $this->assignValues($data);
         $this->calcPreventive();
     }

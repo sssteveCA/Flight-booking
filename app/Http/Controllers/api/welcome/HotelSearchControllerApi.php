@@ -12,6 +12,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Welcome\HotelPriceErrors as Hpe;
+use Illuminate\Support\Facades\Log;
 
 class HotelSearchControllerApi extends Controller
 {
@@ -27,7 +28,9 @@ class HotelSearchControllerApi extends Controller
                     $response_array = [
                         C::KEY_DONE => true,
                         'data' => [
-                            'country' => $hotelPrice->getCountry(),'hotel' => $hotelPrice->getHotel(),'checkin' => $hotelPrice->getCheckin(),
+                            'country' => $hotelPrice->getCountry(),
+                            'city' => $hotelPrice->getCity(),
+                            'hotel' => $hotelPrice->getHotel(),'checkin' => $hotelPrice->getCheckin(),
                             'checkout' => $hotelPrice->getCheckout(),'people' => $hotelPrice->getPeople(),'rooms' => $hotelPrice->getRooms(),
                             'price' => $hotelPrice->getFullPrice()]
                         ];
@@ -51,10 +54,12 @@ class HotelSearchControllerApi extends Controller
             }
             return response()->json($response_array,$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
+            //Log::channel('stdout')->debug("Hotel Search Controller Api Exception => ".$e->getMessage());
+            $response_code = 500;
             throw new HttpResponseException(
                 response()->json([
                     C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_HOTEL_PREVENTIVE
-                ])
+                ],$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
             );
         }
     }

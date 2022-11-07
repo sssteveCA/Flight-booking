@@ -21,7 +21,7 @@ class HotelPriceRequestApi extends FormRequest
         $errors = (new ValidationException($validator))->errors();
         throw new HttpResponseException(
             response()->json([
-               C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_ERRORS => $errors
+               C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => $errors[array_key_first($errors)][0]
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );
     }
