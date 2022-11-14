@@ -73,10 +73,8 @@ Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth','verifie
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchController::class,'getAvailableAirports']);
-Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirports']);
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
-Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountries']);
 Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHotels']);
 Route::get(P::URL_HOTELCOUNTRIES,[HotelSearchController::class, 'getCountries']);
 Route::get(P::URL_HOTELCITIES,[HotelSearchController::class,'getCities']);
