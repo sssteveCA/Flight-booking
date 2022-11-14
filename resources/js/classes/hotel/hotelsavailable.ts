@@ -5,6 +5,7 @@ export default class HotelsAvailable{
     private _hotel_countries_el: JQuery<HTMLSelectElement>;
     private _hotel_cities_el: JQuery<HTMLSelectElement>;
     private _hotels_list_el: JQuery<HTMLSelectElement>;
+    private _hotel_info_el: JQuery<HTMLSelectElement>;
     private _hotels: object;
     private _errno: number = 0;
     private _error: string|null = null;
@@ -37,6 +38,7 @@ export default class HotelsAvailable{
         this._hotel_countries_el = $('#'+data.hotel_countries_id);
         this._hotel_cities_el = $('#'+data.hotel_cities_id);
         this._hotels_list_el = $('#'+data.hotels_list_id);
+        this._hotel_info_el = $('#'+data.hotel_info_id);
     }
 
     /**
@@ -177,6 +179,68 @@ export default class HotelsAvailable{
             let country: string = this._hotel_countries_el.val() as string;
             let city: string = this._hotel_cities_el.val() as string;
             let hotel: string = this._hotels_list_el.val() as string;
+            let hotel_info: object = this.getHotelDetails(country,city,hotel);
+
         });
+    }
+
+    /**
+     * Set the table that contains the single hotel information
+     * @param info 
+     */
+    private setHotelInfoTable(info: object): void{
+        this._hotel_info_el.html('');
+        if(Object.entries(info).length > 0){
+            let html: string = `
+<table class="table table-striped">
+    <tbody>        
+        `;
+            if('max_people' in info){
+                html += `
+<tr>
+    <th scope="row">Numero massimo di persone per stanza</th>
+    <td>${info['max_people']}</td>
+</tr>            
+`;
+            }//if('max_people' in info){
+            if('price' in info){
+                html += `
+<tr>
+    <th scope="row">Prezzo per notte</th>
+    <td>${info['price']}€</td>
+</tr>           
+`;
+            }//if('price' in info){
+            if('rooms' in info){
+                html += `
+<tr>
+    <th scope="row">Stanze disponibili</th>
+    <td>${info['rooms']} stanze</td>
+</tr>            
+`;
+            }//if('rooms' in info){
+            if('score' in info){
+                html += `
+<tr>
+    <th scope="row">Voto medio</th>
+    <td>${info['score']}</td>
+</tr>            
+`;
+            }//if('score' in info){
+            if('stars' in info){
+                html += `
+<tr>
+    <th scope="row">Stelle</th>
+    <td>${info['stars']} stelle</td>
+</tr>                
+`;
+            }//if('stars' in info){
+            html += `
+    </tbody>
+</table>    
+`;
+            console.log(html);
+            this._hotel_info_el.html(html);
+        }//if(Object.entries(info).length > 0){ 
     }
 }
