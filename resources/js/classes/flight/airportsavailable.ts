@@ -3,10 +3,10 @@ import { Constants } from "../../values/constants";
 
 export default class AirportsAvailable{
 
-    private _country_departure_id: string;
-    private _country_arrival_id: string;
-    private _airport_departure_id: string;
-    private _airport_arrival_id: string;
+    private _country_departure_el: JQuery<HTMLSelectElement>;
+    private _country_arrival_el: JQuery<HTMLSelectElement>;
+    private _airport_departure_el: JQuery<HTMLSelectElement>;
+    private _airport_arrival_el: JQuery<HTMLSelectElement>;
     private _airports: object;
     private _errno: number = 0;
     private _error: string|null = null;
@@ -18,10 +18,7 @@ export default class AirportsAvailable{
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
     constructor(data: AirportsAvailableInterface){
-        this._country_departure_id = data.country_departure_id;
-        this._country_arrival_id = data.country_arrival_id;
-        this._airport_departure_id = data.airport_departure_id;
-        this._airport_arrival_id = data.airport_arrival_id;
+        this.assignValues(data);
     }
 
     get airports(){ return this._airports; }
@@ -36,6 +33,13 @@ export default class AirportsAvailable{
                 break;
         }
         return this._error;
+    }
+
+    private assignValues(data: AirportsAvailableInterface): void{
+        this._country_departure_el = $('#'+data.country_departure_id);
+        this._country_arrival_el = $('#'+data.country_arrival_id);
+        this._airport_departure_el = $('#'+data.airport_departure_id);
+        this._airport_arrival_el = $('#'+data.airport_arrival_id);
     }
 
     /**
@@ -88,5 +92,19 @@ export default class AirportsAvailable{
             airports = Object.keys(this._airports[country]);
         }
         return airports;
+    }
+
+    public fillDropdowns(): void{
+        let countries: string[] = this.getCountries();
+
+    }
+
+    public setEvents(): void{
+        this._country_departure_el.on('change',()=>{
+
+        });
+        this._country_arrival_el.on('change',()=>{
+
+        });
     }
 }
