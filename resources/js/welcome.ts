@@ -66,31 +66,6 @@ function setInputDate(elements: any): void{
     
 }
 
-//Load countries list from server
-function loadCountries(elements: any): void{
-    let fll: FlightLocationList = new FlightLocationList();
-    let dataC: FlightLocationCountriesInterface = {
-        id_from_select: elements['flight_tab']['id'][0],
-        id_to_select: elements['flight_tab']['id'][1]
-    }
-    fll.get_countries(dataC).then(res => {
-        let fired = $('#'+fll.id_from_select);
-        let dataA: FlightLocationAirportsInterface = {
-            country: fired.val() as string
-        };
-        fll.get_country_airports(dataA);
-        fired = $('#'+fll.id_to_select);
-        dataA = {
-            country: fired.val() as string
-        }
-        fll.get_country_airports(dataA);
-        onChangeSelect(elements);
-    }).catch(err => {
-
-    });
-    
-}
-
 /**
  * Get and set the companies name list in the proper select element
  * @param elements 
@@ -105,32 +80,6 @@ function loadCompanies(elements: any): void{
     }).catch(err => {
 
     })
-}
-
-//When select option change
-function onChangeSelect(elements: any): void{
-    elements['flight_tab']['elem']['flight-loc'].on('change',(event)=>{
-        let fired = $(event.currentTarget);
-        let fired_id = fired.attr('id');
-        if(fired_id == elements['flight_tab']['id'][0]){
-            //Country select from
-            let dataA: FlightLocationAirportsInterface = {
-                country: fired.val() as string,
-                id_from_select: fired_id
-            };
-            let fll: FlightLocationList = new FlightLocationList();
-            fll.get_country_airports(dataA);
-        }//if(fired_id == elements['flight_tab']['id'][0]){
-        else if(fired_id == elements['flight_tab']['id'][1]){
-            //Country select to
-            let dataA: FlightLocationAirportsInterface = {
-                country: fired.val() as string,
-                id_to_select: fired_id
-            };
-            let fll: FlightLocationList = new FlightLocationList();
-            fll.get_country_airports(dataA);
-        }//else if(fired_id == elements['flight_tab']['id'][1]){
-    });
 }
 
 //When a Bootstrap tab is clicked
