@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 trait HotelSearchControllerCommonTrait{
 
     /**
+     * Get all the bookable hotels with details
+     * @return array
+     */
+    public function getAvailableHotels(Request $request): array{
+        return $this->getAvailableHotelsArray();
+    }
+
+    /**
      * Get the countries list that contains hotels
      */
     public function getCountries(Request $request){
@@ -59,6 +67,10 @@ trait HotelSearchControllerCommonTrait{
         else
             $response_code = 404;
         return response()->json($hotel_info,$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    }
+
+    protected function getAvailableHotelsArray(): array{
+        return H::HOTELS_LIST;
     }
 
     protected function getCitiesList(string $country): array{

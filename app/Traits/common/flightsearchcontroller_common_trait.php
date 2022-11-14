@@ -20,6 +20,7 @@ trait FlightSearchCommonTrait{
 
     /**
      * Get the bookable airports with all the details
+     * @return array
      */
     public function getAvailableAirports(Request $request): array{
         return $this->getAvailableAirportsArray();
