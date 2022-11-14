@@ -30,6 +30,7 @@ interface Paths{
 
     //URLs
     const URL_ABOUTUS = '/chi-siamo';
+    const URL_AIRPORTS_AVAILABLE = '/airports';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
     const URL_BOOKFLIGHT_PAYPAL_CANCEL = '/cancel';

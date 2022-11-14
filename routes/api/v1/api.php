@@ -33,6 +33,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::name('api.')->group(function(){
     Route::post('/login',[LoginControllerApi::class, 'login'])->name('login');
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
+    Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchControllerApi::class,'getAvailableAirports']);
     Route::get(P::URL_AIRPORTSEARCH,[FlightSearchControllerApi::class,'getCountryAirports']);
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
     Route::get(P::URL_FLIGHTSEARCH,[FlightSearchControllerApi::class,'getCountries']);

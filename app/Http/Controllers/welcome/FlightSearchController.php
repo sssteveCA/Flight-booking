@@ -3,23 +3,14 @@
 namespace App\Http\Controllers\welcome;
 
 use App\Classes\Welcome\FlightPrice;
-use App\Classes\Welcome\FlightsTempManager;
-use App\Exceptions\FlightsArrayException;
-use App\Exceptions\FlightsDataModifiedException;
 use App\Exceptions\FlightsTempNotAddedException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\FlightPriceRequest;
-use Illuminate\Http\Request;
-use App\Interfaces\Airports as A;
-use App\Interfaces\Airports;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Traits\Common\FlightSearchCommonTrait;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\ValidationException;
-use App\Interfaces\Welcome\FlightsTempManagerErrors as Ftme;
+
 
 
 class FlightSearchController extends Controller
