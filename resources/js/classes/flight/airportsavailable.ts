@@ -29,4 +29,31 @@ export default class AirportsAvailable{
         }
         return this._error;
     }
+
+    public async airportsAvailable(): Promise<object>{
+        this._errno = 0;
+        let response: object = {};
+        try{
+            await this.airportsAvailablePromise().then(res => {
+                response = JSON.parse(res);
+                this._airports = response;
+            }).catch(err => {
+                throw err;
+            });
+        }catch(e){
+            console.warn(e);
+            this._errno = AirportsAvailable.ERR_FETCH;
+        }
+        return response;
+    }
+
+    private async airportsAvailablePromise(): Promise<string>{
+        return await new Promise<string>((resolve,reject) => {
+            fetch(AirportsAvailable.URL_SCRIPT).then(res => {
+                resolve(res.text());
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
 }
