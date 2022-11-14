@@ -94,8 +94,21 @@ export default class AirportsAvailable{
         return airports;
     }
 
+    /**
+     * Add the option item to countries and airports list list dropdowns 
+     */
     public fillDropdowns(): void{
         let countries: string[] = this.getCountries();
+        countries.forEach(country => {
+            let option = $('<option>');
+            option.text(country);
+            option.val(country);
+            this._country_departure_el.append(option);
+            this._country_arrival_el.append(option);
+        });
+        this.setEvents();
+        this._country_departure_el.trigger('change');
+        this._country_arrival_el.trigger('change');
 
     }
 
