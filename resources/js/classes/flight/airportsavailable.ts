@@ -30,6 +30,10 @@ export default class AirportsAvailable{
         return this._error;
     }
 
+    /**
+     * Get the entire airports details array from the server
+     * @returns Promise<object> 
+     */
     public async airportsAvailable(): Promise<object>{
         this._errno = 0;
         let response: object = {};
@@ -55,5 +59,26 @@ export default class AirportsAvailable{
                 reject(err);
             });
         });
+    }
+
+    /**
+     * Get the countries that have bookable airports
+     * @returns string[]
+     */
+    public getCountries(): string[]{
+        return Object.keys(this._airports);
+    }
+
+    /**
+     * Get the airports available in a specific country
+     * @param country 
+     * @returns string[]
+     */
+    public getCountryAirports(country: string): string[]{
+        let airports: string[] = [];
+        if(this._airports.hasOwnProperty(country)){
+            airports = Object.keys(this._airports[country]);
+        }
+        return airports;
     }
 }
