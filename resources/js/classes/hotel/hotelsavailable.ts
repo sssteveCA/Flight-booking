@@ -38,4 +38,31 @@ export default class HotelsAvailable{
         this._hotel_cities_el = $('#'+data.hotel_cities_id);
         this._hotels_list_el = $('#'+data.hotels_list_id);
     }
+
+    public async hotelsAvailable(): Promise<object>{
+        this._errno = 0;
+        let response: object = {};
+        try{
+            await this.hotelsAvailablePromise().then(res => {
+                response = JSON.parse(res);
+                this._hotels = response;
+            }).catch(err => {
+                throw err;
+            });
+        }catch(e){
+            console.warn(e);
+            this._errno = HotelsAvailable.ERR_FETCH;
+        }
+        return response;
+    }
+
+    private async hotelsAvailablePromise(): Promise<string>{
+        return await new Promise<string>((resolve,reject)=>{
+            fetch(HotelsAvailable.URL_SCRIPT).then(res => {
+                resolve(res.text());
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
 }
