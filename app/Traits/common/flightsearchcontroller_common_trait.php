@@ -6,6 +6,7 @@ use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightsTempManager;
 use App\Interfaces\Airports as A;
 use Exception;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +18,20 @@ trait FlightSearchCommonTrait{
 
     private FlightsTempManager $ftm;
 
-    //Get airports list from specific country
+    /**
+     * Get the bookable airports with all the details
+     */
+    public function getAvailableAirports(Request $request): array{
+        return $this->getAvailableAirportsArray();
+    }
+
+    protected function getAvailableAirportsArray(): array{
+        return A::AIRPORTS_LIST;
+    }
+
+    /**
+     * Get airports list from specific country
+     */
     public function getCountryAirports(Request $request){
         try{
             $country = $request->input('country');
@@ -47,7 +61,9 @@ trait FlightSearchCommonTrait{
         return $list;
     }
 
-    //Get countries list from array
+    /**
+     * Get countries list from array
+     */
     public function getCountries(){
         $list = $this->getCountriesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -60,7 +76,9 @@ trait FlightSearchCommonTrait{
         return $list;
     }
 
-    //Get flight companies list
+    /**
+     * Get flight companies list
+     */
     public function getFlightCompanies(){
         $list = $this->getFlightCompaniesList();
         return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -124,7 +142,9 @@ trait FlightSearchCommonTrait{
         return $data;
     }
 
-    //set flight temp table records
+    /**
+     * Set flight temp table records
+     */
     private function setFlightsTemp(array $flights_data): bool{
         //Log::debug("FlightSearchControllerCommonTrait setFlightsTemp");
         $set = false;
