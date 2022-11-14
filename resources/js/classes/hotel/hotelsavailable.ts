@@ -123,6 +123,24 @@ export default class HotelsAvailable{
     }
 
     /**
+     * Get single hotel information
+     * @param country the country of the hotel
+     * @param city the city of the hotel
+     * @param hotel the hotel name
+     * @returns an object that contains the hotel information
+     */
+    private getHotelDetails(country: string, city: string, hotel:string): object{
+        let details: object = {};
+        if(this._hotels.hasOwnProperty(country)){
+            if(this._hotels[country].hasOwnProperty(city)){
+                if(this._hotels[country][city].hasOwnProperty(hotel))
+                    return this._hotels[country][city][hotel];
+            }
+        }
+        return details;
+    }
+
+    /**
      * Get the hotel located in a particular city of a country
      * @param country 
      * @param city 
@@ -153,6 +171,12 @@ export default class HotelsAvailable{
             let city: string = this._hotel_cities_el.val() as string;
             let hotels: string[] = this.getHotelsList(country,city);
             this.fillHotelDropdowns(this._hotels_list_el,hotels);
+            this._hotels_list_el.trigger('change');
+        });
+        this._hotels_list_el.on('change',()=>{
+            let country: string = this._hotel_countries_el.val() as string;
+            let city: string = this._hotel_cities_el.val() as string;
+            let hotel: string = this._hotels_list_el.val() as string;
         });
     }
 }
