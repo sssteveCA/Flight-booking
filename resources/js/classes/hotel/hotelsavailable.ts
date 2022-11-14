@@ -180,7 +180,7 @@ export default class HotelsAvailable{
             let city: string = this._hotel_cities_el.val() as string;
             let hotel: string = this._hotels_list_el.val() as string;
             let hotel_info: object = this.getHotelDetails(country,city,hotel);
-
+            this.setHotelInfoTable(hotel_info);
         });
     }
 

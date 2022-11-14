@@ -5,7 +5,7 @@ import AirportsAvailableInterface from "./interfaces/flight/airportsavailable.in
 import FlightLocationAirportsInterface from "./interfaces/flight/flightlocationairports.interface";
 import FlightLocationCompaniesInterface from "./interfaces/flight/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flight/flightlocationcountries.interface";
-import {loadHotelData } from "./welcome.hotel";
+import {loadHotelData, loadHotelInfo } from "./welcome.hotel";
 
 $(()=>{
     let elements = {
@@ -91,7 +91,8 @@ function tabClickEvents(elements: any): void{
         $(''+cb_dbt).css('display','block');
         $('div[role=tabpanel]:not('+cb_dbt+')').css('display','none');
         if(cb_id == 'hotel-tab'){
-            loadHotelData();
+            //loadHotelData();
+            loadHotelInfo();
         }
         else if(cb_id == 'events-tab'){
            //User want see flight events list
