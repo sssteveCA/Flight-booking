@@ -1,4 +1,5 @@
 import HotelsAvailableInterface from "../../interfaces/hotel/hotelsavailable.interface";
+import { Constants } from "../../values/constants";
 
 export default class HotelsAvailable{
     private _hotel_countries_el: JQuery<HTMLSelectElement>;
@@ -8,12 +9,14 @@ export default class HotelsAvailable{
     private _errno: number = 0;
     private _error: string|null = null;
 
-    public static ERR_FETCH:number = 1;
+    private static URL_SCRIPT: string = Constants.URL_HOTELS_AVAILABLE;
 
-    private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
+    public static ERR_FETCH: number = 1;
+
+    private static ERR_FETCH_MSG: string = "Errore durante l'esecuzione della richiesta";
 
     constructor(data: HotelsAvailableInterface){
-
+        this.assignValues(data);
     }
 
     get hotels(){ return this._hotels; }
@@ -28,5 +31,11 @@ export default class HotelsAvailable{
                 break;
         }
         return this._error;
+    }
+
+    private assignValues(data: HotelsAvailableInterface): void{
+        this._hotel_countries_el = $('#'+data.hotel_countries_id);
+        this._hotel_cities_el = $('#'+data.hotel_cities_id);
+        this._hotels_list_el = $('#'+data.hotels_list_id);
     }
 }

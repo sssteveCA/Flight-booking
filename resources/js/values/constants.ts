@@ -24,7 +24,7 @@ export namespace Constants{
 
     //Urls
     export const URL_HOME = Config.HOME_URL;
-    export const URL_AIRPORTSAVAILABLE = '/airports';
+    export const URL_AIRPORTS_AVAILABLE = '/airports';
     export const URL_AIRPORTSSEARCH = '/airportsearch';
     export const URL_COMPANIESSEARCH = '/companieslist';
     export const URL_DELETEACCOUNT = '/profile/deleteAccount';
@@ -33,5 +33,6 @@ export namespace Constants{
     export const URL_FLIGHTSLIST = '/profile/myFlights';
     export const URL_FLIGHTEVENTS = '/flightevents';
     export const URL_FLIGHTSEARCH = '/flightsearch'
+    export const URL_HOTELS_AVAILABLE = '/hotels';
     export const URL_SENDEMAIL = '/contacts/sendemail';
 }

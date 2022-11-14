@@ -11,7 +11,7 @@ export default class AirportsAvailable{
     private _errno: number = 0;
     private _error: string|null = null;
 
-    private static URL_SCRIPT: string = Constants.URL_AIRPORTSAVAILABLE;
+    private static URL_SCRIPT: string = Constants.URL_AIRPORTS_AVAILABLE;
 
     public static ERR_FETCH:number = 1;
 
