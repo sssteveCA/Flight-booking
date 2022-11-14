@@ -5,7 +5,7 @@ import AirportsAvailableInterface from "./interfaces/flight/airportsavailable.in
 import FlightLocationAirportsInterface from "./interfaces/flight/flightlocationairports.interface";
 import FlightLocationCompaniesInterface from "./interfaces/flight/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flight/flightlocationcountries.interface";
-import {loadHotelData, loadHotelInfo } from "./welcome.hotel";
+import {loadHotelInfo } from "./welcome.hotel";
 
 $(()=>{
     let elements = {
