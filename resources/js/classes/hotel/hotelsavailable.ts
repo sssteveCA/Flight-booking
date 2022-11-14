@@ -39,6 +39,10 @@ export default class HotelsAvailable{
         this._hotels_list_el = $('#'+data.hotels_list_id);
     }
 
+    /**
+     * Get the entire hotels details object from the server
+     * @returns Promise<object>
+     */
     public async hotelsAvailable(): Promise<object>{
         this._errno = 0;
         let response: object = {};
@@ -64,5 +68,42 @@ export default class HotelsAvailable{
                 reject(err);
             });
         });
+    }
+
+    /**
+     * Get the countries that have bookable hotels
+     * @returns string[]
+     */
+    private getCountries(): string[]{
+        return Object.keys(this._hotels);
+    }
+
+    /**
+     * Get the cities that have hotels list of a particular country
+     * @param country 
+     * @returns string[]
+     */
+    private getCountryCities(country: string): string[]{
+        let cities: string[] = [];
+        if(this._hotels.hasOwnProperty(country)){
+            cities = Object.keys(this._hotels[country]);
+        }
+        return cities;
+    }
+
+    /**
+     * Get the hotel located in a particular city of a country
+     * @param country 
+     * @param city 
+     * @returns string[]
+     */
+    private getHotelsList(country: string, city: string): string[]{
+        let hotels: string[] = [];
+        if(this._hotels.hasOwnProperty(country)){
+            if(this._hotels[country].hasOwnProperty(city)){
+                hotels = Object.keys(this._hotels[country][city]);
+            }
+        }
+        return hotels;
     }
 }

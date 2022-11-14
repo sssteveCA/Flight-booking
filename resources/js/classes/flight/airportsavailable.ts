@@ -43,7 +43,7 @@ export default class AirportsAvailable{
     }
 
     /**
-     * Get the entire airports details array from the server
+     * Get the entire airports details object from the server
      * @returns Promise<object> 
      */
     public async airportsAvailable(): Promise<object>{
