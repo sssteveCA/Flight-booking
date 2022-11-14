@@ -77,6 +77,7 @@ Route::get(P::URL_AIRPORTSEARCH,[FlightSearchController::class,'getCountryAirpor
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
 Route::get(P::URL_FLIGHTSEARCH,[FlightSearchController::class,'getCountries']);
+Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHotels']);
 Route::get(P::URL_HOTELCOUNTRIES,[HotelSearchController::class, 'getCountries']);
 Route::get(P::URL_HOTELCITIES,[HotelSearchController::class,'getCities']);
 Route::get(P::URL_HOTELSEARCH,[HotelSearchController::class,'getHotels']);
