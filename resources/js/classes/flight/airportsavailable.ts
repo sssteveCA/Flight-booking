@@ -95,9 +95,23 @@ export default class AirportsAvailable{
     }
 
     /**
+     * Add the option items to the airports dropdown after one of the dropdown with countries list has changed
+     * @param dropdown 
+     */
+    private fillAirportDropdowns(dropdown: JQuery<HTMLSelectElement>, airports: string[]): void{
+        dropdown.html('');
+        airports.forEach(airport => {
+            let option = $('<option>');
+            option.text(airport);
+            option.val(airport);
+            dropdown.append(option);
+        });
+    }
+
+    /**
      * Add the option item to countries and airports list list dropdowns 
      */
-    public fillDropdowns(): void{
+    private fillDropdowns(): void{
         let countries: string[] = this.getCountries();
         countries.forEach(country => {
             let option = $('<option>');
@@ -109,15 +123,21 @@ export default class AirportsAvailable{
         this.setEvents();
         this._country_departure_el.trigger('change');
         this._country_arrival_el.trigger('change');
-
     }
 
-    public setEvents(): void{
+    /**
+     * Add change listeners to countries list dropdowns
+     */
+    private setEvents(): void{
         this._country_departure_el.on('change',()=>{
-
+            let country: string = this._country_departure_el.val() as string;
+            let airports: string[] = this.getCountryAirports(country);
+            this.fillAirportDropdowns(this._airport_departure_el,airports);
         });
         this._country_arrival_el.on('change',()=>{
-
+            let country: string = this._country_arrival_el.val() as string;
+            let airports: string[] = this.getCountryAirports(country);
+            this.fillAirportDropdowns(this._airport_arrival_el,airports);
         });
     }
 }
