@@ -71,6 +71,20 @@ export default class HotelsAvailable{
     }
 
     /**
+     * Add the option item to countries dropdown 
+     */
+    private fillDropdown(): void{
+        let countries: string[] = this.getCountries();
+        countries.forEach(country => {
+            let option = $('<option>');
+            option.text(country);
+            option.val(country);
+            this._hotel_countries_el.append(option);
+        });
+        
+    }
+
+    /**
      * Get the countries that have bookable hotels
      * @returns string[]
      */
