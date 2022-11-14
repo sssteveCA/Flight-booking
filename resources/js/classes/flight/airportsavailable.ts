@@ -53,6 +53,7 @@ export default class AirportsAvailable{
             await this.airportsAvailablePromise().then(res => {
                 response = JSON.parse(res);
                 this._airports = response;
+                this.fillDropdowns();
             }).catch(err => {
                 throw err;
             });
@@ -74,31 +75,10 @@ export default class AirportsAvailable{
     }
 
     /**
-     * Get the countries that have bookable airports
-     * @returns string[]
-     */
-    public getCountries(): string[]{
-        return Object.keys(this._airports);
-    }
-
-    /**
-     * Get the airports available in a specific country
-     * @param country 
-     * @returns string[]
-     */
-    public getCountryAirports(country: string): string[]{
-        let airports: string[] = [];
-        if(this._airports.hasOwnProperty(country)){
-            airports = Object.keys(this._airports[country]);
-        }
-        return airports;
-    }
-
-    /**
      * Add the option items to the airports dropdown after one of the dropdown with countries list has changed
      * @param dropdown 
      */
-    private fillAirportDropdowns(dropdown: JQuery<HTMLSelectElement>, airports: string[]): void{
+     private fillAirportDropdowns(dropdown: JQuery<HTMLSelectElement>, airports: string[]): void{
         dropdown.html('');
         airports.forEach(airport => {
             let option = $('<option>');
@@ -123,6 +103,27 @@ export default class AirportsAvailable{
         this.setEvents();
         this._country_departure_el.trigger('change');
         this._country_arrival_el.trigger('change');
+    }
+
+    /**
+     * Get the countries that have bookable airports
+     * @returns string[]
+     */
+    private getCountries(): string[]{
+        return Object.keys(this._airports);
+    }
+
+    /**
+     * Get the airports available in a specific country
+     * @param country 
+     * @returns string[]
+     */
+    private getCountryAirports(country: string): string[]{
+        let airports: string[] = [];
+        if(this._airports.hasOwnProperty(country)){
+            airports = Object.keys(this._airports[country]);
+        }
+        return airports;
     }
 
     /**
