@@ -77,6 +77,7 @@ export default class AirportsAvailable{
     /**
      * Add the option items to the airports dropdown after one of the dropdown with countries list has changed
      * @param dropdown 
+	 * @param airports
      */
      private fillAirportDropdowns(dropdown: JQuery<HTMLSelectElement>, airports: string[]): void{
         dropdown.html('');

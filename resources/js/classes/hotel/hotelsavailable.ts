@@ -50,6 +50,7 @@ export default class HotelsAvailable{
             await this.hotelsAvailablePromise().then(res => {
                 response = JSON.parse(res);
                 this._hotels = response;
+                this.fillDropdown();
             }).catch(err => {
                 throw err;
             });
@@ -80,8 +81,24 @@ export default class HotelsAvailable{
             option.text(country);
             option.val(country);
             this._hotel_countries_el.append(option);
+        }); 
+        this.setEvents();
+        this._hotel_countries_el.trigger('change');
+    }
+
+    /**
+     * Add the option items to the dropdown after one of the dropdown parents has changed the value
+     * @param dropdown 
+     * @param list
+     */
+    private fillHotelDropdowns(dropdown: JQuery<HTMLSelectElement>, list: string[]): void{
+        dropdown.html('');
+        list.forEach(element => {
+            let option = $('<option>');
+            option.text(element);
+            option.val(element);
+            dropdown.append(option);
         });
-        
     }
 
     /**
@@ -119,5 +136,23 @@ export default class HotelsAvailable{
             }
         }
         return hotels;
+    }
+
+    /**
+     * Add change listeners to countries and cities list dropdowns
+     */
+    private setEvents(): void{
+        this._hotel_countries_el.on('change',()=>{
+            let country: string = this._hotel_countries_el.val() as string;
+            let cities: string[] = this.getCountryCities(country);
+            this.fillHotelDropdowns(this._hotel_cities_el,cities);
+            this._hotel_cities_el.trigger('change');
+        });
+        this._hotel_cities_el.on('change',()=>{
+            let country: string = this._hotel_countries_el.val() as string;
+            let city: string = this._hotel_cities_el.val() as string;
+            let hotels: string[] = this.getHotelsList(country,city);
+            this.fillHotelDropdowns(this._hotels_list_el,hotels);
+        });
     }
 }
