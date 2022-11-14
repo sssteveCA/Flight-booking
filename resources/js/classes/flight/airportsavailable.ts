@@ -98,8 +98,13 @@ export default class AirportsAvailable{
             option.text(country);
             option.val(country);
             this._country_departure_el.append(option);
-            this._country_arrival_el.append(option);
         });
+        countries.forEach(country => {
+            let option = $('<option>');
+            option.text(country);
+            option.val(country);
+            this._country_arrival_el.append(option);
+        })
         this.setEvents();
         this._country_departure_el.trigger('change');
         this._country_arrival_el.trigger('change');
