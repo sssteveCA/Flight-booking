@@ -239,7 +239,6 @@ export default class HotelsAvailable{
     </tbody>
 </table>    
 `;
-            console.log(html);
             this._hotel_info_el.html(html);
         }//if(Object.entries(info).length > 0){ 
     }
