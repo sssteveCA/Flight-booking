@@ -1,7 +1,12 @@
+import AirportsAvailableInterface from "../../interfaces/flight/airportsavailable.interface";
 import { Constants } from "../../values/constants";
 
 export default class AirportsAvailable{
 
+    private _country_departure_id: string;
+    private _country_arrival_id: string;
+    private _airport_departure_id: string;
+    private _airport_arrival_id: string;
     private _airports: object;
     private _errno: number = 0;
     private _error: string|null = null;
@@ -12,8 +17,11 @@ export default class AirportsAvailable{
 
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
-    constructor(){
-
+    constructor(data: AirportsAvailableInterface){
+        this._country_departure_id = data.country_departure_id;
+        this._country_arrival_id = data.country_arrival_id;
+        this._airport_departure_id = data.airport_departure_id;
+        this._airport_arrival_id = data.airport_arrival_id;
     }
 
     get airports(){ return this._airports; }
