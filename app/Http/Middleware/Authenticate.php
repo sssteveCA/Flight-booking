@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Interfaces\Paths as P;
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -31,15 +32,7 @@ class Authenticate extends Middleware
                 //Method of request is POST
                 if($request->routeIs(P::ROUTE_BOOKFLIGHT)){
                     //Route name when flight prices are shown
-                    $params = $request->input('flights');
-                    $route_params = $params;
-                    //$route_params = $this->flights_unquote($params);
-                    $route_params = [
-                        'session_id' => $request->input('session_id'),
-                        'flight_type' => $request->input('flight_type'),
-                        'flights' => $route_params];
-                        //Log::channel('stdout')->info("Authenticate redirectTo request => ".var_export($route_params,true));
-                    $request->flash();
+                    $route_params = $this->routeBookflightData($request);
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
             }//if($request->isMethod('post')){
             if (! $request->expectsJson()) {
@@ -48,4 +41,16 @@ class Authenticate extends Middleware
             }
         }//if(!$api_request){ 
     } 
+
+    /**
+     * Booking flight data to send to the login page if the user is not authenticated
+     * @param \Illuminate\Http\Request $request
+     */
+    private function routeBookflightData(Request $request): array{
+        return [
+            'session_id' => $request->input('session_id'),
+            'flight_type' => $request->input('flight_type'),
+            'flights' => $request->input('flights')
+        ];
+    }
 }
