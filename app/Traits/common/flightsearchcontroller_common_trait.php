@@ -31,53 +31,6 @@ trait FlightSearchCommonTrait{
     }
 
     /**
-     * Get airports list from specific country
-     */
-    public function getCountryAirports(Request $request){
-        try{
-            $country = $request->input('country');
-            if($country != null){
-                $list = $this->getAirportsList($country);
-                return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }
-            throw new Exception(C::ERR_REQUEST);
-        }catch(Exception $e){
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => C::ERR_REQUEST
-                ],400,[],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)
-            );
-        }
-        
-    }
-
-    protected function getAirportsList(string $country): array{
-        $list = [];
-        $airports = A::AIRPORTS_LIST;
-        $key_exists = array_key_exists($country,$airports);
-        if($key_exists){
-            $list = $airports[$country];
-        }
-        return $list;
-    }
-
-    /**
-     * Get countries list from array
-     */
-    public function getCountries(){
-        $list = $this->getCountriesList();
-        return response()->json($list,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-    }
-
-    protected function getCountriesList(): array{
-        $list = [];
-        $airports = A::AIRPORTS_LIST;
-        $list = array_keys($airports);
-        return $list;
-    }
-
-    /**
      * Get flight companies list
      */
     public function getFlightCompanies(){
