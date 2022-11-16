@@ -38,9 +38,6 @@ Route::name('api.')->group(function(){
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTPRICE,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchControllerApi::class,'getAvailableHotels']);
-    Route::get(P::URL_HOTELCOUNTRIES,[HotelSearchControllerApi::class,'getCountries']);
-    Route::get(P::URL_HOTELCITIES,[HotelSearchControllerApi::class,'getCities']);
-    Route::get(P::URL_HOTELSEARCH,[HotelSearchControllerApi::class,'getHotels']);
     Route::get(P::URL_HOTELINFO,[HotelSearchControllerApi::class,'getHotelInfo']);
     Route::post(P::URL_HOTELPRICE,[HotelSearchControllerApi::class,'getHotelPrice'])->name(P::ROUTE_HOTELPRICE);
     Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)->only([

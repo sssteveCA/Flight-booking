@@ -30,7 +30,7 @@ trait HotelPriceRequestCommonTrait{
     public function rules()
     {
         return [
-            'country' => ['required', new IsInArray($this->getCountriesList())],
+            'country' => ['required', new IsInArray(array_keys($this->getAvailableHotelsArray()))],
             'city' => ['required', new CheckHotelCity(H::HOTELS_LIST)],
             'hotel' => ['required', new CheckHotel(H::HOTELS_LIST)],
             'checkin' => ['required', 'date', new DateDiffHotel('checkin')],

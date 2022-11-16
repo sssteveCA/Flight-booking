@@ -37,9 +37,9 @@ trait FlightPriceRequestCommonTrait{
         return [
             'flight_type' => 'required',
             'company_name' => ['required',new IsInArray($this->getFlightCompaniesList())],
-            'from_country' => ['required', new NotSameLocation,new IsInArray($this->getCountriesList())],
+            'from_country' => ['required', new NotSameLocation,new IsInArray(array_keys($this->getAvailableAirportsArray()))],
             'from_airport' => ['required',new CheckAirports('from_country')],
-            'to_country' => ['required',new IsInArray($this->getCountriesList())],
+            'to_country' => ['required',new IsInArray(array_keys($this->getAvailableAirportsArray()))],
             'to_airport' => ['required',new CheckAirports('to_country')],
             'oneway_date' => ['required_without_all:roundtrip_start_date,roundtrip_end_date', new DateDiff1d('oneway_date')],
             'roundtrip_start_date' => ['required_with:roundtrip_end_date', new DateDiff1d('roundtrip_start_date')],
