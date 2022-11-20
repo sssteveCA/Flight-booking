@@ -22,6 +22,10 @@ export namespace Constants{
     export const MSG_CONFIRMEDITUSERNAME = 'Sei sicuro di voler modificare il nome utente?';
     export const MSG_CONFIRMLOGOUT = 'Sei sicuro di voler chiudere la sessione?';
 
+    //Static Urls
+    const STATIC_URL_IMG = '/img';
+    export const STATIC_URL_IMG_HOTELS = STATIC_URL_IMG+'/hotels';
+
     //Urls
     export const URL_HOME = Config.HOME_URL;
     export const URL_AIRPORTS_AVAILABLE = '/airports';

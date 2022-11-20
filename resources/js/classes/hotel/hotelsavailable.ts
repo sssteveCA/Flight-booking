@@ -11,6 +11,7 @@ export default class HotelsAvailable{
     private _errno: number = 0;
     private _error: string|null = null;
 
+    private static URL_HOTEL_IMG: string = Constants.STATIC_URL_IMG_HOTELS;
     private static URL_SCRIPT: string = Constants.URL_HOTELS_AVAILABLE;
 
     public static ERR_FETCH: number = 1;
@@ -73,6 +74,21 @@ export default class HotelsAvailable{
                 reject(err);
             });
         });
+    }
+
+    /**
+     * Get the current viewed hotel images path prefix
+     * @param country 
+     * @param city 
+     * @param hotel 
+     * @returns 
+     */
+    private currentImgPrefix(country: string, city: string, hotel: string): string{
+        let prefix: string = `${HotelsAvailable.URL_HOTEL_IMG}/${country}/${city}/${hotel}/${hotel}`;
+        let regex: RegExp = new RegExp("\\s","g");
+        prefix = prefix.replace(regex,'_');
+        console.log(prefix);
+        return prefix;
     }
 
     /**
@@ -244,4 +260,6 @@ export default class HotelsAvailable{
             this._hotel_info_el.html(html);
         }//if(Object.entries(info).length > 0){ 
     }
+
+
 }
