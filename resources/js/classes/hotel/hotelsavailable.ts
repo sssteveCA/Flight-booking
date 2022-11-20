@@ -84,9 +84,11 @@ export default class HotelsAvailable{
      * @returns 
      */
     private currentImgPrefix(country: string, city: string, hotel: string): string{
-        let prefix: string = `${HotelsAvailable.URL_HOTEL_IMG}/${country}/${city}/${hotel}/${hotel}`;
-        let regex: RegExp = new RegExp("\\s","g");
+        let prefix: string = `${HotelsAvailable.URL_HOTEL_IMG}/${country}/${city}/${hotel}/${hotel}_`;
+        let regex: RegExp = new RegExp("[\\s\\-&]","g");
+        let regex2: RegExp = new RegExp("[+()]","g");
         prefix = prefix.replace(regex,'_');
+        prefix = prefix.replace(regex2,'');
         console.log(prefix);
         return prefix;
     }
@@ -212,7 +214,7 @@ export default class HotelsAvailable{
     private setHotelImages(country: string, city: string, hotel: string): void{
         let basePath: string = this.currentImgPrefix(country,city,hotel);
         let nImages: number = this._hotels[country][city][hotel]["images"];
-        console.log("nImages => "+nImages)
+        //console.log("nImages => "+nImages)
         let html = `
 <div class="container-fluid">        
         `;

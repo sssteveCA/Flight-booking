@@ -7,7 +7,7 @@ interface Hotels{
         'Austria' => [
             'Innsbruck' => [
                 'Hotel Central' => [
-                   'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
+                   'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'Hotel Goldene Krone Innsbruck' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -42,7 +42,7 @@ interface Hotels{
         'Belgio' => [
             'Anversa' => [
                 'A-STAY Antwerp' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 4
                 ],
                 'ibis budget Antwerpen Centraal Station' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -77,7 +77,7 @@ interface Hotels{
         'Bosnia & Herzegovina' => [
             'Međugorje' => [
                 'Hotel Barbaric' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 6
                 ],
                 'Hotel Luna' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -112,7 +112,7 @@ interface Hotels{
         'Bulgaria' => [
             'Plovdiv' => [
                 'Grand Hotel Plovdiv' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 8
                 ],
                 'Hotel BLVD' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -147,7 +147,7 @@ interface Hotels{
         'Cipro' => [
             'Ayia Napa' => [
                 'Anonymous Beach Hotel (Adults 16+)' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 4
                 ],
                 'Cosmo Napa Boutique Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -182,7 +182,7 @@ interface Hotels{
         'Croazia' => [
             'Poreč' => [
                 'Hotel Molindrio Plava Laguna' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Parentium Plava Laguna' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -217,7 +217,7 @@ interface Hotels{
         'Danimarca' => [
             'Arhus' => [
                 'Cabinn Aarhus' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Atlantic' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -252,7 +252,7 @@ interface Hotels{
         'Estonia' => [
             'Käsmu' => [
                 'Käsmu Holiday House' => [
-                    'max_people' => 3, 'price' => 70.00, 'rooms' => 54, 'score' => 9.3, 'stars' => 3, 'images' => 0
+                    'max_people' => 3, 'price' => 70.00, 'rooms' => 54, 'score' => 9.3, 'stars' => 3, 'images' => 5
                 ],
                 'Lainela Holiday Park' => [
                     'max_people' => 4, 'price' => 84.00, 'rooms' => 47, 'score' => 8.5, 'stars' => 2, 'images' => 0
@@ -287,7 +287,7 @@ interface Hotels{
         'Finlandia' => [
             'Helsinki' => [
                 'Hotel Arthur' => [
-                    'max_people' => 5, 'price' => 80.00, 'rooms' => 88, 'score' => 7.6, 'stars' => 3, 'images' => 0
+                    'max_people' => 5, 'price' => 80.00, 'rooms' => 88, 'score' => 7.6, 'stars' => 3, 'images' => 6
                 ],
                 'Hotel Finn' => [
                     'max_people' => 4, 'price' => 76.00, 'rooms' => 79, 'score' => 8.2, 'stars' => 3, 'images' => 0
@@ -322,7 +322,7 @@ interface Hotels{
         'Francia' => [
             'Cannes' => [
                 'B&B HOTEL Cannes La Bocca Plage' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 4
                 ],
                 'Hotel Abrial' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -357,7 +357,7 @@ interface Hotels{
         'Germania' => [
             'Berlino' => [
                 'H2 Hotel Berlin-Alexanderplatz' => [
-                    'max_people' => 4, 'price' => 96.25, 'rooms' => 75, 'score' => 8.3, 'stars' => 3, 'images' => 0
+                    'max_people' => 4, 'price' => 96.25, 'rooms' => 75, 'score' => 8.3, 'stars' => 3, 'images' => 6
                 ],
                 'MEININGER Hotel Berlin Hauptbahnhof' => [
                     'max_people' => 2, 'price' => 14.85, 'rooms' => 45, 'score' => 7.4, 'stars' => 3, 'images' => 0
@@ -392,7 +392,7 @@ interface Hotels{
         'Giordania' => [
             'Amman' => [
                 'Layaali Amman Hotel' => [
-                    'max_people' => 3, 'price' => 50.00, 'rooms' => 75, 'score' => 8.3, 'stars' => 1, 'images' => 0     
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 75, 'score' => 8.3, 'stars' => 1, 'images' => 3     
                 ],
                 'New MerryLand Hotel' => [
                     'max_people' => 3, 'price' => 62.00, 'rooms' => 56, 'score' => 8.7, 'stars' => 3, 'images' => 0    
@@ -427,7 +427,7 @@ interface Hotels{
         'Grecia' => [
             'Atene' => [
                 'Hotel Cosmos' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'President Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -462,7 +462,7 @@ interface Hotels{
         'Irlanda' => [
             'Cork' => [
                 'Jurys Inn Cork' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 7
                 ],
                 'Maldron Hotel South Mall Cork City' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -497,7 +497,7 @@ interface Hotels{
         'Israele' => [
             'Eilat' => [
                 'Club In Eilat - Coral Beach Villa Resort' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 4
                 ],
                 'Dan Panorama Eilat' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -532,7 +532,7 @@ interface Hotels{
         'Italia' => [
             'Firenze' => [
                 'Hotel Bodoni' => [
-                    'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3, 'images' => 0
+                    'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3, 'images' => 9
                 ],
                 'Hotel Delle Nazioni' => [
                     'max_people' => 3, 'price' => 50.00, 'rooms' => 64, 'score' => 7.3, 'stars' => 3, 'images' => 0
@@ -567,7 +567,7 @@ interface Hotels{
         'Lettonia' => [
             'Kārļi' => [
                 'Guest House Kalniņi' => [
-                    'max_people' => 4, 'price' => 100.00, 'rooms' => 53, 'score' => 9.8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 100.00, 'rooms' => 53, 'score' => 9.8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Melturi' => [
                     'max_people' => 3, 'price' => 45.00, 'rooms' => 50, 'score' => 9.1, 'stars' => 2, 'images' => 0
@@ -602,7 +602,7 @@ interface Hotels{
         'Lituania' => [
             'Klaipeda' => [
                 'Amberton Green Apartments Palanga' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'Dangė Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -637,7 +637,7 @@ interface Hotels{
         'Lussemburgo' => [
             'Lussemburgo' => [
                 'ibis Luxembourg Aeroport' => [
-                    'max_people' => 3, 'price' => 72.00, 'rooms' => 66, 'score' => 7.8, 'stars' => 3, 'images' => 0
+                    'max_people' => 3, 'price' => 72.00, 'rooms' => 66, 'score' => 7.8, 'stars' => 3, 'images' => 6
                 ],
                 'Mandarina Hotel Luxembourg Airport' => [
                     'max_people' => 5, 'price' => 79.00, 'rooms' => 74, 'score' => 7.4, 'stars' => 3, 'images' => 0
@@ -650,7 +650,7 @@ interface Hotels{
         'Malta' => [
             'San Pawl il-Baħar' => [
                 'Dolmen Hotel Malta' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 8
                 ],
                 'Euroclub Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -685,7 +685,7 @@ interface Hotels{
         'Marocco' => [
             'Casablanca' => [
                 'Hotel Majestic' => [
-                    'max_people' => 3, 'price' => 42.50, 'rooms' => 55, 'score' => 7.3, 'stars' => 4, 'images' => 0
+                    'max_people' => 3, 'price' => 42.50, 'rooms' => 55, 'score' => 7.3, 'stars' => 4, 'images' => 4
                 ],
                 'ODYSSEE Boutique Hotel Casablanca' => [
                     'max_people' => 5, 'price' => 83.00, 'rooms' => 82, 'score' => 8.1, 'stars' => 4, 'images' => 0
@@ -720,7 +720,7 @@ interface Hotels{
         'Montenegro' => [
             'Budua' => [
                 'Hotel Ponta Nova' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'Iberostar Bellevue - All Inclusive' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
