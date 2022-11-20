@@ -4,4 +4,5 @@ export default interface HotelsAvailableInterface{
     hotel_cities_id: string;
     hotels_list_id: string;
     hotel_info_id: string;
+    hotel_info_images_id: string;
 }

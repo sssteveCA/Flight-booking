@@ -5,7 +5,8 @@ export default class HotelsAvailable{
     private _hotel_countries_el: JQuery<HTMLSelectElement>;
     private _hotel_cities_el: JQuery<HTMLSelectElement>;
     private _hotels_list_el: JQuery<HTMLSelectElement>;
-    private _hotel_info_el: JQuery<HTMLSelectElement>;
+    private _hotel_info_el: JQuery<HTMLDivElement>;
+    private _hotel_info_image_el: JQuery<HTMLDivElement>;
     private _hotels: object;
     private _errno: number = 0;
     private _error: string|null = null;
@@ -39,6 +40,7 @@ export default class HotelsAvailable{
         this._hotel_cities_el = $('#'+data.hotel_cities_id);
         this._hotels_list_el = $('#'+data.hotels_list_id);
         this._hotel_info_el = $('#'+data.hotel_info_id);
+        this._hotel_info_image_el = $('#'+data.hotel_info_images_id);
     }
 
     /**
