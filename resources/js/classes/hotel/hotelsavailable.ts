@@ -199,7 +199,39 @@ export default class HotelsAvailable{
             let hotel: string = this._hotels_list_el.val() as string;
             let hotel_info: object = this.getHotelDetails(country,city,hotel);
             this.setHotelInfoTable(hotel_info);
+            this.setHotelImages(country,city,hotel);
         });
+    }
+
+    /**
+     * Set the HTML to display the current viewed hotel images
+     * @param country 
+     * @param city 
+     * @param hotel 
+     */
+    private setHotelImages(country: string, city: string, hotel: string): void{
+        let basePath: string = this.currentImgPrefix(country,city,hotel);
+        let nImages: number = this._hotels[country][city][hotel]["images"];
+        console.log("nImages => "+nImages)
+        let html = `
+<div class="container-fluid">        
+        `;
+        for(let i = 0; i < nImages; i += 3){
+            //console.log("i => "+i);
+            let jLoops: number = nImages - i >= 3 ? 3 : nImages - i;
+            //console.log("jLoops => "+jLoops);
+            html += `<div class="row g-2">`;
+            for(let j = 1; j <= jLoops; j++){
+                html += `
+<div class="col-12 col-md-6 col-lg-3">
+    <img src="${basePath}${i+j}.jpg" alt="${hotel}" title="${hotel}">
+</div>`;
+            }
+            html += `</div>`;
+        }//for(let i = 0; i < nImages; i += 3){
+        html += `</div>`;
+        //console.log(html);
+        this._hotel_info_image_el.html(html);
     }
 
     /**
