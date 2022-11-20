@@ -223,7 +223,7 @@ export default class HotelsAvailable{
             html += `<div class="row g-2">`;
             for(let j = 1; j <= jLoops; j++){
                 html += `
-<div class="col-12 col-md-6 col-lg-3">
+<div class="col-12 col-md-6 col-lg-4">
     <img src="${basePath}${i+j}.jpg" alt="${hotel}" title="${hotel}">
 </div>`;
             }

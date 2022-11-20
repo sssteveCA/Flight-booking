@@ -7,7 +7,7 @@ interface Hotels{
         'Austria' => [
             'Innsbruck' => [
                 'Hotel Central' => [
-                   'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                   'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Goldene Krone Innsbruck' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0

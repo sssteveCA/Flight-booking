@@ -1,8 +1,19 @@
 @use "sass:map";
+@use "sass:selector";
 
 $hotel-container-id: "#hotel";
 $hotel-info-container: "#hotel_info_result";
+$hotel-info-images-container: '#hotel_info_images';
 $table-th-td-map: ();
+
+@mixin hotel-images-style($images-container){
+    $images: selector.nest($images-container, "img");
+    #{$images}{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
 
 @mixin hotel-tab-style($hc-id,$hic-id){
     #{$hc-id}{
@@ -24,3 +35,4 @@ $table-th-td-map: ();
 }
 
 @include hotel-tab-style($hotel-container-id,$hotel-info-container);
+@include hotel-images-style($hotel-info-images-container);
