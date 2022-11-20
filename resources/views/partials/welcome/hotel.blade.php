@@ -40,5 +40,6 @@
             </div>
         </div>
         <div id="hotel_info_result"></div>
+        <div id="hotel_info_images"></div>
     </form>
 </div>
