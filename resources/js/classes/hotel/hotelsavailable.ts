@@ -89,7 +89,7 @@ export default class HotelsAvailable{
         let regex2: RegExp = new RegExp("[+()]","g");
         prefix = prefix.replace(regex,'_');
         prefix = prefix.replace(regex2,'');
-        console.log(prefix);
+        //console.log(prefix);
         return prefix;
     }
 

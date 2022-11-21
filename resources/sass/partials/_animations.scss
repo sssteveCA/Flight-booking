@@ -20,7 +20,7 @@ $map-appear: (
 $map-move-x: (
     "name": $animation-move-x,
     "delay": 1s,
-    "duration": 12s,
+    "duration": 8s,
     "fill-mode": backwards,
     "count": infinite,
     "timing-function": linear
@@ -52,8 +52,8 @@ $map-move-x: (
     $animation-name: map.get($map,'name');
     @keyframes #{$animation-move-x}{
         0%{ left: 0%; }
-        65% { left: 100%; }
-        65.1%{ left: 0%; }
+        //65% { left: 100%; }
+        100%{ left: 100%; }
     }
     #{$identifier}{
         @include animation($animation-name, $map);
