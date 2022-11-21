@@ -6,6 +6,7 @@ use App\Http\Requests\EmailRequest;
 use App\Interfaces\Constants as C;
 use App\Mail\ContactMail;
 use Exception;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -35,9 +36,11 @@ trait EmailControllerCommonTrait{
             ];
             $code = 200; //OK
         }catch(Exception $e){
-            $response['msg'] = C::ERR_EMAILSEND;
+            Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail exception ".$e->getMessage());
+            $response[C::KEY_MESSAGE] = C::ERR_EMAILSEND;
             $code = 500; //Internal Server Error
         }
+        Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail response ".var_export($response,true));
         return response()->json($response,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }

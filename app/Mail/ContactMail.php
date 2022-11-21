@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Interfaces\Paths as P;
 
 class ContactMail extends Mailable
 {
@@ -30,6 +31,12 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->mailData['subject'])->from($this->mailData['email'],$this->mailData['name'])->text($this->mailData['message']);
+        return $this->view(P::VIEW_EMAIL_CONTACTS)
+            ->with([
+                'title' => 'Richiesta di assistenza',
+                'message' => $this->mailData['message']
+            ])
+            ->subject($this->mailData['subject'])
+            ->from($this->mailData['email'],$this->mailData['name']);
     }
 }
