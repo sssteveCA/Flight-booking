@@ -4,6 +4,9 @@ namespace App\Traits\Common;
 
 use App\Http\Requests\EmailRequest;
 use App\Interfaces\Constants as C;
+use App\Mail\ContactMail;
+use Exception;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * This trait contains common code of EmailController & EmailControllerApi
@@ -23,25 +26,15 @@ trait EmailControllerCommonTrait{
             C::KEY_DONE => false,
             C::KEY_MESSAGE => '',
         ];
-        $headers = [
-            'From' => " \"{$request_array['name']}\" <{$request_array['email']}>",
-            'Reply-To' => $request_array['email'],
-            'X-Mailer' => 'PHP/'.phpversion(),
-            'MIME-Version' => '1.0',
-            'Content-Type' => 'text/plain; charset=UTF-8'
-        ];
-        $email = mail(C::EMAIL_ADMIN,$request_array['subject'],$request_array['message'],$headers);
-        if($email){
-            //Email successfully sent
+        try{
+            Mail::to(env('MAIL_ADMIN'))->send(new ContactMail($request_array));
             $response = [
                 C::KEY_DONE => true,
                 C::KEY_STATUS => 'OK',
                 C::KEY_MESSAGE => C::OK_EMAILSEND
             ];
             $code = 200; //OK
-        }//if($email){
-        else{
-            //Error while sending the email
+        }catch(Exception $e){
             $response['msg'] = C::ERR_EMAILSEND;
             $code = 500; //Internal Server Error
         }
