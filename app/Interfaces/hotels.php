@@ -755,7 +755,7 @@ interface Hotels{
         'Norvegia' => [
             'Bergen' => [
                 'Citybox Bergen City' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Citybox Bergen Danmarksplass' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -790,7 +790,7 @@ interface Hotels{
         'Olanda' => [
             'Amstelveen' => [
                 'Amsterdam Forest Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 6
                 ],
                 'ibis budget Amsterdam City South' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -825,7 +825,7 @@ interface Hotels{
         'Polonia' => [
             'Breslavia' => [
                 'B&B Hotel Wrocław Centrum' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'PURO Wrocław Stare Miasto' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -860,7 +860,7 @@ interface Hotels{
         'Portogallo' => [
             'Coimbra' => [
                 'Hotel Ibis Coimbra Centro' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 7
                 ],
                 'Hotel Oslo' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -895,7 +895,7 @@ interface Hotels{
         'Regno Unito' => [
             'Edimburgo' => [
                'Cityroomz Edinburgh' => [
-                'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 9
                ],
                'ibis budget Hotel Edinburgh Park' => [
                 'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -930,7 +930,7 @@ interface Hotels{
         'Repubblica Ceca' => [
             'Brno' => [
                 'Cosmopolitan Bobycentrum - Czech Leading Hotels' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 4
                 ],
                 'Hotel Europa' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -965,7 +965,7 @@ interface Hotels{
         'Romania' => [
             'Braşov' => [
                 'Drachenhaus' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Aro Palace' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -1000,7 +1000,7 @@ interface Hotels{
         'Serbia' => [
             'Belgrado' => [
                 'Airport Hotel Garni' => [
-                    'max_people' => 3, 'price' => 49.36, 'rooms' => 55, 'score' => 8.6, 'stars' => 3, 'images' => 0
+                    'max_people' => 3, 'price' => 49.36, 'rooms' => 55, 'score' => 8.6, 'stars' => 3, 'images' => 6
                 ],
                 'Belgrade Inn Garni Hotel' => [
                     'max_people' => 5, 'price' => 64.35, 'rooms' => 87, 'score' => 8.8, 'stars' => 4, 'images' => 0
@@ -1035,7 +1035,7 @@ interface Hotels{
         'Slovacchia' => [
             'Bratislava' => [
                 'Apollo Hotel Bratislava' => [
-                    'max_people' => 3, 'price' => 78.71, 'rooms' => 97, 'score' => 8.4, 'stars' => 4, 'images' => 0
+                    'max_people' => 3, 'price' => 78.71, 'rooms' => 97, 'score' => 8.4, 'stars' => 4, 'images' => 4
                 ],
                 'Elisabeth Old Town' => [
                     'max_people' => 3, 'price' => 53.00, 'rooms' => 42, 'score' => 8.2, 'stars' => 3, 'images' => 0
@@ -1070,7 +1070,7 @@ interface Hotels{
         'Spagna' => [
             'Barcellona' => [
                 'Catalonia Sagrada Familia' => [
-                    'max_people' => 5, 'price' => 86.06, 'rooms' => 83, 'score' => 8.2, 'stars' => 3, 'images' => 0
+                    'max_people' => 5, 'price' => 86.06, 'rooms' => 83, 'score' => 8.2, 'stars' => 3, 'images' => 9
                 ],
                 'Hotel Lloret Ramblas' => [
                     'max_people' => 4, 'price' => 63.03, 'rooms' => 68, 'score' => 8.1, 'stars' => 1, 'images' => 0
@@ -1105,7 +1105,7 @@ interface Hotels{
         'Svezia' => [
             'Göteborg' => [
                 'First Hotel G' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 3
                 ],
                 'Hotel Allén - Sure Hotel by Best Western Allen' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -1140,7 +1140,7 @@ interface Hotels{
         'Svizzera' => [
             'Ginevra' => [
                 'ibis budget Genève Aéroport' => [
-                    'max_people' => 7, 'price' => 86.00, 'rooms' => 84, 'score' => 7.9, 'stars' => 1, 'images' => 0
+                    'max_people' => 7, 'price' => 86.00, 'rooms' => 84, 'score' => 7.9, 'stars' => 1, 'images' => 6
                 ],
                 'ibis Genève Centre Nations' => [
                     'max_people' => 5, 'price' => 122.00, 'rooms' => 77, 'score' => 8, 'stars' => 3, 'images' => 0
@@ -1175,7 +1175,7 @@ interface Hotels{
         'Turchia' => [
             'Göreme' => [
                 'Cappadocia Caves Hotel' => [
-                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
+                    'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 5
                 ],
                 'Henna Hotel' => [
                     'max_people' => 4, 'price' => 60.00, 'rooms' => 75, 'score' => 8, 'stars' => 4, 'images' => 0
@@ -1210,7 +1210,7 @@ interface Hotels{
         'Ungheria' => [
             'Budapest' => [
                 'Danubius Hotel Erzsébet City Center' => [
-                    'max_people' => 2, 'price' => 72.00, 'rooms' => 103, 'score' => 8.1, 'stars' => 3, 'images' => 0
+                    'max_people' => 2, 'price' => 72.00, 'rooms' => 103, 'score' => 8.1, 'stars' => 3, 'images' => 4
                 ],
                 'Medos Hotel' => [
                     'max_people' => 3, 'price' => 62.29, 'rooms' => 49, 'score' => 8.3, 'stars' => 3, 'images' => 0
