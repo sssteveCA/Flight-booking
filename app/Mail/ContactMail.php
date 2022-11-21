@@ -7,12 +7,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Interfaces\Paths as P;
+use Illuminate\Support\Facades\Log;
+
+use function Psy\debug;
 
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected array $mailData;
+    public array $mailData;
 
     /**
      * Create a new message instance.
@@ -34,7 +37,7 @@ class ContactMail extends Mailable
         return $this->view(P::VIEW_EMAIL_CONTACTS)
             ->with([
                 'title' => 'Richiesta di assistenza',
-                'message' => $this->mailData['message']
+                'body' => $this->mailData['message']
             ])
             ->subject($this->mailData['subject'])
             ->from($this->mailData['email'],$this->mailData['name']);

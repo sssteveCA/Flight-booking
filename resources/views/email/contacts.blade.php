@@ -9,7 +9,7 @@
             <h1 style="text-align: center;">{{ $title }}</h1>
         </div>
         <div>
-          <p style="font-size: 18px; font-style: italic;">{{ $message }}</p>  
+          <p style="font-size: 18px; font-style: italic;">{{ $body }}</p>  
         </div>
     
 </body>

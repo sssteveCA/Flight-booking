@@ -36,11 +36,10 @@ trait EmailControllerCommonTrait{
             ];
             $code = 200; //OK
         }catch(Exception $e){
-            Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail exception ".$e->getMessage());
+            //Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail exception ".$e->getMessage());
             $response[C::KEY_MESSAGE] = C::ERR_EMAILSEND;
             $code = 500; //Internal Server Error
         }
-        Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail response ".var_export($response,true));
         return response()->json($response,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }

@@ -10,7 +10,7 @@ interface Constants{
 
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
-    const ERR_EMAILSEND = 'Si è verificato un errore durante l\' invio della richiesta. '.Constants::ADMIN_CONTACT;
+    const ERR_EMAILSEND = 'Si è verificato un errore durante l\' invio della mail. '.Constants::ADMIN_CONTACT;
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
