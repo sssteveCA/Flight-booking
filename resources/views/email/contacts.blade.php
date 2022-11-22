@@ -11,6 +11,5 @@
         <div>
           <p style="font-size: 18px; font-style: italic;">{{ $body }}</p>  
         </div>
-    
 </body>
 </html>

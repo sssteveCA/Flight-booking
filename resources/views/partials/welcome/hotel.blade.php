@@ -34,8 +34,8 @@
                     <input type="number" id="fb-people" class="form-control" name="people" value="1">
                     <label for="fb-people">Numero di persone</label>
                 </div>
-                <div id="fb-h8" class="col-12 col-md-6 col-lg-2">
-                    <button type="submit" class="btn btn-danger">Vedi preventivo</button>
+                <div id="fb-h8" class="col-12 text-center">
+                    <button type="submit" id="bt-hotel-submit" class="btn btn-danger">Vedi preventivo</button>
                 </div>
             </div>
         </div>

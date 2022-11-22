@@ -9,7 +9,7 @@
 $animation-appear: appear;
 $buttons-tab-number: 4;
 $divs-col-margin-y: 10px;
-$form-buttons-padding: 10px 30px;
+$form-buttons-padding: 10px 50px;
 $navs-buttons-padding:10px 50px;
 $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
@@ -18,6 +18,10 @@ $xs-breakpoint: 575px;
 $flight-animation-selector: "#flight-animation";
 $flight-animation-img-id: "#airplane";
 
+%form-welcome-buttons-rules{
+    text-transform: uppercase;
+    padding: $form-buttons-padding;
+}
 
 //Mixins
 
@@ -63,7 +67,7 @@ $flight-animation-img-id: "#airplane";
 }
 
 @mixin flights(){
-    $elems: 5;
+    $elems: 6;
     @for $i from 1 through $elems{
         #fb-fs#{$i}{
             padding: 20px auto;
@@ -72,24 +76,12 @@ $flight-animation-img-id: "#airplane";
                     margin-right: 5px;
                 }
             }
-            @else{
-                * {
-                    margin-right: 20px;
-                }
-                
-            }
             @if $i == 4{
                 display: none;
             }
             @if $i == 6{
-                @media only screen and (max-width: $xs-breakpoint){
-                    div:nth-child(5){
-                        display: flex;
-                        justify-content: center;
-                    }
-                }
-                button{
-                    padding: $form-buttons-padding;
+                button#bt-flight-submit{
+                    @extend %form-welcome-buttons-rules;
                 }
             }
         }

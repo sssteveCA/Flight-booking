@@ -66,12 +66,12 @@
                     <input type="number" id="fb-children" class="form-control" name="children" value="0" min="0">
                     <label for="fb-children">Bambini</label>
                 </div>
-                <div class="form-floating col-12 col-sm-5 col-md-3 offset-md-3">
+                <div class="form-floating col-12 col-sm-5 col-md-3">
                     <input type="number" id="fb-newborns" class="form-control" name="newborns" value="0" min="0">
                     <label for="fb-newborns">Neonati</label>
                 </div>
-                <div class="col-12 col-sm-3">
-                    <button type="submit" class="btn btn-danger">Cerca</button>
+                <div class="col-12 text-center">
+                    <button type="submit" id="bt-flight-submit" class="btn btn-danger">Cerca</button>
                 </div>
             </div>
         </div>

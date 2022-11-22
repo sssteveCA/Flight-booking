@@ -1,10 +1,33 @@
 @use "sass:map";
 @use "sass:selector";
 
+$form-buttons-padding: 10px 50px;
 $hotel-container-id: "#hotel";
 $hotel-info-container: "#hotel_info_result";
 $hotel-info-images-container: '#hotel_info_images';
 $table-th-td-map: ();
+
+%form-welcome-buttons-rules{
+    text-transform: uppercase;
+    padding: $form-buttons-padding;
+}
+
+
+@mixin hotel-form(){
+    $col-number: 8;
+    form#fHotel{
+        @for $i from 1 through $col-number{
+            @if $i == 8{
+                #fb-h#{$i}{
+                    button#bt-hotel-submit{
+                        @extend %form-welcome-buttons-rules;
+                    }
+                }
+            }
+        }
+    }
+    
+}
 
 @mixin hotel-images-style($images-container){
     $images: selector.nest($images-container, "img");
@@ -36,3 +59,4 @@ $table-th-td-map: ();
 
 @include hotel-tab-style($hotel-container-id,$hotel-info-container);
 @include hotel-images-style($hotel-info-images-container);
+@include hotel-form();
