@@ -80,3 +80,8 @@ I use Laravel framework 8.80.0 version
     </ul>
 </div>
 <div>The features with '*' have not available yet</div>
+<br><br>
+<div>
+    <a href="https://user-images.githubusercontent.com/95185311/203379460-887246a3-1872-4f48-994e-91d6a534ce3b.mp4">Quick demo video</a>
+</div>
+
