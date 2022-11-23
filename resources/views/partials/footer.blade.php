@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer invisible">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">

@@ -58,5 +58,6 @@ function footerPosition(footerEl: JQuery): void{
             position: 'static'
         });
     }
+    footerEl.removeClass("invisible");
     
 }
