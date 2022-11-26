@@ -1,4 +1,8 @@
 <div>
+    Application deployed at <a href="http://ec2-3-132-86-192.us-east-2.compute.amazonaws.com">http://ec2-3-132-86-192.us-east-2.compute.amazonaws.com<a>
+</div>
+<br>
+<div>
 This app allows users to book flights, hotel rooms, rent a car and get ticket to participate at some events around the world.
 </div>
 <div>
