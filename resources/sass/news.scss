@@ -1,5 +1,8 @@
 @use "sass:selector";
 @use "sass:string";
+@use "modules/globals";
+
+@import "partials/animations";
 
 $post-link-class: '.post-link';
 $post-link-display: block;
@@ -34,3 +37,4 @@ $post-div-children-margin: 15px auto;
 }
 
 @include link-style($post-link-class,$post-div-class);
+@include animation-appear-style(globals.$content-class,$map-appear);
