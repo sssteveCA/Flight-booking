@@ -7,28 +7,29 @@
 @endsection
 
 @section('content')
-    @isset($posts)
+    @isset($n_posts,$posts)
         @forelse($posts as $post)
-        <a class="post-link" href="{{ route('news.show',['permalink' => $post['permalink']]) }}">
-            <div class="post-div">
-                <div class="post-header">
-                    <h3>{{ $post['title'] }}</h3>
+            <a class="post-link" href="{{ route('news.show',['permalink' => $post['permalink']]) }}">
+                <div class="post-div">
+                    <div class="post-header">
+                        <h3>{{ $post['title'] }}</h3>
+                    </div>
+                    <div class="post-excerpt">
+                        {{ $post['excerpt'] }}
+                    </div>
+                    <div class="post-last-modified">
+                        <span class="fw-bold">Ultima modifica</span>
+                        <span> {{ $post['updated_at'] }} </span>
+                    </div>
                 </div>
-                <div class="post-excerpt">
-                    {{ $post['excerpt'] }}
-                </div>
-                <div class="post-last-modified">
-                    <span class="fw-bold">Ultima modifica</span>
-                    <span> {{ $post['updated_at'] }} </span>
-                </div>
-            </div>
-        </a>
+            </a>
         @empty
             @isset($message)
-            <div class="mt-5 alert alert-secondary" role="alert">
-            {{$message}}
-            </div>
+                <div class="mt-5 alert alert-secondary" role="alert">{{$message}}</div>
             @endisset
         @endforelse
     @endisset
+    @if(isset($status) && $status == 'ERROR')
+        <div class="mt-5 alert alert-danger" role="alert">{{$message}}</div>
+    @endif
 @endsection

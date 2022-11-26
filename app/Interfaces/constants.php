@@ -21,6 +21,7 @@ interface Constants{
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_LOGOUT = "Si è verificato un errore durante la disconnessione dell'account";
+    const ERR_NEWS = "Errore durante il caricamento delle notizie. ".Constants::ADMIN_CONTACT;
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";
     const ERR_NOTAUTHENTICATED = "Devi essere autenticato per eseguire questa azione";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
