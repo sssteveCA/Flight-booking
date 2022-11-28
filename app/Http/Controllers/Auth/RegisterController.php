@@ -74,23 +74,23 @@ class RegisterController extends Controller
                     C::KEY_MESSAGE => C::OK_REGISTRATION
                 ]);
             }
-             throw new HttpResponseException(
+             throw new Exception("");
+        }catch(ValidationException $e){
+            Log::channel('stdout')->info("RegisterController register ValidationException");
+            $errors = $e->errors();
+                //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
+            throw new HttpResponseException(
                 response()->view(P::VIEW_REGISTER,[
                     C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => C::ERR_REGISTRATION
-                ],500)
-            ); 
+                    'rc_errors' => $errors],400)
+            );
         }catch(Exception $e){
-            if($e instanceof ValidationException){
-                Log::channel('stdout')->info("RegisterController register ValidationException");
-                $errors = $e->errors();
-                //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
-                throw new HttpResponseException(
-                    response()->view(P::VIEW_REGISTER,[
-                        C::KEY_STATUS => 'ERROR',
-                        'rc_errors' => $errors],400)
-                );
-            }
+            //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
+            throw new HttpResponseException(
+                response()->view(P::VIEW_FALLBACK,[
+                    C::KEY_STATUS => 'ERROR',
+                    C::KEY_MESSAGE => C::ERR_REGISTRATION],500)
+            );  
         }
 
     } 
