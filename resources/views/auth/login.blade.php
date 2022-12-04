@@ -76,8 +76,11 @@
                             </div>
                         </div>
                         
+                        @if(isset($_REQUEST['session_id']))
+                            <input type="hidden" name="session_id" value="{{ $_REQUEST['session_id'] }}">
+                        @endif
                         @include(P::VIEW_FLIGHTLOGIN)
-
+                        @include(P::VIEW_HOTELLOGIN)
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

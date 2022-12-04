@@ -36,7 +36,7 @@ class Authenticate extends Middleware
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
                 else if($request->routeIs(P::ROUTE_BOOKHOTEL)){
                     $route_params = $this->routeBookhotelData($request);
-                    Log::channel('stdout')->info("Authenticate redirectTo hotel data => ".var_export($route_params,true));
+                    //Log::channel('stdout')->info("Authenticate redirectTo hotel data => ".var_export($route_params,true));
                 }//Route name when hotel prices are shown
             }//if($request->isMethod('post')){
             if (! $request->expectsJson()) {

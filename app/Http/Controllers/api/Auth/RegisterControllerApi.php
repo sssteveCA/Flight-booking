@@ -48,14 +48,14 @@ class RegisterControllerApi extends Controller
                     C::KEY_STATUS => 'OK',
                     C::KEY_MESSAGE => C::OK_REGISTRATION
                 ];
-                Log::channel("stdout")->debug("RegisterControllerApi register response => ".var_export($response,true));
+                //Log::channel("stdout")->debug("RegisterControllerApi register response => ".var_export($response,true));
                 return response()->json($response,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }  
             $response = [
                 C::KEY_STATUS => 'ERROR',
                 C::KEY_MESSAGE => C::ERR_REGISTRATION
             ];
-            Log::channel("stdout")->debug("RegisterControllerApi register response  error => ".var_export($response,true));
+            //Log::channel("stdout")->debug("RegisterControllerApi register response  error => ".var_export($response,true));
             throw new HttpResponseException(
                 response()->json($response,500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
             );
@@ -67,7 +67,7 @@ class RegisterControllerApi extends Controller
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => $errors[array_key_first($errors)][0]
                 ];
-                Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
+                //Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
                 //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->json($response,400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
@@ -78,7 +78,7 @@ class RegisterControllerApi extends Controller
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => C::ERR_REGISTRATION
                 ];
-                Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
+                //Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
                 throw new HttpResponseException(
                     response()->json($response,500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 );

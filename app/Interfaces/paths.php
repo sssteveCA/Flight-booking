@@ -79,6 +79,7 @@ interface Paths{
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
+    const VIEW_HOTELLOGIN = 'include.hotellogin';
     const VIEW_HOTELPRICERESULT = 'welcome.hotelpriceresult';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';

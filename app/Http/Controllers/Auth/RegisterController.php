@@ -76,7 +76,7 @@ class RegisterController extends Controller
             }
              throw new Exception("");
         }catch(ValidationException $e){
-            Log::channel('stdout')->info("RegisterController register ValidationException");
+            //Log::channel('stdout')->info("RegisterController register ValidationException");
             $errors = $e->errors();
                 //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
             throw new HttpResponseException(

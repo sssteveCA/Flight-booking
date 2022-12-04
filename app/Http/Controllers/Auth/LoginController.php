@@ -65,10 +65,8 @@ class LoginController extends Controller
             return redirect()->route(P::ROUTE_FLIGHTPRICE_GET);
         }//if(isset($data['flights'])){
         else if(isset($data['hotel'])){
-            $response = [
-                'session_id' => $data['session_id'], 'hotel' => $data['hotel']
-            ];
-            Log::channel('stdout')->info("LoginController authenticated hotel response => ".var_export($response,true));
+            $response = [ 'session_id' => $data['session_id'], 'hotel' => $data['hotel'] ];
+            //Log::channel('stdout')->info("LoginController authenticated hotel response => ".var_export($response,true));
             session()->put('response',$response);
             return redirect()->route(P::ROUTE_HOTELPRICE_GET);
         }//else if(isset($data['hotel'])){

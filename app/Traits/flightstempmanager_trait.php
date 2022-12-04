@@ -65,7 +65,7 @@ trait FlightsTempManagerTrait{
      * @return bool
      * */
     private function addFlightTemp(array $data, string $flight_type): bool{
-        Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp");
+        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp");
         $add = false;
         $this->errno = 0;
         $this->flight_temp = new FlightTemp;
@@ -105,7 +105,7 @@ trait FlightsTempManagerTrait{
      * */
     private function checkEquality(array $request, array $retrieved): bool{
         $equal = true;
-        Log::channel('stdout')->debug("FlightsTempMangerComonTrait checkEquality");
+        //Log::channel('stdout')->debug("FlightsTempMangerComonTrait checkEquality");
         foreach($request as $key => $value){
             //Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
             //Log::channel('stdout')->debug("{$key} => ".var_export($value,true));

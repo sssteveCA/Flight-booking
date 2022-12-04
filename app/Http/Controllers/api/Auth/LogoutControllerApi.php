@@ -19,7 +19,7 @@ class LogoutControllerApi extends Controller
      */
     public function logout(Request $request){
         try{
-            Log::channel('stdout')->debug("LogoutControllerApi logout");
+            //Log::channel('stdout')->debug("LogoutControllerApi logout");
             Auth::user()->tokens->each(function($token, $key){
                 $token->delete();
             });

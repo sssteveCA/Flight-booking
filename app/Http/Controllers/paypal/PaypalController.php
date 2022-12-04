@@ -26,7 +26,7 @@ class PaypalController extends Controller
     //Return URL after user has made the payment
     public function return(Request $request){
         $post_data = $request->all();
-        Log::channel('stdout')->debug("PaypalController return post => ".var_export($post_data,true));
+        //Log::channel('stdout')->debug("PaypalController return post => ".var_export($post_data,true));
         if(isset($post_data['payer_status'])){
             if($post_data['payer_status'] == "VERIFIED"){
                 //Payment completed

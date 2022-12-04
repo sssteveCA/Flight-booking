@@ -39,7 +39,7 @@ class LoginController extends Controller
             // the IP address of the client making these requests into this application.
             if (method_exists($this, 'hasTooManyLoginAttempts') &&
                 $this->hasTooManyLoginAttempts($request)) {
-                    Log::info("LoginController login method_exists");
+                    //Log::info("LoginController login method_exists");
                 $this->fireLockoutEvent($request);
 
                 return $this->sendLockoutResponse($request);

@@ -38,8 +38,9 @@ class HotelSearchController extends Controller
                             'hotel' => $hotel_data
                         ]   
                     ];
-                    $hptm_params = $response_array["hotel"];
+                    $hptm_params = $response_array["response"]["hotel"];
                     $hptm = new HotelPriceTempManager($hptm_params);
+                    //Log::channel('stdout')->info("HotelSearchController after HotelPriceTempManager");
                     $hptm->addHotelPriceTemp();
                     $response_array['response']['session_id'] = $hptm->getSessionId();
                     $response_code = 201;
@@ -55,7 +56,7 @@ class HotelSearchController extends Controller
                     $response_code = 500;
                     break;
             }
-            Log::channel('stdout')->info("HotelSearchController getHotelPrice response_array => ".var_export($response_array,true));
+            //Log::channel('stdout')->info("HotelSearchController getHotelPrice response_array => ".var_export($response_array,true));
             return response()->view(P::VIEW_HOTELPRICERESULT,$response_array,$response_code);
         }catch(Exception $e){
             //Log::channel('stdout')->info("HotelSearchController getHotelPrice exception => ".$e->getMessage());
@@ -73,7 +74,7 @@ class HotelSearchController extends Controller
      */
     public function getHotelPrice_get(){
          $response = session()->get('response');
-         Log::channel('stdout')->info("HotelSearchController getHotelPrice_get response => ".var_export($response,true));
+         //Log::channel('stdout')->info("HotelSearchController getHotelPrice_get response => ".var_export($response,true));
          return response()->view(P::VIEW_HOTELPRICERESULT,[
             C::KEY_DONE => true,
             'response' => [
