@@ -55,6 +55,7 @@ class HotelSearchController extends Controller
                     $response_code = 500;
                     break;
             }
+            Log::channel('stdout')->info("HotelSearchController getHotelPrice response_array => ".var_export($response_array,true));
             return response()->view(P::VIEW_HOTELPRICERESULT,$response_array,$response_code);
         }catch(Exception $e){
             //Log::channel('stdout')->info("HotelSearchController getHotelPrice exception => ".$e->getMessage());
@@ -68,11 +69,13 @@ class HotelSearchController extends Controller
     }
 
     /**
-     * Redirect the user to the hotel price result page if came from login page after seen the prices but he was not logged
+     * Redirect the user to the hotel price result page if came from login page after seen the price but he was not logged
      */
     public function getHotelPrice_get(){
          $response = session()->get('response');
+         Log::channel('stdout')->info("HotelSearchController getHotelPrice_get response => ".var_export($response,true));
          return response()->view(P::VIEW_HOTELPRICERESULT,[
+            C::KEY_DONE => true,
             'response' => [
                 'session_id' => $response['session_id'],
                 'hotel' => $response['hotel']

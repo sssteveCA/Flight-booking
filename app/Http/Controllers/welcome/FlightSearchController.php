@@ -17,7 +17,10 @@ class FlightSearchController extends Controller
 {
     use FlightSearchCommonTrait;
 
-    //Get the flight based on input data
+    /**
+     * Get the flight based on input data
+     * @param FlightPriceRequest
+     */
     public function getFlightPrice(FlightPriceRequest $request){
         $flights = [];
         //Log::channel('stdout')->info('getFlightPrice method');
@@ -116,7 +119,9 @@ class FlightSearchController extends Controller
         }
     }
 
-    //when after login redirect to flight price page
+    /**
+     * Redirect the user to the flight price result page if came from login page after seen the price but he was not logged
+     */
     public function getFlightPrice_get(){
         $response = session()->get('response');
         /* Log::channel('stdout')->debug("FlightSearchController getFlightPrice_get");

@@ -84,6 +84,7 @@ Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHo
 
 Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
+Route::get(P::URL_HOTELPRICE,[HotelSearchController::class, 'getHotelPrice_get'])->name(P::ROUTE_HOTELPRICE_GET);
 Route::post(P::URL_HOTELPRICE, [HotelSearchController::class, 'getHotelPrice'])->name(P::ROUTE_HOTELPRICE);
 Route::post(P::URL_SENDEMAIL,[EmailController::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
 
