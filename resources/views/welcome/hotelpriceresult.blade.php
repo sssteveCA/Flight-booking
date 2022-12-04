@@ -17,10 +17,10 @@
 
 @section('content')
     @if($done == true)
-        <form id="fHotelPrice" method="post" action="#">
+        <form id="fHotelPrice" method="post" action="{{ route(P::ROUTE_BOOKHOTEL) }}">
             @csrf
             @method('POST')
-            <input type="hidden" name="session_id" value="">
+            <input type="hidden" name="session_id" value="{{ $data['session_id'] }}">
             <div class="hotel-div">
                 <div class="hotel-header bg-success bg-gradient">Preventivo prenotazione</div>
                 <div class="hotel-row">
