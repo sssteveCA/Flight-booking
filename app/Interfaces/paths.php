@@ -69,6 +69,7 @@ interface Paths{
     //Views
     const VIEW_ABOUTUS = 'aboutus';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
+    const VIEW_BOOKHOTEL = 'bookhotel.bookhotel';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_EMAIL_CONTACTS = 'email.contacts';
     const VIEW_FALLBACK = 'error.errors';

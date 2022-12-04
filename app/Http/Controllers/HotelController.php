@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use App\Interfaces\Paths as P;
 
 class HotelController extends Controller
 {
@@ -35,7 +36,7 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->view(P::VIEW_BOOKHOTEL);
     }
 
     /**

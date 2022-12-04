@@ -5,6 +5,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\welcome\FlightEventsController;
@@ -72,7 +73,7 @@ Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth','verifie
 });
 
 Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified']], function(){
-    //Route::post('',[])->name(P::ROUTE_BOOKHOTEL);
+    Route::post('',[HotelController::class,'store'])->name(P::ROUTE_BOOKHOTEL);
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
