@@ -27,34 +27,42 @@
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Paese</p>
                         <p class="bg-light bg-gradient">{{ $data['country'] }}</p>
+                        <input type="hidden" name="country" value="{{ $data['country'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Città</p>
                         <p class="bg-light bg-gradient">{{ $data['city'] }}</p>
+                        <input type="hidden" name="city" value="{{ $data['city'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Albergo</p>
                         <p class="bg-light bg-gradient">{{ $data['hotel'] }}</p>
+                        <input type="hidden" name="hotel" value="{{ $data['hotel'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Data check-in</p>
                         <p class="bg-light bg-gradient">{{ $data['checkin'] }}</p>
+                        <input type="hidden" name="checkin" value="{{ $data['checkin'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Data check-in</p>
                         <p class="bg-light bg-gradient">{{ $data['checkout'] }}</p>
+                        <input type="hidden" name="checkout" value="{{ $data['checkout'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Persone</p>
                         <p class="bg-light bg-gradient">{{ $data['people'] }}</p>
+                        <input type="hidden" name="people" value="{{ $data['people'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Stanze</p>
                         <p class="bg-light bg-gradient">{{ $data['rooms'] }}</p>
+                        <input type="hidden" name="rooms" value="{{ $data['rooms'] }}">
                     </div>
                     <div class="column-elem">
                         <p class="hp-ce-header bg-warning bg-gradient">Prezzo</p>
                         <p class="bg-light bg-gradient">{{ $data['price'] }}€</p>
+                        <input type="hidden" name="price" value="{{ $data['price'] }}">
                     </div>
                 </div>
             </div>

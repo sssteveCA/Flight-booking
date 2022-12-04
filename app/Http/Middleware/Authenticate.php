@@ -34,6 +34,9 @@ class Authenticate extends Middleware
                     //Route name when flight prices are shown
                     $route_params = $this->routeBookflightData($request);
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
+                else if($request->routeIs(P::ROUTE_BOOKHOTEL)){
+
+                }//Route name when hotel prices are shown
             }//if($request->isMethod('post')){
             if (! $request->expectsJson()) {
                 //return route('login',['flights' => $request->all()]);
@@ -51,6 +54,16 @@ class Authenticate extends Middleware
             'session_id' => $request->input('session_id'),
             'flight_type' => $request->input('flight_type'),
             'flights' => $request->input('flights')
+        ];
+    }
+
+    /**
+     * Booking hotel data to send to the login page if the user    * is not authenticated
+     * @param \Illuminate\Http\Request $request
+     */
+    private function routeBookhotelData(Request $request): array{
+        return [
+            'hotel' => ''
         ];
     }
 }
