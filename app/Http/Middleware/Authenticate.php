@@ -36,6 +36,7 @@ class Authenticate extends Middleware
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
                 else if($request->routeIs(P::ROUTE_BOOKHOTEL)){
                     $route_params = $this->routeBookhotelData($request);
+                    Log::channel('stdout')->info("Authenticate hotel data => ".var_export($route_params,true));
                 }//Route name when hotel prices are shown
             }//if($request->isMethod('post')){
             if (! $request->expectsJson()) {
@@ -63,10 +64,8 @@ class Authenticate extends Middleware
      */
     private function routeBookhotelData(Request $request): array{
         return [
-            'session_id' => $request->session_id, 'country' => $request->country, 'city' => $request->city,
-            'hotel' => $request->hotel, 'booking_date' => $request->booking_date, 'checkin' => $request->checkin,
-            'checkout' => $request->checkout, 'rooms' => $request->rooms, 'people' => $request->people,
-            'price' => $request->price,
+            'session_id' => $request->session_id,
+            'hotel' => $request->input('hotel')
         ];
     }
 }

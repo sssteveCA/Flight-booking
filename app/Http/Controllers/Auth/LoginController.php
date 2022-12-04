@@ -58,14 +58,19 @@ class LoginController extends Controller
         //Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($data,true));
         if(isset($data['flights'])){
             $response = [
-                    'session_id' => $data['session_id'],
-                    'flight_type' => $data['flight_type'],
-                    'inputs' => '',
-                    'flights' => $data['flights']
+                    'session_id' => $data['session_id'], 'flight_type' => $data['flight_type'],
+                    'inputs' => '', 'flights' => $data['flights']
             ];
             session()->put('response',$response);
             return redirect()->route(P::ROUTE_FLIGHTPRICE_GET);
         }//if(isset($data['flights'])){
+        else if(isset($data['hotel'])){
+            $response = [
+                'session_id' => $data['session_id'], 'hotel' => $data['hotel']
+            ];
+            session()->put('response',$response);
+            return redirect()->route(P::ROUTE_HOTELPRICE_GET);
+        }//else if(isset($data['hotel'])){
     }
 
     //override

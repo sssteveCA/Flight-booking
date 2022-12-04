@@ -27,17 +27,21 @@ class HotelSearchController extends Controller
             $errnoHp = $hotelPrice->getErrno();
             switch($errnoHp){
                 case 0:
+                    $hotel_data = [
+                        'country' => $hotelPrice->getCountry(), 'city' => $hotelPrice->getCity(), 'hotel' => $hotelPrice->getHotel(),
+                        'checkin' => $hotelPrice->getCheckin(), 'checkout' => $hotelPrice->getCheckout(), 'people' => $hotelPrice->getPeople(),
+                        'rooms' => $hotelPrice->getRooms(), 'price' => $hotelPrice->getFullPrice()
+                    ];
                     $response_array = [
                         C::KEY_DONE => true,
-                        'data' => [
-                            'country' => $hotelPrice->getCountry(), 'city' => $hotelPrice->getCity(), 'hotel' => $hotelPrice->getHotel(),
-                            'checkin' => $hotelPrice->getCheckin(), 'checkout' => $hotelPrice->getCheckout(), 'people' => $hotelPrice->getPeople(),
-                            'rooms' => $hotelPrice->getRooms(), 'price' => $hotelPrice->getFullPrice()]
+                        'response' => [ 
+                            'hotel' => $hotel_data
+                        ]   
                     ];
-                    $hptm_params = $response_array["data"];
+                    $hptm_params = $response_array["hotel"];
                     $hptm = new HotelPriceTempManager($hptm_params);
                     $hptm->addHotelPriceTemp();
-                    $response_array['data']['session_id'] = $hptm->getSessionId();
+                    $response_array['response']['session_id'] = $hptm->getSessionId();
                     $response_code = 201;
                     break;
                 case Hpe::TOOMANYPEOPLE_FOR_ROOMS:
@@ -61,5 +65,18 @@ class HotelSearchController extends Controller
                 ],500)
             );
         }
+    }
+
+    /**
+     * Redirect the user to the hotel price result page if came from login page after seen the prices but he was not logged
+     */
+    public function getHotelPrice_get(){
+         $response = session()->get('response');
+         return response()->view(P::VIEW_HOTELPRICERESULT,[
+            'response' => [
+                'session_id' => $response['session_id'],
+                'hotel' => $response['hotel']
+            ]
+         ],200);   
     }
 }

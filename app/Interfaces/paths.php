@@ -18,6 +18,7 @@ interface Paths{
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_HOTELPRICE = 'hotelprice';
+    const ROUTE_HOTELPRICE_GET = 'hotelprice_get';
     const ROUTE_INFO = 'usercontroller.info';
     const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
