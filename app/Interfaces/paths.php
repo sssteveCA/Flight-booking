@@ -6,6 +6,7 @@ interface Paths{
 
     //Prefixes
     const PREFIX_BOOKFLIGHT = 'bookflight';
+    const PREFIX_BOOKHOTEL = 'bookhotel';
     const PREFIX_NEWS = 'news';
     const PREFIX_PROFILE = 'profile';
     const PREFIX_MYFLIGHTS = 'myFlights';
@@ -13,6 +14,7 @@ interface Paths{
 
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
+    const ROUTE_BOOKHOTEL = 'bookhotel';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_HOTELPRICE = 'hotelprice';
