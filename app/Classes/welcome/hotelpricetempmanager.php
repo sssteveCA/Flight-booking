@@ -49,7 +49,5 @@ class HotelPriceTempManager implements Hptme{
         $save = $hpt->save();
         if(!$save) throw new DatabaseInsertionException(Hptme::HOTELPT_NEWROW_EXC);
     }
-
-
 }
 ?>

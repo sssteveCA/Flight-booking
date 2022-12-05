@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 use App\Interfaces\Paths as P;
+use Illuminate\Support\Facades\Log;
 
 class HotelController extends Controller
 {
@@ -36,6 +37,8 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
+        $inputs = $request->all();
+        Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         return response()->view(P::VIEW_BOOKHOTEL);
     }
 

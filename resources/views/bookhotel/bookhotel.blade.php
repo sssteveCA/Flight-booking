@@ -6,7 +6,7 @@
     @endphp
 @endsection
 
-@section('title','Paga le stanze dell'albergo prenotate')
+@section('title','Paga le stanze dell\'albergo prenotate')
 
 @section('content')
     <div class="container mt-5">
