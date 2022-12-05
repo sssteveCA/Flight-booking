@@ -82,25 +82,7 @@ class FlightController extends Controller
                 $del = FlightTemp::where('session_id',$inputs['session_id'])->delete();
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
             }
-            throw new Exception;
-            /* $this->ftm = new FlightsTempManager($inputs);
-            $valid = $this->ftm->validateRequest(); */
-            //if($valid){
-                //Input data was not modified from orginal values
-                /* Log::channel('stdout')->debug("FlightController store request all => ");
-                Log::channel('stdout')->debug(var_export($inputs,true)); */
-                //$flights = $request->flights;
-                /* $flights_unquoted = $this->flights_unquote($flights);
-                Log::channel('stdout')->info("FlightController store flights unquoted => ");
-                Log::channel('stdout')->info(var_export($flights,true)); */
-                //$flights_info = $this->create_flights($flights);
-                //$response_data = $this->setResponseData($flights_info);
-                //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
-                //$del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
-                //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
-                //return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
-            //}//if($valid){
-            //throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
+            throw new Exception; 
         }catch(Exception $e){
             Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
