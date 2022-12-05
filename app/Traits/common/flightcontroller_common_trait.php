@@ -4,7 +4,11 @@ namespace App\Traits\Common;
 
 use App\Interfaces\Constants as C;
 use App\Classes\Welcome\FlightsTempManager;
+use App\Exceptions\FlightsArrayException;
+use App\Exceptions\FlightsDataModifiedException;
 use App\Models\Flight;
+use App\Models\FlightTemp;
+use App\Interfaces\ExceptionsMessages as Em;
 
 /**
  * This trait contains same code for FlightController & FlightControllerApi
@@ -64,6 +68,27 @@ trait FlightControllerCommonTrait{
             ];
         }//foreach($flights_data as $n => $flight){
         return $array_return;
+    }
+
+    /**
+     * Get the rows of flighttemp table that matches the provided session id 
+     */
+    private function getFlightsTempBySessionId(): array{
+        $this->errno = 0;
+        if(isset($this->flights_array['session_id'])){
+            $session_id = $this->flights_array['session_id'];
+            $flights = FlightTemp::where('session_id',$session_id)->get();
+            $fLenght = $flights->count();
+            if($fLenght > 0){
+                $fArray = $flights->toArray();
+                return $fArray;
+            }
+            else
+                throw new FlightsDataModifiedException(Em::FLIGHTSDATAMODIFIED_EXC);
+        }//if(isset($this->flights_array['session_id'])){
+        else 
+            throw new FlightsDataModifiedException(Em::FLIGHTSDATAMODIFIED_EXC);
+        return [];
     }
 
     //Set the data to send to the view
