@@ -44,11 +44,11 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
+        //Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         try{
             $hotel = $this->create_hotel($inputs["session_id"]);
             $response_array = $this->setResponseData($hotel);
-            return response()->view(P::VIEW_BOOKHOTEL,$response_array);
+            return response()->view(P::VIEW_BOOKHOTEL,$response_array,201);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKHOTEL,[

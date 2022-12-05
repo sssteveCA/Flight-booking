@@ -52,7 +52,7 @@ trait HotelControllerCommonTrait{
         return [
             C::KEY_DONE => true,
             C::KEY_STATUS => "OK",
-            C::KEY_MESSAGE => "Per confermare la prenotazione delle stanze d\' albergo fai click su 'PAGA'",
+            C::KEY_MESSAGE => "Per confermare la prenotazione delle stanze d' albergo fai click su 'PAGA'",
             'hotel' => $hotel->toArray()
         ];
     }
