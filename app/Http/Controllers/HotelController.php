@@ -46,8 +46,9 @@ class HotelController extends Controller
         $inputs = $request->all();
         Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         try{
-            $this->create_hotel($inputs["session_id"]);
-            return response()->view(P::VIEW_BOOKHOTEL);
+            $hotel = $this->create_hotel($inputs["session_id"]);
+            $response_array = $this->setResponseData($hotel);
+            return response()->view(P::VIEW_BOOKHOTEL,$response_array);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKHOTEL,[
