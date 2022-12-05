@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 use App\Interfaces\Paths as P;
+use App\Traits\Common\HotelControllerCommonTrait;
+use Exception;
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Constants as C;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class HotelController extends Controller
 {
+
+    use HotelControllerCommonTrait;
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,18 @@ class HotelController extends Controller
     {
         $inputs = $request->all();
         Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
-        return response()->view(P::VIEW_BOOKHOTEL);
+        try{
+            $this->create_hotel($inputs["session_id"]);
+            return response()->view(P::VIEW_BOOKHOTEL);
+        }catch(Exception $e){
+            throw new HttpResponseException(
+                response()->view(P::VIEW_BOOKHOTEL,[
+                    C::KEY_DONE => false,
+                    C::KEY_MESSAGE => C::ERR_REQUEST,
+                    C::KEY_STATUS => 'ERROR'
+                ],400)
+            );
+        }
     }
 
     /**
