@@ -136,28 +136,10 @@ trait FlightsTempManagerTrait{
         return $exists;
     }
 
-    /**
-     * Get the rows of flighttemp table that matches the provided session id 
-     */
-    private function getFlightsTempBySessionId(): array{
-        $this->errno = 0;
-        if(isset($this->flights_array['session_id'])){
-            $session_id = $this->flights_array['session_id'];
-            $flights = FlightTemp::where('session_id',$session_id)->get();
-            $fLenght = $flights->count();
-            if($fLenght > 0){
-                $fArray = $flights->toArray();
-                return $fArray;
-            }
-            else
-                $this->errno = Ftme::NOTFOUND;
-        }//if(isset($this->flights_array['session_id'])){
-        else 
-            throw new FlightsArrayException(Ftme::SESSION_ID_EXC);
-        return [];
-    }
 
-    //Generate a random session id to identity the user that does the request
+    /**
+     * Generate a random session id to identity the user that does the request
+     */
     private function setSessionId(){
         //Log::channel('stdout')->info("FlightsTempManager trait setSessionId");
         $session_id = "";

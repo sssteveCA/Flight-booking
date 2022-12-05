@@ -73,10 +73,9 @@ trait FlightControllerCommonTrait{
     /**
      * Get the rows of flighttemp table that matches the provided session id 
      */
-    private function getFlightsTempBySessionId(): array{
+    private function getFlightsTempBySessionId(string $session_id): array{
         $this->errno = 0;
-        if(isset($this->flights_array['session_id'])){
-            $session_id = $this->flights_array['session_id'];
+        if(isset($session_id)){
             $flights = FlightTemp::where('session_id',$session_id)->get();
             $fLenght = $flights->count();
             if($fLenght > 0){

@@ -74,24 +74,33 @@ class FlightController extends Controller
         //Log::channel('stdout')->debug("FlightController store");
         $inputs = $request->all();
         try{
-            $this->ftm = new FlightsTempManager($inputs);
-            $valid = $this->ftm->validateRequest();
-            if($valid){
+            $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
+            Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
+            if(count($flightsTemp) >= 1){
+                $flights_info = $this->create_flights($flightsTemp);
+                $response_data = $this->setResponseData($flights_info);
+                $del = FlightTemp::where('session_id',$inputs['session_id'])->delete();
+                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
+            }
+            throw new Exception;
+            /* $this->ftm = new FlightsTempManager($inputs);
+            $valid = $this->ftm->validateRequest(); */
+            //if($valid){
                 //Input data was not modified from orginal values
                 /* Log::channel('stdout')->debug("FlightController store request all => ");
                 Log::channel('stdout')->debug(var_export($inputs,true)); */
-                $flights = $request->flights;
+                //$flights = $request->flights;
                 /* $flights_unquoted = $this->flights_unquote($flights);
                 Log::channel('stdout')->info("FlightController store flights unquoted => ");
                 Log::channel('stdout')->info(var_export($flights,true)); */
-                $flights_info = $this->create_flights($flights);
-                $response_data = $this->setResponseData($flights_info);
+                //$flights_info = $this->create_flights($flights);
+                //$response_data = $this->setResponseData($flights_info);
                 //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
-                $del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
+                //$del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
                 //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
-                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
-            }//if($valid){
-            throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
+                //return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
+            //}//if($valid){
+            //throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);   
         }catch(Exception $e){
             Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
