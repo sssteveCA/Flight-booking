@@ -57,6 +57,7 @@
             "app/Traits/common/flightsearchcontroller_common_trait.php",
             "app/Traits/common/flightcontroller_common_trait.php",
             "app/Traits/common/flightpricerequest_common_trait.php",
+            "app/Traits/common/hotelcontroller_common_trait.php",
             "app/Traits/common/registercontroller_common_trait.php",
             "app/Traits/common/editpasswordrequest_common_trait.php",
             "app/Traits/common/editusernamerequest_common_trait.php",
