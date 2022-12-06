@@ -1,5 +1,11 @@
 @extends('layouts.menu')
 
+@section('namespaces')
+    @php
+        use App\Interfaces\Paths as P;
+    @endphp
+@endsection
+
 @section('title','News')
 
 @section('links')
@@ -7,6 +13,7 @@
 @endsection
 
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @isset($n_posts,$posts)
         @forelse($posts as $post)
             <a class="post-link" href="{{ route('news.show',['permalink' => $post['permalink']]) }}">

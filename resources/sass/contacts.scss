@@ -2,6 +2,7 @@
 @use "sass:selector";
 
 @import "partials/animations";
+@import "partials/back";
 
 $form-id: '#fContacts';
 $buttons-form: selector.nest($form-id, 'button');

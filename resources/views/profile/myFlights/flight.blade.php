@@ -17,6 +17,7 @@
 @endsection
 
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../../../img/back.png', 'back_url' => '../myFlights'])
     <div class="content">
         <h2 class="fb-header">Informazioni volo</h2>
         <div class="container">

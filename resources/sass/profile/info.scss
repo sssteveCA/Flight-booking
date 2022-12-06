@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "sass:selector";
 @use "sass:string";
+@import "../partials/back";
 
 $dialog-title-classes:'.ui-dialog', '.ui-dialog-title';
 $dialog-title-prop-map: (
