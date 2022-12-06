@@ -23,6 +23,8 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/profile/info.ts','public/js/profile')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/welcome.scss','public/css')
+    .sass('resources/sass/bookflight/bookflight.scss','public/css/bookflight')
+    .sass('resources/sass/bookhotel/bookhotel.scss','public/css/bookhotel')
     .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')
     .sass('resources/sass/welcome/hotelpriceresult.scss','public/css/welcome')
     .sass('resources/sass/profile/myFlights.scss','public/css/profile')

@@ -8,7 +8,12 @@
 
 @section('title', 'Paga i voli prenotati')
 
+@section('links')
+    <link rel="stylesheet" href=" {{ asset('css/bookflight/bookflight.css') }}">
+@endsection
+
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @isset($message)
         @if($done == true)
         <div class="container mt-5">

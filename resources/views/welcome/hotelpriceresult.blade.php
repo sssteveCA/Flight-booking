@@ -16,6 +16,7 @@
 @endsection
 
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @if($done == true && isset($response))
         <form id="fHotelPrice" method="post" action="{{ route(P::ROUTE_BOOKHOTEL) }}">
             @csrf

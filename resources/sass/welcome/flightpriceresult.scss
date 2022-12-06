@@ -2,6 +2,8 @@
 @use "sass:map";
 @use "sass:math";
 
+@import "../partials/back";
+
 $column-elem-number: 9;
 $column-elem-widths-lg: 13%,13%,19%,19%,7%,7%,7%,7%,8%;
 $column-elem-colors-1p : rgba(255,0,0,0.15), rgba(0,255,0,0.3),rgba(138,43,226,0.2),rgba(210,105,30,0.25),rgba(255,140,0,0.35);

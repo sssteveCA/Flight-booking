@@ -50,6 +50,7 @@ class HotelController extends Controller
             $response_array = $this->setResponseData($hotel);
             return response()->view(P::VIEW_BOOKHOTEL,$response_array,201);
         }catch(Exception $e){
+            //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKHOTEL,[
                     C::KEY_DONE => false,

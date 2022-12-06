@@ -8,7 +8,12 @@
 
 @section('title','Paga le stanze dell\'albergo prenotate')
 
+@section('links')
+    <link rel="stylesheet" href=" {{ asset('css/bookhotel/bookhotel.css') }}">
+@endsection
+
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @isset($message)
         @if($done == true)
         <div class="container mt-5">
@@ -33,8 +38,8 @@
                     <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_PAYPAL_CANCEL) }}">
                 </div>
                 <div class="my-3">
-                    <input type="hidden" name="item_name" value="{{ $hotel }}">
-                    <input type="hidden" name="amount" value="{{ $price }}">
+                    <input type="hidden" name="item_name" value="{{ $hotel['hotel'] }}">
+                    <input type="hidden" name="amount" value="{{ $hotel['price'] }}">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>

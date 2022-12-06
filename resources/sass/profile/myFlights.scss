@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../partials/back";
+@import "../partials/back";
 
 $bs-breakpoints: (
     'xs' : 0px,

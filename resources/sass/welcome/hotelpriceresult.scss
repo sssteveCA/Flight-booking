@@ -3,6 +3,8 @@
 @use "../modules/globals";
 @use "../modules/result_table";
 
+@import "../partials/back";
+
 $column-elem-number: 8;
 $column-elem-widths: 14%,14%,26%,10%,10%,9%,9%,8%;
 

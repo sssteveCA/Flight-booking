@@ -17,6 +17,7 @@
 @endsection
 
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @isset($response['flight_type'])
         <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
