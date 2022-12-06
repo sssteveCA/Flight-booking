@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../modules/globals";
+
+$container: '#back-button';
+
+@mixin back-button-style($container,$breakpoints){
+    $md: map.get($breakpoints,'md');
+    $lg: map.get($breakpoints,'lg');
+    #{$container}{
+        @media only screen and (min-width: 0px){
+            width: 40px; height: 40px;
+        }
+        @media only screen and (min-width: #{$md}){
+            width: 60px; height: 60px;
+        }
+        @media only screen and (min-width: #{$lg}){
+            width: 80px; height: 80px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@include back-button-style($container, globals.$bs-breakpoints);

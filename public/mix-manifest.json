@@ -20,8 +20,8 @@
     "/css/aboutus.css": "/css/aboutus.css",
     "/css/news/post.css": "/css/news/post.css",
     "/css/news.css": "/css/news.css",
-    "/css/profile/myFlights/flight.css": "/css/profile/myFlights/flight.css",
-    "/css/profile/myFlights.css": "/css/profile/myFlights.css",
     "/css/welcome/hotelpriceresult.css": "/css/welcome/hotelpriceresult.css",
-    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css"
+    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css",
+    "/css/profile/myFlights/flight.css": "/css/profile/myFlights/flight.css",
+    "/css/profile/myFlights.css": "/css/profile/myFlights.css"
 }
