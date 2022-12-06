@@ -75,7 +75,7 @@ class FlightController extends Controller
         $inputs = $request->all();
         try{
             $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
-            Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
+            //Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
             if(count($flightsTemp) >= 1){
                 $flights_info = $this->create_flights($flightsTemp);
                 $response_data = $this->setResponseData($flights_info);

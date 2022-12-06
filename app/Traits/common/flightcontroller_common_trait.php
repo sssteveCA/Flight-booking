@@ -16,7 +16,11 @@ use App\Interfaces\ExceptionsMessages as Em;
 trait FlightControllerCommonTrait{
     private FlightsTempManager $ftm;
 
-    //Insert new flight records in database
+    /**
+     * Insert new flight records in database
+     * @param array $flight_data the flight booked data to insert
+     * @return array the data to send to the booking confirm view
+     */
     private function create_flights(array $flights_data):array
     {
         $models = [];
