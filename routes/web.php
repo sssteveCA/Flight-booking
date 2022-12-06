@@ -18,6 +18,7 @@ use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,10 +101,20 @@ Route::view(P::URL_ABOUTUS,P::VIEW_ABOUTUS);
 
 Route::permanentRedirect(P::URL_HOME,P::URL_ROOT); 
 
+Route::get(P::URL_ERRORS, function(){
+    if(session()->has('redirect')){
+        return response()->view(P::VIEW_FALLBACK,[
+            C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
+        ],400);
+    }
+    else{
+        return redirect(P::URL_ROOT);
+    }
+});
+
+
 //URL that not exists or the user is unauthorized to access
 Route::fallback(function(){
-    return response()->view(P::VIEW_FALLBACK,
-    [
-        C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
-    ],400);
+    session()->put('redirect','1');
+    return redirect(P::URL_ERRORS);
 });

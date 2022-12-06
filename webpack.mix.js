@@ -25,6 +25,7 @@ const mix = require('laravel-mix');
     .sass('resources/sass/welcome.scss','public/css')
     .sass('resources/sass/bookflight/bookflight.scss','public/css/bookflight')
     .sass('resources/sass/bookhotel/bookhotel.scss','public/css/bookhotel')
+    .sass('resources/sass/error/errors.scss','public/css/error')
     .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')
     .sass('resources/sass/welcome/hotelpriceresult.scss','public/css/welcome')
     .sass('resources/sass/profile/myFlights.scss','public/css/profile')

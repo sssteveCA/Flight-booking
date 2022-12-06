@@ -15,6 +15,7 @@ interface Paths{
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_BOOKHOTEL = 'bookhotel';
+    const ROUTE_ERRORS = 'errors';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_HOTELPRICE = 'hotelprice';
@@ -44,6 +45,7 @@ interface Paths{
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';
     const URL_EMAILVERIFY = '/email/verify';
+    const URL_ERRORS = '/errors';
     const URL_FLIGHTEVENTS = '/flightevents';
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTRESUME = Paths::URL_BOOKFLIGHT.'/flightresume';
