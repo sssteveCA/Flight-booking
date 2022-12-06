@@ -102,7 +102,8 @@ Route::view(P::URL_ABOUTUS,P::VIEW_ABOUTUS);
 Route::permanentRedirect(P::URL_HOME,P::URL_ROOT); 
 
 Route::get(P::URL_ERRORS, function(){
-    if(session()->has('redirect')){
+    if(session()->has('redirect') && session()->get('redirect') == '1'){
+        session()->forget('redirect');
         return response()->view(P::VIEW_FALLBACK,[
             C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
         ],400);

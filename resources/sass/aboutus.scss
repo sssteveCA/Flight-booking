@@ -1,6 +1,6 @@
 @use "sass:map";
-
-@import "partials/animations";
+@use "modules/globals.scss";
+@use "modules/animations";
 @import "partials/back";
 
 $bs-breakpoints: (
@@ -77,5 +77,5 @@ $bs-breakpoints: (
 
 @include global();
 @include responsive-style($bs-breakpoints);
-@include animation-appear-style(".container-fluid",$map-appear)
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
 

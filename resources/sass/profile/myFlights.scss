@@ -1,4 +1,6 @@
 @use "sass:map";
+@use "../modules/animations";
+@use "../modules/globals";
 @import "../partials/back";
 
 $bs-breakpoints: (
@@ -93,3 +95,4 @@ $compound-selectors-rules: (
 
 @include single-selectors-loop($bs-breakpoints, $single-selectors-rules);
 @include compound-selectors-loop($bs-breakpoints, $compound-selectors-rules);
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);

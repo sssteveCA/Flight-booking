@@ -1,3 +1,4 @@
-@import "partials/animations";
+@use "modules/globals";
+@use "modules/animations";
 
-@include animation-appear-style($container-identifier,$map-appear);
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);

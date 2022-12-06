@@ -1,7 +1,8 @@
 @use "sass:math";
 @use "sass:map";
 
-@import "partials/animations";
+@use "modules/globals";
+@use "modules/animations";
 @import "partials/welcome.hotels";
 
 //Variables
@@ -108,8 +109,8 @@ $flight-animation-img-id: "#airplane";
 }
 
 //Exec
-@include animation-appear-style($welcome-identifier,$map-appear);
-@include animation-horizontal-move($flight-animation-img-id,$map-move-x);
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
+@include animations.animation-horizontal-move($flight-animation-img-id,animations.$map-move-x);
 @include col-style();
 @include tab-style();
 @include flight-animation-div($flight-animation-selector);

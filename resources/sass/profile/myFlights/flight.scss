@@ -1,5 +1,7 @@
 @use "sass:map";
-@use "../../partials/back";
+@use "../../modules/globals";
+@use "../../modules/animations";
+@import "../../partials/back";
 
 %bold{
     font-weight: bold;
@@ -136,3 +138,4 @@ $compound-selectors-rules: (
 @include style-small($bs-breakpoints,'xs',$single-selectors-rules,$compound-selectors-rules);
 @include style-large($bs-breakpoints,'md',$single-selectors-rules,$compound-selectors-rules);
 @include extensions();
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
