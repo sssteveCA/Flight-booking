@@ -17,6 +17,7 @@
 @endsection
 
 @section('content')
+    @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../../'])
     @if($flights_number > 0)
         <div class="container-fluid">
             @foreach($flights as $flight)
