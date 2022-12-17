@@ -67,6 +67,7 @@
                                 @endif
                             @endauth
                         @endif
+                        @includeIf(P::VIEW_MENU_PRIVACY)
                     </ul>
                 </div>
             </div>

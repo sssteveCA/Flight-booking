@@ -84,6 +84,7 @@ interface Paths{
     const VIEW_HOME = 'home';
     const VIEW_HOTELLOGIN = 'include.hotellogin';
     const VIEW_HOTELPRICERESULT = 'welcome.hotelpriceresult';
+    const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
     const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
