@@ -14,6 +14,7 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/layouts/menu.js') }}"></script>
         @yield('scripts')
+        @includeIf(P::VIEW_PRIVACY)
     </head>
     <body>
          <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm py-2 py-md-0">

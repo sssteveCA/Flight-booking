@@ -89,6 +89,7 @@ interface Paths{
     const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
     const VIEW_PAYPAL_RETURN = 'paypal.return';
     const VIEW_POST = 'news.post';
+    const VIEW_PRIVACY = 'partials.privacy';
     const VIEW_PROFILE_EDIT = 'profile.edit';
     const VIEW_PROFILE_INFO = 'profile.info';
     const VIEW_PROFILE_INFO_DA = 'profile.info.deleteaccount';
