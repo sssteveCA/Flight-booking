@@ -101,6 +101,22 @@ Route::view(P::URL_ABOUTUS,P::VIEW_ABOUTUS);
 
 Route::permanentRedirect(P::URL_HOME,P::URL_ROOT); 
 
+Route::get(P::URL_COOKIE_POLICY, function(){
+    if(view()->exists(P::VIEW_COOKIE_POLICY)) return view(P::VIEW_COOKIE_POLICY);
+    else return redirect(P::URL_ERRORS);
+});
+
+Route::get(P::URL_PRIVACY_POLICY, function(){
+    if(view()->exists(P::VIEW_PRIVACY_POLICY)) return view(P::VIEW_PRIVACY_POLICY);
+    else return redirect(P::URL_ERRORS);
+});
+
+Route::get(P::URL_TERMS, function(){
+    if(view()->exists(P::VIEW_TERMS)) return view(P::VIEW_TERMS);
+    else return redirect(P::URL_ERRORS);
+});
+
+
 Route::get(P::URL_ERRORS, function(){
     if(session()->has('redirect') && session()->get('redirect') == '1'){
         session()->forget('redirect');

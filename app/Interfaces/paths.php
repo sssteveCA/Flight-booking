@@ -41,6 +41,7 @@ interface Paths{
     const URL_BOOKFLIGHT_PAYPAL_RETURN = '/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
+    const URL_COOKIE_POLICY = '/cookie_policy';
     const URL_DELETEACCOUNT = '/deleteAccount';
     const URL_EDITPASSWORD = '/editPassword';
     const URL_EDITUSERNAME = '/editUsername';
@@ -61,12 +62,14 @@ interface Paths{
     const URL_LOGOUT = '/logout';
     const URL_MYFLIGHTS = '/myFlights';
     const URL_NEWS = '/news';
+    const URL_PRIVACY_POLICY = '/privacy_policy';
     const URL_PROFILE = '/profile';
     const URL_REGISTER = '/register';
     const URL_SUBSCRIBED = '/register/subscribed';
     const URL_ROOT = '/';
     const URL_SEARCH = '/search';
     const URL_SENDEMAIL = Paths::URL_CONTACTS.'/sendemail';
+    const URL_TERMS = '/terms';
     const URL_VERIFICATION_NOTIFICATION = '/email/verification-notification';
     
     //Views
@@ -75,6 +78,7 @@ interface Paths{
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_BOOKHOTEL = 'bookhotel.bookhotel';
     const VIEW_CONTACTS = 'contacts';
+    const VIEW_COOKIE_POLICY = 'cookie_policy';
     const VIEW_EMAIL_CONTACTS = 'email.contacts';
     const VIEW_FALLBACK = 'error.errors';
     const VIEW_FOOTER = 'partials.footer';
@@ -91,6 +95,7 @@ interface Paths{
     const VIEW_PAYPAL_RETURN = 'paypal.return';
     const VIEW_POST = 'news.post';
     const VIEW_PRIVACY = 'partials.privacy';
+    const VIEW_PRIVACY_POLICY = 'privacy_policy';
     const VIEW_PROFILE_EDIT = 'profile.edit';
     const VIEW_PROFILE_INFO = 'profile.info';
     const VIEW_PROFILE_INFO_DA = 'profile.info.deleteaccount';
@@ -98,6 +103,7 @@ interface Paths{
     const VIEW_PROFILE_INFO_EUF = 'profile.info.editusernameform';
     const VIEW_REGISTER = 'auth.register';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
+    const VIEW_TERMS = 'terms';
     const VIEW_VERIFYEMAIL = 'auth.verify';
     const VIEW_WELCOME = 'welcome';
     const VIEW_WELCOME_CAR_RENTAL = 'partials.welcome.carrental';
