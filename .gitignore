@@ -6,6 +6,7 @@
 /public/hot
 /public/storage
 /public/log.txt
+/resources/views/partials/privacy*
 /storage/*.key
 /vendor
 .env
