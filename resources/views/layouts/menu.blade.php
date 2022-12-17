@@ -67,7 +67,7 @@
                                 @endif
                             @endauth
                         @endif
-                        @includeIf(P::VIEW_MENU_PRIVACY)
+                        @includeIf(P::VIEW_MENU_PRIVACY,['privacy' => P::URL_PRIVACY_POLICY, 'cookie' => P::URL_COOKIE_POLICY, 'terms' => P::URL_TERMS])
                     </ul>
                 </div>
             </div>
