@@ -52,12 +52,12 @@ $compound-selectors-rules: (
         )
     ),
     'md': (
-        '.row:not(:last-child)': (
+        '.row:not(.footer-row)': (
                 'border-top': 1px solid black,
                 'border-right': 1px solid black,
                 'border-left': 1px solid black
         ),
-        '.row:nth-last-child(2)': (
+        '.row:last-child:not(.footer-row)': (
             'border-bottom': 1px solid black
         ),
         '.row>div': (
