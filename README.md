@@ -1,5 +1,5 @@
 <div>
-    Application deployed at <a href="http://ec2-3-132-86-192.us-east-2.compute.amazonaws.com">http://ec2-3-132-86-192.us-east-2.compute.amazonaws.com<a>
+    Application deployed at <a href="http://ec2-3-12-208-246.us-east-2.compute.amazonaws.com/">http://ec2-3-12-208-246.us-east-2.compute.amazonaws.com/<a>
 </div>
 <br>
 <div>
