@@ -5,7 +5,10 @@ namespace App\Traits\Common;
 use App\Models\FlighEvent;
 use Illuminate\Http\Request;
 
-trait FlightsEventControllerCommonTrait{
+/**
+ * Ths trait is used to put common code for FlightsEventController & FlightsEventControllerApi classes
+ */
+trait FlightEventsControllerCommonTrait{
 
     //
     public function getAll(Request $request = null){
