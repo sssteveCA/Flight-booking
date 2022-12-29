@@ -34,7 +34,7 @@ class PaypalHotelController extends Controller
             Log::channel('stdout')->debug("PaypalHotelController return post => ".var_export($post_data,true));
             if(isset($post_data['payer_status'])){
                 if($post_data['payer_status'] == "VERIFIED"){
-                    $id = $post_data['item_number'];
+                    $id = $post_data['item_number1'];
                     $hotel = Hotel::find($id);
                     if($hotel != null){
                         $hotel->payed = 1;

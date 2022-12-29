@@ -38,9 +38,9 @@
                     <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_HOTEL_PAYPAL_CANCEL) }}">
                 </div>
                 <div class="my-3">
-                    <input type="hidden" name="item_name" value="{{ $hotel['hotel'] }}">
-                    <input type="hidden" name="item_number" value="{{ $hotel['id'] }}">
-                    <input type="hidden" name="amount" value="{{ $hotel['price'] }}">
+                    <input type="hidden" name="item_name_1" value="{{ $hotel['hotel'] }}">
+                    <input type="hidden" name="item_number_1" value="{{ $hotel['id'] }}">
+                    <input type="hidden" name="amount_1" value="{{ $hotel['price'] }}">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>
