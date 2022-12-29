@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\paypal\PaypalFlightController;
+use App\Http\Controllers\paypal\PaypalHotelController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\welcome\FlightEventsController;
@@ -71,12 +72,14 @@ Route::middleware('auth')->group(function(){
 
 Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth','verified']], function(){
     Route::post('',[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT);
-    Route::post(P::URL_PAYPAL_RETURN,[PaypalFlightController::class,'return'])->name(P::ROUTE_PAYPAL_RETURN);
-    Route::get(P::URL_PAYPAL_CANCEL,[PaypalFlightController::class,'cancel'])->name(P::ROUTE_PAYPAL_CANCEL);
+    Route::post(P::URL_PAYPAL_RETURN,[PaypalFlightController::class,'return'])->name(P::ROUTE_FLIGHT_PAYPAL_RETURN);
+    Route::get(P::URL_PAYPAL_CANCEL,[PaypalFlightController::class,'cancel'])->name(P::ROUTE_FLIGHT_PAYPAL_CANCEL);
 });
 
 Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified']], function(){
     Route::post('',[HotelController::class,'store'])->name(P::ROUTE_BOOKHOTEL);
+    Route::post(P::URL_PAYPAL_RETURN, [PaypalHotelController::class, 'return'])->name(P::ROUTE_HOTEL_PAYPAL_RETURN);
+    Route::get(P::URL_PAYPAL_CANCEL,[PaypalHotelController::class, 'cancel'])->name(P::ROUTE_HOTEL_PAYPAL_CANCEL);
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
