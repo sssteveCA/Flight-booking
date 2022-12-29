@@ -58,7 +58,11 @@ export default class FlightLocationList{
         return this._error;
     }
 
-    //Get airports located in selected country
+    /**
+     * Get airports located in selected country
+     * @param data 
+     * @returns 
+     */
     public get_country_airports(data: FlightLocationAirportsInterface): boolean{
         let ok = false;
         this._errno = 0;
@@ -118,7 +122,11 @@ export default class FlightLocationList{
         return promise;
     }
 
-    //Get available countries list 
+    /**
+     * Get available countries list
+     * @param data 
+     * @returns 
+     */ 
     public async get_countries(data: FlightLocationCountriesInterface): Promise<boolean>{
         let ok = false;
         this._errno = 0;
