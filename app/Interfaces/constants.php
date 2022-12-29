@@ -14,6 +14,7 @@ interface Constants{
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
+    const ERR_FLIGHT_EVENTS = 'Impossibile mostrare gli eventi. '.Constants::ADMIN_CONTACT;
     const ERR_FLIGHTPAYMENT_REFUSE = "Il tuo pagamento non ha avuto successo, perché è stato rifiutato";
     const ERR_FLIGHTPAYMENT_UNKNOWN = "Errore durante il pagamento del volo. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
@@ -35,6 +36,7 @@ interface Constants{
 
     //common array keys
     const KEY_DONE = 'done';
+    const KEY_EMPTY = 'empty';
     const KEY_ERRORS = 'errors';
     const KEY_MESSAGE = 'message';
     const KEY_MESSAGES = 'messages';

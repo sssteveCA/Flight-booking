@@ -13,6 +13,7 @@ use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
 use App\Http\Controllers\api\PostControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
+use App\Http\Controllers\api\welcome\FlightEventsControllerApi;
 use App\Http\Controllers\api\welcome\HotelSearchControllerApi;
 
 /*
@@ -35,6 +36,7 @@ Route::name('api.')->group(function(){
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
     Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchControllerApi::class,'getAvailableAirports']);
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
+    Route::get(P::URL_FLIGHTEVENTS,[FlightEventsControllerApi::class, 'getAll']);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTPRICE,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchControllerApi::class,'getAvailableHotels']);

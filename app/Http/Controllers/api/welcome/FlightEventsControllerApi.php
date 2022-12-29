@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\api\welcome;
 
 use App\Http\Controllers\Controller;
-use App\Traits\Common\FlightEventsControllerCommonTrait;
 use Illuminate\Http\Request;
+use App\Traits\Common\FlightEventsControllerCommonTrait;
 
 class FlightEventsControllerApi extends Controller
 {
