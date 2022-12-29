@@ -41,7 +41,7 @@ export default class FlightEventsList{
         let ok:boolean = false;
         this._errno = 0;
         //console.log("Prima della promise");
-        let fe_list = await this.flight_event_request_promise().then(res => {
+        await this.flight_event_request_promise().then(res => {
             //console.log(res);
             let json = JSON.parse(res);
             this._flight_events = json;
