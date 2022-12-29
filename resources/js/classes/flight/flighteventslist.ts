@@ -15,9 +15,9 @@ export default class FlightEventsList{
     private static ERR_SCRIPT_EXCEPTION:number = 1;
 
     //Messages
-    private static ERR_SCRIPT_EXCEPTION_MSG:string = 'Errore durante l\' esecuzione dello script';
+    private static ERR_SCRIPT_EXCEPTION_MSG:string = "Impossibile mostrare gli eventi. Se il problema persiste, contattare l' amministratore del sito.";
 
-    private static SCRIPT_URL: string = Config.HOME_URL+'/flightevents';
+    private static SCRIPT_URL: string = '/flightevents';
 
     constructor(){
     }
@@ -40,18 +40,20 @@ export default class FlightEventsList{
     async flight_events_request(): Promise<boolean>{
         let ok:boolean = false;
         this._errno = 0;
+        let json = {};
         //console.log("Prima della promise");
         await this.flight_event_request_promise().then(res => {
             //console.log(res);
-            let json = JSON.parse(res);
-            this._flight_events = json;
+            json = JSON.parse(res);
             //console.log(this._flight_events);
-            this.htmlSet();
             ok = true;
         }).catch(err => {
             console.warn(err);
             this._errno = FlightEventsList.ERR_SCRIPT_EXCEPTION;
-        });
+            json = { done: false, empty: false, message: this.error };
+        }).finally(()=> {
+            this.htmlSet(json);
+        })
         return ok;
     }
 
@@ -65,26 +67,35 @@ export default class FlightEventsList{
         });
     }
 
-    private htmlSet():void{
-        let cards = ``;
-        //Add cards elements to result
-        this._flight_events.forEach((val,index)=>{
-            let fel_elem: HtmlCardInterface= {
-                image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
-                name: val['name'],
-                location: val['location'],
-                country: val['country'],
-                price: val['price']
-            };
-            cards += this.htmlCard(fel_elem);
-        });
-        this._html = `
+    private htmlSet(json: object):void{
+        if(json["done"] == true && json["empty"] == false){
+            this._flight_events = json["list"];
+            let cards = ``;
+            //Add cards elements to result
+            this._flight_events.forEach((val,index)=>{
+                let fel_elem: HtmlCardInterface= {
+                    image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
+                    name: val['name'],
+                    location: val['location'],
+                    country: val['country'],
+                    price: val['price']
+                };
+                cards += this.htmlCard(fel_elem);
+            });
+            this._html = `
 <div class="container-fluid">
     <div class="row">
         ${cards}
     </div>
 </div>
 `;
+        }//if(json["done"] == true && json["empty"] == false){
+        else{
+            if(json["empty"] == true)
+                this._html = `<div class="alert alert-secondary" role="alert">${json["message"]}</div>`;
+            else
+                this._html = `<div class="alert alert-danger" role="alert">${json["message"]}</div>`;
+        }//else di if(json["done"] == true && json["empty"] == false){  
     }
 
     private htmlCard(data: HtmlCardInterface):string{
