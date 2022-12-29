@@ -15,15 +15,19 @@ use Illuminate\Support\Facades\Log;
 
 class PaypalFlightController extends Controller
 {
-    //URL if the user cancel the payment
+    /**
+     * Executed if the user cancel the payment of the flight
+     */
     public function cancel(){
         return response()->view(P::VIEW_FLIGHT_PAYPAL_CANCEL,[
             'payment' => 'canceled',
             C::KEY_MESSAGE => C::MESS_FLIGHT_PAYMENT_CANCELED
-        ],200);
+        ]);
     }
 
-    //Return URL after user has made the payment
+    /**
+     * Executed after the user has made the payment of the flight
+     */
     public function return(Request $request){
         $post_data = $request->all();
         //Log::channel('stdout')->debug("PaypalController return post => ".var_export($post_data,true));

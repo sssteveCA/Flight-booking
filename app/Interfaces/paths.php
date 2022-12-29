@@ -94,6 +94,8 @@ interface Paths{
     const VIEW_NEWS = 'news';
     const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
     const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
+    const VIEW_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
+    const VIEW_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
     const VIEW_POST = 'news.post';
     const VIEW_PRIVACY = 'partials.privacy';
     const VIEW_PRIVACY_POLICY = 'privacy_policy';

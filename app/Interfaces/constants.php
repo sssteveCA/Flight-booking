@@ -73,6 +73,7 @@ interface Constants{
     //Other messages
     const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Non hai ancora prenotato nessun volo";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
+    const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
     const MESS_NOPOSTS = "Nessuna notizia da mostrare";
 }
 ?>
