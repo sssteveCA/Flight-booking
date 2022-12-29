@@ -37,8 +37,8 @@ interface Paths{
     const URL_AIRPORTS_AVAILABLE = '/airports';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
-    const URL_BOOKFLIGHT_PAYPAL_CANCEL = '/cancel';
-    const URL_BOOKFLIGHT_PAYPAL_RETURN = '/return';
+    const URL_PAYPAL_CANCEL = '/cancel';
+    const URL_PAYPAL_RETURN = '/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_COOKIE_POLICY = '/cookie_policy';
