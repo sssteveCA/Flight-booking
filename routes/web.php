@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\paypal\PaypalController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Controllers\welcome\HotelSearchController;
@@ -78,6 +79,7 @@ Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
+Route::post(P::URL_PREFERENCES_SET, [PreferenceController::class, 'cookieSet']);
 Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchController::class,'getAvailableAirports']);
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);

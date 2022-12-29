@@ -62,6 +62,7 @@ interface Paths{
     const URL_LOGOUT = '/logout';
     const URL_MYFLIGHTS = '/myFlights';
     const URL_NEWS = '/news';
+    const URL_PREFERENCES_SET = '/preferences_set';
     const URL_PRIVACY_POLICY = '/privacy_policy';
     const URL_PROFILE = '/profile';
     const URL_REGISTER = '/register';
