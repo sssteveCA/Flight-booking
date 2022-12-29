@@ -17,9 +17,9 @@ class PaypalFlightController extends Controller
 {
     //URL if the user cancel the payment
     public function cancel(){
-        return response()->view(P::VIEW_PAYPAL_CANCEL,[
+        return response()->view(P::VIEW_FLIGHT_PAYPAL_CANCEL,[
             'payment' => 'canceled',
-            'message' => C::MESS_FLIGHT_PAYMENT_CANCELED
+            C::KEY_MESSAGE => C::MESS_FLIGHT_PAYMENT_CANCELED
         ],200);
     }
 
@@ -44,21 +44,21 @@ class PaypalFlightController extends Controller
                         $flight->save();
                     }//if($flight != null){
                 }
-                return response()->view(P::VIEW_PAYPAL_RETURN,[
+                return response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
                     'payment' => 'completed',
-                    'message' => C::OK_FLIGHTPAYMENT,
+                    C::KEY_MESSAGE => C::OK_FLIGHTPAYMENT,
                     'post_data' => $post_data
                 ],200);
             }//if($post_data['status'] == "VERIFIED"){
-            return response()->view(P::VIEW_PAYPAL_RETURN,[
+            return response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
                 'payment' => 'refused',
-                'message' => C::ERR_FLIGHTPAYMENT_REFUSE,
+                C::KEY_MESSAGE => C::ERR_FLIGHTPAYMENT_REFUSE,
                 'post_data' => $post_data
             ],400);
         }//if(isset($post_data['payer_status'])){
         throw new HttpResponseException(
-            response()->view(P::VIEW_PAYPAL_RETURN,[
-                'message' => C::ERR_FLIGHTPAYMENT_UNKNOWN,
+            response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
+                C::KEY_MESSAGE => C::ERR_FLIGHTPAYMENT_UNKNOWN,
                 'post_data' => $post_data
             ],500)
         );

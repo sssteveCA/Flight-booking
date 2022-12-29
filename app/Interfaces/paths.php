@@ -24,8 +24,8 @@ interface Paths{
     const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
     const ROUTE_EDITPASSWORD = 'usercontroller.editpassword';
-    const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
-    const ROUTE_PAYPAL_RETURN = 'paypal.return';
+    const ROUTE_PAYPAL_CANCEL = 'paypal.flight.cancel';
+    const ROUTE_PAYPAL_RETURN = 'paypal.flight.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
     const ROUTE_SENDEMAIL = 'sendemail';
     const ROUTE_VERIFICATIONNOTICE = 'verification.notice';
@@ -92,8 +92,8 @@ interface Paths{
     const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
-    const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
-    const VIEW_PAYPAL_RETURN = 'paypal.return';
+    const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
+    const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
     const VIEW_POST = 'news.post';
     const VIEW_PRIVACY = 'partials.privacy';
     const VIEW_PRIVACY_POLICY = 'privacy_policy';
