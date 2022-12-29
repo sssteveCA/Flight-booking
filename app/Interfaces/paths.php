@@ -24,8 +24,10 @@ interface Paths{
     const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
     const ROUTE_EDITPASSWORD = 'usercontroller.editpassword';
-    const ROUTE_PAYPAL_CANCEL = 'paypal.cancel';
-    const ROUTE_PAYPAL_RETURN = 'paypal.return';
+    const ROUTE_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
+    const ROUTE_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
+    const ROUTE_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
+    const ROUTE_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
     const ROUTE_SENDEMAIL = 'sendemail';
     const ROUTE_VERIFICATIONNOTICE = 'verification.notice';
@@ -37,8 +39,8 @@ interface Paths{
     const URL_AIRPORTS_AVAILABLE = '/airports';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
-    const URL_BOOKFLIGHT_PAYPAL_CANCEL = '/cancel';
-    const URL_BOOKFLIGHT_PAYPAL_RETURN = '/return';
+    const URL_PAYPAL_CANCEL = '/cancel';
+    const URL_PAYPAL_RETURN = '/return';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_COOKIE_POLICY = '/cookie_policy';
@@ -92,8 +94,10 @@ interface Paths{
     const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
-    const VIEW_PAYPAL_CANCEL = 'paypal.cancel';
-    const VIEW_PAYPAL_RETURN = 'paypal.return';
+    const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
+    const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
+    const VIEW_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
+    const VIEW_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
     const VIEW_POST = 'news.post';
     const VIEW_PRIVACY = 'partials.privacy';
     const VIEW_PRIVACY_POLICY = 'privacy_policy';

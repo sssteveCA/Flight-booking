@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        "*bookflight/return*"
+        "*bookflight/return*", "*bookhotel/return*"
     ];
 }

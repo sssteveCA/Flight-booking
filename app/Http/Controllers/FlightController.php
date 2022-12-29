@@ -84,7 +84,7 @@ class FlightController extends Controller
             }
             throw new Exception; 
         }catch(Exception $e){
-            Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
+            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[
                     C::KEY_DONE => false,

@@ -33,9 +33,9 @@
                     <input type="hidden" name="handling_cart" value="0">
                     <input type="hidden" name="currency_code" value="EUR">
                     <input type="hidden" name="lc" value="IT">
-                    <input type="hidden" name="return" value="{{ route(P::ROUTE_PAYPAL_RETURN) }}">
+                    <input type="hidden" name="return" value="{{ route(P::ROUTE_FLIGHT_PAYPAL_RETURN) }}">
                     <input type="hidden" name="cbt" value="Torna al sito">
-                    <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_PAYPAL_CANCEL) }}">
+                    <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_FLIGHT_PAYPAL_CANCEL) }}">
                 </div>
                 <div class="my-3">
                     @forelse($flights as $flight)

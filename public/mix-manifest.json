@@ -9,6 +9,7 @@
     "/js/login.js": "/js/login.js",
     "/js/layouts/menu.js": "/js/layouts/menu.js",
     "/js/profile/info.js": "/js/profile/info.js",
+    "/js/classes/preferences/preferenceset.js": "/js/classes/preferences/preferenceset.js",
     "/css/app.css": "/css/app.css",
     "/css/welcome.css": "/css/welcome.css",
     "/css/layouts/menu.css": "/css/layouts/menu.css",

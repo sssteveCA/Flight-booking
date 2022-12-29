@@ -15,8 +15,10 @@ interface Constants{
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHT_EVENTS = 'Impossibile mostrare gli eventi. '.Constants::ADMIN_CONTACT;
-    const ERR_FLIGHTPAYMENT_REFUSE = "Il tuo pagamento non ha avuto successo, perché è stato rifiutato";
+    const ERR_FLIGHTPAYMENT_REFUSE = "Il pagamento del volo che hai prenotato è stato rifiutato";
     const ERR_FLIGHTPAYMENT_UNKNOWN = "Errore durante il pagamento del volo. ".Constants::ADMIN_CONTACT;
+    const ERR_HOTELPAYMENT_REFUSE = "Il pagamento delle stanze d'albergo prenotate è stato rifiutato";
+    const ERR_HOTELPAYMENT_UNKNOWN = "Errore durante il pagamento delle stanze d'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
@@ -49,6 +51,7 @@ interface Constants{
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
     const OK_FLIGHTDELETE = "Il volo selezionato è stato rimosso";
     const OK_FLIGHTPAYMENT = "Il pagamento è stato completato. I voli richiesti sono stati prenotati";
+    const OK_HOTELPAYMENT = "Il pagamento è stato completato. Le stanze d'albergo richieste sono state prenotate";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
     const OK_USERNAMEUPDATED = "Lo username è stato modificato";
@@ -73,6 +76,7 @@ interface Constants{
     //Other messages
     const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Non hai ancora prenotato nessun volo";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
+    const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
     const MESS_NOPOSTS = "Nessuna notizia da mostrare";
 }
 ?>

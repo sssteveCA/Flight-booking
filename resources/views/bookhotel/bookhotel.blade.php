@@ -21,7 +21,7 @@
             <p class="lead text-center">{{ $message }}</p>
         </div>
         <div class="form-div">
-            <form id="fHotelPrice" method="post" action="#">
+            <form id="fHotelPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
                 <div class="my-3">
                     <input type="hidden" name="cmd" value="_cart">
                     <input type="hidden" name="upload" value="1">
@@ -33,13 +33,14 @@
                     <input type="hidden" name="handling_cart" value="0">
                     <input type="hidden" name="currency_code" value="EUR">
                     <input type="hidden" name="lc" value="IT">
-                    <input type="hidden" name="return" value="{{ route(P::ROUTE_PAYPAL_RETURN) }}">
+                    <input type="hidden" name="return" value="{{ route(P::ROUTE_HOTEL_PAYPAL_RETURN) }}">
                     <input type="hidden" name="cbt" value="Torna al sito">
-                    <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_PAYPAL_CANCEL) }}">
+                    <input type="hidden" name="cancel_return" value="{{ route(P::ROUTE_HOTEL_PAYPAL_CANCEL) }}">
                 </div>
                 <div class="my-3">
-                    <input type="hidden" name="item_name" value="{{ $hotel['hotel'] }}">
-                    <input type="hidden" name="amount" value="{{ $hotel['price'] }}">
+                    <input type="hidden" name="item_name_1" value="{{ $hotel['hotel'] }}">
+                    <input type="hidden" name="item_number_1" value="{{ $hotel['id'] }}">
+                    <input type="hidden" name="amount_1" value="{{ $hotel['price'] }}">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>
