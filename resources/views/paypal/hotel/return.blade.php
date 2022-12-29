@@ -10,7 +10,7 @@
     @endisset
     --}}
     <div class="container mt-5">
-            <h2 class="mt-5 text-center">Prenotazione stanza d'albergo</h2>
+            <h2 class="mt-5 text-center">Prenotazione stanze d'albergo</h2>
             @if(isset($payment) and $payment == 'completed')
                 <p class="lead text-center">{{ $message }}</p>
             @else
