@@ -6,9 +6,11 @@
 /public/hot
 /public/storage
 /public/log.txt
-/resources/views/*policy*
-/resources/views/terms*
-/resources/views/partials/*privacy*
+/resources/views/cookie_policy.blade.php
+/resources/views/privacy_policy.blade.php
+/resources/views/terms.blade.php
+/resources/views/partials/menu_privacy.blade.php
+/resources/views/partials/privacy.blade.php
 /storage/*.key
 /vendor
 .env
@@ -22,4 +24,4 @@ yarn-error.log
 /.idea
 /.vscode
 *.sql
-**/PreferenceController*
+app/Http/Controllers/PreferenceController.php
