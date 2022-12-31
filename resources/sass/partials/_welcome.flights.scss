@@ -1,0 +1,31 @@
+
+$form-buttons-padding: 10px 50px;
+
+%form-welcome-buttons-rules{
+    text-transform: uppercase;
+    padding: $form-buttons-padding;
+}
+
+@mixin flights(){
+    $elems: 6;
+    @for $i from 1 through $elems{
+        #fb-fs#{$i}{
+            padding: 20px auto;
+            @if $i == 1{
+                div * {
+                    margin-right: 5px;
+                }
+            }
+            @else if $i == 4{
+                display: none;
+            }
+            @else if $i == 6{
+                button#bt-flight-submit{
+                    @extend %form-welcome-buttons-rules;
+                }
+            }
+        }
+    }
+}
+
+@include flights();

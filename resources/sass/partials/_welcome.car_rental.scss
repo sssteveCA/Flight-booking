@@ -1,0 +1,15 @@
+
+@mixin rent-car(){
+    $margin-y: 15px;
+    $elems: 4;
+    @for $i from 1 through $elems{
+        #fb-rc#{$i}>div{
+            margin: $margin-y auto;
+        }
+    }
+    #fb-rentcarloc{
+        width: 100%;
+    }
+}
+
+@include rent-car();

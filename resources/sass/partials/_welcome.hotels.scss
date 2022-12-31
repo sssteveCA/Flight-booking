@@ -57,6 +57,13 @@ $table-th-td-map: ();
     }
 }
 
+@mixin rooms(){
+    #fb-hotelloc{
+        width: 100%;
+    }
+}
+
 @include hotel-tab-style($hotel-container-id,$hotel-info-container);
 @include hotel-images-style($hotel-info-images-container);
 @include hotel-form();
+@include rooms();

@@ -3,14 +3,15 @@
 
 @use "modules/globals";
 @use "modules/animations";
+@import "partials/welcome.flights";
 @import "partials/welcome.hotels";
+@import "partials/welcome.car_rental";
 
 //Variables
 
 $animation-appear: appear;
 $buttons-tab-number: 4;
 $divs-col-margin-y: 10px;
-$form-buttons-padding: 10px 50px;
 $navs-buttons-padding:10px 50px;
 $navs-tab-margin-y: 30px;
 $tab-pane-width: 90%;
@@ -18,11 +19,6 @@ $rows-2-flights-elem: 3;
 $xs-breakpoint: 575px;
 $flight-animation-selector: "#flight-animation";
 $flight-animation-img-id: "#airplane";
-
-%form-welcome-buttons-rules{
-    text-transform: uppercase;
-    padding: $form-buttons-padding;
-}
 
 //Mixins
 
@@ -67,46 +63,6 @@ $flight-animation-img-id: "#airplane";
     }
 }
 
-@mixin flights(){
-    $elems: 6;
-    @for $i from 1 through $elems{
-        #fb-fs#{$i}{
-            padding: 20px auto;
-            @if $i == 1{
-                div * {
-                    margin-right: 5px;
-                }
-            }
-            @if $i == 4{
-                display: none;
-            }
-            @if $i == 6{
-                button#bt-flight-submit{
-                    @extend %form-welcome-buttons-rules;
-                }
-            }
-        }
-    }
-}
-
-@mixin rent-car(){
-    $margin-y: 15px;
-    $elems: 4;
-    @for $i from 1 through $elems{
-        #fb-rc#{$i}>div{
-            margin: $margin-y auto;
-        }
-    }
-    #fb-rentcarloc{
-        width: 100%;
-    }
-}
-
-@mixin rooms(){
-    #fb-hotelloc{
-        width: 100%;
-    }
-}
 
 //Exec
 @include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
@@ -114,6 +70,3 @@ $flight-animation-img-id: "#airplane";
 @include col-style();
 @include tab-style();
 @include flight-animation-div($flight-animation-selector);
-@include flights();
-@include rent-car();
-@include rooms();
