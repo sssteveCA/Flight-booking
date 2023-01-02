@@ -22,7 +22,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view(P::VIEW_MYHOTELS);
     }
 
     /**

@@ -10,6 +10,7 @@ interface Paths{
     const PREFIX_NEWS = 'news';
     const PREFIX_PROFILE = 'profile';
     const PREFIX_MYFLIGHTS = 'myFlights';
+    const PREFIX_MYHOTELS = 'myHotels';
 
 
     //Routes
@@ -63,6 +64,7 @@ interface Paths{
     const URL_INFO = '/info';
     const URL_LOGOUT = '/logout';
     const URL_MYFLIGHTS = '/myFlights';
+    const URL_MYHOTELS = '/myHotels';
     const URL_NEWS = '/news';
     const URL_PREFERENCES_SET = '/preferences_set';
     const URL_PRIVACY_POLICY = '/privacy_policy';
@@ -92,6 +94,7 @@ interface Paths{
     const VIEW_HOTELLOGIN = 'include.hotellogin';
     const VIEW_HOTELPRICERESULT = 'welcome.hotelpriceresult';
     const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
+    const VIEW_MYHOTELS = 'profile.myHotels';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_NEWS = 'news';
     const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
