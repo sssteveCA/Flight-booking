@@ -9,10 +9,10 @@ $single-selectors-rules: (
             '.container-fluid': (
                 'min-width': 280px
             ),
-            '.flight-title-style': (
+            '.hotel-title-style': (
                 'font-weight': bold
             ),
-            '.row:not(.footer .row)': (
+            'row:not(.footer .row)': (
                 'padding': 20px 0px,
                 'border-right': 1px solid black,
                 'border-bottom': 1px solid black,
@@ -30,12 +30,12 @@ $single-selectors-rules: (
         ),
         'ids': (),
         'tags': ()
-    ),
+    )
 );
 
 $compound-selectors-rules: (
     'xs': (
-        '.flight-show, .flight-delete, .flight-book': (
+        '.hotel-show, .hotel-delete, .hotel-book': (
             'margin-top': 10px
         ),
         '.row:first-child:not(.footer .row)': (
@@ -43,7 +43,7 @@ $compound-selectors-rules: (
         )
     ),
     'lg': (
-        '.flight-show, .flight-delete, .flight-book': (
+        '.hotel-show, .hotel-delete, .hotel-book': (
             'margin-top': 0px
         )
     )
@@ -60,14 +60,14 @@ $compound-selectors-rules: (
                         //loop inside selectors type list map
                         #{$selector}{
                             @each $property, $val in $properties-list{
-                                #{$property}: #{$val};      
-                            }// @each $property, $val in $properties-list{
+                                #{$property}: #{$val};
+                            }
                         }//#{$selector}{
-                    }//@each $selector, $properties-list in $selectors-type-list{
-                }//@each $selectors-type, $list in $sub-map{
-            }//@media only screen and (min-width:#{$val}){
-        }//@if map.has-key($selectors-map, $breakpoint){      
-    }//@each $breakpoint,$val in $breakpoints-map{
+                    }//@each $selector, $properties-list in $selector-type-list{
+                }//@each $selector-type, $selector-type-list in $sub-map{
+            }//@media only screen and (min-width: #{$val}){
+        }//@if map.has-key($selectors-map, $breakpoint){
+    }//@each $breakpoint, $val in $breakpoints-map{
 }
 
 @mixin compound-selectors-loop($breakpoints-map, $selectors-map){
@@ -79,12 +79,12 @@ $compound-selectors-rules: (
                     #{$compound-selector}{
                         @each $property, $val in $properties-list{
                             #{$property}: #{$val};
-                        }//@each $property,$val in $properties-list{
+                        }//@each $property, $val in $properties-list{
                     }//#{$compound-selector}{
                 }//@each $compound-selector, $properties-list in $sub-map{
             }//@media only screen and (min-width: #{$val}){
         }//@if map.has-key($selectors-map,$breakpoint){
-    }//@each $breakpoint,$val in $breakpoints-map{
+    }//@each $breakpoint, $val in $breakpoints-map{
 }
 
 @include single-selectors-loop(globals.$bs-breakpoints, $single-selectors-rules);
