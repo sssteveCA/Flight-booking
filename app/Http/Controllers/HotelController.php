@@ -25,9 +25,11 @@ class HotelController extends Controller
         try{
             $user_id = auth()->id();
             $hotels_collection = Hotel::where('user_id',$user_id)->get();
+            //Log::channel('stdout')->info("HotelController index hotel_collections => ".var_export($hotels_collection,true));
             $hotels_number = $hotels_collection->count();
             if($hotels_number > 0){
                 $hotels = $hotels_collection->toArray();
+                Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
                 return response()->view(P::VIEW_MYHOTELS,[
                     C::KEY_DONE => true,
                     C::KEY_EMPTY => false,
@@ -43,6 +45,7 @@ class HotelController extends Controller
                 ]);
             }
         }catch(Exception $e){
+            Log::channel('stdout')->info("HotelController index exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_MYHOTELS,[
                     C::KEY_DONE => false,

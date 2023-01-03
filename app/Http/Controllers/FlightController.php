@@ -15,6 +15,7 @@ use App\Models\FlightTemp;
 use App\Traits\Common\FlightControllerCommonTrait;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Cookie;
 

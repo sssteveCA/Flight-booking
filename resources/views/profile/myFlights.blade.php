@@ -62,16 +62,12 @@
             @endforeach
             </div>
         @else
-            @isset($message)
-            <div class="container mt-5">
-                <h2 class="mt-5 text-center">Lista voli vuota</h2>
-                <p class="lead text-center">{{$message}}</p>
-            </div>
-            @endisset
+			<div class="container mt-5">
+				<h2 class="mt-5 text-center">Lista voli vuota</h2>
+				<p class="lead text-center">{{$message}}</p>
+			</div>
         @endif
     @else
-        @isset($message)
-            <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @endisset
+		<div class="alert alert-danger" role="alert">{{$message}}</div>
     @endif
 @endsection

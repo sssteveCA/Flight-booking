@@ -12,7 +12,7 @@ $single-selectors-rules: (
             '.hotel-title-style': (
                 'font-weight': bold
             ),
-            'row:not(.footer .row)': (
+            '.row:not(.footer .row)': (
                 'padding': 20px 0px,
                 'border-right': 1px solid black,
                 'border-bottom': 1px solid black,
