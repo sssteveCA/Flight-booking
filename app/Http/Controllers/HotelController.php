@@ -22,7 +22,34 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return response()->view(P::VIEW_MYHOTELS);
+        try{
+            $user_id = auth()->id();
+            $hotels_collection = Hotel::where('user_id',$user_id)->get();
+            $hotels_number = $hotels_collection->count();
+            if($hotels_number > 0){
+                $hotels = $hotels_collection->toArray();
+                return response()->view(P::VIEW_MYHOTELS,[
+                    C::KEY_DONE => true,
+                    C::KEY_EMPTY => false,
+                    'hotels' => $hotels,
+                    'hotels_number' => $hotels_number]);
+            }//if($hotels_number > 0){
+            else{
+                return response()->view(P::VIEW_MYHOTELS,[
+                    C::KEY_DONE => true,
+                    C::KEY_EMPTY => true,
+                    C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
+                    'hotels_number' => $hotels_number
+                ]);
+            }
+        }catch(Exception $e){
+            throw new HttpResponseException(
+                response()->view(P::VIEW_MYHOTELS,[
+                    C::KEY_DONE => false,
+                    C::KEY_MESSAGE => C::ERR_MYHOTELS
+                ],500)
+            );
+        } 
     }
 
     /**

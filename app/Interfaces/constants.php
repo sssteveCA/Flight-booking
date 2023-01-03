@@ -21,6 +21,8 @@ interface Constants{
     const ERR_HOTELPAYMENT_UNKNOWN = "Errore durante il pagamento delle stanze d'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
+    const ERR_MYFLIGHTS = "Errore durante la ricerca dei tuoi voli prenotati. ".Constants::ADMIN_CONTACT;
+    const ERR_MYHOTELS = "Errore durante la ricerca delle tue stanze prenotate. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
     const ERR_LOGOUT = "Si è verificato un errore durante la disconnessione dell'account";
@@ -75,6 +77,7 @@ interface Constants{
 
     //Other messages
     const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Non hai ancora prenotato nessun volo";
+    const MESS_BOOKED_HOTEL_LIST_EMPTY = "Non hai ancora prenotato nessuna stanza d'albergo";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
     const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
     const MESS_NOPOSTS = "Nessuna notizia da mostrare";
