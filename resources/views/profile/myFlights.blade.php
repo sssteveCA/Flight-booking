@@ -18,8 +18,9 @@
 
 @section('content')
     @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../../'])
-    @if($flights_number > 0)
-        <div class="container-fluid">
+    @if($done == true)
+        @if($empty == false)
+            <div class="container-fluid">
             @foreach($flights as $flight)
                 <div class="row justify-content-center justify-content-lg-start">
                     <div class="col-2 col-lg-1 flight-id">
@@ -59,13 +60,18 @@
                     </div>        
                 </div>
             @endforeach
-        </div>
+            </div>
+        @else
+            @isset($message)
+            <div class="container mt-5">
+                <h2 class="mt-5 text-center">Lista voli vuota</h2>
+                <p class="lead text-center">{{$message}}</p>
+            </div>
+            @endisset
+        @endif
     @else
         @isset($message)
-        <div class="container mt-5">
-            <h2 class="mt-5 text-center">Lista voli vuota</h2>
-            <p class="lead text-center">{{$message}}</p>
-        </div>
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
         @endisset
     @endif
 @endsection
