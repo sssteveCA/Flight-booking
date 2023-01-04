@@ -29,7 +29,7 @@ class HotelController extends Controller
             $hotels_number = $hotels_collection->count();
             if($hotels_number > 0){
                 $hotels = $hotels_collection->toArray();
-                Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
+                //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
                 return response()->view(P::VIEW_MYHOTELS,[
                     C::KEY_DONE => true,
                     C::KEY_EMPTY => false,
@@ -97,9 +97,9 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show(Hotel $hotel,$myHotel)
     {
-        $hotel = Hotel::find($hotel);
+        $hotel = Hotel::find($myHotel);
         if($hotel != null){
             $user_id = auth()->id();
             if($user_id == $hotel->user_id){
@@ -108,6 +108,7 @@ class HotelController extends Controller
                 ]);
             }//if($user_id == $hotel->user_id){
         }//if($hotel != null){
+        session()->put('redirect','1');
         return redirect(P::URL_ERRORS);
     }
 

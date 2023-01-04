@@ -127,13 +127,9 @@ class FlightController extends Controller
                     'flight' => $flight
                 ],200);
             }//if($user_id == $flight->user_id){
-            else $code = 401; //Unauthorized
         }//if($flight != null){
-        else $code = 404; //Forbidden
-        return response()->view(P::VIEW_FALLBACK,
-            [
-                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
-            ],$code);
+        session()->put('redirect','1');
+        return redirect(P::URL_ERRORS);
     }
 
     /**
