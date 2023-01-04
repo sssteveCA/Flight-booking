@@ -10,12 +10,14 @@
         @yield('meta')
         @section('links')
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/layouts/menu.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/partials/footer.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
             <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
         @show
         @section('scripts')
-            <script src="{{ asset('js/app.js') }}"></script>
-            <script src="{{ asset('js/layouts/menu.js') }}"></script>
+            <script lang="ts" src="{{ asset('js/app.js') }}"></script>
+            <script lang="ts" src="{{ asset('js/partials/footer.js') }}"></script>
+            <script lang="ts" src="{{ asset('js/partials/menu.js') }}"></script>
         @show
         @includeIf(P::VIEW_PRIVACY)
     </head>

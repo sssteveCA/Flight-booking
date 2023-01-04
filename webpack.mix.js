@@ -21,7 +21,8 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/profile/myHotels/hotel.ts','public/js/profile/myHotels')
 +mix.ts('resources/js/contacts.ts','public/js')
 +mix.ts('resources/js/login.ts','public/js')
-+mix.ts('resources/js/layouts/menu.ts','public/js/layouts/')
++mix.ts('resources/js/partials/footer.ts','public/js/partials/')
++mix.ts('resources/js/partials/menu.ts','public/js/partials/')
 +mix.ts('resources/js/profile/info.ts','public/js/profile')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/welcome.scss','public/css')
@@ -42,5 +43,5 @@ const mix = require('laravel-mix');
     .sass('resources/sass/register.scss','public/css')
     .sass('resources/sass/profile/info.scss','public/css/profile')
     .sass('resources/sass/footer.scss','public/css')
-    .sass('resources/sass/layouts/menu.scss','public/css/layouts')
+    .sass('resources/sass/menu.scss','public/css')
     .sourceMaps();
