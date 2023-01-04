@@ -1,14 +1,6 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('content')
-    {{-- @isset($post_data)
-        @php
-            echo '<pre>';
-            var_dump($post_data);
-            echo '</pre>';
-        @endphp
-    @endisset
-    --}}
     <div class="container mt-5">
             <h2 class="mt-5 text-center">Prenotazione stanze d'albergo</h2>
             @if(isset($payment) and $payment == 'completed')

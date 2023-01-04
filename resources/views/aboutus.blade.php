@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,7 +9,8 @@
 @section('title','Chi siamo')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/aboutus.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/aboutus.css') }}">
 @endsection
 
 @section('content')

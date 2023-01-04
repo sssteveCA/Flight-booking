@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespace')
     @php
@@ -9,6 +9,7 @@
 @section('title','Errore')
 
 @section('links')
+    @parent
     <link rel="stylesheet" href="{{ asset('css/error/errors.css') }}">
 @endsection
 

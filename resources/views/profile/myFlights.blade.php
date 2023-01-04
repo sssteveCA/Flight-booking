@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,11 +9,13 @@
 @section('title','I miei voli')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/profile/myFlights.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/profile/myFlights.css') }}">
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/profile/myFlights.js') }}"></script>
+    @parent
+    <script src="{{ asset('js/profile/myFlights.js') }}"></script>
 @endsection
 
 @section('content')

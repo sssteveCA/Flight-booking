@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -13,11 +13,13 @@
 @endsection
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/profile/info.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/profile/info.css') }}">
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/profile/info.js') }}"></script>
+    @parent
+    <script src="{{ asset('js/profile/info.js') }}"></script>
 @endsection
 
 @section('content')

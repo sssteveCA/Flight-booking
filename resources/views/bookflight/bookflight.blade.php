@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,6 +9,7 @@
 @section('title', 'Paga i voli prenotati')
 
 @section('links')
+    @parent
     <link rel="stylesheet" href=" {{ asset('css/bookflight/bookflight.css') }}">
 @endsection
 

@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespace')
     @php
@@ -9,6 +9,7 @@
 @section('title','Paga le stanze dell\'albergo prenotate')
 
 @section('links')
+    @parent
     <link rel="stylesheet" href=" {{ asset('css/bookhotel/bookhotel.css') }}">
 @endsection
 

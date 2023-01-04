@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,11 +9,13 @@
 @section('title','Contatti')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/contacts.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/contacts.css') }}">
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/contacts.js') }}"></script>
+    @parent
+    <script src="{{ asset('js/contacts.js') }}"></script>
 @endsection
 
 @section('content')

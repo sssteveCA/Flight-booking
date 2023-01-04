@@ -1,13 +1,15 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('title','Registrazione')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/auth/register.js') }}"></script>
+@parent
+    <script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection
 
 @section('content')

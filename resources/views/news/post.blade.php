@@ -1,7 +1,8 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/news/post.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/news/post.css') }}">
 @endsection
 
 @section('content')

@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.parent')
 
 @section('namespaces')
     @php
@@ -10,10 +10,12 @@
 @section('title','Prezzo volo scelto')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/welcome/flightpriceresult.css') }} ">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/welcome/flightpriceresult.css') }} ">
 @endsection
 
 @section('scripts')
+    @parent
 @endsection
 
 @section('content')

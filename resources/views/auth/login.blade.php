@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,10 +9,12 @@
 @section('title','Login')
 
 @section('links')
+    @parent
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
 @section('scripts')
+    @parent
     <script src="{{ asset('js/login.js') }}"></script>
 @endsection
 
