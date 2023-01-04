@@ -32,6 +32,7 @@ const mix = require('laravel-mix');
     .sass('resources/sass/profile/myFlights.scss','public/css/profile')
     .sass('resources/sass/profile/myHotels.scss','public/css/profile')
     .sass('resources/sass/profile/myFlights/flight.scss','public/css/profile/myFlights')
+    .sass('resources/sass/profile/myHotels/hotel.scss','public/css/profile/myHotels')
     .sass('resources/sass/news.scss','public/css')
     .sass('resources/sass/news/post.scss','public/css/news')
     .sass('resources/sass/aboutus.scss','public/css')
