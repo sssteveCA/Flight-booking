@@ -18,6 +18,7 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/profile/myFlights.ts','public/js/profile')
 +mix.ts('resources/js/profile/myHotels.ts','public/js/profile')
 +mix.ts('resources/js/profile/myFlights/flight.ts','public/js/profile/myFlights')
++mix.ts('resources/js/profile/myHotels/hotel.ts','public/js/profile/myHotels')
 +mix.ts('resources/js/contacts.ts','public/js')
 +mix.ts('resources/js/login.ts','public/js')
 +mix.ts('resources/js/layouts/menu.ts','public/js/layouts/')

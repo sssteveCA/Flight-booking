@@ -6,6 +6,7 @@
     "/js/profile/myFlights.js": "/js/profile/myFlights.js",
     "/js/profile/myHotels.js": "/js/profile/myHotels.js",
     "/js/profile/myFlights/flight.js": "/js/profile/myFlights/flight.js",
+    "/js/profile/myHotels/hotel.js": "/js/profile/myHotels/hotel.js",
     "/js/contacts.js": "/js/contacts.js",
     "/js/login.js": "/js/login.js",
     "/js/layouts/menu.js": "/js/layouts/menu.js",
