@@ -20,7 +20,16 @@
         @includeIf(P::VIEW_PRIVACY)
     </head>
     <body>
-        @include(P::VIEW_MENU)
+        @include(P::VIEW_MENU,[
+            'urlRoot' => P::URL_ROOT,
+            'urlAboutUs' => P::URL_ABOUTUS,
+            'urlContacts' => P::URL_CONTACTS,
+            'routeInfo' => P::ROUTE_INFO,
+            'viewMenuPrivacy' => P::VIEW_MENU_PRIVACY,
+            'urlPrivacyPolicy' => P::URL_PRIVACY_POLICY,
+            'urlCookiePolicy' => P::URL_COOKIE_POLICY,
+            'urlTerms' => P::URL_TERMS
+            ])
         <div class="content my-5">
             @yield('content')
         </div>

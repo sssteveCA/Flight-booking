@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
@@ -9,12 +9,14 @@
 @section('title','FlightBooking')
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 @endsection
 
 @section('scripts')
-<script lang="ts" src="{{ asset('js/welcome.js') }}"></script>
-<script lang="ts" src="{{ asset('js/welcome.hotel.js') }}"></script>
+    @parent
+    <script lang="ts" src="{{ asset('js/welcome.js') }}"></script>
+    <script lang="ts" src="{{ asset('js/welcome.hotel.js') }}"></script>
 @endsection
 
 @section('content')
