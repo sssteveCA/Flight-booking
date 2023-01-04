@@ -91,12 +91,13 @@ interface Paths{
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
+    const VIEW_HOTEL = 'profile.myHotels.hotel';
     const VIEW_HOTELLOGIN = 'include.hotellogin';
     const VIEW_HOTELPRICERESULT = 'welcome.hotelpriceresult';
     const VIEW_MENU = 'layouts.menu';
     const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
-    const VIEW_MYHOTELS = 'profile.myHotels';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
+    const VIEW_MYHOTELS = 'profile.myHotels';
     const VIEW_NEWS = 'news';
     const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
     const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';

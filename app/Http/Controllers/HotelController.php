@@ -99,7 +99,16 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        $hotel = Hotel::find($hotel);
+        if($hotel != null){
+            $user_id = auth()->id();
+            if($user_id == $hotel->user_id){
+                return response()->view(P::VIEW_HOTEL,[
+                    'hotel' => $hotel
+                ]);
+            }//if($user_id == $hotel->user_id){
+        }//if($hotel != null){
+        return redirect(P::URL_ERRORS);
     }
 
     /**
