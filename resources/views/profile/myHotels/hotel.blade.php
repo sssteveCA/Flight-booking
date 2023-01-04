@@ -25,49 +25,49 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">PAESE</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 country">{{ $hotel['country'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">CITTÀ</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 city">{{ $hotel['city'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">HOTEL</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 hotel">{{ $hotel['hotel'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">DATA DI PRENOTAZIONE</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 booking-date">{{ $hotel['booking_date'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">CHECKIN</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 checkin">{{ $hotel['checkin'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">CHECKOUT</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 checkout">{{ $hotel['checkout'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">STANZE</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 rooms">{{ $hotel['rooms'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">PERSONE</div>
-                <div class="col-12 col-md-5"></div>
+                <div class="col-12 col-md-5 people">{{ $hotel['people'] }}</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">STANZE PAGATE</div>
-                <div class="col-12 col-md-5">{{ $hotel['payed'] == '1' ? 'Sì' : 'No' }}</div>
+                <div class="col-12 col-md-5 hotel-payed">{{ $hotel['payed'] == '1' ? 'Sì' : 'No' }}</div>
             </div>
             @if($hotel['payed'] == '1')
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">DATA PAGAMENTO</div>
-                <div class="col-12 col-md-5 total-price">{{ $hotel['payed_date'] }}</div>
+                <div class="col-12 col-md-5 payment-date">{{ $hotel['payed_date'] }}</div>
             </div>
             @endif
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">PREZZO TOTALE</div>
-                <div class="col-12 col-md-5">€</div>
+                <div class="col-12 col-md-5 total-price">{{ $hotel['price'] }}€</div>
             </div>
             <div @class([
                 'row',

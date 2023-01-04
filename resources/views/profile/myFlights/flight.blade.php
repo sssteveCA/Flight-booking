@@ -53,28 +53,28 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">ADULTI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['adults'] }}</div>
+                <div class="col-12 col-md-5 adults">{{ $flight['adults'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">ADOLESCENTI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['teenagers'] }}</div>
+                <div class="col-12 col-md-5 teenagers">{{ $flight['teenagers'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">BAMBINI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['children'] }}</div>
+                <div class="col-12 col-md-5 children">{{ $flight['children'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">NEONATI</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['newborns'] }}</div>
+                <div class="col-12 col-md-5 newborns">{{ $flight['newborns'] }}</div>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">VOLO PAGATO</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['payed'] == '1' ? 'Sì' : 'No' }}</div>
+                <div class="col-12 col-md-5 flight-payed">{{ $flight['payed'] == '1' ? 'Sì' : 'No' }}</div>
             </div> 
             @if($flight['payed'] == '1')
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">DATA PAGAMENTO</div>
-                <div class="col-12 col-md-5 total-price">{{ $flight['payed_date'] }}</div>
+                <div class="col-12 col-md-5 payment-date">{{ $flight['payed_date'] }}</div>
             </div> 
             @endif
             <div class="row justify-content-center">

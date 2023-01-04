@@ -33,7 +33,7 @@
                     {{ $hotel['hotel'] }}
                 </div>
                 <div class="col-12 col-sm-4 col-lg-2 hotel-show d-flex justify-content-center justify-content-sm-start">
-                    <form class="fHotelGet" method="get" action="#">
+                    <form class="fHotelGet" method="get" action="{{ route('hotel.show',['myHotel' => $hotel['id'] ])}}">
                         <button type="submit" class="btn btn-primary">VEDI</button>
                     </form>
                 </div>
