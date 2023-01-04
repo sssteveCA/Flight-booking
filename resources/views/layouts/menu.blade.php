@@ -7,13 +7,15 @@
     <head>
         <title>@yield('title')</title>
         @yield('meta')
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/layouts/menu.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-        @yield('links')
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/layouts/menu.js') }}"></script>
-        @yield('scripts')
+        @section('links')
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/layouts/menu.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+        @show
+        @section('scripts')
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/layouts/menu.js') }}"></script>
+        @show
         @includeIf(P::VIEW_PRIVACY)
     </head>
     <body>
