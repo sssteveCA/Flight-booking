@@ -19,7 +19,7 @@ $(function(){
             message: Constants.MSG_CONFIRMDELETEFLIGHT
         }
         let confirmDialog: ConfirmDialog = new ConfirmDialog(dataCd);
-        $(confirmDialog.btYes).on('click',(e)=>{
+        $(confirmDialog.btYes).on('click',()=>{
             confirmDialog.dialog.dialog('destroy');
             confirmDialog.dialog.remove();
             let id = form.find('input[name=flight_id]');
