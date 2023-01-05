@@ -12,6 +12,7 @@ export namespace Constants{
     export const PORT = 8000;
 
     //Keys
+    export const KEY_DONE = 'done';
     export const KEY_MESSAGE = 'message';
     export const KEY_STATUS = 'status';
 
