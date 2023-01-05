@@ -39,6 +39,7 @@ export namespace Constants{
     export const URL_FLIGHTSLIST = '/profile/myFlights';
     export const URL_FLIGHTEVENTS = '/flightevents';
     export const URL_FLIGHTSEARCH = '/flightsearch'
+    export const URL_HOTELLIST = '/profile/myHotels';
     export const URL_HOTELS_AVAILABLE = '/hotels';
     export const URL_PREFERENCES_SET = '/preferences_set';
     export const URL_SENDEMAIL = '/contacts/sendemail';

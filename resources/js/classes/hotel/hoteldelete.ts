@@ -1,4 +1,5 @@
 import HotelDeleteInterface from "../../interfaces/hotel/hoteldelete.interface";
+import { Constants } from "../../values/constants";
 
 export default class HotelDelete{
 
@@ -11,7 +12,7 @@ export default class HotelDelete{
 
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
-    private static URL_SCRIPT:string = "";
+    private static URL_SCRIPT:string = Constants.URL_HOTELLIST;
 
     constructor(data: HotelDeleteInterface){
         this._id = data.id;

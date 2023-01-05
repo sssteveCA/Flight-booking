@@ -19,6 +19,7 @@ interface Constants{
     const ERR_FLIGHTPAYMENT_UNKNOWN = "Errore durante il pagamento del volo. ".Constants::ADMIN_CONTACT;
     const ERR_HOTELPAYMENT_REFUSE = "Il pagamento delle stanze d'albergo prenotate è stato rifiutato";
     const ERR_HOTELPAYMENT_UNKNOWN = "Errore durante il pagamento delle stanze d'albergo. ".Constants::ADMIN_CONTACT;
+    const ERR_HOTEL_DELETE = "Errore durante la rimozione della prenotazione. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
     const ERR_MYFLIGHTS = "Errore durante la ricerca dei tuoi voli prenotati. ".Constants::ADMIN_CONTACT;
@@ -53,6 +54,7 @@ interface Constants{
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
     const OK_FLIGHTDELETE = "Il volo selezionato è stato rimosso";
     const OK_FLIGHTPAYMENT = "Il pagamento è stato completato. I voli richiesti sono stati prenotati";
+    const OK_HOTELDELETE = "La prenotazione selezionata è stata rimossa";
     const OK_HOTELPAYMENT = "Il pagamento è stato completato. Le stanze d'albergo richieste sono state prenotate";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";

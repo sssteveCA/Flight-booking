@@ -141,8 +141,31 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Hotel $hotel, $myHotel)
     {
         //
+        $response_data = [
+            C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+        ];
+        $hotel = Hotel::find($myHotel);
+        if($hotel != null){
+            $user_id = auth()->id();
+            if($hotel->user_id == $user_id){
+                $delete = $hotel->delete();
+                //$delete = true;
+                if($delete){
+                    $response_data = [
+                    C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_HOTELDELETE ];
+                    $code = 200; 
+                }
+                else{
+                    $response_data[C::KEY_MESSAGE] = C::ERR_HOTEL_DELETE;
+                    $code = 500;
+                }  
+            }//if($hotel->user_id == $user_id){
+            else $code = 401;
+        }//if($hotel != null){
+        else $code = 404;
+        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 }

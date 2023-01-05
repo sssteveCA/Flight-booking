@@ -17,6 +17,8 @@ $(()=>{
         }
         let confirmDialog: ConfirmDialog = new ConfirmDialog(dataCd);
         confirmDialog.btYes.on('click',()=>{
+            confirmDialog.dialog.dialog('destroy');
+            confirmDialog.dialog.remove();
             let id = form.find('input[name=hotel_id]');
             let token = form.find('input[name=_token');
             let spinner: JQuery<HTMLDivElement> = form.parent('div').children('div').find('div') as JQuery<HTMLDivElement>;

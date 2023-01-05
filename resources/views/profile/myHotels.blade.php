@@ -33,12 +33,12 @@
                     {{ $hotel['hotel'] }}
                 </div>
                 <div class="col-12 col-sm-4 col-lg-2 hotel-show d-flex justify-content-center justify-content-sm-start">
-                    <form class="fHotelGet" method="get" action="{{ route('myHotels.show',['myHotel' => $hotel['id'] ])}}">
+                    <form class="fHotelGet" method="get" action="{{ route('myHotels.show',['myHotel' => $hotel['id']]) }}">
                         <button type="submit" class="btn btn-primary">VEDI</button>
                     </form>
                 </div>
                 <div class="col-12 col-sm-4 col-lg-2 hotel-delete d-flex justify-content-center justify-content-sm-start">
-                    <form class="fHotelDelete" method="post" action="#">
+                    <form class="fHotelDelete" method="post" action="{{ route('myHotels.destroy', ['myHotel' => $hotel['id']]) }}">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="hotel_id" value="{{ $hotel['id'] }}">
