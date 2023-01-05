@@ -5,6 +5,7 @@ import ConfirmDialogInterface from "../../interfaces/dialog/confirmdialog.interf
 import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interface";
 import { Constants } from "../../values/constants";
 import FlightDeleteInterface from "../../interfaces/flight/flightdelete.interface";
+import { dialogRemoveCd, dialogRemoveMd } from "../../general/functions";
 
 $(function(){
     $('#fDelete').on('submit', (e)=>{
@@ -35,17 +36,17 @@ $(function(){
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',
-                    message: obj['message']
+                    message: obj[Constants.KEY_MESSAGE]
                 };
                 let messageDialog: MessageDialog = new MessageDialog(dataMd);
                 $(messageDialog.btOk).on('click',()=>{
                     messageDialog.dialog.dialog('destroy');
                     messageDialog.dialog.remove();
                     //check if the delete operation was done successfully
-                    if(obj['deleted'] == true){
+                    if(obj[Constants.KEY_DONE] == true){
                         //Redirect to flights list page 
                         window.location.href = Constants.URL_FLIGHTSLIST;
-                    }//if(obj['deleted'] == true){   
+                    }//if(obj[Constants.KEY_DONE] == true){   
                 });
             }).catch(err => {
                 let dataMd: MessageDialogInterface = {
@@ -58,18 +59,3 @@ $(function(){
         dialogRemoveCd(confirmDialog);  
     });//$('.fFlightDelete').on('submit', ()=>{
 });
-
-function dialogRemoveMd(dataMd: MessageDialogInterface): void{
-    let messageDialog: MessageDialog = new MessageDialog(dataMd);
-    $(messageDialog.btOk).on('click',()=>{
-        messageDialog.dialog.dialog('destroy');
-        messageDialog.dialog.remove();
-    });
-}
-
-function dialogRemoveCd(confirmDialog: ConfirmDialog): void{
-    $(confirmDialog.btNo).on('click',()=>{
-        confirmDialog.dialog.dialog('destroy');
-        confirmDialog.dialog.remove();
-    });//$(cd.btNo).on('click',()=>{}  
-}
