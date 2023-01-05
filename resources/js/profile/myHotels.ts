@@ -1,4 +1,5 @@
 import ConfirmDialog from "../classes/dialog/confirmdialog";
+import { dialogRemoveCd } from "../general/functions";
 import ConfirmDialogInterface from "../interfaces/dialog/confirmdialog.interface";
 import { Constants } from "../values/constants";
 
@@ -15,5 +16,6 @@ $(()=>{
             let id = form.find('input[name=hotel_id]');
             let token = form.find('input[name=_token');
         });
+        dialogRemoveCd(confirmDialog);
     });
 })
