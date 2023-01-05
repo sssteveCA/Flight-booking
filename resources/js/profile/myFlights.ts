@@ -49,13 +49,13 @@ $(function(){
                     messageDialog.dialog.dialog('destroy');
                     messageDialog.dialog.remove();
                     //remove the row if the delete operation was done successfully
-                    if(obj['deleted'] == true){
+                    if(obj[Constants.KEY_DONE] == true){
                         //Get the parent elements of the form submitted
                         let divParents = form.parents();
                         //Get the row to delete
                         let row = divParents.eq(1);
                         $(row).remove();
-                    }//if(obj['deleted'] == true){   
+                    }//if(obj[Constants.KEY_DONE] == true){   
                 });
             }).catch(err => {
                 let dataMd: MessageDialogInterface = {

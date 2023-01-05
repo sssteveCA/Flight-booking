@@ -164,8 +164,7 @@ class FlightController extends Controller
     public function destroy(Flight $flight, $myFlight)
     {
         $response_data = [
-            'deleted' => false,
-            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+            C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
         ];
         $flight = Flight::find($myFlight);
         if($flight != null){
@@ -173,10 +172,18 @@ class FlightController extends Controller
             $user_id = auth()->id();
             if($flight->user_id == $user_id){
                 //The resource is owned by the logged user
-                $response_data['deleted'] = $flight->delete();
-                //Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true));
-                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTDELETE;
-                $code = 200; //OK
+                $delete = $flight->delete();
+                //$delete = true;
+                if($delete){
+                    $response_data = [
+                        C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
+                    ];
+                    $code = 200;
+                }
+                else{
+                    $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHT_DELETE;
+                    $code = 500;
+                }
             }//if($flight->user_id == $user_id){
             else $code = 401; //Unauthorized
         }//if($flight != null){

@@ -44,7 +44,7 @@ export default class HotelDelete{
         }catch(e){
             this._errno = HotelDelete.ERR_FETCH;
             response = {
-                done: false, msg: this.error
+                done: false, message: this.error
             }
         }
         return response;

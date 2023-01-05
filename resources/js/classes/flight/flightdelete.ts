@@ -41,26 +41,23 @@ export default class FlightDelete{
     }
 
     public async deleteFlight(): Promise<object>{
-        let msg = '';
-        let deleted = false;
         this._errno = 0;
-        await this.deleteFlightPromise().then(res => {
-            //console.log(res);
-            let json = JSON.parse(res);
-            //console.log(json);
-            msg = json[Constants.KEY_MESSAGE];
-            deleted = json['deleted'];
-        }).catch(err => {
-            console.warn(err);
+        let response: object = {};
+        try{
+            await this.deleteFlightPromise().then(res => {
+                //console.log(res);
+                response = JSON.parse(res);
+            }).catch(err => {
+                console.warn(err);
+                throw err;
+            });
+        }catch(e){
             this._errno = FlightDelete.ERR_FETCH;
-            msg = this.error as string;
-        });
-        this._deleted = deleted;
-        this._msg = msg;
-        let obj = {};
-        obj[Constants.KEY_MESSAGE] = this._msg;
-        obj['deleted'] = this._deleted;
-        return obj;
+            response = {
+                done: false, message: this.error
+            }
+        }
+        return response;
     }
 
     private async deleteFlightPromise(): Promise<string>{
