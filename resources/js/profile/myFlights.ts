@@ -1,6 +1,7 @@
 import ConfirmDialog from "../classes/dialog/confirmdialog";
 import MessageDialog from "../classes/dialog/messagedialog";
 import FlightDelete from "../classes/flight/flightdelete";
+import { dialogRemoveCd, dialogRemoveMd } from "../general/functions";
 import ConfirmDialogInterface from "../interfaces/dialog/confirmdialog.interface";
 import MessageDialogInterface from "../interfaces/dialog/messagedialog.interface";
 import FlightDeleteInterface from "../interfaces/flight/flightdelete.interface";
@@ -68,17 +69,3 @@ $(function(){
     });//$('.fFlightDelete').on('submit', ()=>{
 });
 
-function dialogRemoveMd(dataMd: MessageDialogInterface): void{
-    let messageDialog: MessageDialog = new MessageDialog(dataMd);
-    $(messageDialog.btOk).on('click',()=>{
-        messageDialog.dialog.dialog('destroy');
-        messageDialog.dialog.remove();
-    });
-}
-
-function dialogRemoveCd(confirmDialog: ConfirmDialog): void{
-    $(confirmDialog.btNo).on('click',()=>{
-        confirmDialog.dialog.dialog('destroy');
-        confirmDialog.dialog.remove();
-    });//$(cd.btNo).on('click',()=>{}  
-}
