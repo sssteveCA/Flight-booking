@@ -1,0 +1,73 @@
+@use "sass:list";
+
+@mixin flight-div-large($flight-div-class,$flight-type-class,$items-border,$flight-row-class,$column-elem-number,$column-elem-widths-lg,$paragraphs-padding){
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            padding: auto 15px;
+            text-align: center;
+            border: $items-border;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            @for $i from 1 through $column-elem-number{
+                >div:nth-child(#{$i}){
+                    width: list.nth($column-elem-widths-lg,$i);
+                    p{
+                        padding: $paragraphs-padding;
+                        border: $items-border;
+                        text-align: center;
+                        /* &:nth-child(1){
+                            background-color: list.nth($column-elem-colors-1p,$i);
+                        }
+                        &:nth-child(2){
+                            background-color: list.nth($column-elem-colors-2p,$i);
+                        } */
+                    }
+                }
+            }//@for $i from 1 through $column-elem-number{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
+}
+
+@mixin flight-div-medium($flight-div-class,$flight-type-class,$items-border,$flight-row-class,$column-elem-class){
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            text-align: center;
+            border: $items-border;
+            padding: auto 8px;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            flex-direction: column;
+            div.#{$column-elem-class}{
+                display:flex;
+                flex-flow: row nowrap;
+                p{
+                    width: 50%;
+                    border: $items-border;
+                    text-align: center;
+                }
+            }//div.#{$column-elem-class}{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
+}
+
+@mixin flight-div-small($flight-div-class,$flight-type-class,$flight-row-class,$items-border,$column-elem-class){
+    div.#{$flight-div-class}{
+        div.#{$flight-type-class}{
+            padding: auto 5px;
+        }
+        div.#{$flight-row-class}{
+            display: flex;
+            flex-direction: column;
+            border: $items-border;
+            div.#{$column-elem-class}{
+                display: flex;
+                flex-direction: column;
+                p{
+                    width: 100%;
+                }
+            }//div.#{$column-elem-class}{
+        }//div.#{$flight-row-class}{
+    }//div.#{$flight-div-class}{
+}

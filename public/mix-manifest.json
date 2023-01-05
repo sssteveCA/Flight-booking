@@ -28,8 +28,8 @@
     "/css/profile/myHotels.css": "/css/profile/myHotels.css",
     "/css/profile/myFlights.css": "/css/profile/myFlights.css",
     "/css/welcome/hotelpriceresult.css": "/css/welcome/hotelpriceresult.css",
-    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css",
     "/css/error/errors.css": "/css/error/errors.css",
     "/css/bookhotel/bookhotel.css": "/css/bookhotel/bookhotel.css",
-    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css"
+    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css",
+    "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css"
 }

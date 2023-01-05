@@ -1,4 +1,4 @@
-@extends('layouts.parent')
+@extends('layouts.page')
 
 @section('namespaces')
     @php
