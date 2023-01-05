@@ -118,18 +118,22 @@ class FlightController extends Controller
      */
     public function show(Flight $flight,$myFlight)
     {
-        $flight = Flight::find($myFlight);
-        if($flight != null){
-            //Requested flight found
-            $user_id = auth()->id();
-            if($user_id == $flight->user_id){
-                return response()->view(P::VIEW_FLIGHT,[
-                    'flight' => $flight
-                ],200);
-            }//if($user_id == $flight->user_id){
-        }//if($flight != null){
-        session()->put('redirect','1');
-        return redirect(P::URL_ERRORS);
+        try{
+            $flight = Flight::find($myFlight);
+            if($flight != null){
+                //Requested flight found
+                $user_id = auth()->id();
+                if($user_id == $flight->user_id){
+                    return response()->view(P::VIEW_FLIGHT,[
+                        'flight' => $flight
+                    ],200);
+                }//if($user_id == $flight->user_id){
+            }//if($flight != null){
+            throw new Exception;
+        }catch(Exception $e){
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
+        }
     }
 
     /**
@@ -163,32 +167,35 @@ class FlightController extends Controller
      */
     public function destroy(Flight $flight, $myFlight)
     {
-        $response_data = [
-            C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
-        ];
-        $flight = Flight::find($myFlight);
-        if($flight != null){
-            //Requested resource exists
-            $user_id = auth()->id();
-            if($flight->user_id == $user_id){
-                //The resource is owned by the logged user
-                $delete = $flight->delete();
-                //$delete = true;
-                if($delete){
-                    $response_data = [
-                        C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
-                    ];
-                    $code = 200;
-                }
-                else{
-                    $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHT_DELETE;
-                    $code = 500;
-                }
-            }//if($flight->user_id == $user_id){
-            else $code = 401; //Unauthorized
-        }//if($flight != null){
-        else $code = 404; //Not found
-        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            $response_data = [
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+            ];
+            $flight = Flight::find($myFlight);
+            if($flight != null){
+                $user_id = auth()->id();
+                if($flight->user_id == $user_id){
+                    $delete = $flight->delete();
+                    //$delete = true;
+                    if($delete){
+                        $response_data = [
+                            C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
+                        ];
+                        $code = 200;
+                    }
+                    else throw new Exception;
+                }//if($flight->user_id == $user_id){
+                else $code = 401;
+            }//if($flight != null){
+            else $code = 404;
+            return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            throw new HttpResponseException(
+                response()->json([
+                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHT_DELETE
+                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+            );
+        }
     }
 
     //Remove backslashes from flights array keys

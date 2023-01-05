@@ -22,7 +22,7 @@ function footerPosition(footerEl: JQuery): void{
     /* console.log("footerHeight => "+footerHeight);
     console.log("bodyHeight => "+bodyHeight);
     console.log("windowHeight => "+windowHeight); */ 
-    if(bodyHeight < (windowHeight - footerHeight)){
+    if(bodyHeight < windowHeight){
         footerEl.css({
             position: 'fixed',
             bottom: '0px'

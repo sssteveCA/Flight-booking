@@ -99,17 +99,21 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel,$myHotel)
     {
-        $hotel = Hotel::find($myHotel);
-        if($hotel != null){
-            $user_id = auth()->id();
-            if($user_id == $hotel->user_id){
-                return response()->view(P::VIEW_HOTEL,[
-                    'hotel' => $hotel
-                ]);
-            }//if($user_id == $hotel->user_id){
-        }//if($hotel != null){
-        session()->put('redirect','1');
-        return redirect(P::URL_ERRORS);
+        try{
+            $hotel = Hotel::find($myHotel);
+            if($hotel != null){
+                $user_id = auth()->id();
+                if($user_id == $hotel->user_id){
+                    return response()->view(P::VIEW_HOTEL,[
+                        'hotel' => $hotel
+                    ]);
+                }//if($user_id == $hotel->user_id){
+            }//if($hotel != null){
+            throw new Exception;
+        }catch(Exception $e){
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
+        }   
     }
 
     /**
@@ -143,29 +147,33 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel, $myHotel)
     {
-        //
-        $response_data = [
-            C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
-        ];
-        $hotel = Hotel::find($myHotel);
-        if($hotel != null){
-            $user_id = auth()->id();
-            if($hotel->user_id == $user_id){
-                $delete = $hotel->delete();
-                //$delete = true;
-                if($delete){
-                    $response_data = [
-                    C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_HOTELDELETE ];
-                    $code = 200; 
-                }
-                else{
-                    $response_data[C::KEY_MESSAGE] = C::ERR_HOTEL_DELETE;
-                    $code = 500;
-                }  
-            }//if($hotel->user_id == $user_id){
-            else $code = 401;
-        }//if($hotel != null){
-        else $code = 404;
-        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            $response_data = [
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+            ];
+            $hotel = Hotel::find($myHotel);
+            if($hotel != null){
+                $user_id = auth()->id();
+                if($hotel->user_id == $user_id){
+                    $delete = $hotel->delete();
+                    //$delete = true;
+                    if($delete){
+                        $response_data = [
+                        C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_HOTELDELETE ];
+                        $code = 200; 
+                    }
+                    else throw new Exception;
+                }//if($hotel->user_id == $user_id){
+                else $code = 401;
+            }//if($hotel != null){
+            else $code = 404;
+            return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            throw new HttpResponseException(
+                response()->json([
+                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_DELETE
+                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
+            );
+        }
     }
 }
