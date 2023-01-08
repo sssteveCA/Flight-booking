@@ -27,14 +27,17 @@ class HotelSearchControllerApi extends Controller
                 case 0:
                     $response_array = [
                         C::KEY_DONE => true,
-                        'data' => [
-                            'country' => $hotelPrice->getCountry(),
-                            'city' => $hotelPrice->getCity(),
-                            'hotel' => $hotelPrice->getHotel(),'checkin' => $hotelPrice->getCheckin(),
-                            'checkout' => $hotelPrice->getCheckout(),'people' => $hotelPrice->getPeople(),'rooms' => $hotelPrice->getRooms(),
-                            'price' => $hotelPrice->getFullPrice()]
+                        'response' => [
+                            'hotel' => [
+                                'country' => $hotelPrice->getCountry(),
+                                'city' => $hotelPrice->getCity(),
+                                'hotel' => $hotelPrice->getHotel(),'checkin' => $hotelPrice->getCheckin(),
+                                'checkout' => $hotelPrice->getCheckout(),'people' => $hotelPrice->getPeople(),'rooms' => $hotelPrice->getRooms(),
+                                'price' => $hotelPrice->getFullPrice()
+                                ]
+                            ]
                         ];
-                        $hptm_params = $response_array["data"];
+                        $hptm_params = $response_array["response"]["hotel"];
                         $hptm = new HotelPriceTempManager($hptm_params);
                         $hptm->addHotelPriceTemp();
                         $response_code = 201;
