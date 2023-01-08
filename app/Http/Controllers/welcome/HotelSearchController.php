@@ -23,41 +23,9 @@ class HotelSearchController extends Controller
         $inputs = $request->validated();
         //Log::channel('stdout')->debug("Hotel search controller getHotelPrice inputs => ".var_export($inputs,true));
         try{
-            $hotelPrice = new HotelPrice($inputs);
-            $errnoHp = $hotelPrice->getErrno();
-            switch($errnoHp){
-                case 0:
-                    $hotel_data = [
-                        'country' => $hotelPrice->getCountry(), 'city' => $hotelPrice->getCity(), 'hotel' => $hotelPrice->getHotel(),
-                        'checkin' => $hotelPrice->getCheckin(), 'checkout' => $hotelPrice->getCheckout(), 'people' => $hotelPrice->getPeople(),
-                        'rooms' => $hotelPrice->getRooms(), 'price' => $hotelPrice->getFullPrice()
-                    ];
-                    $response_array = [
-                        C::KEY_DONE => true,
-                        'response' => [ 
-                            'hotel' => $hotel_data
-                        ]   
-                    ];
-                    $hptm_params = $response_array["response"]["hotel"];
-                    $hptm = new HotelPriceTempManager($hptm_params);
-                    //Log::channel('stdout')->info("HotelSearchController after HotelPriceTempManager");
-                    $hptm->addHotelPriceTemp();
-                    $response_array['response']['session_id'] = $hptm->getSessionId();
-                    $response_code = 201;
-                    break;
-                case Hpe::TOOMANYPEOPLE_FOR_ROOMS:
-                    $response_array = [
-                        C::KEY_DONE => false, 'error_message' => $hotelPrice->getError()];
-                    $response_code = 400;
-                    break;
-                default:
-                    $response_array = [
-                        C::KEY_DONE => false, 'error_message' => C::ERR_HOTEL_PREVENTIVE];
-                    $response_code = 500;
-                    break;
-            }
+            $hotelPriceData = $this->getHotelPriceInfo($inputs);
             //Log::channel('stdout')->info("HotelSearchController getHotelPrice response_array => ".var_export($response_array,true));
-            return response()->view(P::VIEW_HOTELPRICERESULT,$response_array,$response_code);
+            return response()->view(P::VIEW_HOTELPRICERESULT,$hotelPriceData["response_array"],$hotelPriceData["response_code"]);
         }catch(Exception $e){
             //Log::channel('stdout')->info("HotelSearchController getHotelPrice exception => ".$e->getMessage());
             throw new HttpResponseException(

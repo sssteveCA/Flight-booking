@@ -21,41 +21,8 @@ class HotelSearchControllerApi extends Controller
     public function getHotelPrice(HotelPriceRequestApi $request){
         $inputs = $request->validated();
         try{
-            $hotelPrice = new HotelPrice($inputs);
-            $errnoHp = $hotelPrice->getErrno();
-            switch($errnoHp){
-                case 0:
-                    $response_array = [
-                        C::KEY_DONE => true,
-                        'response' => [
-                            'hotel' => [
-                                'country' => $hotelPrice->getCountry(),
-                                'city' => $hotelPrice->getCity(),
-                                'hotel' => $hotelPrice->getHotel(),'checkin' => $hotelPrice->getCheckin(),
-                                'checkout' => $hotelPrice->getCheckout(),'people' => $hotelPrice->getPeople(),'rooms' => $hotelPrice->getRooms(),
-                                'price' => $hotelPrice->getFullPrice()
-                                ]
-                            ]
-                        ];
-                        $hptm_params = $response_array["response"]["hotel"];
-                        $hptm = new HotelPriceTempManager($hptm_params);
-                        $hptm->addHotelPriceTemp();
-                        $response_code = 201;
-                    break;
-                case Hpe::TOOMANYPEOPLE_FOR_ROOMS:
-                    $response_array = [
-                        C::KEY_DONE => false, C::KEY_MESSAGE => $hotelPrice->getError()
-                    ];
-                    $response_code = 400;
-                    break;
-                default:
-                    $response_array = [
-                        C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_PREVENTIVE
-                    ];
-                    $response_code = 500;
-                    break;
-            }
-            return response()->json($response_array,$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $hotelPriceData = $this->getHotelPriceInfo($inputs);
+            return response()->json($hotelPriceData["response_array"],$hotelPriceData["response_code"],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("Hotel Search Controller Api Exception => ".$e->getMessage());
             $response_code = 500;

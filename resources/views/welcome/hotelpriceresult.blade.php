@@ -44,7 +44,7 @@
                         <p class="bg-light bg-gradient">{{ $response['hotel']['checkin'] }}</p>
                     </div>
                     <div class="column-elem">
-                        <p class="hp-ce-header bg-warning bg-gradient">Data check-in</p>
+                        <p class="hp-ce-header bg-warning bg-gradient">Data check-out</p>
                         <p class="bg-light bg-gradient">{{ $response['hotel']['checkout'] }}</p>
                     </div>
                     <div class="column-elem">
