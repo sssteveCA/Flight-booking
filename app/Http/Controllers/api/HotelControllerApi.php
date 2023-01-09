@@ -14,7 +14,7 @@ class HotelControllerApi extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth('api')->user()->id;
     }
 
     /**

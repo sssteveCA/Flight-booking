@@ -9,6 +9,7 @@ use App\Interfaces\Constants as C;
 use App\Interfaces\ExceptionsMessages as Em;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Paths as P;
 
 /**
  * This trait contain common code between HotelController and HotelControllerApi
@@ -42,6 +43,27 @@ trait HotelControllerCommonTrait{
         return $hotel;
     }
 
+    private function setIndexResponseData($user_id): array{
+        $hotels_collection = Hotel::where('user_id',$user_id)->get();
+            //Log::channel('stdout')->info("HotelController index hotel_collections => ".var_export($hotels_collection,true));
+            $hotels_number = $hotels_collection->count();
+            if($hotels_number > 0){
+                $hotels = $hotels_collection->toArray();
+                //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
+                return [
+                    C::KEY_DONE => true,
+                    C::KEY_EMPTY => false,
+                    'hotels' => $hotels,
+                    'hotels_number' => $hotels_number];
+            }//if($hotels_number > 0){ 
+            return [
+                C::KEY_DONE => true,
+                C::KEY_EMPTY => true,
+                C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
+                'hotels_number' => $hotels_number
+            ];
+    }
+
     /**
      * Set the array to send to the view
      * @param Hotel $hotel the data of the Hotel instance insterted
@@ -56,5 +78,7 @@ trait HotelControllerCommonTrait{
             'hotel' => $hotel->toArray()
         ];
     }
+
+
 }
 ?>

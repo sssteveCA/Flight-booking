@@ -28,7 +28,7 @@ class FlightControllerApi extends Controller
     public function index()
     {
         //Log::channel('stdout')->info("FlightControllerApi index");
-        $user_id = auth()->id();
+        $user_id = auth('api')->user()->id;
         //$flights_number = Flight::where('user_id',$user_id)->count();
         $flights_collection = Flight::where('user_id',$user_id)->get();
         $flights = $flights_collection->toArray();
