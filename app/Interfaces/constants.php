@@ -57,6 +57,7 @@ interface Constants{
     const OK_FLIGHTDELETE = "Il volo selezionato è stato rimosso";
     const OK_FLIGHTPAYMENT = "Il pagamento è stato completato. I voli richiesti sono stati prenotati";
     const OK_HOTELDELETE = "La prenotazione selezionata è stata rimossa";
+    const OK_HOTELCONFIRMPAYMENT = "Per confermare la prenotazione delle stanze d' albergo fai click su 'PAGA'";
     const OK_HOTELPAYMENT = "Il pagamento è stato completato. Le stanze d'albergo richieste sono state prenotate";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
