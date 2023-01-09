@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
  */
 trait ResumeBookFlightControllerCommonTrait{
 
+    /**
+     * Set the response array to send to the view to complete the payment
+     * @param \Illuminate\Http\Request $request 
+     */
     private function setResponseData(Request $request): array{
         $response_data = [
             C::KEY_DONE => false,

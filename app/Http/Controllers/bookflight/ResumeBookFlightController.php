@@ -18,6 +18,7 @@ class ResumeBookFlightController extends Controller
 
     /**
      * Resume the payment of the flights
+     * @param \Illuminate\Http\Request $request
      */
     public function resumeFlight(Request $request){
         $response_data = $this->setResponseData($request);
