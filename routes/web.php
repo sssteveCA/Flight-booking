@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\bookflight\ResumeBookFlightController;
+use App\Http\Controllers\bookhotel\ResumeBookHotelController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\UserController;
@@ -45,7 +46,6 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
     Route::get(P::URL_INFO, [UserController::class, 'getData'])->name(P::ROUTE_INFO); 
     Route::resource(P::PREFIX_MYFLIGHTS, FlightController::class)->except([ 'edit','update' ]);
     Route::resource(P::PREFIX_MYHOTELS, HotelController::class)->except([ 'edit', 'update' ]);
-    Route::post(P::URL_FLIGHTRESUME,[ResumeBookFlightController::class,'resumeFlight'])->name(P::ROUTE_RESUMEFLIGHT);
     Route::patch(P::URL_EDITUSERNAME,[UserController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
     Route::patch(P::URL_EDITPASSWORD,[UserController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     Route::delete(P::URL_DELETEACCOUNT,[UserController::class,'deleteAccountHard'])->name(P::ROUTE_DELETEACCOUNT);
@@ -71,12 +71,14 @@ Route::middleware('auth')->group(function(){
 
 Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['auth','verified']], function(){
     Route::post('',[FlightController::class,'store'])->name(P::ROUTE_BOOKFLIGHT);
+    Route::post(P::URL_FLIGHTRESUME,[ResumeBookFlightController::class,'resumeFlight'])->name(P::ROUTE_RESUMEFLIGHT);
     Route::post(P::URL_PAYPAL_RETURN,[PaypalFlightController::class,'return'])->name(P::ROUTE_FLIGHT_PAYPAL_RETURN);
     Route::get(P::URL_PAYPAL_CANCEL,[PaypalFlightController::class,'cancel'])->name(P::ROUTE_FLIGHT_PAYPAL_CANCEL);
 });
 
 Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified']], function(){
     Route::post('',[HotelController::class,'store'])->name(P::ROUTE_BOOKHOTEL);
+    Route::post(P::URL_HOTELRESUME,[ResumeBookHotelController::class,'resumeHotel'])->name(P::ROUTE_RESUMEHOTEL);
     Route::post(P::URL_PAYPAL_RETURN, [PaypalHotelController::class, 'return'])->name(P::ROUTE_HOTEL_PAYPAL_RETURN);
     Route::get(P::URL_PAYPAL_CANCEL,[PaypalHotelController::class, 'cancel'])->name(P::ROUTE_HOTEL_PAYPAL_CANCEL);
 });

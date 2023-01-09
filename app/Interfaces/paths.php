@@ -30,6 +30,7 @@ interface Paths{
     const ROUTE_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
     const ROUTE_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
     const ROUTE_RESUMEFLIGHT = 'resumeflight';
+    const ROUTE_RESUMEHOTEL = 'resumehotel';
     const ROUTE_SENDEMAIL = 'sendemail';
     const ROUTE_VERIFICATIONNOTICE = 'verification.notice';
     const ROUTE_VERIFICATIONSEND = 'verification.send';
@@ -52,13 +53,14 @@ interface Paths{
     const URL_ERRORS = '/errors';
     const URL_FLIGHTEVENTS = '/flightevents';
     const URL_FLIGHTPRICE = '/flightprice';
-    const URL_FLIGHTRESUME = Paths::URL_BOOKFLIGHT.'/flightresume';
+    const URL_FLIGHTRESUME = '/flightresume';
     const URL_FLIGHTSEARCH = '/flightsearch';
     const URL_HOTELS_AVAILABLE = '/hotels';
     const URL_HOTELCITIES = '/hotelcities';
     const URL_HOTELCOUNTRIES = '/hotelcountries';
     const URL_HOTELINFO = '/hotelinfo';
     const URL_HOTELPRICE = '/hotelprice';
+    const URL_HOTELRESUME = '/hotelresume';
     const URL_HOTELSEARCH = '/hotelsearch';
     const URL_HOME = '/home';
     const URL_INFO = '/info';
