@@ -76,7 +76,7 @@
                 ])>
                 @if($hotel['payed'] == '0')
                 <div class="col-3 col-md-1 fb-book-button">
-                    <form id="fHotelBook" method="post" action="#">
+                    <form id="fHotelBook" method="post" action="{{ route(P::ROUTE_RESUMEHOTEL) }}">
                         @csrf
                         @method('POST')
                         <input type="hidden" name="hotel_id" value="{{ $hotel['id'] }}">

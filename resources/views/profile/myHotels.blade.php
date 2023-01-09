@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-12 col-sm-4 col-lg-2 hotel-book d-flex justify-content-center justify-content-sm-start">
                     @if($hotel['payed'] == '0')
-                    <form class="fHotelBook" method="post" action="#">
+                    <form class="fHotelBook" method="post" action="{{ route(P::ROUTE_RESUMEHOTEL) }}">
                         @csrf
                         @method('POST')
                         <input type="hidden" name="hotel_id" value="{{ $hotel['id'] }}">
