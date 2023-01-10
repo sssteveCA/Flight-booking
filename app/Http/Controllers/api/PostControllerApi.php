@@ -56,21 +56,12 @@ class PostControllerApi extends Controller
      */
     public function show(Post $post,$permalink)
     {
+        $params = [
+            'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
+        ];
         try{
-            $post = Post::find($permalink);
-            if($post != null){
-                return response()->json([
-                    C::KEY_DONE => true,
-                    C::KEY_STATUS => 'OK',
-                    'post' => $post
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }
-            return response()->json(
-                [
-                    C::KEY_DONE => false,
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-                ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $response_data = $this->setShowResponseData($permalink,$params);
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([

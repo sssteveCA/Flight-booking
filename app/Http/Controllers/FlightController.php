@@ -36,6 +36,7 @@ class FlightController extends Controller
             $response_data = $this->setIndexResponseData($user_id);
             return response()->view(P::VIEW_MYFLIGHTS,$response_data['response'],$response_data['code']);
         }catch(Exception $e){
+            Log::channel('stdout')->info("FlightController index exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_MYFLIGHTS,[
                     C::KEY_DONE => false,

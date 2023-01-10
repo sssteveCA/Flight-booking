@@ -89,12 +89,19 @@ trait HotelControllerCommonTrait{
             $hotels = $hotels_collection->toArray();
             //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
             return [
-                C::KEY_DONE => true, C::KEY_EMPTY => false,
-                'hotels' => $hotels, 'hotels_number' => $hotels_number];
+                'code' => 200,
+                'response' => [
+                    C::KEY_DONE => true, C::KEY_EMPTY => false,
+                    'hotels' => $hotels, 'hotels_number' => $hotels_number
+                ]
+            ];
         }//if($hotels_number > 0){ 
         return [
-            C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
-            'hotels_number' => $hotels_number
+            'code' => 200,
+            'response' => [
+                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
+                'hotels_number' => $hotels_number
+            ]
         ];
     }
 

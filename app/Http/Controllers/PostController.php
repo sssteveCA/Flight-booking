@@ -23,6 +23,7 @@ class PostController extends Controller
     {
         try{
             $response_data = $this->setIndexResponseData();
+            //Log::channel('stdout')->debug("PostController index response data => ".var_export($response_data['response'],true));
             return response()->view(P::VIEW_NEWS,$response_data['response']);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("News Exception ".var_export($e->getMessage(),true));
@@ -62,16 +63,21 @@ class PostController extends Controller
      */
     public function show(Post $post,$permalink)
     {
-        $post = Post::find($permalink);
-        if($post != null){
+        $params = [
+            'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+        ];
+        try{
+            $response_data = $this->setShowResponseData($permalink,$params);
+            if($response_data['code'] == 200)
+                return response()->view(P::VIEW_POST,$response_data['response']);
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
+        }catch(Exception $e){
             return response()->view(P::VIEW_POST,[
-                'post' => $post
-            ],200);
+                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_NEWS_SINGLE
+            ],500);
         }
-        return response()->view(P::VIEW_FALLBACK,
-            [
-                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
-            ],404);
     }
 
     /**

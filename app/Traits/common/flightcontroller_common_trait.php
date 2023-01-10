@@ -101,7 +101,9 @@ trait FlightControllerCommonTrait{
         $flight = Flight::find($myFlight);
         if($flight != null) {
             if($flight->user_id == $user_id){
-                if($flight->delete()){
+                $delete = $flight->delete();
+                //$delete = true;
+                if($delete){
                     return [
                         'code' => 200,
                         'response' => [
@@ -135,7 +137,7 @@ trait FlightControllerCommonTrait{
      * Set the response data for FlightController index method route
      */
     private function setIndexResponseData($user_id): array{
-        $flight_collection = Flight::where('user_id',$user_id);
+        $flight_collection = Flight::where('user_id',$user_id)->get();
         $flights_number = $flight_collection->count();
         if($flights_number > 0){
             $flights = $flight_collection->toArray();

@@ -25,7 +25,8 @@ class HotelController extends Controller
         try{
             $user_id = auth()->id();
             $response_data = $this->setIndexResponseData($user_id);
-            return response(P::VIEW_MYHOTELS,$response_data);
+            Log::channel('stdout')->debug("HotelController index response data => ".var_export($response_data,true));
+            return response()->view(P::VIEW_MYHOTELS,$response_data['response']);
         }catch(Exception $e){
             Log::channel('stdout')->info("HotelController index exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
