@@ -101,7 +101,7 @@ trait HotelControllerCommonTrait{
     /**
      * Response data for HotelController show method route
      */
-    private function setShowResponseData($myHotel,$user_id): array{
+    private function setShowResponseData($myHotel,$user_id, array $params): array{
         $hotel = Hotel::find($myHotel);
         if($hotel != null){
             if($user_id == $hotel->user_id){
@@ -115,14 +115,14 @@ trait HotelControllerCommonTrait{
             return [
                 'code' => 401,
                 'response' => [
-                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                    C::KEY_DONE => false, C::KEY_MESSAGE => $params['messages']['error']
                 ]
             ];
         }//if($hotel != null){
         return [
             'code' => 404,
             'response' => [
-                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                C::KEY_DONE => false, C::KEY_MESSAGE => $params['messages']['error']
             ]
         ];
     }

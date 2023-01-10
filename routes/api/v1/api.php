@@ -11,6 +11,7 @@ use App\Http\Controllers\api\Auth\LoginControllerApi;
 use App\Http\Controllers\api\Auth\LogoutControllerApi;
 use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
+use App\Http\Controllers\api\HotelControllerApi;
 use App\Http\Controllers\api\PostControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
 use App\Http\Controllers\api\welcome\FlightEventsControllerApi;
@@ -50,7 +51,8 @@ Route::name('api.')->group(function(){
 Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','verified']], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
-        Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class);
+        Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class)->except(['update']);
+        Route::apiResource(P::PREFIX_MYHOTELS, HotelControllerApi::class)->except(['update']);
         Route::get(P::URL_INFO,[UserControllerApi::class,'getData'])->name(P::ROUTE_INFO);
         Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);

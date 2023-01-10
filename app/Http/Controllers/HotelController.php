@@ -84,7 +84,8 @@ class HotelController extends Controller
     {
         try{
             $user_id = auth()->id();
-            $response_data = $this->setShowResponseData($myHotel,$user_id);
+            $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ] ];
+            $response_data = $this->setShowResponseData($myHotel,$user_id,$params);
             if($response_data["code"] == 200){
                 return response()->view(P::VIEW_HOTEL, $response_data["response"]);
             }

@@ -82,7 +82,8 @@ class HotelControllerApi extends Controller
     {
         try{
             $user_id = auth('api')->user()->id;
-            $response_data = $this->setShowResponseData($id,$user_id);
+            $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ] ];
+            $response_data = $this->setShowResponseData($id,$user_id,$params);
             return response()->json($response_data["response"],$response_data["code"],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
