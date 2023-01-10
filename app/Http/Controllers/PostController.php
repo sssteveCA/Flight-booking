@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 class PostController extends Controller
 {
     use PostControllerCommonTrait;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -22,27 +22,13 @@ class PostController extends Controller
     public function index()
     {
         try{
-            $posts = Post::orderBy('updated_at','DESC')->get();
-            $n_posts = $posts->count();
-            if($n_posts > 0){
-                //There is at least one post
-                $posts_array = $posts->toArray();
-                return response()->view(P::VIEW_NEWS,[
-                    'n_posts' => $n_posts,
-                    'posts' => $posts_array
-                ],200);
-            }//if($n_posts > 0){
-            //No post in the database
-            return response()->view(P::VIEW_NEWS,[
-                'n_posts' => $n_posts,
-                'posts' => [],
-                C::KEY_MESSAGE => C::MESS_NOPOSTS
-            ],200);
+            $response_data = $this->setIndexResponseData();
+            return response()->view(P::VIEW_NEWS,$response_data['response']);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("News Exception ".var_export($e->getMessage(),true));
             return response()->view(P::VIEW_NEWS,[
-                C::KEY_STATUS => 'ERROR',
-                C::KEY_MESSAGE => C::ERR_NEWS
+                C::KEY_DONE => false, C::KEY_EMPTY => false,
+                C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_NEWS,
             ],500);
         }
     }

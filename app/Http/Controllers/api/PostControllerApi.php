@@ -15,7 +15,7 @@ class PostControllerApi extends Controller
 {
 
     use PostControllerCommonTrait;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -24,34 +24,13 @@ class PostControllerApi extends Controller
     public function index()
     {
         try{
-            $posts = Post::orderBy('updated_at','DESC')->get();
-            $n_posts = $posts->count();
-            if($n_posts > 0){
-                //There is at least one post
-                $posts_array = $posts->toArray();
-                return response()->json([
-                    C::KEY_DONE => true,
-                    C::KEY_EMPTY => false,
-                    C::KEY_STATUS => 'OK',
-                    'n_posts' => $n_posts,
-                    'posts' => $posts_array
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }//if($n_posts > 0){
-            //No post in the database
-            return response()->json([
-                C::KEY_DONE => true,
-                C::KEY_EMPTY => true,
-                C::KEY_STATUS => 'EMPTY',
-                'n_posts' => $n_posts,
-                C::KEY_MESSAGE => C::MESS_NOPOSTS
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $response_data = $this->setIndexResponseData();
+            return response()->json($response_data['response'],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
-                    C::KEY_DONE => false,
-                    C::KEY_EMPTY => false,
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => C::ERR_NEWS,
+                    C::KEY_DONE => false, C::KEY_EMPTY => false,
+                    C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_NEWS,
                 ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
             );
         }
