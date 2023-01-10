@@ -6,11 +6,14 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
+use App\Traits\Common\PostControllerCommonTrait;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
+    use PostControllerCommonTrait;
+    
     /**
      * Display a listing of the resource.
      *
