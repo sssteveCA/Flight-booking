@@ -44,6 +44,41 @@ trait HotelControllerCommonTrait{
     }
 
     /**
+     * Response data for the HotelController destroy method route
+     */
+    private function setDestroyResponseData($myHotel, $user_id): array{
+        $hotel = Hotel::find($myHotel);
+        if($hotel != null){
+            if($hotel->user_id == $user_id){
+                if($hotel->delete()){
+                    return [
+                        'code' => 200,
+                        'response' => [
+                            C::KEY_DONE => true,
+                            C::KEY_MESSAGE => C::OK_HOTELDELETE
+                        ]
+                    ];
+                }//if($hotel->delete()){
+                return [ 'code' => 500 ];
+            }//if($hotel->user_id == $user_id){
+            return [ 
+                'code' => 401,
+                'response' => [
+                    C::KEY_DONE => false,
+                    C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                ]
+            ];
+        }//if($hotel != null){
+            return [ 
+                'code' => 404,
+                'response' => [
+                    C::KEY_DONE => false,
+                    C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                ]
+            ];
+    }
+
+    /**
      * Response data for the HoteController index method route
      */
     private function setIndexResponseData($user_id): array{
@@ -54,15 +89,11 @@ trait HotelControllerCommonTrait{
             $hotels = $hotels_collection->toArray();
             //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
             return [
-                C::KEY_DONE => true,
-                C::KEY_EMPTY => false,
-                'hotels' => $hotels,
-                'hotels_number' => $hotels_number];
+                C::KEY_DONE => true, C::KEY_EMPTY => false,
+                'hotels' => $hotels, 'hotels_number' => $hotels_number];
         }//if($hotels_number > 0){ 
         return [
-            C::KEY_DONE => true,
-            C::KEY_EMPTY => true,
-            C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
+            C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
             'hotels_number' => $hotels_number
         ];
     }
@@ -77,21 +108,21 @@ trait HotelControllerCommonTrait{
                 return [
                     'code' => 200,
                     'response' => [
-                        C::KEY_DONE => true, C::KEY_STATUS => 'OK', 'hotel' => $hotel
+                        C::KEY_DONE => true, 'hotel' => $hotel
                     ]
                 ];
             }//if($user_id == $hotel->user_id){
             return [
                 'code' => 401,
                 'response' => [
-                    C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
                 ]
             ];
         }//if($hotel != null){
         return [
             'code' => 404,
             'response' => [
-                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ]
         ];
     }
@@ -105,7 +136,6 @@ trait HotelControllerCommonTrait{
         Log::channel('stdout')->info("HotelControllerCommonTrait setResponseData => hotel array no attr => ".var_export($hotel->attributesToArray(),true)); */
         return [
             C::KEY_DONE => true,
-            C::KEY_STATUS => "OK",
             C::KEY_MESSAGE => "Per confermare la prenotazione delle stanze d' albergo fai click su 'PAGA'",
             'hotel' => $hotel->toArray()
         ];

@@ -128,26 +128,11 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel, $myHotel)
     {
         try{
-            $response_data = [
-                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
-            ];
-            $hotel = Hotel::find($myHotel);
-            if($hotel != null){
-                $user_id = auth()->id();
-                if($hotel->user_id == $user_id){
-                    $delete = $hotel->delete();
-                    //$delete = true;
-                    if($delete){
-                        $response_data = [
-                        C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_HOTELDELETE ];
-                        $code = 200; 
-                    }
-                    else throw new Exception;
-                }//if($hotel->user_id == $user_id){
-                else $code = 401;
-            }//if($hotel != null){
-            else $code = 404;
-            return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $user_id = auth()->id();
+            $response_data = $this->setDestroyResponseData($myHotel,$user_id);
+            if(in_array($response_data['code'],[200,401,404]))
+                return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
+            throw new Exception;  
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
