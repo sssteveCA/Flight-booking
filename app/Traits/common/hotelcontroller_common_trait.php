@@ -50,7 +50,9 @@ trait HotelControllerCommonTrait{
         $hotel = Hotel::find($myHotel);
         if($hotel != null){
             if($hotel->user_id == $user_id){
-                if($hotel->delete()){
+                //$delete = $hotel->delete();
+                $delete = true;
+                if($delete){
                     return [
                         'code' => 200,
                         'response' => [
@@ -59,7 +61,12 @@ trait HotelControllerCommonTrait{
                         ]
                     ];
                 }//if($hotel->delete()){
-                return [ 'code' => 500 ];
+                return [ 
+                    'code' => 500,
+                    'response' => [
+                        C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_DELETE
+                    ]
+                 ];
             }//if($hotel->user_id == $user_id){
             return [ 
                 'code' => 401,

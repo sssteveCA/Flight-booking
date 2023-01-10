@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use Illuminate\Support\Facades\Log;
 
 class HotelControllerApi extends Controller
 {
@@ -23,7 +24,7 @@ class HotelControllerApi extends Controller
         try{
             $user_id = auth('api')->user()->id;
             $response_data = $this->setIndexResponseData($user_id);
-            return response()->json($response_data,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data['response'],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
@@ -84,8 +85,10 @@ class HotelControllerApi extends Controller
             $user_id = auth('api')->user()->id;
             $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ] ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
-            return response()->json($response_data["response"],$response_data["code"],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            //Log::channel('stdout')->info("HotelControllerApi show response data => ".var_export($response_data,true));
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
+            Log::channel('stdout')->info("HotelControllerApi show exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->json([
                     C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST, C::KEY_STATUS => 'ERROR'
@@ -125,6 +128,14 @@ class HotelControllerApi extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $user_id = auth('api')->user()->id;
+            $response_data = $this->setDestroyResponseData($id,$user_id);
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_DELETE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 }
