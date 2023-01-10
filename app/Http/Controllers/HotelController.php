@@ -56,10 +56,11 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
+        $user_id = auth()->id();
         //Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         try{
-            $hotel = $this->create_hotel($inputs["session_id"]);
-            $response_array = $this->setResponseData($hotel);
+            $hotel = $this->create_hotel($inputs["session_id"],$user_id);
+            $response_array = $this->setStoreResponseData($hotel);
             return response()->view(P::VIEW_BOOKHOTEL,$response_array,201);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
@@ -82,16 +83,13 @@ class HotelController extends Controller
     public function show(Hotel $hotel,$myHotel)
     {
         try{
-            $hotel = Hotel::find($myHotel);
-            if($hotel != null){
-                $user_id = auth()->id();
-                if($user_id == $hotel->user_id){
-                    return response()->view(P::VIEW_HOTEL,[
-                        'hotel' => $hotel
-                    ]);
-                }//if($user_id == $hotel->user_id){
-            }//if($hotel != null){
-            throw new Exception;
+            $user_id = auth()->id();
+            $response_data = $this->setShowResponseData($myHotel,$user_id);
+            if($response_data["code"] == 200){
+                return response()->view(P::VIEW_HOTEL, $response_data["response"]);
+            }
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
         }catch(Exception $e){
             session()->put('redirect','1');
             return redirect(P::URL_ERRORS);
