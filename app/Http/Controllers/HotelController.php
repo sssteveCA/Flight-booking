@@ -25,8 +25,8 @@ class HotelController extends Controller
         try{
             $user_id = auth()->id();
             $response_data = $this->setIndexResponseData($user_id);
-            Log::channel('stdout')->debug("HotelController index response data => ".var_export($response_data,true));
-            return response()->view(P::VIEW_MYHOTELS,$response_data['response']);
+            //Log::channel('stdout')->debug("HotelController index response data => ".var_export($response_data,true));
+            return response()->view(P::VIEW_MYHOTELS,$response_data[C::KEY_RESPONSE]);
         }catch(Exception $e){
             Log::channel('stdout')->info("HotelController index exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
@@ -87,7 +87,7 @@ class HotelController extends Controller
             $user_id = auth()->id();
             $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ] ];
             $response_data = $this->setShowResponseData($myHotel,$user_id,$params);
-            if($response_data["code"] == 200){
+            if($response_data[C::KEY_CODE] == 200){
                 return response()->view(P::VIEW_HOTEL, $response_data["response"]);
             }
             session()->put('redirect','1');
@@ -132,8 +132,8 @@ class HotelController extends Controller
         try{
             $user_id = auth()->id();
             $response_data = $this->setDestroyResponseData($myHotel,$user_id);
-            if(in_array($response_data['code'],[200,401,404]))
-                return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
+            if(in_array($response_data[C::KEY_CODE],[200,401,404]))
+                return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
             throw new Exception;  
         }catch(Exception $e){
             throw new HttpResponseException(

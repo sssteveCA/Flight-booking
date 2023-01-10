@@ -29,19 +29,19 @@ trait ResumeBookFlightControllerCommonTrait{
                         'flight_price' => $flight->flight_price
                     ];
                     return [
-                        'code' => 200,
-                        'response' => [
+                        C::KEY_CODE => 200,
+                        C::KEY_RESPONSE => [
                             C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_SINGLE, 'flights' => $flights
                         ]    
                     ];
                 }//if($user_id == $flight->user_id){
-                return [ 'code' => 401 ];
+                return [ C::KEY_CODE => 401 ];
             }//if($flight != null){
-            return [ 'code' => 404 ];        
+            return [ C::KEY_CODE => 404 ];        
         }//if($request->filled('flight_id')){
         return [
-            'code' => 400,
-            'response' => [ C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST ]
+            C::KEY_CODE => 400,
+            C::KEY_RESPONSE => [ C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST ]
         ];
     }
 }

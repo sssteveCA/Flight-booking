@@ -24,7 +24,7 @@ class HotelControllerApi extends Controller
         try{
             $user_id = auth('api')->user()->id;
             $response_data = $this->setIndexResponseData($user_id);
-            return response()->json($response_data['response'],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
@@ -86,7 +86,7 @@ class HotelControllerApi extends Controller
             $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ] ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
             //Log::channel('stdout')->info("HotelControllerApi show response data => ".var_export($response_data,true));
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             Log::channel('stdout')->info("HotelControllerApi show exception => ".$e->getMessage());
             throw new HttpResponseException(
@@ -131,7 +131,7 @@ class HotelControllerApi extends Controller
         try{
             $user_id = auth('api')->user()->id;
             $response_data = $this->setDestroyResponseData($id,$user_id);
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_DELETE

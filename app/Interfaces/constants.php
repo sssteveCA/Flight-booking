@@ -42,11 +42,13 @@ interface Constants{
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //common array keys
+    const KEY_CODE = 'code';
     const KEY_DONE = 'done';
     const KEY_EMPTY = 'empty';
     const KEY_ERRORS = 'errors';
     const KEY_MESSAGE = 'message';
     const KEY_MESSAGES = 'messages';
+    const KEY_RESPONSE = 'response';
     const KEY_STATUS = 'status';
 
     //success

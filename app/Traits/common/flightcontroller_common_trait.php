@@ -105,29 +105,29 @@ trait FlightControllerCommonTrait{
                 //$delete = true;
                 if($delete){
                     return [
-                        'code' => 200,
-                        'response' => [
+                        C::KEY_CODE => 200,
+                        C::KEY_RESPONSE => [
                             C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
                         ]
                     ];
                 }//if($flight->delete()){
                 return [
-                    'code' => 500,
-                    'response' => [
+                    C::KEY_CODE => 500,
+                    C::KEY_RESPONSE => [
                         C::KEY_DONE => false,  C::KEY_MESSAGE => C::ERR_FLIGHT_DELETE
                     ]
                 ];      
             }//if($flight->user_id == $user_id){
             return [
-                'code' => 401,
-                'response' => [
+                C::KEY_CODE => 401,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => false,  C::KEY_MESSAGE => $params['messages']['error']
                 ]
             ];
         }//if($flight != null) {
         return [
-            'code' => 404,
-            'response' => [
+            C::KEY_CODE => 404,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => false,  C::KEY_MESSAGE => $params['messages']['error']
             ]
         ];
@@ -142,15 +142,15 @@ trait FlightControllerCommonTrait{
         if($flights_number > 0){
             $flights = $flight_collection->toArray();
             return [
-                'code' => 200,
-                'response' => [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => true, C::KEY_EMPTY => false, 'flights' => $flights, 'flights_number' => $flights_number
                 ]
             ];
         }
         return [
-            'code' => 200,
-            'response' => [
+            C::KEY_CODE => 200,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_FLIGHT_LIST_EMPTY, 'flights_number' => $flights_number
             ]
         ];
@@ -164,23 +164,23 @@ trait FlightControllerCommonTrait{
         if($flight != null){
             if($user_id == $flight->user_id){
                 return [
-                    'code' => 200,
-                    'response' => [
+                    C::KEY_CODE => 200,
+                    C::KEY_RESPONSE => [
                         C::KEY_DONE => true, 'flight' => $flight
                     ]
                 ];
             }
             return [
-                'code' => 401,
-                'response' => [
+                C::KEY_CODE => 401,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => false,
                     C::KEY_MESSAGE => $params['messages']['error']
                 ]
             ];
         }//if($flight != null){
         return [
-            'code' => 404,
-            'response' => [
+            C::KEY_CODE => 404,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => false,
                 C::KEY_MESSAGE => $params['messages']['error']
             ]
@@ -195,7 +195,7 @@ trait FlightControllerCommonTrait{
         $response_data['flights'] = $params['flights'];
         if($params['inserted']){
             $response_data[C::KEY_DONE] = true;
-            $response_data['code'] = 201; //Created
+            $response_data[C::KEY_CODE] = 201; //Created
             //Creation operations done successfully
             $response_data[C::KEY_STATUS] = 'OK';
             if($params['flights_number'] > 1)
@@ -205,7 +205,7 @@ trait FlightControllerCommonTrait{
         }//if($inserted){
         else{
             //Error while inserting record in DB
-            $response_data['code'] = 500; //Internal server error
+            $response_data[C::KEY_CODE] = 500; //Internal server error
             $response_data[C::KEY_DONE] = false;
             $response_data[C::KEY_STATUS] = 'ERROR';
             if($response_data['flights_number'] > 1)

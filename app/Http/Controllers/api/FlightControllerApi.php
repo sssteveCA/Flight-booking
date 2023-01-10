@@ -30,7 +30,7 @@ class FlightControllerApi extends Controller
         try{
             $user_id = auth('api')->user()->id;
             $response_data = $this->setIndexResponseData($user_id);
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false,
@@ -56,7 +56,7 @@ class FlightControllerApi extends Controller
                 $flights_info = $this->create_flights($flightsTemp,$user_id);
                 $response_data = $this->setStoreResponseData($flights_info);
                 FlightTemp::where('session_id',$inputs['session_id'])->delete();
-                return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                return response()->json($response_data,$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }
             throw new Exception;
         }catch(Exception $e){
@@ -85,7 +85,7 @@ class FlightControllerApi extends Controller
                 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
             ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false,
@@ -120,7 +120,7 @@ class FlightControllerApi extends Controller
                 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
             ];
             $response_data = $this->setDestroyResponseData($id,$user_id,$params);
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHT_DELETE

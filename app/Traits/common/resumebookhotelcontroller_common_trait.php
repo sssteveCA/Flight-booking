@@ -24,20 +24,20 @@ trait ResumeBookHotelControllerCommonTrait{
                 $user_id = auth()->id();
                 if($user_id == $hotel->user_id){
                     return [
-                        'code' => 200,
-                        'response' => [
+                        C::KEY_CODE => 200,
+                        C::KEY_RESPONSE => [
                             C::KEY_DONE => true, C::KEY_STATUS => 'OK', 
                             C::KEY_MESSAGE => C::OK_HOTELCONFIRMPAYMENT, 'hotel' => $hotel->toArray()
                         ]
                     ];
                 }//if($user_id == $hotel->user_id){
-                return [ 'code' => 401 ];
+                return [ C::KEY_CODE => 401 ];
             }//if($hotel != null){
-            return ['code' => 404 ];
+            return [C::KEY_CODE => 404 ];
         }//if($request->filled('hotel_id')){
         return [
-            'code' => 400,
-            'response' => [
+            C::KEY_CODE => 400,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_REQUEST
             ]
         ];

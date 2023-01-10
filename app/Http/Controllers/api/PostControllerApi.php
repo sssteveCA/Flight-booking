@@ -25,7 +25,7 @@ class PostControllerApi extends Controller
     {
         try{
             $response_data = $this->setIndexResponseData();
-            return response()->json($response_data['response'],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
@@ -61,7 +61,7 @@ class PostControllerApi extends Controller
         ];
         try{
             $response_data = $this->setShowResponseData($permalink,$params);
-            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([

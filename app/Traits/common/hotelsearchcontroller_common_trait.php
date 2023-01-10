@@ -70,7 +70,7 @@ trait HotelSearchControllerCommonTrait{
                 ];
                 $response_array = [
                     C::KEY_DONE => true,
-                    'response' => [ 
+                    C::KEY_RESPONSE => [ 
                         'hotel' => $hotel_data
                     ]   
                 ];
@@ -78,7 +78,7 @@ trait HotelSearchControllerCommonTrait{
                 $hptm = new HotelPriceTempManager($hptm_params);
                 //Log::channel('stdout')->info("HotelSearchController after HotelPriceTempManager");
                 $hptm->addHotelPriceTemp();
-                $response_array['response']['session_id'] = $hptm->getSessionId();
+                $response_array[C::KEY_RESPONSE]['session_id'] = $hptm->getSessionId();
                 $response_code = 201;
                 break;
             case Hpe::TOOMANYPEOPLE_FOR_ROOMS:

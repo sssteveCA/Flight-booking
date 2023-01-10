@@ -19,8 +19,8 @@ trait PostControllerCommonTrait{
         if($n_posts > 0){
             $posts_array = $posts->toArray();
             return [
-                'code' => 200,
-                'response' => [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => true, C::KEY_EMPTY => false,
                     C::KEY_STATUS => 'OK', 'n_posts' => $n_posts,
                     'posts' => $posts_array
@@ -28,8 +28,8 @@ trait PostControllerCommonTrait{
             ];
         }//if($n_posts > 0){
         return [
-            'code' => 200,
-            'response' => [
+            C::KEY_CODE => 200,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_STATUS => 'EMPTY',
                 'n_posts' => $n_posts, 'posts' => [], C::KEY_MESSAGE => C::MESS_NOPOSTS
             ]
@@ -43,15 +43,15 @@ trait PostControllerCommonTrait{
         $post = Post::find($permalink);
         if($post != null)
             return [
-                'code' => 200,
-                'response' => [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => true, C::KEY_STATUS => 'OK',
                     'post' => $post
                 ]
             ];
         return [
-            'code' => 404,
-            'response' => [
+            C::KEY_CODE => 404,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR',
                 C::KEY_MESSAGE => $params['messages']['error']
             ]

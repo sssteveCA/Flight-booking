@@ -50,35 +50,35 @@ trait HotelControllerCommonTrait{
         $hotel = Hotel::find($myHotel);
         if($hotel != null){
             if($hotel->user_id == $user_id){
-                //$delete = $hotel->delete();
-                $delete = true;
+                $delete = $hotel->delete();
+                //$delete = true;
                 if($delete){
                     return [
-                        'code' => 200,
-                        'response' => [
+                        C::KEY_CODE => 200,
+                        C::KEY_RESPONSE => [
                             C::KEY_DONE => true,
                             C::KEY_MESSAGE => C::OK_HOTELDELETE
                         ]
                     ];
                 }//if($hotel->delete()){
                 return [ 
-                    'code' => 500,
-                    'response' => [
+                    C::KEY_CODE => 500,
+                    C::KEY_RESPONSE => [
                         C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_HOTEL_DELETE
                     ]
                  ];
             }//if($hotel->user_id == $user_id){
             return [ 
-                'code' => 401,
-                'response' => [
+                C::KEY_CODE => 401,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => false,
                     C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
                 ]
             ];
         }//if($hotel != null){
             return [ 
-                'code' => 404,
-                'response' => [
+                C::KEY_CODE => 404,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => false,
                     C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
                 ]
@@ -96,16 +96,16 @@ trait HotelControllerCommonTrait{
             $hotels = $hotels_collection->toArray();
             //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
             return [
-                'code' => 200,
-                'response' => [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => true, C::KEY_EMPTY => false,
                     'hotels' => $hotels, 'hotels_number' => $hotels_number
                 ]
             ];
         }//if($hotels_number > 0){ 
         return [
-            'code' => 200,
-            'response' => [
+            C::KEY_CODE => 200,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_HOTEL_LIST_EMPTY,
                 'hotels_number' => $hotels_number
             ]
@@ -120,22 +120,22 @@ trait HotelControllerCommonTrait{
         if($hotel != null){
             if($user_id == $hotel->user_id){
                 return [
-                    'code' => 200,
-                    'response' => [
+                    C::KEY_CODE => 200,
+                    C::KEY_RESPONSE => [
                         C::KEY_DONE => true, 'hotel' => $hotel
                     ]
                 ];
             }//if($user_id == $hotel->user_id){
             return [
-                'code' => 401,
-                'response' => [
+                C::KEY_CODE => 401,
+                C::KEY_RESPONSE => [
                     C::KEY_DONE => false, C::KEY_MESSAGE => $params['messages']['error']
                 ]
             ];
         }//if($hotel != null){
         return [
-            'code' => 404,
-            'response' => [
+            C::KEY_CODE => 404,
+            C::KEY_RESPONSE => [
                 C::KEY_DONE => false, C::KEY_MESSAGE => $params['messages']['error']
             ]
         ];

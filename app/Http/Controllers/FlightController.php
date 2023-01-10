@@ -34,7 +34,7 @@ class FlightController extends Controller
         try{
             $user_id = auth()->id();
             $response_data = $this->setIndexResponseData($user_id);
-            return response()->view(P::VIEW_MYFLIGHTS,$response_data['response'],$response_data['code']);
+            return response()->view(P::VIEW_MYFLIGHTS,$response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE]);
         }catch(Exception $e){
             Log::channel('stdout')->info("FlightController index exception => ".$e->getMessage());
             throw new HttpResponseException(
@@ -74,7 +74,7 @@ class FlightController extends Controller
                 $flights_info = $this->create_flights($flightsTemp,$user_id);
                 $response_data = $this->setStoreResponseData($flights_info);
                 FlightTemp::where('session_id',$inputs['session_id'])->delete();
-                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
+                return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data[C::KEY_CODE]);
             }
             throw new Exception; 
         }catch(Exception $e){
@@ -104,8 +104,8 @@ class FlightController extends Controller
                 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
             ];
             $response_data = $this->setShowResponseData($myFlight,$user_id,$params);
-            if($response_data['code'] == 200)
-                return response()->view(P::VIEW_FLIGHT,$response_data['response']);
+            if($response_data[C::KEY_CODE] == 200)
+                return response()->view(P::VIEW_FLIGHT,$response_data[C::KEY_RESPONSE]);
             throw new Exception;
         }catch(Exception $e){
             session()->put('redirect','1');
@@ -150,8 +150,8 @@ class FlightController extends Controller
                 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
             ];
             $response_data = $this->setDestroyResponseData($myFlight,$user_id,$params);
-            if(in_array($response_data['code'],[200,500]))
-                return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            if(in_array($response_data[C::KEY_CODE],[200,500]))
+                return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             session()->put('redirect','1');
             return redirect(P::URL_ERRORS);
         }catch(Exception $e){
