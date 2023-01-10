@@ -95,6 +95,43 @@ trait FlightControllerCommonTrait{
     }
 
     /**
+     * Set the response data for FlightController destroy method route
+     */
+    private function setDestroyResponseData($myFlight,$user_id,array $params): array{
+        $flight = Flight::find($myFlight);
+        if($flight != null) {
+            if($flight->user_id == $user_id){
+                if($flight->delete()){
+                    return [
+                        'code' => 200,
+                        'response' => [
+                            C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
+                        ]
+                    ];
+                }//if($flight->delete()){
+                return [
+                    'code' => 500,
+                    'response' => [
+                        C::KEY_DONE => false,  C::KEY_MESSAGE => C::ERR_FLIGHT_DELETE
+                    ]
+                ];      
+            }//if($flight->user_id == $user_id){
+            return [
+                'code' => 401,
+                'response' => [
+                    C::KEY_DONE => false,  C::KEY_MESSAGE => $params['messages']['error']
+                ]
+            ];
+        }//if($flight != null) {
+        return [
+            'code' => 404,
+            'response' => [
+                C::KEY_DONE => false,  C::KEY_MESSAGE => $params['messages']['error']
+            ]
+        ];
+    }
+
+    /**
      * Set the response data for FlightController index method route
      */
     private function setIndexResponseData($user_id): array{

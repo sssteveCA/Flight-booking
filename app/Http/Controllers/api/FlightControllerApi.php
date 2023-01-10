@@ -82,7 +82,7 @@ class FlightControllerApi extends Controller
         try{
             $user_id = auth('api')->user()->id;
             $params = [
-                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
             ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
             return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -114,27 +114,17 @@ class FlightControllerApi extends Controller
      */
     public function destroy($id)
     {
-        $response_data = [
-            C::KEY_STATUS => 'ERROR',
-            'deleted' => false,
-            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-        ];
-        $flight = Flight::find($id);
-        if($flight != null){
-            //Requested resource exists
-            $user_id = auth()->id();
-            if($flight->user_id == $user_id){
-                //The resource is owned by the logged user
-                $response_data['deleted'] = $flight->delete();
-                /* Log::channel('stdout')->info("FlightController destroy del => ".var_export($response_data['deleted'],true)); */
-                if($response_data['deleted'])
-                    $response_data[C::KEY_STATUS] = 'OK';
-                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTDELETE;
-                $code = 200; //OK
-            }//if($flight->user_id == $user_id){
-            else $code = 401; //Unauthorized
-        }//if($flight != null){
-        else $code = 404; //Not found
-        return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            $user_id = auth('api')->user()->id;
+            $params = [
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
+            ];
+            $response_data = $this->setDestroyResponseData($id,$user_id,$params);
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHT_DELETE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 }

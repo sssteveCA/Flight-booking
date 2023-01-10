@@ -144,27 +144,15 @@ class FlightController extends Controller
     public function destroy(Flight $flight, $myFlight)
     {
         try{
-            $response_data = [
-                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+            $user_id = auth()->id();
+            $params = [
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
             ];
-            $flight = Flight::find($myFlight);
-            if($flight != null){
-                $user_id = auth()->id();
-                if($flight->user_id == $user_id){
-                    $delete = $flight->delete();
-                    //$delete = true;
-                    if($delete){
-                        $response_data = [
-                            C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTDELETE
-                        ];
-                        $code = 200;
-                    }
-                    else throw new Exception;
-                }//if($flight->user_id == $user_id){
-                else $code = 401;
-            }//if($flight != null){
-            else $code = 404;
-            return response()->json($response_data,$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $response_data = $this->setDestroyResponseData($myFlight,$user_id,$params);
+            if(in_array($response_data['code'],[200,500]))
+                return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->json([
