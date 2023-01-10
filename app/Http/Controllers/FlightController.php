@@ -33,30 +33,8 @@ class FlightController extends Controller
     {
         try{
             $user_id = auth()->id();
-            //$flights_number = Flight::where('user_id',$user_id)->count();
-            $flights_collection = Flight::where('user_id',$user_id)->get();
-            $flights_number = $flights_collection->count();
-            //Log::channel('stdout')->debug("User flights => ".var_export($flights,true));
-            if($flights_number > 0){
-                $flights = $flights_collection->toArray();
-                //User has booked at least one flight
-                return response()->view(P::VIEW_MYFLIGHTS,[
-                    C::KEY_DONE => true,
-                    C::KEY_EMPTY => false,
-                    'flights' => $flights,
-                    'flights_number' => $flights_number
-                ]);
-            }//if($flights_number > 0){
-            else{
-                //User has not booked any flight already
-                $message = C::MESS_BOOKED_FLIGHT_LIST_EMPTY;
-                return response()->view(P::VIEW_MYFLIGHTS,[
-                    C::KEY_DONE => true,
-                    C::KEY_EMPTY => true,
-                    C::KEY_MESSAGE => $message,
-                    'flights_number' => $flights_number
-                ]);           
-            }  
+            $response_data = $this->setIndexResponseData($user_id);
+            return response()->view(P::VIEW_MYFLIGHTS,$response_data['response'],$response_data['code']);
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_MYFLIGHTS,[

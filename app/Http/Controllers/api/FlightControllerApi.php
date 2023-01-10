@@ -27,30 +27,16 @@ class FlightControllerApi extends Controller
      */
     public function index()
     {
-        //Log::channel('stdout')->info("FlightControllerApi index");
-        $user_id = auth('api')->user()->id;
-        //$flights_number = Flight::where('user_id',$user_id)->count();
-        $flights_collection = Flight::where('user_id',$user_id)->get();
-        $flights = $flights_collection->toArray();
-        //Log::channel('stdout')->debug("User flights => ".var_export($flights,true));
-        $flights_number = count($flights);
-        if($flights_number > 0){
-            //User has booked at least one flight
+        try{
+            $user_id = auth('api')->user()->id;
+            $response_data = $this->setIndexResponseData($user_id);
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
             return response()->json([
-                C::KEY_STATUS => 'OK',
-                'flights' => $flights,
-                'flights_number' => $flights_number
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }//if($flights_number > 0){
-        else{
-            //User has not booked any flight already
-            $message = C::MESS_BOOKED_FLIGHT_LIST_EMPTY;
-            return response()->json([
-                C::KEY_STATUS => 'EMPTY',
-                C::KEY_MESSAGE => $message,
-                'flights_number' => $flights_number
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);           
-        }    
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_MYFLIGHTS
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**

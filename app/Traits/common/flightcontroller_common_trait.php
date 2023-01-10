@@ -120,5 +120,28 @@ trait FlightControllerCommonTrait{
         }//else di if($inserted){
         return $response_data;
     }
+
+    /**
+     * Set the response data for FlightController index method route
+     */
+    private function setIndexResponseData($user_id): array{
+        $flight_collection = Flight::where('user_id',$user_id);
+        $flights_number = $flight_collection->count();
+        if($flights_number > 0){
+            $flights = $flight_collection->toArray();
+            return [
+                'code' => 200,
+                'response' => [
+                    C::KEY_DONE => true, C::KEY_EMPTY => false, 'flights' => $flights, 'flights_number' => $flights_number
+                ]
+            ];
+        }
+        return [
+            'code' => 200,
+            'response' => [
+                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_FLIGHT_LIST_EMPTY, 'flights_number' => $flights_number
+            ]
+        ];
+    }
 }
 ?>
