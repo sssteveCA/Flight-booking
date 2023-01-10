@@ -47,35 +47,18 @@ class FlightControllerApi extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
         try{
+            $inputs = $request->all();
+            $user_id = auth('api')->user()->id;
             $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
             //Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
             if(count($flightsTemp) >= 1){
-                $flights_info = $this->create_flights($flightsTemp);
-                $response_data = $this->setResponseData($flights_info);
-                $del = FlightTemp::where('session_id',$inputs['session_id'])->delete();
+                $flights_info = $this->create_flights($flightsTemp,$user_id);
+                $response_data = $this->setStoreResponseData($flights_info);
+                FlightTemp::where('session_id',$inputs['session_id'])->delete();
                 return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }
-            throw new Exception; 
-            //$this->ftm = new FlightsTempManager($inputs);
-            //$valid = $this->ftm->validateRequest();
-            //if($valid){
-            //Input data was not modified from orginal values
-                /* Log::channel('stdout')->debug("FlightControllerApi store request all => ");
-                Log::channel('stdout')->debug(var_export($inputs,true)); */
-                //$flights = $request->flights;
-                //$flights_unquoted = $this->flights_unquote($flights);
-                /* Log::channel('stdout')->info("FlightControllerApi store flights unquoted => ");
-                Log::channel('stdout')->info(var_export($flights,true)); */
-                //$flights_info = $this->create_flights($flights);
-                //$response_data = $this->setResponseData($flights_info);
-                //Log::channel('stdout')->info("FlightController store response_data => ".var_export($response_data,true));
-                //$del = FlightTemp::where('session_id',$this->ftm->getSessionId())->delete();
-                //Log::channel('stdout')->info("FlightController store delete => ".var_export($del,true));
-                //return response()->json($response_data,$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            //}//if($valid){
-                //throw new FlightsDataModifiedException(Ftme::FLIGHTSDATAMODIFIED_EXC);
+            throw new Exception;
         }catch(Exception $e){
             //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
@@ -96,23 +79,19 @@ class FlightControllerApi extends Controller
      */
     public function show($id)
     {
-        $flight = Flight::find($id);
-        if($flight != null){
-            //Requested flight found
-            $user_id = auth()->id();
-            if($user_id == $flight->user_id){
-                return response()->json([
-                    C::KEY_STATUS => 'OK',
-                    'flight' => $flight
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }//if($user_id == $flight->user_id){
-            else $code = 401; //Unauthorized
-        }//if($flight != null){
-        else $code = 404; //Forbidden
-        return response()->json([
-                C::KEY_STATUS => 'ERROR',
-                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-            ],$code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            $user_id = auth('api')->user()->id;
+            $params = [
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+            ];
+            $response_data = $this->setShowResponseData($id,$user_id,$params);
+            return response()->json($response_data['response'],$response_data['code'],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**

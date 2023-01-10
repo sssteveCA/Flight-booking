@@ -21,7 +21,7 @@ trait FlightControllerCommonTrait{
      * @param array $flight_data the flight booked data to insert
      * @return array the data to send to the booking confirm view
      */
-    private function create_flights(array $flights_data):array
+    private function create_flights(array $flights_data,$user_id):array
     {
         $models = [];
         $array_return = [
@@ -33,7 +33,7 @@ trait FlightControllerCommonTrait{
             /* Log::channel('stdout')->info("FlightController store flight => ");
             Log::channel('stdout')->info(var_export($flight,true)); */
             $models[$n] = new Flight;
-            $models[$n]->user_id = auth()->user()->id;
+            $models[$n]->user_id = $user_id;
             $models[$n]->company_name = $flight['company_name'];
             $models[$n]->departure_country = $flight['departure_country'];
             $models[$n]->departure_airport = $flight['departure_airport'];
@@ -94,8 +94,64 @@ trait FlightControllerCommonTrait{
         return [];
     }
 
-    //Set the data to send to the view
-    private function setResponseData(array $params): array{
+    /**
+     * Set the response data for FlightController index method route
+     */
+    private function setIndexResponseData($user_id): array{
+        $flight_collection = Flight::where('user_id',$user_id);
+        $flights_number = $flight_collection->count();
+        if($flights_number > 0){
+            $flights = $flight_collection->toArray();
+            return [
+                'code' => 200,
+                'response' => [
+                    C::KEY_DONE => true, C::KEY_EMPTY => false, 'flights' => $flights, 'flights_number' => $flights_number
+                ]
+            ];
+        }
+        return [
+            'code' => 200,
+            'response' => [
+                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_FLIGHT_LIST_EMPTY, 'flights_number' => $flights_number
+            ]
+        ];
+    }
+
+    /**
+     * Set the response data for FlightController show method route
+     */
+    private function setShowResponseData($myFlight,$user_id,array $params): array{
+        $flight = Flight::find($myFlight);
+        if($flight != null){
+            if($user_id == $flight->user_id){
+                return [
+                    'code' => 200,
+                    'response' => [
+                        C::KEY_DONE => true, 'flight' => $flight
+                    ]
+                ];
+            }
+            return [
+                'code' => 401,
+                'response' => [
+                    C::KEY_DONE => false,
+                    C::KEY_MESSAGE => $params['messages']['error']
+                ]
+            ];
+        }//if($flight != null){
+        return [
+            'code' => 404,
+            'response' => [
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => $params['messages']['error']
+            ]
+        ];
+    }
+
+    /**
+     * Set the response data for FlightController store method route
+     */
+    private function setStoreResponseData(array $params): array{
         $response_data = [];
         $response_data['flights'] = $params['flights'];
         if($params['inserted']){
@@ -119,29 +175,6 @@ trait FlightControllerCommonTrait{
                 $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_SINGLE;
         }//else di if($inserted){
         return $response_data;
-    }
-
-    /**
-     * Set the response data for FlightController index method route
-     */
-    private function setIndexResponseData($user_id): array{
-        $flight_collection = Flight::where('user_id',$user_id);
-        $flights_number = $flight_collection->count();
-        if($flights_number > 0){
-            $flights = $flight_collection->toArray();
-            return [
-                'code' => 200,
-                'response' => [
-                    C::KEY_DONE => true, C::KEY_EMPTY => false, 'flights' => $flights, 'flights_number' => $flights_number
-                ]
-            ];
-        }
-        return [
-            'code' => 200,
-            'response' => [
-                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_BOOKED_FLIGHT_LIST_EMPTY, 'flights_number' => $flights_number
-            ]
-        ];
     }
 }
 ?>

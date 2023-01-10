@@ -64,14 +64,15 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         //Log::channel('stdout')->debug("FlightController store");
-        $inputs = $request->all();
         try{
+            $inputs = $request->all();
+            $user_id = auth()->id();
             $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
             //Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
             if(count($flightsTemp) >= 1){
-                $flights_info = $this->create_flights($flightsTemp);
-                $response_data = $this->setResponseData($flights_info);
-                $del = FlightTemp::where('session_id',$inputs['session_id'])->delete();
+                $flights_info = $this->create_flights($flightsTemp,$user_id);
+                $response_data = $this->setStoreResponseData($flights_info);
+                FlightTemp::where('session_id',$inputs['session_id'])->delete();
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data,$response_data['code']);
             }
             throw new Exception; 
@@ -97,16 +98,13 @@ class FlightController extends Controller
     public function show(Flight $flight,$myFlight)
     {
         try{
-            $flight = Flight::find($myFlight);
-            if($flight != null){
-                //Requested flight found
-                $user_id = auth()->id();
-                if($user_id == $flight->user_id){
-                    return response()->view(P::VIEW_FLIGHT,[
-                        'flight' => $flight
-                    ],200);
-                }//if($user_id == $flight->user_id){
-            }//if($flight != null){
+            $user_id = auth()->id();
+            $params = [
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+            ];
+            $response_data = $this->setShowResponseData($myFlight,$user_id,$params);
+            if($response_data['code'] == 200)
+                return response()->view(P::VIEW_FLIGHT,$response_data['response']);
             throw new Exception;
         }catch(Exception $e){
             session()->put('redirect','1');
