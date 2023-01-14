@@ -1,17 +1,28 @@
 @use "sass:map";
+@use "sass:meta";
+@use "sass:selector";
 @use "../modules/globals";
 @import "extendables";
 
 $card-body-map: (
     '.div-title': (
-        height: 150px
+        height: 175px
     ),
-    '.div-date': (),
-    '.div-city': (),
-    '.div-price': ()
+    '.div-date': (
+        height: 30px
+    ),
+    '.div-city': (
+        height: 30px
+    ),
+    '.div-price': (
+        height: 75px,
+        'a': (
+            height: fit-content
+        )
+    )
 );
 
-@mixin card-style(){
+@mixin card-style($map){
     div.single-card{
         div.div-image{
             height: 200px;
@@ -22,9 +33,31 @@ $card-body-map: (
         $sm-breakpoint: map.get(globals.$bs-breakpoints,'sm');
         @media only screen and (min-width: #{$sm-breakpoint}){
             $card-body: '.card-body';
-        }
+            @each $class, $rules in $map{
+                $card-body-child: selector.nest($card-body,$class);
+                //@debug "card body child: #{$card-body-child}";
+                @include selector-props-loop($card-body-child, $rules);
+            }//@each $class, $rules in $map{
+        }//@media only screen and (min-width: #{$sm-breakpoint}){
 
     }//div.single-card{
 } 
 
-@include card-style();
+@mixin selector-props-loop($selector,$rules){
+    #{$selector}{
+        @each $prop,$val in $rules{
+            /* @debug "prop";
+            @debug $prop;
+            @debug "val";
+            @debug $val; */
+            @if meta.type-of($val) == map{
+               @include selector-props-loop($prop,$val);
+            }
+            @else{
+                #{$prop}: #{$val};
+            }
+        }
+    }
+}
+
+@include card-style($card-body-map);

@@ -23,7 +23,7 @@ export default class FlightEventsHtml{
     </div>
     <div class="card-body">
         <div class="div-title">
-            <h3 class="card-title">${data.name}</h3>
+            <h5 class="card-title">${data.name}</h3>
         </div>
         <div class="card-text div-date">
             <div class="fs-6">${data.date.getDate()}-${data.date.getMonth()+1}-${data.date.getFullYear()}</div>
