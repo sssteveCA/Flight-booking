@@ -14,7 +14,7 @@ $post-link-text-align: center;
 $post-div-class: '.post-div';
 $post-item-class: '.post-item';
 $post-item-bg-hover-color: rgba(255,255,0,0.7); //Yellow
-$post-div-children-margin: 15px auto;
+$post-div-children-padding: 15px 0px;
 
 @mixin link-style($link-class,$div-class){
     #{$link-class}{
@@ -23,7 +23,7 @@ $post-div-children-margin: 15px auto;
         text-decoration: $post-link-decoration;
         margin: $post-link-margins;
         #{$div-class} > div{
-            margin: $post-div-children-margin;
+            padding: $post-div-children-padding;
         }
     }
     $post-link-except-last: selector.append($link-class,":not(:last-child)");

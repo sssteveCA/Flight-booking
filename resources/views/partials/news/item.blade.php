@@ -1,4 +1,4 @@
-<div class="post-item">
+<div class="post-item text-center">
     <a class="post-link" href="{{ route('news.show',['permalink' => $post['permalink']]) }}">
         <div class="post-div">
             <div class="post-header">
