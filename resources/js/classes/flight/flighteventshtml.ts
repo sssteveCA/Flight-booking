@@ -18,16 +18,20 @@ export default class FlightEventsHtml{
     private htmlCard(data: HtmlCardInterface):string{
         let htmlCard = `
 <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
-    <img src="${data.image}" alt="${data.name}" title="${data.name}">
+    <div class="div-image">
+        <img src="${data.image}" alt="${data.name}" title="${data.name}">
+    </div>
     <div class="card-body">
-        <h3 class="card-title">${data.name}</h3>
-        <div class="card-text">
+        <div class="div-title">
+            <h3 class="card-title">${data.name}</h3>
+        </div>
+        <div class="card-text div-date">
             <div class="fs-6">${data.date.getDate()}-${data.date.getMonth()+1}-${data.date.getFullYear()}</div>
         </div>
-        <div class="card-text d-flex">
+        <div class="card-text d-flex div-city">
             <div class="fs-6">${data.city}</div>
         </div>
-        <div class="card-text d-flex justify-content-between">
+        <div class="card-text d-flex justify-content-between div-price">
             <div class="fs-5">${data.price}€</div>
             <a href="#" class="btn btn-warning">Biglietti</a>
         </div>
