@@ -10,7 +10,7 @@
         @yield('meta')
         @section('links')
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/partials/footer.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
             <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
             <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
         @show

@@ -31,11 +31,17 @@ $compound-selectors-rules: (
     'xs': (
         '.row div span':(
             text-align: center
+        ),
+        '.row-content>div>div': (
+            margin: 50px auto
         )
     ),
     'md': (
         '.row div span':(
             text-align: left
+        ),
+        '.row-content>div>div': (
+            margin: 50px auto
         )
     )
 );
