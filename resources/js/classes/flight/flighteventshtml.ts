@@ -20,10 +20,12 @@ export default class FlightEventsHtml{
 <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
     <img src="${data.image}" alt="${data.name}" title="${data.name}">
     <div class="card-body">
-        <h3>${data.name}</h3>
-        <div class="card-text d-flex justify-content-between">
-            <div class="fs-6">${data.location}</div>
-            <div class="fs-6">${data.country}</div>
+        <h3 class="card-title">${data.name}</h3>
+        <div class="card-text">
+            <div class="fs-6">${data.date.getDate()}-${data.date.getMonth()}-${data.date.getFullYear()}</div>
+        </div>
+        <div class="card-text d-flex">
+            <div class="fs-6">${data.city}</div>
         </div>
         <div class="card-text d-flex justify-content-between">
             <div class="fs-5">${data.price}</div>
@@ -44,9 +46,7 @@ export default class FlightEventsHtml{
                 let fel_elem: HtmlCardInterface= {
                     image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
                     name: val['name'],
-                    location: val['location'],
-                    gmLink: val['gmLink'],
-                    country: val['country'],
+                    city: val['city'],
                     date: new Date(val['date']),
                     price: val['price']
                 };
