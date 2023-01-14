@@ -43,5 +43,15 @@ trait DateTrait{
         //Log::channel('stdout')->debug("DateTrait dateDaysDifference days => {$diff->d}");
         return $diff->d;
     }
+
+    /**
+     * Convert a date string in d-m-Y H:i:s format
+     * @param string $date the date to convert
+     * @return the date converted
+     */
+    private function formatDate(string $date): string{
+        $dti = new DateTimeImmutable($date);
+        return $dti->format("d-m-Y H:i:s");
+    }
 }
 ?>
