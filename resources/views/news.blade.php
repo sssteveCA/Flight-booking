@@ -16,14 +16,7 @@
 @section('content')
     @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
     @isset($n_posts,$posts)
-        @each(P::VIEW_POST_ITEM,$posts,'post')
-        @forelse($posts as $post)
-            
-        @empty
-            @isset($message)
-                <div class="mt-5 alert alert-secondary" role="alert">{{$message}}</div>
-            @endisset
-        @endforelse
+        @each(P::VIEW_POST_ITEM,$posts,'post',P::VIEW_POST_EMPTYLIST)
     @endisset
     @if(isset($status) && $status == 'ERROR')
         <div class="mt-5 alert alert-danger" role="alert">{{$message}}</div>
