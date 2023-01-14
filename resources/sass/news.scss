@@ -12,7 +12,8 @@ $post-link-margins: 0px 12px;
 $post-link-padding: 20px 10px;
 $post-link-text-align: center;
 $post-div-class: '.post-div';
-$post-div-bg-hover-color: rgba(255,255,0,0.7); //Yellow
+$post-item-class: '.post-item';
+$post-item-bg-hover-color: rgba(255,255,0,0.7); //Yellow
 $post-div-children-margin: 15px auto;
 
 @mixin link-style($link-class,$div-class){
@@ -21,14 +22,9 @@ $post-div-children-margin: 15px auto;
         color: $post-link-color;
         text-decoration: $post-link-decoration;
         margin: $post-link-margins;
-        padding: $post-link-padding;
         #{$div-class} > div{
             margin: $post-div-children-margin;
         }
-    }
-    $post-div-hover-selector: string.unquote(#{$link-class+":hover" $div-class});
-    #{$post-div-hover-selector}{
-        background-color: $post-div-bg-hover-color;
     }
     $post-link-except-last: selector.append($link-class,":not(:last-child)");
     #{$post-link-except-last}{
@@ -36,5 +32,24 @@ $post-div-children-margin: 15px auto;
     }
 }
 
-@include link-style($post-link-class,$post-div-class);
+@mixin post-item-style($item-class,$link-class,$div-class){
+    #{$item-class}{
+        margin: 0 auto;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        width: calc(100% - 10px);
+        @include link-style($link-class, $div-class);
+    }
+    $item-class-hover: string.insert($item-class,":hover",50);
+    #{$item-class-hover}{
+        background-color: $post-item-bg-hover-color;
+    }
+    $item-class-last: string.insert($item-class,':last-child',50);
+    #{$item-class-last}{
+        border-bottom: 1px solid black;
+    }
+}
+
+@include post-item-style($post-item-class,$post-link-class,$post-div-class);
 @include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
