@@ -106,6 +106,7 @@ interface Paths{
     const VIEW_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
     const VIEW_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
     const VIEW_POST = 'news.post';
+    const VIEW_POST_ITEM = 'partials.news.item';
     const VIEW_PRIVACY = 'partials.privacy';
     const VIEW_PRIVACY_POLICY = 'privacy_policy';
     const VIEW_PROFILE_EDIT = 'profile.edit';
