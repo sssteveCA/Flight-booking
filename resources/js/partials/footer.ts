@@ -21,8 +21,8 @@ function footerPosition(footerEl: JQuery): void{
     let footerHeight: number = footerEl.height() as number;
     /* console.log("footerHeight => "+footerHeight);
     console.log("bodyHeight => "+bodyHeight);
-    console.log("windowHeight => "+windowHeight); */ 
-    if(bodyHeight < windowHeight){
+    console.log("windowHeight => "+windowHeight);   */
+    if(bodyHeight < (windowHeight - 0.3)){
         footerEl.css({
             position: 'fixed',
             bottom: '0px'

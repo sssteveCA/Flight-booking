@@ -14,8 +14,10 @@ $bs-breakpoints: (
 
 $single-selectors-map: (
     'xs': (
-        'classes': (),
-        'ids': (),
+        'classes': (
+        ),
+        'ids': (
+        ),
         'tags':(
             'textarea': (
                 'resize': none,
@@ -24,8 +26,10 @@ $single-selectors-map: (
         )
     ),
     'md': (
-        'classes': (),
-        'ids': (),
+        'classes': (
+        ),
+        'ids': (
+        ),
         'tags': (
             'textarea': (
                 'height': 200px
