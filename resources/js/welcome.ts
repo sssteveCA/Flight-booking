@@ -1,4 +1,5 @@
 import AirportsAvailable from "./classes/flight/airportsavailable";
+import FlightEventsHtml from "./classes/flight/flighteventshtml";
 import FlightEventsList from "./classes/flight/flighteventslist";
 import FlightLocationList from "./classes/flight/flightlocationlist";
 import AirportsAvailableInterface from "./interfaces/flight/airportsavailable.interface";
@@ -99,10 +100,9 @@ function tabClickEvents(elements: any): void{
            let fel:FlightEventsList = new FlightEventsList();
            fel.flight_events_request().then(response => {
                //console.log(fel.html);
-               if(fel.errno == 0){
+               let feh: FlightEventsHtml = new FlightEventsHtml(fel.json);
                    //No errors Happened
-                   $('#events').html(fel.html);
-               }
+                   $('#events').html(feh.html);
            }).catch(err => {
 
            });

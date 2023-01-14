@@ -9,6 +9,7 @@ import FlightEventsHtml from "./flighteventshtml";
 export default class FlightEventsList{
     private _errno: number = 0;
     private _error: string|null = null;
+    private _json: object = {};
 
     //Numbers
     private static ERR_SCRIPT_EXCEPTION:number = 1;
@@ -21,6 +22,7 @@ export default class FlightEventsList{
     constructor(){
     }
 
+    get json(){return this._json;}
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
@@ -37,20 +39,17 @@ export default class FlightEventsList{
     async flight_events_request(): Promise<boolean>{
         let ok:boolean = false;
         this._errno = 0;
-        let json = {};
         //console.log("Prima della promise");
         await this.flight_event_request_promise().then(res => {
             //console.log(res);
-            json = JSON.parse(res);
+            this._json = JSON.parse(res);
             //console.log(this._flight_events);
             ok = true;
         }).catch(err => {
             console.warn(err);
             this._errno = FlightEventsList.ERR_SCRIPT_EXCEPTION;
-            json = { done: false, empty: false, message: this.error };
-        }).finally(()=> {
-            let feh: FlightEventsHtml = new FlightEventsHtml(json);
-        })
+            this._json = { done: false, empty: false, message: this.error };
+        });
         return ok;
     }
 

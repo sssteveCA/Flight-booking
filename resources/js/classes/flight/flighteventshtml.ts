@@ -22,13 +22,13 @@ export default class FlightEventsHtml{
     <div class="card-body">
         <h3 class="card-title">${data.name}</h3>
         <div class="card-text">
-            <div class="fs-6">${data.date.getDate()}-${data.date.getMonth()}-${data.date.getFullYear()}</div>
+            <div class="fs-6">${data.date.getDate()}-${data.date.getMonth()+1}-${data.date.getFullYear()}</div>
         </div>
         <div class="card-text d-flex">
             <div class="fs-6">${data.city}</div>
         </div>
         <div class="card-text d-flex justify-content-between">
-            <div class="fs-5">${data.price}</div>
+            <div class="fs-5">${data.price}€</div>
             <a href="#" class="btn btn-warning">Biglietti</a>
         </div>
     </div>
