@@ -58,7 +58,7 @@ export default class FlightEventsHtml{
             });
             this._html = `
 <div class="container-fluid">
-    <div class="row gx-2 gy-4">
+    <div class="row gx-2 gy-4 single-card">
         ${cards}
     </div>
 </div>

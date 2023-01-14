@@ -13,7 +13,6 @@
     "/js/partials/menu.js": "/js/partials/menu.js",
     "/js/profile/info.js": "/js/profile/info.js",
     "/css/app.css": "/css/app.css",
-    "/css/welcome.css": "/css/welcome.css",
     "/css/menu.css": "/css/menu.css",
     "/css/footer.css": "/css/footer.css",
     "/css/profile/info.css": "/css/profile/info.css",
@@ -31,5 +30,6 @@
     "/css/welcome/flightpriceresult.css": "/css/welcome/flightpriceresult.css",
     "/css/error/errors.css": "/css/error/errors.css",
     "/css/bookhotel/bookhotel.css": "/css/bookhotel/bookhotel.css",
-    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css"
+    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css",
+    "/css/welcome.css": "/css/welcome.css"
 }

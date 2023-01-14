@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "../modules/globals";
+@import "extendables";
+
+$card-body-map: (
+    '.div-title': (
+        height: 150px
+    ),
+    '.div-date': (),
+    '.div-city': (),
+    '.div-price': ()
+);
+
+@mixin card-style(){
+    div.single-card{
+        div.div-image{
+            height: 200px;
+            img{
+                 @extend %fullsizeParent;
+            }
+        }
+        $sm-breakpoint: map.get(globals.$bs-breakpoints,'sm');
+        @media only screen and (min-width: #{$sm-breakpoint}){
+            $card-body: '.card-body';
+        }
+
+    }//div.single-card{
+} 
+
+@include card-style();
