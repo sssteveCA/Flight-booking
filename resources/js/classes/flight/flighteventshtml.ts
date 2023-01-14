@@ -45,7 +45,9 @@ export default class FlightEventsHtml{
                     image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
                     name: val['name'],
                     location: val['location'],
+                    gmLink: val['gmLink'],
                     country: val['country'],
+                    date: new Date(val['date']),
                     price: val['price']
                 };
                 cards += this.htmlCard(fel_elem);

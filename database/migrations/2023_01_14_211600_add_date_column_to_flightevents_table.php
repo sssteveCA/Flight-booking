@@ -14,7 +14,8 @@ class AddDateColumnToFlighteventsTable extends Migration
     public function up()
     {
         Schema::table('flightevents', function (Blueprint $table) {
-            $table->string('gmLink')->after('location', 100);
+            $table->string('gmLink',100)->after('location');
+            $table->string('city')->after('country');
             $table->dateTime('date')->after('price');
         });
     }
@@ -27,7 +28,7 @@ class AddDateColumnToFlighteventsTable extends Migration
     public function down()
     {
         Schema::table('flightevents', function (Blueprint $table) {
-            //
+            $table->dropColumn(['gmLink','date']);
         });
     }
 }
