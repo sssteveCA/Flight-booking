@@ -1,8 +1,10 @@
+@use "sass:list";
+@use "sass:map";
 @use "sass:meta";
 @use "sass:string";
 @import "../partials/back";
 
-$maps-list: (
+$flightevent-map: (
     '.container-fluid': (
         '.row': (
             '.div-image': (
@@ -31,19 +33,19 @@ $maps-list: (
     )
 );
 
-@mixin list-loop($list){
-    @each $map in $list{
-        @include map-loop($map);
-    }//@each $map in $list{
-}
-
 @mixin map-loop($map){
     @each $key, $val in $map{
         #{$key}{
-            @if meta.type-of($val) == map{
-                @include map-loop($val);
-            }
-            @else{
+            $val-type: meta.type-of($val);
+            @if $val-type == map or $val-type == list{
+                @if $val-type == map{
+                    $map-keys: map.keys($val);
+                    @if list.length($map-keys) > 0{
+                        @include map-loop($val);
+                    }//@if list.length($map-keys) > 0{
+                }//@if $val-type == map{     
+            }//@if $val-type == map or $val-type == list{
+            @else {
                 $key-debug: string.insert("Key => ",$key,string.length("Key => "));
                 @debug $key-debug;
                 $value-debug: string.insert("Value => ",$val,string.length("Value => "));
@@ -54,4 +56,4 @@ $maps-list: (
     }//@each $key, $var in $map{
 }
 
-@include list-loop($maps-list);
+@include map-loop($flightevent-map);
