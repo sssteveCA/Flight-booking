@@ -63,13 +63,11 @@ class PostControllerApi extends Controller
             $response_data = $this->setShowResponseData($permalink,$params);
             return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false,
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => C::ERR_NEWS_SINGLE
-                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => C::ERR_NEWS_SINGLE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }  
     }
 

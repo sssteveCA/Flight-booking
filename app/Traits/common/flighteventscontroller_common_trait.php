@@ -37,7 +37,7 @@ trait FlightEventsControllerCommonTrait{
      * Set the response data for the FlightEventsController show method route
      * @param $id the id of the resource to show
      */
-    private function setShowResponseData($id): array{
+    private function setShowResponseData($id, array $params): array{
         $flightEvent = FlightEvent::find($id);
         if($flightEvent != null)
             return [
@@ -49,7 +49,7 @@ trait FlightEventsControllerCommonTrait{
         return [
             C::KEY_CODE => 404,
             C::KEY_RESPONSE => [
-                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED
+                C::KEY_DONE => false, C::KEY_MESSAGE => $params['messages']['error']
             ]
         ];
     }

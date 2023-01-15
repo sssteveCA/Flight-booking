@@ -8,6 +8,7 @@ use App\Traits\Common\FlightEventsControllerCommonTrait;
 use Exception;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use App\Interfaces\Paths as P;
 
 class FlightEventsController extends Controller
 {
@@ -57,12 +58,21 @@ class FlightEventsController extends Controller
      * @param  \App\Models\FlightEvent  $flightEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(FlightEvent $flightEvent, $id)
+    public function show(FlightEvent $flightEvent)
     {
+        $params = [
+            'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+        ];
         try{
-
+            $response_data = $this->setShowResponseData($flightEvent,$params);
+            if($response_data[C::KEY_CODE] == 200)
+                return response()->view(P::VIEW_FLIGHTEVENT,$response_data[C::KEY_RESPONSE]);
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
         }catch(Exception $e){
-
+            return response()->view(P::VIEW_FLIGHTEVENT,[
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHT_EVENT_SINGLE
+            ],500);
         }
     }
 

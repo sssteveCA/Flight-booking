@@ -52,7 +52,6 @@ interface Paths{
     const URL_EDITUSERNAME = '/editUsername';
     const URL_EMAILVERIFY = '/email/verify';
     const URL_ERRORS = '/errors';
-    const URL_FLIGHTEVENTS = '/flightevents';
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTRESUME = '/flightresume';
     const URL_FLIGHTSEARCH = '/flightsearch';
@@ -91,6 +90,7 @@ interface Paths{
     const VIEW_FALLBACK = 'error.errors';
     const VIEW_FOOTER = 'partials.footer';
     const VIEW_FLIGHT = 'profile.myFlights.flight';
+    const VIEW_FLIGHTEVENT = 'flightevents.flightevent';
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
