@@ -1,1 +1,57 @@
+@use "sass:meta";
+@use "sass:string";
 @import "../partials/back";
+
+$maps-list: (
+    '.container-fluid': (
+        '.row': (
+            '.div-image': (
+
+            ),
+            '.event-info': (
+                '.event-name': (
+
+                ),
+                '.event-date': (
+
+                ),
+                '.event-location': (
+
+                )
+            ),
+            '.event-price': (
+                'span': (
+                    
+                )
+            ),
+            '.ticket-quantity': (
+
+            )
+        )
+    )
+);
+
+@mixin list-loop($list){
+    @each $map in $list{
+        @include map-loop($map);
+    }//@each $map in $list{
+}
+
+@mixin map-loop($map){
+    @each $key, $val in $map{
+        #{$key}{
+            @if meta.type-of($val) == map{
+                @include map-loop($val);
+            }
+            @else{
+                $key-debug: string.insert("Key => ",$key,string.length("Key => "));
+                @debug $key-debug;
+                $value-debug: string.insert("Value => ",$val,string.length("Value => "));
+                @debug $value-debug;
+                #{$key}: #{$val};
+            }
+        }//#{$key}{
+    }//@each $key, $var in $map{
+}
+
+@include list-loop($maps-list);

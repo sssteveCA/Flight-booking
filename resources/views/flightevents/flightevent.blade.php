@@ -16,10 +16,10 @@
     @if($done == true)
     <div class="container-fluid">
         <div class="row mt-5 justify-content-center justify-content-lg-between">
-            <div class="col-12 col-lg-6 div-image">
+            <div class="col-12 col-lg-6 div-image d-flex justify-content-center">
                 <img src="{{ asset(P::DIR_FLIGHT_EVENTS_IMG.'/'.$flightevent['image']) }}" alt="{{ $flightevent['name'] }}" title="{{ $flightevent['name'] }}">
             </div>
-            <div class="col-12 col-md-6 d-flex flex-column">
+            <div class="col-12 col-lg-6 d-flex flex-column mt-3 mt-lg-0 event-info">
                 <div>
                     <h3 class="event-name text-uppercase">{{ $flightevent['name'] }}</h3>
                     <p class="event-date">{{ $flightevent['date'] }}</p>
@@ -30,17 +30,17 @@
             </div>
         </div>
         <div class="row mt-5 gx-2 justify-content-center">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 event-price">
                 <span class="fw-bold text-uppercase">PREZZO: </span>
-                <span class="event-price">{{ $flightevent['price'] }}€</span>
+                <span>{{ $flightevent['price'] }}€</span>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 ticket-quantity">
                 <label for="event_quantity" class="form-label">Quantità</label>>
                 <input type="number" id="event_quantity" class="form-control" name="quantity" form="fEvents">
             </div>
         </div>
         <div class="row mt-2 justify-content-center">
-            <form id="fEvents" method="post" action="#">
+            <form id="fEvents" class="text-center" method="post" action="#">
                 <input type="hidden" name="id" value="{{ $flightevent['id'] }}">
                 <button type="button" class="btn btn-success btn-lg">PRENOTA</button>
             </form>
