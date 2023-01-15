@@ -57,9 +57,13 @@ class FlightEventsController extends Controller
      * @param  \App\Models\FlightEvent  $flightEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(FlightEvent $flightEvent)
+    public function show(FlightEvent $flightEvent, $id)
     {
-        //
+        try{
+
+        }catch(Exception $e){
+
+        }
     }
 
     /**
