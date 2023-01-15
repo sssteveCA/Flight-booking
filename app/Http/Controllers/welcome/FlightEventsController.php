@@ -4,6 +4,7 @@ namespace App\Http\Controllers\welcome;
 
 use App\Http\Controllers\Controller;
 use App\Models\FlightEvent;
+use Exception;
 use Illuminate\Http\Request;
 
 class FlightEventsController extends Controller
@@ -15,7 +16,11 @@ class FlightEventsController extends Controller
      */
     public function index()
     {
-        //
+        try{
+
+        }catch(Exception $e){
+            
+        }
     }
 
     /**

@@ -13,11 +13,36 @@ use Illuminate\Http\Exceptions\HttpResponseException;
  */
 trait FlightEventsControllerCommonTrait{
 
+    /**
+     * Set the response data for the FlightEventsController index route
+     */
+    private function setIndexResponseData(): array{
+        $fe_list = FlightEvent::orderByDesc('date')->get();
+        if($fe_list->count() > 0)
+            return [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
+                    C::KEY_DONE => false, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''
+                ]
+            ];
+        return [
+            C::KEY_CODE => 200,
+            C::KEY_RESPONSE => [
+                C::KEY_DONE => true, C::KEY_EMPTY => true, 'list' => $fe_list, C::KEY_MESSAGE => 'Nessun evento da mostrare'
+            ]
+        ];
+    }
+
     //
     public function getAll(Request $request = null){
         try{
             $fe_list = FlightEvent::all();
-            $responseData = [C::KEY_DONE => false, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''];
+            $responseData = [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
+                    C::KEY_DONE => false, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''
+                ]
+            ];
             if($fe_list->count() > 0)
                 $responseData[C::KEY_DONE] = true;     
             else{
