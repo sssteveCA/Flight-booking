@@ -2,32 +2,52 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
+@use "../modules/animations";
+@use "../modules/globals";
 @import "../partials/back";
 
 $flightevent-map: (
     '.container-fluid': (
+        min-width: 350px,
         '.row': (
             '.div-image': (
-
-            ),
-            '.event-info': (
-                '.event-name': (
-
-                ),
-                '.event-date': (
-
-                ),
-                '.event-location': (
-
+                display: flex,
+                justify-content: center,
+                width: max(350px, 40%),
+                'img': (
+                    width: 100%,
+                    height: 100%
                 )
             ),
+            '.event-info': (
+                'div': (
+                    text-align: center,
+                    '.event-name': (
+
+                    ),
+                    '.event-date': (
+
+                    ),
+                    '.event-location': (
+
+                    )
+                )
+                
+            ),
             '.event-price': (
+                display: flex,
+                justify-content: center,
+                align-items: center,
                 'span': (
-                    
+                    font-size: 2em
                 )
             ),
             '.ticket-quantity': (
-
+                display: flex,
+                justify-content: center,
+                'input': (
+                    width: clamp(200px, calc(100% - 50px),400px)
+                )
             )
         )
     )
@@ -35,25 +55,26 @@ $flightevent-map: (
 
 @mixin map-loop($map){
     @each $key, $val in $map{
-        #{$key}{
-            $val-type: meta.type-of($val);
-            @if $val-type == map or $val-type == list{
-                @if $val-type == map{
-                    $map-keys: map.keys($val);
-                    @if list.length($map-keys) > 0{
+        $val-type: meta.type-of($val);
+        @if $val-type == map or $val-type == list{
+            @if $val-type == map{
+                $map-keys: map.keys($val);
+                @if list.length($map-keys) > 0{
+                    #{$key}{
                         @include map-loop($val);
-                    }//@if list.length($map-keys) > 0{
-                }//@if $val-type == map{     
-            }//@if $val-type == map or $val-type == list{
-            @else {
-                $key-debug: string.insert("Key => ",$key,string.length("Key => "));
-                @debug $key-debug;
-                $value-debug: string.insert("Value => ",$val,string.length("Value => "));
-                @debug $value-debug;
-                #{$key}: #{$val};
-            }
-        }//#{$key}{
+                    }
+                }//@if list.length($map-keys) > 0{
+            }//@if $val-type == map{     
+        }//@if $val-type == map or $val-type == list{ 
+        @else {
+            /* $key-debug: string.insert("Key => ",$key,string.length("Key => "));
+            @debug $key-debug;
+            $value-debug: string.insert("Value => ",$val,string.length("Value => "));
+            @debug $value-debug; */
+            #{$key}: #{$val};
+        } 
     }//@each $key, $var in $map{
 }
 
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
 @include map-loop($flightevent-map);
