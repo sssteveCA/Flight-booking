@@ -2,10 +2,10 @@
 
 namespace App\Traits\Common;
 
-use App\Models\FlighEvent;
 use Exception;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use App\Models\FlightEvent;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 /**
@@ -16,7 +16,7 @@ trait FlightEventsControllerCommonTrait{
     //
     public function getAll(Request $request = null){
         try{
-            $fe_list = FlighEvent::all();
+            $fe_list = FlightEvent::all();
             $responseData = [C::KEY_DONE => false, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''];
             if($fe_list->count() > 0)
                 $responseData[C::KEY_DONE] = true;     

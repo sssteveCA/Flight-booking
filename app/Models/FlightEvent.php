@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FlighEvent extends Model
+class FlightEvent extends Model
 {
     use HasFactory;
     protected $table = 'flightevents';
