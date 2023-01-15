@@ -4,10 +4,15 @@ namespace App\Http\Controllers\api\welcome;
 
 use App\Http\Controllers\Controller;
 use App\Models\FlightEvent;
+use App\Traits\Common\FlightEventsControllerCommonTrait;
+use Exception;
 use Illuminate\Http\Request;
+use App\Interfaces\Constants as C;
 
 class FlightEventsControllerApi extends Controller
 {
+    USE FlightEventsControllerCommonTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,14 @@ class FlightEventsControllerApi extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $response_data = $this->setIndexResponseData();
+            return response()->json($response_data[C::KEY_RESPONSE], $response_data[C::KEY_CODE],[], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_EMPTY => false, C::KEY_MESSAGE => C::ERR_FLIGHT_EVENTS
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**
