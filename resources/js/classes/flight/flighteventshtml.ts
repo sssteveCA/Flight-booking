@@ -33,7 +33,7 @@ export default class FlightEventsHtml{
         </div>
         <div class="card-text d-flex justify-content-between div-price">
             <div class="fs-5">${data.price}€</div>
-            <a href="#" class="btn btn-warning">Biglietti</a>
+            <a href="/flightevents/${data.id}" class="btn btn-warning">Biglietti</a>
         </div>
     </div>
 </div>
@@ -48,11 +48,12 @@ export default class FlightEventsHtml{
             //Add cards elements to result
             this._flights_event.forEach((val,index)=>{
                 let fel_elem: HtmlCardInterface= {
-                    image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
+                    id: val['id'],
                     name: val['name'],
                     city: val['city'],
                     date: new Date(val['date']),
-                    price: val['price']
+                    price: val['price'],
+                    image: Constants.FOLDER_FLIGHTEVENTS+'/'+val['image'],
                 };
                 cards += this.htmlCard(fel_elem);
             });
@@ -66,9 +67,9 @@ export default class FlightEventsHtml{
         }//if(json["done"] == true && json[Constants.KEY_EMPTY] == false){
         else{
             if(json[Constants.KEY_EMPTY] == true)
-                this._html = `<div class="alert alert-secondary" role="alert">${json["message"]}</div>`;
+                this._html = `<div class="alert alert-secondary" role="alert">${json[Constants.KEY_MESSAGE]}</div>`;
             else
-                this._html = `<div class="alert alert-danger" role="alert">${json["message"]}</div>`;
+                this._html = `<div class="alert alert-danger" role="alert">${json[Constants.KEY_MESSAGE]}</div>`;
         }//else di if(json["done"] == true && json[Constants.KEY_EMPTY] == false){  
     }
 }

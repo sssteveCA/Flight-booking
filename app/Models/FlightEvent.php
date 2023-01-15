@@ -17,5 +17,5 @@ class FlightEvent extends Model
         'price' => 0,
         'image' => ''
     ];
-    protected $hidden = ['id'];
+    //protected $hidden = ['id'];
 }
