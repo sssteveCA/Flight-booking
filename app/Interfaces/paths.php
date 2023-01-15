@@ -4,6 +4,10 @@ namespace App\Interfaces;
 
 interface Paths{
 
+    //Directories
+    const DIR_IMG = '/img';
+    const DIR_FLIGHT_EVENTS_IMG = '/flightevents';
+
     //Prefixes
     const PREFIX_BOOKFLIGHT = 'bookflight';
     const PREFIX_BOOKHOTEL = 'bookhotel';
