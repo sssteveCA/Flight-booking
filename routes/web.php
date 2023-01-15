@@ -87,7 +87,7 @@ Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::post(P::URL_PREFERENCES_SET, [PreferenceController::class, 'cookieSet']);
 Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchController::class,'getAvailableAirports']);
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
-Route::get(P::URL_FLIGHTEVENTS,[FlightEventsController::class,'getAll']);
+Route::resource(P::PREFIX_FLIGHTEVENTS, FlightEventsController::class)->only(['index','show']);
 Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHotels']);
 
 Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
@@ -96,11 +96,9 @@ Route::get(P::URL_HOTELPRICE,[HotelSearchController::class, 'getHotelPrice_get']
 Route::post(P::URL_HOTELPRICE, [HotelSearchController::class, 'getHotelPrice'])->name(P::ROUTE_HOTELPRICE);
 Route::post(P::URL_SENDEMAIL,[EmailController::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
 
-Route::resource(P::PREFIX_NEWS,PostController::class)->only([
-    'index','show'
-])->parameters([
-    'news' => 'permalink'
-]);
+Route::resource(P::PREFIX_NEWS,PostController::class)
+    ->only(['index','show'])
+    ->parameters(['news' => 'permalink']);
 
 Route::view(P::URL_CONTACTS,P::VIEW_CONTACTS);
 Route::view(P::URL_ROOT,P::VIEW_WELCOME);

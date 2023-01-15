@@ -16,6 +16,7 @@ use App\Http\Controllers\api\PostControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
 use App\Http\Controllers\api\welcome\FlightEventsControllerApi;
 use App\Http\Controllers\api\welcome\HotelSearchControllerApi;
+use App\Http\Controllers\welcome\FlightEventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,15 +38,15 @@ Route::name('api.')->group(function(){
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
     Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchControllerApi::class,'getAvailableAirports']);
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
-    Route::get(P::URL_FLIGHTEVENTS,[FlightEventsControllerApi::class, 'getAll']);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTPRICE,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchControllerApi::class,'getAvailableHotels']);
     Route::get(P::URL_HOTELINFO,[HotelSearchControllerApi::class,'getHotelInfo']);
     Route::post(P::URL_HOTELPRICE,[HotelSearchControllerApi::class,'getHotelPrice'])->name(P::ROUTE_HOTELPRICE);
-    Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)->only([
-        'index','show'
-    ]);
+    Route::apiResource(P::PREFIX_FLIGHTEVENTS,FlightEventsControllerApi::class)->only(['index','show']);
+    Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)
+        ->only(['index','show'])
+        ->parameters(['news' => 'permalink']);
 });
 
 Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','verified']], function(){
