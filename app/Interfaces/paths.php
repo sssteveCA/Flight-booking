@@ -6,7 +6,7 @@ interface Paths{
 
     //Directories
     const DIR_IMG = '/img';
-    const DIR_FLIGHT_EVENTS_IMG = '/flightevents';
+    const DIR_FLIGHT_EVENTS_IMG = Paths::DIR_IMG.'/flightevents';
 
     //Prefixes
     const PREFIX_BOOKFLIGHT = 'bookflight';

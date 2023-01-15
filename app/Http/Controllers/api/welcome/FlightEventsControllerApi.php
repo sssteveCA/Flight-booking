@@ -47,13 +47,13 @@ class FlightEventsControllerApi extends Controller
      * @param  \App\Models\FlightEvent  $flightEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(FlightEvent $flightEvent)
+    public function show(FlightEvent $flightEvent,$id)
     {
         $params = [
             'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ]
         ];
         try{
-            $response_data = $this->setShowResponseData($flightEvent,$params);
+            $response_data = $this->setShowResponseData($id,$params);
             return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([

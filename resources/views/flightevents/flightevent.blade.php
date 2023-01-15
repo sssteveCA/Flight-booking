@@ -17,14 +17,14 @@
     <div class="container-fluid">
         <div class="row mt-5 justify-content-center justify-content-lg-between">
             <div class="col-12 col-lg-6 div-image">
-                <img src="{{ P::DIR_FLIGHT_EVENTS_IMG.'/'.$flightevent['image'] }}" alt="{{ $flightevent['name'] }}" title="{{ $flightevent['name'] }}">
+                <img src="{{ asset(P::DIR_FLIGHT_EVENTS_IMG.'/'.$flightevent['image']) }}" alt="{{ $flightevent['name'] }}" title="{{ $flightevent['name'] }}">
             </div>
-            <div class="col-12 col-lg-6 d-flex flex-column">
+            <div class="col-12 col-md-6 d-flex flex-column">
                 <div>
                     <h3 class="event-name text-uppercase">{{ $flightevent['name'] }}</h3>
                     <p class="event-date">{{ $flightevent['date'] }}</p>
                     <p class="event-location">
-                        <a href="{{ $flightevent['gmLink'] }}">{{ $flightevent['location'] }}</a>
+                        <a href="{{ $flightevent['gmLink'] }}" target="_blank">{{ $flightevent['location'] }}</a>
                     </p>
                 </div>
             </div>
