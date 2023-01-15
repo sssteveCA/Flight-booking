@@ -13,6 +13,7 @@ export namespace Constants{
 
     //Keys
     export const KEY_DONE = 'done';
+    export const KEY_EMPTY = 'empty';
     export const KEY_MESSAGE = 'message';
     export const KEY_STATUS = 'status';
 

@@ -42,7 +42,7 @@ export default class FlightEventsHtml{
     }
 
     private htmlSet(json: object):void{
-        if(json["done"] == true && json["empty"] == false){
+        if(json[Constants.KEY_DONE] == true && json[Constants.KEY_EMPTY] == false){
             this._flights_event = json["list"];
             let cards = ``;
             //Add cards elements to result
@@ -63,12 +63,12 @@ export default class FlightEventsHtml{
     </div>
 </div>
 `;
-        }//if(json["done"] == true && json["empty"] == false){
+        }//if(json["done"] == true && json[Constants.KEY_EMPTY] == false){
         else{
-            if(json["empty"] == true)
+            if(json[Constants.KEY_EMPTY] == true)
                 this._html = `<div class="alert alert-secondary" role="alert">${json["message"]}</div>`;
             else
                 this._html = `<div class="alert alert-danger" role="alert">${json["message"]}</div>`;
-        }//else di if(json["done"] == true && json["empty"] == false){  
+        }//else di if(json["done"] == true && json[Constants.KEY_EMPTY] == false){  
     }
 }

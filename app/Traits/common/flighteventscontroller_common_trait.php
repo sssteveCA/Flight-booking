@@ -22,7 +22,7 @@ trait FlightEventsControllerCommonTrait{
             return [
                 C::KEY_CODE => 200,
                 C::KEY_RESPONSE => [
-                    C::KEY_DONE => false, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''
+                    C::KEY_DONE => true, C::KEY_EMPTY => false, 'list' => $fe_list, C::KEY_MESSAGE => ''
                 ]
             ];
         return [
