@@ -47,7 +47,7 @@ class UserControllerApi extends Controller
             ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             return response()->json([
-                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_INFO
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
         //Log::channel('stdout')->debug('UserControllerApi getData');

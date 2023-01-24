@@ -24,7 +24,11 @@
 
 @section('content')
     @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../../'])
-    @include(P::VIEW_PROFILE_INFO_EUF)
-    @include(P::VIEW_PROFILE_INFO_EPF)
-    @include(P::VIEW_PROFILE_INFO_DA)
+    @if($done == true)
+        @include(P::VIEW_PROFILE_INFO_EUF)
+        @include(P::VIEW_PROFILE_INFO_EPF)
+        @include(P::VIEW_PROFILE_INFO_DA)
+    @else
+        <div class="alert alert-danger" role="alert">{{$message}}</div>
+    @endif
 @endsection
