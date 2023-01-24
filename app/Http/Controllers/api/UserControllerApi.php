@@ -10,6 +10,7 @@ use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Models\Flight;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -27,47 +28,61 @@ class UserControllerApi extends Controller
         $this->usermanager =  new UserManager();   
     }
 
-    //get user info
+    /**
+     * Get user info
+     */
     public function getData(){
-        //Log::channel('stdout')->debug('UserControllerApi getData');
-        if(isset($this->auth_id)){
-            $userAuth = $this->usermanager->getUser($this->auth_id);
-            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
-            if($userAuth != null){
-                return response()->json(
-                    ['user' => $userAuth
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        try{
+            if(isset($this->auth_id)){
+                $userAuth = $this->usermanager->getUser($this->auth_id);
+                //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
+                if($userAuth != null){
+                    return response()->json(
+                        [C::KEY_DONE => true,'user' => $userAuth],
+                        200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                }
             }
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
-        return response()->json(
-            [
-            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-        ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        //Log::channel('stdout')->debug('UserControllerApi getData');
     }
 
-    //user account hard delete
+    /**
+     * User account hard delete
+     */
     public function deleteAccountHard(UserDeleteRequest $request){
-        $inputs = $request->validated();
-        $user = $this->usermanager->getUser($this->auth_id);
-        if($user != null){
-            //Get all tokens for specific user
-            $userTokens = $user->tokens;
-            foreach($userTokens as $token){
-                //revoke all tokens
-                $token->revoke();
-            }
-            //Delete all flights associated to this user
-            Flight::where('user_id',$this->auth_id)->delete();
-            //Delete user record in MySQL
-            $user->delete();
+        try{
+            $inputs = $request->validated();
+            $user = $this->usermanager->getUser($this->auth_id);
+            if($user != null){
+                //Get all tokens for specific user
+                $userTokens = $user->tokens;
+                foreach($userTokens as $token){
+                    //revoke all tokens
+                    $token->revoke();
+                }
+                //Delete all flights associated to this user
+                Flight::where('user_id',$this->auth_id)->delete();
+                //Delete user record in MySQL
+                $user->delete();
+                return response()->json([
+                    C::KEY_DONE => true, C::KEY_STATUS => 'OK', C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
+                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }//if($user != null){
             return response()->json([
-                C::KEY_STATUS => 'OK',
-                C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }//if($user != null){
-        return response()->json([
-            C::KEY_STATUS => 'ERROR',
-            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-        ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
+        
     }
 }

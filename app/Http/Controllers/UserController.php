@@ -13,6 +13,7 @@ use App\Classes\UserManager;
 use App\Http\Requests\UserDeleteRequest;
 use App\Models\Flight;
 use App\Traits\Common\UserControllerCommonTrait;
+use Exception;
 
 class UserController extends Controller
 {
@@ -25,40 +26,55 @@ class UserController extends Controller
         $this->usermanager =  new UserManager();   
     }
 
-    //get user info
+    /**
+     * Get user info
+     */
     public function getData(){
-        $userAuth = $this->usermanager->getUser($this->auth_id);
-        //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
-        if($userAuth != null){
-            return response()->view(P::VIEW_PROFILE_INFO,['user' => $userAuth],200);
+        try{
+            $userAuth = $this->usermanager->getUser($this->auth_id);
+            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
+            if($userAuth != null){
+                return response()->view(P::VIEW_PROFILE_INFO,[
+                    C::KEY_DONE => true, 'user' => $userAuth],200);
+            }
+            session()->put('redirect','1');
+            return redirect(P::URL_ERRORS);
+        }catch(Exception $e){
+            return response()->view(P::VIEW_PROFILE_INFO,[
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_INFO
+            ],500);
         }
-        else
-            return response()->view(P::VIEW_FALLBACK,[
-                C::KEY_MESSAGES => [C::ERR_URLNOTFOUND_NOTALLOWED]
-            ],404);
+        
     }
 
-    //user account hard delete
+    /**
+     * User account hard delete
+     */
     public function deleteAccountHard(UserDeleteRequest $request){
-        $inputs = $request->validated();
-        /* Log::channel('stdout')->info("UserController deleteAccountHard input => ");
-        Log::channel('stdout')->info(var_export($inputs,true)); */
-        $user = $this->usermanager->getUser($this->auth_id);
-        if($user != null){
-            //Logout before remove user record
-            auth()->logout();
-            //Delete all flights associated to this user
-            Flight::where('user_id',$this->auth_id)->delete();
-            //Delete user record in MySQL
-            $user->delete();
+        try{
+            $inputs = $request->validated();
+            /* Log::channel('stdout')->info("UserController deleteAccountHard input => ");
+            Log::channel('stdout')->info(var_export($inputs,true)); */
+            $user = $this->usermanager->getUser($this->auth_id);
+            if($user != null){
+                //Logout before remove user record
+                auth()->logout();
+                //Delete all flights associated to this user
+                Flight::where('user_id',$this->auth_id)->delete();
+                //Delete user record in MySQL
+                $user->delete();
+                return response()->json([
+                    C::KEY_DONE => true, C::KEY_STATUS => 'OK', C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
+                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            }//if($user != null){
             return response()->json([
-                C::KEY_STATUS => 'OK',
-                C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }//if($user != null){
-        return response()->json([
-            C::KEY_STATUS => 'ERROR',
-            C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-        ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
+        
     }
 }

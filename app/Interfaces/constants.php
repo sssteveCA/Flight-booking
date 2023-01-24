@@ -35,6 +35,8 @@ interface Constants{
     const ERR_NOTAUTHENTICATED = "Devi essere autenticato per eseguire questa azione";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
     const ERR_PASSWORDINCORRECTLOGIN = "La password inserita è errata";
+    const ERR_PROFILE_DELETE = "Impossibile eliminare il tuo profilo. ".Constants::ADMIN_CONTACT;
+    const ERR_PROFILE_INFO = "Impossibile mostrare le informazioni del tuo profilo. ".Constants::ADMIN_CONTACT;
     const ERR_REQUEST = "Errore durante l'esecuzione della richiesta. ".Constants::ADMIN_CONTACT;
     const ERR_REGISTRATION = 'Errore durante la registrazione. '.Constants::ADMIN_CONTACT;
     const ERR_URLNOTFOUND_NOTALLOWED = "La pagina che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per effettuare questa operazione";
