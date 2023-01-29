@@ -1,0 +1,118 @@
+<?php
+
+//This is an abstract of privacy.blade.php
+
+use Illuminate\Support\Facades\Cookie;
+
+$preferenceCookie = Cookie::get('preference');
+if (!($preferenceCookie != null && in_array($preferenceCookie,['accepted','rejected']))){
+?>
+<script> 
+let baseUrl = '<?php echo asset('/') ?>';
+let preferenceSetUrl = baseUrl+'preferences_set';
+//console.log(preferenceSetUrl);
+
+var _iub = _iub || [];
+_iub.csConfiguration = {
+    "askConsentAtCookiePolicyUpdate":true,
+    "ccpaAcknowledgeOnDisplay":true,
+    "consentOnContinuedBrowsing":false,
+    "countryDetection":true,
+    "enableCcpa":true,
+    "enableLgpd":true,
+    "floatingPreferencesButtonDisplay":"bottom-right",
+    "invalidateConsentWithoutLog":true,
+    "lgpdAppliesGlobally":false,"perPurposeConsent":true,
+    "siteId":0, //Put your ID
+    "whitelabel":false,
+    "cookiePolicyId":0, //Put your ID
+    "lang":"it", 
+    "banner":{ 
+        "acceptButtonDisplay":true,
+        "closeButtonDisplay":false,
+        "continueWithoutAcceptingButtonDisplay":true,
+        "customizeButtonDisplay":true,
+        "explicitWithdrawal":true,
+        "listPurposes":true,
+        "position": "float-top-center",
+        "rejectButtonDisplay":true 
+    },
+    "callback": {
+        "onReady": (consentGiven) => {
+            /* console.log("Iubenda => onReady");
+            console.log(consentGiven); */
+        },
+       "onBannerClosed": (preference) => {
+            //console.log("Iubenda => onBannerClosed");
+       },
+       "onConsentGiven": () => {
+            //console.log("Iubenda => onConsentGiven");
+       },
+       "onConsentFirstGiven": (str) => {
+            /* console.log("Iubenda => onConsentFirstGiven");
+            console.log(str); */
+       },
+       "onConsentRejected": () => {
+            //console.log("Iubenda => onConsentRejected");
+       },
+       "onConsentFirstRejected": () => {
+            //console.log("Iubenda => onConsentFirstRejected");
+       },
+       "onPreferenceExpressed": (preference) => {
+            /* console.log("Iubenda => onPreferenceExpressed");
+            console.log(preference); */
+            let purposes = preference["purposes"];
+            let set = new Set(Object.values(purposes)).size === 1;
+            let postData = {};
+            if(set){
+               postData['option'] = 'accepted';
+            }else{
+               postData['option'] = 'rejected';
+            }
+            fetch(preferenceSetUrl,{
+               method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json', 
+                    'Accept': 'application/json',
+                    'X-CSRF-Token': '<?php echo csrf_token() ?>'
+               },
+               body: JSON.stringify(postData)
+            }).then(res => {
+               //console.log(res.text());
+            }).catch(err => {
+               console.warn(err);
+            })
+       },
+       "onPreferenceFirstExpressed": (preference) => {
+            /* console.log("Iubenda => onPreferenceFirstExpressed");
+            console.log(preference); */
+       },
+       "onConsentRead": () => {
+            //console.log("Iubenda => onConsentRead");
+       },
+       "onActivationDone": () => {
+            //console.log("Iubenda => onActivationDone");
+       },
+       "onBeforePreload": () => {
+            //console.log("Iubenda => onBeforePreload");
+       },
+       "onError": (error) => {
+            //console.error("Iubenda => onError");
+            //console.error(error);
+       },
+       "onFatalError": (fatalError) => {
+            //console.error("Iubenda => onFatalError");
+            //console.error(fatalError);       
+       }
+    },
+    "preferenceCookie": {
+          "expireAfter": 365
+    }
+};
+</script>
+<script src="//cdn.iubenda.com/cs/ccpa/stub.js"></script>
+<script src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+<?php
+}
+?>
