@@ -57,8 +57,8 @@ class UserManager{
         if($userA != null){
             //Log::debug("userA != null");
             //Log::debug("request => ".var_export($request->all(),true));
-            $password = $request->input('oldpwd');
-            if(Hash::check($password,$userA->password)){
+           /*  $password = $request->input('oldpwd');
+            if(Hash::check($password,$userA->password)){ */
                 $newPassword = $request->input('newpwd');
                 $userA->password = Hash::make($newPassword);
                 $userA->save();
@@ -66,13 +66,13 @@ class UserManager{
                 $message['edited'] = true;
                 $message[C::KEY_MESSAGE] = C::OK_PASSWORDUPDATED;
                 //Actual password is correct
-            }//if(Hash::check($password,$userA->password)){
+            /* }//if(Hash::check($password,$userA->password)){
             else{
                 //Log::debug("hash password error");
                 $message[C::KEY_DONE] = false;
                 $message['edited'] = false;
                 $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
-            }     
+            }    */  
         }//if($userA != null){
         else{
             //Log::debug("userA = null");

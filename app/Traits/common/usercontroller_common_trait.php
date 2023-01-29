@@ -63,7 +63,7 @@ trait UserControllerCommonTrait{
      */
     private function editPasswordApi(EditPasswordRequestApi $request):bool {
         if(isset($this->auth_id)){
-            $edit = $this->api_usermanager->editPassword($request,$this->auth_id);
+            $edit = $this->usermanager_api->editPassword($request,$this->auth_id);
             if($edit['edited'])return true;
         }//if(isset($this->auth_id)){
         return false;
@@ -89,7 +89,7 @@ trait UserControllerCommonTrait{
      */
     private function editUsernameApi(EditUsernameRequestApi $request): bool{
         if(isset($this->auth_id)){
-            $edit = $this->api_usermanager->editUsername($request,$this->id);
+            $edit = $this->usermanager_api->editUsername($request,$this->id);
             if($edit['edited'])return true;
         }//if(isset($this->auth_id)){
         return false;

@@ -7,7 +7,7 @@ use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\api\EditUsernameRequestApi;
 use App\Models\User;
 use App\Traits\Common\UserManagerCommonTrait;
-use Constants;
+use App\Interfaces\Constants as C;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -47,11 +47,16 @@ class UserManagerApi{
             //update 'name' field of logged user
             $save = $userA->save();
             //Log::channel('stdout')->info("editUsername save");
+            $message[C::KEY_DONE] = true;
             $message['edited'] = true;
-            $message['msg'] = Constants::OK_USERNAMEUPDATED;
+            $message[C::KEY_MESSAGE] = C::OK_USERNAMEUPDATED;
         }//if($userA != null){
-        else
-        $message['error'] = Constants::ERR_NOTABLEGETUSERINFO;
+        else{
+            $message[C::KEY_DONE] = false;
+            $message['edited'] = false;
+            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
+        }
+        
         return $message;  
     }
 
@@ -62,16 +67,27 @@ class UserManagerApi{
         $userA = $this->getUser();
         if($userA != null){
             //User logged found
-            $oldpwd = $request->oldpwd;
+            //$oldpwd = $request->oldpwd;
             $newpwd = $request->newpwd;
-            //Create an hash for new password and save it
-            $userA->password = Hash::make($newpwd);
-            $userA->save();
-            $message['edited'] = true;
-            $message['msg'] = Constants::OK_PASSWORDUPDATED;
+            //if(Hash::check($oldpwd,$userA->password)){
+                //Create an hash for new password and save it
+                $userA->password = Hash::make($newpwd);
+                $userA->save();
+                $message[C::KEY_DONE] = true;
+                $message['edited'] = true;
+                $message[C::KEY_MESSAGE] = C::OK_PASSWORDUPDATED;
+           /*  }
+            else{
+                //Log::debug("hash password error");
+                $message[C::KEY_DONE] = false;
+                $message['edited'] = false;
+                $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
+            }   */
         }//if($userA != null){
         else{
-            $message['error'] = Constants::ERR_NOTABLEGETUSERINFO;
+            $message[C::KEY_DONE] = false;
+            $message['edited'] = false;
+            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
     }

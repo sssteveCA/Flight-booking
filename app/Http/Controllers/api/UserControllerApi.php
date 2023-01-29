@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Traits\Common\UserControllerCommonTrait;
 use Illuminate\Http\Request;
 use App\Classes\UserManager;
+use App\Http\Requests\api\EditPasswordRequestApi;
+use App\Http\Requests\api\EditUsernameRequestApi;
 use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
@@ -72,6 +74,31 @@ class UserControllerApi extends Controller
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
-        
+    }
+
+    public function editPassword(EditPasswordRequestApi $request){
+        try{
+            $edit = $this->editPasswordApi($request);
+            if($edit)
+                return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($edit,404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }     
+    }
+
+    public function editUsername(EditUsernameRequestApi $request){
+        try{
+            $edit = $this->editUsernameApi($request);
+            if($edit)
+                return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($edit,404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 }
