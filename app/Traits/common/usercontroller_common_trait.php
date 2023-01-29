@@ -19,6 +19,25 @@ trait UserControllerCommonTrait{
     private $auth_id;
 
     /**
+     * Delete the logged user account when the response is expected to be JSON type
+     */
+    private function deleteAccountApi():bool {
+        $user = $this->getDataCommon();
+        if($user != null){
+            $userTokens = $user->tokens;
+            foreach($userTokens as $token)
+                //revoke all tokens
+                $token->revoke();
+            //Delete all flights associated to this user
+            Flight::where('user_id',$this->auth_id)->delete();
+            //Delete user record in MySQL
+            $user->delete();
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Delete the logged user account when the response is expected to be HTML type
      */
     private function deleteAccountWeb():bool {

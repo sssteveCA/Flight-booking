@@ -56,22 +56,11 @@ class UserControllerApi extends Controller
     public function deleteAccountHard(UserDeleteRequest $request){
         try{
             $inputs = $request->validated();
-            $user = $this->usermanager->getUser($this->auth_id);
-            if($user != null){
-                //Get all tokens for specific user
-                $userTokens = $user->tokens;
-                foreach($userTokens as $token){
-                    //revoke all tokens
-                    $token->revoke();
-                }
-                //Delete all flights associated to this user
-                Flight::where('user_id',$this->auth_id)->delete();
-                //Delete user record in MySQL
-                $user->delete();
+            $delete = $this->deleteAccountApi();
+            if($delete)
                 return response()->json([
                     C::KEY_DONE => true, C::KEY_STATUS => 'OK', C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
                 ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }//if($user != null){
             return response()->json([
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
