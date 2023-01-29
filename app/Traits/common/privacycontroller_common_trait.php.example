@@ -1,0 +1,34 @@
+<?php
+
+//This is an abstract of privacycontroller_common_trait.php
+
+namespace App\Traits\Common;
+
+trait PrivacyControllerCommonTrait{
+
+    /**
+     * Get the cookie policy page content
+     */
+    private function getCookiePolicyContent():string {
+        return <<<HTML
+HTML;
+    }
+
+    /**
+     * Get the privacy policy page content
+     */
+    private function getPrivacyPolicyContent():string {
+        return <<<HTML
+HTML;
+
+    }
+
+    /**
+     * Get the terms and conditions page content
+     */
+    private function getTermsAndConditionsContent():string {
+        return <<<HTML
+HTML;
+    }
+}
+?>
