@@ -7,6 +7,7 @@ use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
+use App\Models\Flight;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -16,6 +17,22 @@ use Illuminate\Support\Facades\Log;
 trait UserControllerCommonTrait{
     private UserManager $usermanager;
     private $auth_id;
+
+    /**
+     * Delete the logged user account when the response is expected to be HTML type
+     */
+    private function deleteAccountWeb():bool {
+        $user = $this->getDataCommon();
+        if($user != null){
+            auth()->logout();
+            //Delete all flights associated to this user
+            Flight::where('user_id',$this->auth_id)->delete();
+            //Delete user record in MySQL
+            $user->delete();
+            return true;
+        }//if($user != null){
+        return false;
+    }
 
     /**
      * Get user data by id

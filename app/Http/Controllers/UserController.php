@@ -55,21 +55,14 @@ class UserController extends Controller
             $inputs = $request->validated();
             /* Log::channel('stdout')->info("UserController deleteAccountHard input => ");
             Log::channel('stdout')->info(var_export($inputs,true)); */
-            $user = $this->usermanager->getUser($this->auth_id);
-            if($user != null){
-                //Logout before remove user record
-                auth()->logout();
-                //Delete all flights associated to this user
-                Flight::where('user_id',$this->auth_id)->delete();
-                //Delete user record in MySQL
-                $user->delete();
+            $delete = $this->deleteAccountWeb();
+            if($delete)
                 return response()->json([
                     C::KEY_DONE => true, C::KEY_STATUS => 'OK', C::KEY_MESSAGE => C::OK_ACCOUNTDELETED
                 ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }//if($user != null){
             return response()->json([
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
-            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);  
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
