@@ -3,6 +3,6 @@
 @section('title','Privacy Policy')
 
 @section('content')
-{{$privacy}}
+{!!$privacy!!}
 @endsection
 

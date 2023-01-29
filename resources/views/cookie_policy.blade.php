@@ -3,5 +3,5 @@
 @section('title','Cookie Policy')
 
 @section('content')
-{{$cookie}}
+{!!$cookie!!}
 @endsection

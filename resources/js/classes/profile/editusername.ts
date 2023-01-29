@@ -13,7 +13,7 @@ export default class EditUsername{
     private static ERR_SCRIPT_EXCEPTION:number = 1;
 
     //Messages
-    private static ERR_SCRIPT_EXCEPTION_MSG:string = "Errore durante l'esecuzione dello script";
+    private static ERR_SCRIPT_EXCEPTION_MSG:string = "Errore durante la modifica del nome utente";
 
     constructor(data: EditUsernameInterface){
         this._username = data.username;
@@ -40,7 +40,7 @@ export default class EditUsername{
         this._errno = 0;
         try{
             await this.editUsernamePromise().then(res => {
-                //console.log(res);
+                console.log(res);
                 let json = JSON.parse(res);
                 message = json[Constants.KEY_MESSAGE]; 
             }).catch(err => {

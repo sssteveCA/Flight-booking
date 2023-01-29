@@ -12,6 +12,7 @@ use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
 use App\Http\Controllers\api\HotelControllerApi;
 use App\Http\Controllers\api\PostControllerApi;
+use App\Http\Controllers\api\PrivacyControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
 use App\Http\Controllers\api\welcome\FlightEventsControllerApi;
 use App\Http\Controllers\api\welcome\HotelSearchControllerApi;
@@ -46,6 +47,9 @@ Route::name('api.')->group(function(){
     Route::apiResource(P::PREFIX_NEWS,PostControllerApi::class)
         ->only(['index','show'])
         ->parameters(['news' => 'permalink']);
+    Route::get(P::URL_COOKIE_POLICY,[PrivacyControllerApi::class,'getCookiePolicy']);
+    Route::get(P::URL_PRIVACY_POLICY,[PrivacyControllerApi::class,'getPrivacyPolicy']);
+    Route::get(P::URL_TERMS,[PrivacyControllerApi::class,'getTermsAndConditions']);
 });
 
 Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','verified']], function(){

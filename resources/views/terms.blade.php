@@ -3,5 +3,5 @@
 @section('title','Termini e condizioni')
 
 @section('content')
-{{$terms}}
+{!!$terms!!}
 @endsection
