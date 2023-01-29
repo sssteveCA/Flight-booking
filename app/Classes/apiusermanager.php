@@ -3,6 +3,7 @@ namespace App\Classes;
 
 use App\Http\Requests\api\ApiEditPasswordRequest;
 use App\Http\Requests\api\ApiEditUsernameRequest;
+use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\api\EditUsernameRequestApi;
 use App\Models\User;
 use Constants;
@@ -49,7 +50,7 @@ class ApiUserManager{
         return $message;  
     }
 
-    public function editPassword(EditUsernameRequestApi $request){
+    public function editPassword(EditPasswordRequestApi $request){
         //Log::channel('stdout')->debug('ApiUserManager editPassword');
         $message = array();
         $message['edited'] = false;

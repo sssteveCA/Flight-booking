@@ -2,6 +2,7 @@
 
 namespace App\Traits\Common;
 
+use App\Classes\ApiUserManager;
 use App\Classes\UserManager;
 use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\EditPasswordRequest;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Log;
  */
 trait UserControllerCommonTrait{
     private UserManager $usermanager;
+    private ApiUserManager $api_usermanager;
     private $auth_id;
 
     /**
@@ -54,10 +56,16 @@ trait UserControllerCommonTrait{
         return false;
     }
 
+    /**
+     * Edit the logged user password when the response is expected to be JSON type
+     * @param EditPasswordRequestApi $request
+     * @return bool
+     */
     private function editPasswordApi(EditPasswordRequestApi $request):bool {
         if(isset($this->auth_id)){
-
-        }
+            $edit = $this->api_usermanager->editPassword($request,$this->auth_id);
+            if($edit['edited'])return true;
+        }//if(isset($this->auth_id)){
         return false;
     }
 
