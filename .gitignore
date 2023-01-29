@@ -1,4 +1,3 @@
-app/Http/Controllers/PreferenceController.php
 app/Traits/common/privacycontroller_common_trait.php
 /node_modules
 /public/css
