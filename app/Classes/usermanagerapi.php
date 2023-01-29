@@ -6,13 +6,16 @@ use App\Http\Requests\api\ApiEditUsernameRequest;
 use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\api\EditUsernameRequestApi;
 use App\Models\User;
+use App\Traits\Common\UserManagerCommonTrait;
 use Constants;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class ApiUserManager{
+class UserManagerApi{
+
+    use UserManagerCommonTrait;
 
     private $auth_id; //Logged user Id 
 
@@ -23,17 +26,17 @@ class ApiUserManager{
             $apiUser = auth('api')->user();
             if(isset($apiUser->id)){
                 $this->auth_id = $apiUser->id;
-                //Log::channel('stdout')->info("ApiUserManager Auth id ".$this->auth_id);
-                //Log::channel('stdout')->info("ApiUserManager auth(api) id  ".var_export(auth('api')->user()->id,true));
+                //Log::channel('stdout')->info("UserManagerApi Auth id ".$this->auth_id);
+                //Log::channel('stdout')->info("UserManagerApi auth(api) id  ".var_export(auth('api')->user()->id,true));
             }
         } 
-        //Log::channel('stdout')->info("ApiUserManager Auth::id ".var_export(Auth::id(),true));
+        //Log::channel('stdout')->info("UserManagerApi Auth::id ".var_export(Auth::id(),true));
     }
 
     public function getAuthId(){return $this->auth_id;}
 
     public function editUsername(EditUsernameRequestApi $request){
-        //Log::channel('stdout')->info("ApiUserManager editUsername ");
+        //Log::channel('stdout')->info("UserManagerApi editUsername ");
         $message = array();
         $message['edited'] = false;
         $userA = $this->getUser();
@@ -53,7 +56,7 @@ class ApiUserManager{
     }
 
     public function editPassword(EditPasswordRequestApi $request){
-        //Log::channel('stdout')->debug('ApiUserManager editPassword');
+        //Log::channel('stdout')->debug('UserManagerApi editPassword');
         $message = array();
         $message['edited'] = false;
         $userA = $this->getUser();
@@ -71,15 +74,6 @@ class ApiUserManager{
             $message['error'] = Constants::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
-    }
-
-    //Get Authenticated user info
-    public function getUser(){
-        $user = null;
-        if(isset($this->auth_id)){
-          $user = User::find($this->auth_id);
-        }
-        return $user;
     }
 }
 ?>

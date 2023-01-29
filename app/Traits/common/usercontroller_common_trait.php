@@ -2,7 +2,7 @@
 
 namespace App\Traits\Common;
 
-use App\Classes\ApiUserManager;
+use App\Classes\UserManagerApi;
 use App\Classes\UserManager;
 use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\api\EditUsernameRequestApi;
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Log;
  */
 trait UserControllerCommonTrait{
     private UserManager $usermanager;
-    private ApiUserManager $api_usermanager;
+    private UserManagerApi $usermanager_api;
     private $auth_id;
 
     /**

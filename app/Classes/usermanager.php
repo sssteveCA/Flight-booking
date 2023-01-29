@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Interfaces\Constants as C;
+use App\Traits\Common\UserManagerCommonTrait;
 
 class UserManager{
+
+    use UserManagerCommonTrait;
 
     private $auth_id;
 
@@ -69,17 +72,6 @@ class UserManager{
             $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
         }
         return $message;
-    }
-
-    /**
-     * Get Authenticated user info
-     */
-    public function getUser($auth_id){
-        $user = null;
-        if(isset($auth_id)){
-            $user = User::find($auth_id);
-        }
-        return $user;
     }
 
 }
