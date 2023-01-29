@@ -30,6 +30,8 @@ class ApiUserManager{
         //Log::channel('stdout')->info("ApiUserManager Auth::id ".var_export(Auth::id(),true));
     }
 
+    public function getAuthId(){return $this->auth_id;}
+
     public function editUsername(EditUsernameRequestApi $request){
         //Log::channel('stdout')->info("ApiUserManager editUsername ");
         $message = array();

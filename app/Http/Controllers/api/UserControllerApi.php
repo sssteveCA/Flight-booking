@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Classes\ApiUserManager;
 use App\Http\Controllers\Controller;
 use App\Traits\Common\UserControllerCommonTrait;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class UserControllerApi extends Controller
             $this->auth_id = $user_id;
         else $this->auth_id = null;
         //Log::channel('stdout')->info("UserControllerApi  auth_id => ".var_export($this->auth_id,true));
-        $this->usermanager =  new UserManager();   
+        $this->api_usermanager =  new ApiUserManager();   
     }
 
     /**
