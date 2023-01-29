@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Classes\UserManager;
 use App\Http\Requests\EditPasswordRequest;
+use App\Http\Requests\EditUsernameRequest;
 use App\Http\Requests\UserDeleteRequest;
 use App\Models\Flight;
 use App\Traits\Common\UserControllerCommonTrait;
@@ -60,9 +61,20 @@ class UserController extends Controller
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        }
-        
+        }     
+    }
 
+    public function editUsername(EditUsernameRequest $request){
+        try{
+            $edit = $this->editUsernameWeb($request);
+            if($edit)
+                return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($edit,404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**

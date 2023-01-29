@@ -35,12 +35,16 @@ class UserManager{
             $userA->name = $username;
             $save = $userA->save();
             //Log::channel('stdout')->info("editUsername save => ".$save);
+            $message[C::KEY_DONE] = true;
             $message['edited'] = true;
             $message[C::KEY_MESSAGE] = C::OK_USERNAMEUPDATED;
             //If an authenticad user was found
         }//if($userA != null){
-        else
+        else{
+            $message[C::KEY_DONE] = false;
+            $message['edited'] = false;
             $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
+        }
         return $message;
     }
 
