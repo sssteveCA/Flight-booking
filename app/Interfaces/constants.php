@@ -35,6 +35,7 @@ interface Constants{
     const ERR_NOTAUTHENTICATED = "Devi essere autenticato per eseguire questa azione";
     const ERR_PASSWORDINCORRECT = "La password attuale non è corretta";
     const ERR_PASSWORDINCORRECTLOGIN = "La password inserita è errata";
+    const ERR_PASSWORDUPDATE = "Errore durante la modifica della password. ".Constants::ADMIN_CONTACT;
     const ERR_PROFILE_DELETE = "Impossibile eliminare il tuo profilo. ".Constants::ADMIN_CONTACT;
     const ERR_PROFILE_INFO = "Impossibile mostrare le informazioni del tuo profilo. ".Constants::ADMIN_CONTACT;
     const ERR_REQUEST = "Errore durante l'esecuzione della richiesta. ".Constants::ADMIN_CONTACT;
@@ -42,6 +43,7 @@ interface Constants{
     const ERR_URLNOTFOUND_NOTALLOWED = "La pagina che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per effettuare questa operazione";
     const ERR_URLNOTFOUND_NOTALLOWED_API = "La risorsa che hai richiesto non esiste o non disponi delle autorizzazioni necessarie per effettuare questa operazione";
     const ERR_UNAUTHORIZED_REQUEST = "Non disponi delle autorizzazioni necessarie per effetuare questa richiesta";
+    const ERR_USERNAMEUPDATE = "Errore durante la modifica del nome utente. ".Constants::ADMIN_CONTACT;
     const ERR_VERIFYYOURACCOUNT = "Devi attivare il tuo account prima di accedere";
 
     //common array keys
@@ -66,7 +68,7 @@ interface Constants{
     const OK_HOTELPAYMENT = "Il pagamento è stato completato. Le stanze d'albergo richieste sono state prenotate";
     const OK_PASSWORDUPDATED = "La password è stata modificata";
     const OK_REGISTRATION = "Registrazione completata. Accedi alla tua casella di posta, per attivare il tuo account";
-    const OK_USERNAMEUPDATED = "Lo username è stato modificato";
+    const OK_USERNAMEUPDATED = "Il nome utente è stato modificato";
     const OK_VERIFICATION_LINK_SENT = "Link di verifica email inviato";
 
     //titles
