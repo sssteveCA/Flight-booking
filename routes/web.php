@@ -12,6 +12,7 @@ use App\Http\Controllers\paypal\PaypalFlightController;
 use App\Http\Controllers\paypal\PaypalHotelController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreferenceController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Controllers\welcome\HotelSearchController;
@@ -106,21 +107,9 @@ Route::view(P::URL_ABOUTUS,P::VIEW_ABOUTUS);
 
 Route::permanentRedirect(P::URL_HOME,P::URL_ROOT); 
 
-Route::get(P::URL_COOKIE_POLICY, function(){
-    if(view()->exists(P::VIEW_COOKIE_POLICY)) return view(P::VIEW_COOKIE_POLICY);
-    else return redirect(P::URL_ERRORS);
-});
-
-Route::get(P::URL_PRIVACY_POLICY, function(){
-    if(view()->exists(P::VIEW_PRIVACY_POLICY)) return view(P::VIEW_PRIVACY_POLICY);
-    else return redirect(P::URL_ERRORS);
-});
-
-Route::get(P::URL_TERMS, function(){
-    if(view()->exists(P::VIEW_TERMS)) return view(P::VIEW_TERMS);
-    else return redirect(P::URL_ERRORS);
-});
-
+Route::get(P::URL_COOKIE_POLICY,[PrivacyController::class,'getCookiePolicy']);
+Route::get(P::URL_PRIVACY_POLICY,[PrivacyController::class,'getPrivacyPolicy']);
+Route::get(P::URL_TERMS,[PrivacyController::class,'getTermsAndConditions']);
 
 Route::get(P::URL_ERRORS, function(){
     if(session()->has('redirect') && session()->get('redirect') == '1'){
