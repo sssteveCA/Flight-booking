@@ -19,6 +19,8 @@ class UserController extends Controller
 {
     use UserControllerCommonTrait;
 
+    private UserManager $usermanager;
+
     public function __construct()
     {
         $this->auth_id = Auth::id();

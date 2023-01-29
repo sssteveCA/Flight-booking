@@ -19,6 +19,8 @@ class UserControllerApi extends Controller
 {
     use UserControllerCommonTrait;
 
+    private UserManagerApi $usermanager_api;
+
     public function __construct()
     {
         $user_id = Auth::id();

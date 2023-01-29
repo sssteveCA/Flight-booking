@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Log;
  * This trait contains common code between UserController & UserControllerApi
  */
 trait UserControllerCommonTrait{
-    private UserManager $usermanager;
-    private UserManagerApi $usermanager_api;
+
     private $auth_id;
 
     /**

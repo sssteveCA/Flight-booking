@@ -70,6 +70,7 @@
             "app/Traits/common/privacycontroller_common_trait.php",
             "app/Traits/common/resumebookflightcontroller_common_trait.php",
             "app/Traits/common/resumebookhotelcontroller_common_trait.php",
+            "app/Traits/common/usermanager_common_trait.php",
             "app/Classes/usermanager.php",
             "app/Classes/usermanagerapi.php",
             "app/Classes/welcome/flightprice.php",
