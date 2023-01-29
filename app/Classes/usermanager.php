@@ -71,7 +71,9 @@ class UserManager{
         return $message;
     }
 
-    //Get Authenticated user info
+    /**
+     * Get Authenticated user info
+     */
     public function getUser($auth_id){
         $user = null;
         if(isset($auth_id)){

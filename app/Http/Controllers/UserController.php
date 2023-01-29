@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function getData(){
         try{
-            $userAuth = $this->usermanager->getUser($this->auth_id);
+            $userAuth = $this->getDataCommon();
             //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
             if($userAuth != null){
                 return response()->view(P::VIEW_PROFILE_INFO,[

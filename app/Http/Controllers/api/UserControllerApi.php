@@ -33,15 +33,12 @@ class UserControllerApi extends Controller
      */
     public function getData(){
         try{
-            if(isset($this->auth_id)){
-                $userAuth = $this->usermanager->getUser($this->auth_id);
-                //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
-                if($userAuth != null){
-                    return response()->json(
-                        [C::KEY_DONE => true,'user' => $userAuth],
-                        200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-                }
-            }
+            $userAuth = $this->getDataCommon();
+            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
+            if($userAuth != null)
+                return response()->json(
+                    [C::KEY_DONE => true,'user' => $userAuth],
+                    200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],401,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
