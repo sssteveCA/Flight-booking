@@ -8,10 +8,6 @@ app/Traits/common/privacycontroller_common_trait.php
 /public/hot
 /public/storage
 /public/log.txt
-/resources/views/cookie_policy.blade.php
-/resources/views/privacy_policy.blade.php
-/resources/views/terms.blade.php
-/resources/views/partials/menu_privacy.blade.php
 /resources/views/partials/privacy.blade.php
 /storage/*.key
 /vendor
