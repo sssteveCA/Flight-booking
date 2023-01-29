@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\api\Auth\LoginController;
 use App\Http\Controllers\api\Auth\RegisterControllerApi;
-use App\Http\Controllers\api\InfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;

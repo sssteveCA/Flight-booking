@@ -3,7 +3,6 @@
 use App\Http\Controllers\api\Auth\LoginController;
 use App\Http\Controllers\api\Auth\RegisterController;
 use App\Http\Controllers\api\Auth\RegisterControllerApi;
-use App\Http\Controllers\api\InfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Interfaces\Paths as P;
@@ -30,10 +29,7 @@ Route::name('api.')->group(function(){
 
 Route::group(['prefix' => '/profile','middleware' => 'auth:api'], function(){
     //Route of user personal area
-    Route::name('api.')->group(function(){
-        Route::patch(P::URL_EDITUSERNAME,[InfoController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
-        Route::patch(P::URL_EDITPASSWORD,[InfoController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
-        
+    Route::name('api.')->group(function(){   
     });
 });
 
