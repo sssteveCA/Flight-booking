@@ -3,6 +3,7 @@
 namespace App\Traits\Common;
 
 use App\Classes\UserManager;
+use App\Http\Requests\api\EditPasswordRequestApi;
 use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Http\Requests\UserDeleteRequest;
@@ -50,6 +51,26 @@ trait UserControllerCommonTrait{
             $user->delete();
             return true;
         }//if($user != null){
+        return false;
+    }
+
+    private function editPasswordApi(EditPasswordRequestApi $request):bool {
+        if(isset($this->auth_id)){
+
+        }
+        return false;
+    }
+
+    /**
+     * Edit the logged user password when the response is expected to be HTML type
+     * @param EditPasswordRequest $request
+     * @return bool
+     */
+    private function editPasswordWeb(EditPasswordRequest $request):bool {
+        if(isset($this->auth_id)){
+            $edit = $this->usermanager->editPassword($request,$this->auth_id);
+            if($edit['edited'])return true;
+        }//if(isset($this->id)){
         return false;
     }
 
