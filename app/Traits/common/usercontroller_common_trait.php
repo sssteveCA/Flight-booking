@@ -5,6 +5,7 @@ namespace App\Traits\Common;
 use App\Classes\ApiUserManager;
 use App\Classes\UserManager;
 use App\Http\Requests\api\EditPasswordRequestApi;
+use App\Http\Requests\api\EditUsernameRequestApi;
 use App\Http\Requests\EditPasswordRequest;
 use App\Http\Requests\EditUsernameRequest;
 use App\Http\Requests\UserDeleteRequest;
@@ -79,6 +80,32 @@ trait UserControllerCommonTrait{
             $edit = $this->usermanager->editPassword($request,$this->auth_id);
             if($edit['edited'])return true;
         }//if(isset($this->id)){
+        return false;
+    }
+
+    /**
+     * Edit the logged user username when the response is expected to be JSON type
+     * @param EditUsernameRequestApi $request
+     * @return bool
+     */
+    private function editUsernameApi(EditUsernameRequestApi $request): bool{
+        if(isset($this->auth_id)){
+            $edit = $this->api_usermanager->editUsername($request,$this->id);
+            if($edit['edited'])return true;
+        }//if(isset($this->auth_id)){
+        return false;
+    }
+
+     /**
+     * Edit the logged user username when the response is expected to be HTML type
+     * @param EditUsernameRequest $request
+     * @return bool
+     */
+    private function editUsernameWeb(EditUsernameRequest $request): bool{
+        if(isset($this->auth_id)){
+            $edit = $this->usermanager->editUsername($request,$this->id);
+            if($edit['edited'])return true;
+        }//if(isset($this->auth_id)){
         return false;
     }
 
