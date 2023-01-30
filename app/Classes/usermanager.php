@@ -20,14 +20,11 @@ class UserManager{
 
     public function __construct()
     {
-        /*$this->auth_id = Auth::id();
-        Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);*/
+        $this->auth_id = Auth::id();
+        //Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);
     }
 
     public function editUsername(EditUsernameRequest $request,$auth_id){
-        $message = array();
-        $message['edited'] = false;
-        $message['title'] = C::TITLE_EDITUSERNAME;
         $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
@@ -35,17 +32,14 @@ class UserManager{
             $userA->name = $username;
             $save = $userA->save();
             //Log::channel('stdout')->info("editUsername save => ".$save);
-            $message[C::KEY_DONE] = true;
-            $message['edited'] = true;
-            $message[C::KEY_MESSAGE] = C::OK_USERNAMEUPDATED;
+            return [
+                    C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED, 'title' => C::TITLE_EDITUSERNAME
+            ];
             //If an authenticad user was found
         }//if($userA != null){
-        else{
-            $message[C::KEY_DONE] = false;
-            $message['edited'] = false;
-            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
-        }
-        return $message;
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE, 'title' => C::TITLE_EDITUSERNAME
+        ];
     }
 
     public function editPassword(EditPasswordRequest $request,$auth_id){

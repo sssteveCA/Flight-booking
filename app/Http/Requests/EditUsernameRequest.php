@@ -11,4 +11,8 @@ class EditUsernameRequest extends FormRequest
 {
     use EditUsernameRequestCommonTrait;
 
+    protected $stopOnFirstFailure = true;
+
+    public $validator = null;
+
 }

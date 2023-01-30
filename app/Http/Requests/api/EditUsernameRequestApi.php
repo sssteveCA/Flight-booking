@@ -10,4 +10,8 @@ use Constants as C;
 class EditUsernameRequestApi extends FormRequest
 {
     use EditUsernameRequestCommonTrait;
+
+    protected $stopOnFirstFailure = true;
+
+    public $validator = null;
 }

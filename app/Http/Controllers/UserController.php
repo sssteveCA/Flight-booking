@@ -67,10 +67,9 @@ class UserController extends Controller
     public function editUsername(EditUsernameRequest $request){
         try{
             $edit = $this->editUsernameWeb($request);
-            if($edit)
-                return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            return response()->json($edit,404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
+            Log::channel('stdout')->debug("UserController editUsername exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

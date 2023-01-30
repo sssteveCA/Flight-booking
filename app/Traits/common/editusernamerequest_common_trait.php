@@ -13,9 +13,7 @@ use Illuminate\Validation\ValidationException;
  */
 trait EditUsernameRequestCommonTrait{
 
-    protected $stopOnFirstFailure = true;
-
-    public $validator = null;
+    
     /**
      * Determine if the user is authorized to make this request.
      *

@@ -98,14 +98,14 @@ trait UserControllerCommonTrait{
      /**
      * Edit the logged user username when the response is expected to be HTML type
      * @param EditUsernameRequest $request
-     * @return bool
+     * @return array
      */
-    private function editUsernameWeb(EditUsernameRequest $request): bool{
-        if(isset($this->auth_id)){
-            $edit = $this->usermanager->editUsername($request,$this->id);
-            if($edit['edited'])return true;
-        }//if(isset($this->auth_id)){
-        return false;
+    private function editUsernameWeb(EditUsernameRequest $request): array{
+        if(isset($this->auth_id))
+            return $this->usermanager->editUsername($request,$this->auth_id);
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
+        ];
     }
 
     /**
