@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function getData(){
         try{
-            $userAuth = $this->getDataCommon();
+            $userAuth = $this->getDataWeb();
             //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
             if($userAuth != null){
                 return response()->view(P::VIEW_PROFILE_INFO,[
@@ -44,6 +44,7 @@ class UserController extends Controller
             session()->put('redirect','1');
             return redirect(P::URL_ERRORS);
         }catch(Exception $e){
+            //Log::channel('stdout')->info("UserController getData exception => ".$e->getMessage());
             return response()->view(P::VIEW_PROFILE_INFO,[
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_INFO
             ],500);

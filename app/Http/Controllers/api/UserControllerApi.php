@@ -38,7 +38,7 @@ class UserControllerApi extends Controller
      */
     public function getData(){
         try{
-            $userAuth = $this->getDataCommon();
+            $userAuth = $this->getDataApi();
             //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
             if($userAuth != null)
                 return response()->json(
@@ -70,7 +70,7 @@ class UserControllerApi extends Controller
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            Log::channel('stdout')->debug("UserControllerApi deleteAccountHard exception => ".$e->getMessage());
+            //Log::channel('stdout')->debug("UserControllerApi deleteAccountHard exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

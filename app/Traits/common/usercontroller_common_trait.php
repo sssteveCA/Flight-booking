@@ -114,11 +114,20 @@ trait UserControllerCommonTrait{
     }
 
     /**
-     * Get user data by id
+     * Get user data by id when the response is expected to be JSON type
      */
-    private function getDataCommon(){
+    private function getDataApi(){
         if(isset($this->auth_id))
             return $this->usermanager_api->getUser($this->auth_id);
+        return null;
+    }
+
+    /**
+     * Get user data by id when the response is expected to be HTML type
+     */
+    private function getDataWeb(){
+        if(isset($this->auth_id))
+            return $this->usermanager->getUser($this->auth_id);
         return null;
     }
 }
