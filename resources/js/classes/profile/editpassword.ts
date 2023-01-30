@@ -15,7 +15,7 @@ export default class EditPassword{
     private static ERR_PASSWORDS_DIFFERENT:number = 2;
 
     //Messages
-    private static ERR_SCRIPT_EXCEPTION_MSG:string = "Errore durante l'esecuzione dello script";
+    private static ERR_SCRIPT_EXCEPTION_MSG:string = "Errore durante la modifica della password";
     private static ERR_PASSWORDS_DIFFERENT_MSG:string = "Le due password inserite non coincidono";
 
     private static URL_SCRIPT:string = Constants.URL_EDITPASSWORD;

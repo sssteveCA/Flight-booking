@@ -12,10 +12,7 @@ use Illuminate\Validation\ValidationException;
  * This trait contains common code for EditPasswordRequest & EditPasswordRequestApi
  */
 trait EditPasswordRequestCommonTrait{
-
-    protected $stopOnFirstFailure = true;
-
-    public $validator = null;
+    
     /**
      * Determine if the user is authorized to make this request.
      *

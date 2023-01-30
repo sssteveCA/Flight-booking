@@ -24,7 +24,7 @@ class UserManager{
         //Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);
     }
 
-    public function editUsername(EditUsernameRequest $request,$auth_id){
+    public function editUsername(EditUsernameRequest $request,$auth_id):array {
         $userA = $this->getUser($auth_id);
         //If username input field exists and it's not empty
         if($userA != null){
@@ -33,20 +33,17 @@ class UserManager{
             $save = $userA->save();
             //Log::channel('stdout')->info("editUsername save => ".$save);
             return [
-                    C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED, 'title' => C::TITLE_EDITUSERNAME
+                    C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED
             ];
             //If an authenticad user was found
         }//if($userA != null){
         return [
-            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE, 'title' => C::TITLE_EDITUSERNAME
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
         ];
     }
 
-    public function editPassword(EditPasswordRequest $request,$auth_id){
+    public function editPassword(EditPasswordRequest $request,$auth_id):array {
         //Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
-        $message = array();
-        $message['edited'] = false;
-        $message['title'] = C::TITLE_EDITPASSWORD;
         $userA = $this->getUser($auth_id);
         if($userA != null){
             //Log::debug("userA != null");
@@ -56,25 +53,19 @@ class UserManager{
                 $newPassword = $request->input('newpwd');
                 $userA->password = Hash::make($newPassword);
                 $userA->save();
-                $message[C::KEY_DONE] = true;
-                $message['edited'] = true;
-                $message[C::KEY_MESSAGE] = C::OK_PASSWORDUPDATED;
+                return [
+                    C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_PASSWORDUPDATED
+                ];
                 //Actual password is correct
             /* }//if(Hash::check($password,$userA->password)){
-            else{
-                //Log::debug("hash password error");
-                $message[C::KEY_DONE] = false;
-                $message['edited'] = false;
-                $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
-            }    */  
+            return [
+                    C::KEY_CODE => 401, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDINCORRECT
+                ];
+                */  
         }//if($userA != null){
-        else{
-            //Log::debug("userA = null");
-            $message[C::KEY_DONE] = false;
-            $message['edited'] = false;
-            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
-        }
-        return $message;
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
+        ];
     }
 
 }

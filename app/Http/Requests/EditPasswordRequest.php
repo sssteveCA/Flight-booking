@@ -16,4 +16,8 @@ class EditPasswordRequest extends FormRequest
 {
     use EditPasswordRequestCommonTrait;
 
+    protected $stopOnFirstFailure = true;
+
+    public $validator = null;
+
 }

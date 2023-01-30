@@ -11,5 +11,9 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class EditPasswordRequestApi extends FormRequest
 {
     use EditPasswordRequestCommonTrait;
+
+    protected $stopOnFirstFailure = true;
+
+    public $validator = null;
   
 }

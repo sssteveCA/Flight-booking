@@ -54,10 +54,9 @@ class UserController extends Controller
     public function editPassword(EditPasswordRequest $request){
         try{
             $edit = $this->editPasswordWeb($request);
-            if($edit)
-                return response()->json($edit,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            return response()->json($edit,404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
+            Log::channel('stdout')->info("UserController editPassword exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

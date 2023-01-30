@@ -74,12 +74,12 @@ trait UserControllerCommonTrait{
      * @param EditPasswordRequest $request
      * @return bool
      */
-    private function editPasswordWeb(EditPasswordRequest $request):bool {
-        if(isset($this->auth_id)){
-            $edit = $this->usermanager->editPassword($request,$this->auth_id);
-            if($edit['edited'])return true;
-        }//if(isset($this->id)){
-        return false;
+    private function editPasswordWeb(EditPasswordRequest $request):array {
+        if(isset($this->auth_id))
+            return $this->usermanager->editPassword($request,$this->auth_id);
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
+        ];
     }
 
     /**
