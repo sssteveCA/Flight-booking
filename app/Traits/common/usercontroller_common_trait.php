@@ -11,6 +11,7 @@ use App\Http\Requests\EditUsernameRequest;
 use App\Http\Requests\UserDeleteRequest;
 use App\Interfaces\Constants as C;
 use App\Models\Flight;
+use App\Models\Hotel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -33,6 +34,8 @@ trait UserControllerCommonTrait{
                 $token->revoke();
             //Delete all flights associated to this user
             Flight::where('user_id',$this->auth_id)->delete();
+            //Delete all booked rooms associated to this user
+            Hotel::where('user_id',$this->auth_id)->delete();
             //Delete user record in MySQL
             $user->delete();
             return true;
@@ -49,6 +52,8 @@ trait UserControllerCommonTrait{
             auth()->logout();
             //Delete all flights associated to this user
             Flight::where('user_id',$this->auth_id)->delete();
+            //Delete all booked rooms associated to this user
+            Hotel::where('user_id',$this->auth_id)->delete();
             //Delete user record in MySQL
             $user->delete();
             return true;
@@ -61,12 +66,12 @@ trait UserControllerCommonTrait{
      * @param EditPasswordRequestApi $request
      * @return bool
      */
-    private function editPasswordApi(EditPasswordRequestApi $request):bool {
-        if(isset($this->auth_id)){
-            $edit = $this->usermanager_api->editPassword($request,$this->auth_id);
-            if($edit['edited'])return true;
-        }//if(isset($this->auth_id)){
-        return false;
+    private function editPasswordApi(EditPasswordRequestApi $request):array {
+        if(isset($this->auth_id))
+            return $this->usermanager_api->editPassword($request,$this->auth_id);
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
+        ];
     }
 
     /**
@@ -113,7 +118,7 @@ trait UserControllerCommonTrait{
      */
     private function getDataCommon(){
         if(isset($this->auth_id))
-            return $this->usermanager->getUser($this->auth_id);
+            return $this->usermanager_api->getUser($this->auth_id);
         return null;
     }
 }

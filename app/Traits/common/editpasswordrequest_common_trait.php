@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
  * This trait contains common code for EditPasswordRequest & EditPasswordRequestApi
  */
 trait EditPasswordRequestCommonTrait{
-    
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -68,6 +68,7 @@ trait EditPasswordRequestCommonTrait{
                 ['messages' => $messages]
             ,400) */
             response()->json([
+                C::KEY_DONE => false,
                 C::KEY_MESSAGE => $messages[$key_first][0]
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );

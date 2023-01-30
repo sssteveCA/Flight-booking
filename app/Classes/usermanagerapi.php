@@ -37,15 +37,13 @@ class UserManagerApi{
 
     public function editUsername(EditUsernameRequestApi $request):array {
         //Log::channel('stdout')->info("UserManagerApi editUsername ");
-        $message = array();
-        $message['edited'] = false;
         $userA = $this->getUser();
         if($userA != null){
             //User logged found
             $username = $request->username;
             $userA->name = $username;
             //update 'name' field of logged user
-            $save = $userA->save();
+            $userA->save();
             //Log::channel('stdout')->info("editUsername save");
             return [
                 C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED
@@ -56,10 +54,8 @@ class UserManagerApi{
         ];
     }
 
-    public function editPassword(EditPasswordRequestApi $request){
+    public function editPassword(EditPasswordRequestApi $request):array {
         //Log::channel('stdout')->debug('UserManagerApi editPassword');
-        $message = array();
-        $message['edited'] = false;
         $userA = $this->getUser();
         if($userA != null){
             //User logged found
@@ -69,23 +65,17 @@ class UserManagerApi{
                 //Create an hash for new password and save it
                 $userA->password = Hash::make($newpwd);
                 $userA->save();
-                $message[C::KEY_DONE] = true;
-                $message['edited'] = true;
-                $message[C::KEY_MESSAGE] = C::OK_PASSWORDUPDATED;
+                return [
+                    C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_PASSWORDUPDATED
+                ];
            /*  }
-            else{
-                //Log::debug("hash password error");
-                $message[C::KEY_DONE] = false;
-                $message['edited'] = false;
-                $message[C::KEY_MESSAGE] = C::ERR_PASSWORDINCORRECT;
-            }   */
+            return [
+                    C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDINCORRECT
+                ];*/
         }//if($userA != null){
-        else{
-            $message[C::KEY_DONE] = false;
-            $message['edited'] = false;
-            $message[C::KEY_MESSAGE] = C::ERR_NOTABLEGETUSERINFO;
-        }
-        return $message;
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
+        ];
     }
 }
 ?>

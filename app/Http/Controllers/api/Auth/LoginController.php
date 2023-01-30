@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Constants;
+use App\Interfaces\Constants as C;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -77,15 +77,15 @@ class LoginController extends Controller
         $response['logged'] = false;
         if(!User::where('email',$request->email)->first()){
             //No account found with email entered
-            $response['errors'] = Constants::ERR_EMAILNOTFOUND;
+            $response['errors'] = C::ERR_EMAILNOTFOUND;
         }//if(!User::where('email',$request->email)->first()){
         else if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
             //Incorrect password
-            $response['errors'] = Constants::ERR_PASSWORDINCORRECTLOGIN;
+            $response['errors'] = C::ERR_PASSWORDINCORRECTLOGIN;
         }//if(!User::where('email',$request->email)->where('password',Hash::make($request->password))->first()){
         else{
             //Other errors
-            $response['errors'] = Constants::ERR_INVALIDCREDENTIALS;
+            $response['errors'] = C::ERR_INVALIDCREDENTIALS;
         }
         return $response;
     }
@@ -126,15 +126,15 @@ class LoginController extends Controller
                 }
                 else{
                     //Account not verified yet
-                    $response['errors'] = Constants::ERR_VERIFYYOURACCOUNT;
+                    $response['errors'] = C::ERR_VERIFYYOURACCOUNT;
                 }
             }//if($hashCkeck){
             else{
-                $response['errors'] = Constants::ERR_PASSWORDINCORRECTLOGIN;
+                $response['errors'] = C::ERR_PASSWORDINCORRECTLOGIN;
             }
         }//if($userCheck != null){
         else{
-            $response['errors'] = Constants::ERR_EMAILNOTFOUND;
+            $response['errors'] = C::ERR_EMAILNOTFOUND;
         }
         //$response['query'] = DB::getQueryLog();
         return $response;

@@ -37,6 +37,7 @@ trait EditUsernameRequestCommonTrait{
                 ['messages' => $messages]
             ,400) */
             response()->json([
+                C::KEY_DONE => false,
                 C::KEY_MESSAGE => $messages[$key_first][0]
             ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
         );
