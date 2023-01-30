@@ -87,12 +87,12 @@ trait UserControllerCommonTrait{
      * @param EditUsernameRequestApi $request
      * @return bool
      */
-    private function editUsernameApi(EditUsernameRequestApi $request): bool{
-        if(isset($this->auth_id)){
-            $edit = $this->usermanager_api->editUsername($request,$this->id);
-            if($edit['edited'])return true;
-        }//if(isset($this->auth_id)){
-        return false;
+    private function editUsernameApi(EditUsernameRequestApi $request): array{
+        if(isset($this->auth_id))
+            return $this->usermanager_api->editUsername($request,$this->auth_id);
+        return [
+            C::KEY_CODE => 404, C::KEY_DONE => false, 'edited' => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
+        ];
     }
 
      /**
