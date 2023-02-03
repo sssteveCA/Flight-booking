@@ -33,9 +33,9 @@ trait UserControllerCommonTrait{
                 //revoke all tokens
                 $token->revoke();
             //Delete all flights associated to this user
-            Flight::where('user_id',$this->auth_id)->delete();
+            //Flight::where('user_id',$this->auth_id)->delete();
             //Delete all booked rooms associated to this user
-            Hotel::where('user_id',$this->auth_id)->delete();
+            //Hotel::where('user_id',$this->auth_id)->delete();
             //Delete user record in MySQL
             $user->delete();
             return true;
@@ -51,9 +51,9 @@ trait UserControllerCommonTrait{
         if($user != null){
             auth()->logout();
             //Delete all flights associated to this user
-            Flight::where('user_id',$this->auth_id)->delete();
+            //Flight::where('user_id',$this->auth_id)->delete();
             //Delete all booked rooms associated to this user
-            Hotel::where('user_id',$this->auth_id)->delete();
+            //Hotel::where('user_id',$this->auth_id)->delete();
             //Delete user record in MySQL
             $user->delete();
             return true;
