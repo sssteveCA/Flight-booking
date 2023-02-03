@@ -42,6 +42,7 @@ export default class MessageDialog{
             draggable: false,
             height: this._height,
             modal: true,
+            position: {my: "bottom center", at: "top", of: window},
             resizable: false,
             title: this._title,
             width: this._width,

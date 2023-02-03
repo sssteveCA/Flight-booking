@@ -50,6 +50,8 @@ export default function deleteAccount(): void{
                     password: $('#'+tfd.inputs_prop[0].input_id).val() as string,
                     password_conf: $('#'+tfd.inputs_prop[1].input_id).val() as string
                 };
+                console.log("DeleteAccount functions da_data");
+                console.log(da_data);
                 let da: DeleteAccount = new DeleteAccount(da_data);
                 da.deleteAccount().then(obj_response => {
                     da_spinner.addClass("d-none");
