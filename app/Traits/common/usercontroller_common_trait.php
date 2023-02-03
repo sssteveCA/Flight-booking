@@ -47,7 +47,7 @@ trait UserControllerCommonTrait{
      * Delete the logged user account when the response is expected to be HTML type
      */
     private function deleteAccountWeb():bool {
-        $user = $this->getDataCommon();
+        $user = $this->getDataWeb();
         if($user != null){
             auth()->logout();
             //Delete all flights associated to this user

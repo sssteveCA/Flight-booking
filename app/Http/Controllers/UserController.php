@@ -93,6 +93,7 @@ class UserController extends Controller
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);  
         }catch(Exception $e){
+            Log::channel('stdout')->debug("UserController deleteAccountHard exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
