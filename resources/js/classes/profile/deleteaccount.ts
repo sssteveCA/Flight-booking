@@ -50,7 +50,7 @@ export default class DeleteAccount{
         if(this._password == this._password_conf){
             try{
                 await this.deleteAccountPromise().then(res => {
-                    console.log(res);
+                    //console.log(res);
                     let json = JSON.parse(res);
                     response = {
                         status: json[Constants.KEY_STATUS],

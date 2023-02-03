@@ -1,5 +1,4 @@
 import PasswordConfirmDialogInterface from "../../interfaces/dialog/passwordconfirmdialog.interface";
-import { TextFieldDialogInterface } from "../../interfaces/dialog/textfieldsdialog.interface";
 import TextFieldsDialog from "./textfieldsdialog";
 
 export default class PasswordConfirmDialog extends TextFieldsDialog{
@@ -16,12 +15,14 @@ export default class PasswordConfirmDialog extends TextFieldsDialog{
     get cb_show_id(){return this._cb_show_id;}
 
     private addShowHidePassword(): void{
+        this._dialog.html('');
         this._dialog_body += `
 <div class="my-2 form-check">
     <input type="checkbox" class="form-check-input" id="${this._cb_show_id}">
     <label class="form-check-label">Mostra password</label>
 </div>
         `;
+        this._dialog.append(this._dialog_body);
     }
 
     private setCbEvents(): void{

@@ -7,6 +7,8 @@ import DeleteAccountInterface from "../../interfaces/profile/deleteaccout.interf
 import DeleteAccount from "../../classes/profile/deleteaccount";
 import MessageDialogInterface from "../../interfaces/dialog/messagedialog.interface";
 import MessageDialog from "../../classes/dialog/messagedialog";
+import PasswordConfirmDialogInterface from "../../interfaces/dialog/passwordconfirmdialog.interface";
+import PasswordConfirmDialog from "../../classes/dialog/passwordconfirmdialog";
 
 export default function deleteAccount(): void{
     let da_spinner: JQuery = $('#da-spinner');
@@ -25,30 +27,27 @@ export default function deleteAccount(): void{
                 title: 'Conferma la password per procedere',
                 inputs_prop: [
                     {
-                        label_str: 'Password',
-                        input_id: 'password',
-                        input_name: 'password',
-                        input_type: 'password'
+                        label_str: 'Password', input_id: 'password', input_name: 'password', input_type: 'password'
                     },
                     {
-                        label_str: 'Conferma password',
-                        input_id: 'password_conf',
-                        input_name: 'password_conf',
-                        input_type: 'password'
+                        label_str: 'Conferma password', input_id: 'password_conf', input_name: 'password_conf', input_type: 'password'
                     }
                 ]   
-            };
-            let tfd: TextFieldsDialog = new TextFieldsDialog(tfd_data);
-            tfd.btOk.on('click',()=>{
+            }
+            let pcd_data: PasswordConfirmDialogInterface = {
+                tfd_data: tfd_data, cb_show_id: 'pcd_cb_show'
+            }
+            let pcd: PasswordConfirmDialog = new PasswordConfirmDialog(pcd_data);
+            pcd.btOk.on('click',()=>{
                 //User submit the password inputs dialog
-               /*  tfd.dialog.dialog('destroy');
-                tfd.dialog.remove(); */
+               /*  pcd.dialog.dialog('destroy');
+                pcd.dialog.remove(); */
                 da_spinner.removeClass("d-none");
                 let csrf = $('meta[name="csrf-token"]').attr('content');
                 let da_data: DeleteAccountInterface = {
                     token: csrf as string,
-                    password: $('#'+tfd.inputs_prop[0].input_id).val() as string,
-                    password_conf: $('#'+tfd.inputs_prop[1].input_id).val() as string
+                    password: $('#'+pcd.inputs_prop[0].input_id).val() as string,
+                    password_conf: $('#'+pcd.inputs_prop[1].input_id).val() as string
                 };
                 /* console.log("DeleteAccount functions da_data");
                 console.log(da_data); */
@@ -68,16 +67,16 @@ export default function deleteAccount(): void{
                         md.dialog.remove();
                         if(obj_response[Constants.KEY_STATUS] == 'OK'){
                             //Remove also TextFieldDialog if delete request was done successfully
-                            tfd.dialog.dialog('destroy');
-                            tfd.dialog.remove();
+                            pcd.dialog.dialog('destroy');
+                            pcd.dialog.remove();
                             window.location.href = '/';
                         }
                     });// md.btOk.on('click',()=>{
                 });
-            });//tfd.btOk.on('click',()=>{
-            tfd.btCancel.on('click',()=>{
-                tfd.dialog.dialog('destroy');
-                tfd.dialog.remove();
+            });//pcd.btOk.on('click',()=>{
+            pcd.btCancel.on('click',()=>{
+                pcd.dialog.dialog('destroy');
+                pcd.dialog.remove();
             });
         });//cd.btYes.on('click', ()=>{
         cd.btNo.on('click', ()=>{
