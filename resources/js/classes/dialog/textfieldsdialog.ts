@@ -3,15 +3,15 @@ import {TextFieldDialogInterface, InputProp} from "../../interfaces/dialog/textf
 
 //Dialog that contains one or more labels and inputs field
 export default class TextFieldsDialog{
-    private _title: string;
-    private _inputs_prop: InputProp[];
-    private _id: string;
-    private _width: number|string;
-    private _height: number|string;
-    private _dialog: JQuery;
-    private _dialog_body: string; //Dialog HTML content
-    private _btOk: JQuery;
-    private _btCancel: JQuery;
+    protected _title: string;
+    protected _inputs_prop: InputProp[];
+    protected _id: string;
+    protected _width: number|string;
+    protected _height: number|string;
+    protected _dialog: JQuery;
+    protected _dialog_body: string; //Dialog HTML content
+    protected _btOk: JQuery;
+    protected _btCancel: JQuery;
 
     constructor(data: TextFieldDialogInterface){
         this._title = data.title;

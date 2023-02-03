@@ -1,10 +1,11 @@
+import PasswordConfirmDialogInterface from "../../interfaces/dialog/passwordconfirmdialog.interface";
 import { TextFieldDialogInterface } from "../../interfaces/dialog/textfieldsdialog.interface";
 import TextFieldsDialog from "./textfieldsdialog";
 
 export default class PasswordConfirmDialog extends TextFieldsDialog{
 
-    constructor(data: TextFieldDialogInterface){
-        super(data);
+    constructor(data: PasswordConfirmDialogInterface){
+        super(data.tfd_data);
         this.addShowHidePassword();
     }
 
@@ -15,5 +16,9 @@ export default class PasswordConfirmDialog extends TextFieldsDialog{
     <label class="form-check-label">Mostra password</label>
 </div>
         `;
+    }
+
+    private setCbEvents(): void{
+
     }
 }
