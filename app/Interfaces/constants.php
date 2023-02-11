@@ -23,12 +23,13 @@ interface Constants{
     const ERR_HOTELPAYMENT_UNKNOWN = "Errore durante il pagamento delle stanze d'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_DELETE = "Errore durante la rimozione della prenotazione. ".Constants::ADMIN_CONTACT;
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
+    const ERR_LOGIN = "Si è verificato un errore durante il login. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
     const ERR_MYFLIGHTS = "Errore durante la ricerca dei tuoi voli prenotati. ".Constants::ADMIN_CONTACT;
     const ERR_MYHOTELS = "Errore durante la ricerca delle tue stanze prenotate. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
     const ERR_INVALIDCREDENTIALS = "Le credenziali inserite non sono valide";
-    const ERR_LOGOUT = "Si è verificato un errore durante la disconnessione dell'account";
+    const ERR_LOGOUT = "Si è verificato un errore durante la disconnessione dell'account. ".Constants::ADMIN_CONTACT;
     const ERR_NEWS = "Errore durante il caricamento delle notizie. ".Constants::ADMIN_CONTACT;
     const ERR_NEWS_SINGLE = "Errore durante il caricamento della notizia. ".Constants::ADMIN_CONTACT;
     const ERR_NOTABLEGETUSERINFO = "Impossibile ottenere informazione sull'utente loggato";

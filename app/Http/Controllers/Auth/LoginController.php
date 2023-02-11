@@ -7,6 +7,7 @@ use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Exception;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -75,37 +76,43 @@ class LoginController extends Controller
     //override
     public function login(Request $request)
     {
-        /* Log::info("LoginController login");
-        Log::info("LoginController login request => ".var_export($request->all(),true)); */
-        $this->validateLogin($request);
+        try{
+            /* Log::info("LoginController login");
+            Log::info("LoginController login request => ".var_export($request->all(),true)); */
+            $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
-                //Log::info("LoginController login method_exists");
-            $this->fireLockoutEvent($request);
+            // If the class is using the ThrottlesLogins trait, we can automatically throttle
+            // the login attempts for this application. We'll key this by the username and
+            // the IP address of the client making these requests into this application.
+            if (method_exists($this, 'hasTooManyLoginAttempts') &&
+                $this->hasTooManyLoginAttempts($request)) {
+                    //Log::info("LoginController login method_exists");
+                $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            //Log::info("LoginController attemptLogin");
-            if ($request->hasSession()) {
-                //Log::info("LoginController session");
-                $request->session()->put('auth.password_confirmed_at', time());
+                return $this->sendLockoutResponse($request);
             }
 
-            return $this->sendLoginResponse($request);
-        }
+            if ($this->attemptLogin($request)) {
+                //Log::info("LoginController attemptLogin");
+                if ($request->hasSession()) {
+                    //Log::info("LoginController session");
+                    $request->session()->put('auth.password_confirmed_at', time());
+                }
 
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-        //Log::info("LoginController increment");
-        return $this->sendFailedLoginResponse($request);
+                return $this->sendLoginResponse($request);
+            }
+
+            // If the login attempt was unsuccessful we will increment the number of attempts
+            // to login and redirect the user back to the login form. Of course, when this
+            // user surpasses their maximum number of attempts they will get locked out.
+            $this->incrementLoginAttempts($request);
+            //Log::info("LoginController increment");
+            return $this->sendFailedLoginResponse($request);
+        }catch(Exception $e){
+            return response()->view(P::VIEW_LOGIN,[
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_LOGIN
+            ],500);
+        }
     }
 
     //Overriding method
