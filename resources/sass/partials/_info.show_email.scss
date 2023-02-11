@@ -1,0 +1,18 @@
+
+@import "./extendables";
+
+@mixin show-email-div(){
+    .show-email{
+        span{
+            @extend %legend;
+        }
+        div.divider{
+            height: 125px;
+        }
+        div.email-address{
+            font-size: 1.3rem;
+        }   
+    }  
+}
+
+@include show-email-div();

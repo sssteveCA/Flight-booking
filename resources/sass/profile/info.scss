@@ -2,12 +2,15 @@
 @use "sass:selector";
 @use "sass:string";
 @import "../partials/back";
+@import "../partials/info.show_email";
 
 $dialog-title-classes:'.ui-dialog', '.ui-dialog-title';
 $dialog-title-prop-map: (
     'overflow': 'visible !important',
     'white-space': 'normal !important'
 );
+
+
 
 @mixin dialog-title-prop($title-class-list, $title-class-prop){
     $title-class-selector: selector.nest($title-class-list);
