@@ -100,5 +100,12 @@
             </div>
         </div>
     </div>
+    @if(isset($done,$message) && $done === false)
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+        </div>
+    </div>
+    @endif
 </div>
 @endsection
