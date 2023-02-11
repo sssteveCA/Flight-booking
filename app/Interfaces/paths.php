@@ -120,6 +120,7 @@ interface Paths{
     const VIEW_PROFILE_INFO_DA = 'profile.info.deleteaccount';
     const VIEW_PROFILE_INFO_EPF = 'profile.info.editpasswordform';
     const VIEW_PROFILE_INFO_EUF = 'profile.info.editusernameform';
+    const VIEW_PROFILE_INFO_SE = 'profile.info.showemail';
     const VIEW_REGISTER = 'auth.register';
     const VIEW_SUBSCRIBED = 'auth.registration.subscribed';
     const VIEW_TERMS = 'terms';
