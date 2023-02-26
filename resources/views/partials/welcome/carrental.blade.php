@@ -23,12 +23,12 @@
             </div>
             <div class="row">
                 <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
-                    <input type="datetime-local" id="fb-rentstart" class="form-control" name="rentstart" >
-                    <label for="fb-rentstart">Data di ritiro</label>
+                    <input type="datetime-local" id="fb-rc-rentstart" class="form-control" name="rentstart" >
+                    <label for="fb-rc-rentstart">Data di ritiro</label>
                 </div>
                 <div id="fb-rc6" class="form-floating col-12 col-md-6 col-lg-5">
-                    <input type="datetime-local" id="fb-rentend" class="form-control" name="rentend">
-                    <label for="fb-rentend">Data di consegna</label>
+                    <input type="datetime-local" id="fb-rc-rentend" class="form-control" name="rentend">
+                    <label for="fb-rc-rentend">Data di consegna</label>
                 </div>
             </div>
             <div class="row">

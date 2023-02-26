@@ -6,6 +6,7 @@ import AirportsAvailableInterface from "./interfaces/flight/airportsavailable.in
 import FlightLocationAirportsInterface from "./interfaces/flight/flightlocationairports.interface";
 import FlightLocationCompaniesInterface from "./interfaces/flight/flightlocationcompanies.interface";
 import FlightLocationCountriesInterface from "./interfaces/flight/flightlocationcountries.interface";
+import { loadCarRentalInfo } from "./welcome.carrental";
 import { loadFlightEventsInfo } from "./welcome.flightevents";
 import {loadHotelInfo } from "./welcome.hotel";
 
@@ -95,6 +96,9 @@ function tabClickEvents(elements: any): void{
         if(cb_id == 'hotel-tab'){
             //loadHotelData();
             loadHotelInfo();
+        }
+        else if(cb_id = 'car-rental-tab'){
+            loadCarRentalInfo();
         }
         else if(cb_id == 'events-tab'){
            //User want see flight events list
