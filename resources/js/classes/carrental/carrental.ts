@@ -1,4 +1,5 @@
 import CarRentalInterface from "../../interfaces/carrental/carrental.interface";
+import { Constants } from "../../values/constants";
 
 export default class CarRental{
 
@@ -9,13 +10,16 @@ export default class CarRental{
     private _rent_start_el: JQuery<HTMLInputElement>;
     private _rent_end_el: JQuery<HTMLInputElement>;
     private _age_range_el: JQuery<HTMLSelectElement>;
-    private _carrental_data: object;
+    private _carrental_data: object = {};
     private _errno: number = 0;
     private _error: string|null = null;
+
+    private static URL_SCRIPT:string = Constants.URL_CARRENTALSEARCH;
 
     public static ERR_FETCH: number = 1;
 
     private static ERR_FETCH_MSG: string = "Errore durante l'esecuzione della richiesta";
+
 
     constructor(data: CarRentalInterface){
         this.assignValues(data);
@@ -43,5 +47,31 @@ export default class CarRental{
         this._rent_start_el = $('#'+data.rent_start_id);
         this._rent_end_el = $('#'+data.rent_end_id);
         this._age_range_el = $('#'+data.age_range_id);
+    }
+
+    public async carRental(): Promise<object>{
+        this._errno = 0;
+        let response: object = {};
+        try{
+            await this.carRentalPromise().then(res => {
+                response = JSON.parse(res);
+                this._carrental_data = response;
+            }).catch(err => {
+                throw err;
+            });
+        }catch(e){
+            this._errno = CarRental.ERR_FETCH;
+        }
+        return response;
+    }
+
+    private async carRentalPromise(): Promise<string>{
+        return await new Promise<string>((resolve,reject)=>{
+            fetch(CarRental.URL_SCRIPT).then(res => {
+                resolve(res.text());
+            }).catch(err => {
+                reject(err);
+            })
+        });
     }
 }
