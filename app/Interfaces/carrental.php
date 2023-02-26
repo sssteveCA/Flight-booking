@@ -308,59 +308,165 @@ interface CarRental{
     ];
 
     const CAR_FLEET = [
-        'Alfa Romeo Stelvio',
-        'Bmw Serie 2',
-        'Cadillac XT4',
-        'Citroen C1',
-        'Citroen C4 Spacetourer',
-        'Citroen Grand C4 Spacetourer',
-        'Citroen SpaceTourer 9 Pax',
-        'Cupra Formentor',
-        'Fiat 500',
-        'Fiat 500 Cabrio, Cambio Automatico',
-        'Fiat 500 Cabrio, Cambio Manuale',
-        'Fiat Panda',
-        'Ford C-Max',
-        'Ford Ecosport',
-        'Ford Fiesta',
-        'Ford Focus',
-        'Ford Focus 1.5 TDC',
-        'Ford Focus SW',
-        'Ford Galaxy 7 posti',
-        'Ford Mondeo SW',
-        'Ford Mustang Mach-E',
-        'Ford Tourneo Connect',
-        'Ford Tourneo 9 posti L1H1',
-        'Ford Transit 9 posti L2H1',
-        'Hyundai Tucson',
-        'Lexus ES Hybrid',
-        'Lexus NX',
-        'Lynk & Co 01',
-        'Mahindra Kuv100',
-        'Maserati Ghibli',
-        'Mercedes Amg GT Coupe',
-        'Mercedes Classe A',
-        'Mercedes Classe B',
-        'Mercedes Classe C Cabrio',
-        'Mercedes Classe C Station Wagon',
-        'Opel Astra Sports Tourer',
-        'Opel Corsa',
-        'Opel Mokka',
-        'Peugeot 108',
-        'Peugeot 308',
-        'Peugeot 508',
-        'Renault Clio',
-        'Renault Talisman Wagon',
-        'Skoda Kamiq',
-        'Skoda Karoq',
-        'Toyota C-HR',
-        'Toyota Auris',
-        'Toyota Aygo',
-        'Toyota Corlla',
-        'Toyota Mirai',
-        'Toyota Proace Electric Aut. 9 Posti',
-        'Toyota Yaris',
-        'Volkswagen Golf'
+        'Alfa Romeo Stelvio' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Bmw Serie 2' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Cadillac XT4' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Citroen C1' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Citroen C4 Spacetourer' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Citroen Grand C4 Spacetourer' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Citroen SpaceTourer 9 Pax' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Cupra Formentor' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Fiat 500' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Fiat 500 Cabrio, Cambio Automatico' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Fiat 500 Cabrio, Cambio Manuale' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Fiat Panda' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford C-Max' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Ecosport' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Fiesta' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Focus' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Focus 1.5 TDC' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Focus SW' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Galaxy 7 posti' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Mondeo SW' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Mustang Mach-E' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Tourneo Connect' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Tourneo 9 posti L1H1' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Ford Transit 9 posti L2H1' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Hyundai Tucson' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Lexus ES Hybrid' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Lexus NX' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Lynk & Co 01' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mahindra Kuv100' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Maserati Ghibli' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mercedes Amg GT Coupe' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mercedes Classe A' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mercedes Classe B' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mercedes Classe C Cabrio' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Mercedes Classe C Station Wagon' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Opel Astra Sports Tourer' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Opel Corsa' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Opel Mokka' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Peugeot 108' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Peugeot 308' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Peugeot 508' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Renault Clio' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Renault Talisman Wagon' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Skoda Kamiq' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Skoda Karoq' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota C-HR' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Auris' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Aygo' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Corlla' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Mirai' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Proace Electric Aut. 9 Posti' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Toyota Yaris' => [
+            'day_price' => 0.00, 'images' => []
+        ],
+        'Volkswagen Golf' => [
+            'day_price' => 0.00, 'images' => []
+        ]
     ];
 
     const CARRENTAL_COMPANIES = [
