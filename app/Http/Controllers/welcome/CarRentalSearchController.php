@@ -14,7 +14,7 @@ class CarRentalSearchController extends Controller
     /**
      * Get the car rental information for the response
      */
-    public function getCarRentalData(): array{
-        return $this->getRentalCarArray();
+    public function getCarRentalData(){
+        return response()->json($this->getRentalCarArray(),200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
     }
 }
