@@ -54,9 +54,11 @@ export default class CarRental{
         let response: object = {};
         try{
             await this.carRentalPromise().then(res => {
-                console.log(res);
+                //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
+                console.log(this._carrental_data);
+                this.fillDropdowns();
             }).catch(err => {
                 throw err;
             });
@@ -74,5 +76,20 @@ export default class CarRental{
                 reject(err);
             })
         });
+    }
+
+    private fillDropdowns(): void{
+        this.setAgeBandsDropdown(this.carrental_data['age_ranges']);
+    }
+
+    private setAgeBandsDropdown(age_bands: [[number,number]]): void{
+        age_bands.forEach((age_band, index) => {
+            let option: JQuery<HTMLOptionElement> = $('<option>');
+            option.val(`${age_band[0]}-${age_band[1]}`);
+            if(index == 3)
+                option.prop("selected",true);
+            option.text(`${age_band[0]}-${age_band[1]} anni`);
+            this._age_range_el.append(option);
+        })
     }
 }
