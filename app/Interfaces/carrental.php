@@ -306,5 +306,58 @@ interface CarRental{
             'Budapest' => []
         ],        
     ];
+
+    const CARRENTAL_COMPANIES = [
+        'Alamo' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Avis' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Budget' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Enterprise' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'GoldCar' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Locauto' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Maggiore' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => [] 
+        ],
+        'National' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'Sixt' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+        'TopCar' => [
+            'day_price_30_65' => 0.00,
+            'day_price_additional_pcg' => 15,
+            'cars' => []
+        ],
+    ];
 }
 ?>
