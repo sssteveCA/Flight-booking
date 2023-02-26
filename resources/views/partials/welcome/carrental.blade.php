@@ -13,14 +13,23 @@
             </div>
             <div class="row">
                 <div id="fb-rc3" class="form-floating col-12 col-md-6 col-lg-5">
+                    <select id="fb-rc-pickup-country" class="form-select pickup-country" name="pickup_country"></select>
+                    <label for="fb-rc-pickup-country">Paese di ritiro</label>
+                </div>
+                <div id="fb-rc4" class="form-floating col-12 col-md-6 col-lg-5">
                     <select id="fb-rc-pickup-location" class="form-select pickup-location" name="pickup_location"></select>
                     <label for="fb-rc-pickup-location">Località di ritiro</label>
                 </div>
-                <div id="fb-rc4" class="form-floating col-12 col-md-6 col-lg-5">
+            </div>
+            <div class="row">
+            <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
+                    <select id="fb-rc-delivery-country" class="form-select delivery-country" name="delivery_country"></select>
+                    <label for="fb-rc-delivery-country">Paese di consegna</label>
+                </div>
+                <div id="fb-rc6" class="form-floating col-12 col-md-6 col-lg-5">
                     <select id="fb-rc-delivery-location" class="form-select delivery-location" name="delivery_location"></select>
                     <label for="fb-rc-delivery-location">Località di consegna</label>
                 </div>
-            </div>
             <div class="row">
                 <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
                     <input type="datetime-local" id="fb-rc-rentstart" class="form-control" name="rentstart" >

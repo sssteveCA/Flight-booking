@@ -5,7 +5,9 @@ export default class CarRental{
 
     private _carrental_company_el: JQuery<HTMLSelectElement>;
     private _car_model_el: JQuery<HTMLSelectElement>;
+    private _pickup_country_el: JQuery<HTMLSelectElement>;
     private _pickup_location_el: JQuery<HTMLSelectElement>;
+    private _delivery_country_el: JQuery<HTMLSelectElement>;
     private _delivery_location_el: JQuery<HTMLSelectElement>;
     private _rent_start_el: JQuery<HTMLInputElement>;
     private _rent_end_el: JQuery<HTMLInputElement>;
@@ -42,7 +44,9 @@ export default class CarRental{
     private assignValues(data: CarRentalInterface): void{
         this._carrental_company_el = $('#'+data.carrental_company_id);
         this._car_model_el = $('#'+data.car_model_id);
+        this._pickup_country_el = $('#'+data.pickup_country_id);
         this._pickup_location_el = $('#'+data.pickup_location_id);
+        this._delivery_country_el = $('#'+data.delivery_country_id);
         this._delivery_location_el = $('#'+data.delivery_location_id);
         this._rent_start_el = $('#'+data.rent_start_id);
         this._rent_end_el = $('#'+data.rent_end_id);
@@ -96,7 +100,7 @@ export default class CarRental{
 
     private setCountryDropdowns(available_locations: object): void{
         let locations_lists: string[] = Object.keys(available_locations);
-        console.log(locations_lists);
+        //console.log(locations_lists);
         locations_lists.forEach((location, index) => {
             let option_pickup: JQuery<HTMLOptionElement> = $('<option>');
             option_pickup.val(location);
@@ -108,8 +112,26 @@ export default class CarRental{
                 option_pickup.prop("selected",true);
                 option_delivery.prop("selected",true);
             }
-            this._pickup_location_el.append(option_pickup);
-            this._delivery_location_el.append(option_delivery);
+            this._pickup_country_el.append(option_pickup);
+            this._delivery_country_el.append(option_delivery);
         });
+        let selected_pickup_location: string = this._pickup_country_el.find('option:selected').text();
+        let selected_delivery_location: string = this._delivery_country_el.find('option:selected').text();
+        this.setLocationDropdowns(this._pickup_location_el, available_locations[selected_pickup_location]);
+        this.setLocationDropdowns(this._delivery_location_el, available_locations[selected_delivery_location]);
+    }
+
+    private setLocationDropdowns(select_el: JQuery<HTMLSelectElement>, country_location: object): void{
+        let locations: string[] = Object.keys(country_location);
+        //console.log(locations);
+        locations.forEach((location,index) => {
+            let option: JQuery<HTMLOptionElement> = $('<option>');
+            option.val(location);
+            option.text(location);
+            if(index == 0){
+                option.prop("selected",true);
+            }
+            select_el.append(option);
+        })
     }
 }
