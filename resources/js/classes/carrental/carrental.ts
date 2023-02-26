@@ -99,6 +99,18 @@ export default class CarRental{
         })
     }
 
+    private setCompanyCarsDropdown(company_cars_data: object): void{
+        let company_cars: string[] = Object.keys(company_cars_data);
+        company_cars.forEach((car,index) => {
+            let option: JQuery<HTMLOptionElement> = $('<option>');
+            option.val(car);
+            option.text(car);
+            if(index == 0)
+                option.prop("selected",true);
+            this._car_model_el.append(option);
+        });
+    }
+
     private setCompanyDropdown(companies_data: object): void{
         let companies: string[] = Object.keys(companies_data);
         companies.forEach((company,index) => {
@@ -109,6 +121,8 @@ export default class CarRental{
                 option.prop("selected",true);
             this._carrental_company_el.append(option);
         });
+        let selected_company: string = this._carrental_company_el.find('option:selected').text();
+        this.setCompanyCarsDropdown(companies_data[selected_company]['cars']);
     }
 
     private setCountryDropdowns(available_locations: object): void{
