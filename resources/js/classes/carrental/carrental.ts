@@ -80,6 +80,7 @@ export default class CarRental{
 
     private fillDropdowns(): void{
         this.setAgeBandsDropdown(this.carrental_data['age_ranges']);
+        this.setCountryDropdowns(this._carrental_data['available_locations']);
     }
 
     private setAgeBandsDropdown(age_bands: [[number,number]]): void{
@@ -91,5 +92,24 @@ export default class CarRental{
             option.text(`${age_band[0]}-${age_band[1]} anni`);
             this._age_range_el.append(option);
         })
+    }
+
+    private setCountryDropdowns(available_locations: object): void{
+        let locations_lists: string[] = Object.keys(available_locations);
+        console.log(locations_lists);
+        locations_lists.forEach((location, index) => {
+            let option_pickup: JQuery<HTMLOptionElement> = $('<option>');
+            option_pickup.val(location);
+            option_pickup.text(location);
+            let option_delivery: JQuery<HTMLOptionElement> = $('<option>');
+            option_delivery.val(location);
+            option_delivery.text(location);
+            if(index == 0){
+                option_pickup.prop("selected",true);
+                option_delivery.prop("selected",true);
+            }
+            this._pickup_location_el.append(option_pickup);
+            this._delivery_location_el.append(option_delivery);
+        });
     }
 }
