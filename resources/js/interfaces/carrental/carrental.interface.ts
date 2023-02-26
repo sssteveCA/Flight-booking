@@ -1,5 +1,5 @@
 
-export default interface CarRentalEventsInterface{
+export default interface CarRentalInterface{
     carrental_company_id: string;
     car_model_id: string;
     pickup_location_id: string;
