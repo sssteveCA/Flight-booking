@@ -23,10 +23,10 @@ trait CarRentalSearchControllerCommonTrait{
     }
 
     /**
-     * Set the car rental information for the response
+     * Set the car rental information array
      * @return array
      */
-    private function getRentalCarData(): array{
+    private function getRentalCarArray(): array{
         $companies_data = Cr::CARRENTAL_COMPANIES;
         foreach($companies_data as $key => $company_data){
             $companies_data[$key]['cars'] = $this->getCompanyCarFleet($company_data);

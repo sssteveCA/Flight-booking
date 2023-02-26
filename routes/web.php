@@ -13,6 +13,7 @@ use App\Http\Controllers\paypal\PaypalHotelController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\welcome\CarRentalSearchController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Controllers\welcome\HotelSearchController;
@@ -87,6 +88,7 @@ Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
 Route::post(P::URL_PREFERENCES_SET, [PreferenceController::class, 'cookieSet']);
 Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchController::class,'getAvailableAirports']);
+Route::get(P::URL_CARRENTALSEARCH,[CarRentalSearchController::class,'getCarRentalData']);
 Route::get(P::URL_COMPANIESSEARCH,[FlightSearchController::class,'getFlightCompanies']);
 Route::resource(P::PREFIX_FLIGHTEVENTS, FlightEventsController::class)->only(['index','show']);
 Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHotels']);

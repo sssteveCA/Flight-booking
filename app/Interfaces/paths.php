@@ -46,8 +46,7 @@ interface Paths{
     const URL_AIRPORTS_AVAILABLE = '/airports';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
-    const URL_PAYPAL_CANCEL = '/cancel';
-    const URL_PAYPAL_RETURN = '/return';
+    const URL_CARRENTALSEARCH = '/carrentalsearch';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
     const URL_COOKIE_POLICY = '/cookie_policy';
@@ -72,6 +71,8 @@ interface Paths{
     const URL_MYFLIGHTS = '/myFlights';
     const URL_MYHOTELS = '/myHotels';
     const URL_NEWS = '/news';
+    const URL_PAYPAL_CANCEL = '/cancel';
+    const URL_PAYPAL_RETURN = '/return';
     const URL_PREFERENCES_SET = '/preferences_set';
     const URL_PRIVACY_POLICY = '/privacy_policy';
     const URL_PROFILE = '/profile';
