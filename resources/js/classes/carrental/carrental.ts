@@ -61,7 +61,7 @@ export default class CarRental{
                 //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
-                console.log(this._carrental_data);
+                //console.log(this._carrental_data);
                 this.fillDropdowns();
             }).catch(err => {
                 throw err;
@@ -86,6 +86,7 @@ export default class CarRental{
         this.setCompanyDropdown(this._carrental_data['companies_data']);
         this.setCountryDropdowns(this._carrental_data['available_locations']);
         this.setAgeBandsDropdown(this.carrental_data['age_ranges']);
+        this.setDropDownEvents();
     }
 
     private setAgeBandsDropdown(age_bands: [[number,number]]): void{
@@ -144,11 +145,26 @@ export default class CarRental{
         });
         let selected_pickup_location: string = this._pickup_country_el.find('option:selected').text();
         let selected_delivery_location: string = this._delivery_country_el.find('option:selected').text();
-        this.setLocationDropdowns(this._pickup_location_el, available_locations[selected_pickup_location]);
-        this.setLocationDropdowns(this._delivery_location_el, available_locations[selected_delivery_location]);
+        this.setLocationDropdown(this._pickup_location_el, available_locations[selected_pickup_location]);
+        this.setLocationDropdown(this._delivery_location_el, available_locations[selected_delivery_location]);
     }
 
-    private setLocationDropdowns(select_el: JQuery<HTMLSelectElement>, country_location: object): void{
+    private setDropDownEvents(): void{
+        this._carrental_company_el.on('change',()=>{
+            let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
+            this.setCompanyCarsDropdown(this._carrental_data['companies_data'][selected_company]['cars']);
+        });
+        this._pickup_country_el.on('change',()=>{
+            let selected_country: string = this._pickup_country_el.find('option').filter(':selected').text();
+            this.setLocationDropdown(this._pickup_location_el,this._carrental_data['available_locations'][selected_country]);
+        });
+        this._delivery_country_el.on('change',()=>{
+            let selected_country: string = this._delivery_country_el.find('option').filter(':selected').text();
+            this.setLocationDropdown(this._delivery_location_el,this._carrental_data['available_locations'][selected_country]);
+        });
+    }
+
+    private setLocationDropdown(select_el: JQuery<HTMLSelectElement>, country_location: object): void{
         let locations: string[] = Object.keys(country_location);
         //console.log(locations);
         locations.forEach((location,index) => {
