@@ -7,9 +7,6 @@
             >div{
                 margin: $margin-y auto;
             }
-            @if $i == 7 or $i == 8{
-                padding-left: 0px;
-            }
         }
     }
     #fb-rentcarloc{
