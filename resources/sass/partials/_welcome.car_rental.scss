@@ -1,10 +1,15 @@
 
 @mixin rent-car(){
     $margin-y: 15px;
-    $elems: 4;
+    $elems: 10;
     @for $i from 1 through $elems{
-        #fb-rc#{$i}>div{
-            margin: $margin-y auto;
+        #fb-rc#{$i}{
+            >div{
+                margin: $margin-y auto;
+            }
+            @if $i == 7 or $i == 8{
+                padding-left: 0px;
+            }
         }
     }
     #fb-rentcarloc{

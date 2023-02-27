@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row">
-            <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
+                <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
                     <select id="fb-rc-delivery-country" class="form-select delivery-country" name="delivery_country"></select>
                     <label for="fb-rc-delivery-country">Paese di consegna</label>
                 </div>
@@ -31,23 +31,23 @@
                     <label for="fb-rc-delivery-location">Località di consegna</label>
                 </div>
             <div class="row">
-                <div id="fb-rc5" class="form-floating col-12 col-md-6 col-lg-5">
+                <div id="fb-rc7" class="form-floating col-12 col-md-6 col-lg-5">
                     <input type="datetime-local" id="fb-rc-rentstart" class="form-control" name="rentstart" >
                     <label for="fb-rc-rentstart">Data di ritiro</label>
                 </div>
-                <div id="fb-rc6" class="form-floating col-12 col-md-6 col-lg-5">
+                <div id="fb-rc8" class="form-floating col-12 col-md-6 col-lg-5">
                     <input type="datetime-local" id="fb-rc-rentend" class="form-control" name="rentend">
                     <label for="fb-rc-rentend">Data di consegna</label>
                 </div>
             </div>
             <div class="row">
-                <div id="fb-rc7" class="form-floating col-12 col-md-6 col-lg-5">
+                <div id="fb-rc9" class="form-floating col-12 col-md-6 col-lg-5">
                     <select id="fb-rc-age-range" class="form-select age-range" name="age_range"></select>
                     <label for="fb-rc-age-range">Fascia d'età</label>
                 </div>
             </div>
             <div class="row">
-                <div id="fb-rc8" class="col-12 col-lg-2">
+                <div id="fb-rc10" class="col-12 col-lg-2">
                     <button type="submit" class="btn btn-danger">Andiamo</button>
                 </div>
             </div>
