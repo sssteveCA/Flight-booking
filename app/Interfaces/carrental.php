@@ -313,163 +313,597 @@ interface CarRental{
 
     const CAR_FLEET = [
         'Alfa Romeo Stelvio' => [
-            'day_price' => 13.30, 'images' => []
+            'day_price' => 13.30,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+            ],
+            'images' => []
         ],
         'Bmw Serie 2' => [
-            'day_price' => 14.32, 'images' => []
+            'day_price' => 14.32,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+            ],
+            'images' => []
         ],
         'Cadillac XT4' => [
-            'day_price' => 9.95, 'images' => []
+            'day_price' => 9.95,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+                ],
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            'images' => []
         ],
         'Citroen C1' => [
-            'day_price' => 11.04, 'images' => []
+            'day_price' => 11.04,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+            ],
+            'images' => []
         ],
         'Citroen C4 Spacetourer' => [
-            'day_price' => 11.56, 'images' => []
+            'day_price' => 11.56,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+            ],
+            'images' => []
         ],
         'Citroen Grand C4 Spacetourer' => [
-            'day_price' => 12.05, 'images' => []
+            'day_price' => 12.05,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0
+            ],
+            'images' => []
         ],
         'Citroen SpaceTourer 9 Pax' => [
-            'day_price' => 9.85, 'images' => []
+            'day_price' => 9.85,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Cupra Formentor' => [
-            'day_price' => 15.00, 'images' => []
+            'day_price' => 15.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Fiat 500' => [
-            'day_price' => 12.99, 'images' => []
+            'day_price' => 12.99,
+            'details' => [
+               'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0, 
+            ],
+            'images' => []
         ],
         'Fiat 500 Cabrio, Cambio Automatico' => [
-            'day_price' => 11.43, 'images' => []
+            'day_price' => 11.43,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Fiat 500 Cabrio, Cambio Manuale' => [
-            'day_price' => 10.50, 'images' => []
+            'day_price' => 10.50,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Fiat Panda' => [
-            'day_price' => 10.25, 'images' => []
+            'day_price' => 10.25,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford C-Max' => [
-            'day_price' => 12.60, 'images' => []
+            'day_price' => 12.60,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Ford Ecosport' => [
-            'day_price' => 13.33, 'images' => []
+            'day_price' => 13.33,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Ford Fiesta' => [
-            'day_price' => 14.00, 'images' => []
+            'day_price' => 14.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Ford Focus' => [
-            'day_price' => 15.29, 'images' => []
+            'day_price' => 15.29,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Ford Focus 1.5 TDC' => [
-            'day_price' => 14.04, 'images' => []
+            'day_price' => 14.04,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Ford Focus SW' => [
-            'day_price' => 11.58, 'images' => []
+            'day_price' => 11.58,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford Galaxy 7 posti' => [
-            'day_price' => 9.99, 'images' => []
+            'day_price' => 9.99,
+            'details' => [
+                
+            ],
+            'images' => []
         ],
         'Ford Mondeo SW' => [
-            'day_price' => 12.15, 'images' => []
+            'day_price' => 12.15,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford Mustang Mach-E' => [
-            'day_price' => 11.99, 'images' => []
+            'day_price' => 11.99,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford Tourneo Connect' => [
-            'day_price' => 11.50, 'images' => []
+            'day_price' => 11.50,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford Tourneo 9 posti L1H1' => [
-            'day_price' => 10.67, 'images' => []
+            'day_price' => 10.67,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Ford Transit 9 posti L2H1' => [
-            'day_price' => 16.08, 'images' => []
+            'day_price' => 16.08,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Hyundai Tucson' => [
-            'day_price' => 13.99, 'images' => []
+            'day_price' => 13.99,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Lexus ES Hybrid' => [
-            'day_price' => 9.92, 'images' => []
+            'day_price' => 9.92,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Lexus NX' => [
-            'day_price' => 10.35, 'images' => []
+            'day_price' => 10.35,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+                
+            ],
+            'images' => []
         ],
         'Lynk & Co 01' => [
-            'day_price' => 12.00, 'images' => []
+            'day_price' => 12.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Mahindra Kuv100' => [
-            'day_price' => 12.66, 'images' => []
+            'day_price' => 12.66,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Maserati Ghibli' => [
-            'day_price' => 13.07, 'images' => []
+            'day_price' => 13.07,
+            'details' => [
+               'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0, 
+            ],
+            'images' => []
         ],
         'Mercedes Amg GT Coupe' => [
-            'day_price' => 12.50, 'images' => []
+            'day_price' => 12.50,
+            'details' => [
+               'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0, 
+            ],
+            'images' => []
         ],
         'Mercedes Classe A' => [
-            'day_price' => 12.75, 'images' => []
+            'day_price' => 12.75,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Mercedes Classe B' => [
-            'day_price' => 11.90, 'images' => []
+            'day_price' => 11.90,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Mercedes Classe C Cabrio' => [
-            'day_price' => 14.00, 'images' => []
+            'day_price' => 14.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Mercedes Classe C Station Wagon' => [
-            'day_price' => 14.56, 'images' => []
+            'day_price' => 14.56,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Opel Astra Sports Tourer' => [
-            'day_price' => 15.88, 'images' => []
+            'day_price' => 15.88,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Opel Corsa' => [
-            'day_price' => 13.02, 'images' => []
+            'day_price' => 13.02,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Opel Mokka' => [
-            'day_price' => 12.79, 'images' => []
+            'day_price' => 12.79,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Peugeot 108' => [
-            'day_price' => 9.75, 'images' => []
+            'day_price' => 9.75,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Peugeot 308' => [
-            'day_price' => 11.27, 'images' => []
+            'day_price' => 11.27,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Peugeot 508' => [
-            'day_price' => 12.12, 'images' => []
+            'day_price' => 12.12,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Renault Clio' => [
-            'day_price' => 13.26, 'images' => []
+            'day_price' => 13.26,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Renault Talisman Wagon' => [
-            'day_price' => 13.69, 'images' => []
+            'day_price' => 13.69,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Skoda Kamiq' => [
-            'day_price' => 16.12, 'images' => []
+            'day_price' => 16.12,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Skoda Karoq' => [
-            'day_price' => 15.64, 'images' => []
+            'day_price' => 15.64,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota C-HR' => [
-            'day_price' => 12.89, 'images' => []
+            'day_price' => 12.89,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Auris' => [
-            'day_price' => 13.70, 'images' => []
+            'day_price' => 13.70,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Aygo' => [
-            'day_price' => 11.56, 'images' => []
+            'day_price' => 11.56,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Corlla' => [
-            'day_price' => 13.00, 'images' => []
+            'day_price' => 13.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Mirai' => [
-            'day_price' => 16.00, 'images' => []
+            'day_price' => 16.00,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Proace Electric Aut. 9 Posti' => [
-            'day_price' => 15.20, 'images' => []
+            'day_price' => 15.20,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Toyota Yaris' => [
-            'day_price' => 14.56, 'images' => []
+            'day_price' => 14.56,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ],
         'Volkswagen Golf' => [
-            'day_price' => 12.51, 'images' => []
+            'day_price' => 12.51,
+            'details' => [
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
+            ],
+            'images' => []
         ]
     ];
 

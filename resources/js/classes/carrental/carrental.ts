@@ -58,7 +58,7 @@ export default class CarRental{
         let response: object = {};
         try{
             await this.carRentalPromise().then(res => {
-                //console.log(res);
+                console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
                 //console.log(this._carrental_data);
