@@ -53,5 +53,7 @@
                 </div>
             </div>
         </div>
+        <div id="car_rental_info"></div>
+        <div id="car_rental_images"></div>
     </form>  
 </div>
