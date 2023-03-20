@@ -1,5 +1,7 @@
 import CarRentalInterface from "../../interfaces/carrental/carrental.interface";
+import CarRentalHtmlInterface from "../../interfaces/carrental/carrentalhtml.interface";
 import { Constants } from "../../values/constants";
+import CarRentalHtml from "./carrentalhtml";
 
 export default class CarRental{
 
@@ -53,15 +55,26 @@ export default class CarRental{
         this._age_range_el = $('#'+data.age_range_id);
     }
 
+    private autoDetails(car_data: object): void{
+        let ch_data: CarRentalHtmlInterface = {
+            day_price: car_data['day_price'] as number,
+            details: { baggages: car_data['baggages'], change: car_data['change'], doors: car_data['doors'], power_supply: car_data['power_supply'], seats: car_data['seats'],
+            },
+            html_elements_id: { images: 'car_rental_images', info: 'car_rental_info' },
+            images: car_data ['images']
+        };
+        let ch: CarRentalHtml = new CarRentalHtml(ch_data);
+    }
+
     public async carRental(): Promise<object>{
         this._errno = 0;
         let response: object = {};
         try{
             await this.carRentalPromise().then(res => {
-                console.log(res);
+                //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
-                //console.log(this._carrental_data);
+                console.log(this._carrental_data);
                 this.fillDropdowns();
             }).catch(err => {
                 throw err;
@@ -153,6 +166,12 @@ export default class CarRental{
         this._carrental_company_el.on('change',()=>{
             let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
             this.setCompanyCarsDropdown(this._carrental_data['companies_data'][selected_company]['cars']);
+        });
+        this._car_model_el.on('change',()=>{
+            let selected_car: string = this._car_model_el.find('option').filter(':selected').text();
+            let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
+            let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
+            this.autoDetails(car_data);
         });
         this._pickup_country_el.on('change',()=>{
             let selected_country: string = this._pickup_country_el.find('option').filter(':selected').text();
