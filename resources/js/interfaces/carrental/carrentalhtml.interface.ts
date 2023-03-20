@@ -1,3 +1,4 @@
+import { AutoChangeTypes, AutoPowerSupplies } from "../../values/enums"
 
 export default interface CarRentalHtmlInterface{
     day_price: number,
@@ -7,9 +8,9 @@ export default interface CarRentalHtmlInterface{
 
 interface DetailsInterface{
     baggages: string,
-    change: string,
+    change: AutoChangeTypes,
     doors: number,
-    power_supply: string,
+    power_supply: AutoPowerSupplies,
     seats: number
 }
 
