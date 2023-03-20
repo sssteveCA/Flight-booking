@@ -15,6 +15,7 @@ export default class CarRentalHtml{
 
     constructor(data: CarRentalHtmlInterface){
         this.setValues(data);
+        this.setCarRentalInfoTable();
     }
 
     get day_price(){ return this._day_price; }
@@ -35,5 +36,39 @@ export default class CarRentalHtml{
         this._images = data.images;
         this._div_images = $('#'+data.html_elements_id.images);
         this._div_info = $('#'+data.html_elements_id.info);
+    }
+
+    private setCarRentalInfoTable(): void{
+        let html: string = `
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th scope="row">ALIMENTAZIONE</th>
+            <td>${this._power_supply}</td>
+        </tr>
+        <tr>
+            <th scope="row">PORTE</th>
+            <td>${this._doors}</td>
+        </tr>
+        <tr>
+            <th scope="row">BAGAGLI</th>
+            <td>${this._baggages}</td>
+        </tr>
+        <tr>
+            <th scope="row">CAMBIO</th>
+            <td>${this._change}</td>
+        </tr>
+        <tr>
+            <th scope="row">POSTI</th>
+            <td>${this._seats}</td>
+        </tr>
+        <tr>
+            <th scope="row">PREZZO 1 GIORNO</th>
+            <td>${this._day_price}</td>
+        </tr>
+    </tbody>
+</table>        
+        `;
+        this._div_info.html(html);
     }
 }
