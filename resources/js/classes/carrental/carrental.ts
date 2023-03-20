@@ -121,8 +121,12 @@ export default class CarRental{
             option.text(car);
             if(index == 0)
                 option.prop("selected",true);
-            this._car_model_el.append(option);
+            this._car_model_el.append(option);  
         });
+        let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
+        let selected_car: string = this._car_model_el.find('option').find(':selected').text();
+        let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
+        this.autoDetails(car_data);
     }
 
     private setCompanyDropdown(companies_data: object): void{
