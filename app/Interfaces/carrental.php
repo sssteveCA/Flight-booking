@@ -4,6 +4,14 @@ namespace App\Interfaces;
 
 interface CarRental{
 
+    const CHANGE_AUTOMATIC = 'Automatico';
+    const CHANGE_MANUAL = 'Manuale';
+
+    const PS_ELECTRIC = 'Elettrica';
+    const PS_GASOLINE = 'Benzina';
+    const PS_HYBRID = 'Ibrida';
+    const PS_DIESEL = 'Diesel';
+
     const AGE_RANGES = [
         [19,20],[21,24],[25,29],[30,65],[66,75],[76,90]
     ];
@@ -326,11 +334,11 @@ interface CarRental{
         'Bmw Serie 2' => [
             'day_price' => 14.32,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5
             ],
             'images' => []
         ],
@@ -353,11 +361,11 @@ interface CarRental{
         'Citroen C1' => [
             'day_price' => 11.04,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 3,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4
             ],
             'images' => []
         ],
@@ -398,54 +406,54 @@ interface CarRental{
             'day_price' => 15.00,
             'details' => [
                 'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Fiat 500' => [
             'day_price' => 12.99,
             'details' => [
-               'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0, 
+               'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 3,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 4, 
             ],
             'images' => []
         ],
         'Fiat 500 Cabrio, Cambio Automatico' => [
             'day_price' => 11.43,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 3,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 4,
             ],
             'images' => []
         ],
         'Fiat 500 Cabrio, Cambio Manuale' => [
             'day_price' => 10.50,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 3,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4,
             ],
             'images' => []
         ],
         'Fiat Panda' => [
             'day_price' => 10.25,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4,
             ],
             'images' => []
         ],
@@ -476,11 +484,11 @@ interface CarRental{
         'Ford Fiesta' => [
             'day_price' => 14.00,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '1 grande',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 5,
                 
             ],
             'images' => []
@@ -488,11 +496,11 @@ interface CarRental{
         'Ford Focus' => [
             'day_price' => 15.29,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
                 
             ],
             'images' => []
@@ -500,11 +508,11 @@ interface CarRental{
         'Ford Focus 1.5 TDC' => [
             'day_price' => 14.04,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_DIESEL,
+                'seats' => 5,
                 
             ],
             'images' => []
@@ -512,18 +520,22 @@ interface CarRental{
         'Ford Focus SW' => [
             'day_price' => 11.58,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Ford Galaxy 7 posti' => [
             'day_price' => 9.99,
             'details' => [
-                
+                'baggages' => '',
+                'change' => '',
+                'doors' => 0,
+                'power_supply' => '',
+                'seats' => 0,
             ],
             'images' => []
         ],
@@ -552,11 +564,11 @@ interface CarRental{
         'Ford Tourneo Connect' => [
             'day_price' => 11.50,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
@@ -633,11 +645,11 @@ interface CarRental{
         'Mahindra Kuv100' => [
             'day_price' => 12.66,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4,
             ],
             'images' => []
         ],
@@ -666,33 +678,33 @@ interface CarRental{
         'Mercedes Classe A' => [
             'day_price' => 12.75,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Mercedes Classe B' => [
             'day_price' => 11.90,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Mercedes Classe C Cabrio' => [
             'day_price' => 14.00,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '1 piccolo, 1 grande',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 3,
+                'power_supply' => CarRental::PS_DIESEL,
+                'seats' => 4,
             ],
             'images' => []
         ],
@@ -721,44 +733,44 @@ interface CarRental{
         'Opel Corsa' => [
             'day_price' => 13.02,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '1 grande',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Opel Mokka' => [
             'day_price' => 12.79,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_ELECTRIC,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Peugeot 108' => [
             'day_price' => 9.75,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4,
             ],
             'images' => []
         ],
         'Peugeot 308' => [
             'day_price' => 11.27,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
@@ -776,11 +788,11 @@ interface CarRental{
         'Renault Clio' => [
             'day_price' => 13.26,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '1 grande',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ],
@@ -831,22 +843,22 @@ interface CarRental{
         'Toyota Auris' => [
             'day_price' => 13.70,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 grandi',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_HYBRID,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Toyota Aygo' => [
             'day_price' => 11.56,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE,
+                'seats' => 4,
             ],
             'images' => []
         ],
@@ -886,22 +898,22 @@ interface CarRental{
         'Toyota Yaris' => [
             'day_price' => 14.56,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '2 piccoli',
+                'change' => CarRental::CHANGE_AUTOMATIC,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_HYBRID,
+                'seats' => 5,
             ],
             'images' => []
         ],
         'Volkswagen Golf' => [
             'day_price' => 12.51,
             'details' => [
-                'baggages' => '',
-                'change' => '',
-                'doors' => 0,
-                'power_supply' => '',
-                'seats' => 0,
+                'baggages' => '1 piccolo, 1 grande',
+                'change' => CarRental::CHANGE_MANUAL,
+                'doors' => 5,
+                'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
+                'seats' => 5,
             ],
             'images' => []
         ]
