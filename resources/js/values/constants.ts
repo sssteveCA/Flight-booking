@@ -27,6 +27,7 @@ export namespace Constants{
 
     //Static Urls
     const STATIC_URL_IMG = '/img';
+    export const STATIC_URL_IMG_CARRENTAL = STATIC_URL_IMG+'/carrental';
     export const STATIC_URL_IMG_HOTELS = STATIC_URL_IMG+'/hotels';
 
     //Urls

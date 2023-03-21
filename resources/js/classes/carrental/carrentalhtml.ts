@@ -1,8 +1,10 @@
 import CarRentalHtmlInterface from "../../interfaces/carrental/carrentalhtml.interface";
+import { Constants } from "../../values/constants";
 import { AutoChangeTypes, AutoPowerSupplies } from "../../values/enums";
 
 export default class CarRentalHtml{
 
+    private _car_name: string;
     private _company_name: string;
     private _day_price: number;
     private _baggages: string;
@@ -14,11 +16,14 @@ export default class CarRentalHtml{
     private _seats: number;
     private _images: number;
 
+    private static URL_CARRENTAL_IMG: string = Constants.STATIC_URL_IMG_CARRENTAL;
+
     constructor(data: CarRentalHtmlInterface){
         this.setValues(data);
         this.setCarRentalInfoTable();
     }
 
+    get car_name(){ return this._car_name; }
     get company_name(){ return this._company_name; }
     get day_price(){ return this._day_price; }
     get baggages(){ return this._baggages; }
@@ -29,6 +34,8 @@ export default class CarRentalHtml{
     get images(){ return this._images; }
 
     private setValues(data: CarRentalHtmlInterface): void{
+        this._car_name = data.car_name;
+        this._company_name = data.company_name;
         this._day_price = data.day_price;
         this._baggages = data.details.baggages;
         this._change = data.details.change;
@@ -72,5 +79,19 @@ export default class CarRentalHtml{
 </table>        
         `;
         this._div_info.html(html);
+    }
+
+    /**
+     * Set the prefix from which load the car images
+     * @returns the dir of car images
+     */
+    private setImagesPrefix(): string{
+        let prefix: string = `${CarRentalHtml.URL_CARRENTAL_IMG}/${this._company_name}/${this._car_name}/${this._car_name}_`;
+        let regex: RegExp = new RegExp("[\\s\\-&]","g");
+        let regex2: RegExp = new RegExp("[+()]","g");
+        prefix = prefix.replace(regex,'_');
+        prefix = prefix.replace(regex2,'');
+        console.log(prefix);
+        return prefix;
     }
 }
