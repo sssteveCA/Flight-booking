@@ -44,5 +44,7 @@ trait CarRentalSearchControllerCommonTrait{
     }
 
     
+
+    
 }
 ?>

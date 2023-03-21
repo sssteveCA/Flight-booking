@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CarRentalPriceRequest extends FormRequest
 {
+
+    protected $stopOnFirstFailure = true;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,6 +34,26 @@ class CarRentalPriceRequest extends FormRequest
             'delivery_country' => ['required'],
             'delivery_location' => ['required'],
             'age_range' => ['required']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => "L'attributo :attribute è obbligatorio"
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'rent_company' => 'Compagnia di noleggio',
+            'car' => 'Modello di automobile',
+            'pickup_country' => 'Paese di ritiro',
+            'pickup_location' => 'Località di ritiro',
+            'delivery_country' => 'Paese di consegna',
+            'delivery_location' => 'Località di consegna',
+            'age_range' => 'Fascia d\'età'
         ];
     }
 }
