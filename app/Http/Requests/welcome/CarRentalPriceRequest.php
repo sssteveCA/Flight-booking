@@ -13,7 +13,7 @@ class CarRentalPriceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class CarRentalPriceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rent_company' => ['required'],
+            'car' => ['required'],
+            'pickup_country' => ['required'],
+            'pickup_location' => ['required'],
+            'delivery_country' => ['required'],
+            'delivery_location' => ['required'],
+            'age_range' => ['required']
         ];
     }
 }
