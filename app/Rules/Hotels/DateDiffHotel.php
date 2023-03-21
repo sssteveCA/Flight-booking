@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\Hotels;
 
 use App\Traits\DateTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;

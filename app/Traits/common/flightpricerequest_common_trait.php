@@ -2,11 +2,13 @@
 
 namespace App\Traits\Common;
 
-use App\Rules\DateDiff1d;
-use App\Rules\NotSameLocation;
+
 use App\Interfaces\Airports as A;
-use App\Rules\CheckAirports;
+use App\Rules\Airports\CheckAirports;
+use App\Rules\Airports\DateDiff1d;
+use App\Rules\Airports\NotSameLocation;
 use App\Rules\IsInArray;
+
 use App\Rules\ValidCountry;
 use App\Traits\Common\FlightSearchCommonTrait;
 

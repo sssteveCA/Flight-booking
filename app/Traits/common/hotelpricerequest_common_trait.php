@@ -2,11 +2,11 @@
 
 namespace App\Traits\Common;
 
-use App\Rules\CheckHotelCity;
+use App\Rules\Hotels\DateDiffHotel;
 use App\Rules\IsInArray;
 use App\Interfaces\Hotels as H;
-use App\Rules\CheckHotel;
-use App\Rules\DateDiffHotel;
+use App\Rules\Hotels\CheckHotel;
+use App\Rules\Hotels\CheckHotelCity;
 
 trait HotelPriceRequestCommonTrait{
 

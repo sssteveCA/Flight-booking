@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\Airports;
 
 use App\Traits\Common\FlightSearchCommonTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;

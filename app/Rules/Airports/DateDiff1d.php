@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\Airports;
 
 use App\Traits\DateTrait;
 use DateTimeImmutable;

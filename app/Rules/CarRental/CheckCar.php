@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\CarRental;
 
 use App\Traits\Common\CarRentalPriceRequestCommonTrait;
 use Illuminate\Contracts\Validation\DataAwareRule;

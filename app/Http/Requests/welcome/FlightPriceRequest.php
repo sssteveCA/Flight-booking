@@ -5,7 +5,6 @@ namespace App\Http\Requests\welcome;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
 use App\Rules\DateDiff1d;
-use App\Rules\NotSameLocation;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;

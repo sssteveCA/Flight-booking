@@ -2,6 +2,7 @@
 
 namespace App\Traits\Common;
 
+use App\Rules\CarRental\CheckCar;
 use App\Rules\IsInArray;
 
 trait CarRentalPriceRequestCommonTrait{
@@ -27,7 +28,7 @@ trait CarRentalPriceRequestCommonTrait{
     {
         return [
             'rent_company' => ['required', new IsInArray($this->getCompaniesList())],
-            'car' => ['required'],
+            'car' => ['required', new CheckCar('rent_company')],
             'pickup_country' => ['required'], new IsInArray($this->getCountriesList()),
             'pickup_location' => ['required'],
             'delivery_country' => ['required', new IsInArray($this->getCountriesList())],
