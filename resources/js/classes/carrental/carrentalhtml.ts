@@ -113,9 +113,9 @@ export default class CarRentalHtml{
      * @returns the dir of car images
      */
     private setImagesPrefix(): string{
-        let prefix: string = `${CarRentalHtml.URL_CARRENTAL_IMG}/${this._company_name}/${this._car_name}/${this._car_name}_`;
+        let prefix: string = `${CarRentalHtml.URL_CARRENTAL_IMG}/${this._car_name}/${this._car_name}_`;
         let regex: RegExp = new RegExp("[\\s\\-&]","g");
-        let regex2: RegExp = new RegExp("[+()]","g");
+        let regex2: RegExp = new RegExp("[+(),]","g");
         prefix = prefix.replace(regex,'_');
         prefix = prefix.replace(regex2,'');
         return prefix;

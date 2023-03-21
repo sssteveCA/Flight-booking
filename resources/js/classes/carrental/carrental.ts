@@ -117,6 +117,7 @@ export default class CarRental{
     }
 
     private setCompanyCarsDropdown(company_cars_data: object): void{
+        this._car_model_el.empty();
         let company_cars: string[] = Object.keys(company_cars_data);
         company_cars.forEach((car,index) => {
             let option: JQuery<HTMLOptionElement> = $('<option>');
