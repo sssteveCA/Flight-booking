@@ -39,6 +39,7 @@ class CarRentalSearchController extends Controller
                 'rentstart_date' => $data['rentstart'],
                 'rentend_date' => $data['rentend']
             ]);
+            //Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice total price => ".var_export($data,true));
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
                 C::KEY_DONE => true, 
                 C::KEY_DATA => [
@@ -47,7 +48,7 @@ class CarRentalSearchController extends Controller
                     'age_range' => $carrentalprice->getAgeRange(),
                     'rentstart_date' => $carrentalprice->getRentStartDate(),
                     'rentend_date' => $carrentalprice->getRentEndDate(),
-                    'total_price', $carrentalprice->getTotalPrice()
+                    'total_price' => sprintf("%.2f",$carrentalprice->getTotalPrice())
                 ]
             ],200);
         }catch(Exception $e){

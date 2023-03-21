@@ -10,6 +10,7 @@
 
 @section('links')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/welcome/carrentalpriceresult.css') }}">
 @endsection
 
 @section('scripts')

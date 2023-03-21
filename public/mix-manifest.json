@@ -32,5 +32,6 @@
     "/css/flightevents/flightevent.css": "/css/flightevents/flightevent.css",
     "/css/error/errors.css": "/css/error/errors.css",
     "/css/bookhotel/bookhotel.css": "/css/bookhotel/bookhotel.css",
-    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css"
+    "/css/bookflight/bookflight.css": "/css/bookflight/bookflight.css",
+    "/css/welcome/carrentalpriceresult.css": "/css/welcome/carrentalpriceresult.css"
 }

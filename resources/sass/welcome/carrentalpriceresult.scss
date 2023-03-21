@@ -35,7 +35,7 @@ $carrental-par-header-map: map.merge(('par-h-class': 'cr-ce-header'),result_tabl
 @if map.has-key(globals.$bs-breakpoints,'lg'){
     $lg: map.get(globals.$bs-breakpoints,'lg');
     @media only screen and (min-width: #{$lg}){
-        @include result_table.result-div-large($column-elem-widths,$carrental-div-map,$carrental-div-header-map,$carrental-row-map);
+        @include result_table.result-table-large($column-elem-widths,$carrental-div-map,$carrental-div-header-map,$carrental-row-map);
     }
 }
 
