@@ -32,15 +32,23 @@ class CarRentalSearchController extends Controller
             $data = $request->validated();
             Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice data => ".var_export($data,true));
             $carrentalprice = new CarRentalPrice([
-                'car_name' => $request->car,
+                'car_name' => $data['car'],
                 'car_rental_array' => $this->getRentalCarArray(),
-                'company_name' => $request->rent_company,
-                'age_range' => $request->age_range,
-                'rentstart_date' => $request->rentstart,
-                'rentend_date' => $request->rentend
+                'company_name' => $data['rent_company'],
+                'age_range' => $data['age_range'],
+                'rentstart_date' => $data['rentstart'],
+                'rentend_date' => $data['rentend']
             ]);
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
-                C::KEY_DONE => true, C::KEY_DATA => $data
+                C::KEY_DONE => true, 
+                C::KEY_DATA => [
+                    'car_name' => $carrentalprice->getCarName(),
+                    'company_name' => $carrentalprice->getCompanyName(),
+                    'age_range' => $carrentalprice->getAgeRange(),
+                    'rentstart_date' => $carrentalprice->getRentStartDate(),
+                    'rentend_date' => $carrentalprice->getRentEndDate(),
+                    'total_price', $carrentalprice->getTotalPrice()
+                ]
             ],200);
         }catch(Exception $e){
             Log::channel('stdout')->error("CarRentalSearchController getCarRentalPrice Exception => ".var_export($e->getMessage(),true));
