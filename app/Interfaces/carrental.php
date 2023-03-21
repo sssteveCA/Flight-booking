@@ -862,7 +862,7 @@ interface CarRental{
             ],
             'images' => 1
         ],
-        'Toyota Corlla' => [
+        'Toyota Corolla' => [
             'day_price' => 13.00,
             'details' => [
                 'baggages' => '',

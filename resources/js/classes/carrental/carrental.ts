@@ -132,8 +132,6 @@ export default class CarRental{
         let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
         car_data['car_name'] = selected_car;
         car_data['company_name'] = selected_company;
-        console.log("setCompanyCarsDropdown");
-        console.log(car_data);
         this.autoDetails(car_data);
     }
 
