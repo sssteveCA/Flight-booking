@@ -35,6 +35,8 @@ export default class CarRentalHtml{
     get images(){ return this._images; }
 
     private setValues(data: CarRentalHtmlInterface): void{
+        /* onsole.log("CarRentalHtml setValues data");
+        console.log(data); */
         this._car_name = data.car_name;
         this._company_name = data.company_name;
         this._day_price = data.day_price;

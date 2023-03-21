@@ -77,7 +77,7 @@ export default class CarRental{
                 //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
-                console.log(this._carrental_data);
+                //console.log(this._carrental_data);
                 this.fillDropdowns();
             }).catch(err => {
                 throw err;
@@ -132,6 +132,8 @@ export default class CarRental{
         let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
         car_data['car_name'] = selected_car;
         car_data['company_name'] = selected_company;
+        /* console.log("CarRental setCompanyCarsDropdown");
+        console.log(car_data); */
         this.autoDetails(car_data);
     }
 
@@ -181,6 +183,8 @@ export default class CarRental{
             let selected_car: string = this._car_model_el.find('option').filter(':selected').text();
             let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
             let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
+            car_data['car_name'] = selected_car;
+            car_data['company_name'] = selected_company;
             this.autoDetails(car_data);
         });
         this._pickup_country_el.on('change',()=>{
