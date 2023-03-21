@@ -56,13 +56,15 @@ export default class CarRental{
     }
 
     private autoDetails(car_data: object): void{
+        console.log(car_data);
         let ch_data: CarRentalHtmlInterface = {
             day_price: car_data['day_price'] as number,
-            details: { baggages: car_data['baggages'], change: car_data['change'], doors: car_data['doors'], power_supply: car_data['power_supply'], seats: car_data['seats'],
+            details: { baggages: car_data['details']['baggages'], change: car_data['details']['change'], doors: car_data['details']['doors'], power_supply: car_data['details']['power_supply'], seats: car_data['details']['seats'],
             },
             html_elements_id: { images: 'car_rental_images', info: 'car_rental_info' },
             images: car_data ['images']
         };
+        //console.log(ch_data);
         let ch: CarRentalHtml = new CarRentalHtml(ch_data);
     }
 
@@ -124,7 +126,7 @@ export default class CarRental{
             this._car_model_el.append(option);  
         });
         let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
-        let selected_car: string = this._car_model_el.find('option').find(':selected').text();
+        let selected_car: string = this._car_model_el.find('option').filter(':selected').text();
         let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
         this.autoDetails(car_data);
     }
