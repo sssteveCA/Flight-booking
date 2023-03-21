@@ -3,6 +3,7 @@ import { AutoChangeTypes, AutoPowerSupplies } from "../../values/enums";
 
 export default class CarRentalHtml{
 
+    private _company_name: string;
     private _day_price: number;
     private _baggages: string;
     private _change: AutoChangeTypes;
@@ -11,13 +12,14 @@ export default class CarRentalHtml{
     private _doors: number;
     private _power_supply: AutoPowerSupplies;
     private _seats: number;
-    private _images: string[];
+    private _images: number;
 
     constructor(data: CarRentalHtmlInterface){
         this.setValues(data);
         this.setCarRentalInfoTable();
     }
 
+    get company_name(){ return this._company_name; }
     get day_price(){ return this._day_price; }
     get baggages(){ return this._baggages; }
     get change(){ return this._change; }

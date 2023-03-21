@@ -329,7 +329,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0
             ],
-            'images' => []
+            'images' => 0
         ],
         'Bmw Serie 2' => [
             'day_price' => 14.32,
@@ -340,7 +340,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5
             ],
-            'images' => []
+            'images' => 0
         ],
         'Cadillac XT4' => [
             'day_price' => 9.95,
@@ -356,7 +356,7 @@ interface CarRental{
                 'doors' => 0,
                 'power_supply' => '',
                 'seats' => 0,
-            'images' => []
+            'images' => 0
         ],
         'Citroen C1' => [
             'day_price' => 11.04,
@@ -367,7 +367,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4
             ],
-            'images' => []
+            'images' => 0
         ],
         'Citroen C4 Spacetourer' => [
             'day_price' => 11.56,
@@ -378,7 +378,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0
             ],
-            'images' => []
+            'images' => 0
         ],
         'Citroen Grand C4 Spacetourer' => [
             'day_price' => 12.05,
@@ -389,7 +389,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0
             ],
-            'images' => []
+            'images' => 0
         ],
         'Citroen SpaceTourer 9 Pax' => [
             'day_price' => 9.85,
@@ -400,7 +400,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Cupra Formentor' => [
             'day_price' => 15.00,
@@ -411,7 +411,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Fiat 500' => [
             'day_price' => 12.99,
@@ -422,7 +422,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 4, 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Fiat 500 Cabrio, Cambio Automatico' => [
             'day_price' => 11.43,
@@ -433,7 +433,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Fiat 500 Cabrio, Cambio Manuale' => [
             'day_price' => 10.50,
@@ -444,7 +444,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Fiat Panda' => [
             'day_price' => 10.25,
@@ -455,7 +455,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford C-Max' => [
             'day_price' => 12.60,
@@ -467,7 +467,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Ecosport' => [
             'day_price' => 13.33,
@@ -479,7 +479,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Fiesta' => [
             'day_price' => 14.00,
@@ -491,7 +491,7 @@ interface CarRental{
                 'seats' => 5,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Focus' => [
             'day_price' => 15.29,
@@ -503,7 +503,7 @@ interface CarRental{
                 'seats' => 5,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Focus 1.5 TDC' => [
             'day_price' => 14.04,
@@ -515,7 +515,7 @@ interface CarRental{
                 'seats' => 5,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Focus SW' => [
             'day_price' => 11.58,
@@ -526,7 +526,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Galaxy 7 posti' => [
             'day_price' => 9.99,
@@ -537,7 +537,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Mondeo SW' => [
             'day_price' => 12.15,
@@ -548,7 +548,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Mustang Mach-E' => [
             'day_price' => 11.99,
@@ -559,7 +559,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Tourneo Connect' => [
             'day_price' => 11.50,
@@ -570,7 +570,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Tourneo 9 posti L1H1' => [
             'day_price' => 10.67,
@@ -581,7 +581,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Ford Transit 9 posti L2H1' => [
             'day_price' => 16.08,
@@ -593,7 +593,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Hyundai Tucson' => [
             'day_price' => 13.99,
@@ -605,7 +605,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Lexus ES Hybrid' => [
             'day_price' => 9.92,
@@ -617,7 +617,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Lexus NX' => [
             'day_price' => 10.35,
@@ -629,7 +629,7 @@ interface CarRental{
                 'seats' => 0,
                 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Lynk & Co 01' => [
             'day_price' => 12.00,
@@ -640,7 +640,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mahindra Kuv100' => [
             'day_price' => 12.66,
@@ -651,7 +651,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Maserati Ghibli' => [
             'day_price' => 13.07,
@@ -662,7 +662,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0, 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mercedes Amg GT Coupe' => [
             'day_price' => 12.50,
@@ -673,7 +673,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0, 
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mercedes Classe A' => [
             'day_price' => 12.75,
@@ -684,7 +684,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mercedes Classe B' => [
             'day_price' => 11.90,
@@ -695,7 +695,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mercedes Classe C Cabrio' => [
             'day_price' => 14.00,
@@ -706,7 +706,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_DIESEL,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Mercedes Classe C Station Wagon' => [
             'day_price' => 14.56,
@@ -717,7 +717,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Opel Astra Sports Tourer' => [
             'day_price' => 15.88,
@@ -728,7 +728,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Opel Corsa' => [
             'day_price' => 13.02,
@@ -739,7 +739,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Opel Mokka' => [
             'day_price' => 12.79,
@@ -750,7 +750,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_ELECTRIC,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Peugeot 108' => [
             'day_price' => 9.75,
@@ -761,7 +761,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Peugeot 308' => [
             'day_price' => 11.27,
@@ -772,7 +772,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Peugeot 508' => [
             'day_price' => 12.12,
@@ -783,7 +783,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Renault Clio' => [
             'day_price' => 13.26,
@@ -794,7 +794,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Renault Talisman Wagon' => [
             'day_price' => 13.69,
@@ -805,7 +805,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Skoda Kamiq' => [
             'day_price' => 16.12,
@@ -816,7 +816,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Skoda Karoq' => [
             'day_price' => 15.64,
@@ -827,7 +827,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota C-HR' => [
             'day_price' => 12.89,
@@ -838,7 +838,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Auris' => [
             'day_price' => 13.70,
@@ -849,7 +849,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_HYBRID,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Aygo' => [
             'day_price' => 11.56,
@@ -860,7 +860,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE,
                 'seats' => 4,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Corlla' => [
             'day_price' => 13.00,
@@ -871,7 +871,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Mirai' => [
             'day_price' => 16.00,
@@ -882,7 +882,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Proace Electric Aut. 9 Posti' => [
             'day_price' => 15.20,
@@ -893,7 +893,7 @@ interface CarRental{
                 'power_supply' => '',
                 'seats' => 0,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Toyota Yaris' => [
             'day_price' => 14.56,
@@ -904,7 +904,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_HYBRID,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ],
         'Volkswagen Golf' => [
             'day_price' => 12.51,
@@ -915,7 +915,7 @@ interface CarRental{
                 'power_supply' => CarRental::PS_GASOLINE.'/'.CarRental::PS_DIESEL,
                 'seats' => 5,
             ],
-            'images' => []
+            'images' => 0
         ]
     ];
 
