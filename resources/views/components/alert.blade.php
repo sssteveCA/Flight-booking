@@ -1,3 +1,3 @@
 <div class="{{ $attributes['classes']}}" role="alert">
-    {{ $attributes['message'] }}
+    {!! $attributes['message'] !!}
 </div>

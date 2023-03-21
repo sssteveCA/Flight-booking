@@ -85,7 +85,7 @@ trait CarRentalSearchControllerCommonTrait{
         $age_ranges = $this->getRentalCarArray()['age_ranges'];
         $age_ranges_str_values = [];
         foreach($age_ranges as $age_range){
-            $age_ranges_str_values[] = "{$age_range[0]}-{$age_range[1]} anni";
+            $age_ranges_str_values[] = "{$age_range[0]}-{$age_range[1]}";
         }
         return $age_ranges_str_values;
     }

@@ -23,7 +23,6 @@ class CarRentalPriceRequest extends FormRequest
                C::KEY_DONE => false, 'errors' => $errors
             ], 400)
         );
-        
     }
 
     
