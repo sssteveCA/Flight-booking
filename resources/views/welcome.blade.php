@@ -31,7 +31,7 @@
             </div>
         </nav>
         @include(P::VIEW_WELCOME_FLIGHT,['flightPriceRoute' => P::ROUTE_FLIGHTPRICE])
-        @include(P::VIEW_WELCOME_CAR_RENTAL)
+        @include(P::VIEW_WELCOME_CAR_RENTAL,['carRentalPriceRoute' => P::ROUTE_CARRENTALPRICE])
         @include(P::VIEW_WELCOME_HOTEL,['hotelPriceRoute' => P::ROUTE_HOTELPRICE])
         <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab"></div>
     </div>

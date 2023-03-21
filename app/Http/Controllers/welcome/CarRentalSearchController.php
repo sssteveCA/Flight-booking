@@ -23,6 +23,9 @@ class CarRentalSearchController extends Controller
         return response()->json($this->getRentalCarArray(),200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); 
     }
 
+    /**
+     * Get the preventive for the selected car with the input data
+     */
     public function getCarRentalPrice(CarRentalPriceRequest $request){
         try{
             $data = $request->validated();

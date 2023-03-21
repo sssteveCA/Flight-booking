@@ -3,6 +3,7 @@
 namespace App\Traits\Common;
 
 use App\Rules\CarRental\CheckCar;
+use App\Rules\CarRental\DateDiff1dCarRental;
 use App\Rules\IsInArray;
 
 trait CarRentalPriceRequestCommonTrait{
@@ -33,8 +34,8 @@ trait CarRentalPriceRequestCommonTrait{
             'pickup_location' => ['required'],
             'delivery_country' => ['required', new IsInArray($this->getCountriesList())],
             'delivery_location' => ['required'],
-            'rentstart' => ['required','date'],
-            'rentend' => ['rentend','date'],
+            'rentstart' => ['required','date', new DateDiff1dCarRental('rentstart')],
+            'rentend' => ['required','date', new DateDiff1dCarRental('rentend')],
             'age_range' => ['required', new IsInArray($this->getAgeRangesList())]
         ];
     }
