@@ -2,55 +2,58 @@
 
 namespace App\Traits\Common;
 
+use App\Rules\IsInArray;
+
 trait CarRentalPriceRequestCommonTrait{
 
     use CarRentalSearchControllerCommonTrait;
 
     /**
-     * Get the car companies list
-     * @return array
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    private function getCompaniesList(): array{
-        return array_keys($this->getRentalCarArray()['companies_data']);
+    public function authorize()
+    {
+        return true;
     }
 
     /**
-     * Get the car fleet of the indicated company
-     * @param string $company the indicated company
+     * Get the validation rules that apply to the request.
+     *
      * @return array
      */
-    private function getCompanyCarsList(string $company): array{
-        return array_keys($this->getRentalCarArray()['companies_data'][$company]['cars']);
+    public function rules()
+    {
+        return [
+            'rent_company' => ['required', new IsInArray($this->getCompaniesList())],
+            'car' => ['required'],
+            'pickup_country' => ['required'], new IsInArray($this->getCountriesList()),
+            'pickup_location' => ['required'],
+            'delivery_country' => ['required', new IsInArray($this->getCountriesList())],
+            'delivery_location' => ['required'],
+            'age_range' => ['required', new IsInArray($this->getAgeRangesList())]
+        ];
     }
 
-    /**
-     * Get the countries list where it's possible rent a car
-     * @return array
-     */
-    private function getCountriesList(): array{
-        return array_keys($this->getRentalCarArray()['available_locations']);
+    public function messages()
+    {
+        return [
+            'required' => "L'attributo :attribute è obbligatorio"
+        ];
     }
 
-    /**
-     * Get the locations list of the indicated country where it's possible rent a car
-     * @param string $country
-     * @return array
-     */
-    private function getLocationsList(string $country): array{
-        return array_keys($this->getRentalCarArray()['available_locations'][$country]);
-    }
-
-    /**
-     * Get the possibile age ranges of user that rent a car
-     * @return array
-     */
-    private function getAgeRangesList(){
-        $age_ranges = $this->getRentalCarArray()['age_ranges'];
-        $age_ranges_str_values = [];
-        foreach($age_ranges as $age_range){
-            $age_ranges_str_values[] = "{$age_range[0]}-{$age_range[1]} anni";
-        }
-        return $age_ranges_str_values;
+    public function attributes()
+    {
+        return [
+            'rent_company' => 'Compagnia di noleggio',
+            'car' => 'Modello di automobile',
+            'pickup_country' => 'Paese di ritiro',
+            'pickup_location' => 'Località di ritiro',
+            'delivery_country' => 'Paese di consegna',
+            'delivery_location' => 'Località di consegna',
+            'age_range' => 'Fascia d\'età'
+        ];
     }
 }
 ?>
