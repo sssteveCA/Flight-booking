@@ -21,6 +21,7 @@ export default class CarRentalHtml{
     constructor(data: CarRentalHtmlInterface){
         this.setValues(data);
         this.setCarRentalInfoTable();
+        this.setCarImagesDiv();
     }
 
     get car_name(){ return this._car_name; }
@@ -47,6 +48,9 @@ export default class CarRentalHtml{
         this._div_info = $('#'+data.html_elements_id.info);
     }
 
+    /**
+     * Display the information about the selected car
+     */
     private setCarRentalInfoTable(): void{
         let html: string = `
 <table class="table table-striped">
@@ -82,6 +86,29 @@ export default class CarRentalHtml{
     }
 
     /**
+     * Display the images about the selected car
+     */
+    private setCarImagesDiv(): void{
+        let prefix: string = this.setImagesPrefix();
+        let html: string = `
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+        `;
+        for(let i = 1; i <= this._images; i++){
+            html += `
+<div class="col">
+    <img src="${prefix}${i}.jpg" alt="${this._car_name}" title="${this._car_name}">
+</div>
+            `;
+        }
+        html += `
+    </div>
+</div>    
+        `;
+        this._div_images.html(html);
+    }
+
+    /**
      * Set the prefix from which load the car images
      * @returns the dir of car images
      */
@@ -91,7 +118,6 @@ export default class CarRentalHtml{
         let regex2: RegExp = new RegExp("[+()]","g");
         prefix = prefix.replace(regex,'_');
         prefix = prefix.replace(regex2,'');
-        console.log(prefix);
         return prefix;
     }
 }

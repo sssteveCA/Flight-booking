@@ -56,10 +56,9 @@ export default class CarRental{
     }
 
     private autoDetails(car_data: object): void{
-        console.log(car_data);
         let ch_data: CarRentalHtmlInterface = {
             car_name: car_data['car_name'],
-            company_name: car_data['selected_company'],
+            company_name: car_data['company_name'],
             day_price: car_data['day_price'] as number,
             details: { baggages: car_data['details']['baggages'], change: car_data['details']['change'], doors: car_data['details']['doors'], power_supply: car_data['details']['power_supply'], seats: car_data['details']['seats'],
             },
@@ -130,8 +129,10 @@ export default class CarRental{
         let selected_company: string = this._carrental_company_el.find('option').filter(':selected').text();
         let selected_car: string = this._car_model_el.find('option').filter(':selected').text();
         let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
-        car_data['car_data'] = selected_car;
+        car_data['car_name'] = selected_car;
         car_data['company_name'] = selected_company;
+        console.log("setCompanyCarsDropdown");
+        console.log(car_data);
         this.autoDetails(car_data);
     }
 
