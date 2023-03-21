@@ -33,15 +33,17 @@ class CarRentalSearchController extends Controller
             Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice data => ".var_export($data,true));
             $carrentalprice = new CarRentalPrice([
                 'car_name' => $request->car,
+                'car_rental_array' => $this->getRentalCarArray(),
                 'company_name' => $request->rent_company,
                 'age_range' => $request->age_range,
-                'rentstart_date' => $request->rentstart_date,
-                'rentend_date' => $request->rentend_date
+                'rentstart_date' => $request->rentstart,
+                'rentend_date' => $request->rentend
             ]);
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
                 C::KEY_DONE => true, C::KEY_DATA => $data
             ],200);
         }catch(Exception $e){
+            Log::channel('stdout')->error("CarRentalSearchController getCarRentalPrice Exception => ".var_export($e->getMessage(),true));
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_CARRENTAL_PREVENTIVE
             ],500);
