@@ -22,7 +22,7 @@
         'back_url' => '../'
     ])
     @if($done == true)
-    <form id="fHotelPrice" method="post" action="#">
+    <form id="fCrPrice" method="post" action="#">
         @csrf
         @method('POST')
         <input type="hidden" name="session_id" value="">
@@ -30,27 +30,27 @@
             <div class="carrental-header bg-success bg-gradient">Preventivo noleggio auto</div>
             <div class="carrental-row">
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">Nome compagnia</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">Nome compagnia</p>
                     <p class="bg-light bg-gradient">{{ $data['company_name'] }}</p>
                 </div>
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">Modello auto</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">Modello auto</p>
                     <p class="bg-light bg-gradient">{{ $data['car_name'] }}</p>
                 </div>
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">La tua fascia d'età</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">La tua fascia d'età</p>
                     <p class="bg-light bg-gradient">{{ $data['age_range'] }} anni</p>
                 </div>
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">Data di ritiro</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">Data di ritiro</p>
                     <p class="bg-light bg-gradient">{{ $data['rentstart_date'] }}</p>
                 </div>
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">Data di consegna</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">Data di consegna</p>
                     <p class="bg-light bg-gradient">{{ $data['rentend_date'] }}</p>
                 </div>
                 <div class="column-elem">
-                    <p class="cr-header bg-warning bg-gradient">Prezzo</p>
+                    <p class="cr-ce-header bg-warning bg-gradient">Prezzo</p>
                     <p class="bg-light bg-gradient">{{ $data['total_price'] }}€</p>
                 </div>
             </div>

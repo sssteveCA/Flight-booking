@@ -1,0 +1,22 @@
+
+@use "sass:map";
+@use "../modules/globals";
+@use "../modules/result_table";
+@import "../partials/back";
+
+$column-elem-number: 6;
+$column-elem-widths: 15%,35%,10%,15%,15%,10%;
+
+$carrental-form-map: map.merge(('form-id': 'fCrPrice'), result-table.$form-map);
+
+$carrental-div-map: map.merge(('rd-class': 'carrental-div'), result-table.$result-div-map);
+
+$carrental-div-header-map: map.merge(('rdh-class': 'carrental-header'), result-table.$result-div-header-map);
+
+$carrental-row-map: map.merge(('rr-class': 'carrental-row'), result-table.$result-div-row-map);
+
+$carrental-column-elem-map: map.merge(('ce-class': 'column-elem'),result-table.$result-div-column-elem-map);
+
+$carrental-par-header-map: map.merge(('par-h-class': 'cr-ce-header'),result-table.$paragraph-header-map);
+
+
