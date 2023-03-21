@@ -21,6 +21,7 @@ interface Paths{
     //Routes
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_BOOKHOTEL = 'bookhotel';
+    const ROUTE_CARRENTALPRICE = 'carrentalprice';
     const ROUTE_ERRORS = 'errors';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
@@ -46,6 +47,8 @@ interface Paths{
     const URL_AIRPORTS_AVAILABLE = '/airports';
     const URL_AIRPORTSEARCH = '/airportsearch';
     const URL_BOOKFLIGHT = '/bookflight';
+
+    const URL_CARRENTALPRICE = '/carrentalprice';
     const URL_CARRENTALSEARCH = '/carrentalsearch';
     const URL_COMPANIESSEARCH = '/companieslist';
     const URL_CONTACTS = '/contacts';
@@ -89,6 +92,7 @@ interface Paths{
     const VIEW_BACKBUTTON = 'partials.back';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_BOOKHOTEL = 'bookhotel.bookhotel';
+    const VIEW_CARRENTALPRICERESULT = 'welcome.carrentalpriceresult';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_COOKIE_POLICY = 'cookie_policy';
     const VIEW_EMAIL_CONTACTS = 'email.contacts';

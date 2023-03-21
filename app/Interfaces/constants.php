@@ -10,6 +10,7 @@ interface Constants{
 
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
+    const ERR_CARRENTAL_PREVENTIVE = 'Errore durante il calcolo del preventivo per il noleggio auto. '.Constants::ADMIN_CONTACT;
     const ERR_EMAILSEND = 'Si è verificato un errore durante l\' invio della mail. '.Constants::ADMIN_CONTACT;
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
@@ -49,6 +50,7 @@ interface Constants{
 
     //common array keys
     const KEY_CODE = 'code';
+    const KEY_DATA = 'data';
     const KEY_DONE = 'done';
     const KEY_EMPTY = 'empty';
     const KEY_ERRORS = 'errors';
