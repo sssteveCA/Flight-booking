@@ -12,7 +12,6 @@
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
             <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
         @show
         @section('scripts')
             <script lang="ts" src="{{ asset('js/app.js') }}"></script>

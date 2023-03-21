@@ -48,9 +48,6 @@
                     <select id="fb-rc-age-range" class="form-select age-range" name="age_range"></select>
                     <label for="fb-rc-age-range">Fascia d'età</label>
                 </div>
-                @error('age_range')
-                    <x-alert classes="alert alert-danger" :message="$message" />
-                @enderror
             </div>
             <div class="row">
                 <div id="fb-rc10" class="col-12 col-lg-2">

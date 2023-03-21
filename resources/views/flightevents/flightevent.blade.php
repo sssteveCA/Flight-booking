@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../../' ])
+    <x-back-button back_image="/img/back.png" back_url="../../" />
     @if($done == true)
     <div class="container-fluid">
         <div class="row mt-5 justify-content-center justify-content-lg-between">

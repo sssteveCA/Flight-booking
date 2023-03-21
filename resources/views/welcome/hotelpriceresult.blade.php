@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+    <x-back-button back_image="/img/back.png" back_url="../" />
     @if($done == true && isset($response))
         <form id="fHotelPrice" method="post" action="{{ route(P::ROUTE_BOOKHOTEL) }}">
             @csrf
@@ -67,13 +67,13 @@
         </form>
     @elseif($done == false)
         @isset($error_message)
-            <div class="alert alert-danger" role="alert">{{$error_message}}</div>
+            <x-alert classes="alert alert-danger" :message="$error_message" />
         @endisset
     @endif
     @isset($errors)
         @foreach($errors as $k => $input_errors)
             @foreach($input_errors as $k => $error)
-                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                <x-alert classes="alert alert-danger" :message="$error" />
             @endforeach
         @endforeach
     @endisset

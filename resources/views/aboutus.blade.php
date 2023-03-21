@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+    <x-back-button back_image="/img/back.png" back_url="../" />
     <div class="container-fluid">
         <div class="row flex-column justify-content-center">
             <div class="offset-1 offset-md-2 offset-lg-3 col-10 col-md-8 col-lg-6 text-center img-container">

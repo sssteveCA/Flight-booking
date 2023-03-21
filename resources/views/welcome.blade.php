@@ -42,7 +42,7 @@
 <div class="errors">
     @if($errors->any())
         @foreach($errors->all() as $error)
-            <div class="alert alert-danger" role="alert">{{$error}}</div>
+        <x-alert classes="alert alert-danger" :message="$error" />
         @endforeach
     @endif
 </div>

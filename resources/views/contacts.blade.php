@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-@include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+<x-back-button back_image="/img/back.png" back_url="../" />
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">

@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../../'])
+    <x-back-button back_image="/img/back.png" back_url="../../" />
     @if($done == true)
         @if($empty == false)
             <div class="container-fluid">
@@ -70,6 +70,6 @@
 			</div>
         @endif
     @else
-		<div class="alert alert-danger" role="alert">{{$message}}</div>
+        <x-alert classes="alert alert-danger" :message="$message" />
     @endif
 @endsection

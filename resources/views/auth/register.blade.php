@@ -103,7 +103,7 @@
     @if(isset($done,$message) && $done === false)
     <div class="row mt-2">
         <div class="col-12">
-            <div class="alert alert-danger" role="alert">{{$message}}</div>
+            <x-alert classes="alert alert-danger" :message="$message" />
         </div>
     </div>
     @endif

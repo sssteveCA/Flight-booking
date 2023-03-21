@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../../../img/back.png', 'back_url' => '../myHotels'])
+    <x-back-button back_image="/img/back.png" back_url="../myHotels" />
     <div class="content">
         <h2 class="fb-header">Informazioni stanza</h2>
         <div class="container">

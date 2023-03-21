@@ -30,6 +30,6 @@
         @include(P::VIEW_PROFILE_INFO_EPF)
         @include(P::VIEW_PROFILE_INFO_DA)
     @else
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
+        <x-alert classes="alert alert-danger" :message="$message" />
     @endif
 @endsection

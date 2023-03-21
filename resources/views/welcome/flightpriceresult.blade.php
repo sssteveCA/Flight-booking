@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+    <x-back-button back_image="/img/back.png" back_url="../" />
     @isset($response['flight_type'])
         <form id="fFlightPrice" method="post" action="{{ route(P::ROUTE_BOOKFLIGHT) }}">
             @csrf
@@ -82,13 +82,13 @@
     @isset($errors)
         @foreach($errors as $k => $input_errors)
             @foreach($input_errors as $k => $msg)
-                <div class="alert alert-danger" role="alert">{{$msg}}</div>
+                <x-alert classes="alert alert-danger" :message="$msg" />
             @endforeach
         @endforeach
     @endisset
     @isset($errors_array)
         @foreach($errors_array as $error)
-            <div class="alert alert-danger" role="alert">{{$error}}</div>
+            <x-alert classes="alert alert-danger" :message="$error" />
         @endforeach
     @endisset
 @endsection

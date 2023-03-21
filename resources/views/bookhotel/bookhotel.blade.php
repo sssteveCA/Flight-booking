@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+    <x-back-button back_image="/img/back.png" back_url="../" />
     @isset($message)
         @if($done == true)
         <div class="container mt-5">
@@ -49,9 +49,7 @@
             </form>
         </div>
         @else
-        <div class="alert alert-danger" role="alert">
-            {{ $message }}
-        </div>
+        <x-alert classes="alert alert-danger" :message="$message" />
         @endif
     @endisset
 @endsection

@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../../img/back.png', 'back_url' => '../news'])
+    <x-back-button back_image="/img/back.png" back_url="../news" />
     @isset($post)
         <div class="container-fluid">
             <div class="row row-title">
