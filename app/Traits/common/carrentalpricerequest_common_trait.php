@@ -33,6 +33,8 @@ trait CarRentalPriceRequestCommonTrait{
             'pickup_location' => ['required'],
             'delivery_country' => ['required', new IsInArray($this->getCountriesList())],
             'delivery_location' => ['required'],
+            'rentstart' => ['required','date'],
+            'rentend' => ['rentend','date'],
             'age_range' => ['required', new IsInArray($this->getAgeRangesList())]
         ];
     }
@@ -40,7 +42,8 @@ trait CarRentalPriceRequestCommonTrait{
     public function messages()
     {
         return [
-            'required' => "L'attributo :attribute è obbligatorio"
+            'required' => "L'attributo :attribute è obbligatorio",
+            'date' => "L'attributo :attribute deve essere una data"
         ];
     }
 

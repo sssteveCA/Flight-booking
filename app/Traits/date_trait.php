@@ -17,15 +17,13 @@ trait DateTrait{
      * @return bool true if $date1 is greater at least one day than $date2
      */
     private function oneDayDifference(string $date1, string $date2): bool{
-        $oneDayGt = false;
         $date1_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date1);
         $date2_dt = DateTimeImmutable::createFromFormat('Y-m-d',$date2);
         $diff = $date1_dt->diff($date2_dt);
         //Log::channel('stdout')->info('diff => '.var_export($diff,true));
-        if($diff->invert == 1 && $diff->d >= 1){
-            $oneDayGt = true;
-        }
-        return $oneDayGt;
+        if($diff->invert == 1 && $diff->d >= 1)
+            return true;
+        return false;
     }
 
     /**
