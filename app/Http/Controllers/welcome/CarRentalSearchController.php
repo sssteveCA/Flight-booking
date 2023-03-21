@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\welcome;
 
+use App\Classes\CarRentalPrice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\welcome\CarRentalPriceRequest;
 use App\Traits\Common\CarRentalSearchControllerCommonTrait;
@@ -30,6 +31,13 @@ class CarRentalSearchController extends Controller
         try{
             $data = $request->validated();
             Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice data => ".var_export($data,true));
+            $carrentalprice = new CarRentalPrice([
+                'car_name' => $request->car,
+                'company_name' => $request->rent_company,
+                'age_range' => $request->age_range,
+                'rentstart_date' => $request->rentstart_date,
+                'rentend_date' => $request->rentend_date
+            ]);
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
                 C::KEY_DONE => true, C::KEY_DATA => $data
             ],200);
