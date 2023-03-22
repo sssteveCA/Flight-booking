@@ -2,8 +2,8 @@
     <a id="navbarDropdown2" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Informativa</a>
 
     <div class="dropdown-menu dropdown-menu-right w-100" aria-labelledby="navbarDropdown2">
-        <a href="{{ $privacy }}" class="dropdown-item">Privacy Policy</a>
-        <a href="{{ $cookie }}" class="dropdown-item">Cookie Policy</a>
-        <a href="{{ $terms }}" class="dropdown-item">Termini e condizioni</a>
+        <a href="{{ $attributes['url-privacy'] }}" class="dropdown-item">Privacy Policy</a>
+        <a href="{{ $attributes['url-cookie'] }}" class="dropdown-item">Cookie Policy</a>
+        <a href="{{ $attributes['url-terms'] }}" class="dropdown-item">Termini e condizioni</a>
     </div>
 </li>

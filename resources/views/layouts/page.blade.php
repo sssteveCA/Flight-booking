@@ -21,16 +21,21 @@
         @includeIf(P::VIEW_PRIVACY)
     </head>
     <body>
-        @include(P::VIEW_MENU,[
-            'urlRoot' => P::URL_ROOT,
-            'urlAboutUs' => P::URL_ABOUTUS,
-            'urlContacts' => P::URL_CONTACTS,
-            'routeInfo' => P::ROUTE_INFO,
-            'viewMenuPrivacy' => P::VIEW_MENU_PRIVACY,
-            'urlPrivacyPolicy' => P::URL_PRIVACY_POLICY,
-            'urlCookiePolicy' => P::URL_COOKIE_POLICY,
-            'urlTerms' => P::URL_TERMS
-            ])
+        <x-menu
+            :route-info="route(P::ROUTE_INFO)"
+            :route-login="route('login')"
+            :route-logout="route('logout')"
+            :route-myflights-index="route('myFlights.index')"
+            :route-myhotels-index="route('myHotels.index')"
+            :route-news-index="route('news.index')"
+            :route-register="route('register')"
+            :route-news-index="route('news.index')"
+            :url-about-us="P::URL_ABOUTUS"
+            :url-contacts="P::URL_CONTACTS"
+            :url-cookie="P::URL_COOKIE_POLICY"
+            :url-privacy="P::URL_PRIVACY_POLICY"
+            :url-root="P::URL_ROOT"
+            :url-terms="P::URL_TERMS" />
         <div class="content my-5">
             @yield('content')
         </div>
