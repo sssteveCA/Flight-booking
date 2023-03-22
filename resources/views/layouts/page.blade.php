@@ -34,6 +34,6 @@
         <div class="content my-5">
             @yield('content')
         </div>
-        @include(P::VIEW_FOOTER)
+        <x-footer />
     </body>
 </html>
