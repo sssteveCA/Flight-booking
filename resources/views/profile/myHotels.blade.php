@@ -64,12 +64,9 @@
             @endforeach
         </div>
         @else
-            <div class="container mt-5">
-                <h2 class="mt-5 text-center">Lista stanze vuota</h2>
-                <p class="lead text-center">{{$message}}</p>
-            </div>
+            <x-message-container  title="Lista stanze vuota" :message="$message" />
         @endif
     @else
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
+        <x-alert classes="alert alert-danger" :message="$message" /> 
     @endif
 @endsection

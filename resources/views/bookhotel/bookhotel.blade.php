@@ -17,10 +17,7 @@
     <x-back-button back_image="/img/back.png" back_url="../" />
     @isset($message)
         @if($done == true)
-        <div class="container mt-5">
-            <h2 class="mt-5 text-center">Prenotazione stanze d'albergo</h2>
-            <p class="lead text-center">{{ $message }}</p>
-        </div>
+        <x-message-container  title="Prenotazione stanze d'albergo" :message="$message" />
         <div class="form-div">
             <form id="fHotelPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
                 <div class="my-3">

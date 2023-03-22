@@ -64,10 +64,7 @@
             @endforeach
             </div>
         @else
-			<div class="container mt-5">
-				<h2 class="mt-5 text-center">Lista voli vuota</h2>
-				<p class="lead text-center">{{$message}}</p>
-			</div>
+            <x-message-container  title="Lista voli vuota" :message="$message" />
         @endif
     @else
         <x-alert classes="alert alert-danger" :message="$message" />
