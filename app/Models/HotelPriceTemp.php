@@ -11,4 +11,8 @@ class HotelPriceTemp extends Model
 
     protected $table = 'hotelpricetemp';
     public $timestamps = false;
+
+    public static function getTableName(): string{
+        return (new self())->getTable();
+    }
 }

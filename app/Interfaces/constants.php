@@ -74,6 +74,10 @@ interface Constants{
     const OK_USERNAMEUPDATED = "Il nome utente è stato modificato";
     const OK_VERIFICATION_LINK_SENT = "Link di verifica email inviato";
 
+    //tables
+    const TABLE_FLIGHTSTEMP = "flightstemp";
+    const TABLE_HOTELSTEMP = "hotelpricetemp";
+
     //titles
     const TITLE_EDITUSERNAME = "Modifica username";
     const TITLE_EDITPASSWORD = "Modifica password";

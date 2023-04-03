@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Interfaces\Constants as C;
 
 class DeleteTempTable extends Command
 {
@@ -11,14 +12,14 @@ class DeleteTempTable extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'temptable:delete {--table=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Delete the content stored temporarily by certain tables';
 
     /**
      * Create a new command instance.
@@ -37,6 +38,10 @@ class DeleteTempTable extends Command
      */
     public function handle()
     {
+        $table = $this->option('table');
+        if(in_array($table,[C::TABLE_FLIGHTSTEMP,C::TABLE_HOTELSTEMP])){
+            
+        }
         return 0;
     }
 }
