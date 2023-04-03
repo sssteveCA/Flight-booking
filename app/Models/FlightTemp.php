@@ -11,4 +11,8 @@ class FlightTemp extends Model
     use HasFactory;
 
     protected $table = 'flightstemp';
+
+    public static function getTableName(): string{
+        return (new self())->getTable();
+    }
 }
