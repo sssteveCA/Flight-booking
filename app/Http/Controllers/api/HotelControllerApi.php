@@ -17,7 +17,7 @@ class HotelControllerApi extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -26,12 +26,10 @@ class HotelControllerApi extends Controller
             $response_data = $this->setIndexResponseData($user_id);
             return response()->json($response_data[C::KEY_RESPONSE],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false,
-                    C::KEY_MESSAGE => C::ERR_MYHOTELS
-                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_MYHOTELS
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);     
         }
         
     }
@@ -50,7 +48,7 @@ class HotelControllerApi extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -63,13 +61,11 @@ class HotelControllerApi extends Controller
             return response()->json($response_array,201);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false,
-                    C::KEY_MESSAGE => C::ERR_REQUEST,
-                    C::KEY_STATUS => 'ERROR'
-                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST,
+                C::KEY_STATUS => 'ERROR'
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -77,7 +73,7 @@ class HotelControllerApi extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -89,11 +85,10 @@ class HotelControllerApi extends Controller
             return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             Log::channel('stdout')->info("HotelControllerApi show exception => ".$e->getMessage());
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST, C::KEY_STATUS => 'ERROR'
-                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST, C::KEY_STATUS => 'ERROR'
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            
         }
     }
 
@@ -124,7 +119,7 @@ class HotelControllerApi extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
