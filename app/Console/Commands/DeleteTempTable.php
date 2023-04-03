@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\FlightTemp;
+use App\Models\HotelPriceTemp;
+use Exception;
 use Illuminate\Console\Command;
-use App\Interfaces\Constants as C;
 
 class DeleteTempTable extends Command
 {
@@ -39,9 +41,28 @@ class DeleteTempTable extends Command
     public function handle()
     {
         $table = $this->option('table');
-        if(in_array($table,[C::TABLE_FLIGHTSTEMP,C::TABLE_HOTELSTEMP])){
-            
+        try{
+            if($table != null){
+                $accepted_tables = [FlightTemp::getTableName(),HotelPriceTemp::getTableName()];
+                switch($table){
+                    case $accepted_tables[0]:
+                        FlightTemp::truncate();
+                        $this->line("Contenuto tabella {$table} rimosso");
+                        return 0;
+                    case $accepted_tables[1]:
+                        HotelPriceTemp::truncate();
+                        $this->line("Contenuto tabella {$table} rimosso");
+                        return 0;
+                    default:
+                        $this->error("La tabella specificata non è valida");
+                        return 2;       
+                }
+            }//if($table != null){
+            $this->error("Specifica il nome della tabella");
+            return 2;
+        }catch(Exception $e){
+            $this->error("Errore durante la rimozione del contenuto della tablella {$table}");
+            return 1;
         }
-        return 0;
     }
 }
