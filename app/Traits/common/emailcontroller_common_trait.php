@@ -18,7 +18,7 @@ trait EmailControllerCommonTrait{
      * Send email to website admin
      * 
      * @param \Illuminate\Http\Request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sendEmail(EmailRequest $request){
         //Check if form data are valid

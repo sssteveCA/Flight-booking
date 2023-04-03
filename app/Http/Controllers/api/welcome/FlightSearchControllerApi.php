@@ -113,12 +113,10 @@ class FlightSearchControllerApi extends Controller
             $error = $e->getMessage();
             //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_STATUS => 'ERROR',
-                    C::KEY_MESSAGE => $error
-                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_STATUS => 'ERROR',
+                C::KEY_MESSAGE => $error
+            ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
     }
 }

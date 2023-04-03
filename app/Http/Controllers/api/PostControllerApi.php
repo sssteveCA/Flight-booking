@@ -19,7 +19,7 @@ class PostControllerApi extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -27,12 +27,10 @@ class PostControllerApi extends Controller
             $response_data = $this->setIndexResponseData();
             return response()->json($response_data[C::KEY_RESPONSE],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false, C::KEY_EMPTY => false,
-                    C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_NEWS,
-                ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_EMPTY => false,
+                C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_NEWS,
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
         
     }
@@ -52,7 +50,7 @@ class PostControllerApi extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Post $post,$permalink)
     {

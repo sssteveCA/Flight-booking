@@ -26,11 +26,9 @@ class HotelSearchControllerApi extends Controller
         }catch(Exception $e){
             //Log::channel('stdout')->debug("Hotel Search Controller Api Exception => ".$e->getMessage());
             $response_code = 500;
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_HOTEL_PREVENTIVE
-                ],$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_HOTEL_PREVENTIVE
+            ],$response_code,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
     }
 
