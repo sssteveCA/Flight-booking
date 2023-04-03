@@ -57,8 +57,8 @@ Route::name('api.')->group(function(){
 Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','verified']], function(){
     //Route of user personal area
     Route::name('api.')->group(function(){
-        Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class)->except(['update']);
-        Route::apiResource(P::PREFIX_MYHOTELS, HotelControllerApi::class)->except(['update']);
+        Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class)->except(['store','update']);
+        Route::apiResource(P::PREFIX_MYHOTELS, HotelControllerApi::class)->except(['store','update']);
         Route::get(P::URL_INFO,[UserControllerApi::class,'getData'])->name(P::ROUTE_INFO);
         Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
