@@ -66,6 +66,16 @@ Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','
     });
 });
 
+Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['custom_auth_api','verified']],function(){
+    Route::name('.api')->group(function(){
+        Route::post('',[FlightControllerApi::class,'store'])->name(P::ROUTE_BOOKFLIGHT);
+    });
+});
+
+Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified']], function(){
+    Route::post('',[HotelControllerApi::class,'store'])->name(P::ROUTE_BOOKHOTEL);
+});
+
 Route::middleware(['custom_auth_api','verified'])->group(function(){
     Route::name('api.')->group(function(){
         Route::post(P::URL_LOGOUT,[LogoutControllerApi::class,'logout'])->name('logout');
