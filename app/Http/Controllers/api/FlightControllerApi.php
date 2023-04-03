@@ -23,7 +23,7 @@ class FlightControllerApi extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -43,7 +43,7 @@ class FlightControllerApi extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -61,13 +61,12 @@ class FlightControllerApi extends Controller
             throw new Exception;
         }catch(Exception $e){
             //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
-            throw new HttpResponseException(
-                response()->json([
-                    C::KEY_DONE => false,
-                    C::KEY_MESSAGE => C::ERR_REQUEST,
-                    C::KEY_STATUS => 'ERROR'
-                ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-            );
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST,
+                C::KEY_STATUS => 'ERROR'
+            ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+
         }
     }
 
@@ -75,7 +74,7 @@ class FlightControllerApi extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -110,7 +109,7 @@ class FlightControllerApi extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
