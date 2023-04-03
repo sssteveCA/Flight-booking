@@ -37,59 +37,12 @@ class FlightSearchControllerApi extends Controller
                 //Log::channel('stdout')->info("data return array => ".var_export($data_return,true));
                 $fl_return = new FlightPrice($data_return);
                 //Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
-                $flights = [
-                    'outbound' => [
-                        'company_name' => $fl_outbound->company_name,
-                        'departure_country' => $fl_outbound->departure_country,
-                        'departure_airport' => $fl_outbound->departure_airport,
-                        'booking_date' => date('Y-m-d'),
-                        'flight_date' => $fl_outbound->flight_date,
-                        'flight_time' => $fl_outbound->flight_time,
-                        'arrival_country' => $fl_outbound->arrival_country,
-                        'arrival_airport' => $fl_outbound->arrival_airport,
-                        'adults' => $fl_outbound->adults,
-                        'teenagers' => $fl_outbound->teenagers,
-                        'children' => $fl_outbound->children,
-                        'newborns' => $fl_outbound->newborns,
-                        'flight_price' => $fl_outbound->flight_price_format
-                    ],
-                    'return' => [
-                        'company_name' => $fl_return->company_name,
-                        'departure_country' => $fl_return->departure_country,
-                        'departure_airport' => $fl_return->departure_airport,
-                        'booking_date' => date('Y-m-d'),
-                        'flight_date' => $fl_return->flight_date,
-                        'flight_time' => $fl_return->flight_time,
-                        'arrival_country' => $fl_return->arrival_country,
-                        'arrival_airport' => $fl_return->arrival_airport,
-                        'adults' => $fl_return->adults,
-                        'teenagers' => $fl_return->teenagers,
-                        'children' => $fl_return->children,
-                        'newborns' => $fl_return->newborns,
-                        'flight_price' => $fl_return->flight_price_format
-                    ]
-                ];
+                $flights = $this->roundtripFlights($fl_outbound,$fl_return);
             }
             else if($flight_type = 'oneway'){
                 $data_oneway = $this->setFlightPriceArray($inputs,'oneway');
                 $fl_oneway = new FlightPrice($data_oneway);
-                $flights = [
-                    'oneway' => [
-                        'company_name' => $fl_oneway->company_name,
-                        'departure_country' => $fl_oneway->departure_country,
-                        'departure_airport' => $fl_oneway->departure_airport,
-                        'booking_date' => date('Y-m-d'),
-                        'flight_date' => $fl_oneway->flight_date,
-                        'flight_time' => $fl_oneway->flight_time,
-                        'arrival_country' => $fl_oneway->arrival_country,
-                        'arrival_airport' => $fl_oneway->arrival_airport,
-                        'adults' => $fl_oneway->adults,
-                        'teenagers' => $fl_oneway->teenagers,
-                        'children' => $fl_oneway->children,
-                        'newborns' => $fl_oneway->newborns,
-                        'flight_price' => $fl_oneway->flight_price_format
-                    ]
-                ];
+                $flights = $this->onewayFlight($fl_oneway);
             }
             $ft_flights = ['flights' => $flights];
             $add_temp = $this->setFlightsTemp($ft_flights);
