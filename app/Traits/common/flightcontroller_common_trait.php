@@ -194,26 +194,24 @@ trait FlightControllerCommonTrait{
         $response_data = [];
         $response_data['flights'] = $params['flights'];
         if($params['inserted']){
-            $response_data[C::KEY_DONE] = true;
-            $response_data[C::KEY_CODE] = 201; //Created
-            //Creation operations done successfully
-            $response_data[C::KEY_STATUS] = 'OK';
             if($params['flights_number'] > 1)
-                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTBOOK_MULTIPLE;
+                return [
+                   C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_MULTIPLE, C::KEY_STATUS => 'OK'
+                ];
             else
-                $response_data[C::KEY_MESSAGE] = C::OK_FLIGHTBOOK_SINGLE;       
+                return [
+                    C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_SINGLE, C::KEY_STATUS => 'OK'
+                 ];     
         }//if($inserted){
-        else{
-            //Error while inserting record in DB
-            $response_data[C::KEY_CODE] = 500; //Internal server error
-            $response_data[C::KEY_DONE] = false;
-            $response_data[C::KEY_STATUS] = 'ERROR';
-            if($response_data['flights_number'] > 1)
-                $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_MULTIPLE;
-            else
-                $response_data[C::KEY_MESSAGE] = C::ERR_FLIGHTBOOK_SINGLE;
-        }//else di if($inserted){
-        return $response_data;
+        //Error while inserting record in DB
+        if($response_data['flights_number'] > 1)
+            return [
+                C::KEY_CODE => 500, C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHTBOOK_MULTIPLE, C::KEY_STATUS => 'ERROR'
+            ];
+        else
+            return [
+                C::KEY_CODE => 500, C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHTBOOK_SINGLE, C::KEY_STATUS => 'ERROR', 
+            ];
     }
 }
 ?>

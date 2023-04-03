@@ -72,7 +72,7 @@ Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['custom_auth_ap
     });
 });
 
-Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified']], function(){
+Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['custom_auth_api','verified']], function(){
     Route::post('',[HotelControllerApi::class,'store'])->name(P::ROUTE_BOOKHOTEL);
 });
 

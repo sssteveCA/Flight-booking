@@ -58,7 +58,7 @@ class FlightSearchControllerApi extends Controller
                 //'inputs' => $inputs,
                 'flights' => $flights
             ];
-            $response_json = json_encode($response_array,JSON_PRETTY_PRINT);
+            //$response_json = json_encode($response_array,JSON_PRETTY_PRINT);
             //Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_array,true));
             //Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_json,true));
             return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

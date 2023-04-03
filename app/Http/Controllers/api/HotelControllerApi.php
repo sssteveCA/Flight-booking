@@ -58,7 +58,7 @@ class HotelControllerApi extends Controller
             $user_id = auth('api')->user()->id;
             $hotel = $this->create_hotel($inputs["session_id"],$user_id);
             $response_array = $this->setStoreResponseData($hotel);
-            return response()->json($response_array,201);
+            return response()->json($response_array,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
             //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
             return response()->json([
