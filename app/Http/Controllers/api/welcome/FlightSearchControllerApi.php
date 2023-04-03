@@ -41,6 +41,7 @@ class FlightSearchControllerApi extends Controller
             }
             else if($flight_type = 'oneway'){
                 $data_oneway = $this->setFlightPriceArray($inputs,'oneway');
+                //Log::channel('stdout')->info("data oneway array => ".var_export($data_oneway,true));
                 $fl_oneway = new FlightPrice($data_oneway);
                 $flights = $this->onewayFlight($fl_oneway);
             }
@@ -64,7 +65,7 @@ class FlightSearchControllerApi extends Controller
             return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(\Exception $e){
             $error = $e->getMessage();
-            //Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
+            Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
             return response()->json([
                 C::KEY_STATUS => 'ERROR',
