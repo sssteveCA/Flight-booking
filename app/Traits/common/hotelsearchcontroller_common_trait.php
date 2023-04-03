@@ -74,7 +74,7 @@ trait HotelSearchControllerCommonTrait{
                         'hotel' => $hotel_data
                     ]   
                 ];
-                $hptm_params = $response_array["response"]["hotel"];
+                $hptm_params = $response_array[C::KEY_RESPONSE]["hotel"];
                 $hptm = new HotelPriceTempManager($hptm_params);
                 //Log::channel('stdout')->info("HotelSearchController after HotelPriceTempManager");
                 $hptm->addHotelPriceTemp();
