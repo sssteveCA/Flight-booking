@@ -77,7 +77,7 @@ export default class CarRental{
                 //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
-                console.log(this._carrental_data);
+                //console.log(this._carrental_data);
                 this.fillDropdowns();
             }).catch(err => {
                 throw err;
