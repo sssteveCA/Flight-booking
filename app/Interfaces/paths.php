@@ -116,6 +116,7 @@ interface Paths{
     const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
     const VIEW_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
     const VIEW_HOTEL_PAYPAL_RETURN = 'paypal.hotel.return';
+    const VIEW_PAYPAL_DATA = 'partials.paypal.paypal_data';
     const VIEW_POST = 'news.post';
     const VIEW_POST_EMPTYLIST = 'partials.news.emptylist';
     const VIEW_POST_ITEM = 'partials.news.item';
