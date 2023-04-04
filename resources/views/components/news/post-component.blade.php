@@ -6,9 +6,7 @@
     </div>
     <div class="row row-content">
         <div class="col-12 col-md-10 offset-md-1">
-            @php
-                echo $attributes['content'];
-            @endphp
+           {!! $attributes['content'] !!} 
         </div>
     </div>
     <div class="row row-info flex-column justify-content-center flex-md-row justify-content-md-between mt-5">

@@ -67,7 +67,7 @@ Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','
 });
 
 Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['custom_auth_api','verified']],function(){
-    Route::name('.api')->group(function(){
+    Route::name('api.')->group(function(){
         Route::post('',[FlightControllerApi::class,'store'])->name(P::ROUTE_BOOKFLIGHT);
     });
 });
