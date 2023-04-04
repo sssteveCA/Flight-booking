@@ -4,7 +4,7 @@ namespace App\View\Components\News;
 
 use Illuminate\View\Component;
 
-class Post extends Component
+class PostComponent extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class Post extends Component
      */
     public function render()
     {
-        return view('components.news.post');
+        return view('components.news.post-component');
     }
 }
