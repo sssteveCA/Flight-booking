@@ -15,10 +15,10 @@
 
 @section('content')
     @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
-    @isset($n_posts,$posts)
-        @each(P::VIEW_POST_ITEM,$posts,'post',P::VIEW_POST_EMPTYLIST)
-    @endisset
+    @if(isset($n_posts,$posts))
+        <x-alert class="mt-5 alert alert-secondary" message="Nessuna notizia da mostrare" />
+    @endif
     @if(isset($status) && $status == 'ERROR')
-        <div class="mt-5 alert alert-danger" role="alert">{{$message}}</div>
+        <x-alert class="mt-5 alert alert-danger" :message="$message" />
     @endif
 @endsection
