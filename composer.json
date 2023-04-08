@@ -39,6 +39,7 @@
             "app/Exceptions/hoteldatamodified_exception.php",
             "app/Interfaces/paths.php",
             "app/Interfaces/airports.php",
+            "app/Interfaces/carrental.php",
             "app/Interfaces/hotels.php",
             "app/Interfaces/constants.php",
             "app/Interfaces/exceptions_messages.php",
