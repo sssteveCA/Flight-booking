@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\CarRentalTemp;
 use App\Models\FlightTemp;
 use App\Models\HotelPriceTemp;
 use Exception;
@@ -43,7 +44,7 @@ class DeleteTempTable extends Command
         $table = $this->option('table');
         try{
             if($table != null){
-                $accepted_tables = [FlightTemp::getTableName(),HotelPriceTemp::getTableName()];
+                $accepted_tables = [FlightTemp::getTableName(),HotelPriceTemp::getTableName(), CarRentalTemp::getTableName()];
                 switch($table){
                     case $accepted_tables[0]:
                         FlightTemp::truncate();
@@ -53,6 +54,9 @@ class DeleteTempTable extends Command
                         HotelPriceTemp::truncate();
                         $this->line("Contenuto tabella {$table} rimosso");
                         return 0;
+                    case $accepted_tables[2]:
+                        CarRentalTemp::truncate();
+                        $this->line("Contentuto tabella {$table} rimosso");
                     default:
                         $this->error("La tabella specificata non è valida");
                         return 2;       

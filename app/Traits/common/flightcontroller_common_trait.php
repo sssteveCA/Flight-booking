@@ -196,11 +196,11 @@ trait FlightControllerCommonTrait{
         if($params['inserted']){
             if($params['flights_number'] > 1)
                 return [
-                   C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_MULTIPLE, C::KEY_STATUS => 'OK'
+                   C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_MULTIPLE, C::KEY_STATUS => 'OK', 'flights' => $response_data['flights']
                 ];
             else
                 return [
-                    C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_SINGLE, C::KEY_STATUS => 'OK'
+                    C::KEY_CODE => 201, C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_FLIGHTBOOK_SINGLE, C::KEY_STATUS => 'OK', 'flights' => $response_data['flights']
                  ];     
         }//if($inserted){
         //Error while inserting record in DB

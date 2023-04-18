@@ -11,4 +11,8 @@ class CarRentalTemp extends Model
 
     protected $table = 'carrentaltemp';
     public $timestamps = false;
+
+    public static function getTableName(): string{
+        return (new self())->getTable();
+    }
 }
