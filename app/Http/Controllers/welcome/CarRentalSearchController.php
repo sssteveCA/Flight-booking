@@ -31,26 +31,9 @@ class CarRentalSearchController extends Controller
         try{
             $data = $request->validated();
             Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice data => ".var_export($data,true));
-            $carrentalprice = new CarRentalPrice([
-                'car_name' => $data['car'],
-                'car_rental_array' => $this->getRentalCarArray(),
-                'company_name' => $data['rent_company'],
-                'age_range' => $data['age_range'],
-                'rentstart_date' => $data['rentstart'],
-                'rentend_date' => $data['rentend']
-            ]);
+            $carrentaldata = $this->getCarRentalPriceInfo($data);
             //Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice total price => ".var_export($data,true));
-            return response()->view(P::VIEW_CARRENTALPRICERESULT,[
-                C::KEY_DONE => true, 
-                C::KEY_DATA => [
-                    'car_name' => $carrentalprice->getCarName(),
-                    'company_name' => $carrentalprice->getCompanyName(),
-                    'age_range' => $carrentalprice->getAgeRange(),
-                    'rentstart_date' => $carrentalprice->getRentStartDate(),
-                    'rentend_date' => $carrentalprice->getRentEndDate(),
-                    'total_price' => sprintf("%.2f",$carrentalprice->getTotalPrice())
-                ]
-            ],200);
+            return response()->view(P::VIEW_CARRENTALPRICERESULT,$carrentaldata,201);
         }catch(Exception $e){
             Log::channel('stdout')->error("CarRentalSearchController getCarRentalPrice Exception => ".var_export($e->getMessage(),true));
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[

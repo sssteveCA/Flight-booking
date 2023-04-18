@@ -29,31 +29,32 @@
             <div class="carrental-row">
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">Nome compagnia</p>
-                    <p class="bg-light bg-gradient">{{ $data['company_name'] }}</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['company_name'] }}</p>
                 </div>
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">Modello auto</p>
-                    <p class="bg-light bg-gradient">{{ $data['car_name'] }}</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['car_name'] }}</p>
                 </div>
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">La tua fascia d'età</p>
-                    <p class="bg-light bg-gradient">{{ $data['age_range'] }} anni</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['age_range'] }} anni</p>
                 </div>
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">Data di ritiro</p>
-                    <p class="bg-light bg-gradient">{{ $data['rentstart_date'] }}</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['rentstart_date'] }}</p>
                 </div>
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">Data di consegna</p>
-                    <p class="bg-light bg-gradient">{{ $data['rentend_date'] }}</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['rentend_date'] }}</p>
                 </div>
                 <div class="column-elem">
                     <p class="cr-ce-header bg-warning bg-gradient">Prezzo</p>
-                    <p class="bg-light bg-gradient">{{ $data['total_price'] }}€</p>
+                    <p class="bg-light bg-gradient">{{ $response['carrental']['total_price'] }}€</p>
                 </div>
             </div>
         </div>
         <div class="form-button my-4 text-center">
+            <input type="hidden" name="session_id" value="{{$response['carrental']['session_id']}}">
             <button type="submit" class="btn btn-primary btn-lg">PRENOTA</button>
         </div>
     </form>
@@ -72,7 +73,7 @@
     @endisset
     {{--   @php
             echo '<pre>';
-            var_dump($data);
+            var_dump($response['carrental']);
             echo '</pre>';
     @endphp --}}
 @endsection

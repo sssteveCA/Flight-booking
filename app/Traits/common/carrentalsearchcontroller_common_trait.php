@@ -2,13 +2,56 @@
 
 namespace App\Traits\Common;
 
+use App\Classes\CarRentalPrice;
+use App\Classes\Welcome\CarRentalTempManager;
 use App\Interfaces\CarRental as Cr;
 use Illuminate\Support\Facades\Log;
+use App\Interfaces\Constants as C;
 
 /**
  * This trait contains same code for CarRentalSearchController & CarRentalSearchControllerApi
  */
 trait CarRentalSearchControllerCommonTrait{
+
+    /**
+     * Get the info about a booked car
+     * @param array $inputs the data of the request
+     * @return array an array that contains the data of the response
+     */
+    protected function getCarRentalPriceInfo(array $inputs): array{
+        $carrentalprice = new CarRentalPrice([
+            'car_name' => $inputs['car'],
+            'car_rental_array' => $this->getRentalCarArray(),
+            'company_name' => $inputs['rent_company'],
+            'age_range' => $inputs['age_range'],
+            'rentstart_date' => $inputs['rentstart'],
+            'rentend_date' => $inputs['rentend']
+        ]);
+        $carrentaltemp_data = [
+            'car_name' => $carrentalprice->getCarName(),
+            'company_name' => $carrentalprice->getCompanyName(),
+            'age_range' => $carrentalprice->getAgeRange(),
+            'rentstart_date' => $carrentalprice->getRentStartDate(),
+            'rentend_date' => $carrentalprice->getRentEndDate(),
+            'price' => $carrentalprice->getTotalPrice(),
+        ];
+        $crtm = new CarRentalTempManager($carrentaltemp_data);
+        $crtm->addCarRentalTemp();
+        return [
+            C::KEY_DONE => true,
+            C::KEY_RESPONSE => [
+                'carrental' => [
+                    'session_id' => $crtm->getSessionId(),
+                    'car_name' => $carrentalprice->getCarName(),
+                    'company_name' => $carrentalprice->getCompanyName(),
+                    'age_range' => $carrentalprice->getAgeRange(),
+                    'rentstart_date' => $carrentalprice->getRentStartDate(),
+                    'rentend_date' => $carrentalprice->getRentEndDate(),
+                    'total_price' => sprintf("%.2f",$carrentalprice->getTotalPrice())
+                ]
+            ]
+        ];
+    }
 
     /**
      * Add the cars info to each company
