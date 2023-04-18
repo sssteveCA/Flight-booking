@@ -2,11 +2,13 @@
 
 namespace App\Classes\Welcome;
 
+use App\Exceptions\DatabaseInsertionException;
 use App\Models\CarRentalTemp;
 use App\Traits\CarRentalTempTrait;
 use App\Traits\MmCommonTrait;
+use App\Interfaces\Welcome\CarRentalTempManagerErrors as Crtme;
 
-class CarRentalTempManager{
+class CarRentalTempManager implements Crtme{
     use MmCommonTrait, CarRentalTempTrait;
 
     private array $carrentalpricetemp_array;
@@ -43,6 +45,7 @@ class CarRentalTempManager{
         $cpt->rentend_date = $this->carrentalpricetemp_array['rentend_date'];
         $cpt->price = $this->carrentalpricetemp_array['price'];
         $save = $cpt->save();
+        if(!$save) throw new DatabaseInsertionException(Crtme::CARRENTALT_NEWROW_EXC);
      }
 }
 ?>
