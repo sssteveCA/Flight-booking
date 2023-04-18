@@ -83,6 +83,7 @@
                         @endif
                         @include(P::VIEW_FLIGHTLOGIN)
                         @include(P::VIEW_HOTELLOGIN)
+                        @include(P::VIEW_CARRENTALLOGIN)
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

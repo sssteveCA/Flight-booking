@@ -94,6 +94,7 @@ interface Paths{
     const VIEW_BACKBUTTON = 'partials.back';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_BOOKHOTEL = 'bookhotel.bookhotel';
+    const VIEW_CARRENTALLOGIN = 'include.carrentallogin';
     const VIEW_CARRENTALPRICERESULT = 'welcome.carrentalpriceresult';
     const VIEW_CONTACTS = 'contacts';
     const VIEW_COOKIE_POLICY = 'cookie_policy';
