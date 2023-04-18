@@ -2,6 +2,7 @@
 
 namespace App\Classes\Welcome;
 
+use App\Models\CarRentalTemp;
 use App\Traits\CarRentalTempTrait;
 use App\Traits\MmCommonTrait;
 
@@ -33,6 +34,15 @@ class CarRentalTempManager{
      */
      public function addCarRentalTemp(){
         $this->setSessionId();
+        $cpt = new CarRentalTemp;
+        $cpt->session_id = $this->session_id;
+        $cpt->car_name = $this->carrentalpricetemp_array['car_name'];
+        $cpt->company_name = $this->carrentalpricetemp_array['company_name'];
+        $cpt->age_range = $this->carrentalpricetemp_array['age_range'];
+        $cpt->rentstart_date = $this->carrentalpricetemp_array['rentstart_date'];
+        $cpt->rentend_date = $this->carrentalpricetemp_array['rentend_date'];
+        $cpt->price = $this->carrentalpricetemp_array['price'];
+        $save = $cpt->save();
      }
 }
 ?>
