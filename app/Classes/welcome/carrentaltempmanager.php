@@ -27,5 +27,12 @@ class CarRentalTempManager{
         }
         return $this->error;
     }
+
+    /**
+     * Add a new record in carrentaltemp table
+     */
+     public function addCarRentalTemp(){
+        $this->setSessionId();
+     }
 }
 ?>
