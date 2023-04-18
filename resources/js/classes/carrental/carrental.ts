@@ -101,7 +101,7 @@ export default class CarRental{
     private fillDropdowns(): void{
         this.setCompanyDropdown(this._carrental_data['companies_data']);
         this.setCountryDropdowns(this._carrental_data['available_locations']);
-        this.setAgeBandsDropdown(this.carrental_data['age_ranges']);
+        this.setAgeBandsDropdown(this._carrental_data['age_ranges']);
         this.setDropDownEvents();
     }
 
