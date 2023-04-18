@@ -9,6 +9,7 @@ interface Paths{
     const DIR_FLIGHT_EVENTS_IMG = Paths::DIR_IMG.'/flightevents';
 
     //Prefixes
+    const PREFIX_BOOKCARRENTAL = 'bookcarrental';
     const PREFIX_BOOKFLIGHT = 'bookflight';
     const PREFIX_BOOKHOTEL = 'bookhotel';
     const PREFIX_FLIGHTEVENTS = 'flightevents';
@@ -19,6 +20,7 @@ interface Paths{
 
 
     //Routes
+    const ROUTE_BOOKCARRENTAL = 'bookcarrental';
     const ROUTE_BOOKFLIGHT = 'bookflight';
     const ROUTE_BOOKHOTEL = 'bookhotel';
     const ROUTE_CARRENTALPRICE = 'carrentalprice';

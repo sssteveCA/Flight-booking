@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\bookflight\ResumeBookFlightController;
 use App\Http\Controllers\bookhotel\ResumeBookHotelController;
+use App\Http\Controllers\CarRentalController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\UserController;
@@ -83,6 +84,10 @@ Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified
     Route::post(P::URL_HOTELRESUME,[ResumeBookHotelController::class,'resumeHotel'])->name(P::ROUTE_RESUMEHOTEL);
     Route::post(P::URL_PAYPAL_RETURN, [PaypalHotelController::class, 'return'])->name(P::ROUTE_HOTEL_PAYPAL_RETURN);
     Route::get(P::URL_PAYPAL_CANCEL,[PaypalHotelController::class, 'cancel'])->name(P::ROUTE_HOTEL_PAYPAL_CANCEL);
+});
+
+Route::group(['prefix' => P::PREFIX_BOOKCARRENTAL, 'middleware' => ['auth','verified']], function(){
+    Route::post('',[CarRentalController::class,'store'])->name(P::ROUTE_BOOKCARRENTAL);
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
