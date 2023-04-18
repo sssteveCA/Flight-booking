@@ -4,6 +4,8 @@ namespace App\Traits;
 
 trait CarRentalTempTrait{
 
+    use ErrorTrait;
+
     /**
      * Generate a random session id to identity the user that does the request
      */
