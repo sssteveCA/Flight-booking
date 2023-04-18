@@ -20,10 +20,10 @@
 @section('content')
     <x-back-button back_image="/img/back.png" back_url="../" />
     @if($done == true)
-    <form id="fCrPrice" method="post" action="#">
+    <form id="fCrPrice" method="post" action="{{ route(P::ROUTE_BOOKCARRENTAL) }}">
         @csrf
         @method('POST')
-        <input type="hidden" name="session_id" value="">
+        <input type="hidden" name="session_id" value="{{$response['carrental']['session_id']}}">
         <div class="carrental-div">
             <div class="carrental-header bg-success bg-gradient">Preventivo noleggio auto</div>
             <div class="carrental-row">
@@ -54,7 +54,6 @@
             </div>
         </div>
         <div class="form-button my-4 text-center">
-            <input type="hidden" name="session_id" value="{{$response['carrental']['session_id']}}">
             <button type="submit" class="btn btn-primary btn-lg">PRENOTA</button>
         </div>
     </form>

@@ -38,6 +38,9 @@ class Authenticate extends Middleware
                     $route_params = $this->routeBookhotelData($request);
                     //Log::channel('stdout')->info("Authenticate redirectTo hotel data => ".var_export($route_params,true));
                 }//Route name when hotel prices are shown
+                else if($request->routeIs(P::ROUTE_BOOKCARRENTAL)){
+                    $route_params = $this->routeBookCarRentalData($request);
+                }
             }//if($request->isMethod('post')){
             if (! $request->expectsJson()) {
                 //return route('login',['flights' => $request->all()]);
@@ -59,13 +62,24 @@ class Authenticate extends Middleware
     }
 
     /**
-     * Booking hotel data to send to the login page if the user    * is not authenticated
+     * Booking hotel data to send to the login page if the user is not authenticated
      * @param \Illuminate\Http\Request $request
      */
     private function routeBookhotelData(Request $request): array{
         return [
             'session_id' => $request->session_id,
             'hotel' => $request->input('hotel')
+        ];
+    }
+
+    /**
+     * Booking car data to send to the login page if the user is not authenticated
+     * @param \Illuminate\Http\Request $request
+     */
+    private function routeBookCarRentalData(Request $request): array{
+        return [
+            'session_id' => $request->session_id,
+            'carrental' => $request->input('carrental')
         ];
     }
 }
