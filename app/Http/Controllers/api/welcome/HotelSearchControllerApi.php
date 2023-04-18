@@ -22,10 +22,8 @@ class HotelSearchControllerApi extends Controller
         $inputs = $request->validated();
         try{
             $hotelPriceData = $this->getHotelPriceInfo($inputs);
-            Log::channel('stdout')->debug("HotelSearchControllerApi getHotelPrice hotelPriceData => ".var_export($hotelPriceData,true)."\r\n");
             return response()->json($hotelPriceData["response_array"],$hotelPriceData["response_code"],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("Hotel Search Controller Api Exception => ".$e->getMessage());
             $response_code = 500;
             return response()->json([
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_HOTEL_PREVENTIVE

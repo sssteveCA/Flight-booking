@@ -31,7 +31,6 @@ class PaypalHotelController extends Controller
     public function return(Request $request){
         try{
             $post_data = $request->all();
-            //Log::channel('stdout')->debug("PaypalHotelController return post => ".var_export($post_data,true));
             if(isset($post_data['payer_status'])){
                 if($post_data['payer_status'] == "VERIFIED"){
                     $id = $post_data['item_number1'];

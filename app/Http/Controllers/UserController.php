@@ -26,7 +26,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->auth_id = Auth::id();
-        //Log::channel('stdout')->info("UserController  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager =  new UserManager();   
     }
 
@@ -36,7 +35,6 @@ class UserController extends Controller
     public function getData(){
         try{
             $userAuth = $this->getDataWeb();
-            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
             if($userAuth != null){
                 return response()->view(P::VIEW_PROFILE_INFO,[
                     C::KEY_DONE => true, 'user' => $userAuth],200);
@@ -44,7 +42,6 @@ class UserController extends Controller
             session()->put('redirect','1');
             return redirect(P::URL_ERRORS);
         }catch(Exception $e){
-            //Log::channel('stdout')->info("UserController getData exception => ".$e->getMessage());
             return response()->view(P::VIEW_PROFILE_INFO,[
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_INFO
             ],500);
@@ -57,7 +54,6 @@ class UserController extends Controller
             $edit = $this->editPasswordWeb($request);
             return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->info("UserController editPassword exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -69,7 +65,6 @@ class UserController extends Controller
             $edit = $this->editUsernameWeb($request);
             return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("UserController editUsername exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -82,8 +77,6 @@ class UserController extends Controller
     public function deleteAccountHard(UserDeleteRequest $request){
         try{
             $inputs = $request->validated();
-            /* Log::channel('stdout')->info("UserController deleteAccountHard input => ");
-            Log::channel('stdout')->info(var_export($inputs,true)); */
             $delete = $this->deleteAccountWeb();
             if($delete)
                 return response()->json([
@@ -93,7 +86,6 @@ class UserController extends Controller
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);  
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("UserController deleteAccountHard exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

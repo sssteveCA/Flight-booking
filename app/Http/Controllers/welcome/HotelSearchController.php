@@ -21,13 +21,10 @@ class HotelSearchController extends Controller
 
     public function getHotelPrice(HotelPriceRequest $request){
         $inputs = $request->validated();
-        //Log::channel('stdout')->debug("Hotel search controller getHotelPrice inputs => ".var_export($inputs,true));
         try{
             $hotelPriceData = $this->getHotelPriceInfo($inputs);
-            //Log::channel('stdout')->info("HotelSearchController getHotelPrice response_array => ".var_export($response_array,true));
             return response()->view(P::VIEW_HOTELPRICERESULT,$hotelPriceData["response_array"],$hotelPriceData["response_code"]);
         }catch(Exception $e){
-            //Log::channel('stdout')->info("HotelSearchController getHotelPrice exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_HOTELPRICERESULT,[
                     C::KEY_DONE => false,
@@ -42,7 +39,6 @@ class HotelSearchController extends Controller
      */
     public function getHotelPrice_get(){
          $response = session()->get('response');
-         //Log::channel('stdout')->info("HotelSearchController getHotelPrice_get response => ".var_export($response,true));
          return response()->view(P::VIEW_HOTELPRICERESULT,[
             C::KEY_DONE => true,
             'response' => [

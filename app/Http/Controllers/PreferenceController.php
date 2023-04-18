@@ -12,9 +12,7 @@ class PreferenceController extends Controller
      * Set the cookie with the expressed user preferences
      */
     public function cookieSet(Request $request){
-        //Log::channel('stdout')->debug("cookieSet");
         $option = $request->input('option');
-        //Log::channel('stdout')->debug("cookieSet request all => ".var_export($request->all(),true));
         if($option && in_array($option,['accepted','rejected'])){
             $duration = $request->input('duration', 60*24);
             return response()->json(

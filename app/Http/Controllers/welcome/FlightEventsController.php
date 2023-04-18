@@ -71,7 +71,6 @@ class FlightEventsController extends Controller
             session()->put('redirect','1');
             return redirect(P::URL_ERRORS);
         }catch(Exception $e){
-            Log::channel('stdout')->error("FlightEventsController show Exception => ".$e->getMessage());
             return response()->view(P::VIEW_FLIGHTEVENT,[
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_FLIGHT_EVENT_SINGLE
             ],500);

@@ -22,26 +22,18 @@ class FlightSearchControllerApi extends Controller
     
     public function getFlightPrice(FlightPriceRequestApi $request){
         $flights = [];
-        //Log::channel('stdout')->info('getFlightPrice method');
         $inputs = $request->validated();
-        //Log::channel('stdout')->info("getFlightPrice inputs => ".var_export($inputs,true));
         $flight_type = $inputs['flight_type'];
-        //Log::channel('stdout')->info("getFlightPrice flight_type => {$flight_type}");
         try{
             if($flight_type == 'roundtrip'){
                 $data_outbound = $this->setFlightPriceArray($inputs,'roundtrip_outbound');
-                //Log::channel('stdout')->info("data outbound array => ".var_export($data_outbound,true));
                 $fl_outbound = new FlightPrice($data_outbound);
-                //Log::channel('stdout')->info("fl outbound errno => ".$fl_outbound->getErrno());
                 $data_return = $this->setFlightPriceArray($inputs,'roundtrip_return');
-                //Log::channel('stdout')->info("data return array => ".var_export($data_return,true));
                 $fl_return = new FlightPrice($data_return);
-                //Log::channel('stdout')->info("fl return errno => ".$fl_return->getErrno());
                 $flights = $this->roundtripFlights($fl_outbound,$fl_return);
             }
             else if($flight_type = 'oneway'){
                 $data_oneway = $this->setFlightPriceArray($inputs,'oneway');
-                //Log::channel('stdout')->info("data oneway array => ".var_export($data_oneway,true));
                 $fl_oneway = new FlightPrice($data_oneway);
                 $flights = $this->onewayFlight($fl_oneway);
             }
@@ -59,13 +51,9 @@ class FlightSearchControllerApi extends Controller
                 //'inputs' => $inputs,
                 'flights' => $flights
             ];
-            //$response_json = json_encode($response_array,JSON_PRETTY_PRINT);
-            //Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_array,true));
-            //Log::channel('stdout')->info("FlightSearchControllerApi getFlightPrice response => ".var_export($response_json,true));
             return response()->json($response_array,200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(\Exception $e){
             $error = $e->getMessage();
-            Log::channel('stdout')->error("Flight search controller exception => ".var_export($error,true));
             $error = C::ERR_REQUEST;
             return response()->json([
                 C::KEY_STATUS => 'ERROR',

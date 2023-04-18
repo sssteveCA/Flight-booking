@@ -43,9 +43,6 @@ class DateDiff1d implements Rule,DataAwareRule
     public function passes($attribute, $value)
     {
         $passes = true;
-        //Log::channel('stdout')->debug("DateDiff1d passes");
-        //Log::channel('stdout')->debug("Attribute => {$attribute}");
-        //Log::channel('stdout')->debug("Value => ".var_export($value,true));
         if(isset($value) && $value != ''){
             if($attribute == 'oneway_date' || $attribute == 'roundtrip_start_date'){
                 $date_ok = $this->oneDayDifference($value,date('Y-m-d'));
@@ -68,8 +65,6 @@ class DateDiff1d implements Rule,DataAwareRule
      */
     public function message()
     {
-        //Log::channel('stdout')->error("DateDiff1d message");
-        //Log::channel('stdout')->error(var_export($this->error_attribute,true));
         if($this->error_attribute == 'oneway_date' || $this->error_attribute == 'roundtrip_start_date'){
             return 'La :attribute deve essere maggiore di almeno 1 giorno rispetto alla data attuale';
         }
@@ -86,8 +81,6 @@ class DateDiff1d implements Rule,DataAwareRule
      */
     public function setData($data){
         $this->data = $data;
-        //Log::channel('stdout')->debug("DateDiff1d setData => ");
-        //Log::channel('stdout')->debug(var_export($this->data,true));
         return $this;
     }
 }

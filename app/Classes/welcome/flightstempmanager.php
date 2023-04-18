@@ -15,8 +15,6 @@ class FlightsTempManager implements Ftme{
 
     public function __construct(array $data)
     {
-        //Log::channel('stdout')->info("FlightsTempManager construct");
-        //Log::channel('stdout')->info("FlightsTempManager construct data => ".var_export($data,true));
         $this->session_id = isset($data['session_id'])? $data['session_id'] : null;
         $this->checkFlightsArray($data);
         $this->flights_array = $data;
@@ -45,9 +43,6 @@ class FlightsTempManager implements Ftme{
 
     //Add a new flight temp records
     public function addFlightsTemp(): bool{
-        /* Log::channel('stdout')->info("FlightsTempManager addFlightsTemp");
-        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array => ".var_export($this->flights_array,true));
-        Log::channel('stdout')->info("FlightsTempManager addFlightsTemp flights_array length => ".var_export($this->flights_array_lenght,true));  */ 
         $add = false;
         $this->setSessionId();
         if($this->flights_array_lenght == 1){

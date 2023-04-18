@@ -70,9 +70,4 @@
             @endforeach
         @endforeach
     @endisset
-    {{--   @php
-            echo '<pre>';
-            var_dump($response['carrental']);
-            echo '</pre>';
-    @endphp --}}
 @endsection

@@ -26,17 +26,13 @@ class UserManagerApi{
             $apiUser = auth('api')->user();
             if(isset($apiUser->id)){
                 $this->auth_id = $apiUser->id;
-                //Log::channel('stdout')->info("UserManagerApi Auth id ".$this->auth_id);
-                //Log::channel('stdout')->info("UserManagerApi auth(api) id  ".var_export(auth('api')->user()->id,true));
             }
-        } 
-        //Log::channel('stdout')->info("UserManagerApi Auth::id ".var_export(Auth::id(),true));
+        }
     }
 
     public function getAuthId(){return $this->auth_id;}
 
     public function editUsername(EditUsernameRequestApi $request):array {
-        //Log::channel('stdout')->info("UserManagerApi editUsername ");
         $userA = $this->getUser();
         if($userA != null){
             //User logged found
@@ -44,7 +40,6 @@ class UserManagerApi{
             $userA->name = $username;
             //update 'name' field of logged user
             $userA->save();
-            //Log::channel('stdout')->info("editUsername save");
             return [
                 C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED
             ];
@@ -55,7 +50,6 @@ class UserManagerApi{
     }
 
     public function editPassword(EditPasswordRequestApi $request):array {
-        //Log::channel('stdout')->debug('UserManagerApi editPassword');
         $userA = $this->getUser();
         if($userA != null){
             //User logged found

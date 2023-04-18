@@ -97,7 +97,7 @@ function tabClickEvents(elements: any): void{
             //loadHotelData();
             loadHotelInfo();
         }
-        else if(cb_id = 'car-rental-tab'){
+        else if(cb_id == 'car-rental-tab'){
             loadCarRentalInfo();
         }
         else if(cb_id == 'events-tab'){

@@ -30,8 +30,6 @@ trait FlightControllerCommonTrait{
             'flights' => []
         ];
         foreach($flights_data as $n => $flight){
-            /* Log::channel('stdout')->info("FlightController store flight => ");
-            Log::channel('stdout')->info(var_export($flight,true)); */
             $models[$n] = new Flight;
             $models[$n]->user_id = $user_id;
             $models[$n]->company_name = $flight['company_name'];

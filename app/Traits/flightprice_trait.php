@@ -12,7 +12,6 @@ trait FlightPriceTrait{
 
     //Returns the month number and the day week name to get the subprices of these parameters
     private function getDateParams(string $date): array{
-        //Log::channel('stdout')->debug('FlightPrice getDateParams');
         $params = [];
         $date_obj = DateTimeImmutable::createFromFormat('Y-m-d',$date);
         if($date_obj !== false){
@@ -26,7 +25,6 @@ trait FlightPriceTrait{
 
      //get the distance from departure to arrival airport
      private function getDistance(): float{
-        //Log::channel('stdout')->debug('FlightPrice getDistance');
         $da_lat = $this->departure_airport_lat;
         $da_lon = $this->departure_airport_lon;
         $aa_lat = $this->arrival_airport_lat;
@@ -72,7 +70,6 @@ trait FlightPriceTrait{
     }
 
     private function setDaysBefore(array $data): bool{
-        //Log::channel('stdout')->debug('FlightPrice setDaysBefore');
         $setted = false;
         $this->errno = 0;
         $date_now = date('Y-m-d'); //Now date
@@ -90,7 +87,6 @@ trait FlightPriceTrait{
 
     //Assign a random time hours minutes and then calculate the subprice based on hour getted
     private function setFlightHours(array $data){
-        //Log::channel('stdout')->debug('FlightPrice setFlightHours');
         $tdb = $data['timetable_daily_bands'];
         $day_band_key = array_rand($tdb);
         $tdh = $data['timetable_hour_bands'];
@@ -101,14 +97,12 @@ trait FlightPriceTrait{
 
     //Set some subprices before calculate the total price
     private function setSubprices(array $data):bool{
-        //Log::channel('stdout')->debug('FlightPrice setSubprices');
         $setted = false;
         $this->errno = 0;
         $ab = $data['age_bands'];
         $this->passengers_price = $this->distance * (($this->adults * $ab['adult']) + ($this->teenagers * $ab['teenager']) + ($this->children * $ab['child']) + ($this->newborns * $ab['newborn']));
         $this->setFlightHours($data);
         $date_params = $this->getDateParams($this->flight_date);
-        //Log::channel('stdout')->debug('FlightPrice setSubprices date params array => '.var_export($date_params,true));
         if(sizeof($date_params) > 0){
             //Array is not empty
             $td = $data['timetable_days'];
@@ -125,7 +119,6 @@ trait FlightPriceTrait{
 
      //Validate input data
      private function validate(array $data):bool{
-        //Log::channel('stdout')->debug('FlightPrice validate');
         $valid = true;
         if(isset($data['departure_country'])){
             if(trim($data['departure_country']) == '')$valid = false;

@@ -53,14 +53,12 @@ class HotelControllerApi extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        //Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         try{
             $user_id = auth('api')->user()->id;
             $hotel = $this->create_hotel($inputs["session_id"],$user_id);
             $response_array = $this->setStoreResponseData($hotel);
             return response()->json($response_array,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false,
                 C::KEY_MESSAGE => C::ERR_REQUEST,
@@ -81,10 +79,8 @@ class HotelControllerApi extends Controller
             $user_id = auth('api')->user()->id;
             $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ] ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
-            //Log::channel('stdout')->info("HotelControllerApi show response data => ".var_export($response_data,true));
             return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            Log::channel('stdout')->info("HotelControllerApi show exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_REQUEST, C::KEY_STATUS => 'ERROR'
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

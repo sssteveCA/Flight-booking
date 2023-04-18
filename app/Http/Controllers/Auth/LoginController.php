@@ -55,8 +55,6 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $data = $request->all();
-        //Log::channel('stdout')->debug("LoginController.php authenticated");
-        //Log::channel('stdout')->debug("LoginController.php authenticated request => ".var_export($data,true));
         if(isset($data['flights'])){
             $response = [
                     'session_id' => $data['session_id'], 'flight_type' => $data['flight_type'],
@@ -67,7 +65,6 @@ class LoginController extends Controller
         }//if(isset($data['flights'])){
         else if(isset($data['hotel'])){
             $response = [ 'session_id' => $data['session_id'], 'hotel' => $data['hotel'] ];
-            //Log::channel('stdout')->info("LoginController authenticated hotel response => ".var_export($response,true));
             session()->put('response',$response);
             return redirect()->route(P::ROUTE_HOTELPRICE_GET);
         }//else if(isset($data['hotel'])){

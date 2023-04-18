@@ -39,10 +39,8 @@ trait FlightEventsControllerCommonTrait{
      * @param $id the id of the resource to show
      */
     private function setShowResponseData($id, array $params): array{
-        //Log::channel('stdout')->info("FlightEventsControllerCommonTrait setShowResponseData id => ".var_export($id,true));
         $flightEvent = FlightEvent::find($id);
         if($flightEvent != null){
-            //Log::channel('stdout')->info("FlightEventsControllerCommonTrait setShowResponseData flightevents => ".var_export($flightEvent,true));
             return [
                 C::KEY_CODE => 200,
                 C::KEY_RESPONSE => [

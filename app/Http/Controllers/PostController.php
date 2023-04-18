@@ -23,10 +23,8 @@ class PostController extends Controller
     {
         try{
             $response_data = $this->setIndexResponseData();
-            //Log::channel('stdout')->debug("PostController index response data => ".var_export($response_data[C::KEY_RESPONSE],true));
             return response()->view(P::VIEW_NEWS,$response_data[C::KEY_RESPONSE]);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("News Exception ".var_export($e->getMessage(),true));
             return response()->view(P::VIEW_NEWS,[
                 C::KEY_DONE => false, C::KEY_EMPTY => false,
                 C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_NEWS,

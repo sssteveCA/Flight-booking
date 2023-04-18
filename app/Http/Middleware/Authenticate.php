@@ -19,14 +19,9 @@ class Authenticate extends Middleware
      */
      protected function redirectTo($request)
     {
-        //Log::channel('stdout')->info("Authenticate redirectTo");
         $path = $request->path();
-        //Log::channel('stdout')->info("Authenticate redirectTo path => ".var_export($path,true));
         $api_request = str_starts_with($path,'api/');
-        //Log::channel('stdout')->info("Authenticate redirectTo str starts with => ".var_export($api_request,true));
         if($api_request === false){ 
-            //Log::channel('stdout')->info("Authenticate redirectTo api_request");
-            //Log::channel('stdout')->info("Authenticate redirectTo host => ".var_export($request,true));
             $route_params = [];
             if($request->isMethod('POST')){
                 //Method of request is POST
@@ -36,7 +31,6 @@ class Authenticate extends Middleware
                 }//if($request->routeIs(P::ROUTE_FLIGHTPRICE)){
                 else if($request->routeIs(P::ROUTE_BOOKHOTEL)){
                     $route_params = $this->routeBookhotelData($request);
-                    //Log::channel('stdout')->info("Authenticate redirectTo hotel data => ".var_export($route_params,true));
                 }//Route name when hotel prices are shown
                 else if($request->routeIs(P::ROUTE_BOOKCARRENTAL)){
                     $route_params = $this->routeBookCarRentalData($request);

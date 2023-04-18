@@ -76,7 +76,6 @@ trait HotelSearchControllerCommonTrait{
                 ];
                 $hptm_params = $response_array[C::KEY_RESPONSE]["hotel"];
                 $hptm = new HotelPriceTempManager($hptm_params);
-                //Log::channel('stdout')->info("HotelSearchController after HotelPriceTempManager");
                 $hptm->addHotelPriceTemp();
                 $response_array[C::KEY_RESPONSE]['session_id'] = $hptm->getSessionId();
                 $response_code = 201;

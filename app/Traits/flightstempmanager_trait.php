@@ -34,7 +34,6 @@ trait FlightsTempManagerTrait{
      * @return void
      * */
     private function checkFlightsArray(array $data){
-        //Log::channel('stdout')->info("FlightsTempManager trait checkFlightsArray");
         $count = count($data['flights']);
         $classname = __CLASS__;
         if($count > 0 && $count <= 2){
@@ -65,7 +64,6 @@ trait FlightsTempManagerTrait{
      * @return bool
      * */
     private function addFlightTemp(array $data, string $flight_type): bool{
-        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp");
         $add = false;
         $this->errno = 0;
         $this->flight_temp = new FlightTemp;
@@ -73,9 +71,7 @@ trait FlightsTempManagerTrait{
         $this->flight_temp->flight_type = $data['flight_type'];
         $this->flight_temp->flight_direction = $data['flight_direction'];
         $flight_array = $this->flights_array['flights'][$flight_type];
-        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp flight_array => ".var_export($flight_array,true));
         $this->flight_temp->company_name = $flight_array['company_name'];
-        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp company_name");
         $this->flight_temp->departure_country = $flight_array['departure_country'];
         $this->flight_temp->departure_airport = $flight_array['departure_airport'];
         $this->flight_temp->arrival_country = $flight_array['arrival_country'];
@@ -88,7 +84,6 @@ trait FlightsTempManagerTrait{
         $this->flight_temp->children = $flight_array['children'];
         $this->flight_temp->newborns = $flight_array['newborns'];
         $this->flight_temp->flight_price = $flight_array['flight_price'];
-        //Log::channel('stdout')->info("FlightsTempManager trait addFlightTemp flight_temp => ".var_export($this->flight_temp,true));
         $insert = $this->flight_temp->save();
         if($insert)
             $add = true;
@@ -105,17 +100,12 @@ trait FlightsTempManagerTrait{
      * */
     private function checkEquality(array $request, array $retrieved): bool{
         $equal = true;
-        //Log::channel('stdout')->debug("FlightsTempMangerComonTrait checkEquality");
         foreach($request as $key => $value){
-            //Log::channel('stdout')->debug("FlightsTempMangerCommonTrait checkEquality");
-            //Log::channel('stdout')->debug("{$key} => ".var_export($value,true));
-            //Log::channel('stdout')->debug("Retrieved => ".var_export($retrieved[$key],true));
             if($value != $retrieved[$key]){
                 $equal = false;
                 break;
             }//if($request[$key] != $retrieved[$key]){
         }//foreach($request as $key => $value){
-        //Log::channel('stdout')->debug("flightstempmanager_common_trait checkEquality equal => ".var_export($equal,true));
         return $equal;
     }
 
@@ -141,7 +131,6 @@ trait FlightsTempManagerTrait{
      * Generate a random session id to identity the user that does the request
      */
     private function setSessionId(){
-        //Log::channel('stdout')->info("FlightsTempManager trait setSessionId");
         $session_id = "";
         $classname = __CLASS__;
         $characters = 'aAbBcCdDeEfFGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
@@ -166,14 +155,12 @@ trait FlightsTempManagerTrait{
     public function validateRequest(): bool{
         $valid = false;
         $this->errno = 0;
-        //Log::channel('stdout')->debug("FlightsTempManagerTrait validateRequest this flights array => ".var_export($this->flights_array,true));
         if(isset($this->flights_array['session_id'])){
             $session_id = $this->flights_array['session_id'];
             $check_flights = FlightTemp::where('session_id',$session_id)->get();
             $cf_length = $check_flights->count();
             if($cf_length > 0){
                 $cf_array = $check_flights->toArray();
-                //Log::channel('stdout')->debug("FlightsTempManagerTrait validateRequest cf_array => ".var_export($cf_array,true));
                 if(isset($this->flights_array['flights'])){
                     if($cf_length == 1){
                         //Oneway ticket

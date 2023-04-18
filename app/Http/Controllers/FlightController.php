@@ -36,7 +36,6 @@ class FlightController extends Controller
             $response_data = $this->setIndexResponseData($user_id);
             return response()->view(P::VIEW_MYFLIGHTS,$response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE]);
         }catch(Exception $e){
-            Log::channel('stdout')->info("FlightController index exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_MYFLIGHTS,[
                     C::KEY_DONE => false,
@@ -64,12 +63,10 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::channel('stdout')->debug("FlightController store");
         try{
             $inputs = $request->all();
             $user_id = auth()->id();
             $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
-            //Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
             if(count($flightsTemp) >= 1){
                 $flights_info = $this->create_flights($flightsTemp,$user_id);
                 $response_data = $this->setStoreResponseData($flights_info);
@@ -78,7 +75,6 @@ class FlightController extends Controller
             }
             throw new Exception; 
         }catch(Exception $e){
-            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKFLIGHT,[
                     C::KEY_DONE => false,
@@ -167,12 +163,9 @@ class FlightController extends Controller
     private function flights_unquote(array $flights_quoted): array{
         $flights_unquoted = [];
         foreach($flights_quoted as $key => $val){
-            //Log::channel('stdout')->info("Flights unquote 1st foreach {$key}");
             $flights_unquoted[$key] = [];
             foreach($val as $sub_key => $sub_val){
                 $sub_key_unq = str_replace("'","",$sub_key);
-                /* Log::channel('stdout')->info("Flights unquote 2nd foreach before slashes remove {$sub_key} => {$sub_val}");
-                Log::channel('stdout')->info("Flights unquote 2nd foreach {$sub_key_unq} => {$sub_val}"); */
                 $flights_unquoted[$key][$sub_key_unq] = $sub_val;
             }
         }

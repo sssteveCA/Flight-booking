@@ -30,12 +30,9 @@ class CarRentalSearchController extends Controller
     public function getCarRentalPrice(CarRentalPriceRequest $request){
         try{
             $data = $request->validated();
-            Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice data => ".var_export($data,true));
             $carrentaldata = $this->getCarRentalPriceInfo($data);
-            //Log::channel('stdout')->info("CarRentalSearchController getCarRentalPrice total price => ".var_export($data,true));
             return response()->view(P::VIEW_CARRENTALPRICERESULT,$carrentaldata,201);
         }catch(Exception $e){
-            Log::channel('stdout')->error("CarRentalSearchController getCarRentalPrice Exception => ".var_export($e->getMessage(),true));
             return response()->view(P::VIEW_CARRENTALPRICERESULT,[
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_CARRENTAL_PREVENTIVE
             ],500);

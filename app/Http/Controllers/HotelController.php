@@ -25,10 +25,8 @@ class HotelController extends Controller
         try{
             $user_id = auth()->id();
             $response_data = $this->setIndexResponseData($user_id);
-            //Log::channel('stdout')->debug("HotelController index response data => ".var_export($response_data,true));
             return response()->view(P::VIEW_MYHOTELS,$response_data[C::KEY_RESPONSE]);
         }catch(Exception $e){
-            Log::channel('stdout')->info("HotelController index exception => ".var_export($e->getMessage(),true));
             throw new HttpResponseException(
                 response()->view(P::VIEW_MYHOTELS,[
                     C::KEY_DONE => false,
@@ -58,13 +56,11 @@ class HotelController extends Controller
     {
         $inputs = $request->all();
         $user_id = auth()->id();
-        //Log::channel('stdout')->debug("HotelController store inputs => ".var_export($inputs,true));
         try{
             $hotel = $this->create_hotel($inputs["session_id"],$user_id);
             $response_array = $this->setStoreResponseData($hotel);
             return response()->view(P::VIEW_BOOKHOTEL,$response_array,201);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("HotelController store exception => ".$e->getMessage());
             throw new HttpResponseException(
                 response()->view(P::VIEW_BOOKHOTEL,[
                     C::KEY_DONE => false,

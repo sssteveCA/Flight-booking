@@ -24,7 +24,6 @@ class CarRentalPrice{
     use ErrorTrait, MmCommonTrait, CarRentalPriceTrait;
 
     public function __construct(array $data){
-        //Log::channel('stdout')->info("CarRentalPrice construct data => ".var_export($data,true));
         $this->data = $data['car_rental_array'];
         $this->car_name = $data['car_name'];
         $this->company_name = $data['company_name'];

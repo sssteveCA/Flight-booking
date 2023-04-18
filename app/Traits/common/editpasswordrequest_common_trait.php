@@ -59,7 +59,6 @@ trait EditPasswordRequestCommonTrait{
 
     protected function failedValidation(Validator $validator)
     {
-        //Log::channel('stdout')->error('EditPasswordRequest ValidationException');
         $ve = new ValidationException($validator);
         $messages = $ve->errors();
         $key_first = array_key_first($messages);

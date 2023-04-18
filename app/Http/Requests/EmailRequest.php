@@ -58,9 +58,7 @@ class EmailRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        //Log::channel('stdout')->error('EmailRequest ValidationException');
         $error = $validator->errors()->first();
-        //Log::channel('stdout')->error(var_export($error,true));
         throw new HttpResponseException(
             response()->json([
                 C::KEY_DONE => false,

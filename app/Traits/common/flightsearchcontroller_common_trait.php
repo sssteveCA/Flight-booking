@@ -45,7 +45,6 @@ trait FlightSearchCommonTrait{
     }
     
     protected function setFlightPriceArray(array $inputs, string $flight_direction): array{
-        //Log::channel('stdout')->info('setFlightPrice method');
         if($flight_direction == 'roundtrip_return'){
             $dc = $inputs['to_country'];
             $ac = $inputs['from_country'];
@@ -93,7 +92,6 @@ trait FlightSearchCommonTrait{
             'timetable_days' => A::TIMETABLE_DAYS[$cn],
             'timetable_months' => A::TIMETABLE_MONTHS[$cn]
         ];
-        //Log::channel('stdout')->info('setFlightPrice method data => '.var_export($data,true));
         return $data;
     }
 

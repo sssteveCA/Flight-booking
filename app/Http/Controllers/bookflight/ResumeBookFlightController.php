@@ -24,8 +24,6 @@ class ResumeBookFlightController extends Controller
     public function resumeFlight(Request $request){
         try{
             $response_data = $this->setResponseData($request);
-            /* Log::channel('stdout')->debug("ResumeBookFlightController resumeFlight response_data => ");
-            Log::channel('stdout')->debug(var_export($response_data,true)); */
             if(in_array($response_data[C::KEY_CODE],[200,400]))
                 return response()->view(P::VIEW_BOOKFLIGHT,$response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE]);
             session()->put('redirect','1');

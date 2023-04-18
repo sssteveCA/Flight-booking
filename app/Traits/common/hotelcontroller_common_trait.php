@@ -24,7 +24,6 @@ trait HotelControllerCommonTrait{
         $hotelTemp = HotelPriceTemp::where('session_id',$session_id)->first();
         if(!$hotelTemp)
             throw new HotelDataModifiedException(Em::HOTELDATAMODIFIED_EXC);
-        //Log::channel('stdout')->info("HotelControllerCommonTrait create_hotel hotelTemp => ".var_export($hotelTemp,true));
         $hotel = new Hotel;
         $hotel->user_id = $user_id;
         $hotel->country = $hotelTemp->country;
@@ -90,11 +89,9 @@ trait HotelControllerCommonTrait{
      */
     private function setIndexResponseData($user_id): array{
         $hotels_collection = Hotel::where('user_id',$user_id)->get();
-        //Log::channel('stdout')->info("HotelController index hotel_collections => ".var_export($hotels_collection,true));
         $hotels_number = $hotels_collection->count();
         if($hotels_number > 0){
             $hotels = $hotels_collection->toArray();
-            //Log::channel('stdout')->info("HotelController index hotel array => ".var_export($hotels,true));
             return [
                 C::KEY_CODE => 200,
                 C::KEY_RESPONSE => [
@@ -146,8 +143,6 @@ trait HotelControllerCommonTrait{
      * @param Hotel $hotel the data of the Hotel instance insterted
      */
     private function setStoreResponseData(Hotel $hotel): array{
-        /* Log::channel('stdout')->info("HotelControllerCommonTrait setResponseData => hotel array => ".var_export($hotel->toArray(),true));
-        Log::channel('stdout')->info("HotelControllerCommonTrait setResponseData => hotel array no attr => ".var_export($hotel->attributesToArray(),true)); */
         return [
             C::KEY_DONE => true,
             C::KEY_MESSAGE => "Per confermare la prenotazione delle stanze d' albergo fai click su 'PAGA'",

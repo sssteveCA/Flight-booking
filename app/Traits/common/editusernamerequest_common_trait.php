@@ -21,16 +21,13 @@ trait EditUsernameRequestCommonTrait{
      */
     public function authorize()
     {
-        //Log::channel('stdout')->info('EditUsername request auth check '.Auth::check());
         return Auth::check();
     }
 
     protected function failedValidation(Validator $validator)
     {
-        //Log::channel('stdout')->error('EditUsernameRequest ValidationException');
         $ve = new ValidationException($validator);
         $messages = $ve->errors();
-        //Log::channel('stdout')->error('EditUsernameRequest ValidationException messages => '.var_export($messages,true));
         $key_first = array_key_first($messages);
         throw new HttpResponseException(
             /* response()->view(P::VIEW_FALLBACK,

@@ -51,7 +51,6 @@ class FlightControllerApi extends Controller
             $inputs = $request->all();
             $user_id = auth('api')->user()->id;
             $flightsTemp = $this->getFlightsTempBySessionId($inputs['session_id']);
-            //Log::channel('stdout')->debug("FlightController store flightTemps => ".var_export($flightsTemp,true));
             if(count($flightsTemp) >= 1){
                 $flights_info = $this->create_flights($flightsTemp,$user_id);
                 $response_data = $this->setStoreResponseData($flights_info);
@@ -60,7 +59,6 @@ class FlightControllerApi extends Controller
             }
             throw new Exception;
         }catch(Exception $e){
-            //Log::channel('stdout')->error("FlightController store exception => ".var_export($e->getMessage(),true));
             return response()->json([
                 C::KEY_DONE => false,
                 C::KEY_MESSAGE => C::ERR_REQUEST,

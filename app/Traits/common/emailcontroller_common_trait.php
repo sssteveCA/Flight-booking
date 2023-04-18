@@ -36,7 +36,6 @@ trait EmailControllerCommonTrait{
             ];
             $code = 200; //OK
         }catch(Exception $e){
-            //Log::channel('stdout')->info("EmailControllerCommonTrait sendEmail exception ".$e->getMessage());
             $response[C::KEY_MESSAGE] = C::ERR_EMAILSEND;
             $code = 500; //Internal Server Error
         }

@@ -15,11 +15,10 @@ class AuhenticateApi
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        //Log::channel('stdout')->info("AuthenticateApi handle");
         if(!Auth::guard('api')->check()){
             //Invalid token
             return response()->json([
@@ -28,7 +27,6 @@ class AuhenticateApi
                 C::KEY_MESSAGE => C::ERR_NOTAUTHENTICATED
             ],401, [],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
-        //Log::channel('stdout')->info("AuthenticateApi handle next hop");
         return $next($request);
     }
 }

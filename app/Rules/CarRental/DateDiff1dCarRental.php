@@ -34,14 +34,10 @@ class DateDiff1dCarRental implements Rule, DataAwareRule
     public function passes($attribute, $value)
     {
         $value = date('Y-m-d', strtotime($value));
-        //Log::channel('stdout')->debug("DateDiff1dCarRental passes value => ".var_export($value,true));
         if($this->attribute_name == "rentstart"){
             $now_date = date('Y-m-d');
-            //Log::channel('stdout')->debug("DateDiff1dCarRental passes now_date => ".var_export($now_date,true));
-            //Log::channel('stdout')->debug("DateDiff1dCarRental passes value => ".var_export($value,true));
             return $this->oneDayDifference($value,$now_date);
         }
-        //Log::channel('stdout')->debug("DateDiff1dCarRental not rentstart => ");
         return $this->oneDayDifference($value,date('Y-m-d', strtotime($this->data["rentstart"]))); 
        
             
@@ -67,7 +63,6 @@ class DateDiff1dCarRental implements Rule, DataAwareRule
 	 */
 	public function setData($data) {
         $this->data = $data;
-        //Log::channel('stdout')->debug("DateDiff1dCarRental setData data => ".var_export($this->data,true));
         return $this;
 	}
 }

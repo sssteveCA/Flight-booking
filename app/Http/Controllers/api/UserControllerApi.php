@@ -29,7 +29,6 @@ class UserControllerApi extends Controller
         if(isset($user_id))
             $this->auth_id = $user_id;
         else $this->auth_id = null;
-        //Log::channel('stdout')->info("UserControllerApi  auth_id => ".var_export($this->auth_id,true));
         $this->usermanager_api =  new UserManagerApi();   
     }
 
@@ -39,7 +38,6 @@ class UserControllerApi extends Controller
     public function getData(){
         try{
             $userAuth = $this->getDataApi();
-            //Log::channel('stdout')->info("userAuth => ".var_export($userAuth,true));
             if($userAuth != null)
                 return response()->json(
                     [C::KEY_DONE => true,'user' => $userAuth],
@@ -52,7 +50,6 @@ class UserControllerApi extends Controller
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_INFO
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }
-        //Log::channel('stdout')->debug('UserControllerApi getData');
     }
 
     /**
@@ -70,7 +67,6 @@ class UserControllerApi extends Controller
                 C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
             ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("UserControllerApi deleteAccountHard exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PROFILE_DELETE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -82,7 +78,6 @@ class UserControllerApi extends Controller
             $edit = $this->editPasswordApi($request);
             return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("UserControllerApi editPassword exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_PASSWORDUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
@@ -94,7 +89,6 @@ class UserControllerApi extends Controller
             $edit = $this->editUsernameApi($request);
             return response()->json($edit,$edit[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         }catch(Exception $e){
-            //Log::channel('stdout')->debug("UserControllerApi editUsername exception => ".$e->getMessage());
             return response()->json([
                 C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_USERNAMEUPDATE
             ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

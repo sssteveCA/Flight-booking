@@ -65,7 +65,6 @@ trait CarRentalSearchControllerCommonTrait{
         foreach($company_data['cars'] as $car_num){
             $cars_array[$car_fleet_keys[$car_num]] = $car_fleet_values[$car_num];
         }
-        //Log::channel('stdout')->info("CarRentalSearchControllerCommonTrait getCarRentalArray cars_array => ".var_export($cars_array,true));
         return $cars_array;
     }
 
@@ -78,7 +77,6 @@ trait CarRentalSearchControllerCommonTrait{
         foreach($companies_data as $key => $company_data){
             $companies_data[$key]['cars'] = $this->getCompanyCarFleet($company_data);
         }
-        /* Log::channel('stdout')->info("CarRentalSearchControllerCommonTrait getCarRentalArray CARRENTAL_COMPANIES => ".var_export(Cr::CARRENTAL_COMPANIES,true)); */
         return [
             'age_ranges' => Cr::AGE_RANGES,
             'available_locations' => Cr::AVAILABLE_LOCATIONS,

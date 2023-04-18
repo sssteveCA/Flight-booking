@@ -28,47 +28,35 @@ class RegisterControllerApi extends Controller
      */
     public function register(Request $request)
     {
-        //Log::channel('stdout')->info("RegisterControllerApi register");
         $inputs = $request->all();
-        //Log::channel('stdout')->info("RegisterControllerApi register inputs => ".var_export($inputs,true));
         try{
             $this->validator($inputs)->validate();
             //Add the new subscriber to DB
-            //Log::channel('stdout')->info("RegisterControllerApi register validated");
             event(new Registered($user = $this->create($request->all())));
-            //Log::channel('stdout')->info("RegisterControllerApi register event");
             //Registered user login with his account
             //$this->guard()->login($user);
-            //Log::channel('stdout')->info("RegisterControllerApi register login guard");
             if($this->registered($request,$user)){
-                //Log::channel('stdout')->info("RegisterControllerApi register user registered");
                 //Registration successfully completed
-                //return response()->view(P::VIEW_SUBSCRIBED,['message' => C::OK_REGISTRATION],201);
                 $response = [
                     C::KEY_STATUS => 'OK',
                     C::KEY_MESSAGE => C::OK_REGISTRATION
                 ];
-                //Log::channel("stdout")->debug("RegisterControllerApi register response => ".var_export($response,true));
                 return response()->json($response,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
             }  
             $response = [
                 C::KEY_STATUS => 'ERROR',
                 C::KEY_MESSAGE => C::ERR_REGISTRATION
             ];
-            //Log::channel("stdout")->debug("RegisterControllerApi register response  error => ".var_export($response,true));
             throw new HttpResponseException(
                 response()->json($response,500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
             );
         }catch(\Exception $e){
             if($e instanceof ValidationException){
-                //Log::channel('stdout')->info("RegisterController register ValidationException");
                 $errors = $e->errors();
                 $response = [
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => $errors[array_key_first($errors)][0]
                 ];
-                //Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
-                //Log::channel('stdout')->info("RegisterController register ValidationException errors => ".var_export($errors,true));
                 throw new HttpResponseException(
                     response()->json($response,400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 );
@@ -78,7 +66,6 @@ class RegisterControllerApi extends Controller
                     C::KEY_STATUS => 'ERROR',
                     C::KEY_MESSAGE => C::ERR_REGISTRATION
                 ];
-                //Log::channel("stdout")->debug("RegisterControllerApi register response  exception => ".var_export($response,true));
                 throw new HttpResponseException(
                     response()->json($response,500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
                 );

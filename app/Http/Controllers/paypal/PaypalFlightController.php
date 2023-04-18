@@ -32,7 +32,6 @@ class PaypalFlightController extends Controller
     public function return(Request $request){
         try{
             $post_data = $request->all();
-            //Log::channel('stdout')->debug("PaypalFlightController return post => ".var_export($post_data,true));
             if(isset($post_data['payer_status'])){
                 if($post_data['payer_status'] == "VERIFIED"){
                     //Payment completed
@@ -68,6 +67,5 @@ class PaypalFlightController extends Controller
                 ],500)
             );
         }
-        //Log::channel('stdout')->debug("PaypalController return post_data => ".var_export($post_data,true));
     }
 }

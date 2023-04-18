@@ -21,7 +21,6 @@ class UserManager{
     public function __construct()
     {
         $this->auth_id = Auth::id();
-        //Log::channel('stdout')->info("Functions Auth id ".$this->auth_id);
     }
 
     public function editUsername(EditUsernameRequest $request,$auth_id):array {
@@ -31,7 +30,6 @@ class UserManager{
             $username = $request->input('username');
             $userA->name = $username;
             $save = $userA->save();
-            //Log::channel('stdout')->info("editUsername save => ".$save);
             return [
                     C::KEY_CODE => 200, C::KEY_DONE => true, 'edited' => true, C::KEY_MESSAGE => C::OK_USERNAMEUPDATED
             ];
@@ -43,11 +41,8 @@ class UserManager{
     }
 
     public function editPassword(EditPasswordRequest $request,$auth_id):array {
-        //Log::channel('stdout')->info("editPassword auth_id => ".$auth_id);
         $userA = $this->getUser($auth_id);
         if($userA != null){
-            //Log::debug("userA != null");
-            //Log::debug("request => ".var_export($request->all(),true));
            /*  $password = $request->input('oldpwd');
             if(Hash::check($password,$userA->password)){ */
                 $newPassword = $request->input('newpwd');
