@@ -45,7 +45,6 @@ export default class FlightDelete{
         let response: object = {};
         try{
             await this.deleteFlightPromise().then(res => {
-                //console.log(res);
                 response = JSON.parse(res);
             }).catch(err => {
                 console.warn(err);
@@ -63,14 +62,12 @@ export default class FlightDelete{
     private async deleteFlightPromise(): Promise<string>{
         let promise = await new Promise((resolve,reject) => {
             let url = FlightDelete.URL_SCRIPT+'/'+this._id;
-            //console.log("url => "+url);
             fetch(url,{
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': this._token
                 },
             }).then(res => {
-                //console.log(res);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);

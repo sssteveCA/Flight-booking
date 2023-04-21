@@ -65,7 +65,6 @@ export default class CarRental{
             html_elements_id: { images: 'car_rental_images', info: 'car_rental_info' },
             images: car_data ['images']
         };
-        //console.log(ch_data);
         let ch: CarRentalHtml = new CarRentalHtml(ch_data);
     }
 
@@ -74,10 +73,8 @@ export default class CarRental{
         let response: object = {};
         try{
             await this.carRentalPromise().then(res => {
-                //console.log(res);
                 response = JSON.parse(res);
                 this._carrental_data = response;
-                //console.log(this._carrental_data);
                 this.fillDropdowns();
             }).catch(err => {
                 throw err;
@@ -132,8 +129,6 @@ export default class CarRental{
         let car_data: object = this._carrental_data['companies_data'][selected_company]['cars'][selected_car];
         car_data['car_name'] = selected_car;
         car_data['company_name'] = selected_company;
-        /* console.log("CarRental setCompanyCarsDropdown");
-        console.log(car_data); */
         this.autoDetails(car_data);
     }
 
@@ -153,7 +148,6 @@ export default class CarRental{
 
     private setCountryDropdowns(available_locations: object): void{
         let locations_lists: string[] = Object.keys(available_locations);
-        //console.log(locations_lists);
         locations_lists.forEach((location, index) => {
             let option_pickup: JQuery<HTMLOptionElement> = $('<option>');
             option_pickup.val(location);
@@ -199,7 +193,6 @@ export default class CarRental{
 
     private setLocationDropdown(select_el: JQuery<HTMLSelectElement>, country_location: object): void{
         let locations: string[] = Object.keys(country_location);
-        //console.log(locations);
         locations.forEach((location,index) => {
             let option: JQuery<HTMLOptionElement> = $('<option>');
             option.val(location);

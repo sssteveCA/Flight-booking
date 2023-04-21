@@ -8,7 +8,6 @@ export function loadFlightEventsInfo(): void{
     let events_div: JQuery<HTMLDivElement> = $('#events');
     let fel:FlightEventsList = new FlightEventsList();
     fel.flight_events_request().then(response => {
-        //console.log(fel.html);
         let feh: FlightEventsHtml = new FlightEventsHtml(fel.json);
             //No errors Happened
             events_div.html(feh.html);

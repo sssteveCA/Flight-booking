@@ -89,7 +89,6 @@ export default class HotelsAvailable{
         let regex2: RegExp = new RegExp("[+()]","g");
         prefix = prefix.replace(regex,'_');
         prefix = prefix.replace(regex2,'');
-        //console.log(prefix);
         return prefix;
     }
 
@@ -214,7 +213,6 @@ export default class HotelsAvailable{
     private setHotelImages(country: string, city: string, hotel: string): void{
         let basePath: string = this.currentImgPrefix(country,city,hotel);
         let nImages: number = this._hotels[country][city][hotel]["images"];
-        //console.log("nImages => "+nImages)
         let html = `
 <div class="container-fluid">
     <div class="row g-2">        
@@ -229,7 +227,6 @@ export default class HotelsAvailable{
     </div>
 </div>
         `;
-        //console.log(html);
         this._hotel_info_image_el.html(html);
     }
 

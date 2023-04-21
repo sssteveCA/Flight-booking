@@ -9,7 +9,6 @@ import EditPassword from "../../classes/profile/editpassword";
 export function showPassword(): void{
     //detect showPassword checkbox changes
     $('#showPassword').on('change',function(){
-        //console.log("ShowPassword change");
         var checked = $(this).is(":checked");
         if(checked){
             $('#oldpwd').attr('type','text');

@@ -11,9 +11,7 @@ $(function(){
     $('#fDelete').on('submit', (e)=>{
         //User wants delete a flight
         e.preventDefault();
-        //console.log("submit");
         let form = $(e.currentTarget);
-        //console.log(form);
         let dataCd: ConfirmDialogInterface = {
             title: 'Elimina volo',
             message: Constants.MSG_CONFIRMDELETEFLIGHT
@@ -28,11 +26,8 @@ $(function(){
                 id: $(id).val() as number,
                 token: $(token).val() as string
             };
-            //console.log(dataFd);
             let flightDelete = new FlightDelete(dataFd);
             flightDelete.deleteFlight().then(obj => {
-                //console.log("obj");
-                //console.log(obj);
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',

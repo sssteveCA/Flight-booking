@@ -40,7 +40,6 @@ export default class EditUsername{
         this._errno = 0;
         try{
             await this.editUsernamePromise().then(res => {
-                //console.log(res);
                 let json = JSON.parse(res);
                 message = json[Constants.KEY_MESSAGE]; 
             }).catch(err => {

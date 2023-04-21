@@ -25,7 +25,6 @@ $(()=>{
             }      
         }
     };
-    //console.log(elements);
     loadAirportsData(elements);
     //loadCountries(elements);
     loadCompanies(elements);
@@ -55,7 +54,6 @@ function loadAirportsData(elements: object): void{
 function setInputDate(elements: any): void{
     elements['flight_tab']['elem']['flight-type-radio'].on('change',() => {
         let value = elements['flight_tab']['elem']['flight-type-radio'].filter(':checked').val();
-        //console.log(value);
         if(value == 'oneway'){
             elements['flight_tab']['elem']['fb-roundtrip-div'].css('display','none');
             elements['flight_tab']['elem']['fb-oneway-div'].css('display','flex');

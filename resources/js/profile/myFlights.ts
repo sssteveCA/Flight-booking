@@ -14,7 +14,6 @@ $(function(){
         //User wants delete a flight
         e.preventDefault();
         let form = $(e.currentTarget);
-        //console.log(form);
         let dataCd: ConfirmDialogInterface = {
             title: 'Elimina volo',
             message: Constants.MSG_CONFIRMDELETEFLIGHT
@@ -29,16 +28,12 @@ $(function(){
                 id: $(id).val() as number,
                 token: $(token).val() as string
             };
-            //console.log(dataFd);
             let flightDelete = new FlightDelete(dataFd);
             //Search for the spinner near the button clicked
             let spinner: JQuery = form.parent('div').children('div').find('div');
-            //console.log(spinner);
             spinner.removeClass("d-none");
             flightDelete.deleteFlight().then(obj => {
                 spinner.addClass("d-none");
-                /* console.log("obj");
-                console.log(obj);  */
                 //Response from delete request
                 let dataMd: MessageDialogInterface = {
                     title: 'Elimina volo',

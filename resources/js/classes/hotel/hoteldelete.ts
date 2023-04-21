@@ -36,7 +36,6 @@ export default class HotelDelete{
         let response: object = {};
         try{
             await this.deleteHotelPromise().then(res => {
-                //console.log(res);
                 response = JSON.parse(res);
             }).catch(err => {
                 throw err;
@@ -59,7 +58,6 @@ export default class HotelDelete{
                     'X-CSRF-TOKEN': this._token
                 }
             }).then(res => {
-                //console.log(res);
                 resolve(res.text());
             }).catch(err => {
                 reject(err);

@@ -81,9 +81,7 @@ export default class Email{
             if(!this.validateInput())
                 throw this.error; //One input value has wrong format
             await this.sendEmailPromise().then(res => {
-                //console.log(res);
                 let json = JSON.parse(res);
-                //console.log(json);
                 message = json[Constants.KEY_MESSAGE];
             }).catch(err =>{
                 this._errno = Email.ERR_SCRIPT_EXCEPTION;
@@ -121,7 +119,6 @@ export default class Email{
     }
 
     private validateInput(): boolean{
-        //console.log("Email Validate input");
         let valid = true;
         this._errno = 0;
         let inputs = {
@@ -131,9 +128,7 @@ export default class Email{
             message: this._message
         };
         for(let key in Email.regexs){
-            //console.log(`${key} => ${Email.regexs[key]} `);
             let exp = new RegExp(Email.regexs[key]);
-            //console.log(exp);
             if(!exp.test(inputs[key])){
                 //Match failed
                 switch(key){

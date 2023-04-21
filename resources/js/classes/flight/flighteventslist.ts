@@ -39,11 +39,8 @@ export default class FlightEventsList{
     async flight_events_request(): Promise<boolean>{
         let ok:boolean = false;
         this._errno = 0;
-        //console.log("Prima della promise");
         await this.flight_event_request_promise().then(res => {
-            //console.log(res);
             this._json = JSON.parse(res);
-            //console.log(this._flight_events);
             ok = true;
         }).catch(err => {
             console.warn(err);
