@@ -91,8 +91,8 @@ interface Constants{
     const VERR_USERNAME1_MAX = "Lo username non può avere più di 20 caratteri";
 
     //Other messages
-    const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Non hai ancora prenotato nessun volo";
-    const MESS_BOOKED_HOTEL_LIST_EMPTY = "Non hai ancora prenotato nessuna stanza d'albergo";
+    const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Lista dei voli prenotati vuota";
+    const MESS_BOOKED_HOTEL_LIST_EMPTY = "Lista delle stanze d'albergo prenotate vuota";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
     const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
     const MESS_NOPOSTS = "Nessuna notizia da mostrare";

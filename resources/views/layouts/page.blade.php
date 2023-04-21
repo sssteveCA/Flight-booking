@@ -36,7 +36,7 @@
             :url-privacy="P::URL_PRIVACY_POLICY"
             :url-root="P::URL_ROOT"
             :url-terms="P::URL_TERMS" />
-        <div class="content my-5">
+        <div id="main-container" class="content my-5">
             @yield('content')
         </div>
         <x-footer />

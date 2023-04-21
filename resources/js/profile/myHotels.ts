@@ -1,7 +1,7 @@
 import ConfirmDialog from "../classes/dialog/confirmdialog";
 import MessageDialog from "../classes/dialog/messagedialog";
 import HotelDelete from "../classes/hotel/hoteldelete";
-import { dialogRemoveCd, dialogRemoveMd } from "../general/functions";
+import { bootstrapMessage, dialogRemoveCd, dialogRemoveMd } from "../general/functions";
 import ConfirmDialogInterface from "../interfaces/dialog/confirmdialog.interface";
 import MessageDialogInterface from "../interfaces/dialog/messagedialog.interface";
 import HotelDeleteInterface from "../interfaces/hotel/hoteldelete.interface";
@@ -42,6 +42,11 @@ $(()=>{
                         let divParents = form.parents('div');
                         let row = divParents.eq(1);
                         $(row).remove();
+                        let hc_html = $('#hotels-container').html();
+                        if(hc_html.trim() == ""){
+                            let message = bootstrapMessage("Lista stanze vuota", "Lista delle stanze d'albergo prenotate vuota")
+                            $('#main-container').append(message)
+                        }
                     }
                 });
             }).catch(err => {

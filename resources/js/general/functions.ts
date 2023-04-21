@@ -24,3 +24,17 @@ export function dialogRemoveCd(confirmDialog: ConfirmDialog): void{
         confirmDialog.dialog.remove();
     });//$(cd.btNo).on('click',()=>{}  
 }
+
+/**
+ * Place a bootstrap message in the HTML page
+ * @param title 
+ * @param message 
+ */
+export function bootstrapMessage(title: string, message: string): string{
+        return `
+<div class="container mt-5">
+    <h2 class="mt-5 text-center">${title}</h2>
+    <p class="lead text-center">${message}</p>
+</div>  
+        `;
+}

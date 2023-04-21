@@ -1,7 +1,7 @@
 import ConfirmDialog from "../classes/dialog/confirmdialog";
 import MessageDialog from "../classes/dialog/messagedialog";
 import FlightDelete from "../classes/flight/flightdelete";
-import { dialogRemoveCd, dialogRemoveMd } from "../general/functions";
+import { bootstrapMessage, dialogRemoveCd, dialogRemoveMd } from "../general/functions";
 import ConfirmDialogInterface from "../interfaces/dialog/confirmdialog.interface";
 import MessageDialogInterface from "../interfaces/dialog/messagedialog.interface";
 import FlightDeleteInterface from "../interfaces/flight/flightdelete.interface";
@@ -55,6 +55,11 @@ $(function(){
                         //Get the row to delete
                         let row = divParents.eq(1);
                         $(row).remove();
+                        let fc_html = $('#flights-container').html();
+                        if(fc_html.trim() == ""){
+                            let message = bootstrapMessage("Lista voli vuota","Lista dei voli prenotati vuota")
+                            $('#main-container').append(message)
+                        }
                     }//if(obj[Constants.KEY_DONE] == true){   
                 });
             }).catch(err => {

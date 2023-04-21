@@ -22,7 +22,7 @@
     <x-back-button back_image="/img/back.png" back_url="../../" />
     @if($done == true)
         @if($empty == false)
-            <div class="container-fluid">
+            <div id="flights-container" class="container-fluid">
             @foreach($flights as $flight)
                 <div class="row justify-content-center justify-content-lg-start">
                     <div class="col-2 col-lg-1 flight-id">
