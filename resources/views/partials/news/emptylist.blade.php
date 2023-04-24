@@ -1,1 +1,1 @@
-<x-alert class="mt-5 alert alert-secondary" message="Nessuna notizia da mostrare" />
+<x-alert classes="mt-5 alert alert-secondary" message="Nessuna notizia da mostrare" />
