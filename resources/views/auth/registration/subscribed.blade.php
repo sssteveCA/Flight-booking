@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
- @title('title','Registrazione')
+@section('title','Registrazione')
 
 @section('content')
     @isset($message)
