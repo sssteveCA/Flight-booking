@@ -4,17 +4,14 @@
 # {{ $greeting }}
 @else
 @if ($level === 'error')
-# @lang('Whoops!')
+# @lang('!')
 @else
-# @lang('Hello!')
+# @lang('Ciao')
 @endif
 @endif
 
 {{-- Intro Lines --}}
-@foreach ($introLines as $line)
-{{ $line }}
-
-@endforeach
+Fai clic sul pulsante in basso per verificare il tuo indirizzo email.
 
 {{-- Action Button --}}
 @isset($actionText)
@@ -29,21 +26,17 @@
     }
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-{{ $actionText }}
+Verifica l'indirizzo email
 @endcomponent
 @endisset
 
 {{-- Outro Lines --}}
-@foreach ($outroLines as $line)
-{{ $line }}
-
-@endforeach
+Se non hai creato un account, non sono necessarie ulteriori azioni.
 
 {{-- Salutation --}}
 @if (! empty($salutation))
-{{ $salutation }}
 @else
-@lang('Regards'),<br>
+@lang('Saluti'),<br>
 {{ config('app.name') }}
 @endif
 
@@ -51,8 +44,8 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
+    "Se hai problemi cliccando sul bottone \"Verifica l'indirizzo email\", copia e incolla il link sottostante\n".
+    'sul tuo browser: ',
     [
         'actionText' => $actionText,
     ]
