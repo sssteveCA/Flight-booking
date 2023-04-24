@@ -6,9 +6,6 @@
 This app allows users to book flights, hotel rooms, rent a car and get ticket to participate at some events around the world.
 </div>
 <div>
-I use Laravel framework 8.80.0 version
-</div>
-<div>
     <h1>Features</h1>
     <ul>
         <li>
@@ -34,7 +31,14 @@ I use Laravel framework 8.80.0 version
                         <li><h4>Book suspended flight from personal list</h4></li>
                     </ul>
                 </li>
-                <li><h3>Hotel room booking*</h3></li>
+                <li>
+                    <h3>Hotel room booking</h3>
+                    <ul>
+                        <li><h4>View</h4></li>
+                        <li><h4>Delete</h4></li>
+                        <li><h4>Book suspended hotel room from personal list</h4></li>
+                    </ul>
+                </li>
                 <li><h3>Car rental*</h3></li>
                 <li>
                     <h3>Events</h3>
@@ -69,7 +73,14 @@ I use Laravel framework 8.80.0 version
                         <li><h4>Book suspended flight from personal list*</h4></li>
                     </ul>
                 </li>
-                <li><h3>Hotel room booking*</h3></li>
+                <li>
+                    <h3>Hotel room booking*</h3>
+                    <ul>
+                        <li><h4>View</h4></li>
+                        <li><h4>Delete</h4></li>
+                        <li><h4>Book suspended hotel room from personal list*</h4></li>
+                    </ul>
+                </li>
                 <li><h3>Car rental*</h3></li>
                 <li>
                     <h3>Events</h3>
@@ -86,6 +97,9 @@ I use Laravel framework 8.80.0 version
 <div>The features with '*' have not available yet</div>
 <br><br>
 <div>
-    <a href="https://user-images.githubusercontent.com/95185311/203379460-887246a3-1872-4f48-994e-91d6a534ce3b.mp4">Quick demo video</a>
+    <a href="https://user-images.githubusercontent.com/95185311/203379460-887246a3-1872-4f48-994e-91d6a534ce3b.mp4">Quick demo video</a> (25-11-2022)
+</div>
+<div>
+    <a href="https://user-images.githubusercontent.com/95185311/233960046-47227abc-f2af-4934-a2e7-41eb276b4829.mp4">Quick demo video</a> (24-04-2023)
 </div>
 
