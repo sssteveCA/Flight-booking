@@ -21,9 +21,9 @@
                     'route_paypal_cancel' => ''
                 ])
                 <div class="my-3">
-                    <input type="hidden" name="item_name_1" value="">
-                    <input type="hidden" name="item_number_1" value="">
-                    <input type="hidden" name="amount_1" value="">
+                    <input type="hidden" name="item_name_1" value="{{ $carrental['car_name'] }}">
+                    <input type="hidden" name="item_number_1" value="{{ $carrental['id'] }}">
+                    <input type="hidden" name="amount_1" value="{{ $carrental['price'] }}">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">PAGA</button>

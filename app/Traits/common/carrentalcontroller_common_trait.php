@@ -7,6 +7,7 @@ use App\Exceptions\DatabaseInsertionException;
 use App\Models\CarRental;
 use App\Models\CarRentalTemp;
 use App\Interfaces\ExceptionsMessages as Em;
+use App\Interfaces\Constants as C;
 
 /**
  * This trait contains code shared between CarRentalController and CarRentalControllerApi
@@ -33,6 +34,19 @@ trait CarRentalControllerCommonTrait{
             throw new DatabaseInsertionException(Em::CARRENTAL_NEWROW_EXC);
         $crtemp->delete();
         return $carrental;
+    }
+
+    /**
+     * Set the response data for the store route
+     * @param CarRental $carrental the rented car model saved to the database
+     * @return array an array with the info of the rented car
+     */
+    private function setStoreResponseData(CarRental $carrental): array{
+        return [
+            C::KEY_DONE => true,
+            C::KEY_MESSAGE => "Per confermare la prenotazione dell'auto fai click su paga",
+            'carrental' => $carrental
+        ];
     }
 }
 

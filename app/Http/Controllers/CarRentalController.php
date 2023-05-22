@@ -12,7 +12,7 @@ class CarRentalController extends Controller
 {
 
     use CarRentalControllerCommonTrait;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -41,11 +41,12 @@ class CarRentalController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
         $user_id = auth()->id();
         try{
-
-        }catch(Exception $e){
+            $carrental = $this->create_rented_car($request->session_id,$user_id);
+            $response_array = $this->setStoreResponseData($carrental);
+            return response()->view(P::VIEW_BOOKCARRENTAL,$response_array,201);
+        }catch(Exception $e){    
             return response()->view(P::VIEW_BOOKCARRENTAL,[
                 C::KEY_DONE => false,
                 C::KEY_MESSAGE => C::ERR_REQUEST
