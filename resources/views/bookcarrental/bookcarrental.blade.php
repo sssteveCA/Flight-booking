@@ -1,6 +1,9 @@
-@extends('layout.page')
+@extends('layouts.page')
 
 @section('namespaces')
+    @php
+        use App\Interfaces\Paths as P;
+    @endphp
 @endsection
 
 @section('title','Paga le auto prenotate')
