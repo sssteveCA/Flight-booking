@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\Common\CarRentalControllerCommonTrait;
 use Illuminate\Http\Request;
 use App\Interfaces\Paths as P;
+use App\Interfaces\Constants as C;
+use Exception;
 
 class CarRentalController extends Controller
 {
+
+    use CarRentalControllerCommonTrait;
+    
     /**
      * Display a listing of the resource.
      *
@@ -31,11 +37,21 @@ class CarRentalController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return redirect(P::URL_HOME);
+        $inputs = $request->all();
+        $user_id = auth()->id();
+        try{
+
+        }catch(Exception $e){
+            return response()->view(P::VIEW_BOOKCARRENTAL,[
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST
+            ],500);
+        }
+        //return redirect(P::URL_HOME);
     }
 
     /**

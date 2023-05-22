@@ -92,6 +92,7 @@ interface Paths{
     //Views
     const VIEW_ABOUTUS = 'aboutus';
     const VIEW_BACKBUTTON = 'partials.back';
+    const VIEW_BOOKCARRENTAL = 'bookcarrental.bookcarrental';
     const VIEW_BOOKFLIGHT = 'bookflight.bookflight';
     const VIEW_BOOKHOTEL = 'bookhotel.bookhotel';
     const VIEW_CARRENTALLOGIN = 'include.carrentallogin';
