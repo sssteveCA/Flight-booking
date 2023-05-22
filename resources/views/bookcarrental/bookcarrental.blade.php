@@ -7,6 +7,7 @@
 
 @section('links')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/bookcarrental/bookcarrental.css') }}">
 @endsection
 
 @section('content')

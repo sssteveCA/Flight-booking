@@ -26,6 +26,7 @@ const mix = require('laravel-mix');
 +mix.ts('resources/js/profile/info.ts','public/js/profile')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/welcome.scss','public/css')
+    .sass('resources/sass/bookcarrental/bookcarrental.scss','public/css/bookcarrental')
     .sass('resources/sass/bookflight/bookflight.scss','public/css/bookflight')
     .sass('resources/sass/bookhotel/bookhotel.scss','public/css/bookhotel')
     .sass('resources/sass/error/errors.scss','public/css/error')
