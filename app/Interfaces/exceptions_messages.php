@@ -7,7 +7,10 @@ namespace App\Interfaces;
  */
 interface ExceptionsMessages{
 
-    const CARRENTALT_NEWROW_EXC = "'Errore durante l'inserimento di una nuova riga nella tabella carrentaltemp";
+    const CARRENTALDATAMODIFIED_EXC = "I dati delLa prenotazione dell'auto non corrispondono a quelli originalmente forniti";
+
+    const CARRENTAL_NEWROW_EXC = "Errore durante l'inserimento di una nuova riga nella tabella carrentals";
+    const CARRENTALT_NEWROW_EXC = "Errore durante l'inserimento di una nuova riga nella tabella carrentaltemp";
 
     const FLIGHTARRAY_EXC = "L' array che contiene i voli prenotati non è formattato correttamente";
     const FLIGHTSDATAMODIFIED_EXC = "I dati del volo da inserire non corrispondono a quelli originalmente forniti";
