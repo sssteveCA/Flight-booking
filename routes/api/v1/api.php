@@ -8,6 +8,7 @@ use App\Interfaces\Paths as P;
 use App\Http\Controllers\api\welcome\FlightSearchControllerApi;
 use App\Http\Controllers\api\Auth\LoginControllerApi;
 use App\Http\Controllers\api\Auth\LogoutControllerApi;
+use App\Http\Controllers\api\CarRentalControllerApi;
 use App\Http\Controllers\api\EmailControllerApi;
 use App\Http\Controllers\api\FlightControllerApi;
 use App\Http\Controllers\api\HotelControllerApi;
@@ -59,6 +60,7 @@ Route::group(['prefix' => P::PREFIX_PROFILE,'middleware' => ['custom_auth_api','
     Route::name('api.')->group(function(){
         Route::apiResource(P::PREFIX_MYFLIGHTS,FlightControllerApi::class)->except(['store','update']);
         Route::apiResource(P::PREFIX_MYHOTELS, HotelControllerApi::class)->except(['store','update']);
+        Route::apiResource(P::PREFIX_MYCARS,CarRentalControllerApi::class)->except(['store','update']);
         Route::get(P::URL_INFO,[UserControllerApi::class,'getData'])->name(P::ROUTE_INFO);
         Route::patch(P::URL_EDITUSERNAME,[UserControllerApi::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
         Route::patch(P::URL_EDITPASSWORD,[UserControllerApi::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
@@ -75,6 +77,12 @@ Route::group(['prefix' => P::PREFIX_BOOKFLIGHT, 'middleware' => ['custom_auth_ap
 Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['custom_auth_api','verified']], function(){
     Route::name('api.')->group(function(){
         Route::post('',[HotelControllerApi::class,'store'])->name(P::ROUTE_BOOKHOTEL);
+    });
+});
+
+Route::group(['prefix' => P::PREFIX_BOOKCARRENTAL, 'middleware' => ['custom_auth_api','verified']], function(){
+    Route::name('api.')->group(function(){
+        Route::post('',[CarRentalControllerApi::class,'store'])->name(P::ROUTE_BOOKCARRENTAL);
     });
 });
 

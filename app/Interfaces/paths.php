@@ -15,6 +15,7 @@ interface Paths{
     const PREFIX_FLIGHTEVENTS = 'flightevents';
     const PREFIX_NEWS = 'news';
     const PREFIX_PROFILE = 'profile';
+    const PREFIX_MYCARS = 'myCars';
     const PREFIX_MYFLIGHTS = 'myFlights';
     const PREFIX_MYHOTELS = 'myHotels';
 
