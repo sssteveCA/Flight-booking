@@ -33,6 +33,8 @@ interface Paths{
     const ROUTE_DELETEACCOUNT = 'usercontroller.deleteaccount';
     const ROUTE_EDITUSERNAME = 'usercontroller.editusername';
     const ROUTE_EDITPASSWORD = 'usercontroller.editpassword';
+    const ROUTE_CARRENTAL_PAYPAL_CANCEL = 'paypal.carrental.cancel';
+    const ROUTE_CARRENTAL_PAYPAL_RETURN = 'paypal.carrental.return';
     const ROUTE_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
     const ROUTE_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
     const ROUTE_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';

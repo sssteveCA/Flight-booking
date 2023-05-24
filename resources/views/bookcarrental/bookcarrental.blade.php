@@ -20,8 +20,8 @@
             <x-message-container title="Prenotazione auto" :message="$message" />
             <form id="fCarRentalPrice" method="post" action="{{ env('PAYPAL_FORM_URL') }}">
                 @include(P::VIEW_PAYPAL_DATA, [
-                    'route_paypal_return' => '',
-                    'route_paypal_cancel' => ''
+                    'route_paypal_return' => route(P::ROUTE_CARRENTAL_PAYPAL_RETURN),
+                    'route_paypal_cancel' => route(P::ROUTE_CARRENTAL_PAYPAL_CANCEL)
                 ])
                 <div class="my-3">
                     <input type="hidden" name="item_name_1" value="{{ $carrental['car_name'] }}">
