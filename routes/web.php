@@ -90,7 +90,7 @@ Route::group(['prefix' => P::PREFIX_BOOKHOTEL, 'middleware' => ['auth','verified
 Route::group(['prefix' => P::PREFIX_BOOKCARRENTAL, 'middleware' => ['auth','verified']], function(){
     Route::post('',[CarRentalController::class,'store'])->name(P::ROUTE_BOOKCARRENTAL);
     Route::post(P::URL_PAYPAL_RETURN,[PaypalCarRentalController::class,'return'])->name(P::ROUTE_CARRENTAL_PAYPAL_RETURN);
-    Route::post(P::URL_PAYPAL_CANCEL,[PaypalCarRentalController::class,'cancel'])->name(P::ROUTE_CARRENTAL_PAYPAL_CANCEL);
+    Route::get(P::URL_PAYPAL_CANCEL,[PaypalCarRentalController::class,'cancel'])->name(P::ROUTE_CARRENTAL_PAYPAL_CANCEL);
 });
 
 Route::get(P::URL_HOME, [HomeController::class, 'index'])->name('home');
