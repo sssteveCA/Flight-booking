@@ -11,6 +11,9 @@ interface Constants{
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
     const ERR_CARRENTAL_PREVENTIVE = 'Errore durante il calcolo del preventivo per il noleggio auto. '.Constants::ADMIN_CONTACT;
+
+    const ERR_CARRENTALPAYMENT_REFUSE = "Il pagamento dell'auto prenotata è stato rifiutato";
+    const ERR_CARRENTALPAYMENT_UNKNOWN = "Errore durante il pagamento dell'auto. ".Constants::ADMIN_CONTACT;
     const ERR_EMAILSEND = 'Si è verificato un errore durante l\' invio della mail. '.Constants::ADMIN_CONTACT;
     const ERR_EMAILNOTFOUND = "Nessun account registrato con questa email";
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
@@ -61,6 +64,7 @@ interface Constants{
 
     //success
     const OK_ACCOUNTDELETED = "IL tuo account è stato eliminato definitivamente";
+    const OK_CARRENTALPAYMENT = "Il pagamento è stato completato. L'auto richiesta è stata prenotata";
     const OK_EMAILSEND = "La tua richiesta è stata inviata. Verrai ricontattato il prima possibile";
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";
     const OK_FLIGHTBOOK_MULTIPLE = "Effettua il pagamento, per confermare la prenotazione dei voli.";
@@ -93,6 +97,7 @@ interface Constants{
     //Other messages
     const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Lista dei voli prenotati vuota";
     const MESS_BOOKED_HOTEL_LIST_EMPTY = "Lista delle stanze d'albergo prenotate vuota";
+    const MESS_CARRENTAL_PAYMENT_CANCELED = "Pagamento non effettuato. L'auto richiesta non è stata prenotata";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
     const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
     const MESS_NOPOSTS = "Nessuna notizia da mostrare";

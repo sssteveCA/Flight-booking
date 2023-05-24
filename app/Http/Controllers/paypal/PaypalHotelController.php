@@ -26,7 +26,7 @@ class PaypalHotelController extends Controller
     }
 
     /**
-     * Executed after the user has made the payment of the hotel room
+     * Executed after the user has done the payment of the hotel room
      */
     public function return(Request $request){
         try{
@@ -41,18 +41,19 @@ class PaypalHotelController extends Controller
                         $hotel->payed_date = $datetime->format('Y-m-d H:i:s');
                         $hotel->transaction_id = $post_data['txn_id'];
                         $hotel->save();
+                        return response()->view(P::VIEW_HOTEL_PAYPAL_RETURN, [
+                            'payment' => 'completed',
+                            C::KEY_MESSAGE => C::OK_HOTELPAYMENT
+                        ]);
                     }//if($hotel != null){
-                    return response()->view(P::VIEW_HOTEL_PAYPAL_RETURN, [
-                        'payment' => 'completed',
-                        C::KEY_MESSAGE => C::OK_HOTELPAYMENT
-                    ]);
+                    throw new Exception;
                 }//if($post_data['payer_status'] == "VERIFIED"){
                 return response()->view(P::VIEW_HOTEL_PAYPAL_CANCEL,[
                     'payment' => 'refused',
                     C::KEY_MESSAGE => C::ERR_HOTELPAYMENT_REFUSE
                 ],400);
             }//if(isset($post_data['payer_status'])){
-            throw new Exception("");
+            throw new Exception;
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_HOTEL_PAYPAL_RETURN,[

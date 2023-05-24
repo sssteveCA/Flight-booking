@@ -27,7 +27,7 @@ class PaypalFlightController extends Controller
     }
 
     /**
-     * Executed after the user has made the payment of the flight
+     * Executed after the user has done the payment of the flight
      */
     public function return(Request $request){
         try{
@@ -47,19 +47,20 @@ class PaypalFlightController extends Controller
                             $flight->payed_date = $datetime->format('Y-m-d H:i:s');
                             $flight->transaction_id = $post_data['txn_id'];
                             $flight->save();
+                            return response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
+                                'payment' => 'completed',
+                                C::KEY_MESSAGE => C::OK_FLIGHTPAYMENT,
+                            ]);
                         }//if($flight != null){
-                    }
-                    return response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
-                        'payment' => 'completed',
-                        C::KEY_MESSAGE => C::OK_FLIGHTPAYMENT,
-                    ]);
+                        else throw new Exception;
+                    }  
                 }//if($post_data['status'] == "VERIFIED"){
                 return response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
                     'payment' => 'refused',
                     C::KEY_MESSAGE => C::ERR_FLIGHTPAYMENT_REFUSE,
                 ],400);
             }//if(isset($post_data['payer_status'])){
-            throw new Exception("");
+            throw new Exception;
         }catch(Exception $e){
             throw new HttpResponseException(
                 response()->view(P::VIEW_FLIGHT_PAYPAL_RETURN,[
