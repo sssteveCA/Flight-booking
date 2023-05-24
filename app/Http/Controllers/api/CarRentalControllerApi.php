@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Traits\Common\CarRentalControllerCommonTrait;
+use Exception;
 use Illuminate\Http\Request;
+use App\Interfaces\Constants as C;
 
 class CarRentalControllerApi extends Controller
 {
+
+    use CarRentalControllerCommonTrait;
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +26,22 @@ class CarRentalControllerApi extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->all();
+        try{
+            $user_id = auth('api')->user()->id;
+            $car = $this->create_rented_car($inputs["session_id"],$user_id);
+            $response_array = $this->setStoreResponseData($car);
+            return response()->json($response_array,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**
