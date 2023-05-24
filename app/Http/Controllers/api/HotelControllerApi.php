@@ -52,8 +52,8 @@ class HotelControllerApi extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
         try{
+            $inputs = $request->all();
             $user_id = auth('api')->user()->id;
             $hotel = $this->create_hotel($inputs["session_id"],$user_id);
             $response_array = $this->setStoreResponseData($hotel);

@@ -39,6 +39,7 @@ Route::name('api.')->group(function(){
     Route::post('/login',[LoginControllerApi::class, 'login'])->name('login');
     Route::post('/register',[RegisterControllerApi::class,'register'])->name('register');
     Route::get(P::URL_AIRPORTS_AVAILABLE,[FlightSearchControllerApi::class,'getAvailableAirports']);
+    Route::post(P::URL_CARRENTALPRICE,[CarRentalSearchControllerApi::class,'getCarRentalPrice'])->name(P::ROUTE_CARRENTALPRICE);
     Route::get(P::URL_CARRENTALSEARCH,[CarRentalSearchControllerApi::class,'getCarRentalData']);
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);

@@ -30,8 +30,8 @@ class CarRentalControllerApi extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
         try{
+            $inputs = $request->all();
             $user_id = auth('api')->user()->id;
             $car = $this->create_rented_car($inputs["session_id"],$user_id);
             $response_array = $this->setStoreResponseData($car);
