@@ -116,6 +116,9 @@ interface Paths{
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_MYHOTELS = 'profile.myHotels';
     const VIEW_NEWS = 'news';
+
+    const VIEW_CARRENTAL_PAYPAL_CANCEL = 'paypal.carrental.cancel';
+    const VIEW_CARRENTAL_PAYPAL_RETURN = 'paypal.carrental.return';
     const VIEW_FLIGHT_PAYPAL_CANCEL = 'paypal.flight.cancel';
     const VIEW_FLIGHT_PAYPAL_RETURN = 'paypal.flight.return';
     const VIEW_HOTEL_PAYPAL_CANCEL = 'paypal.hotel.cancel';
