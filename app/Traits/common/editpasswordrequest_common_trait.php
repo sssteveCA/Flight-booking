@@ -51,7 +51,7 @@ trait EditPasswordRequestCommonTrait{
     public function rules()
     {
         return [
-            'oldpwd' => ['required','password'],
+            'oldpwd' => ['required','current_password'],
             'newpwd' => ['required','min:8'],
             'confnewpwd' => ['required','min:8','same:newpwd']
         ];

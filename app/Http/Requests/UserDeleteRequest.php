@@ -29,7 +29,7 @@ class UserDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ['required','password'],
+            'password' => ['required','current_password'],
             'password_conf' => ['required','same:password']
         ];
     }
