@@ -22,7 +22,10 @@
                     @auth
                     <x-menu.profile 
                         :route-info="$attributes['route-info']" 
-                        :route-myflights-index="$attributes['route-myflights-index']" :route-myhotels-index="$attributes['route-myhotels-index']" :route-logout="$attributes['route-logout']" />
+                        :route-myflights-index="$attributes['route-myflights-index']" 
+                        :route-myhotels-index="$attributes['route-myhotels-index']" 
+                        :route-mycars-index="$attributes['route-mycars-index']"
+                        :route-logout="$attributes['route-logout']" />
                     @else
                         <x-menu.not-logged 
                             :route-login="$attributes['route-login']" 
