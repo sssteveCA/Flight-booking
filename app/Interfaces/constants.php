@@ -97,6 +97,7 @@ interface Constants{
     //Other messages
     const MESS_BOOKED_FLIGHT_LIST_EMPTY = "Lista dei voli prenotati vuota";
     const MESS_BOOKED_HOTEL_LIST_EMPTY = "Lista delle stanze d'albergo prenotate vuota";
+    const MESS_RENT_CARS_LIST_EMPTY = "Lista delle auto prese a noleggio vuota";
     const MESS_CARRENTAL_PAYMENT_CANCELED = "Pagamento non effettuato. L'auto richiesta non è stata prenotata";
     const MESS_FLIGHT_PAYMENT_CANCELED = "Pagamento non effettuato. I voli richiesti non sono stati prenotati";
     const MESS_HOTEL_PAYMENT_CANCELED = "Pagamento non effettuato. Le stanze d'albergo richieste non sono state prenotate";
