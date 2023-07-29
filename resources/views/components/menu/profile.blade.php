@@ -7,6 +7,7 @@
         <a href="{{ $attributes['route-info'] }}" class="dropdown-item">Il mio profilo</a>
         <a href="{{ $attributes['route-myflights-index'] }}" class="dropdown-item">I miei voli</a>
         <a href="{{ $attributes['route-myhotels-index'] }}" class="dropdown-item">Le mie stanze</a>
+        <a href="" class="dropdown-item">Auto noleggiate</a>
         <a id="logout-item" class="dropdown-item" href="{{ $attributes['route-logout'] }}">
             {{ __('Logout') }}
         </a>
