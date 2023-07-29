@@ -37,6 +37,32 @@ trait CarRentalControllerCommonTrait{
     }
 
     /**
+     * Set the response data for FlightController index method route
+     * @param mixed $user_id
+     * @return array
+     */
+    private function setIndexResponseData(mixed $user_id): array{
+        $cars = CarRental::where('user_id',$user_id)
+                ->orderByDesc('rentstart_date')
+                ->get();
+        if($cars->isNotEmpty()){
+            return [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
+                    C::KEY_DONE => true, C::KEY_DATA => $cars
+                ]
+            ];
+        }
+        return [
+            C::KEY_CODE => 200,
+            C::KEY_RESPONSE => [
+                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_RENT_CARS_LIST_EMPTY
+            ]
+        ];
+        
+    }
+
+    /**
      * Set the response data for the store route
      * @param CarRental $carrental the rented car model saved to the database
      * @return array an array with the info of the rented car
