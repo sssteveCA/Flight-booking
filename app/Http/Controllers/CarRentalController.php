@@ -23,17 +23,8 @@ class CarRentalController extends Controller
     {
         try{
             $user_id = auth()->user()->id;
-            $cars = CarRental::where('user_id',$user_id)
-                            ->orderByDesc('rentstart_date')
-                            ->get();
-            if($cars->isNotEmpty()){
-                return response()->json([
-                    C::KEY_DONE => true, C::KEY_DATA => $cars
-                ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-            }
-            return response()->json([
-                C::KEY_DONE => true, C::KEY_EMPTY => true, C::KEY_MESSAGE => C::MESS_RENT_CARS_LIST_EMPTY
-            ],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+            $response_data = $this->setIndexResponseData($user_id);
+            return response()->view(P::VIEW_MYCARS,$response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE]);
         }catch(Exception $e){
             return response()->json([
                 C::KEY_DONE => false,

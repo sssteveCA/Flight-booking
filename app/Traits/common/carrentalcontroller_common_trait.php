@@ -49,7 +49,7 @@ trait CarRentalControllerCommonTrait{
             return [
                 C::KEY_CODE => 200,
                 C::KEY_RESPONSE => [
-                    C::KEY_DONE => true, C::KEY_DATA => $cars
+                    C::KEY_DONE => true, C::KEY_EMPTY => false, 'cars' => $cars
                 ]
             ];
         }

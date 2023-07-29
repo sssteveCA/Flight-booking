@@ -25,6 +25,7 @@
             :route-info="route(P::ROUTE_INFO)"
             :route-login="route('login')"
             :route-logout="route('logout')"
+            :route-mycars-index="route('myCars.index')"
             :route-myflights-index="route('myFlights.index')"
             :route-myhotels-index="route('myHotels.index')"
             :route-news-index="route('news.index')"

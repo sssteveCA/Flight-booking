@@ -116,6 +116,7 @@ interface Paths{
     const VIEW_LOGIN = 'auth.login';
     const VIEW_MENU = 'layouts.menu';
     const VIEW_MENU_PRIVACY = 'partials.menu_privacy';
+    const VIEW_MYCARS = 'profile.myCars';
     const VIEW_MYFLIGHTS = 'profile.myFlights';
     const VIEW_MYHOTELS = 'profile.myHotels';
     const VIEW_NEWS = 'news';
