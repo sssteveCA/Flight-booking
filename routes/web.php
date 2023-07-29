@@ -50,6 +50,7 @@ Route::group(['prefix' => P::PREFIX_PROFILE, 'middleware' => ['auth','verified']
     Route::get(P::URL_INFO, [UserController::class, 'getData'])->name(P::ROUTE_INFO); 
     Route::resource(P::PREFIX_MYFLIGHTS, FlightController::class)->except([ 'edit','update', 'store' ]);
     Route::resource(P::PREFIX_MYHOTELS, HotelController::class)->except([ 'edit', 'update', 'store' ]);
+    Route::resource(P::PREFIX_MYCARS, CarRentalController::class)->except([ 'edit', 'update', 'store']);
     Route::patch(P::URL_EDITUSERNAME,[UserController::class,'editUsername'])->name(P::ROUTE_EDITUSERNAME);
     Route::patch(P::URL_EDITPASSWORD,[UserController::class,'editPassword'])->name(P::ROUTE_EDITPASSWORD);
     Route::delete(P::URL_DELETEACCOUNT,[UserController::class,'deleteAccountHard'])->name(P::ROUTE_DELETEACCOUNT);
