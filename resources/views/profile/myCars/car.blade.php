@@ -10,6 +10,7 @@
 
 @section('links')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/profile/myCars/car.css') }}">
 @endsection
 
 @section('scripts')
@@ -43,7 +44,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 cr-property">STANZE PAGATE</div>
-                <div class="col-12 col-md-5 payed">{{ $car['payed'] == '1' ? 'Sì' : 'No' }}€</div>
+                <div class="col-12 col-md-5 payed">{{ $car['payed'] == '1' ? 'Sì' : 'No' }}</div>
             </div>
             @if($car['payed'] == '1')
             <div class="row justify-content-center">
