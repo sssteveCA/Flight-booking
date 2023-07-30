@@ -8,6 +8,8 @@ use App\Interfaces\Paths as P;
 use App\Interfaces\Constants as C;
 use App\Models\CarRental;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 
 class CarRentalController extends Controller
 {
@@ -73,7 +75,20 @@ class CarRentalController extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+            $user_id = Auth::id();
+            $params = [
+                'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
+            ];
+            $response_data = $this->setShowResponseData($id,$user_id,$params);
+            if($response_data[C::KEY_CODE] == 200)
+                return response()->view('',$response_data[C::KEY_RESPONSE]);
+            throw new Exception;
+        }catch(Exception $e){
+            session()->put('redirect',1);
+            return redirect(P::URL_ERRORS);
+        }
+        
     }
 
     /**
