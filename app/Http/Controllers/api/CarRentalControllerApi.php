@@ -7,6 +7,7 @@ use App\Traits\Common\CarRentalControllerCommonTrait;
 use Exception;
 use Illuminate\Http\Request;
 use App\Interfaces\Constants as C;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CarRentalControllerApi extends Controller
 {
@@ -61,7 +62,22 @@ class CarRentalControllerApi extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+            $user_id = auth('api')->user()->id;
+            $params = [ 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED_API ] ];
+            $response_data = $this->setShowResponseData($id,$user_id,$params);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(ModelNotFoundException $e){  
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ],404,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_REQUEST
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**
