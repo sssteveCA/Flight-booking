@@ -31,7 +31,7 @@
                             <span class="car-title-style">NOME AUTO:</span> {{ $car['car_name'] }}
                         </div>
                         <div class="col-12 col-sm-4 col-lg-2 car-show d-flex justify-content-center justify-content-sm-start">
-                            <form class="fCarGet" method="get" action="#">
+                            <form class="fCarGet" method="get" action="{{ route('myCars.show', ['myCars' => $car['id']]) }}">
                                 <button type="submit" class="btn btn-primary">VEDI</button>
                             </form>
                         </div>

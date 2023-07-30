@@ -6,7 +6,7 @@
     @endphp
 @endsection
 
-@section('title', 'Informazioni prenotazioni stanze')
+@section('title', 'Informazioni sulla stanza')
 
 @section('links')
     @parent
