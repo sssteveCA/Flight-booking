@@ -71,7 +71,7 @@ trait CarRentalControllerCommonTrait{
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     private function setShowResponseData(mixed $myCar, mixed $user_id, array $params): array{
-        $car = CarRental::where('id',$myCar)->findOrFail();
+        $car = CarRental::where('id',$myCar)->firstOrFail();
         if($user_id == $car->user_id){
             return [
                 C::KEY_CODE => 200,

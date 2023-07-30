@@ -28,10 +28,10 @@ class CarRentalController extends Controller
             $response_data = $this->setIndexResponseData($user_id);
             return response()->view(P::VIEW_MYCARS,$response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE]);
         }catch(Exception $e){
-            return response()->json([
+            return response()->view(P::VIEW_MYCARS,[
                 C::KEY_DONE => false,
-                C::KEY_MESSAGE => ''
-            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+                C::KEY_MESSAGE => C::ERR_MYCARS
+            ],500);
         }
     }
 
@@ -70,23 +70,28 @@ class CarRentalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $myCar
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($myCar)
     {
         try{
             $user_id = Auth::id();
             $params = [
                 'messages' => [ 'error' => C::ERR_URLNOTFOUND_NOTALLOWED ]
             ];
-            $response_data = $this->setShowResponseData($id,$user_id,$params);
+            $response_data = $this->setShowResponseData($myCar,$user_id,$params);
             if($response_data[C::KEY_CODE] == 200)
                 return response()->view(P::VIEW_CARRENTAL,$response_data[C::KEY_RESPONSE]);
             throw new Exception;
-        }catch(Exception $e){
+        }catch(ModelNotFoundException $e){
             session()->put('redirect',1);
             return redirect(P::URL_ERRORS);
+        }catch(Exception $e){
+            return response()->view(P::VIEW_MYCARS,[
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => ''
+            ],500);
         }
         
     }

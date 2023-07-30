@@ -29,6 +29,7 @@ interface Constants{
     const ERR_HOTEL_PREVENTIVE = "Errore durante il calcolo della prenotazione dell'albergo. ".Constants::ADMIN_CONTACT;
     const ERR_LOGIN = "Si è verificato un errore durante il login. ".Constants::ADMIN_CONTACT;
     const ERR_MISSEDDATA = "Uno o più dati richiesti sono mancanti. ".Constants::ADMIN_CONTACT;
+    const ERR_MYCARS = "Errore durante la ricerca delle tue auto prenotate. ".Constants::ADMIN_CONTACT;
     const ERR_MYFLIGHTS = "Errore durante la ricerca dei tuoi voli prenotati. ".Constants::ADMIN_CONTACT;
     const ERR_MYHOTELS = "Errore durante la ricerca delle tue stanze prenotate. ".Constants::ADMIN_CONTACT;
     const ERR_VALUENOTOBTAINED = "Errore durante la lettura del valore";
