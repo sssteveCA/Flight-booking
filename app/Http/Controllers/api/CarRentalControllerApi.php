@@ -19,7 +19,16 @@ class CarRentalControllerApi extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $user_id = auth('api')->user()->id;
+            $response_data = $this->setIndexResponseData($user_id);
+            return response()->json($response_data[C::KEY_RESPONSE],200,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_MYCARS
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**
