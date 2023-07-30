@@ -1,0 +1,115 @@
+@use "sass:map";
+@use "../../modules/globals";
+@use "../../modules/animations";
+@import "../../partials/back";
+@import "../../partials/extendables";
+
+$single-selectors-rules: (
+    'xs': (
+        'classes': (
+            '.row': (
+                'padding': 10px
+            )
+        ),
+        'ids': (),
+        'tags': ()
+    ),
+    'md': (
+        'classes': (),
+        'ids': (),
+        'tags': ()
+    )
+);
+
+$compound-selectors-rules: (
+    'xs': (
+        '.row>div':(
+            'text-align': center
+        ),
+        '.row>div:last-child': (
+            'padding-bottom': 20px
+        )
+    ),
+    'md': (
+        '.row:not(.footer-row)': (
+            'border-top': 1px solid black,
+            'border-right': 1px solid black,
+            'border-left': 1px solid black
+        ),
+        '.row:last-child:not(.footer-row)': (
+            'border-bottom': 1px solid black
+        ),
+        '.row>div': (
+            'text-align': left
+        ),
+        '.row>div:last-child': (
+            'padding-bottom': 0px
+        )
+    )
+);
+
+@mixin single-selectors-loop($single-map,$key){
+    @if(map.has-key($single-map,$key)){
+        $single-map-breakpoint: map.get($single-map,$key);
+        //Loop for create the CSS rule for every selector
+        @each $selector-type, $selectors in $single-map-breakpoint{
+            @each $selector, $properties-list in $selectors{
+                #{$selector}{
+                    @each $prop, $val in $properties-list{
+                        #{$prop}: #{$val};
+                    }//@each $prop, $val in $properties-list{
+                }//#{$selector}{
+            }//@each $selector, $properties-list in $selectors{
+        }//@each $selector-type, $selectors in $single-map-breakpoint{
+    }//@if(map.has-key($single-map,$key)){
+}
+
+@mixin compound-selectors-loop($compound-map,$key){
+    @if(map.has-key($compound-map,$key)){
+        $compound-map-breakpoint: map.get($compound-map,$key);
+        @each $compound-selector, $properties-list in $compound-map-breakpoint{
+            #{$compound-selector}{
+                @each $prop, $val in $properties-list{
+                    #{$prop}: #{$val};
+                }//@each $prop, $val in $properties-list{
+            }//#{$compound-selector}{
+        }//@each $compound-selector, $properties-list in $compound-map-breakpoint{
+    }//@if(map.has-key($compound-map,$key)){
+}
+
+@mixin extensions(){
+    .container{
+        @extend %container;
+    }
+    .cr-header{
+        @extend %header;
+    }
+    .cr-property{
+        @extend %bold;
+    }
+}
+
+@mixin style-small($breakpoints,$small-key,$ss-map,$cs-map){
+    @if(map.has-key($breakpoints,$small-key)){
+        $small-value: map.get($breakpoints,$small-key);
+        @media only screen and (min-width: #{$small-value}){
+            @include single-selectors-loop($ss-map,$small-key);
+            @include compound-selectors-loop($cs-map,$small-key);
+        }//@media only screen and (min-width: #{$small-value}){
+    }//@if(map.has-key($breakpoints,$small-key)){
+}
+
+@mixin style-large($breakpoints,$large-key,$ss-map,$cs-map){
+    @if(map.has-key($breakpoints,$large-key)){
+        $large-value: map.get($breakpoints,$large-key);
+        @media only screen and (min-width: #{$large-value}){
+            @include single-selectors-loop($ss-map,$large-key);
+            @include compound-selectors-loop($cs-map,$large-key);
+        }
+    }//@if(map.has-key($breakpoints,$large-key)){
+}
+
+@include style-small(globals.$bs-breakpoints,'xs',$single-selectors-rules,$compound-selectors-rules);
+@include style-large(globals.$bs-breakpoints,'md',$single-selectors-rules,$compound-selectors-rules);
+@include extensions();
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
