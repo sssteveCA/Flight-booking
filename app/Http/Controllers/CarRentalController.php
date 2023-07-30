@@ -82,7 +82,7 @@ class CarRentalController extends Controller
             ];
             $response_data = $this->setShowResponseData($id,$user_id,$params);
             if($response_data[C::KEY_CODE] == 200)
-                return response()->view('',$response_data[C::KEY_RESPONSE]);
+                return response()->view(P::VIEW_CARRENTAL,$response_data[C::KEY_RESPONSE]);
             throw new Exception;
         }catch(Exception $e){
             session()->put('redirect',1);
