@@ -17,19 +17,19 @@ $single-selectors-rules: (
                 'border-right': 1px solid black,
                 'border-bottom': 1px solid black,
                 'border-left': 1px solid black,
-            ),
-            'ids': (),
-            'tags': ()
+            )
         ),
-        'lg': (
-            'classes': (
-                '.row': (
-                    'padding': 10px 0px
-                )
-            ),
-            'ids': (),
-            'tags': ()
-        )
+        'ids': (),
+        'tags': ()
+    ),
+    'lg': (
+        'classes': (
+            '.row': (
+                'padding': '10px 0px'
+            )
+        ),
+        'ids': (),
+        'tags': ()
     )
 );
 
@@ -72,7 +72,7 @@ $compound-selectors-rules: (
 
 @mixin compound-selectors-loop($breakpoints-map,$selectors-map){
     @each $breakpoint, $val in $breakpoints-map{
-        @if map.has-key($selectors-map, $breakpoints){
+        @if map.has-key($selectors-map, $breakpoint){
             @media only screen and (min-width: #{$val}){
                 $sub-map: map.get($selectors-map, $breakpoint);
                 @each $compound-selector, $properties-list in $sub-map{
