@@ -63,6 +63,33 @@ trait CarRentalControllerCommonTrait{
     }
 
     /**
+     * Set the response data for CarRentalController show method route
+     * @param mixed $myCar
+     * @param mixed $user_id
+     * @param array $params
+     * @return array
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    private function setShowResponseData(mixed $myCar, mixed $user_id, array $params): array{
+        $car = CarRental::where('id',$myCar)->findOrFail();
+        if($user_id == $car->user_id){
+            return [
+                C::KEY_CODE => 200,
+                C::KEY_RESPONSE => [
+                    C::KEY_DONE => true, 'car' => $car
+                ]
+            ];
+        }
+        return [
+            C::KEY_CODE => 401,
+            C::KEY_RESPONSE => [
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => $params['messages']['error']
+            ]
+        ];
+    }
+
+    /**
      * Set the response data for the store route
      * @param CarRental $carrental the rented car model saved to the database
      * @return array an array with the info of the rented car
