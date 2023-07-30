@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4 col-lg-2 flight-book d-flex justify-content-center justify-content-sm-start">
+                        <div class="col-12 col-sm-4 col-lg-2 car-book d-flex justify-content-center justify-content-sm-start">
                         @if($car['payed'] == 0)
                             <form class="fCarBook" method="post" action="#">
                                 @csrf

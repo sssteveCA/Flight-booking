@@ -1,0 +1,92 @@
+@use "sass:map";
+@use "../modules/globals";
+@use "../modules/animations";
+@import "../partials/back";
+
+$single-selectors-rules: (
+    'xs': (
+        'classes': (
+            '.container-fluid': (
+                'min-width': 280px
+            ),
+            '.car-title-style': (
+                'font-weight': bold
+            ),
+            '.row:not(.footer .row)': (
+                'padding': 20px 0px,
+                'border-right': 1px solid black,
+                'border-bottom': 1px solid black,
+                'border-left': 1px solid black,
+            ),
+            'ids': (),
+            'tags': ()
+        ),
+        'lg': (
+            'classes': (
+                '.row': (
+                    'padding': 10px 0px
+                )
+            ),
+            'ids': (),
+            'tags': ()
+        )
+    )
+);
+
+$compound-selectors-rules: (
+    'xs': (
+        '.car-show, .car-delete, .car-book': (
+            'margin-top': 10px
+        ),
+        '.row:first-child:not(.footer .row)': (
+            'border-top': 1px solid black
+        )
+    ),
+    'lg': (
+        '.car-show, .car-delete, .car-book': (
+            'margin-top': 0px
+        )
+    )
+);
+
+@mixin single-selectors-loop($breakpoints-map,$selectors-map){
+    @each $breakpoint, $val in $breakpoints-map{
+        @if map.has-key($selectors-map, $breakpoint){
+            @media only screen and (min-width: #{$val}){
+                $sub-map: map.get($selectors-map, $breakpoint);
+                @each $selector-type, $selector-type-list in $sub-map{
+                    //loop inside sub map of selectors breakpoint map
+                    @each $selector, $properties-list in $selector-type-list{
+                        //loop inside selectors type list map
+                        #{$selector}{
+                            @each $property, $val in $properties-list{
+                                #{$property}: #{$val};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin compound-selectors-loop($breakpoints-map,$selectors-map){
+    @each $breakpoint, $val in $breakpoints-map{
+        @if map.has-key($selectors-map, $breakpoints){
+            @media only screen and (min-width: #{$val}){
+                $sub-map: map.get($selectors-map, $breakpoint);
+                @each $compound-selector, $properties-list in $sub-map{
+                    #{$compound-selector}{
+                        @each $property, $val in $properties-list{
+                            #{$property}: #{$val};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include single-selectors-loop(globals.$bs-breakpoints, $single-selectors-rules);
+@include compound-selectors-loop(globals.$bs-breakpoints, $compound-selectors-rules);
+@include animations.animation-appear-style(globals.$content-class,animations.$map-appear);
