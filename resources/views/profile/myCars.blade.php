@@ -10,6 +10,7 @@
 
 @section('links')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/profile/myCars.css') }}">
 @endsection
 
 @section('scripts')
