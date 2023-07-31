@@ -39,7 +39,13 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
                         <li><h4>Book suspended hotel room from personal list</h4></li>
                     </ul>
                 </li>
-                <li><h3>Car rental*</h3></li>
+                <li><h3>Car rental</h3>
+                    <ul>
+                        <li><h4>View/li>
+                        <li><h4>Delete*</h4></li>
+                        <li><h4>Book suspended rent car from personal list*</h4></li>
+                    </ul>
+                </li>
                 <li>
                     <h3>Events</h3>
                     <ul>
@@ -81,7 +87,14 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
                         <li><h4>Book suspended hotel room from personal list*</h4></li>
                     </ul>
                 </li>
-                <li><h3>Car rental*</h3></li>
+                <li>
+                    <h3>Car rental*</h3>
+                    <ul>
+                        <li><h4>View/li>
+                        <li><h4>Delete*</h4></li>
+                        <li><h4>Book suspended rent car from personal list*</h4></li>
+                    </ul>
+                </li>
                 <li>
                     <h3>Events</h3>
                     <ul>
@@ -94,7 +107,7 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
         </li>
     </ul>
 </div>
-<div>The features with '*' have not available yet</div>
+<div>The features with '*' are not available yet</div>
 <br><br>
 <div>
     <a href="https://user-images.githubusercontent.com/95185311/203379460-887246a3-1872-4f48-994e-91d6a534ce3b.mp4">Quick demo video</a> (25-11-2022)
