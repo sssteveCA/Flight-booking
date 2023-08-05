@@ -21,7 +21,7 @@ $(()=>{
             cd.dialog.dialog('destroy');
             cd.dialog.remove();
             let id = form.find('input[name=car_id]');
-            let token = form.find('input[name=token]');
+            let token = form.find('input[name=_token]');
             let spinner: JQuery<HTMLDivElement> = form.parent('div').children('div').find('div') as JQuery<HTMLDivElement>;
             spinner.removeClass('d-none');
             let crData: CarRentalDeleteInterface = {
@@ -43,7 +43,7 @@ $(()=>{
                         let divParents = form.parents('div');
                         let row = divParents.eq(1);
                         $(row).remove();
-                        let cc_html = $('#cars_container').html();
+                        let cc_html = $('#cars-container').html();
                         if(cc_html.trim() == ""){
                             let message = bootstrapMessage("Lista auto vuota", "Lista delle auto noleggiate vuota");
                             $('#main-container').append(message);
