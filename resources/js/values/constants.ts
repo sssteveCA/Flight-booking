@@ -34,6 +34,7 @@ export namespace Constants{
     export const URL_HOME = Config.HOME_URL;
     export const URL_AIRPORTS_AVAILABLE = '/airports';
     export const URL_AIRPORTSSEARCH = '/airportsearch';
+    export const URL_CARRENTALLIST = '/profile/myCars';
     export const URL_CARRENTALSEARCH = '/carrentalsearch';
     export const URL_COMPANIESSEARCH = '/companieslist';
     export const URL_DELETEACCOUNT = '/profile/deleteAccount';

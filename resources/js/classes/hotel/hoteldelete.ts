@@ -24,6 +24,9 @@ export default class HotelDelete{
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
+            case HotelDelete.ERR_FETCH:
+                this._error = HotelDelete.ERR_FETCH_MSG;
+                break;
             default:
                 this._error = null;
                 break;
