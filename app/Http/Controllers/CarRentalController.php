@@ -122,11 +122,19 @@ class CarRentalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param mixed $myCar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($myCar)
     {
-        //
+        try{
+            $user_id = auth()->id();
+            $response_data = $this->setDestroyResponseData($myCar,$user_id);
+            return response()->json($response_data[C::KEY_RESPONSE],$response_data[C::KEY_CODE],[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_CARRENTAL_DELETE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 }

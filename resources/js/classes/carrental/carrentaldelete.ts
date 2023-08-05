@@ -1,10 +1,11 @@
-import HotelDeleteInterface from "../../interfaces/hotel/hoteldelete.interface";
+import CarRentalDeleteInterface from "../../interfaces/carrental/carrentaldelete.interface";
 import { Constants } from "../../values/constants";
 
-export default class HotelDelete{
+export default class CarRentalDelete{
 
     private _id: number;
     private _token: string;
+
     private _errno: number = 0;
     private _error: string|null = null;
 
@@ -12,9 +13,9 @@ export default class HotelDelete{
 
     private static ERR_FETCH_MSG:string = "Errore durante l'esecuzione della richiesta";
 
-    private static URL_SCRIPT:string = Constants.URL_HOTELLIST;
+    private static FETCH_URL: string = Constants.URL_CARRENTALLIST;
 
-    constructor(data: HotelDeleteInterface){
+    constructor(data: CarRentalDeleteInterface){
         this._id = data.id;
         this._token = data.token;
     }
@@ -24,8 +25,8 @@ export default class HotelDelete{
     get errno(){return this._errno;}
     get error(){
         switch(this._errno){
-            case HotelDelete.ERR_FETCH:
-                this._error = HotelDelete.ERR_FETCH_MSG;
+            case CarRentalDelete.ERR_FETCH:
+                this._error = CarRentalDelete.ERR_FETCH_MSG;
                 break;
             default:
                 this._error = null;
@@ -34,17 +35,17 @@ export default class HotelDelete{
         return this._error;
     }
 
-    public async deleteHotel(): Promise<object>{
+    public async deleteCar(): Promise<object>{
         this._errno = 0;
-        let response: object = {};
+        let response: object = {}
         try{
-            await this.deleteHotelPromise().then(res => {
+            await this.deleteCarPromise().then(res => {
                 response = JSON.parse(res);
             }).catch(err => {
                 throw err;
-            });
+            })
         }catch(e){
-            this._errno = HotelDelete.ERR_FETCH;
+            this._errno = CarRentalDelete.ERR_FETCH;
             response = {
                 done: false, message: this.error
             }
@@ -52,9 +53,9 @@ export default class HotelDelete{
         return response;
     }
 
-    private async deleteHotelPromise(): Promise<string>{
-        return await new Promise<string>((resolve,reject)=>{
-            let url = HotelDelete.URL_SCRIPT+'/'+this._id;
+    private async deleteCarPromise(): Promise<string>{
+        return await new Promise<string>((resolve, reject) => {
+            let url = CarRentalDelete.FETCH_URL+'/'+this._id;
             fetch(url,{
                 method: 'DELETE',
                 headers: {
@@ -64,8 +65,8 @@ export default class HotelDelete{
                 resolve(res.text());
             }).catch(err => {
                 reject(err);
-            });
-        });
+            })
+        })
     }
-
+   
 }

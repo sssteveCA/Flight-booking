@@ -8,6 +8,7 @@ use App\Models\CarRental;
 use App\Models\CarRentalTemp;
 use App\Interfaces\ExceptionsMessages as Em;
 use App\Interfaces\Constants as C;
+use Exception;
 
 /**
  * This trait contains code shared between CarRentalController and CarRentalControllerApi
@@ -37,7 +38,48 @@ trait CarRentalControllerCommonTrait{
     }
 
     /**
-     * Set the response data for FlightController index method route
+     * Set the response data for destroy method
+     * @param int $myCar rented car id
+     * @param mixed $user_id the logged user id
+     * @return array the response
+     */
+    private function setDestroyResponseData(int $myCar, mixed $user_id): array{
+        $car = CarRental::find($myCar);
+        if($car != null){
+            if($car->user_id == $user_id){
+                $delete = $car->delete();
+                if($delete){
+                    return [
+                        C::KEY_CODE => 200,
+                        C::KEY_RESPONSE => [
+                            C::KEY_DONE => true, C::KEY_MESSAGE => C::OK_CARRENTALDELETED
+                        ]
+                    ];
+                }
+                return [ 
+                    C::KEY_CODE => 500,
+                    C::KEY_RESPONSE => [
+                        C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_CARRENTAL_DELETE
+                    ]
+                 ];
+            }
+            return [ 
+                C::KEY_CODE => 401,
+                C::KEY_RESPONSE => [
+                    C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+                ]
+            ];
+        }
+        return [ 
+            C::KEY_CODE => 404,
+            C::KEY_RESPONSE => [
+                C::KEY_DONE => false, C::KEY_MESSAGE => C::ERR_URLNOTFOUND_NOTALLOWED_API
+            ]
+        ];
+    }
+
+    /**
+     * Set the response data for the index method
      * @param mixed $user_id
      * @return array
      */
@@ -63,7 +105,7 @@ trait CarRentalControllerCommonTrait{
     }
 
     /**
-     * Set the response data for CarRentalController show method route
+     * Set the response data for the show method
      * @param mixed $myCar
      * @param mixed $user_id
      * @param array $params
@@ -89,8 +131,7 @@ trait CarRentalControllerCommonTrait{
         ];
     }
 
-    /**
-     * Set the response data for the store route
+    /** method route
      * @param CarRental $carrental the rented car model saved to the database
      * @return array an array with the info of the rented car
      */

@@ -85,7 +85,7 @@
                 </div>
                 @endif
                 <div class="col-3 col-md-1 fb-delete-button">
-                    <form id="fHotelDelete" method="post" action="#">
+                    <form id="fHotelDelete" method="post" action="{{ route('myHotels.destroy', ['myHotel' => $hotel['id']]) }}">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="hotel_id" value="{{ $hotel['id'] }}">

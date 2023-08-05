@@ -18,7 +18,8 @@ export namespace Constants{
     export const KEY_STATUS = 'status';
 
     //Messages
-    export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?'
+    export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?';
+    export const MSG_CONFIRMDELETECAR = 'Sei sicuro di voler rimuovere l\' auto selezionata?';
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
     export const MSG_CONFIRMDELETEHOTEL = 'Sei sicuro di voler rimuovere questa prenotazione definitivamente?';
     export const MSG_CONFIRMEDITPASSWORD = 'Sei sicuro di voler modificare la password?';
@@ -34,6 +35,7 @@ export namespace Constants{
     export const URL_HOME = Config.HOME_URL;
     export const URL_AIRPORTS_AVAILABLE = '/airports';
     export const URL_AIRPORTSSEARCH = '/airportsearch';
+    export const URL_CARRENTALLIST = '/profile/myCars';
     export const URL_CARRENTALSEARCH = '/carrentalsearch';
     export const URL_COMPANIESSEARCH = '/companieslist';
     export const URL_DELETEACCOUNT = '/profile/deleteAccount';

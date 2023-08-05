@@ -10,6 +10,7 @@ interface Constants{
 
     //errors
     const ADMIN_CONTACT = 'Se il problema persiste, contattare l\' amministratore del sito';
+    const ERR_CARRENTAL_DELETE = "Errore durante la rimozione dell'auto selezionata. ".Constants::ADMIN_CONTACT;
     const ERR_CARRENTAL_PREVENTIVE = 'Errore durante il calcolo del preventivo per il noleggio auto. '.Constants::ADMIN_CONTACT;
 
     const ERR_CARRENTALPAYMENT_REFUSE = "Il pagamento dell'auto prenotata è stato rifiutato";
@@ -65,6 +66,7 @@ interface Constants{
 
     //success
     const OK_ACCOUNTDELETED = "IL tuo account è stato eliminato definitivamente";
+    const OK_CARRENTALDELETED = "L'auto noleggiata selezionata è stata rimossa";
     const OK_CARRENTALPAYMENT = "Il pagamento è stato completato. L'auto richiesta è stata prenotata";
     const OK_EMAILSEND = "La tua richiesta è stata inviata. Verrai ricontattato il prima possibile";
     const OK_FLIGHTBOOK_SINGLE = "Effettua il pagamento, per confermare la prenotazione del volo";

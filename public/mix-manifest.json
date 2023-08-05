@@ -3,6 +3,8 @@
     "/js/welcome.js": "/js/welcome.js",
     "/js/welcome.hotel.js": "/js/welcome.hotel.js",
     "/js/auth/register.js": "/js/auth/register.js",
+    "/js/profile/myCars.js": "/js/profile/myCars.js",
+    "/js/profile/myCars/car.js": "/js/profile/myCars/car.js",
     "/js/profile/myFlights.js": "/js/profile/myFlights.js",
     "/js/profile/myHotels.js": "/js/profile/myHotels.js",
     "/js/profile/myFlights/flight.js": "/js/profile/myFlights/flight.js",
