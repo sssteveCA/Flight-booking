@@ -73,7 +73,7 @@ class CarRentalController extends Controller
      * @param  int  $myCar
      * @return \Illuminate\Http\Response
      */
-    public function show(int $myCar)
+    public function show($myCar)
     {
         try{
             $user_id = Auth::id();
@@ -125,7 +125,7 @@ class CarRentalController extends Controller
      * @param mixed $myCar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $myCar)
+    public function destroy($myCar)
     {
         try{
             $user_id = auth()->id();
