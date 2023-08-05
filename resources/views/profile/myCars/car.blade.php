@@ -15,6 +15,7 @@
 
 @section('scripts')
     @parent
+    <script src="{{ asset('js/profile/myCars/car.ts') }}"></script>
 @endsection
 
 @section('content')
