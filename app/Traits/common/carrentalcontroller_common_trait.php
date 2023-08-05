@@ -47,8 +47,7 @@ trait CarRentalControllerCommonTrait{
         $car = CarRental::find($myCar);
         if($car != null){
             if($car->user_id == $user_id){
-                //$delete = $car->delete();
-                $delete = true;
+                $delete = $car->delete();
                 if($delete){
                     return [
                         C::KEY_CODE => 200,

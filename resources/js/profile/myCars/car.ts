@@ -19,7 +19,7 @@ $(()=>{
         cd.btYes.on('click',()=>{
             cd.dialog.dialog('destroy');
             cd.dialog.remove();
-            let id = form.find('input[name=hotel_id]');
+            let id = form.find('input[name=car_id]');
             let token = form.find('input[name=_token]');
             let dataCr: CarRentalDeleteInterface = {
                 id: $(id).val() as number,

@@ -15,7 +15,7 @@
 
 @section('scripts')
     @parent
-    <script src="{{ asset('js/profile/myCars/car.ts') }}"></script>
+    <script src="{{ asset('js/profile/myCars/car.js') }}"></script>
 @endsection
 
 @section('content')
@@ -50,7 +50,7 @@
             @if($car['payed'] == '1')
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 fb-property">DATA PAGAMENTO</div>
-                <div class="col-12 col-md-5 payment-date">{{ $hotel['payed_date'] }}</div>
+                <div class="col-12 col-md-5 payment-date">{{ $car['payed_date'] }}</div>
             </div>
             @endif
             <div class="row justify-content-center">
