@@ -35,5 +35,38 @@ export default class CarRentalDelete{
         return this._error;
     }
 
+    public async deleteCar(): Promise<object>{
+        this._errno = 0;
+        let response: object = {}
+        try{
+            await this.deleteCarPromise().then(res => {
+                response = JSON.parse(res);
+            }).catch(err => {
+                throw err;
+            })
+        }catch(e){
+            this._errno = CarRentalDelete.ERR_FETCH;
+            response = {
+                done: false, message: this.error
+            }
+        }
+        return response;
+    }
+
+    private async deleteCarPromise(): Promise<string>{
+        return await new Promise<string>((resolve, reject) => {
+            let url = CarRentalDelete.FETCH_URL+'/'+this._id;
+            fetch(url,{
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': this._token
+                }
+            }).then(res => {
+                resolve(res.text());
+            }).catch(err => {
+                reject(err);
+            })
+        })
+    }
    
 }
