@@ -18,7 +18,8 @@ export namespace Constants{
     export const KEY_STATUS = 'status';
 
     //Messages
-    export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?'
+    export const MSG_CONFIRMDELETEACCOUNT = 'Sei sicuro di voler cancellare definitivamente il tuo account?';
+    export const MSG_CONFIRMDELETECAR = 'Sei sicuro di voler rimuovere l\' auto selezionata?';
     export const MSG_CONFIRMDELETEFLIGHT = 'Sei sicuro di voler rimuovere questo volo definitivamente?';
     export const MSG_CONFIRMDELETEHOTEL = 'Sei sicuro di voler rimuovere questa prenotazione definitivamente?';
     export const MSG_CONFIRMEDITPASSWORD = 'Sei sicuro di voler modificare la password?';
