@@ -39,11 +39,11 @@ trait CarRentalControllerCommonTrait{
 
     /**
      * Set the response data for destroy method
-     * @param mixed $myCar rented car id
+     * @param int $myCar rented car id
      * @param mixed $user_id the logged user id
      * @return array the response
      */
-    private function setDestroyResponseData(mixed $myCar, mixed $user_id): array{
+    private function setDestroyResponseData(int $myCar, mixed $user_id): array{
         $car = CarRental::find($myCar);
         if($car != null){
             if($car->user_id == $user_id){
