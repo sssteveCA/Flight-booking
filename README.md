@@ -41,8 +41,8 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
                 </li>
                 <li><h3>Car rental</h3>
                     <ul>
-                        <li><h4>View/li>
-                        <li><h4>Delete*</h4></li>
+                        <li><h4>View</li>
+                        <li><h4>Delete</h4></li>
                         <li><h4>Book suspended rent car from personal list*</h4></li>
                     </ul>
                 </li>
@@ -80,7 +80,7 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
                     </ul>
                 </li>
                 <li>
-                    <h3>Hotel room booking*</h3>
+                    <h3>Hotel room booking</h3>
                     <ul>
                         <li><h4>View</h4></li>
                         <li><h4>Delete</h4></li>
@@ -88,10 +88,10 @@ This app allows users to book flights, hotel rooms, rent a car and get ticket to
                     </ul>
                 </li>
                 <li>
-                    <h3>Car rental*</h3>
+                    <h3>Car rental</h3>
                     <ul>
                         <li><h4>View/li>
-                        <li><h4>Delete*</h4></li>
+                        <li><h4>Delete</h4></li>
                         <li><h4>Book suspended rent car from personal list*</h4></li>
                     </ul>
                 </li>
