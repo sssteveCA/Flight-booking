@@ -57,7 +57,9 @@ trait CarRentalPriceRequestCommonTrait{
             'pickup_location' => 'Località di ritiro',
             'delivery_country' => 'Paese di consegna',
             'delivery_location' => 'Località di consegna',
-            'age_range' => 'Fascia d\'età'
+            'age_range' => 'Fascia d\'età',
+            'rentstart' => 'Data di ritiro',
+            'rentend' => 'Data di consegna'
         ];
     }
 }
