@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Http\Controllers\api\welcome\CarRentalSearchControllerApi;
 use App\Interfaces\CarRental;
 use Carbon\Carbon;
-use \App\Models\User;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CarRental>
@@ -22,7 +22,7 @@ class CarRentalFactory extends Factory
     {
 
         $carNames = array_keys(CarRental::CAR_FLEET);
-        $companyNames = array_leys(CarRental::CARRENTAL_COMPANIES);
+        $companyNames = array_keys(CarRental::CARRENTAL_COMPANIES);
         $ageRanges = $this->getAgeRangeStrings(CarRental::AGE_RANGES);
         $startDate = Carbon::tomorrow(); // Data a partire da domani
         $endDate = Carbon::tomorrow()->addDay(); // Data a partire da un giorno dopo $startDate
@@ -35,6 +35,7 @@ class CarRentalFactory extends Factory
             'rentstart_date' => $startDate,
             'rentend_date' => $endDate,
             'price' => $this->faker->randomFloat(2, 50, 200),
+            'payed' => $payedDate ? 1 : 0,
             'payed_date' => $payedDate,
             'transaction_id' => $this->faker->uuid,
         ];
@@ -49,6 +50,7 @@ class CarRentalFactory extends Factory
         $ageRangeStrings = array_map(function($item){
             return "{$item[0]}-{$item[1]}";
         },$ageRangeData);
+        return $ageRangeStrings;
     }
 
 
