@@ -22,5 +22,6 @@ class HttpsToHttpMiddleware
                 return redirect()->setScheme('http');
             }
         }
+        return $next($request);
     }
 }
