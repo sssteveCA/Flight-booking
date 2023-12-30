@@ -40,6 +40,11 @@ class CarRentalFactory extends Factory
         ];
     }
 
+    /**
+     * Create list of age ranges in string format
+     * @param array $ageRangeData the array with age range num items
+     * @return array 
+     */
     private function getAgeRangeStrings(array $ageRangeData): array{
         $ageRangeStrings = array_map(function($item){
             return "{$item[0]}-{$item[1]}";
