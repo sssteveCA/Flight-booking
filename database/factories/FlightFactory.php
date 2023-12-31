@@ -19,6 +19,7 @@ class FlightFactory extends Factory
      */
     public function definition()
     {
+        $usersId = User::take(50)->pluck('id');
         $countriesList = array_keys(Airports::AIRPORTS_LIST);
         $departureCountry =  $this->faker->randomElement($countriesList);
         $departureAirportsList = array_keys(Airports::AIRPORTS_LIST[$departureCountry]);
