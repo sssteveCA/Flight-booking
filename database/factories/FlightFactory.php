@@ -28,7 +28,9 @@ class FlightFactory extends Factory
         while(!isset($arrivalAirport) || ($departureCountry == $arrivalCountry && $arrivalAirport == $departureAirport)){
             $arrivalAirport = $this->faker->randomElement($arrivalAirportsList);
         }
-        $flightDate = Carbon::tomorrow();
+        $currentDate = Carbon::tomorrow();
+        $bookingDate = $this->faker->dateTimeBetween($currentDate, $currentDate->copy()->addDays(30))->format('Y-m-d');
+        $flightDate = $this->faker->dateTimeBetween($bookingDate . ' +1 days', $bookingDate . ' +30 days')->format('Y-m-d');
 
         return [
             'user_id' => User::factory(),
@@ -41,7 +43,8 @@ class FlightFactory extends Factory
             'teenagers' => $this->faker->randomElement(range(1,5)),
             'children' => $this->faker->randomElement(range(1,5)),
             'newborns' => $this->faker->randomElement(range(1,5)),
-            'flight_date' => $flightDate->format('Y-m-d'),
+            'booking_date' => $bookingDate,
+            'flight_date' => $flightDate,
             'flight_time' => $this->faker->time(),
             'flight_price' => $this->faker->randomFloat(2,50,500),
             'payed' => $this->faker->randomElement([0, 1]),
