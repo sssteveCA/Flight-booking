@@ -12,6 +12,7 @@ use Carbon\Carbon;
  */
 class FlightFactory extends Factory
 {
+
     /**
      * Define the model's default state.
      *
