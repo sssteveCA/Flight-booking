@@ -23,6 +23,9 @@ class CarRentalFactory extends Factory
 
         $currentDate = Carbon::now();
         $carNames = array_keys(CarRental::CAR_FLEET);
+        $carName = $this->faker->randomElement($carNames);
+        $carName = preg_replace('/[^a-zA-Z0-9]/', '', $carName); // Rimuovi caratteri speciali
+        $carName = substr($carName,0,255);
         $companyNames = array_keys(CarRental::CARRENTAL_COMPANIES);
         $ageRanges = $this->getAgeRangeStrings(CarRental::AGE_RANGES);
         $startDate = Carbon::tomorrow(); // Data a partire da domani
@@ -33,7 +36,7 @@ class CarRentalFactory extends Factory
         $transactionId = $payed ? $this->faker->uuid : null;
         return [
             'user_id' => User::factory(),
-            'car_name' => $this->faker->randomElement($carNames),
+            'car_name' => substr($carName,0,255),
             'company_name' => $this->faker->randomElement($companyNames),
             'age_range' => $this->faker->randomElement($ageRanges),
             'rentstart_date' => $startDate,
