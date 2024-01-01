@@ -36,7 +36,7 @@ class CarRentalFactory extends Factory
         $transactionId = $payed ? $this->faker->uuid : null;
         return [
             'user_id' => User::factory(),
-            'car_name' => substr($carName,0,255),
+            'car_name' => $carName,
             'company_name' => $this->faker->randomElement($companyNames),
             'age_range' => $this->faker->randomElement($ageRanges),
             'rentstart_date' => $startDate,
