@@ -32,6 +32,9 @@ class FlightFactory extends Factory
         $currentDate = Carbon::tomorrow();
         $bookingDate = $this->faker->dateTimeBetween($currentDate, $currentDate->copy()->addDays(30))->format('Y-m-d');
         $flightDate = $this->faker->dateTimeBetween($bookingDate . ' +1 days', $bookingDate . ' +30 days')->format('Y-m-d');
+        $payed = $this->faker->randomElement([0, 1]);
+        $payedDate = $payed ? $bookingDate : null;
+        $transactionId = $payed ? $this->faker->uuid : null;
 
         return [
             'user_id' => User::factory(),
@@ -48,8 +51,9 @@ class FlightFactory extends Factory
             'flight_date' => $flightDate,
             'flight_time' => $this->faker->time(),
             'flight_price' => $this->faker->randomFloat(2,50,500),
-            'payed' => $this->faker->randomElement([0, 1]),
-            'transaction_id' => $this->faker->uuid,
+            'payed' => $payed,
+            'payed_date' => $payedDate,
+            'transaction_id' => $transactionId
         ];
     }
 }
