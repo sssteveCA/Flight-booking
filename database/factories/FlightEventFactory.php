@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Traits\FlightEventFactoryTrait;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FlightEvent>
@@ -11,7 +10,13 @@ use App\Traits\FlightEventFactoryTrait;
 class FlightEventFactory extends Factory
 {
     use FlightEventFactoryTrait;
-    
+
+    private array $flightEventsData;
+
+    public function __construct(){
+        $this->flightEventsData = $this->getFilledFlightEvents(FlightEvents::FLIGHTEVENTS_LIST);
+    }
+
     /**
      * Define the model's default state.
      *
@@ -19,6 +24,7 @@ class FlightEventFactory extends Factory
      */
     public function definition()
     {
+
         return [
             //
         ];

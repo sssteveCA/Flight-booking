@@ -3,9 +3,9 @@
 namespace App\Traits;
 
 /**
- * Trait used by FlightEventFactory class
+ * Trait used by FlightEventFSeeder class
  */
-trait FlightEventFactoryTrait{
+trait FlightEventSeederTrait{
 
     /**
      * Get the flight events list array items that have informations
