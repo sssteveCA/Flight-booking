@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Interfaces\Hotels;
+use DateTime;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Hotel>
@@ -22,22 +23,24 @@ class HotelFactory extends Factory
         $countriesList = array_keys(Hotels::HOTELS_LIST);
         $country =  $this->faker->randomElement($countriesList);
         $citiesList = array_keys(Hotels::HOTELS_LIST[$country]);
-        $city = $this->faker->randomElement($cityList);
+        $city = $this->faker->randomElement($citiesList);
         $hotelsList = array_keys(Hotels::HOTELS_LIST[$country][$city]);
         $hotel = $this->faker->randomElement($hotelsList);
         $currentDate = Carbon::tomorrow();
         $bookingDate = $this->faker->dateTimeBetween($currentDate, $currentDate->copy()->addDays(30))->format('Y-m-d');
         $checkinDate = $this->faker->dateTimeBetween($bookingDate . ' +1 days', $bookingDate . ' +30 days')->format('Y-m-d');
+        $checkinDateDt = new DateTime($checkinDate);
         $checkoutDate = $this->faker->dateTimeBetween($checkinDate . ' +1 days',$checkinDate . ' +30 days')->format('Y-m-d');
+        $checkoutDateDt = new DateTime($checkoutDate);
         $rooms = $this->faker->numberBetween(1, 5);
         $people = $this->faker->numberBetween($rooms, $rooms * 2);
         $pricePerNight = $this->faker->randomFloat(2,50,500);
-        $numberOfNights = $checkinDate->diff($checkoutDate)->days;
+        $numberOfNights = $checkinDateDt->diff($checkoutDateDt)->days;
         $totalPrice = $pricePerNight * $numberOfNights;
         $payed = $this->faker->randomElement([0, 1]);
-        $payedDate = $payed ? $this->faker->dateTimeBetween($bookingDate, 'now') : null;
+        $payedDate = $payed ? $bookingDate : null;
         $transactionId = $payed ? $this->faker->uuid : null;
-        
+
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'country' => $country,
