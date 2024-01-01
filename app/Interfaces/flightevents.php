@@ -85,7 +85,7 @@ interface FlightEvents{
             'Parigi' => [
                 'Gita 1-2 giorni Disneyland Paris' => [
                     'gmLink' => 'https://maps.app.goo.gl/GcGVdLCoqnR3D1us7',
-                    'image' => '/img/flightevents/barcellona_getafe.webp',
+                    'image' => 'barcellona_getafe.webp',
                     'location' => 'Disneyland Paris',
                     'price' => 300.00,
                 ]
@@ -137,7 +137,7 @@ interface FlightEvents{
             'Milano' => [
                 'Milan vs Sassuolo' => [
                     'gmLink' => 'https://maps.app.goo.gl/NvwMZUPEGwYvLF11A',
-                    'image' => '/img/flightevents/milan_sassuolo.webp',
+                    'image' => 'milan_sassuolo.webp',
                     'location' => 'Stadio San Siro',
                     'price' => 35.00,
                 ]
@@ -227,7 +227,7 @@ interface FlightEvents{
             'Londra' => [
                 'Tour Harry Potter' => [
                     'gmLink' => 'https://maps.app.goo.gl/yAmUyT39hNKF7eTZ8',
-                    'image' => '/img/flightevents/harry_potter.webp',
+                    'image' => 'harry_potter.webp',
                     'location' => 'Warner Bros. Studio Tour London',
                     'price' => 75.00,
                 ]
@@ -271,7 +271,7 @@ interface FlightEvents{
             'Barcellona' => [
                 'Barcellona vs Getafe' => [
                     'gmLink' => 'https://maps.app.goo.gl/GcGVdLCoqnR3D1us7',
-                    'image' => '/img/flightevents/barcellona_getafe.webp',
+                    'image' => 'barcellona_getafe.webp',
                     'location' => 'Camp Nou',
                     'price' => 50.00,
                 ]
