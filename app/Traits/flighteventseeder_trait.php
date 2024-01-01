@@ -13,11 +13,13 @@ trait FlightEventSeederTrait{
      * @return array
      */
     private function getFilledFlightEvents(array $flightEventsList): array{
-        $filteredArray = array_filter($filteredArray, function($countryInfo,$country){
+        $filteredArray = array_filter($flightEventsList, function($countryInfo,$country){
+            $item = [];
             foreach($countryInfo as $city => $citiesInfo){
-                if(!empty($citiesInfo)) return true;
-                else return false;
+                if(!empty($citiesInfo)) $item = $countryInfo;
             }
+            if(!empty($item)) return true;
+            else return false;
         },ARRAY_FILTER_USE_BOTH);
         $filteredArrayKeys = array_keys($filteredArray);
         $mapArray = array_map(function($countryInfo,$country){
@@ -26,7 +28,7 @@ trait FlightEventSeederTrait{
                     return [ 
                         'name' => $event,
                         'location' => $eventInfo['location'],
-                        'gmLink' => $enventInfo['gmLink'],
+                        'gmLink' => $eventInfo['gmLink'],
                         'country' => $country,
                         'city' => $city,
                         'price' => $eventInfo['price'],
