@@ -21,12 +21,16 @@ class CarRentalFactory extends Factory
     public function definition()
     {
 
+        $currentDate = Carbon::now();
         $carNames = array_keys(CarRental::CAR_FLEET);
         $companyNames = array_keys(CarRental::CARRENTAL_COMPANIES);
         $ageRanges = $this->getAgeRangeStrings(CarRental::AGE_RANGES);
         $startDate = Carbon::tomorrow(); // Data a partire da domani
         $endDate = Carbon::tomorrow()->addDay(); // Data a partire da un giorno dopo $startDate
         $payedDate = $startDate->copy()->addMinute()->addSeconds(rand(1, 59));
+        $payed = $this->faker->randomElement([0, 1]);
+        $payedDate = $payed ? $currentDate->format('Y-m-d') : null;
+        $transactionId = $payed ? $this->faker->uuid : null;
         return [
             'user_id' => User::factory(),
             'car_name' => $this->faker->randomElement($carNames),
@@ -35,9 +39,9 @@ class CarRentalFactory extends Factory
             'rentstart_date' => $startDate,
             'rentend_date' => $endDate,
             'price' => $this->faker->randomFloat(2, 50, 200),
-            'payed' => $payedDate ? 1 : 0,
+            'payed' => $payed,
             'payed_date' => $payedDate,
-            'transaction_id' => $this->faker->uuid,
+            'transaction_id' => $transactionId
         ];
     }
 
