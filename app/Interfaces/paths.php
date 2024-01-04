@@ -26,6 +26,7 @@ interface Paths{
     const ROUTE_BOOKHOTEL = 'bookhotel';
     const ROUTE_CARRENTALPRICE = 'carrentalprice';
     const ROUTE_ERRORS = 'errors';
+    const ROUTE_FLIGHTEVENTBOOKPRICE = 'flighteventbookprice';
     const ROUTE_FLIGHTPRICE = 'flightprice';
     const ROUTE_FLIGHTPRICE_GET = 'flightprice_get';
     const ROUTE_HOTELPRICE = 'hotelprice';
@@ -63,6 +64,7 @@ interface Paths{
     const URL_EDITUSERNAME = '/editUsername';
     const URL_EMAILVERIFY = '/email/verify';
     const URL_ERRORS = '/errors';
+    const URL_FLIGHTEVENTBOOKPRICE = '/flighteventbookprice';
     const URL_FLIGHTPRICE = '/flightprice';
     const URL_FLIGHTRESUME = '/flightresume';
     const URL_FLIGHTSEARCH = '/flightsearch';
@@ -108,6 +110,7 @@ interface Paths{
     const VIEW_FOOTER = 'partials.footer';
     const VIEW_FLIGHT = 'profile.myFlights.flight';
     const VIEW_FLIGHTEVENT = 'flightevents.flightevent';
+    const VIEW_FLIGHTEVENTBOOKPRICERESULT = 'welcome.flighteventbookresult';
     const VIEW_FLIGHTLOGIN = 'include.flightlogin';
     const VIEW_FLIGHTPRICERESULT = 'welcome.flightpriceresult';
     const VIEW_HOME = 'home';
