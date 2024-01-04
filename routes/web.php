@@ -103,6 +103,7 @@ Route::resource(P::PREFIX_FLIGHTEVENTS, FlightEventsController::class)->only(['i
 Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchController::class,'getAvailableHotels']);
 
 Route::post(P::URL_CARRENTALPRICE,[CarRentalSearchController::class,'getCarRentalPrice'])->name(P::ROUTE_CARRENTALPRICE);
+Route::post(P::URL_FLIGHTEVENTBOOKPRICE,[FlightEventBookSearchController::class, 'getFlightEventBookPrice'])->name(P::ROUTE_FLIGHTEVENTBOOKPRICE);
 Route::get(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice_get'])->name(P::ROUTE_FLIGHTPRICE_GET);
 Route::post(P::URL_FLIGHTPRICE,[FlightSearchController::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
 Route::get(P::URL_HOTELPRICE,[HotelSearchController::class, 'getHotelPrice_get'])->name(P::ROUTE_HOTELPRICE_GET);
