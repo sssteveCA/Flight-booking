@@ -5,6 +5,7 @@ namespace App\Classes;
 use App\Exceptions\DatabaseInsertionException;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
+use App\Models\FlightEventBookTemp;
 
 class FlightEventBookTempManager{
     
@@ -27,6 +28,23 @@ class FlightEventBookTempManager{
                 break;
         }
         return $this->error;
+    }
+
+    /**
+     * Add a new record in flighteventbooktemp table
+     */
+    public function addFlightEventBookTemp(){
+        $this->setSessionId();
+        $febt = new FlightEventBookTemp;
+        $febt->session_id = $this->session_id;
+        $febt->event_id = $this->flighteventbooktemp_array['event_id'];
+        $febt->tickets = $this->flighteventbooktemp_array['tickets'];
+        $totalPrice = $this->flighteventbooktemp_array['price'] * $this->flighteventbooktemp_array['tickets'];
+        $totalPrice = number_format($totalPrice,2,".","");
+        $febt->price = $totalPrice;
+        $save = $febt->save();
+        if(!$save) throw new DatabaseInsertionException("");
+
     }
 }
 
