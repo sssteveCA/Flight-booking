@@ -25,7 +25,20 @@ trait FlightEventPriceRequestCommonTrait{
     public function rules()
     {
         return [
-            //
+            'tickets' => ['numeric', 'min:1' ]
+        ];
+    }
+
+    public function messages(){
+        return [
+            'required' => "L'attributo :attribute è obbligatorio",
+            'min' => "L'attributo :attribute deve avere un valore maggiore o uguale a :min"
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'tickets' => "Biglietti"
         ];
     }
 

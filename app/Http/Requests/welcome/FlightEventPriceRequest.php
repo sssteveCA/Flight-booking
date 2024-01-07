@@ -8,9 +8,13 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use App\Interfaces\Constants as C;
 use App\Interfaces\Paths as P;
+use App\Traits\Common\FlightEventPriceRequestCommonTrait;
 
 class FlightEventPriceRequest extends FormRequest
 {
+
+    use FlightEventPriceRequestCommonTrait;
+    
     protected $stopOnFirstFailure = true;
 
     protected function failedValidation(Validator $validator ){
