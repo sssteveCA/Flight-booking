@@ -7,6 +7,14 @@ namespace App\Traits\Common;
  */
 trait FlightEventBookSearchControllerCommonTrait{
 
+    /**
+     * Get info of the selected flight event before book confirmation
+     * @param array $inputs
+     * @return array
+     */
+    private function getFlightEventBookPriceInfo(array $inputs): array{
+        
+    }
 }
 
 ?>
