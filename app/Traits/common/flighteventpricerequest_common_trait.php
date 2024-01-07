@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Traits\Common;
 
-use Illuminate\Foundation\Http\FormRequest;
+/**
+ * Trait used By FlightEventPriceRequest & FlightEventPriceRequestApi
+ */
+trait FlightEventPriceRequestCommonTrait{
 
-class FlightEventPriceRequest extends FormRequest
-{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +14,7 @@ class FlightEventPriceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,4 +28,6 @@ class FlightEventPriceRequest extends FormRequest
             //
         ];
     }
+
 }
+?>
