@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Throwable;
 
 /**
  * Exception thrown when the flight event book price request array is not correctly formatted
