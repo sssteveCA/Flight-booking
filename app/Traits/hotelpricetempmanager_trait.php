@@ -22,7 +22,7 @@ trait HotelPriceTempManagerTrait{
     }
 
     /**
-     * Generate a random session id to identity the user that does the request
+     * Generate a random session id to identify the user that does the request
      */
     private function setSessionId(){
         $session_id = "";
