@@ -6,8 +6,9 @@ use App\Exceptions\DatabaseInsertionException;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
 use App\Models\FlightEventBookTemp;
+use App\Interfaces\Welcome\FlightEventBookTempManagerErrors as Febtme;
 
-class FlightEventBookTempManager{
+class FlightEventBookTempManager implements Febtme{
     
     use MmCommonTrait;
 
@@ -43,7 +44,7 @@ class FlightEventBookTempManager{
         $totalPrice = number_format($totalPrice,2,".","");
         $febt->price = $totalPrice;
         $save = $febt->save();
-        if(!$save) throw new DatabaseInsertionException("");
+        if(!$save) throw new DatabaseInsertionException(Febtme::FLIGHTEVENTBOOKT_NEWROW_EXC);
 
     }
 }
