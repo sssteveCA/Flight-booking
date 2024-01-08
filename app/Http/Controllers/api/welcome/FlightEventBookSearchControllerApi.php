@@ -13,14 +13,17 @@ class FlightEventBookSearchControllerApi extends Controller
 {
     use FlightEventBookSearchControllerCommonTrait;
 
-    protected function failedValidation(Validator $validator)
-    {
-        $errors = (new ValidationException($validator))->errors();
-        throw new HttpResponseException(
-            response()->json([
-               C::KEY_DONE => false, C::KEY_STATUS => 'ERROR', C::KEY_MESSAGE => $errors[array_key_first($errors)][0]
-            ],400,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-        );
+    public function getFlightEventBookPrice(FlightEventPriceRequest $request){
+        try{
+            $data = $request->validated();
+            $flightEventBookTempData = $this->getFlightEventBookPriceInfo($data);
+            return response()->json($flightEventBookTempData,201,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }catch(Exception $e){
+            return response()->json([
+                C::KEY_DONE => false,
+                C::KEY_MESSAGE => C::ERR_FLIGHTEVENTBOOK_PREVENTIVE
+            ],500,[],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        }
     }
 
 }
