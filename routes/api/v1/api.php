@@ -16,6 +16,7 @@ use App\Http\Controllers\api\PostControllerApi;
 use App\Http\Controllers\api\PrivacyControllerApi;
 use App\Http\Controllers\api\UserControllerApi;
 use App\Http\Controllers\api\welcome\CarRentalSearchControllerApi;
+use App\Http\Controllers\api\welcome\FlightEventBookSearchControllerApi;
 use App\Http\Controllers\api\welcome\FlightEventsControllerApi;
 use App\Http\Controllers\api\welcome\HotelSearchControllerApi;
 use App\Http\Controllers\welcome\FlightEventsController;
@@ -42,6 +43,7 @@ Route::name('api.')->group(function(){
     Route::post(P::URL_CARRENTALPRICE,[CarRentalSearchControllerApi::class,'getCarRentalPrice'])->name(P::ROUTE_CARRENTALPRICE);
     Route::get(P::URL_CARRENTALSEARCH,[CarRentalSearchControllerApi::class,'getCarRentalData']);
     Route::get(P::URL_COMPANIESSEARCH,[FlightSearchControllerApi::class,'getFlightCompanies']);
+    Route::post(P::URL_FLIGHTEVENTBOOKPRICE,[FlightEventBookSearchControllerApi::class, 'getFlightEventBookPrice'])->name(P::ROUTE_FLIGHTEVENTBOOKPRICE);
     Route::post(P::URL_SENDEMAIL,[EmailControllerApi::class,'sendEmail'])->name(P::ROUTE_SENDEMAIL);
     Route::post(P::URL_FLIGHTPRICE,[FlightSearchControllerApi::class,'getFlightPrice'])->name(P::ROUTE_FLIGHTPRICE);
     Route::get(P::URL_HOTELS_AVAILABLE,[HotelSearchControllerApi::class,'getAvailableHotels']);

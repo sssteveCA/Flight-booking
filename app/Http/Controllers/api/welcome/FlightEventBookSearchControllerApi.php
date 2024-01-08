@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\welcome;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\api\welcome\FlightEventPriceRequestApi;
 use App\Traits\Common\FlightEventBookSearchControllerCommonTrait;
 use Exception;
 use App\Interfaces\Constants as C;
@@ -13,7 +14,7 @@ class FlightEventBookSearchControllerApi extends Controller
 {
     use FlightEventBookSearchControllerCommonTrait;
 
-    public function getFlightEventBookPrice(FlightEventPriceRequest $request){
+    public function getFlightEventBookPrice(FlightEventPriceRequestApi $request){
         try{
             $data = $request->validated();
             $flightEventBookTempData = $this->getFlightEventBookPriceInfo($data);
