@@ -41,8 +41,10 @@
         </div>
         <div class="row mt-5 justify-content-center">
             <form id="fEvents" class="text-center" method="post" action="{{ route(P::ROUTE_FLIGHTEVENTBOOKPRICE) }}">
+                @csrf
+                @method('POST')
                 <input type="hidden" name="event_id" value="{{ $flightevent['id'] }}">
-                <button type="button" class="btn btn-success btn-lg">PRENOTA</button>
+                <button type="submit" class="btn btn-success btn-lg">PRENOTA</button>
             </form>
         </div>
     </div>

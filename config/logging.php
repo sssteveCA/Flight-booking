@@ -51,7 +51,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['stdout'],
+            'channels' => ['single'],
             'name' => 'FlightBooking1',
             'ignore_exceptions' => false,
         ],
