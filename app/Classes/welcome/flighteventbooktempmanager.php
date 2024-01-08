@@ -40,9 +40,7 @@ class FlightEventBookTempManager implements Febtme{
         $febt->session_id = $this->session_id;
         $febt->event_id = $this->flighteventbooktemp_array['event_id'];
         $febt->tickets = $this->flighteventbooktemp_array['tickets'];
-        $totalPrice = $this->flighteventbooktemp_array['price'] * $this->flighteventbooktemp_array['tickets'];
-        $totalPrice = number_format($totalPrice,2,".","");
-        $febt->price = $totalPrice;
+        $febt->price = $this->flighteventbooktemp_array['price'];
         $save = $febt->save();
         if(!$save) throw new DatabaseInsertionException(Febtme::FLIGHTEVENTBOOKT_NEWROW_EXC);
 
