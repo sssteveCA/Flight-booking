@@ -20,7 +20,8 @@ interface Constants{
     const ERR_FLIGHTBOOK_SINGLE = "Errore durante la prenotazione del volo. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHTBOOK_MULTIPLE = "Errore durante la prenotazione dei voli. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHT_DELETE = "Errore durante la rimozione del volo. ".Constants::ADMIN_CONTACT;
-    CONST ERR_FLIGHT_EVENT_SINGLE = "Errore durante il caricamento dell'evento. ".Constants::ADMIN_CONTACT;
+    const ERR_FLIGHTEVENTBOOK_PREVENTIVE = "Errore durante il calcolo del preventivo dell'evento. ".Constants::ADMIN_CONTACT;
+    const ERR_FLIGHT_EVENT_SINGLE = "Errore durante il caricamento dell'evento. ".Constants::ADMIN_CONTACT;
     const ERR_FLIGHT_EVENTS = 'Impossibile mostrare gli eventi. '.Constants::ADMIN_CONTACT;
     const ERR_FLIGHTPAYMENT_REFUSE = "Il pagamento del volo che hai prenotato è stato rifiutato";
     const ERR_FLIGHTPAYMENT_UNKNOWN = "Errore durante il pagamento del volo. ".Constants::ADMIN_CONTACT;
