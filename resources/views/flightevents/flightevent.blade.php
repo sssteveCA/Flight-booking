@@ -35,13 +35,13 @@
                 <span>{{ $flightevent['price'] }}€</span>
             </div>
             <div class="col-12 col-md-6 col-lg-4 ticket-quantity align-items-center">
-                <label for="event_quantity" class="form-label me-2">Quantità</label>
-                <input type="number" id="event_quantity" class="form-control" name="quantity" form="fEvents">
+                <label for="tickets" class="form-label me-2">Quantità</label>
+                <input type="number" id="tickets" class="form-control" name="tickets" form="fEvents">
             </div>
         </div>
         <div class="row mt-5 justify-content-center">
-            <form id="fEvents" class="text-center" method="post" action="#">
-                <input type="hidden" name="id" value="{{ $flightevent['id'] }}">
+            <form id="fEvents" class="text-center" method="post" action="{{ route(P::ROUTE_FLIGHTEVENTBOOKPRICE) }}">
+                <input type="hidden" name="event_id" value="{{ $flightevent['id'] }}">
                 <button type="button" class="btn btn-success btn-lg">PRENOTA</button>
             </form>
         </div>
