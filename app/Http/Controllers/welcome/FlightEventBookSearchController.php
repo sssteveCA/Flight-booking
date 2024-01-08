@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\welcome;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Traits\Common\FlightEventBookSearchControllerCommonTrait;
 use App\Http\Requests\welcome\FlightEventPriceRequest;
 use Exception;

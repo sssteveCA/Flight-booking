@@ -19,6 +19,7 @@ use App\Http\Controllers\welcome\CarRentalSearchController;
 use App\Http\Controllers\welcome\FlightEventsController;
 use App\Http\Controllers\welcome\FlightSearchController;
 use App\Http\Controllers\welcome\HotelSearchController;
+use App\Http\Controllers\welcome\FlightEventBookSearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;

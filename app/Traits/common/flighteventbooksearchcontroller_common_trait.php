@@ -5,6 +5,7 @@ namespace App\Traits\Common;
 use App\Classes\Welcome\FlightEventBookPrice;
 use App\Classes\FlightEventBookTempManager;
 use App\Interfaces\Constants as C;
+use App\Models\FlightEvent;
 
 /**
  * Trait used by FlightEventBookSearchController web and api classes

@@ -5,12 +5,13 @@ namespace App\Classes;
 use App\Exceptions\DatabaseInsertionException;
 use App\Traits\ErrorTrait;
 use App\Traits\MmCommonTrait;
+use App\Traits\FlightEventBookTempManagerTrait;
 use App\Models\FlightEventBookTemp;
 use App\Interfaces\Welcome\FlightEventBookTempManagerErrors as Febtme;
 
 class FlightEventBookTempManager implements Febtme{
     
-    use MmCommonTrait;
+    use MmCommonTrait, FlightEventBookTempManagerTrait;
 
     private array $flighteventbooktemp_array;
     private static int $random_times = 75;
