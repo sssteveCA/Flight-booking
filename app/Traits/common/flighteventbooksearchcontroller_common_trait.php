@@ -34,6 +34,7 @@ trait FlightEventBookSearchControllerCommonTrait{
             C::KEY_DONE => true,
             C::KEY_RESPONSE => [
                 'flighteventbook' => [
+                    'session_id' => $febtm->getSessionId(),
                     'event_id' => $flightEventBook->id,
                     'name' => $flightEventBook->name,
                     'country' => $flightEventBook->country,
