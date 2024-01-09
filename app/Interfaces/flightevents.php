@@ -143,6 +143,14 @@ interface FlightEvents{
                 ]
             ],
             'Roma' => [
+            ],
+            'Venezia' => [
+                'Tour Murano, Burano, Torcello' => [
+                    'gmLink' => 'https://maps.app.goo.gl/VWg3vpKNcw3dMJiMA',
+                    'image' => 'murano_burano_torcello.jpg',
+                    'location' => 'Murano',
+                    'price' => 30.00,
+                ]
             ]
         ],
         'Lettonia' => [
@@ -225,6 +233,18 @@ interface FlightEvents{
             'Edimburgo' => [
             ],
             'Londra' => [
+                'Disney\'s the Lion King' => [
+                    'gmLink' => 'https://maps.app.goo.gl/7Ht5ia19pNDiFYxJ9',
+                    'image' => 'disney_the_lion_king.png',
+                    'location' => 'Lyceum Theatre',
+                    'price' => 55.00,
+                ],
+                'London Pass' => [
+                    'gmLink' => 'https://maps.app.goo.gl/anA8ksRDcTd3brv67',
+                    'image' => 'london_pass.jpg',
+                    'location' => 'Londra',
+                    'price' => 101.19
+                ],
                 'Tour Harry Potter' => [
                     'gmLink' => 'https://maps.app.goo.gl/yAmUyT39hNKF7eTZ8',
                     'image' => 'harry_potter.webp',
@@ -307,6 +327,12 @@ interface FlightEvents{
         ],
         'Ungheria' => [
             'Budapest' => [
+                'Crociera sul Danubio' => [
+                    'gmLink' => 'https://maps.app.goo.gl/ydijdUdziv6kTq9u6',
+                    'image' => 'crociera_danubio.jpg',
+                    'location' => 'Budapest',
+                    'price' => 21.00,
+                ]
             ],
             'Siófok' => [
             ],
