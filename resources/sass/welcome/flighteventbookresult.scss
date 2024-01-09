@@ -6,7 +6,7 @@
 $fe-prefix: 'flighteventbook';
 
 $column-elem-number: 7;
-$column-elem-widths: 20%, 20%, 15%, 15%, 15%, 15%, 10%;
+$column-elem-widths: 20%, 20%, 15%, 15%, 20%, 10%, 10%;
 
 $flighteventbook-form-map: map.merge(('form-id' : 'fFePrice'), result_table.$form-map);
 

@@ -92,6 +92,7 @@ $paragraph-header-map: (
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        flex: 1;
                     }
                 }//>div:nth-child(#{$i}){
             }//@for $i from 1 through $wl-length{
