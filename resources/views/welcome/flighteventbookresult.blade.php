@@ -10,6 +10,7 @@
 
 @section('links')
     @parent
+    <link rel="stylsheet" href="{{ asset('css/welcome/flighteventbookresult.scss') }}">
 @endsection
 
 @section('scripts')

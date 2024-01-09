@@ -34,6 +34,7 @@ const mix = require('laravel-mix');
     .sass('resources/sass/error/errors.scss','public/css/error')
     .sass('resources/sass/flightevents/flightevent.scss','public/css/flightevents')
     .sass('resources/sass/welcome/carrentalpriceresult.scss','public/css/welcome')
+    .sass('resources/sass/welcome/flighteventbookresult.scss','public/css/welcome')
     .sass('resources/sass/welcome/flightpriceresult.scss','public/css/welcome')
     .sass('resources/sass/welcome/hotelpriceresult.scss','public/css/welcome')
     .sass('resources/sass/profile/myCars.scss','public/css/profile')
