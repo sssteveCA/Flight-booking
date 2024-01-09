@@ -10,17 +10,17 @@ $column-elem-widths: 20%, 20%, 15%, 15%, 15%, 15%, 10%;
 
 $flighteventbook-form-map: map.merge(('form-id' : 'fFePrice'), result_table.$form-map);
 
-$flighteventbook-div-map: map.merge(('rd-class' : '#{$fe-prefix}-div'), result-table.$result-div-map);
+$flighteventbook-div-map: map.merge(('rd-class' : '#{$fe-prefix}-div'), result_table.$result-div-map);
 
-$flighteventbook-div-header-map: map.merge(('rdh-class' : '#{$fe-prefix}-row'), result-table.$result-div-header-map);
+$flighteventbook-div-header-map: map.merge(('rdh-class' : '#{$fe-prefix}-row'), result_table.$result-div-header-map);
 
-$flighteventbook-row-map: map.merge(('rr-class' : '#{$fe-prefix}-row'), result-table.$result-div-row-map);
+$flighteventbook-row-map: map.merge(('rr-class' : '#{$fe-prefix}-row'), result_table.$result-div-row-map);
 
-$flighteventbook-column-elem-map: map.merge(('ce-class' : 'column-elem'), result-table.$result-div-column-elem-map);
+$flighteventbook-column-elem-map: map.merge(('ce-class' : 'column-elem'), result_table.$result-div-column-elem-map);
 
-$flighteventbook-par-header-map: map.merge(('par-h-class': 'fe-ce-class'), result-table.$paragraph-header-map);
+$flighteventbook-par-header-map: map.merge(('par-h-class': 'fe-ce-class'), result_table.$paragraph-header-map);
 
-@include result-table.result-table($flighteventbook-form-map, $flighteventbook-div-map, $flighteventbook-div-header-map, $flighteventbook-row-map, $flighteventbook-column-elem-map, $flighteventbook-par-header-map);
+@include result_table.result-table($flighteventbook-form-map, $flighteventbook-div-map, $flighteventbook-div-header-map, $flighteventbook-row-map, $flighteventbook-column-elem-map, $flighteventbook-par-header-map);
 
 @media only screen and (min-width: 0px){
     @include result_table.result-div-small($flighteventbook-div-map, $flighteventbook-div-header-map,$flighteventbook-row-map,$flighteventbook-column-elem-map);
