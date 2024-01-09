@@ -12,7 +12,7 @@ $flighteventbook-form-map: map.merge(('form-id' : 'fFePrice'), result_table.$for
 
 $flighteventbook-div-map: map.merge(('rd-class' : '#{$fe-prefix}-div'), result_table.$result-div-map);
 
-$flighteventbook-div-header-map: map.merge(('rdh-class' : '#{$fe-prefix}-row'), result_table.$result-div-header-map);
+$flighteventbook-div-header-map: map.merge(('rdh-class' : '#{$fe-prefix}-header'), result_table.$result-div-header-map);
 
 $flighteventbook-row-map: map.merge(('rr-class' : '#{$fe-prefix}-row'), result_table.$result-div-row-map);
 
