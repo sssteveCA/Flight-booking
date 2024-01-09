@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    @include(P::VIEW_BACKBUTTON,['back_image' => '../img/back.png', 'back_url' => '../'])
+    <x-back-button back_image="/img/back.png" back_url="../" />
     @if(isset($n_posts,$posts))
         @each(P::VIEW_POST_ITEM,$posts,'post',P::VIEW_POST_EMPTYLIST)
     @endif
